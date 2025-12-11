@@ -73,7 +73,7 @@ def _scan_output_demos(output_dir: Path, language: str) -> List[Dict[str, Any]]:
                         'verified': metadata.get('verified', False),
                         'metadata': metadata
                     })
-                except:
+                except Exception:
                     # 即使没有metadata，也列出目录
                     demos.append({
                         'path': item,

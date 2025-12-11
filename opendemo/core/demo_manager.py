@@ -262,7 +262,8 @@ class DemoManager:
         """
         output_dir = self.storage.get_output_directory()
         target_name = output_name or demo.path.name
-        target_path = output_dir / target_name
+        # 确保目标路径包含语言子目录，保持目录结构一致
+        target_path = output_dir / demo.language.lower() / target_name
         
         if self.storage.copy_demo(demo.path, target_path):
             return target_path
