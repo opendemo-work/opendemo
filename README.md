@@ -119,6 +119,11 @@ opendemo/
 │       ├── go/
 │       ├── nodejs/
 │       └── java/
+├── scripts/               # 工具脚本
+│   ├── start.py           # 交互式启动脚本
+│   └── ...                # 其他脚本
+├── data/                  # 数据文件目录
+│   └── demo_mapping.json  # Demo映射配置
 ├── opendemo_output/       # 输出目录
 │   ├── python/
 │   │   ├── libraries/         # 第三方库Demo
@@ -165,6 +170,14 @@ opendemo/
 git clone https://github.com/opendemo/opendemo.git
 cd opendemo
 pip install -e ".[dev]"
+```
+
+### 交互式启动（可选）
+
+如果你更喜欢菜单式的交互方式，可以使用交互式启动脚本：
+
+```bash
+python scripts/start.py
 ```
 
 ### 运行测试

@@ -334,7 +334,7 @@ if __name__ == "__main__":
     mapping = generate_mapping_table(output_dir)
     
     # 保存映射表
-    mapping_file = workspace / "demo_mapping.json"
+    mapping_file = workspace / "data" / "demo_mapping.json"
     with open(mapping_file, 'w', encoding='utf-8') as f:
         json.dump(mapping, f, ensure_ascii=False, indent=2)
     

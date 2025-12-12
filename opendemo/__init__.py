@@ -7,12 +7,19 @@ Open Demo CLI - 智能化的编程学习辅助CLI工具
 __version__ = "0.1.0"
 __author__ = "Open Demo Contributors"
 
-from opendemo.core.demo_manager import DemoManager
-from opendemo.core.search_engine import SearchEngine
+from opendemo.core.demo_repository import DemoRepository, Demo
+from opendemo.core.demo_search import DemoSearch
 from opendemo.services.config_service import ConfigService
 
+# Backward compatibility aliases
+DemoManager = DemoRepository
+SearchEngine = DemoSearch
+
 __all__ = [
-    "DemoManager",
-    "SearchEngine",
+    "DemoRepository",
+    "Demo",
+    "DemoSearch",
     "ConfigService",
+    "DemoManager",  # Alias
+    "SearchEngine",  # Alias
 ]

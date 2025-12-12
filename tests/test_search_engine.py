@@ -1,17 +1,17 @@
 """
-SearchEngine 单元测试
+DemoSearch 单元测试
 """
 
 import pytest
 from pathlib import Path
 from unittest.mock import Mock
 
-from opendemo.core.demo_manager import Demo
-from opendemo.core.search_engine import SearchEngine
+from opendemo.core.demo_repository import Demo
+from opendemo.core.demo_search import DemoSearch
 
 
-class TestSearchEngine:
-    """SearchEngine 类测试"""
+class TestDemoSearch:
+    """DemoSearch 类测试"""
     
     def _create_mock_demo(self, name, language, keywords, description, difficulty='beginner', verified=False):
         """创建模拟 Demo 对象"""
@@ -27,18 +27,18 @@ class TestSearchEngine:
     
     def test_init(self):
         """测试初始化"""
-        mock_manager = Mock()
-        engine = SearchEngine(mock_manager)
+        mock_repository = Mock()
+        search = DemoSearch(mock_repository)
         
-        assert engine.demo_manager == mock_manager
+        assert search.repository == mock_repository
     
     def test_search_no_demos(self):
         """测试搜索空库"""
-        mock_manager = Mock()
-        mock_manager.load_all_demos.return_value = []
+        mock_repository = Mock()
+        mock_repository.load_all_demos.return_value = []
         
-        engine = SearchEngine(mock_manager)
-        results = engine.search(language='python')
+        search = DemoSearch(mock_repository)
+        results = search.search_demos(language='python')
         
         assert results == []
     
@@ -47,11 +47,11 @@ class TestSearchEngine:
         demo1 = self._create_mock_demo('demo1', 'python', ['test'], 'Test demo 1')
         demo2 = self._create_mock_demo('demo2', 'python', ['test'], 'Test demo 2')
         
-        mock_manager = Mock()
-        mock_manager.load_all_demos.return_value = [demo1, demo2]
+        mock_repository = Mock()
+        mock_repository.load_all_demos.return_value = [demo1, demo2]
         
-        engine = SearchEngine(mock_manager)
-        results = engine.search()
+        search = DemoSearch(mock_repository)
+        results = search.search_demos()
         
         assert len(results) == 2
     
@@ -60,11 +60,11 @@ class TestSearchEngine:
         demo1 = self._create_mock_demo('python-logging', 'python', ['logging', 'debug'], 'Logging demo')
         demo2 = self._create_mock_demo('python-http', 'python', ['http', 'requests'], 'HTTP demo')
         
-        mock_manager = Mock()
-        mock_manager.load_all_demos.return_value = [demo1, demo2]
+        mock_repository = Mock()
+        mock_repository.load_all_demos.return_value = [demo1, demo2]
         
-        engine = SearchEngine(mock_manager)
-        results = engine.search(keywords=['logging'])
+        search = DemoSearch(mock_repository)
+        results = search.search_demos(keywords=['logging'])
         
         # 应只匹配 demo1
         assert len(results) == 1
@@ -75,11 +75,11 @@ class TestSearchEngine:
         demo1 = self._create_mock_demo('easy', 'python', ['test'], 'Easy', 'beginner')
         demo2 = self._create_mock_demo('hard', 'python', ['test'], 'Hard', 'advanced')
         
-        mock_manager = Mock()
-        mock_manager.load_all_demos.return_value = [demo1, demo2]
+        mock_repository = Mock()
+        mock_repository.load_all_demos.return_value = [demo1, demo2]
         
-        engine = SearchEngine(mock_manager)
-        results = engine.search(difficulty='beginner')
+        search = DemoSearch(mock_repository)
+        results = search.search_demos(difficulty='beginner')
         
         assert len(results) == 1
         assert results[0].name == 'easy'
@@ -88,30 +88,30 @@ class TestSearchEngine:
         """测试名称匹配得分"""
         demo = self._create_mock_demo('python-logging', 'python', [], 'Test')
         
-        mock_manager = Mock()
-        engine = SearchEngine(mock_manager)
+        mock_repository = Mock()
+        search = DemoSearch(mock_repository)
         
-        score = engine._calculate_match_score(demo, keywords=['logging'])
+        score = search._calculate_demo_match_score(demo, keywords=['logging'])
         assert score > 0
     
     def test_calculate_match_score_keyword_match(self):
         """测试关键字匹配得分"""
         demo = self._create_mock_demo('test', 'python', ['logging', 'debug'], 'Test')
         
-        mock_manager = Mock()
-        engine = SearchEngine(mock_manager)
+        mock_repository = Mock()
+        search = DemoSearch(mock_repository)
         
-        score = engine._calculate_match_score(demo, keywords=['logging'])
+        score = search._calculate_demo_match_score(demo, keywords=['logging'])
         assert score > 0
     
     def test_calculate_match_score_no_match(self):
         """测试无匹配得分"""
         demo = self._create_mock_demo('test', 'python', ['other'], 'Test')
         
-        mock_manager = Mock()
-        engine = SearchEngine(mock_manager)
+        mock_repository = Mock()
+        search = DemoSearch(mock_repository)
         
-        score = engine._calculate_match_score(demo, keywords=['nonexistent'])
+        score = search._calculate_demo_match_score(demo, keywords=['nonexistent'])
         assert score == 0
     
     def test_find_exact(self):
@@ -119,22 +119,22 @@ class TestSearchEngine:
         demo1 = self._create_mock_demo('target-demo', 'python', [], '')
         demo2 = self._create_mock_demo('other-demo', 'python', [], '')
         
-        mock_manager = Mock()
-        mock_manager.load_all_demos.return_value = [demo1, demo2]
+        mock_repository = Mock()
+        mock_repository.load_all_demos.return_value = [demo1, demo2]
         
-        engine = SearchEngine(mock_manager)
-        result = engine.find_exact('target-demo')
+        search = DemoSearch(mock_repository)
+        result = search.find_exact('target-demo')
         
         assert result is not None
         assert result.name == 'target-demo'
     
     def test_find_exact_not_found(self):
         """测试精确查找未找到"""
-        mock_manager = Mock()
-        mock_manager.load_all_demos.return_value = []
+        mock_repository = Mock()
+        mock_repository.load_all_demos.return_value = []
         
-        engine = SearchEngine(mock_manager)
-        result = engine.find_exact('nonexistent')
+        search = DemoSearch(mock_repository)
+        result = search.find_exact('nonexistent')
         
         assert result is None
     
@@ -144,11 +144,11 @@ class TestSearchEngine:
         demo2 = self._create_mock_demo('test2', 'java', [], '')
         demo3 = self._create_mock_demo('test3', 'python', [], '')
         
-        mock_manager = Mock()
-        mock_manager.load_all_demos.return_value = [demo1, demo2, demo3]
+        mock_repository = Mock()
+        mock_repository.load_all_demos.return_value = [demo1, demo2, demo3]
         
-        engine = SearchEngine(mock_manager)
-        languages = engine.get_all_languages()
+        search = DemoSearch(mock_repository)
+        languages = search.get_all_languages()
         
         assert sorted(languages) == ['java', 'python']
     
@@ -157,11 +157,11 @@ class TestSearchEngine:
         demo1 = self._create_mock_demo('test1', 'python', [], '', 'beginner', True)
         demo2 = self._create_mock_demo('test2', 'java', [], '', 'advanced', False)
         
-        mock_manager = Mock()
-        mock_manager.load_all_demos.return_value = [demo1, demo2]
+        mock_repository = Mock()
+        mock_repository.load_all_demos.return_value = [demo1, demo2]
         
-        engine = SearchEngine(mock_manager)
-        stats = engine.get_statistics()
+        search = DemoSearch(mock_repository)
+        stats = search.get_statistics()
         
         assert stats['total'] == 2
         assert stats['verified'] == 1
@@ -171,7 +171,7 @@ class TestSearchEngine:
         assert stats['by_difficulty']['advanced'] == 1
 
 
-class TestSearchEngineSorting:
+class TestDemoSearchSorting:
     """测试搜索结果排序"""
     
     def _create_mock_demo(self, name, language='python'):
@@ -184,10 +184,10 @@ class TestSearchEngineSorting:
         demo_a = self._create_mock_demo('a-demo')
         demo_b = self._create_mock_demo('b-demo')
         
-        mock_manager = Mock()
-        engine = SearchEngine(mock_manager)
+        mock_repository = Mock()
+        search = DemoSearch(mock_repository)
         
-        sorted_demos = engine._sort_demos([demo_c, demo_a, demo_b])
+        sorted_demos = search._sort_demos([demo_c, demo_a, demo_b])
         
         names = [d.name for d in sorted_demos]
         assert names == ['a-demo', 'b-demo', 'c-demo']

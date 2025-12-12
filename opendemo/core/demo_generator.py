@@ -1,7 +1,6 @@
-"""
-生成协调器模块
+"""Demo生成协调器模块
 
-协调AI服务生成demo。
+协调AI服务生成demo，补充元数据。
 """
 
 from datetime import datetime
@@ -15,17 +14,17 @@ logger = get_logger(__name__)
 class DemoGenerator:
     """Demo生成器类"""
     
-    def __init__(self, ai_service, demo_manager, config_service):
+    def __init__(self, ai_service, demo_repository, config_service):
         """
         初始化生成器
         
         Args:
             ai_service: AI服务实例
-            demo_manager: Demo管理器实例
+            demo_repository: Demo仓库实例
             config_service: 配置服务实例
         """
         self.ai_service = ai_service
-        self.demo_manager = demo_manager
+        self.repository = demo_repository
         self.config = config_service
     
     def generate(
@@ -73,7 +72,7 @@ class DemoGenerator:
         metadata['verified'] = False
         
         # 创建demo
-        demo = self.demo_manager.create_demo(
+        demo = self.repository.create_demo(
             name=metadata.get('name', f"{language}-{topic}"),
             language=language,
             keywords=metadata.get('keywords', [topic]),
@@ -97,7 +96,7 @@ class DemoGenerator:
             'language': language,
             'topic': topic,
             'metadata': metadata,
-            'files': self.demo_manager.get_demo_files(demo),
+            'files': self.repository.get_demo_files(demo),
             'verified': False
         }
         
@@ -120,7 +119,7 @@ class DemoGenerator:
             生成结果字典
         """
         # 加载现有demo
-        demo = self.demo_manager.load_demo(demo_path)
+        demo = self.repository.load_demo(demo_path)
         if not demo:
             logger.error(f"Demo not found at {demo_path}")
             return None
@@ -131,7 +130,7 @@ class DemoGenerator:
         difficulty = difficulty or demo.difficulty
         
         # 删除旧demo
-        self.demo_manager.storage.delete_demo(demo_path)
+        self.repository.storage.delete_demo(demo_path)
         
         # 生成新demo
         return self.generate(language, topic, difficulty)

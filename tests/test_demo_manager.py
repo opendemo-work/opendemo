@@ -1,5 +1,5 @@
 """
-DemoManager 和 Demo 类单元测试
+DemoRepository 和 Demo 类单元测试
 """
 
 import pytest
@@ -8,7 +8,7 @@ import tempfile
 from pathlib import Path
 from unittest.mock import Mock, MagicMock
 
-from opendemo.core.demo_manager import Demo, DemoManager
+from opendemo.core.demo_repository import Demo, DemoRepository
 
 
 class TestDemo:
@@ -89,69 +89,69 @@ class TestDemo:
         assert 'metadata' in result
 
 
-class TestDemoManager:
-    """DemoManager 类测试"""
+class TestDemoRepository:
+    """DemoRepository 类测试"""
     
     def test_init(self):
-        """测试 DemoManager 初始化"""
+        """测试 DemoRepository 初始化"""
         mock_storage = Mock()
-        manager = DemoManager(mock_storage)
+        repository = DemoRepository(mock_storage)
         
-        assert manager.storage == mock_storage
-        assert manager._demo_cache == {}
+        assert repository.storage == mock_storage
+        assert repository._demo_cache == {}
     
-    def test_generate_demo_name(self):
+    def test_generate_safe_name(self):
         """测试生成 demo 目录名（纯ASCII英文）"""
         mock_storage = Mock()
-        manager = DemoManager(mock_storage)
+        repository = DemoRepository(mock_storage)
         
         # 测试正常名称
-        name = manager._generate_demo_name("Hello World", "python")
+        name = repository._generate_safe_name("Hello World", "python")
         assert name == "python-hello-world"
         
         # 测试带特殊字符
-        name = manager._generate_demo_name("Test_Demo!", "java")
+        name = repository._generate_safe_name("Test_Demo!", "java")
         assert name == "java-test-demo"
         
         # 测试中文名称（应该过滤掉中文）
-        name = manager._generate_demo_name("并发编程goroutines", "go")
+        name = repository._generate_safe_name("并发编程goroutines", "go")
         assert name == "go-goroutines"
         
         # 测试纯中文（应该返回默认名称）
-        name = manager._generate_demo_name("中文主题", "nodejs")
+        name = repository._generate_safe_name("中文主题", "nodejs")
         assert name == "nodejs-demo"
     
     def test_get_file_description(self):
         """测试获取文件描述"""
         mock_storage = Mock()
-        manager = DemoManager(mock_storage)
+        repository = DemoRepository(mock_storage)
         
         # 测试各种文件类型
-        assert manager._get_file_description(Path("README.md")) == '实操指南'
-        assert manager._get_file_description(Path("metadata.json")) == 'Demo元数据'
-        assert manager._get_file_description(Path("requirements.txt")) == 'Python依赖'
-        assert manager._get_file_description(Path("pom.xml")) == 'Java依赖'
-        assert manager._get_file_description(Path("test.py")) == 'Python代码'
-        assert manager._get_file_description(Path("Main.java")) == 'Java代码'
-        assert manager._get_file_description(Path("other.txt")) == '其他文件'
+        assert repository._get_file_description(Path("README.md")) == '实操指南'
+        assert repository._get_file_description(Path("metadata.json")) == 'Demo元数据'
+        assert repository._get_file_description(Path("requirements.txt")) == 'Python依赖'
+        assert repository._get_file_description(Path("pom.xml")) == 'Java依赖'
+        assert repository._get_file_description(Path("test.py")) == 'Python代码'
+        assert repository._get_file_description(Path("Main.java")) == 'Java代码'
+        assert repository._get_file_description(Path("other.txt")) == '其他文件'
     
     def test_load_demo_with_cache(self):
         """测试加载 demo 使用缓存"""
         mock_storage = Mock()
         mock_storage.load_demo_metadata.return_value = {'name': 'test'}
         
-        manager = DemoManager(mock_storage)
+        repository = DemoRepository(mock_storage)
         
         with tempfile.TemporaryDirectory() as temp_dir:
             demo_path = Path(temp_dir) / "test-demo"
             demo_path.mkdir()
             
             # 第一次加载
-            demo1 = manager.load_demo(demo_path)
+            demo1 = repository.load_demo(demo_path)
             assert demo1 is not None
             
             # 第二次加载应使用缓存
-            demo2 = manager.load_demo(demo_path)
+            demo2 = repository.load_demo(demo_path)
             assert demo2 is demo1
             
             # storage 只调用一次
@@ -162,22 +162,22 @@ class TestDemoManager:
         mock_storage = Mock()
         mock_storage.load_demo_metadata.return_value = None
         
-        manager = DemoManager(mock_storage)
+        repository = DemoRepository(mock_storage)
         
-        demo = manager.load_demo(Path("/nonexistent/demo"))
+        demo = repository.load_demo(Path("/nonexistent/demo"))
         assert demo is None
 
 
-class TestDemoManagerIntegration:
-    """DemoManager 集成测试"""
+class TestDemoRepositoryIntegration:
+    """DemoRepository 集成测试"""
     
     def test_load_all_demos(self):
         """测试加载所有 demos"""
         mock_storage = Mock()
         mock_storage.list_demos.return_value = []
         
-        manager = DemoManager(mock_storage)
-        demos = manager.load_all_demos()
+        repository = DemoRepository(mock_storage)
+        demos = repository.load_all_demos()
         
         assert isinstance(demos, list)
         mock_storage.list_demos.assert_called_once()

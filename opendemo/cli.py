@@ -13,13 +13,10 @@ from typing import List, Dict, Any, Optional, Tuple
 from opendemo.services.config_service import ConfigService
 from opendemo.services.storage_service import StorageService
 from opendemo.services.ai_service import AIService
-from opendemo.core.demo_manager import DemoManager
-from opendemo.core.search_engine import SearchEngine
-from opendemo.core.generator import DemoGenerator
-from opendemo.core.verifier import DemoVerifier
-from opendemo.core.contribution import ContributionManager
-from opendemo.core.library_detector import LibraryDetector
-from opendemo.core.library_manager import LibraryManager
+from opendemo.core.demo_repository import DemoRepository
+from opendemo.core.demo_search import DemoSearch
+from opendemo.core.demo_generator import DemoGenerator
+from opendemo.core.demo_verifier import DemoVerifier
 from opendemo.utils.formatters import (
     print_success, print_error, print_warning, print_info,
     print_demo_result, print_search_results, print_config_list,
@@ -197,8 +194,8 @@ def _display_output_demo(demo_info: Dict[str, Any], demo_path: Path, language: s
 
 def _handle_library_command(
     library_command: Dict[str, Any],
-    library_manager,
-    demo_manager,
+    repository,
+    search,
     storage,
     verify: bool,
     verifier,
@@ -209,8 +206,8 @@ def _handle_library_command(
     
     Args:
         library_command: 库命令信息
-        library_manager: 库管理器
-        demo_manager: Demo管理器
+        repository: Demo仓库
+        search: 搜索引擎
         storage: 存储服务
         verify: 是否验证
         verifier: 验证器
@@ -221,7 +218,7 @@ def _handle_library_command(
     
     # 如果没有功能关键字，展示库的功能列表
     if not feature_keywords:
-        library_info = library_manager.get_library_info(language, library_name)
+        library_info = repository.get_library_info(language, library_name)
         if library_info:
             print_library_info(library_info)
         else:
@@ -233,24 +230,24 @@ def _handle_library_command(
     feature_keyword = feature_keywords[0]  # 使用第一个关键字
     
     # 先尝试精确匹配
-    feature_demo = library_manager.get_feature_demo(language, library_name, feature_keyword)
+    feature_demo = repository.get_library_demo(language, library_name, feature_keyword)
     
     if feature_demo:
         # 找到精确匹配的功能 demo
         print_success(f"在库 {library_name} 中找到功能: {feature_keyword}")
         
         # 复制到输出目录
-        output_path = library_manager.copy_feature_to_output(language, library_name, feature_keyword)
+        output_path = repository.copy_library_feature_to_output(language, library_name, feature_keyword)
         
         if output_path:
-            _display_demo_result(feature_demo, output_path, demo_manager, verify, verifier, language)
+            _display_demo_result(feature_demo, output_path, repository, verify, verifier, language)
         else:
             print_error("复制demo失败")
             sys.exit(1)
         return
     
     # 没有精确匹配，尝试模糊搜索
-    search_results = library_manager.search_library_feature(language, library_name, feature_keyword)
+    search_results = search.search_library_features(language, library_name, feature_keyword)
     
     if search_results:
         # 显示搜索结果
@@ -261,11 +258,11 @@ def _handle_library_command(
             
             print_success(f"在库 {library_name} 中找到匹配的功能: {feature_name}")
             
-            feature_demo = library_manager.get_feature_demo(language, library_name, feature_name)
+            feature_demo = repository.get_library_demo(language, library_name, feature_name)
             if feature_demo:
-                output_path = library_manager.copy_feature_to_output(language, library_name, feature_name)
+                output_path = repository.copy_library_feature_to_output(language, library_name, feature_name)
                 if output_path:
-                    _display_demo_result(feature_demo, output_path, demo_manager, verify, verifier, language)
+                    _display_demo_result(feature_demo, output_path, repository, verify, verifier, language)
                 else:
                     print_error("复制demo失败")
                     sys.exit(1)
@@ -342,26 +339,22 @@ def get(language, keywords, verify):
     # 初始化服务
     config = ConfigService()
     storage = StorageService(config)
-    demo_manager = DemoManager(storage)
-    search_engine = SearchEngine(demo_manager)
+    repository = DemoRepository(storage, config)
+    search = DemoSearch(repository)
     ai_service = AIService(config)
-    generator = DemoGenerator(ai_service, demo_manager, config)
+    generator = DemoGenerator(ai_service, repository, config)
     verifier = DemoVerifier(config)
-    
-    # 初始化库相关服务
-    library_detector = LibraryDetector(storage)
-    library_manager = LibraryManager(storage, demo_manager)
     
     # 检查是否为库命令
     keywords_list = list(keywords)
-    library_command = library_detector.parse_library_command(language, keywords_list)
+    library_command = repository.detect_library_command(language, keywords_list)
     
     if library_command:
         # 处理库命令
         _handle_library_command(
             library_command, 
-            library_manager, 
-            demo_manager,
+            repository, 
+            search,
             storage,
             verify,
             verifier,
@@ -402,17 +395,17 @@ def get(language, keywords, verify):
             return
         
         # 在内置库和用户库中搜索
-        results = search_engine.search(language=language, keywords=keywords_list)
+        results = search.search_demos(language=language, keywords=keywords_list)
         
         if results:
             demo = results[0]
             print_success(f"在本地库中找到匹配的demo: {demo.name}")
             
             # 复制到输出目录
-            output_path = demo_manager.copy_demo_to_output(demo)
+            output_path = repository.copy_to_output(demo)
             
             if output_path:
-                _display_demo_result(demo, output_path, demo_manager, verify, verifier, language)
+                _display_demo_result(demo, output_path, repository, verify, verifier, language)
             else:
                 print_error("复制demo失败")
                 sys.exit(1)
@@ -464,9 +457,9 @@ def get(language, keywords, verify):
     
     # 验证(如果启用)
     if verify or config.get('enable_verification', False):
-        _verify_demo(demo, verifier, language, demo_manager)
+        _verify_demo(demo, verifier, language, repository)
     
-    _display_demo_result(demo, output_path, demo_manager, verify, verifier, language)
+    _display_demo_result(demo, output_path, repository, verify, verifier, language)
 
 
 @cli.command()
@@ -483,8 +476,8 @@ def search(language, keywords):
     # 初始化服务
     config = ConfigService()
     storage = StorageService(config)
-    demo_manager = DemoManager(storage)
-    search_engine = SearchEngine(demo_manager)
+    repository = DemoRepository(storage, config)
+    search = DemoSearch(repository)
     
     # 获取输出目录
     output_dir = storage.get_output_directory()
@@ -560,21 +553,19 @@ def new(language, topic, difficulty, verify):
         sys.exit(1)
     
     storage = StorageService(config)
-    demo_manager = DemoManager(storage)
+    repository = DemoRepository(storage, config)
     ai_service = AIService(config)
-    generator = DemoGenerator(ai_service, demo_manager, config)
+    generator = DemoGenerator(ai_service, repository, config)
     verifier = DemoVerifier(config)
-    contribution_manager = ContributionManager(config, storage)
     
     # 初始化库相关服务（传入AI服务用于智能判断库名）
-    library_detector = LibraryDetector(storage, ai_service)
     
     # 合并主题
     topic_str = ' '.join(topic)
     
     # 检查是否为库demo请求（使用新的检测方法，支持未注册的库）
     topic_keywords = list(topic)
-    library_name = library_detector.detect_library_for_new_command(language, topic_keywords)
+    library_name = repository.detect_library_for_new_command(language, topic_keywords, use_ai=True)
     
     if library_name:
         # 识别为库demo
@@ -609,24 +600,24 @@ def new(language, topic, difficulty, verify):
     
     # 验证(如果启用)
     if verify or config.get('enable_verification', False):
-        _verify_demo(demo, verifier, language, demo_manager)
+        _verify_demo(demo, verifier, language, repository)
     
-    _display_demo_result(demo, output_path, demo_manager, verify, verifier, language)
+    _display_demo_result(demo, output_path, repository, verify, verifier, language)
     
     # 询问是否贡献
-    if contribution_manager.prompt_contribution(output_path):
+    if repository.prompt_contribution(output_path):
         # 复制到用户库
-        user_lib_path = contribution_manager.copy_to_user_library(output_path)
+        user_lib_path = repository.contribute_to_user_library(output_path)
         
         if user_lib_path:
             print_success(f"已将demo保存到用户库: {user_lib_path}")
             
             # 准备贡献信息
-            contrib_info = contribution_manager.prepare_contribution(user_lib_path)
+            contrib_info = repository.prepare_contribution_info(user_lib_path)
             
             if contrib_info:
                 print_info("\n贡献信息:")
-                message = contribution_manager.generate_contribution_message(contrib_info)
+                message = repository.generate_contribution_message(contrib_info)
                 print(message)
                 print_info(f"\n请手动将demo提交到仓库: {contrib_info['repository_url']}")
             else:
@@ -702,7 +693,7 @@ def config_list():
     print_config_list(all_config)
 
 
-def _verify_demo(demo, verifier, language, demo_manager):
+def _verify_demo(demo, verifier, language, repository):
     """验证demo"""
     print_progress("验证demo可执行性")
     verification_result = verifier.verify(demo.path, language)
@@ -710,7 +701,7 @@ def _verify_demo(demo, verifier, language, demo_manager):
     if verification_result.get('verified'):
         print_success("验证通过")
         # 更新元数据
-        demo_manager.update_demo_metadata(demo, {'verified': True})
+        repository.update_metadata(demo, {'verified': True})
     elif verification_result.get('skipped'):
         print_warning(verification_result.get('message', '验证已跳过'))
     else:
@@ -720,9 +711,9 @@ def _verify_demo(demo, verifier, language, demo_manager):
             print_error(f"  - {error}")
 
 
-def _display_demo_result(demo, output_path, demo_manager, verify, verifier, language):
+def _display_demo_result(demo, output_path, repository, verify, verifier, language):
     """显示demo结果"""
-    files = demo_manager.get_demo_files(demo)
+    files = repository.get_demo_files(demo)
     
     # 生成快速开始步骤
     quick_start = [
