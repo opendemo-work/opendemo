@@ -4,6 +4,7 @@ from opendemo.core.demo_repository import DemoRepository, Demo
 from opendemo.core.demo_search import DemoSearch
 from opendemo.core.demo_generator import DemoGenerator
 from opendemo.core.demo_verifier import DemoVerifier
+from opendemo.core.readme_updater import ReadmeUpdater
 
 # Backward compatibility aliases
 DemoManager = DemoRepository
@@ -15,6 +16,7 @@ __all__ = [
     'DemoSearch',
     'DemoGenerator',
     'DemoVerifier',
+    'ReadmeUpdater',
     'DemoManager',  # Alias
     'SearchEngine',  # Alias
 ]

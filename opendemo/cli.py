@@ -17,6 +17,7 @@ from opendemo.core.demo_repository import DemoRepository
 from opendemo.core.demo_search import DemoSearch
 from opendemo.core.demo_generator import DemoGenerator
 from opendemo.core.demo_verifier import DemoVerifier
+from opendemo.core.readme_updater import ReadmeUpdater
 from opendemo.utils.formatters import (
     print_success, print_error, print_warning, print_info,
     print_demo_result, print_search_results, print_config_list,
@@ -751,70 +752,15 @@ def _update_readme_after_new(storage, language: str, demo_name: str, library_nam
     try:
         output_dir = storage.get_output_directory()
         
-        # 统计所有demo数量
-        stats = {}
-        for lang in SUPPORTED_LANGUAGES:
-            lang_dir = output_dir / lang.lower()
-            if not lang_dir.exists():
-                stats[lang] = {'base': 0, 'libraries': {}}
-                continue
-            
-            base_count = 0
-            libraries = {}
-            
-            for item in lang_dir.iterdir():
-                if item.is_dir():
-                    if item.name == 'libraries':
-                        # 统计第三方库demo
-                        for lib_dir in item.iterdir():
-                            if lib_dir.is_dir():
-                                lib_demos = sum(1 for d in lib_dir.iterdir() if d.is_dir())
-                                libraries[lib_dir.name] = lib_demos
-                    else:
-                        base_count += 1
-            
-            stats[lang] = {'base': base_count, 'libraries': libraries}
+        # 使用ReadmeUpdater模块更新README
+        updater = ReadmeUpdater(output_dir, README_PATH)
+        success = updater.update()
         
-        # 读取README内容
-        with open(README_PATH, 'r', encoding='utf-8') as f:
-            content = f.read()
-        
-        # 更新Demo统计表格
-        python_total = stats.get('python', {}).get('base', 0)
-        python_libs = stats.get('python', {}).get('libraries', {})
-        python_lib_total = sum(python_libs.values())
-        python_all = python_total + python_lib_total
-        
-        go_total = stats.get('go', {}).get('base', 0)
-        nodejs_total = stats.get('nodejs', {}).get('base', 0)
-        grand_total = python_all + go_total + nodejs_total
-        
-        # 构建新的统计表格
-        lib_info = ''
-        if python_libs:
-            lib_names = ', '.join(f"{name}({count})" for name, count in python_libs.items())
-            lib_info = f" + 第三方库({lib_names})"
-        
-        new_stats = f"""### Demo统计
-
-| 语言 | 数量 | 分类 |
-|------|------|------|
-| **Python** | {python_all} | 基础语法({python_total}){lib_info} |
-| **Go** | {go_total} | 基础语法、并发编程、DevOps/SRE、网络编程、工程实践 |
-| **Node.js** | {nodejs_total} | 基础语法、异步编程、DevOps/SRE、安全认证、工程实践 |
-| **总计** | **{grand_total}** | 多语言全覆盖 |"""
-        
-        # 使用正则替换统计表格
-        import re
-        stats_pattern = r'### Demo统计\n\n\| 语言 \| 数量 \| 分类 \|[\s\S]*?\| \*\*总计\*\* \|[^\n]*'
-        content = re.sub(stats_pattern, new_stats, content)
-        
-        # 写回README
-        with open(README_PATH, 'w', encoding='utf-8') as f:
-            f.write(content)
-        
-        logger.info(f"README.md updated: {language} demos, total {grand_total}")
-        print_info(f"README.md 已更新 (总计 {grand_total} 个demo)")
+        if success:
+            summary = updater.get_summary()
+            print_info(f"README.md 已更新 ({summary})")
+        else:
+            print_warning("更新README.md失败")
         
     except Exception as e:
         logger.error(f"Failed to update README.md: {e}")
