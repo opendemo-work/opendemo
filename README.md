@@ -415,11 +415,22 @@ opendemo config set ai.api_endpoint YOUR_ENDPOINT
 | `nodejs-multerdemo-file-upload-handling` | Multer文件上传 | ✅ |
 | `nodejs-axios-demo` | Axios HTTP客户端 | ✅ |
 
-**其他Demo (nodejs-demo系列)**
+**其他Demo**
 
-| Demo名称 | 状态 |
-|---------|------|
-| `nodejs-nodejs-demo` ~ `nodejs-nodejs-demo-10` (11个) | ✅ |
+| Demo名称 | 功能说明 | 状态 |
+|---------|---------|------|
+| `nodejs-functional-programming-demo` | 函数编程实战 | ✅ |
+| `nodejs-callback-functions-demo` | 回调函数 | ✅ |
+| `nodejs-event-emitter-demo` | 事件发射器 EventEmitter | ✅ |
+| `nodejs-child-process-demo` | 子进程管理 | ✅ |
+| `nodejs-spread-operator-demo` | 展开运算符 | ✅ |
+| `nodejs-array-methods-demo` | 数组方法 map/filter/reduce | ✅ |
+| `nodejs-circuit-breaker-demo` | 熔断器模式 | ✅ |
+| `nodejs-destructuring-demo` | 解构赋值 | ✅ |
+| `nodejs-error-handling-demo` | 错误处理 | ✅ |
+| `nodejs-closures-demo` | 闭包 | ✅ |
+| `nodejs-higher-order-functions-demo` | 高阶函数 | ✅ |
+| `nodejs-nodejs-variable-types-demo` | 变量类型 | ✅ |
 
 </details>
 

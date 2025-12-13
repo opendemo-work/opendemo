@@ -140,7 +140,8 @@ class AIService:
 请以JSON格式返回,结构如下:
 {{
   "metadata": {{
-    "name": "demo名称",
+    "name": "demo名称(必须是英文,如: nodejs-callback-functions-demo)",
+    "folder_name": "目录名称(必须是英文,小写,用连字符分隔,如: callback-functions-demo)",
     "language": "{language}",
     "keywords": ["关键字1", "关键字2", "关键字3"],
     "description": "简短描述",
@@ -277,6 +278,22 @@ class AIService:
                 metadata['language'] = language
             if 'keywords' not in metadata:
                 metadata['keywords'] = [topic]
+            
+            # 如果没有folder_name，从name或topic生成一个英文的folder_name
+            if 'folder_name' not in metadata or not metadata['folder_name']:
+                # 尝试从topic生成
+                folder_name = topic.lower().replace(' ', '-').replace('_', '-')
+                # 只保留ASCII字符
+                folder_name = ''.join(c for c in folder_name if c.isascii() and (c.isalnum() or c == '-'))
+                while '--' in folder_name:
+                    folder_name = folder_name.replace('--', '-')
+                folder_name = folder_name.strip('-')
+                if folder_name:
+                    metadata['folder_name'] = folder_name
+                else:
+                    # 最后回退：使用时间戳
+                    import time
+                    metadata['folder_name'] = f"demo-{int(time.time())}"
             
             logger.info(f"Successfully parsed AI response for {metadata['name']}")
             return data

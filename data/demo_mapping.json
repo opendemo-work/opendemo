@@ -16,6 +16,11 @@
       "description": "一个基于Gin框架的轻量级Web服务入门示例"
     },
     {
+      "folder": "go-go",
+      "name": "Go方法接收者演示",
+      "description": "演示Go中值接收者与指针接收者的使用场景和区别"
+    },
+    {
       "folder": "go-go-badgerdb-demo-embedded-db-storage",
       "name": "Go BadgerDB 内存数据库存储Demo",
       "description": "一个展示如何使用BadgerDB进行高效键值存储的Go语言示例项目。"
@@ -34,6 +39,11 @@
       "folder": "go-go-consul-service-discovery",
       "name": "Go Consul 服务注册与发现演示",
       "description": "一个使用 Go 和 Consul 实现服务注册与发现的可执行演示项目"
+    },
+    {
+      "folder": "go-go-context",
+      "name": "Go Context 实践演示",
+      "description": "通过实际示例展示 Go 中 context 包在超时、取消和跨层级传递中的核心用法。"
     },
     {
       "folder": "go-go-context-practice",
@@ -266,6 +276,11 @@
       "description": "使用robfig/cron库实现Go中的定时任务调度"
     },
     {
+      "folder": "go-godemo",
+      "name": "Go函数编程实践Demo",
+      "description": "通过实际示例学习Go语言中函数的多种用法，包括基本函数、高阶函数和闭包。"
+    },
+    {
       "folder": "go-godemo-benchmark-profiling",
       "name": "Go基准测试性能分析Demo",
       "description": "通过实际示例演示Go语言中基准测试的编写与性能分析方法。"
@@ -444,9 +459,19 @@
       "folder": "go-websocket-gorilla-realtime-communication",
       "name": "WebSocket实时通信 Gorilla",
       "description": "使用Gorilla WebSocket库实现Go语言中的实时双向通信"
+    },
+    {
+      "folder": "libraries",
+      "name": "",
+      "description": ""
     }
   ],
   "nodejs": [
+    {
+      "folder": "nodejs-array-methods-demo",
+      "name": "NodeJS数组方法实战演示",
+      "description": "通过实际示例展示JavaScript中常用数组方法的使用场景和最佳实践"
+    },
     {
       "folder": "nodejs-arrow-functions-demo",
       "name": "Arrow Functions Demo",
@@ -468,9 +493,34 @@
       "description": "使用Bull和Redis实现可靠的异步任务处理系统"
     },
     {
+      "folder": "nodejs-callback-functions-demo",
+      "name": "NodeJS回调函数实战演示",
+      "description": "通过实际示例掌握Node.js中回调函数的使用方法和最佳实践。"
+    },
+    {
+      "folder": "nodejs-child-process-demo",
+      "name": "Node.js子进程管理实战演示",
+      "description": "通过实际示例展示Node.js中使用spawn和exec进行子进程管理的最佳实践。"
+    },
+    {
+      "folder": "nodejs-circuit-breaker-demo",
+      "name": "NodeJS熔断器模式实战演示",
+      "description": "通过真实场景演示Node.js中熔断器模式的实现与应用"
+    },
+    {
+      "folder": "nodejs-closures-demo",
+      "name": "NodeJS闭包实战演示",
+      "description": "通过实际示例深入理解JavaScript中闭包的工作原理和应用场景"
+    },
+    {
       "folder": "nodejs-consulnodejsdemo-service-discovery-config",
       "name": "Consul服务发现与配置中心Node.js集成Demo",
       "description": "展示如何在Node.js应用中集成Consul实现服务注册、发现和动态配置管理。"
+    },
+    {
+      "folder": "nodejs-destructuring-demo",
+      "name": "Node.js解构赋值实战演示",
+      "description": "通过多个场景演示JavaScript中解构赋值的强大功能和实际应用"
     },
     {
       "folder": "nodejs-docker-sdk-for-nodejs-container-management-demo",
@@ -478,9 +528,24 @@
       "description": "使用Node.js通过Docker SDK实现容器的创建、启动、停止和删除操作。"
     },
     {
+      "folder": "nodejs-error-handling-demo",
+      "name": "NodeJS错误处理实战演示",
+      "description": "展示Node.js中同步、异步及Promise链中的错误处理最佳实践"
+    },
+    {
+      "folder": "nodejs-event-emitter-demo",
+      "name": "Node.js事件发射器实战演示",
+      "description": "通过实际示例展示Node.js中EventEmitter的多种使用场景"
+    },
+    {
       "folder": "nodejs-express-restful-api-demo",
       "name": "Express_RESTful_API_Demo",
       "description": "一个展示使用Express框架开发RESTful API的完整可执行示例"
+    },
+    {
+      "folder": "nodejs-functional-programming-demo",
+      "name": "NodeJS函数编程实战演示",
+      "description": "通过实际示例学习Node.js中函数的多种用法和最佳实践"
     },
     {
       "folder": "nodejs-generator-async-flow-control-demo",
@@ -496,6 +561,11 @@
       "folder": "nodejs-helmet-security-middleware-demo",
       "name": "Helmet安全中间件防护示例",
       "description": "使用Helmet中间件增强Node.js应用的安全性，防止常见Web漏洞。"
+    },
+    {
+      "folder": "nodejs-higher-order-functions-demo",
+      "name": "Node.js高阶函数实战演示",
+      "description": "通过实际示例展示Node.js中高阶函数的常见用法和优势"
     },
     {
       "folder": "nodejs-ioredis-nodejs-demo",
@@ -551,61 +621,6 @@
       "folder": "nodejs-nodejs-cluster-cluster-load-balancing",
       "name": "Node.js_Cluster_多进程负载均衡示例",
       "description": "使用Node.js Cluster模块实现多进程负载均衡的完整示例"
-    },
-    {
-      "folder": "nodejs-nodejs-demo",
-      "name": "Node.js事件发射器实战演示",
-      "description": "通过实际示例展示Node.js中EventEmitter的多种使用场景"
-    },
-    {
-      "folder": "nodejs-nodejs-demo-1",
-      "name": "NodeJS函数编程实战演示",
-      "description": "通过实际示例学习Node.js中函数的多种用法和最佳实践"
-    },
-    {
-      "folder": "nodejs-nodejs-demo-10",
-      "name": "Node.js高阶函数实战演示",
-      "description": "通过实际示例展示Node.js中高阶函数的常见用法和优势"
-    },
-    {
-      "folder": "nodejs-nodejs-demo-2",
-      "name": "NodeJS回调函数实战演示",
-      "description": "通过实际示例掌握Node.js中回调函数的使用方法和最佳实践。"
-    },
-    {
-      "folder": "nodejs-nodejs-demo-3",
-      "name": "Node.js子进程管理实战演示",
-      "description": "通过实际示例展示Node.js中使用spawn和exec进行子进程管理的最佳实践。"
-    },
-    {
-      "folder": "nodejs-nodejs-demo-4",
-      "name": "NodeJS展开运算符实战演示",
-      "description": "通过实际示例展示JavaScript中展开运算符在数组和对象中的应用"
-    },
-    {
-      "folder": "nodejs-nodejs-demo-5",
-      "name": "NodeJS数组方法实战演示",
-      "description": "通过实际示例展示JavaScript中常用数组方法的使用场景和最佳实践"
-    },
-    {
-      "folder": "nodejs-nodejs-demo-6",
-      "name": "NodeJS熔断器模式实战演示",
-      "description": "通过真实场景演示Node.js中熔断器模式的实现与应用"
-    },
-    {
-      "folder": "nodejs-nodejs-demo-7",
-      "name": "Node.js解构赋值实战演示",
-      "description": "通过多个场景演示JavaScript中解构赋值的强大功能和实际应用"
-    },
-    {
-      "folder": "nodejs-nodejs-demo-8",
-      "name": "NodeJS错误处理实战演示",
-      "description": "展示Node.js中同步、异步及Promise链中的错误处理最佳实践"
-    },
-    {
-      "folder": "nodejs-nodejs-demo-9",
-      "name": "NodeJS闭包实战演示",
-      "description": "通过实际示例深入理解JavaScript中闭包的工作原理和应用场景"
     },
     {
       "folder": "nodejs-nodejs-demo-regex-validation-demo",
@@ -761,6 +776,11 @@
       "folder": "nodejs-socketiodemo-realtime-chat-demo",
       "name": "Socket.io实时聊天室Demo",
       "description": "一个基于Socket.io的实时多人聊天室示例，展示WebSockets在Node.js中的应用。"
+    },
+    {
+      "folder": "nodejs-spread-operator-demo",
+      "name": "NodeJS展开运算符实战演示",
+      "description": "通过实际示例展示JavaScript中展开运算符在数组和对象中的应用"
     },
     {
       "folder": "nodejs-symbol-symbol-iterator-demo",
@@ -928,6 +948,11 @@
       "folder": "lambda-expressions",
       "name": "lambda-expressions",
       "description": "Python lambda-expressions demo"
+    },
+    {
+      "folder": "libraries",
+      "name": "",
+      "description": ""
     },
     {
       "folder": "list-operations",

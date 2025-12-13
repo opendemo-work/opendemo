@@ -866,13 +866,17 @@ class DemoRepository:
         while '--' in safe_name:
             safe_name = safe_name.replace('--', '-')
         safe_name = safe_name.strip('-')
-        # 确保名称不为空
-        if not safe_name:
-            safe_name = 'demo'
+        
+        # 确保名称不为空且不仅仅是语言名称
+        lang_lower = language.lower()
+        if not safe_name or safe_name == lang_lower or safe_name == 'demo':
+            # 使用时间戳生成唯一名称
+            import time
+            safe_name = f"demo-{int(time.time())}"
         
         # 库demo不添加语言前缀
         if include_language_prefix:
-            return f"{language.lower()}-{safe_name}"
+            return f"{lang_lower}-{safe_name}"
         return safe_name
     
     def _get_file_description(self, file_path: Path) -> str:

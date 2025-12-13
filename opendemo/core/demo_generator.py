@@ -72,8 +72,11 @@ class DemoGenerator:
         metadata['verified'] = False
         
         # 创建demo
-        # 对于库demo，优先使用topic作为文件夹名（避免中文名称过滤后为空）
+        # 优先级: custom_folder_name > metadata.folder_name > topic生成
         folder_name = custom_folder_name
+        if not folder_name:
+            # 使用AI返回的folder_name
+            folder_name = metadata.get('folder_name')
         if not folder_name and library_name:
             # 库demo使用topic作为文件夹名
             folder_name = topic.lower().replace(' ', '-').replace('_', '-')
