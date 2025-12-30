@@ -11,11 +11,21 @@
 - [opendemo/core/demo_verifier.py](file://opendemo/core/demo_verifier.py)
 - [opendemo/services/config_service.py](file://opendemo/services/config_service.py)
 - [opendemo/utils/logger.py](file://opendemo/utils/logger.py)
-- [opendemo/builtin_demos/python/python-tuple-basics/metadata.json](file://opendemo/builtin_demos/python/python-tuple-basics/metadata.json)
-- [opendemo/builtin_demos/python/python-tuple-basics/README.md](file://opendemo/builtin_demos/python/python-tuple-basics/README.md)
-- [opendemo/builtin_demos/python/python-tuple-basics/requirements.txt](file://opendemo/builtin_demos/python/python-tuple-basics/requirements.txt)
-- [opendemo/builtin_demos/README.md](file://opendemo/builtin_demos/README.md)
+- [opendemo_output/python/libraries/numpy/array-creation/metadata.json](file://opendemo_output/python/libraries/numpy/array-creation/metadata.json)
+- [opendemo_output/python/libraries/numpy/array-creation/README.md](file://opendemo_output/python/libraries/numpy/array-creation/README.md)
+- [opendemo_output/python/libraries/numpy/array-creation/requirements.txt](file://opendemo_output/python/libraries/numpy/array-creation/requirements.txt)
+- [opendemo_output/python/libraries/numpy/array-reshape/metadata.json](file://opendemo_output/python/libraries/numpy/array-reshape/metadata.json)
+- [opendemo_output/python/libraries/numpy/random-generation/metadata.json](file://opendemo_output/python/libraries/numpy/random-generation/metadata.json)
+- [opendemo_output/python/libraries/numpy/broadcasting/metadata.json](file://opendemo_output/python/libraries/numpy/broadcasting/metadata.json)
+- [opendemo_output/python/libraries/numpy/linear-algebra/metadata.json](file://opendemo_output/python/libraries/numpy/linear-algebra/metadata.json)
+- [opendemo_output/python/libraries/numpy/structured-arrays/metadata.json](file://opendemo_output/python/libraries/numpy/structured-arrays/metadata.json)
 </cite>
+
+## 更新摘要
+**已做更改**
+- 更新了“附录”中的“标准Demo目录结构与文件职责”部分，以包含NumPy库的组织方式
+- 新增了“NumPy主题演示模块”部分，详细说明25个NumPy主题演示模块的结构和组织方式
+- 更新了“双层Demo库组织方式示例”以包含NumPy模块的路径示例
 
 ## 目录
 1. [简介](#简介)
@@ -30,7 +40,7 @@
 10. [附录](#附录)
 
 ## 简介
-本文面向初学者与贡献者，系统阐述Demo库的双层架构：内置Demo库（只读）与用户Demo库（可写）。围绕storage_service.py中的优先级查找机制，结合demo_repository.py对Demo的加载、保存与元数据管理，解释标准Demo目录结构与各文件职责，并给出实际文件路径示例，帮助快速上手与规范贡献。
+本文面向初学者与贡献者，系统阐述Demo库的双层架构：内置Demo库（只读）与用户Demo库（可写）。围绕storage_service.py中的优先级查找机制，结合demo_repository.py对Demo的加载、保存与元数据管理，解释标准Demo目录结构与各文件职责，并给出实际文件路径示例，帮助快速上手与规范贡献。特别说明新增的25个NumPy主题演示模块的结构和组织方式。
 
 ## 项目结构
 OpenDemo CLI采用清晰的分层结构：
@@ -301,7 +311,7 @@ ReturnPaths --> End(["结束"])
 
 ### 配置服务（ConfigService）
 - 职责
-  - 默认配置、全局与项目配置合并、读取与设置、初始化与校验。
+  - 默认配置、全局与项目配置合并、读取、设置与校验。
   - 用户目录与内置库路径的默认值处理。
 
 **章节来源**
@@ -391,37 +401,47 @@ VER --> CFG
 
 ## 附录
 
+### NumPy主题演示模块
+新增的25个NumPy主题演示模块构成了一个系统性的学习路径，覆盖了NumPy库的核心功能。这些模块按主题组织，每个模块都遵循标准的Demo结构。
+
+**章节来源**
+- [opendemo_output/python/libraries/numpy/array-creation/metadata.json](file://opendemo_output/python/libraries/numpy/array-creation/metadata.json#L1-L20)
+- [opendemo_output/python/libraries/numpy/array-reshape/metadata.json](file://opendemo_output/python/libraries/numpy/array-reshape/metadata.json#L1-L20)
+- [opendemo_output/python/libraries/numpy/random-generation/metadata.json](file://opendemo_output/python/libraries/numpy/random-generation/metadata.json#L1-L20)
+- [opendemo_output/python/libraries/numpy/broadcasting/metadata.json](file://opendemo_output/python/libraries/numpy/broadcasting/metadata.json#L1-L20)
+- [opendemo_output/python/libraries/numpy/linear-algebra/metadata.json](file://opendemo_output/python/libraries/numpy/linear-algebra/metadata.json#L1-L20)
+- [opendemo_output/python/libraries/numpy/structured-arrays/metadata.json](file://opendemo_output/python/libraries/numpy/structured-arrays/metadata.json#L1-L20)
+
 ### 标准Demo目录结构与文件职责
 - metadata.json
   - 作用：描述Demo基本信息（名称、语言、关键字、难度、作者、时间戳、版本、验证标记等）。
-  - 示例路径：opendemo/builtin_demos/python/python-tuple-basics/metadata.json
+  - 示例路径：opendemo_output/python/libraries/numpy/array-creation/metadata.json
 - README.md
   - 作用：实操指南与说明文档，包含简介、学习目标、环境要求、文件说明、逐步实操指南、代码解析、常见问题与扩展学习。
-  - 示例路径：opendemo/builtin_demos/python/python-tuple-basics/README.md
+  - 示例路径：opendemo_output/python/libraries/numpy/array-creation/README.md
 - code/
   - 作用：存放可执行代码文件，按语言分类（如Python文件）。
-  - 示例路径：opendemo/builtin_demos/python/python-tuple-basics/code/
+  - 示例路径：opendemo_output/python/libraries/numpy/array-creation/code/
 - requirements.txt
   - 作用：Python依赖声明，用于验证阶段自动安装。
-  - 示例路径：opendemo/builtin_demos/python/python-tuple-basics/requirements.txt
+  - 示例路径：opendemo_output/python/libraries/numpy/array-creation/requirements.txt
 - tests/（可选）
   - 作用：测试文件目录，便于扩展自动化测试。
 
 **章节来源**
-- [opendemo/builtin_demos/python/python-tuple-basics/metadata.json](file://opendemo/builtin_demos/python/python-tuple-basics/metadata.json#L1-L14)
-- [opendemo/builtin_demos/python/python-tuple-basics/README.md](file://opendemo/builtin_demos/python/python-tuple-basics/README.md#L1-L89)
-- [opendemo/builtin_demos/python/python-tuple-basics/requirements.txt](file://opendemo/builtin_demos/python/python-tuple-basics/requirements.txt#L1-L2)
-- [README.md](file://README.md#L102-L110)
+- [opendemo_output/python/libraries/numpy/array-creation/metadata.json](file://opendemo_output/python/libraries/numpy/array-creation/metadata.json#L1-L20)
+- [opendemo_output/python/libraries/numpy/array-creation/README.md](file://opendemo_output/python/libraries/numpy/array-creation/README.md#L1-L65)
+- [opendemo_output/python/libraries/numpy/array-creation/requirements.txt](file://opendemo_output/python/libraries/numpy/array-creation/requirements.txt#L1-L1)
 
 ### 双层Demo库组织方式示例
 - 内置Demo库
-  - 路径示例：opendemo/builtin_demos/python/python-tuple-basics
+  - 路径示例：opendemo/builtin_demos/python/libraries/numpy/array-creation
   - 用途：只读示例，供搜索与复制。
 - 用户Demo库
-  - 路径示例：~/.opendemo/demos/python/python-tuple-basics（默认）
+  - 路径示例：~/.opendemo/demos/python/libraries/numpy/array-creation（默认）
   - 用途：贡献与自定义Demo的可写存储。
 - 输出目录
-  - 路径示例：opendemo_output/python/python-tuple-basics
+  - 路径示例：opendemo_output/python/libraries/numpy/array-creation
   - 用途：用户执行与查看Demo的临时工作区。
 
 **章节来源**

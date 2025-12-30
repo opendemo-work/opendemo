@@ -6,7 +6,17 @@
 - [ABOUT.md](file://ABOUT.md)
 - [opendemo/core/demo_repository.py](file://opendemo/core/demo_repository.py)
 - [opendemo/services/config_service.py](file://opendemo/services/config_service.py)
+- [opendemo/core/demo_search.py](file://opendemo/core/demo_search.py)
+- [opendemo/services/ai_service.py](file://opendemo/services/ai_service.py)
+- [opendemo/utils/formatters.py](file://opendemo/utils/formatters.py)
 </cite>
+
+## 更新摘要
+**变更内容**
+- 更新了`get`命令的详细分析，以反映对NumPy演示模块的支持
+- 在`get`命令示例中添加了NumPy相关用例
+- 更新了`get`命令执行流程图以包含库命令处理逻辑
+- 添加了对`demo_repository.py`中库检测功能的引用
 
 ## 目录
 1. [简介](#简介)
@@ -168,16 +178,21 @@ PrintTable --> End
 ### 命令：get
 - 功能概述
   - 优先在输出目录中查找匹配 Demo；若未找到或显式传入 new，则调用 AI 生成新 Demo。
+  - 支持获取特定第三方库（如NumPy）的功能模块Demo。
 - 匹配优先级
   1) 精确匹配：文件夹名与关键字完全一致；
   2) 语义匹配：文件夹名包含关键字或 metadata.keywords 包含关键字；
-  3) AI生成：本地未找到时，使用 AI 生成（需配置 API 密钥）。
+  3) 库功能匹配：支持获取特定库（如numpy）的功能模块；
+  4) AI生成：本地未找到时，使用 AI 生成（需配置 API 密钥）。
 - 参数与选项
   - 语言：必填，支持白名单。
   - 关键字：可变长，至少一个；末尾附加 new 表示强制重新生成。
   - --verify：可选，启用自动验证。
 - 执行流程
   - 语言校验与服务初始化；
+  - 检查是否为库命令（如 `python numpy`）；
+  - 若为库命令且无功能关键字：显示库的所有功能列表；
+  - 若为库命令且有功能关键字：搜索并获取特定功能模块；
   - 若非强制生成：先在输出目录匹配，命中则直接展示；否则在内置/用户库中搜索并复制到输出目录；
   - 若强制生成或未命中：检查 API 密钥，生成自定义文件夹名（带 -new 后缀），调用生成器生成 Demo；
   - 可选验证并通过格式化输出结果与快速开始步骤。
@@ -190,7 +205,11 @@ Start(["开始"]) --> ParseArgs["解析参数<br/>语言/关键字/--verify"]
 ParseArgs --> LangOK{"语言是否受支持?"}
 LangOK --> |否| ErrLang["报错并退出"]
 LangOK --> |是| InitSvc["初始化配置/存储/搜索/生成/AI/验证服务"]
-InitSvc --> ForceNew{"是否强制生成(new)?"}
+InitSvc --> IsLibCmd{"是否为库命令?"}
+IsLibCmd --> |是| HandleLib["处理库命令"]
+HandleLib --> ShowLibInfo["显示库信息或功能列表"]
+ShowLibInfo --> End(["结束"])
+IsLibCmd --> |否| ForceNew{"是否强制生成(new)?"}
 ForceNew --> |否| MatchOut["在输出目录匹配Demo"]
 MatchOut --> Found{"匹配到?"}
 Found --> |是| ShowOut["展示输出目录中的Demo"]
@@ -206,10 +225,11 @@ ShowRes --> End(["结束"])
 ErrLang --> End
 ```
 
-图表来源
+**图表来源**
 - [opendemo/cli.py](file://opendemo/cli.py#L196-L324)
+- [opendemo/core/demo_repository.py](file://opendemo/core/demo_repository.py#L311-L351)
 
-章节来源
+**章节来源**
 - [opendemo/cli.py](file://opendemo/cli.py#L196-L324)
 - [ABOUT.md](file://ABOUT.md#L149-L188)
 - [USAGE_GUIDE.md](file://USAGE_GUIDE.md#L56-L97)
@@ -391,6 +411,8 @@ opendemo-cli 通过清晰的命令分层与服务抽象，实现了“本地优�
 - 常用示例（摘自 ABOUT.md 与 USAGE_GUIDE.md）
   - 搜索：opendemo search python；opendemo search python async
   - 获取：opendemo get python logging；opendemo get python logging new
+  - 获取NumPy模块：opendemo get python numpy array-creation
+  - 显示NumPy功能列表：opendemo get python numpy
   - 新建：opendemo new python 装饰器；opendemo new python 设计模式 --difficulty intermediate
   - 配置：opendemo config list；opendemo config get ai.model；opendemo config set ai.api_key sk-xxx
 
