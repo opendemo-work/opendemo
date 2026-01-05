@@ -117,9 +117,10 @@ class TestDemoRepository:
         name = repository._generate_safe_name("并发编程goroutines", "go")
         assert name == "go-goroutines"
 
-        # 测试纯中文（应该返回默认名称）
+        # 测试纯中文（应该返回默认名称with时间戳）
         name = repository._generate_safe_name("中文主题", "nodejs")
-        assert name == "nodejs-demo"
+        assert name.startswith("nodejs-demo-")
+        assert len(name) > len("nodejs-demo-")
 
     def test_get_file_description(self):
         """测试获取文件描述"""
