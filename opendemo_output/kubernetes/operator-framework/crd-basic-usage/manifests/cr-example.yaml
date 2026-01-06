@@ -1,0 +1,40 @@
+# 示例1：简单的Web应用部署
+apiVersion: demo.opendemo.io/v1
+kind: AppDeployment
+metadata:
+  name: nginx-app
+  namespace: default
+spec:
+  replicas: 3
+  image: nginx:1.21
+  port: 80
+  resources:
+    cpu: "200m"
+    memory: "256Mi"
+
+---
+# 示例2：Node.js应用部署
+apiVersion: demo.opendemo.io/v1
+kind: AppDeployment
+metadata:
+  name: nodejs-api
+  namespace: default
+spec:
+  replicas: 2
+  image: node:18-alpine
+  port: 3000
+  resources:
+    cpu: "500m"
+    memory: "512Mi"
+
+---
+# 示例3：最小配置示例（使用默认值）
+apiVersion: demo.opendemo.io/v1
+kind: AppDeployment
+metadata:
+  name: minimal-app
+  namespace: default
+spec:
+  replicas: 1
+  image: httpd:2.4
+  port: 8080

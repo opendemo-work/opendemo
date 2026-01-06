@@ -1,0 +1,23 @@
+{
+  "name": "Kubernetes Operator控制器开发演示",
+  "language": "kubernetes",
+  "keywords": [
+    "operator",
+    "controller",
+    "reconcile",
+    "client-go",
+    "kubebuilder"
+  ],
+  "description": "使用Kubebuilder框架开发完整的Kubernetes Operator，实现自定义资源的自动化管理",
+  "difficulty": "intermediate",
+  "author": "",
+  "created_at": "2026-01-06T15:40:00.000000",
+  "updated_at": "2026-01-06T15:40:00.000000",
+  "version": "1.0.0",
+  "dependencies": {
+    "kubernetes": ">=1.24.0",
+    "go": ">=1.20",
+    "kubebuilder": ">=3.0.0"
+  },
+  "verified": false
+}

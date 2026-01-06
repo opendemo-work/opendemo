@@ -1064,5 +1064,67 @@
       "name": "unit-testing",
       "description": "Python unit-testing demo"
     }
+  ],
+  "kubernetes": [
+    {
+      "folder": "kubeskoop/helm-basic-installation-guide",
+      "name": "Helm基础安装与使用演示",
+      "description": "一个展示Helm在Kubernetes中基本安装和使用的入门级演示项目。"
+    },
+    {
+      "folder": "kubeskoop/pod-connectivity-diagnosis",
+      "name": "Pod连通性诊断",
+      "description": "使用KubeSkoop诊断Pod网络连通性问题"
+    },
+    {
+      "folder": "kubeskoop/service-access-diagnosis",
+      "name": "Service访问诊断",
+      "description": "使用KubeSkoop诊断Service访问问题"
+    },
+    {
+      "folder": "kubeskoop/event-probes-configuration",
+      "name": "事件探针配置",
+      "description": "配置KubeSkoop事件探针监控网络事件"
+    },
+    {
+      "folder": "kubeskoop/metric-probes-configuration",
+      "name": "指标探针配置",
+      "description": "配置KubeSkoop指标探针收集网络指标"
+    },
+    {
+      "folder": "kubeskoop/packet-capture-demo",
+      "name": "网络报文捕获",
+      "description": "使用KubeSkoop捕获和分析网络报文"
+    },
+    {
+      "folder": "kubeskoop/latency-detection-configuration",
+      "name": "延迟检测配置",
+      "description": "配置KubeSkoop延迟检测功能"
+    },
+    {
+      "folder": "kubeskoop/network-topology-visualization",
+      "name": "网络拓扑可视化",
+      "description": "使用KubeSkoop可视化集群网络拓扑"
+    },
+    {
+      "folder": "kubeskoop/prometheus-integration",
+      "name": "Prometheus集成",
+      "description": "将KubeSkoop指标集成到Prometheus监控系统"
+    },
+    {
+      "folder": "kubeskoop/loki-event-sink-configuration",
+      "name": "Loki事件接收配置",
+      "description": "配置KubeSkoop事件发送到Loki日志系统"
+    },
+    {
+      "folder": "operator-framework/crd-basic-usage",
+      "name": "CRD自定义资源定义演示",
+      "description": "展示如何定义和使用CustomResourceDefinition扩展Kubernetes API，创建自定义资源类型"
+    },
+    {
+      "folder": "operator-framework/operator-controller-demo",
+      "name": "Kubernetes Operator控制器开发演示",
+      "description": "使用Kubebuilder框架开发完整的Kubernetes Operator，实现自定义资源的自动化管理"
+    }
   ]
 }

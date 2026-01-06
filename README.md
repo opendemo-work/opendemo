@@ -4,7 +4,7 @@
 
 [![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://python.org)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![Demos](https://img.shields.io/badge/Demos-247-orange.svg)](#demo-statistics)
+[![Demos](https://img.shields.io/badge/Demos-249-orange.svg)](#demo-statistics)
 
 ---
 
@@ -63,6 +63,7 @@ opendemo config set ai.api_endpoint YOUR_ENDPOINT
 | `get` | 获取Demo | `opendemo get go goroutines` |
 | `new` | AI生成Demo | `opendemo new python pandas` |
 | `config` | 配置管理 | `opendemo config list` |
+| `check` | 质量检查 | `opendemo check` |
 
 ### new命令特性
 
@@ -79,8 +80,8 @@ opendemo config set ai.api_endpoint YOUR_ENDPOINT
 | 🐍 **Python** | 51 | iterator(1), numpy(25) | 77 | ✅ 全部通过 |
 | 🐹 **Go** | 92 | context(1) | 93 | ✅ 全部通过 |
 | 🟢 **Node.js** | 67 | - | 67 | ✅ 全部通过 |
-| ⎈ **Kubernetes** | 0 | kubeskoop(10) | 10 | ✅ 全部通过 |
-| **总计** | **210** | **37** | **247** | ✅ |
+| ⎈ **Kubernetes** | 0 | kubeskoop(10), operator-framework(2) | 12 | ✅ 全部通过 |
+| **总计** | **210** | **39** | **249** | ✅ |
 
 ---
 
@@ -436,7 +437,7 @@ opendemo config set ai.api_endpoint YOUR_ENDPOINT
 
 ---
 
-### ⎈ Kubernetes (10个)
+### ⎈ Kubernetes (12个)
 
 <details>
 <summary><b>📝 KubeSkoop网络诊断工具 (10个)</b> - 点击展开</summary>
@@ -455,6 +456,18 @@ opendemo config set ai.api_endpoint YOUR_ENDPOINT
 | 8 | `network-topology-visualization` | 网络拓扑可视化 | ✅ |
 | 9 | `prometheus-integration` | Prometheus集成 | ✅ |
 | 10 | `loki-event-sink-configuration` | Loki事件接收配置 | ✅ |
+
+</details>
+
+<details>
+<summary><b>📦 Operator Framework (2个)</b> - 点击展开</summary>
+
+> 路径: `opendemo_output/kubernetes/operator-framework/`
+
+| # | Demo名称 | 功能说明 | 状态 |
+|---|---------|---------|------|
+| 1 | `crd-basic-usage` | CRD自定义资源定义 | ✅ |
+| 2 | `operator-controller-demo` | Operator控制器开发 | ✅ |
 
 </details>
 
@@ -492,7 +505,8 @@ opendemo/
 │   │   ├── demo_repository.py
 │   │   ├── demo_search.py
 │   │   ├── demo_generator.py
-│   │   └── demo_verifier.py
+│   │   ├── demo_verifier.py
+│   │   └── quality_checker.py  # 质量检查
 │   └── services/          # 服务层
 │       ├── ai_service.py
 │       └── storage_service.py
@@ -504,8 +518,10 @@ opendemo/
 │   ├── go/
 │   ├── nodejs/
 │   └── kubernetes/        # Kubernetes工具Demo
-│       └── kubeskoop/     # KubeSkoop网络诊断
-└── tests/                 # 测试文件
+│       ├── kubeskoop/     # KubeSkoop网络诊断
+│       └── operator-framework/  # Operator开发
+├── tests/                 # 测试文件 (180个测试用例)
+└── check/                 # 质量检查报告
 ```
 
 ### 技术栈
