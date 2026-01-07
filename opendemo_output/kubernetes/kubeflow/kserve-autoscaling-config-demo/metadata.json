@@ -1,0 +1,19 @@
+{
+  "name": "kserve-autoscaling-config-demo",
+  "language": "kubernetes",
+  "keywords": [
+    "kserve",
+    "autoscaling",
+    "inference",
+    "serving",
+    "knative"
+  ],
+  "description": "展示 KServe 模型服务的自动扩缩容配置实践",
+  "difficulty": "intermediate",
+  "author": "",
+  "created_at": "2026-01-07T18:18:55.789283",
+  "updated_at": "2026-01-07T18:18:55.789283",
+  "version": "1.0.0",
+  "dependencies": {},
+  "verified": false
+}

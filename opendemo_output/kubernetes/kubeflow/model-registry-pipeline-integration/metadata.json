@@ -1,0 +1,26 @@
+{
+  "name": "Model Registry Pipeline Integration",
+  "description": "Integrate Kubeflow Model Registry with Pipelines for automated model management",
+  "category": "kubernetes",
+  "subcategory": "kubeflow",
+  "component": "model-registry",
+  "tags": ["kubeflow", "model-registry", "pipelines", "integration", "automation"],
+  "difficulty": "intermediate",
+  "prerequisites": [
+    "Model Registry and Pipelines installed",
+    "Understanding of both systems",
+    "kubectl configured",
+    "Python SDK knowledge"
+  ],
+  "learning_objectives": [
+    "Register models from pipelines",
+    "Automate model versioning",
+    "Link pipeline runs to models",
+    "Create end-to-end MLOps workflows",
+    "Query registry from pipelines"
+  ],
+  "estimated_time": "50 minutes",
+  "verified": false,
+  "version": "1.0.0",
+  "last_updated": "2024-01-01"
+}

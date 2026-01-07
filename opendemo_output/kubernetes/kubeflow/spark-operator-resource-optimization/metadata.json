@@ -1,0 +1,26 @@
+{
+  "name": "Spark Operator Resource Optimization",
+  "description": "Optimize resource allocation and performance for Spark jobs on Kubernetes",
+  "category": "kubernetes",
+  "subcategory": "kubeflow",
+  "component": "spark-operator",
+  "tags": ["kubeflow", "spark", "optimization", "performance", "resource-management"],
+  "difficulty": "advanced",
+  "prerequisites": [
+    "Running Spark applications",
+    "Understanding of Spark tuning",
+    "Kubernetes resource management knowledge",
+    "kubectl configured"
+  ],
+  "learning_objectives": [
+    "Optimize executor and driver resources",
+    "Configure dynamic allocation",
+    "Tune memory and CPU settings",
+    "Implement node affinity",
+    "Monitor and troubleshoot performance"
+  ],
+  "estimated_time": "60 minutes",
+  "verified": false,
+  "version": "1.0.0",
+  "last_updated": "2024-01-01"
+}

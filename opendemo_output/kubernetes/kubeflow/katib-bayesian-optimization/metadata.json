@@ -1,0 +1,26 @@
+{
+  "name": "Katib Bayesian Optimization",
+  "description": "Use Bayesian optimization for intelligent hyperparameter search in Kubeflow Katib",
+  "category": "kubernetes",
+  "subcategory": "kubeflow",
+  "component": "katib",
+  "tags": ["kubeflow", "katib", "bayesian-optimization", "hyperparameter-tuning", "gaussian-process"],
+  "difficulty": "intermediate",
+  "prerequisites": [
+    "Kubernetes cluster with Katib",
+    "Understanding of Bayesian optimization",
+    "Existing training workload",
+    "kubectl configured"
+  ],
+  "learning_objectives": [
+    "Configure Bayesian optimization algorithm",
+    "Understand acquisition functions",
+    "Set exploration vs exploitation trade-off",
+    "Optimize expensive-to-evaluate functions",
+    "Analyze convergence behavior"
+  ],
+  "estimated_time": "55 minutes",
+  "verified": false,
+  "version": "1.0.0",
+  "last_updated": "2024-01-01"
+}

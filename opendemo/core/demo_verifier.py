@@ -542,7 +542,34 @@ class DemoVerifier:
                 result["message"] = "Partial verification passed (static checks only)"
                 return result
 
-            # 步骤3: 文档检查 - README.md完整性
+            # 步骤3: Dry-run验证（可选）
+            if tools_available and yaml_files:
+                dry_run_passed = True
+                for yaml_file in yaml_files:
+                    try:
+                        # kubectl apply --dry-run=client
+                        dry_run_result = subprocess.run(
+                            ["kubectl", "apply", "--dry-run=client", "-f", str(yaml_file)],
+                            capture_output=True,
+                            text=True,
+                            timeout=30,
+                        )
+                        if dry_run_result.returncode == 0:
+                            result["steps"].append(f"Dry-run validation passed: {yaml_file.name}")
+                        else:
+                            dry_run_passed = False
+                            result["warnings"].append(
+                                f"Dry-run validation failed for {yaml_file.name}: {dry_run_result.stderr}"
+                            )
+                    except subprocess.TimeoutExpired:
+                        result["warnings"].append(f"Dry-run timeout for {yaml_file.name}")
+                    except Exception as e:
+                        result["warnings"].append(f"Dry-run error for {yaml_file.name}: {str(e)}")
+                
+                if dry_run_passed:
+                    result["steps"].append("All YAML files passed dry-run validation")
+
+            # 步骤4: 文档检查 - README.md完整性
             readme_file = demo_path / "README.md"
             if readme_file.exists():
                 try:

@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: dashboard
+  namespace: kubeflow
+  labels:
+    app: dashboard
+    kustomize.component: dashboard
+spec:
+  type: ClusterIP
+  selector:
+    app: dashboard
+  ports:
+  - name: http
+    port: 8080
+    targetPort: 8080
+    protocol: TCP
+  sessionAffinity: None

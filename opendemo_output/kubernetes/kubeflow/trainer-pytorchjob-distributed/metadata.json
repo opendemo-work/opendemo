@@ -1,0 +1,26 @@
+{
+  "name": "PyTorchJob Distributed Training",
+  "description": "Configure and run distributed PyTorch training across multiple nodes using Kubeflow Training Operator",
+  "category": "kubernetes",
+  "subcategory": "kubeflow",
+  "component": "training-operator",
+  "tags": ["kubeflow", "pytorch", "distributed-training", "ddp", "multi-node"],
+  "difficulty": "advanced",
+  "prerequisites": [
+    "Kubernetes cluster with multiple nodes",
+    "Kubeflow Training Operator installed",
+    "PyTorch distributed training knowledge",
+    "Understanding of DistributedDataParallel"
+  ],
+  "learning_objectives": [
+    "Configure multi-replica PyTorchJob",
+    "Set up distributed training with DDP",
+    "Configure master and worker processes",
+    "Optimize inter-node communication",
+    "Handle distributed training failures"
+  ],
+  "estimated_time": "60 minutes",
+  "verified": false,
+  "version": "1.0.0",
+  "last_updated": "2024-01-01"
+}

@@ -1,0 +1,26 @@
+{
+  "name": "KServe GPU Inference",
+  "description": "Deploy and optimize GPU-accelerated inference services with KServe",
+  "category": "kubernetes",
+  "subcategory": "kubeflow",
+  "component": "kserve",
+  "tags": ["kubeflow", "kserve", "gpu", "inference", "acceleration", "nvidia"],
+  "difficulty": "advanced",
+  "prerequisites": [
+    "Kubernetes cluster with GPU nodes",
+    "KServe installed",
+    "GPU-compatible model",
+    "Understanding of GPU inference optimization"
+  ],
+  "learning_objectives": [
+    "Configure GPU resources for inference",
+    "Optimize GPU utilization",
+    "Use TensorRT for acceleration",
+    "Handle GPU memory management",
+    "Monitor GPU inference metrics"
+  ],
+  "estimated_time": "55 minutes",
+  "verified": false,
+  "version": "1.0.0",
+  "last_updated": "2024-01-01"
+}

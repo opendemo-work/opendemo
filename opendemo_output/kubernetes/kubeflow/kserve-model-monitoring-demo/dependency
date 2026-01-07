@@ -1,0 +1,5 @@
+kubernetes>=1.25
+kserve==0.10.0
+prometheus>=2.40
+knative==1.10
+helm>=3.0

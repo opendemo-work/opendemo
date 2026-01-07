@@ -1,0 +1,37 @@
+# 部署 Kubeflow Dashboard 应用
+# 使用轻量级静态服务器托管前端页面
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kubeflow-dashboard
+  namespace: kubeflow
+  labels:
+    app: kubeflow-dashboard
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kubeflow-dashboard
+  template:
+    metadata:
+      labels:
+        app: kubeflow-dashboard
+    spec:
+      containers:
+      - name: dashboard
+        image: gcr.io/kubeflow-images-public/kubeflow-jupyter-web-app:v1.7.0  # 实际包含简单 UI
+        ports:
+        - containerPort: 80
+        resources:
+          limits:
+            memory: "256Mi"
+            cpu: "500m"
+          requests:
+            memory: "128Mi"
+            cpu: "200m"
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 80
+          initialDelaySeconds: 5
+          periodSeconds: 10

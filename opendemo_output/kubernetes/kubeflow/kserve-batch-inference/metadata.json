@@ -1,0 +1,26 @@
+{
+  "name": "KServe Batch Inference",
+  "description": "Configure batch inference jobs for processing large datasets with KServe",
+  "category": "kubernetes",
+  "subcategory": "kubeflow",
+  "component": "kserve",
+  "tags": ["kubeflow", "kserve", "batch-inference", "batch-processing", "offline-inference"],
+  "difficulty": "intermediate",
+  "prerequisites": [
+    "KServe installed",
+    "Deployed inference service",
+    "Large dataset for batch processing",
+    "kubectl configured"
+  ],
+  "learning_objectives": [
+    "Configure batch inference jobs",
+    "Process large datasets efficiently",
+    "Schedule batch inference workloads",
+    "Monitor batch job progress",
+    "Optimize batch processing performance"
+  ],
+  "estimated_time": "45 minutes",
+  "verified": false,
+  "version": "1.0.0",
+  "last_updated": "2024-01-01"
+}

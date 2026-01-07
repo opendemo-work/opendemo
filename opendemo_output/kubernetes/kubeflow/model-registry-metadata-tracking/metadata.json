@@ -1,0 +1,26 @@
+{
+  "name": "Model Registry Metadata Tracking",
+  "description": "Track comprehensive metadata for ML models in Kubeflow Model Registry",
+  "category": "kubernetes",
+  "subcategory": "kubeflow",
+  "component": "model-registry",
+  "tags": ["kubeflow", "model-registry", "metadata", "tracking", "ml-lineage"],
+  "difficulty": "intermediate",
+  "prerequisites": [
+    "Model Registry setup",
+    "Registered models",
+    "Understanding of ML metadata",
+    "kubectl configured"
+  ],
+  "learning_objectives": [
+    "Define custom metadata schemas",
+    "Track training metrics",
+    "Record data lineage",
+    "Link artifacts and models",
+    "Query metadata efficiently"
+  ],
+  "estimated_time": "45 minutes",
+  "verified": false,
+  "version": "1.0.0",
+  "last_updated": "2024-01-01"
+}

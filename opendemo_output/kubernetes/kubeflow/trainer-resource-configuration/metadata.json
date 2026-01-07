@@ -1,0 +1,26 @@
+{
+  "name": "Training Resource Configuration",
+  "description": "Configure and optimize resource allocation for Kubeflow training jobs",
+  "category": "kubernetes",
+  "subcategory": "kubeflow",
+  "component": "training-operator",
+  "tags": ["kubeflow", "resources", "optimization", "cpu", "memory", "gpu"],
+  "difficulty": "intermediate",
+  "prerequisites": [
+    "Kubernetes cluster with Training Operator",
+    "Understanding of Kubernetes resources",
+    "kubectl configured",
+    "Experience with training jobs"
+  ],
+  "learning_objectives": [
+    "Configure CPU and memory limits",
+    "Optimize GPU allocation",
+    "Set resource requests and limits",
+    "Handle resource constraints",
+    "Monitor resource utilization"
+  ],
+  "estimated_time": "35 minutes",
+  "verified": false,
+  "version": "1.0.0",
+  "last_updated": "2024-01-01"
+}

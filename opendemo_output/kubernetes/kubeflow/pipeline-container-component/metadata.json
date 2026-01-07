@@ -1,0 +1,27 @@
+{
+  "name": "Pipeline Container Component",
+  "description": "Build and use container-based components in Kubeflow Pipelines for complex ML workflows",
+  "category": "kubernetes",
+  "subcategory": "kubeflow",
+  "component": "pipelines",
+  "tags": ["kubeflow", "pipelines", "docker", "containers", "components", "ml-ops"],
+  "difficulty": "intermediate",
+  "prerequisites": [
+    "Kubernetes cluster with Kubeflow Pipelines",
+    "Docker installed locally",
+    "Container registry access",
+    "kfp Python SDK installed",
+    "Basic Docker and Kubernetes knowledge"
+  ],
+  "learning_objectives": [
+    "Create container-based pipeline components",
+    "Build and push Docker images for components",
+    "Use containers for complex dependencies",
+    "Implement reusable containerized components",
+    "Understand component vs container components"
+  ],
+  "estimated_time": "60 minutes",
+  "verified": false,
+  "version": "1.0.0",
+  "last_updated": "2024-01-01"
+}

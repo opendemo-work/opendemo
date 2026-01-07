@@ -1,0 +1,62 @@
+apiVersion: kubeflow.org/v1beta1
+kind: Experiment
+metadata:
+  name: random-search-example
+  namespace: kubeflow
+spec:
+  objective:
+    type: maximize
+    goal: 0.99
+    objectiveMetricName: accuracy
+  algorithm:
+    algorithmName: random
+  parallelTrialCount: 3
+  maxTrialCount: 12
+  maxFailedTrialCount: 3
+  parameters:
+  - name: learning_rate
+    parameterType: double
+    feasibleSpace:
+      min: "0.001"
+      max: "0.1"
+  - name: num_layers
+    parameterType: int
+    feasibleSpace:
+      min: "2"
+      max: "5"
+  - name: optimizer
+    parameterType: categorical
+    feasibleSpace:
+      list:
+      - sgd
+      - adam
+      - rmsprop
+  trialTemplate:
+    primaryContainerName: training-container
+    trialParameters:
+    - name: learningRate
+      description: Learning rate for the training model
+      reference: learning_rate
+    - name: numLayers
+      description: Number of training model layers
+      reference: num_layers
+    - name: optimizer
+      description: Training model optimizer
+      reference: optimizer
+    trialSpec:
+      apiVersion: batch/v1
+      kind: Job
+      spec:
+        template:
+          spec:
+            containers:
+            - name: training-container
+              image: docker.io/kubeflowkatib/mxnet-mnist:latest
+              command:
+              - "python3"
+              - "/opt/mxnet-mnist/mnist.py"
+              - "--batch-size=64"
+              - "--lr=${trialParameters.learningRate}"
+              - "--num-layers=${trialParameters.numLayers}"
+              - "--optimizer=${trialParameters.optimizer}"
+            restartPolicy: Never

@@ -1,0 +1,26 @@
+{
+  "name": "Notebook Custom Image",
+  "description": "Create and use custom Docker images for Kubeflow Notebook servers with custom dependencies and configurations",
+  "category": "kubernetes",
+  "subcategory": "kubeflow",
+  "component": "notebooks",
+  "tags": ["kubeflow", "notebook", "docker", "custom-image", "jupyter"],
+  "difficulty": "intermediate",
+  "prerequisites": [
+    "Kubernetes cluster with Kubeflow installed",
+    "Docker or container registry access",
+    "Basic Docker knowledge",
+    "kubectl configured"
+  ],
+  "learning_objectives": [
+    "Build custom Jupyter notebook images",
+    "Configure custom Python packages and dependencies",
+    "Push images to container registry",
+    "Deploy notebooks with custom images",
+    "Understand image best practices for Kubeflow"
+  ],
+  "estimated_time": "45 minutes",
+  "verified": false,
+  "version": "1.0.0",
+  "last_updated": "2024-01-01"
+}

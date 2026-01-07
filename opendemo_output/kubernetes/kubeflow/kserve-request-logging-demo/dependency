@@ -1,0 +1,4 @@
+kubernetes: '>=1.25'
+kserve: 'v0.11.0'
+knative-serving: 'v1.10.0'
+container-runtime: 'docker|containerd'

@@ -1,0 +1,26 @@
+{
+  "name": "Pipeline Parameterized Execution",
+  "description": "Create parameterized Kubeflow Pipelines that accept runtime parameters for flexible ML workflow execution",
+  "category": "kubernetes",
+  "subcategory": "kubeflow",
+  "component": "pipelines",
+  "tags": ["kubeflow", "pipelines", "parameters", "dynamic", "configuration", "flexibility"],
+  "difficulty": "beginner",
+  "prerequisites": [
+    "Kubernetes cluster with Kubeflow Pipelines",
+    "kfp Python SDK installed",
+    "kubectl configured",
+    "Understanding of function parameters"
+  ],
+  "learning_objectives": [
+    "Define pipeline parameters",
+    "Pass runtime arguments to pipelines",
+    "Use default values for parameters",
+    "Validate parameter inputs",
+    "Create reusable parameterized pipelines"
+  ],
+  "estimated_time": "35 minutes",
+  "verified": false,
+  "version": "1.0.0",
+  "last_updated": "2024-01-01"
+}

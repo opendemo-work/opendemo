@@ -1,0 +1,19 @@
+{
+  "name": "kserve-ab-testing-demo",
+  "language": "kubernetes",
+  "keywords": [
+    "kserve",
+    "ab-testing",
+    "model-deployment",
+    "canary-release",
+    "inference-routing"
+  ],
+  "description": "使用KServe实现机器学习模型的A/B测试和流量分流部署",
+  "difficulty": "advanced",
+  "author": "",
+  "created_at": "2026-01-07T18:21:19.327516",
+  "updated_at": "2026-01-07T18:21:19.327516",
+  "version": "1.0.0",
+  "dependencies": {},
+  "verified": false
+}

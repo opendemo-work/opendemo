@@ -1,0 +1,26 @@
+{
+  "name": "Pipeline Artifact Tracking",
+  "description": "Track, store, and manage artifacts (datasets, models, metrics) in Kubeflow Pipelines",
+  "category": "kubernetes",
+  "subcategory": "kubeflow",
+  "component": "pipelines",
+  "tags": ["kubeflow", "pipelines", "artifacts", "storage", "ml-tracking", "metadata"],
+  "difficulty": "beginner",
+  "prerequisites": [
+    "Kubernetes cluster with Kubeflow Pipelines",
+    "kfp Python SDK installed",
+    "kubectl configured",
+    "Basic understanding of ML artifacts"
+  ],
+  "learning_objectives": [
+    "Store and retrieve pipeline artifacts",
+    "Pass data between pipeline components",
+    "Track model files and datasets",
+    "Visualize artifacts in Kubeflow UI",
+    "Implement artifact versioning"
+  ],
+  "estimated_time": "40 minutes",
+  "verified": false,
+  "version": "1.0.0",
+  "last_updated": "2024-01-01"
+}

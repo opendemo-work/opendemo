@@ -1,0 +1,77 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: centraldashboard-config
+  namespace: kubeflow
+data:
+  # Enable multi-user mode
+  CD_REGISTRATION_FLOW: "true"
+  CD_CLUSTER_DOMAIN: "cluster.local"
+  
+  # RBAC settings
+  CD_USERID_HEADER: "kubeflow-userid"
+  CD_USERID_PREFIX: ""
+  
+  # Namespace management
+  CD_ALLOW_NAMESPACE_CREATION: "true"
+  
+  # Authentication
+  CD_AUTH_URL: "/authservice/"
+  
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: centraldashboard
+  namespace: kubeflow
+spec:
+  template:
+    spec:
+      serviceAccountName: centraldashboard
+      containers:
+      - name: centraldashboard
+        image: docker.io/kubeflownotebookswg/centraldashboard:latest
+        env:
+        - name: USERID_HEADER
+          value: kubeflow-userid
+        - name: USERID_PREFIX
+          value: ""
+        - name: REGISTRATION_FLOW
+          value: "true"
+        envFrom:
+        - configMapRef:
+            name: centraldashboard-config
+
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: centraldashboard
+  namespace: kubeflow
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: centraldashboard
+rules:
+- apiGroups: [""]
+  resources: ["namespaces"]
+  verbs: ["get", "list", "create", "update"]
+- apiGroups: ["kubeflow.org"]
+  resources: ["profiles"]
+  verbs: ["get", "list", "create", "update"]
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: centraldashboard
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: centraldashboard
+subjects:
+- kind: ServiceAccount
+  name: centraldashboard
+  namespace: kubeflow

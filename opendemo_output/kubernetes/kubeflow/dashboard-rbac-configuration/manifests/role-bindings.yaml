@@ -1,0 +1,46 @@
+---
+# RoleBinding for data scientist in their namespace
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: user-data-scientist-binding
+  namespace: kubeflow-user-data-scientist
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: kubeflow-user
+subjects:
+- kind: User
+  name: user-data-scientist@example.com
+  apiGroup: rbac.authorization.k8s.io
+
+---
+# RoleBinding for ML engineer in their namespace
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: user-ml-engineer-binding
+  namespace: kubeflow-user-ml-engineer
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: kubeflow-user
+subjects:
+- kind: User
+  name: user-ml-engineer@example.com
+  apiGroup: rbac.authorization.k8s.io
+
+---
+# ClusterRoleBinding for Kubeflow admin
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: kubeflow-admin-binding
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: kubeflow-admin
+subjects:
+- kind: User
+  name: kubeflow-admin@example.com
+  apiGroup: rbac.authorization.k8s.io

@@ -1,0 +1,26 @@
+{
+  "name": "Notebook Persistent Storage",
+  "description": "Configure persistent volumes for Kubeflow Notebooks to preserve data and work across pod restarts",
+  "category": "kubernetes",
+  "subcategory": "kubeflow",
+  "component": "notebooks",
+  "tags": ["kubeflow", "notebook", "storage", "pvc", "persistent-volume", "data-persistence"],
+  "difficulty": "beginner",
+  "prerequisites": [
+    "Kubernetes cluster with storage provisioner",
+    "Kubeflow Notebooks installed",
+    "kubectl configured",
+    "Basic understanding of Kubernetes storage"
+  ],
+  "learning_objectives": [
+    "Create and mount persistent volumes",
+    "Configure storage classes for notebooks",
+    "Manage data persistence across restarts",
+    "Share data between notebooks",
+    "Backup and restore notebook data"
+  ],
+  "estimated_time": "30 minutes",
+  "verified": false,
+  "version": "1.0.0",
+  "last_updated": "2024-01-01"
+}

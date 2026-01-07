@@ -1,0 +1,71 @@
+apiVersion: kubeflow.org/v1
+kind: Notebook
+metadata:
+  name: custom-image-notebook
+  namespace: kubeflow-user-example-com
+  labels:
+    app: custom-notebook
+spec:
+  template:
+    spec:
+      # Use custom image from your registry
+      # Replace with your actual image location
+      containers:
+      - name: notebook
+        image: yourusername/my-kubeflow-notebook:v1.0
+        imagePullPolicy: IfNotPresent
+        
+        # Resource requests and limits
+        resources:
+          requests:
+            cpu: "1"
+            memory: "4Gi"
+          limits:
+            cpu: "2"
+            memory: "8Gi"
+        
+        # Environment variables
+        env:
+        - name: JUPYTER_ENABLE_LAB
+          value: "yes"
+        - name: GRANT_SUDO
+          value: "yes"
+        
+        # Volume mounts
+        volumeMounts:
+        - name: workspace
+          mountPath: /home/jovyan/work
+        - name: data-volume
+          mountPath: /home/jovyan/data
+      
+      # Image pull secrets for private registries
+      # Uncomment if using private registry
+      # imagePullSecrets:
+      # - name: regcred
+      
+      # Service account
+      serviceAccountName: default-editor
+      
+      # Volumes
+      volumes:
+      - name: workspace
+        persistentVolumeClaim:
+          claimName: custom-notebook-workspace
+      - name: data-volume
+        emptyDir: {}
+
+---
+# PersistentVolumeClaim for notebook workspace
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: custom-notebook-workspace
+  namespace: kubeflow-user-example-com
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Gi
+  # Uncomment and set your storage class if needed
+  # storageClassName: standard

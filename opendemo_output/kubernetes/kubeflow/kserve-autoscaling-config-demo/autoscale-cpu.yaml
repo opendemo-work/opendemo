@@ -1,0 +1,43 @@
+apiVersion: serving.kserve.io/v1beta1
+kind: InferenceService
+metadata:
+  name: cpu-model
+  namespace: kserve-test
+  annotations:
+    # 指定使用KPA（Knative Pod Autoscaler）
+    "autoscaling.knative.dev/class": "kpa.autoscaling.knative.dev"
+spec:
+  predictor:
+    componentSpecs:
+      - spec:
+          containers:
+            - name: kserve-container
+              image: kserve/pytorchserver:v0.10.0
+              resources:
+                limits:
+                  memory: 4Gi
+                  cpu: "2"
+                requests:
+                  memory: 2Gi
+                  cpu: "1"
+          # 基于CPU使用率的自动扩缩容配置
+          autoscaling:
+            # 使用CPU指标
+            metrics: cpu
+            # 目标CPU使用率百分比
+            target: 50
+            # 最小副本数
+            minReplicas: 1
+            # 最大副本数
+            maxReplicas: 8
+            # 扩容冷却周期（默认6秒）
+            scaleDownDelay: 30s
+            # 扩容步长（每次扩容增加的副本数比例）
+            scaleUpRate: 1000m
+          # 允许更高的并发处理
+          containerConcurrency: 200
+    model:
+      modelFormat:
+        name: pytorch
+      storageUri: s3://kfserving-examples/models/pytorch/cifar10
+      runtime: pytorchserver.v0.10.0

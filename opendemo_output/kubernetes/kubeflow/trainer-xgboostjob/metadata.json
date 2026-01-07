@@ -1,0 +1,26 @@
+{
+  "name": "XGBoostJob Training",
+  "description": "Run distributed XGBoost training jobs on Kubernetes using Kubeflow Training Operator",
+  "category": "kubernetes",
+  "subcategory": "kubeflow",
+  "component": "training-operator",
+  "tags": ["kubeflow", "xgboost", "training", "gradient-boosting", "distributed"],
+  "difficulty": "beginner",
+  "prerequisites": [
+    "Kubernetes cluster with Training Operator",
+    "XGBoost training script",
+    "kubectl configured",
+    "Understanding of gradient boosting"
+  ],
+  "learning_objectives": [
+    "Create XGBoostJob resources",
+    "Configure master and worker nodes",
+    "Run distributed XGBoost training",
+    "Optimize XGBoost parameters",
+    "Export trained models"
+  ],
+  "estimated_time": "40 minutes",
+  "verified": false,
+  "version": "1.0.0",
+  "last_updated": "2024-01-01"
+}

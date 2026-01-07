@@ -1,0 +1,24 @@
+{
+  "name": "Dashboard RBAC Configuration",
+  "description": "Configure Role-Based Access Control for Kubeflow Dashboard, including multi-user namespace management and permission settings",
+  "category": "kubernetes",
+  "subcategory": "kubeflow",
+  "component": "central-dashboard",
+  "tags": ["kubeflow", "dashboard", "rbac", "security", "multi-user"],
+  "difficulty": "intermediate",
+  "prerequisites": [
+    "Kubernetes cluster with RBAC enabled",
+    "Kubeflow installed",
+    "kubectl configured"
+  ],
+  "learning_objectives": [
+    "Understand Kubeflow RBAC architecture",
+    "Configure multi-user namespace isolation",
+    "Set up Role and RoleBinding for Dashboard",
+    "Manage user permissions in Kubeflow"
+  ],
+  "estimated_time": "30 minutes",
+  "verified": false,
+  "version": "1.0.0",
+  "last_updated": "2024-01-01"
+}

@@ -1,0 +1,54 @@
+apiVersion: kubeflow.org/v1
+kind: Notebook
+metadata:
+  name: persistent-storage-notebook
+  namespace: kubeflow-user-example-com
+  labels:
+    app: persistent-notebook
+spec:
+  template:
+    spec:
+      containers:
+      - name: notebook
+        image: docker.io/kubeflownotebookswg/jupyter-scipy:v1.8.0
+        
+        resources:
+          requests:
+            cpu: "500m"
+            memory: "2Gi"
+          limits:
+            cpu: "1"
+            memory: "4Gi"
+        
+        env:
+        - name: JUPYTER_ENABLE_LAB
+          value: "yes"
+        
+        # Mount persistent volume
+        volumeMounts:
+        - name: workspace
+          mountPath: /home/jovyan/work
+      
+      serviceAccountName: default-editor
+      
+      # Define persistent volume
+      volumes:
+      - name: workspace
+        persistentVolumeClaim:
+          claimName: notebook-workspace
+
+---
+# PersistentVolumeClaim for notebook workspace
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: notebook-workspace
+  namespace: kubeflow-user-example-com
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Gi
+  # Will use default storage class
+  # storageClassName: standard

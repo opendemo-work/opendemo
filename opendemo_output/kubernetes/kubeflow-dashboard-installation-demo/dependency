@@ -1,0 +1,14 @@
+# 项目依赖声明
+
+kubectl >= v1.24
+kubernetes-cluster >= v1.24
+istio = 1.16.x
+helm >= v3.9
+
+# 可选工具
+minikube >= v1.29
+
+# 网络要求
+需要访问以下镜像仓库：
+gcr.io/kubeflow-images-public
+quay.io/istio

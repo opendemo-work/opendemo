@@ -1,0 +1,26 @@
+{
+  "name": "Katib NAS Experiment",
+  "description": "Perform Neural Architecture Search using Kubeflow Katib for automated model design",
+  "category": "kubernetes",
+  "subcategory": "kubeflow",
+  "component": "katib",
+  "tags": ["kubeflow", "katib", "nas", "neural-architecture-search", "automl"],
+  "difficulty": "advanced",
+  "prerequisites": [
+    "Kubernetes cluster with Katib",
+    "Understanding of neural architecture search",
+    "GPU resources recommended",
+    "kubectl configured"
+  ],
+  "learning_objectives": [
+    "Configure NAS experiments",
+    "Define architecture search space",
+    "Use ENAS or DARTS algorithms",
+    "Optimize model architectures",
+    "Analyze NAS results"
+  ],
+  "estimated_time": "70 minutes",
+  "verified": false,
+  "version": "1.0.0",
+  "last_updated": "2024-01-01"
+}

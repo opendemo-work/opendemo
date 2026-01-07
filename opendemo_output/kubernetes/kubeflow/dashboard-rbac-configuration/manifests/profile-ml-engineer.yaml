@@ -1,0 +1,14 @@
+apiVersion: kubeflow.org/v1
+kind: Profile
+metadata:
+  name: kubeflow-user-ml-engineer
+spec:
+  owner:
+    kind: User
+    name: user-ml-engineer@example.com
+  resourceQuotaSpec:
+    hard:
+      cpu: "8"
+      memory: 16Gi
+      requests.nvidia.com/gpu: "1"
+      persistentvolumeclaims: "3"

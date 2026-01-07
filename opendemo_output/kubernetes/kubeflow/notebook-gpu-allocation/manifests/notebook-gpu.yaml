@@ -1,0 +1,70 @@
+apiVersion: kubeflow.org/v1
+kind: Notebook
+metadata:
+  name: gpu-notebook
+  namespace: kubeflow-user-example-com
+  labels:
+    app: gpu-notebook
+spec:
+  template:
+    spec:
+      # Use GPU-enabled image with CUDA
+      containers:
+      - name: notebook
+        image: docker.io/kubeflownotebookswg/jupyter-pytorch-cuda-full:v1.8.0
+        imagePullPolicy: IfNotPresent
+        
+        # GPU resource allocation
+        resources:
+          requests:
+            cpu: "2"
+            memory: "8Gi"
+            nvidia.com/gpu: "1"  # Request 1 GPU
+          limits:
+            cpu: "4"
+            memory: "16Gi"
+            nvidia.com/gpu: "1"  # Limit to 1 GPU
+        
+        # Environment variables
+        env:
+        - name: JUPYTER_ENABLE_LAB
+          value: "yes"
+        - name: NVIDIA_VISIBLE_DEVICES
+          value: "all"
+        - name: NVIDIA_DRIVER_CAPABILITIES
+          value: "compute,utility"
+        
+        # Volume mounts
+        volumeMounts:
+        - name: workspace
+          mountPath: /home/jovyan/work
+        - name: shm
+          mountPath: /dev/shm
+      
+      # Service account
+      serviceAccountName: default-editor
+      
+      # Volumes
+      volumes:
+      - name: workspace
+        persistentVolumeClaim:
+          claimName: gpu-notebook-workspace
+      # Shared memory for PyTorch DataLoader
+      - name: shm
+        emptyDir:
+          medium: Memory
+          sizeLimit: 2Gi
+
+---
+# PersistentVolumeClaim for workspace
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: gpu-notebook-workspace
+  namespace: kubeflow-user-example-com
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 20Gi

@@ -1,0 +1,62 @@
+apiVersion: kubeflow.org/v1
+kind: Notebook
+metadata:
+  name: multi-gpu-notebook
+  namespace: kubeflow-user-example-com
+  labels:
+    app: multi-gpu-notebook
+spec:
+  template:
+    spec:
+      containers:
+      - name: notebook
+        image: docker.io/kubeflownotebookswg/jupyter-pytorch-cuda-full:v1.8.0
+        
+        # Multi-GPU resource allocation
+        resources:
+          requests:
+            cpu: "4"
+            memory: "16Gi"
+            nvidia.com/gpu: "2"  # Request 2 GPUs
+          limits:
+            cpu: "8"
+            memory: "32Gi"
+            nvidia.com/gpu: "2"  # Limit to 2 GPUs
+        
+        env:
+        - name: JUPYTER_ENABLE_LAB
+          value: "yes"
+        - name: NVIDIA_VISIBLE_DEVICES
+          value: "all"
+        - name: NCCL_DEBUG
+          value: "INFO"  # For distributed training debugging
+        
+        volumeMounts:
+        - name: workspace
+          mountPath: /home/jovyan/work
+        - name: shm
+          mountPath: /dev/shm
+      
+      serviceAccountName: default-editor
+      
+      volumes:
+      - name: workspace
+        persistentVolumeClaim:
+          claimName: multi-gpu-workspace
+      - name: shm
+        emptyDir:
+          medium: Memory
+          sizeLimit: 4Gi
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: multi-gpu-workspace
+  namespace: kubeflow-user-example-com
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 50Gi

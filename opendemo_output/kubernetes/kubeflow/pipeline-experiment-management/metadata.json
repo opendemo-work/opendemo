@@ -1,0 +1,26 @@
+{
+  "name": "Pipeline Experiment Management",
+  "description": "Create, run, and compare Kubeflow Pipeline experiments to track multiple runs and optimize ML workflows",
+  "category": "kubernetes",
+  "subcategory": "kubeflow",
+  "component": "pipelines",
+  "tags": ["kubeflow", "pipelines", "experiments", "ml-tracking", "comparison"],
+  "difficulty": "beginner",
+  "prerequisites": [
+    "Kubernetes cluster with Kubeflow Pipelines installed",
+    "kfp Python SDK installed",
+    "kubectl configured",
+    "Basic understanding of ML experiments"
+  ],
+  "learning_objectives": [
+    "Create and manage pipeline experiments",
+    "Run multiple pipeline executions with different parameters",
+    "Compare experiment results",
+    "Track metrics and artifacts across runs",
+    "Organize ML workflows with experiments"
+  ],
+  "estimated_time": "30 minutes",
+  "verified": false,
+  "version": "1.0.0",
+  "last_updated": "2024-01-01"
+}

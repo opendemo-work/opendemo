@@ -1,0 +1,25 @@
+{
+  "name": "Model Registry Version Management",
+  "description": "Manage multiple versions of ML models using Kubeflow Model Registry",
+  "category": "kubernetes",
+  "subcategory": "kubeflow",
+  "component": "model-registry",
+  "tags": ["kubeflow", "model-registry", "versioning", "model-lifecycle", "rollback"],
+  "difficulty": "intermediate",
+  "prerequisites": [
+    "Model Registry with registered models",
+    "Understanding of version control",
+    "kubectl configured"
+  ],
+  "learning_objectives": [
+    "Create model versions",
+    "Track version history",
+    "Compare model versions",
+    "Promote/demote versions",
+    "Implement rollback strategies"
+  ],
+  "estimated_time": "40 minutes",
+  "verified": false,
+  "version": "1.0.0",
+  "last_updated": "2024-01-01"
+}

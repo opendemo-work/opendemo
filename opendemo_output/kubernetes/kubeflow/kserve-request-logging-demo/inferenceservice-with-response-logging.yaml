@@ -1,0 +1,25 @@
+apiVersion: serving.kserve.io/v1beta1
+kind: InferenceService
+metadata:
+  name: model-with-response-logging
+  namespace: default
+spec:
+  predictor:
+    sklearn:
+      storageUri: gs://kfserving-examples/models/sklearn/iris
+    componentSpecs:
+      - spec:
+          containers:
+            - name: kserve-container
+              logger:
+                mode: RequestResponse
+                url: ""
+                # 显式启用响应体记录（谨慎使用，可能暴露敏感数据）
+                responseBody: true
+              resources:
+                requests:
+                  cpu: 100m
+                  memory: 256Mi
+                limits:
+                  cpu: 500m
+                  memory: 512Mi

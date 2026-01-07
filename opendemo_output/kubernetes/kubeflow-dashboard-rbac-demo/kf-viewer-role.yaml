@@ -1,0 +1,26 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  # 指定角色所属的命名空间 - Kubeflow 默认使用 kubeflow 命名空间
+  namespace: kubeflow
+  name: kubeflow-viewer
+  labels:
+    app: kubeflow-dashboard
+# 角色定义具体的权限规则
+rules:
+  # 第一条规则：允许读取核心 API 组中的常见资源
+  - apiGroups: [""]  # "" 表示核心 API 组（如 Pod, Service）
+    resources: ["pods", "services", "configmaps", "secrets"]
+    verbs: ["get", "list", "watch"]  # 只读操作，符合最小权限原则
+
+  # 第二条规则：允许读取应用相关的自定义资源
+  - apiGroups: ["apps"]
+    resources: ["deployments", "statefulsets"]
+    verbs: ["get", "list", "watch"]
+
+  # 第三条规则：允许访问事件日志（用于调试和监控）
+  - apiGroups: [""]
+    resources: ["events"]
+    verbs: ["get", "list"]
+
+# 注意：不包含 create/update/delete 等写操作，确保安全性

@@ -1,0 +1,26 @@
+apiVersion: serving.kserve.io/v1beta1
+kind: InferenceService
+metadata:
+  name: simple-model
+  namespace: default
+spec:
+  predictor:
+    # 使用内置的 sklearn 运行时作为示例
+    sklearn:
+      storageUri: gs://kfserving-examples/models/sklearn/iris
+    componentSpecs:
+      - spec:
+          containers:
+            - name: kserve-container
+              # 开启请求日志记录功能
+              logger:
+                mode: RequestResponse  # 记录请求和响应元数据
+                url: ""  # 空表示输出到 stdout，也可指向外部服务
+              # 资源限制遵循最佳实践
+              resources:
+                requests:
+                  cpu: 100m
+                  memory: 256Mi
+                limits:
+                  cpu: 500m
+                  memory: 512Mi

@@ -1,0 +1,39 @@
+apiVersion: serving.kserve.io/v1beta1
+kind: InferenceService
+metadata:
+  name: ab-test-model
+spec:
+  predictor:
+    # 定义两个模型版本，用于 A/B 测试
+    componentSpecs:
+      - name: predictor-v1
+        spec:
+          containers:
+            - image: kserve/example-sklearn:v1  # 版本1模型镜像
+              name: kserve-container
+              args:
+                - '--model_name=ab-test-model'
+                - '--model_dir=/mnt/models'
+                - '--version=v1'  # 显式传递版本号用于调试
+      - name: predictor-v2
+        spec:
+          containers:
+            - image: kserve/example-sklearn:v2  # 版本2模型镜像
+              name: kserve-container
+              args:
+                - '--model_name=ab-test-model'
+                - '--model_dir=/mnt/models'
+                - '--version=v2'
+    # 流量按权重分配：70% 到 v1, 30% 到 v2
+    traffic:
+      - tag: stable-v1         # 为版本打标签便于识别
+        percentage: 70           # 70% 流量导向 v1
+        predictorName: predictor-v1
+      - tag: candidate-v2        # 新版本作为候选
+        percentage: 30           # 30% 流量导向 v2
+        predictorName: predictor-v2
+
+# 注意事项：
+# - KServe 会自动生成路由规则，无需手动配置 Istio VirtualService
+# - 每个 predictorName 必须与 componentSpecs 中的 name 一致
+# - 支持热更新：修改 traffic 后滚动生效，不影响在线服务

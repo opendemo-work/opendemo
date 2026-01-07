@@ -1,0 +1,24 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: alice-kubeflow-viewer
+  namespace: kubeflow
+  labels:
+    user: alice
+    role: viewer
+# 引用之前定义的 Role
+roleRef:
+  kind: Role
+  name: kubeflow-viewer
+  apiGroup: rbac.authorization.k8s.io
+# 定义哪些主体受此角色影响
+subjects:
+  # 将权限授予名为 'alice' 的 ServiceAccount
+  - kind: ServiceAccount
+    name: alice
+    namespace: kubeflow
+
+# 重要说明：
+# 在生产环境中，可通过以下方式扩展 subjects：
+# - 添加多个用户
+# - 使用 Group（需配合外部认证系统如 LDAP/OIDC）

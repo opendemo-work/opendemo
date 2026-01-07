@@ -1,0 +1,26 @@
+{
+  "name": "KServe Custom Predictor",
+  "description": "Build and deploy custom prediction logic with KServe custom predictors",
+  "category": "kubernetes",
+  "subcategory": "kubeflow",
+  "component": "kserve",
+  "tags": ["kubeflow", "kserve", "custom-predictor", "inference", "python"],
+  "difficulty": "advanced",
+  "prerequisites": [
+    "KServe installed on Kubernetes",
+    "Python programming skills",
+    "Understanding of model serving",
+    "Docker knowledge"
+  ],
+  "learning_objectives": [
+    "Implement custom predictor class",
+    "Handle preprocessing and postprocessing",
+    "Build custom predictor Docker image",
+    "Deploy custom predictor to KServe",
+    "Test custom inference logic"
+  ],
+  "estimated_time": "60 minutes",
+  "verified": false,
+  "version": "1.0.0",
+  "last_updated": "2024-01-01"
+}

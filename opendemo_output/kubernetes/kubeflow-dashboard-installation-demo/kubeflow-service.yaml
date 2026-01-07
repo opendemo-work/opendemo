@@ -1,0 +1,17 @@
+# 为 Kubeflow Dashboard 创建服务
+# 使用 ClusterIP 类型，适合配合 port-forward 安全访问
+apiVersion: v1
+kind: Service
+metadata:
+  name: kubeflow-dashboard-svc
+  namespace: kubeflow
+  labels:
+    app: kubeflow-dashboard
+spec:
+  selector:
+    app: kubeflow-dashboard
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+  type: ClusterIP  # 开发推荐；生产应使用 LoadBalancer 或 Ingress

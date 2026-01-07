@@ -1,0 +1,26 @@
+{
+  "name": "Spark Operator Basic Job",
+  "description": "Run Apache Spark applications on Kubernetes using Kubeflow Spark Operator",
+  "category": "kubernetes",
+  "subcategory": "kubeflow",
+  "component": "spark-operator",
+  "tags": ["kubeflow", "spark", "big-data", "batch-processing", "data-engineering"],
+  "difficulty": "beginner",
+  "prerequisites": [
+    "Kubernetes cluster",
+    "Spark Operator installed",
+    "Basic Spark knowledge",
+    "kubectl configured"
+  ],
+  "learning_objectives": [
+    "Create SparkApplication CRD",
+    "Configure driver and executor pods",
+    "Submit Spark jobs to Kubernetes",
+    "Monitor Spark application status",
+    "Access Spark UI"
+  ],
+  "estimated_time": "40 minutes",
+  "verified": false,
+  "version": "1.0.0",
+  "last_updated": "2024-01-01"
+}

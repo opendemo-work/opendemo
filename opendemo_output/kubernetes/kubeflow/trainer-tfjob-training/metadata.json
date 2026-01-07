@@ -1,0 +1,26 @@
+{
+  "name": "TFJob Training",
+  "description": "Run TensorFlow training jobs on Kubernetes using Kubeflow Training Operator",
+  "category": "kubernetes",
+  "subcategory": "kubeflow",
+  "component": "training-operator",
+  "tags": ["kubeflow", "tensorflow", "training", "ml-training", "tfjob"],
+  "difficulty": "beginner",
+  "prerequisites": [
+    "Kubernetes cluster with Training Operator",
+    "TensorFlow training script",
+    "kubectl configured",
+    "Basic TensorFlow knowledge"
+  ],
+  "learning_objectives": [
+    "Create TFJob custom resources",
+    "Configure PS and Worker replicas",
+    "Run distributed TensorFlow training",
+    "Monitor TFJob status",
+    "Handle training checkpoints"
+  ],
+  "estimated_time": "45 minutes",
+  "verified": false,
+  "version": "1.0.0",
+  "last_updated": "2024-01-01"
+}

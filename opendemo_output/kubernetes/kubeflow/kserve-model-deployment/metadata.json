@@ -1,0 +1,26 @@
+{
+  "name": "KServe Model Deployment",
+  "description": "Deploy machine learning models as serverless inference services using KServe on Kubernetes",
+  "category": "kubernetes",
+  "subcategory": "kubeflow",
+  "component": "kserve",
+  "tags": ["kubeflow", "kserve", "model-serving", "inference", "deployment"],
+  "difficulty": "intermediate",
+  "prerequisites": [
+    "Kubernetes cluster with KServe installed",
+    "Trained ML model ready for deployment",
+    "kubectl configured",
+    "Basic understanding of model serving"
+  ],
+  "learning_objectives": [
+    "Create InferenceService custom resources",
+    "Deploy models from storage",
+    "Configure predictor specifications",
+    "Test inference endpoints",
+    "Monitor serving metrics"
+  ],
+  "estimated_time": "45 minutes",
+  "verified": false,
+  "version": "1.0.0",
+  "last_updated": "2024-01-01"
+}

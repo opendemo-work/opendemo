@@ -1,0 +1,34 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: kubeflow-user
+  labels:
+    rbac.kubeflow.org/aggregate-to-kubeflow-user: "true"
+rules:
+# Notebook permissions
+- apiGroups: ["kubeflow.org"]
+  resources: ["notebooks", "notebooks/status"]
+  verbs: ["get", "list", "create", "update", "patch", "delete"]
+# Pipeline permissions
+- apiGroups: ["pipelines.kubeflow.org"]
+  resources: ["pipelines", "experiments", "runs"]
+  verbs: ["get", "list", "create"]
+# Katib permissions
+- apiGroups: ["kubeflow.org"]
+  resources: ["experiments", "trials", "suggestions"]
+  verbs: ["get", "list", "create", "update"]
+# KServe permissions
+- apiGroups: ["serving.kserve.io"]
+  resources: ["inferenceservices"]
+  verbs: ["get", "list", "create", "update", "patch"]
+# Core resource permissions
+- apiGroups: [""]
+  resources: ["pods", "pods/log", "services", "persistentvolumeclaims", "secrets", "configmaps"]
+  verbs: ["get", "list", "create", "update", "patch", "delete"]
+- apiGroups: [""]
+  resources: ["events"]
+  verbs: ["get", "list"]
+# Allow viewing namespaces
+- apiGroups: [""]
+  resources: ["namespaces"]
+  verbs: ["get", "list"]

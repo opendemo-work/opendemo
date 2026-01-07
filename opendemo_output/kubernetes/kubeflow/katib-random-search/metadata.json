@@ -1,0 +1,26 @@
+{
+  "name": "Katib Random Search",
+  "description": "Perform hyperparameter optimization using random search algorithm in Kubeflow Katib",
+  "category": "kubernetes",
+  "subcategory": "kubeflow",
+  "component": "katib",
+  "tags": ["kubeflow", "katib", "random-search", "hyperparameter-tuning", "automl"],
+  "difficulty": "beginner",
+  "prerequisites": [
+    "Kubernetes cluster with Katib installed",
+    "kubectl configured",
+    "Training script ready",
+    "Basic understanding of hyperparameter tuning"
+  ],
+  "learning_objectives": [
+    "Configure random search algorithm",
+    "Define search space for parameters",
+    "Set up objective metrics",
+    "Analyze search results",
+    "Compare with other search algorithms"
+  ],
+  "estimated_time": "40 minutes",
+  "verified": false,
+  "version": "1.0.0",
+  "last_updated": "2024-01-01"
+}

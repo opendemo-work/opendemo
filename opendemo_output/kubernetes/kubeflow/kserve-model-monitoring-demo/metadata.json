@@ -1,0 +1,19 @@
+{
+  "name": "kserve-model-monitoring-demo",
+  "language": "kubernetes",
+  "keywords": [
+    "kserve",
+    "model monitoring",
+    "kubernetes",
+    "machine learning",
+    "prometheus"
+  ],
+  "description": "A demo showing how to set up model monitoring for KServe deployments using Prometheus and custom metrics.",
+  "difficulty": "intermediate",
+  "author": "",
+  "created_at": "2026-01-07T18:22:32.455628",
+  "updated_at": "2026-01-07T18:22:32.455628",
+  "version": "1.0.0",
+  "dependencies": {},
+  "verified": false
+}

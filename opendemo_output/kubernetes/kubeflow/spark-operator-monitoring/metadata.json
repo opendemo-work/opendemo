@@ -1,0 +1,26 @@
+{
+  "name": "Spark Operator Monitoring",
+  "description": "Monitor and debug Spark applications running on Kubernetes using Spark Operator",
+  "category": "kubernetes",
+  "subcategory": "kubeflow",
+  "component": "spark-operator",
+  "tags": ["kubeflow", "spark", "monitoring", "logging", "debugging", "observability"],
+  "difficulty": "intermediate",
+  "prerequisites": [
+    "Spark Operator with running jobs",
+    "Understanding of Spark metrics",
+    "kubectl configured",
+    "Basic monitoring knowledge"
+  ],
+  "learning_objectives": [
+    "Access Spark UI in Kubernetes",
+    "Configure logging and metrics",
+    "Integrate with Prometheus",
+    "Debug failed Spark jobs",
+    "Set up alerting for Spark applications"
+  ],
+  "estimated_time": "50 minutes",
+  "verified": false,
+  "version": "1.0.0",
+  "last_updated": "2024-01-01"
+}

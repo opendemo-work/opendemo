@@ -1,0 +1,26 @@
+apiVersion: serving.kserve.io/v1beta1
+kind: InferenceService
+metadata:
+  name: sklearn-iris
+  annotations:
+    # 启用指标收集
+    metrics.kserve.io/scrape: "true"
+    metrics.kserve.io/port: "8080"
+    metrics.kserve.io/path: "/v1/metrics"
+spec:
+  predictor:
+    model:
+      modelFormat:
+        name: sklearn
+      storageUri: gs://kfserving-examples/models/sklearn/iris
+      # 启用详细日志以辅助监控调试
+      logger:
+        mode: all
+        url: http://fluentd-logger:8080
+      resources:
+        limits:
+          cpu: '1'
+          memory: 2Gi
+        requests:
+          cpu: 500m
+          memory: 1Gi

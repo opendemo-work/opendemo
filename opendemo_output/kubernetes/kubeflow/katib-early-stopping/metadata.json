@@ -1,0 +1,26 @@
+{
+  "name": "Katib Early Stopping",
+  "description": "Implement early stopping strategies in Katib experiments to save computational resources",
+  "category": "kubernetes",
+  "subcategory": "kubeflow",
+  "component": "katib",
+  "tags": ["kubeflow", "katib", "early-stopping", "optimization", "resource-efficiency"],
+  "difficulty": "intermediate",
+  "prerequisites": [
+    "Kubernetes cluster with Katib",
+    "Understanding of early stopping concepts",
+    "Existing Katib experiment",
+    "kubectl configured"
+  ],
+  "learning_objectives": [
+    "Configure early stopping algorithms",
+    "Set stopping rules and thresholds",
+    "Optimize resource utilization",
+    "Reduce experiment time",
+    "Compare different early stopping strategies"
+  ],
+  "estimated_time": "45 minutes",
+  "verified": false,
+  "version": "1.0.0",
+  "last_updated": "2024-01-01"
+}

@@ -1,0 +1,49 @@
+# inference-service-multi.yaml
+# KServe 多模型服务配置文件
+# 使用 InferenceService 自定义资源定义(CRD)部署多个模型
+
+apiVersion: serving.kserve.io/v1beta1
+kind: InferenceService
+metadata:
+  name: sklearn-model
+  namespace: default
+spec:
+  predictor:
+    model:
+      # 指定模型类型为 sklearn
+      modelFormat:
+        name: sklearn
+      # 模型存储位置，支持 s3://, gs://, http:// 等协议
+      storageUri: s3://kfserving-examples/models/sklearn/iris
+      # 资源请求配置，遵循 Kubernetes 最佳实践
+      resources:
+        requests:
+          cpu: "500m"
+          memory: "1Gi"
+        limits:
+          cpu: "1"
+          memory: "2Gi"
+
+---
+
+apiVersion: serving.kserve.io/v1beta1
+kind: InferenceService
+metadata:
+  name: xgboost-model
+  namespace: default
+spec:
+  predictor:
+    model:
+      # 指定模型类型为 xgboost
+      modelFormat:
+        name: xgboost
+      # XGBoost 模型的存储路径
+      storageUri: s3://kfserving-examples/models/xgboost/iris
+      # 为不同模型配置适当的资源
+      resources:
+        requests:
+          cpu: "600m"
+          memory: "1.2Gi"
+        limits:
+          cpu: "1.2"
+          memory: "2.4Gi"

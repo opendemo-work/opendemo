@@ -1,0 +1,26 @@
+{
+  "name": "Model Registry Registration",
+  "description": "Register and manage ML models in Kubeflow Model Registry",
+  "category": "kubernetes",
+  "subcategory": "kubeflow",
+  "component": "model-registry",
+  "tags": ["kubeflow", "model-registry", "mlops", "model-management", "versioning"],
+  "difficulty": "beginner",
+  "prerequisites": [
+    "Kubeflow Model Registry installed",
+    "Trained models ready",
+    "kubectl configured",
+    "Basic understanding of model lifecycle"
+  ],
+  "learning_objectives": [
+    "Register models in registry",
+    "Add model metadata",
+    "Tag and categorize models",
+    "Search and discover models",
+    "Track model lineage"
+  ],
+  "estimated_time": "35 minutes",
+  "verified": false,
+  "version": "1.0.0",
+  "last_updated": "2024-01-01"
+}

@@ -1,0 +1,27 @@
+{
+  "name": "Notebook GPU Allocation",
+  "description": "Configure and allocate GPU resources for Kubeflow Notebook servers to accelerate deep learning workloads",
+  "category": "kubernetes",
+  "subcategory": "kubeflow",
+  "component": "notebooks",
+  "tags": ["kubeflow", "notebook", "gpu", "nvidia", "cuda", "deep-learning"],
+  "difficulty": "intermediate",
+  "prerequisites": [
+    "Kubernetes cluster with GPU nodes",
+    "NVIDIA GPU Operator or device plugin installed",
+    "Kubeflow Notebooks installed",
+    "kubectl configured",
+    "Basic understanding of GPU computing"
+  ],
+  "learning_objectives": [
+    "Configure GPU resources for notebook servers",
+    "Understand GPU scheduling in Kubernetes",
+    "Optimize GPU utilization",
+    "Troubleshoot GPU allocation issues",
+    "Use CUDA and cuDNN in notebooks"
+  ],
+  "estimated_time": "45 minutes",
+  "verified": false,
+  "version": "1.0.0",
+  "last_updated": "2024-01-01"
+}

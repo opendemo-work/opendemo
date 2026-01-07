@@ -1,0 +1,40 @@
+apiVersion: serving.kserve.io/v1beta1
+kind: InferenceService
+metadata:
+  name: concurrency-model
+  namespace: kserve-test
+  annotations:
+    # 启用基于并发的自动扩缩容
+    "autoscaling.knative.dev/class": "kpa.autoscaling.knative.dev"
+spec:
+  predictor:
+    # 配置扩缩容策略
+    componentSpecs:
+      - spec:
+          containers:
+            - name: kserve-container
+              image: kserve/sklearnserver:v0.10.0
+              resources:
+                limits:
+                  memory: 2Gi
+                  cpu: "1"
+                requests:
+                  memory: 1Gi
+                  cpu: "500m"
+          # Pod级别扩缩容配置
+          autoscaling:
+            # 目标并发利用率（默认70）
+            targetUtilizationPercentage: 70
+            # 每个Pod的目标并发请求数
+            target: 50
+            # 最小副本数
+            minReplicas: 1
+            # 最大副本数
+            maxReplicas: 10
+          # 单个容器的最大并发处理能力
+          containerConcurrency: 100
+    model:
+      modelFormat:
+        name: sklearn
+      storageUri: s3://kfserving-examples/models/sklearn/iris
+      runtime: sklearnserver.v0.10.0

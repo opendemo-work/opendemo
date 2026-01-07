@@ -1,0 +1,26 @@
+{
+  "name": "KServe Transformer Integration",
+  "description": "Add data preprocessing and transformation logic to KServe inference services",
+  "category": "kubernetes",
+  "subcategory": "kubeflow",
+  "component": "kserve",
+  "tags": ["kubeflow", "kserve", "transformer", "preprocessing", "inference-pipeline"],
+  "difficulty": "intermediate",
+  "prerequisites": [
+    "KServe deployed models",
+    "Understanding of data preprocessing",
+    "Python knowledge",
+    "kubectl configured"
+  ],
+  "learning_objectives": [
+    "Create transformer components",
+    "Implement preprocessing logic",
+    "Chain transformers with predictors",
+    "Handle input/output transformations",
+    "Deploy complete inference pipelines"
+  ],
+  "estimated_time": "50 minutes",
+  "verified": false,
+  "version": "1.0.0",
+  "last_updated": "2024-01-01"
+}

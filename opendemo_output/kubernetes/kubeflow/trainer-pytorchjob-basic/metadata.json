@@ -1,0 +1,26 @@
+{
+  "name": "PyTorchJob Basic Training",
+  "description": "Run single-node PyTorch training jobs on Kubernetes using Kubeflow Training Operator",
+  "category": "kubernetes",
+  "subcategory": "kubeflow",
+  "component": "training-operator",
+  "tags": ["kubeflow", "pytorch", "training", "ml-training", "deep-learning"],
+  "difficulty": "beginner",
+  "prerequisites": [
+    "Kubernetes cluster with Kubeflow Training Operator",
+    "kubectl configured",
+    "Basic PyTorch knowledge",
+    "Understanding of Kubernetes Jobs"
+  ],
+  "learning_objectives": [
+    "Create PyTorchJob custom resources",
+    "Configure training container specifications",
+    "Monitor training job progress",
+    "Access training logs and outputs",
+    "Understand PyTorchJob lifecycle"
+  ],
+  "estimated_time": "40 minutes",
+  "verified": false,
+  "version": "1.0.0",
+  "last_updated": "2024-01-01"
+}

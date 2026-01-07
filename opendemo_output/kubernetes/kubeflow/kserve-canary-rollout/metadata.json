@@ -1,0 +1,26 @@
+{
+  "name": "KServe Canary Rollout",
+  "description": "Implement canary deployment strategy for ML models using KServe traffic splitting",
+  "category": "kubernetes",
+  "subcategory": "kubeflow",
+  "component": "kserve",
+  "tags": ["kubeflow", "kserve", "canary", "traffic-splitting", "deployment-strategy"],
+  "difficulty": "intermediate",
+  "prerequisites": [
+    "KServe installed on Kubernetes",
+    "Existing model deployment",
+    "Understanding of canary deployments",
+    "kubectl configured"
+  ],
+  "learning_objectives": [
+    "Configure traffic splitting between model versions",
+    "Implement gradual rollout strategy",
+    "Monitor canary deployment metrics",
+    "Rollback to previous version if needed",
+    "Automate canary analysis"
+  ],
+  "estimated_time": "50 minutes",
+  "verified": false,
+  "version": "1.0.0",
+  "last_updated": "2024-01-01"
+}

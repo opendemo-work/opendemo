@@ -1,0 +1,10 @@
+# requirements.txt
+# Python 依赖声明文件
+
+requests==2.31.0
+urllib3>=1.26.0
+# 注意：KServe 本身是 Kubernetes CRD，无需 pip 安装
+# 但客户端操作需要标准 HTTP 库
+
+# 兼容 Python 3.9+
+python_requires>=3.9

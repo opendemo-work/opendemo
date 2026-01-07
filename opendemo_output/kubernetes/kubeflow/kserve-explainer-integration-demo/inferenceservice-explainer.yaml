@@ -1,0 +1,36 @@
+apiVersion: serving.kserve.io/v1beta1
+kind: InferenceService
+metadata:
+  name: boston-explainer
+  namespace: kserve-test
+spec:
+  predictor:
+    model:
+      # 使用预训练的 sklearn 模型作为预测器
+      modelFormat:
+        name: sklearn
+      storageUri: s3://kfserving-examples/models/sklearn/boston
+      # 推理资源配置遵循最佳实践：设置资源限制
+      resources:
+        limits:
+          cpu: '2'
+          memory: 4Gi
+        requests:
+          cpu: '1'
+          memory: 2Gi
+  explainer:
+    # 启用 Alibi Anchors 算法解释表格数据预测
+    alibiAnchorsTabular:
+      # 解释器容器镜像（官方 KServe 支持的解释镜像）
+      storageUri: s3://kfserving-examples/models/sklearn/boston/analyzer
+      # 设置超时和并发，提升稳定性
+      config:
+        temperature: '0.5'
+        threshold: '0.95'
+      resources:
+        limits:
+          cpu: '1'
+          memory: 2Gi
+        requests:
+          cpu: '500m'
+          memory: 1Gi

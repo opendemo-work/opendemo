@@ -1,0 +1,26 @@
+{
+  "name": "Spark Operator Streaming Job",
+  "description": "Run Spark Structured Streaming applications on Kubernetes for real-time data processing",
+  "category": "kubernetes",
+  "subcategory": "kubeflow",
+  "component": "spark-operator",
+  "tags": ["kubeflow", "spark", "streaming", "real-time", "data-processing"],
+  "difficulty": "intermediate",
+  "prerequisites": [
+    "Spark Operator installed",
+    "Streaming data source available",
+    "Spark Streaming knowledge",
+    "kubectl configured"
+  ],
+  "learning_objectives": [
+    "Configure Spark Structured Streaming",
+    "Handle streaming sources and sinks",
+    "Manage streaming checkpoints",
+    "Monitor streaming metrics",
+    "Handle late data and watermarks"
+  ],
+  "estimated_time": "55 minutes",
+  "verified": false,
+  "version": "1.0.0",
+  "last_updated": "2024-01-01"
+}

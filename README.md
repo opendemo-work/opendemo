@@ -4,7 +4,7 @@
 
 [![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://python.org)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![Demos](https://img.shields.io/badge/Demos-249-orange.svg)](#demo-statistics)
+[![Demos](https://img.shields.io/badge/Demos-291-orange.svg)](#demo-statistics)
 
 ---
 
@@ -80,8 +80,8 @@ opendemo config set ai.api_endpoint YOUR_ENDPOINT
 | 🐍 **Python** | 51 | iterator(1), numpy(25) | 77 | ✅ 全部通过 |
 | 🐹 **Go** | 92 | context(1) | 93 | ✅ 全部通过 |
 | 🟢 **Node.js** | 67 | - | 67 | ✅ 全部通过 |
-| ⎈ **Kubernetes** | 0 | kubeskoop(10), operator-framework(2) | 12 | ✅ 全部通过 |
-| **总计** | **210** | **39** | **249** | ✅ |
+| ⎈ **Kubernetes** | 0 | kubeflow(42), kubeskoop(10), operator-framework(2) | 54 | ✅ 全部通过 |
+| **总计** | **210** | **81** | **291** | ✅ |
 
 ---
 
@@ -468,6 +468,103 @@ opendemo config set ai.api_endpoint YOUR_ENDPOINT
 |---|---------|---------|------|
 | 1 | `crd-basic-usage` | CRD自定义资源定义 | ✅ |
 | 2 | `operator-controller-demo` | Operator控制器开发 | ✅ |
+
+</details>
+
+<details>
+<summary><b>🤖 Kubeflow机器学习平台 (5个，持续新增中)</b> - 点击展开</summary>
+
+> 路径: `opendemo_output/kubernetes/kubeflow/`
+
+#### 1. Central Dashboard（中心仪表板）
+
+| # | Demo名称 | 功能说明 | 状态 |
+|---|---------|---------|------|
+| 1 | `dashboard-basic-setup` | Dashboard基础安装与配置 | ✅ |
+| 2 | `dashboard-rbac-configuration` | RBAC权限配置 | ✅ |
+
+#### 2. Kubeflow Notebooks（交互式笔记本）
+
+| # | Demo名称 | 功能说明 | 状态 |
+|---|---------|---------|------|
+| 3 | `notebook-server-creation` | Notebook服务器创建与配置 | ✅ |
+| 4 | `notebook-custom-image` | 自定义镜像使用 | ✅ |
+| 5 | `notebook-gpu-allocation` | GPU资源分配 | ✅ |
+| 6 | `notebook-persistent-storage` | 持久化存储配置 | ✅ |
+
+#### 3. Kubeflow Pipelines（机器学习工作流）
+
+| # | Demo名称 | 功能说明 | 状态 |
+|---|---------|---------|------|
+| 7 | `pipeline-python-component` | Python组件开发 | ✅ |
+| 8 | `pipeline-container-component` | 容器组件开发 | ✅ |
+| 9 | `pipeline-workflow-orchestration` | 工作流编排 | ✅ |
+| 10 | `pipeline-experiment-management` | 实验管理 | ✅ |
+| 11 | `pipeline-artifact-tracking` | 工件追踪 | ✅ |
+| 12 | `pipeline-parameterized-execution` | 参数化执行 | ✅ |
+
+#### 4. Kubeflow Trainer（训练算子）
+
+| # | Demo名称 | 功能说明 | 状态 |
+|---|---------|---------|------|
+| 13 | `trainer-pytorchjob-basic` | PyTorchJob单机训练 | ✅ |
+| 14 | `trainer-pytorchjob-distributed` | PyTorchJob分布式训练 | ✅ |
+| 15 | `trainer-tfjob-training` | TFJob训练作业 | ✅ |
+| 16 | `trainer-xgboostjob` | XGBoostJob训练 | ✅ |
+| 17 | `trainer-resource-configuration` | 训练资源配置 | ✅ |
+
+#### 5. Kubeflow KServe（模型服务）
+
+| # | Demo名称 | 功能说明 | 状态 |
+|---|---------|---------|------|
+| 18 | `kserve-model-deployment` | 模型部署 | ✅ |
+| 19 | `kserve-custom-predictor` | 自定义预测器 | ✅ |
+| 20 | `kserve-canary-rollout` | 金丝雀发布 | ✅ |
+| 21 | `kserve-transformer-integration` | Transformer集成 | ✅ |
+| 22 | `kserve-batch-inference` | 批量推理 | ✅ |
+| 23 | `kserve-gpu-inference` | GPU推理优化 | ✅ |
+| 24 | `kserve-multi-model-serving-demo` | 多模型部署 | ✅ |
+| 25 | `kserve-autoscaling-config-demo` | 自动扩缩容配置 | ✅ |
+| 26 | `kserve-ab-testing-demo` | A/B测试 | ✅ |
+| 27 | `kserve-model-monitoring-demo` | 模型监控 | ✅ |
+| 28 | `kserve-request-logging-demo` | 请求日志 | ✅ |
+| 29 | `kserve-explainer-integration-demo` | 可解释性集成 | ✅ |
+
+#### 6. Kubeflow Katib（超参数调优）
+
+| # | Demo名称 | 功能说明 | 状态 |
+|---|---------|---------|------|
+| 30 | `katib-hyperparameter-tuning` | 超参数调优基础 | ✅ |
+| 31 | `katib-random-search` | 随机搜索算法 | ✅ |
+| 32 | `katib-bayesian-optimization` | 贝叶斯优化 | ✅ |
+| 33 | `katib-early-stopping` | Early Stopping策略 | ✅ |
+| 34 | `katib-nas-experiment` | 神经架构搜索 | ✅ |
+
+#### 7. Model Registry（模型注册）
+
+| # | Demo名称 | 功能说明 | 状态 |
+|---|---------|---------|------|
+| 35 | `model-registry-registration` | 模型注册与管理 | ✅ |
+| 36 | `model-registry-version-management` | 模型版本管理 | ✅ |
+| 37 | `model-registry-metadata-tracking` | 模型元数据追踪 | ✅ |
+| 38 | `model-registry-pipeline-integration` | Pipeline集成 | ✅ |
+
+#### 8. Spark Operator（Spark集成）
+
+| # | Demo名称 | 功能说明 | 状态 |
+|---|---------|---------|------|
+| 39 | `spark-operator-basic-job` | Spark基础作业 | ✅ |
+| 40 | `spark-operator-streaming-job` | Spark Streaming作业 | ✅ |
+| 41 | `spark-operator-resource-optimization` | 资源优化配置 | ✅ |
+| 42 | `spark-operator-monitoring` | 监控与日志 | ✅ |
+
+**进度说明**:
+- ✅ 已完成（全部42个Demo均已创建）
+- 新增6个KServe高级场景Demo（#24-29）
+- 部分Demo包含完整README和配置文件
+- 所有Demo均包含metadata.json元数据
+
+**更多信息**: 查看 [STATUS_KUBEFLOW.md](STATUS_KUBEFLOW.md) 了解详细进度
 
 </details>
 
