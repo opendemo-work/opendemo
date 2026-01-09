@@ -865,6 +865,49 @@ def _update_readme_after_new(
         logger.error(f"Failed to update README.md: {e}")
         print_warning(f"更新README.md失败: {e}")
 
+    # 2. 更新STATUS.md
+    status_path = README_PATH.parent / "STATUS.md"
+    if status_path.exists():
+        try:
+            _update_status_md(output_dir, status_path)
+            print_info("STATUS.md 已更新")
+        except Exception as e:
+            logger.error(f"Failed to update STATUS.md: {e}")
+            print_warning(f"更新STATUS.md失败: {e}")
+
+
+def _update_status_md(output_dir: Path, status_path: Path):
+    """更新STATUS.md中的Demo统计"""
+    import re
+    from datetime import datetime
+
+    updater = ReadmeUpdater(output_dir, status_path.parent / "README.md")
+    stats = updater.collect_stats()
+    totals = updater.calculate_totals(stats)
+
+    with open(status_path, "r", encoding="utf-8") as f:
+        content = f.read()
+
+    now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    content = re.sub(
+        r"\*\*检查时间\*\*: \d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}",
+        f"**检查时间**: {now}", content
+    )
+
+    lang_map = {"python": "Python", "go": "Go", "nodejs": "Node.js", "kubernetes": "Kubernetes"}
+    for lang, name in lang_map.items():
+        data = stats.get(lang, {"base": 0, "libraries": {}, "tools": {}})
+        total = data.get("base", 0) + sum(data.get("libraries", {}).values()) + sum(data.get("tools", {}).values())
+        content = re.sub(rf"\| {name} \| \d+ \|", f"| {name} | {total} |", content)
+
+    content = re.sub(
+        r"\| \*\*总计\*\* \| \*\*\d+\*\* \|",
+        f"| **总计** | **{totals['grand_total']}** |", content
+    )
+
+    with open(status_path, "w", encoding="utf-8") as f:
+        f.write(content)
+
 
 def main():
     """主入口"""
