@@ -1,0 +1,22 @@
+{
+  "name": "命名空间级别备份演示",
+  "language": "kubernetes",
+  "keywords": [
+    "velero",
+    "backup",
+    "namespace",
+    "restore",
+    "kubernetes"
+  ],
+  "description": "演示如何使用Velero备份指定命名空间的所有资源并进行恢复验证",
+  "difficulty": "beginner",
+  "author": "",
+  "created_at": "2026-01-11T23:45:00.000000",
+  "updated_at": "2026-01-11T23:45:00.000000",
+  "version": "1.0.0",
+  "dependencies": {
+    "kubernetes": ">=1.20",
+    "velero": ">=1.12"
+  },
+  "verified": false
+}

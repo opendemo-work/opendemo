@@ -1,0 +1,22 @@
+{
+  "name": "跨命名空间恢复映射演示",
+  "language": "kubernetes",
+  "keywords": [
+    "velero",
+    "namespace-mapping",
+    "restore",
+    "multi-tenancy",
+    "kubernetes"
+  ],
+  "description": "演示如何将备份的资源恢复到不同的命名空间",
+  "difficulty": "intermediate",
+  "author": "",
+  "created_at": "2026-01-11T23:45:00.000000",
+  "updated_at": "2026-01-11T23:45:00.000000",
+  "version": "1.0.0",
+  "dependencies": {
+    "kubernetes": ">=1.20",
+    "velero": ">=1.12"
+  },
+  "verified": false
+}

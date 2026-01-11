@@ -1,0 +1,22 @@
+{
+  "name": "备份钩子操作演示",
+  "language": "kubernetes",
+  "keywords": [
+    "velero",
+    "hooks",
+    "pre-backup",
+    "post-backup",
+    "database-consistency"
+  ],
+  "description": "演示如何使用备份钩子在备份前后执行自定义操作",
+  "difficulty": "advanced",
+  "author": "",
+  "created_at": "2026-01-11T23:45:00.000000",
+  "updated_at": "2026-01-11T23:45:00.000000",
+  "version": "1.0.0",
+  "dependencies": {
+    "kubernetes": ">=1.20",
+    "velero": ">=1.12"
+  },
+  "verified": false
+}

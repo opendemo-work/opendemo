@@ -1,0 +1,22 @@
+{
+  "name": "集群级别全量备份演示",
+  "language": "kubernetes",
+  "keywords": [
+    "velero",
+    "cluster-backup",
+    "full-backup",
+    "disaster-recovery",
+    "kubernetes"
+  ],
+  "description": "演示如何执行集群级别全量备份，包括CRD资源和持久卷",
+  "difficulty": "intermediate",
+  "author": "",
+  "created_at": "2026-01-11T23:45:00.000000",
+  "updated_at": "2026-01-11T23:45:00.000000",
+  "version": "1.0.0",
+  "dependencies": {
+    "kubernetes": ">=1.20",
+    "velero": ">=1.12"
+  },
+  "verified": false
+}

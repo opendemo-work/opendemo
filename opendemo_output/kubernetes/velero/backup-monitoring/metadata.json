@@ -1,0 +1,22 @@
+{
+  "name": "备份状态监控与告警演示",
+  "language": "kubernetes",
+  "keywords": [
+    "velero",
+    "monitoring",
+    "prometheus",
+    "alerting",
+    "metrics"
+  ],
+  "description": "演示如何监控Velero备份任务状态并配置告警规则",
+  "difficulty": "intermediate",
+  "author": "",
+  "created_at": "2026-01-11T23:45:00.000000",
+  "updated_at": "2026-01-11T23:45:00.000000",
+  "version": "1.0.0",
+  "dependencies": {
+    "kubernetes": ">=1.20",
+    "velero": ">=1.12"
+  },
+  "verified": false
+}

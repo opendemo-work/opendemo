@@ -80,8 +80,8 @@ opendemo config set ai.api_endpoint YOUR_ENDPOINT
 | 🐍 **Python** | 51 | iterator(1), numpy(25) | 77 | ✅ 全部通过 |
 | 🐹 **Go** | 92 | context(1) | 93 | ✅ 全部通过 |
 | 🟢 **Node.js** | 67 | - | 67 | ✅ 全部通过 |
-| ⎈ **Kubernetes** | 0 | kubeflow(42), kubeskoop(10), operator-framework(2) | 54 | ✅ 全部通过 |
-| **总计** | **210** | **81** | **291** | ✅ |
+| ⎈ **Kubernetes** | 0 | kubeflow(42), kubeskoop(10), velero(15), operator-framework(2) | 69 | ✅ 全部通过 |
+| **总计** | **210** | **96** | **306** | ✅ |
 
 ---
 
@@ -437,7 +437,41 @@ opendemo config set ai.api_endpoint YOUR_ENDPOINT
 
 ---
 
-### ⎈ Kubernetes (12个)
+### ⎈ Kubernetes (69个)
+
+<details>
+<summary><b>🛡️ Velero备份恢复工具 (15个)</b> - 点击展开</summary>
+
+> 路径: `opendemo_output/kubernetes/velero/`
+
+| # | Demo名称 | 功能说明 | 难度 | 状态 |
+|---|---------|---------|------|------|
+| 1 | `basic-installation` | Velero基础安装与MinIO配置 | beginner | ✅ |
+| 2 | `namespace-backup` | 命名空间级别备份 | beginner | ✅ |
+| 3 | `cluster-backup` | 集群级别全量备份 | intermediate | ✅ |
+| 4 | `scheduled-backup` | 定时备份策略配置 | intermediate | ✅ |
+| 5 | `backup-restore` | 备份恢复完整流程 | beginner | ✅ |
+| 6 | `pv-snapshot-backup` | 持久卷快照备份 | intermediate | ✅ |
+| 7 | `resource-filtering` | 资源过滤与选择器 | intermediate | ✅ |
+| 8 | `namespace-mapping` | 跨命名空间恢复映射 | intermediate | ✅ |
+| 9 | `disaster-recovery-simulation` | 完整灾难恢复演练 | advanced | ✅ |
+| 10 | `backup-hooks` | 备份前后钩子操作 | advanced | ✅ |
+| 11 | `backup-encryption` | 备份数据加密 | advanced | ✅ |
+| 12 | `migration-across-clusters` | 跨集群资源迁移 | advanced | ✅ |
+| 13 | `backup-monitoring` | 备份状态监控与告警 | intermediate | ✅ |
+| 14 | `volume-snapshot-location` | 卷快照位置配置 | advanced | ✅ |
+| 15 | `backup-deletion` | 备份清理与保留策略 | beginner | ✅ |
+
+**功能覆盖**:
+- ✅ 安装部署与基础配置
+- ✅ 命名空间和集群级别备份
+- ✅ 定时备份与保留策略
+- ✅ 持久卷快照与数据恢复
+- ✅ 灾难恢复与跨集群迁移
+- ✅ 备份钩子与数据加密
+- ✅ 监控告警与运维管理
+
+</details>
 
 <details>
 <summary><b>📝 KubeSkoop网络诊断工具 (10个)</b> - 点击展开</summary>
@@ -639,6 +673,40 @@ opendemo/
 ```bash
 git clone https://github.com/opendemo/opendemo.git
 cd opendemo
+pip install -e ".[dev]"
+```
+
+### 运行测试
+
+```bash
+python -m pytest tests/
+```
+
+### 运行Demo
+
+```bash
+# Python
+cd opendemo_output/python/logging && python code/logging_demo.py
+
+# Go
+cd opendemo_output/go/go-goroutines && go run .
+
+# Node.js
+cd opendemo_output/nodejs/nodejs-express && npm install && node code/main.js
+```
+
+---
+
+## 📄 许可证
+
+MIT License
+
+---
+
+## 📬 联系方式
+
+- **Issues**: [GitHub Issues](https://github.com/opendemo/opendemo/issues)
+- **Repository**: https://github.com/opendemo/opendemo
 pip install -e ".[dev]"
 ```
 

@@ -1,0 +1,85 @@
+configuration:
+  # 使用AWS provider（MinIO兼容S3 API）
+  provider: aws
+  
+  # 备份存储位置配置
+  backupStorageLocation:
+    name: default
+    bucket: velero
+    prefix: ""
+    config:
+      region: minio
+      s3ForcePathStyle: "true"
+      s3Url: http://minio.velero.svc:9000
+      publicUrl: ""
+  
+  # 卷快照位置配置（可选，用于持久卷快照）
+  volumeSnapshotLocation:
+    name: default
+    config:
+      region: minio
+
+  # 备份保留时间（默认30天）
+  defaultBackupTTL: 720h0m0s
+
+  # 备份存储位置同步间隔
+  backupSyncPeriod: 1m
+
+  # 恢复资源优先级
+  restoreResourcePriorities: "namespaces,persistentvolumes,persistentvolumeclaims,secrets,configmaps,serviceaccounts,services,deployments,statefulsets,daemonsets,jobs,cronjobs"
+
+# 凭证配置
+credentials:
+  useSecret: true
+  name: cloud-credentials
+  secretContents:
+    cloud: |
+      [default]
+      aws_access_key_id = minio
+      aws_secret_access_key = minio123
+
+# 安装AWS插件
+initContainers:
+  - name: velero-plugin-for-aws
+    image: velero/velero-plugin-for-aws:v1.8.2
+    imagePullPolicy: IfNotPresent
+    volumeMounts:
+      - mountPath: /target
+        name: plugins
+
+# Velero Server配置
+image:
+  repository: velero/velero
+  tag: v1.12.3
+  pullPolicy: IfNotPresent
+
+# 资源限制
+resources:
+  requests:
+    cpu: 500m
+    memory: 128Mi
+  limits:
+    cpu: 1000m
+    memory: 512Mi
+
+# 日志级别
+logLevel: info
+
+# 启用Prometheus metrics
+metrics:
+  enabled: true
+  scrapeInterval: 30s
+  scrapeTimeout: 10s
+
+# ServiceAccount配置
+serviceAccount:
+  server:
+    create: true
+    name: velero
+
+# RBAC配置
+rbac:
+  create: true
+
+# 清理配置
+cleanUpCRDs: false

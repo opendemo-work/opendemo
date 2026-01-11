@@ -1,0 +1,22 @@
+{
+  "name": "备份恢复完整流程演示",
+  "language": "kubernetes",
+  "keywords": [
+    "velero",
+    "restore",
+    "recovery",
+    "validation",
+    "kubernetes"
+  ],
+  "description": "演示完整的备份→删除→恢复流程，重点展示恢复验证方法",
+  "difficulty": "beginner",
+  "author": "",
+  "created_at": "2026-01-11T23:45:00.000000",
+  "updated_at": "2026-01-11T23:45:00.000000",
+  "version": "1.0.0",
+  "dependencies": {
+    "kubernetes": ">=1.20",
+    "velero": ">=1.12"
+  },
+  "verified": false
+}

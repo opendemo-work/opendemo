@@ -1,0 +1,22 @@
+{
+  "name": "备份数据加密演示",
+  "language": "kubernetes",
+  "keywords": [
+    "velero",
+    "encryption",
+    "security",
+    "kms",
+    "sensitive-data"
+  ],
+  "description": "演示如何启用备份数据加密，保护敏感资源",
+  "difficulty": "advanced",
+  "author": "",
+  "created_at": "2026-01-11T23:45:00.000000",
+  "updated_at": "2026-01-11T23:45:00.000000",
+  "version": "1.0.0",
+  "dependencies": {
+    "kubernetes": ">=1.20",
+    "velero": ">=1.12"
+  },
+  "verified": false
+}

@@ -1,0 +1,23 @@
+{
+  "name": "Velero基础安装与配置演示",
+  "language": "kubernetes",
+  "keywords": [
+    "velero",
+    "installation",
+    "minio",
+    "backup-storage",
+    "kubernetes"
+  ],
+  "description": "演示如何使用Helm安装Velero，并配置MinIO作为对象存储后端，完成Velero的基础安装和配置",
+  "difficulty": "beginner",
+  "author": "",
+  "created_at": "2026-01-11T23:42:00.000000",
+  "updated_at": "2026-01-11T23:42:00.000000",
+  "version": "1.0.0",
+  "dependencies": {
+    "kubernetes": ">=1.20",
+    "helm": ">=3.0",
+    "kubectl": ">=1.20"
+  },
+  "verified": false
+}

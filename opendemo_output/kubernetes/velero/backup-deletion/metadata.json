@@ -1,0 +1,22 @@
+{
+  "name": "备份清理与保留策略演示",
+  "language": "kubernetes",
+  "keywords": [
+    "velero",
+    "backup-deletion",
+    "retention-policy",
+    "storage-management",
+    "kubernetes"
+  ],
+  "description": "演示如何手动删除备份、配置自动清理策略和管理对象存储空间",
+  "difficulty": "beginner",
+  "author": "",
+  "created_at": "2026-01-11T23:45:00.000000",
+  "updated_at": "2026-01-11T23:45:00.000000",
+  "version": "1.0.0",
+  "dependencies": {
+    "kubernetes": ">=1.20",
+    "velero": ">=1.12"
+  },
+  "verified": false
+}

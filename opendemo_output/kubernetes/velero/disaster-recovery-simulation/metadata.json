@@ -1,0 +1,22 @@
+{
+  "name": "完整灾难恢复演练",
+  "language": "kubernetes",
+  "keywords": [
+    "velero",
+    "disaster-recovery",
+    "rto",
+    "rpo",
+    "failover"
+  ],
+  "description": "模拟完整的灾难场景，演示灾难恢复的完整流程和RTO/RPO测量",
+  "difficulty": "advanced",
+  "author": "",
+  "created_at": "2026-01-11T23:45:00.000000",
+  "updated_at": "2026-01-11T23:45:00.000000",
+  "version": "1.0.0",
+  "dependencies": {
+    "kubernetes": ">=1.20",
+    "velero": ">=1.12"
+  },
+  "verified": false
+}

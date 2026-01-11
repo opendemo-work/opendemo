@@ -1,0 +1,22 @@
+{
+  "name": "定时备份策略配置演示",
+  "language": "kubernetes",
+  "keywords": [
+    "velero",
+    "schedule",
+    "cron",
+    "automated-backup",
+    "kubernetes"
+  ],
+  "description": "演示如何创建定时备份计划，并配置备份保留策略",
+  "difficulty": "intermediate",
+  "author": "",
+  "created_at": "2026-01-11T23:45:00.000000",
+  "updated_at": "2026-01-11T23:45:00.000000",
+  "version": "1.0.0",
+  "dependencies": {
+    "kubernetes": ">=1.20",
+    "velero": ">=1.12"
+  },
+  "verified": false
+}

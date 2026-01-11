@@ -1,0 +1,22 @@
+{
+  "name": "资源过滤与选择器演示",
+  "language": "kubernetes",
+  "keywords": [
+    "velero",
+    "label-selector",
+    "resource-filter",
+    "selective-backup",
+    "kubernetes"
+  ],
+  "description": "演示如何使用标签选择器、资源类型过滤等实现精细化备份",
+  "difficulty": "intermediate",
+  "author": "",
+  "created_at": "2026-01-11T23:45:00.000000",
+  "updated_at": "2026-01-11T23:45:00.000000",
+  "version": "1.0.0",
+  "dependencies": {
+    "kubernetes": ">=1.20",
+    "velero": ">=1.12"
+  },
+  "verified": false
+}
