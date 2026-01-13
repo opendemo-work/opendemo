@@ -19,6 +19,7 @@ from opendemo.core.demo_generator import DemoGenerator
 from opendemo.core.demo_verifier import DemoVerifier
 from opendemo.core.readme_updater import ReadmeUpdater
 from opendemo.core.quality_checker import QualityChecker
+from opendemo.core.demo_list_updater import DemoListUpdater
 from opendemo.utils.formatters import (
     print_success,
     print_error,
@@ -37,6 +38,9 @@ SUPPORTED_LANGUAGES = ["python", "java", "go", "nodejs", "kubernetes"]
 
 # README.md路径
 README_PATH = Path(__file__).parent.parent / "README.md"
+
+# Demo列表文件路径
+DEMO_LIST_PATH = Path(__file__).parent.parent / "demo-list.md"
 
 
 @click.group()
@@ -174,6 +178,31 @@ def _match_demo_in_output(
         return best_match
 
     return None
+
+
+def _update_demo_list(storage):
+    """
+    更新 demo-list.md 文件
+
+    Args:
+        storage: 存储服务
+    """
+    logger = get_logger(__name__)
+
+    try:
+        output_dir = storage.get_output_directory()
+        updater = DemoListUpdater(output_dir, DEMO_LIST_PATH)
+        success = updater.update()
+
+        if success:
+            summary = updater.get_summary()
+            print_info(f"demo-list.md 已更新 ({summary})")
+        else:
+            print_warning("更新 demo-list.md 失败")
+
+    except Exception as e:
+        logger.error(f"Failed to update demo-list.md: {e}")
+        print_warning(f"更新 demo-list.md 失败: {e}")
 
 
 def _display_output_demo(demo_info: Dict[str, Any], demo_path: Path, language: str):
@@ -479,6 +508,9 @@ def get(language, keywords, verify):
 
     _display_demo_result(demo, output_path, repository, verify, verifier, language)
 
+    # 更新 demo-list.md
+    _update_demo_list(storage)
+
 
 @cli.command()
 @click.argument("language", required=False)
@@ -628,6 +660,9 @@ def new(language, topic, difficulty, verify):
 
     # 更新README.md
     _update_readme_after_new(storage, language, demo.name, library_name)
+
+    # 更新 demo-list.md
+    _update_demo_list(storage)
 
 
 @cli.group()
@@ -893,6 +928,46 @@ def _update_status_md(output_dir: Path, status_path: Path):
         r"\*\*检查时间\*\*: \d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}",
         f"**检查时间**: {now}", content
     )
+
+    lang_map = {"python": "Python", "go": "Go", "nodejs": "Node.js", "kubernetes": "Kubernetes"}
+    for lang, name in lang_map.items():
+        data = stats.get(lang, {"base": 0, "libraries": {}, "tools": {}})
+        total = data.get("base", 0) + sum(data.get("libraries", {}).values()) + sum(data.get("tools", {}).values())
+        content = re.sub(rf"\| {name} \| \d+ \|", f"| {name} | {total} |", content)
+
+    content = re.sub(
+        r"\| \*\*总计\*\* \| \*\*\d+\*\* \|",
+        f"| **总计** | **{totals['grand_total']}** |", content
+    )
+
+    with open(status_path, "w", encoding="utf-8") as f:
+        f.write(content)
+
+
+def main():
+    """主入口"""
+    try:
+        cli()
+    except KeyboardInterrupt:
+        print_warning("\n操作已取消")
+        sys.exit(0)
+    except Exception as e:
+        print_error(f"发生错误: {e}")
+        logger = get_logger(__name__)
+        logger.exception("Unexpected error")
+        sys.exit(1)
+
+
+if __name__ == "__main__":
+    main()
+    main()
+
+
+if __name__ == "__main__":
+    main()
+
+if __name__ == "__main__":
+    main()
 
     lang_map = {"python": "Python", "go": "Go", "nodejs": "Node.js", "kubernetes": "Kubernetes"}
     for lang, name in lang_map.items():
