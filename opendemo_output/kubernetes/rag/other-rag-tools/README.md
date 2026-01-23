@@ -20,12 +20,12 @@
 
 ## 配置文件
 
-- `other-rag-tools-deployment.yaml` - 其他 RAG 工具部署配置
-- `other-rag-tools-service.yaml` - 其他 RAG 工具服务暴露配置
-- `configmap.yaml` - 配置管理
-- `secret.yaml` - 密钥管理
-- `rbac.yaml` - 权限控制
-- `metadata.json` - 案例元数据
+- `manifests/other-rag-tools-deployment.yaml` - 其他 RAG 工具部署配置
+- `manifests/other-rag-tools-service.yaml` - 其他 RAG 工具服务暴露配置
+- `manifests/configmap.yaml` - 配置管理
+- `manifests/secret.yaml` - 密钥管理
+- `manifests/rbac.yaml` - 权限控制
+- `meta/metadata.json` - 案例元数据（CLI / 工具使用）
 
 ## 部署步骤
 
@@ -46,11 +46,8 @@ kubectl create secret generic other-rag-tools-secrets \
   --from-literal=vector-db-api-key=YOUR_VECTOR_DB_API_KEY \
   --namespace other-rag-tools-system
 
-# 2. 部署其他 RAG 工具
-kubectl apply -f rbac.yaml
-kubectl apply -f configmap.yaml
-kubectl apply -f other-rag-tools-deployment.yaml
-kubectl apply -f other-rag-tools-service.yaml
+# 2. 部署其他 RAG 工具（一次性应用所有清单）
+kubectl apply -f manifests/
 
 # 3. 验证部署
 kubectl get pods -n other-rag-tools-system

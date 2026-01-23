@@ -15,7 +15,6 @@
 - [快速开始](#-快速开始)
 - [命令参考](#-命令参考)
 - [Demo统计](#-demo统计)
-- [Demo完整清单](#-demo完整清单)
 - [使用场景](#-使用场景)
 - [配置说明](#-配置说明)
 - [项目架构](#-项目架构)
@@ -23,6 +22,17 @@
 - [贡献指南](#-贡献指南)
 - [许可证](#-许可证)
 - [联系方式](#-联系方式)
+
+## 📖 文档中心
+
+| 文档 | 说明 |
+|------|------|
+| [文档索引](docs/README.md) | 完整文档导航 |
+| [Demo 完整清单](docs/demo-list.md) | 所有可用 Demo 列表 |
+| [项目状态](docs/status/project.md) | 测试通过率、功能清单 |
+| [Kubeflow 状态](docs/status/kubeflow.md) | Kubeflow 组件开发进度 |
+| [Kubernetes 运行指南](docs/guides/kubernetes-run.md) | K8s 案例运行说明 |
+| [测试报告](docs/reports/) | 各模块测试报告 |
 
 ---
 
@@ -198,12 +208,16 @@ opendemo check --report
 | 🐳 **Docker** | 0 | troubleshooting(1) | 1 | ✅ 全部通过 |
 | 📦 **Containerd** | 0 | troubleshooting(1) | 1 | ✅ 全部通过 |
 | 🏃 **Runc** | 0 | troubleshooting(1) | 1 | ✅ 全部通过 |
-| ⎈ **Kubernetes** | 0 | fluid(1), kubeflow(42), kubeskoop(10), operator-framework(2), velero(15), operator(1), crd(1), rbac(1), prometheus(1), grafana(1), efk(1), elk(1), loki(1), jaeger(1), zipkin(1), opentelemetry(1), troubleshooting(8), network(1), storage(1), ai-infra(1), llmops(1), agent(9), mcp(9), rag(3), n8n(1), vibe-coding(4) | 119 | ✅ 全部通过 |
+| ⎈ **Kubernetes** | 0 | fluid(1), kubeflow(42), kubeskoop(10), operator-framework(2), velero(15), operator(1), crd(1), rbac(1), prometheus(1), grafana(1), efk(1), elk(1), loki(1), jaeger(1), zipkin(1), opentelemetry(1), troubleshooting(8), network(1), storage(1), ai-infra(1), llmops(1), agent(9), mcp(9), rag(3), n8n(1, 含本地部署), vibe-coding(4) | 119 | ✅ 全部通过 |
 | **总计** | **210** | **150** | **360** | ✅ |
+
+> 说明：Kubernetes 中 rag(3) 和 n8n(1) 目录下的案例已采用统一的 `README + manifests + meta` 目录结构，便于学习与自动化工具使用。
 
 ---
 
-## 📚 Demo完整清单
+## 📚 Demo清单概览
+
+> 完整清单详见 [docs/demo-list.md](docs/demo-list.md)
 
 ### 🐍 Python (77个)
 
@@ -735,7 +749,7 @@ kubectl get pods
 - 部分Demo包含完整README和配置文件
 - 所有Demo均包含metadata.json元数据
 
-**更多信息**: 查看 [STATUS_KUBEFLOW.md](STATUS_KUBEFLOW.md) 了解详细进度
+**更多信息**: 查看 [Kubeflow 状态](docs/status/kubeflow.md) 了解详细进度
 
 </details>
 
@@ -1201,6 +1215,61 @@ kubectl get pods
 
 </details>
 
+<details>
+<summary><b>🔄 n8n工作流自动化 (1个)</b> - 点击展开</summary>
+
+> 路径: `opendemo_output/kubernetes/n8n/`
+
+| # | Demo名称 | 功能说明 | 难度 | 状态 |
+|---|---------|---------|------|------|
+| 1 | `basic-n8n` | n8n工作流平台部署，支持本地部署和Kubernetes部署 | intermediate | ✅ |
+
+**部署方式**:
+
+| 方式 | 适用场景 | 文档 |
+|------|---------|------|
+| 本地部署 (Docker) | 个人学习、开发测试 | [LOCAL_DEPLOYMENT.md](opendemo_output/kubernetes/n8n/local/LOCAL_DEPLOYMENT.md) |
+| 本地部署 (npm) | 轻量级、开发调试 | [LOCAL_DEPLOYMENT.md](opendemo_output/kubernetes/n8n/local/LOCAL_DEPLOYMENT.md) |
+| Kubernetes部署 | 生产环境、高可用 | [README.md](opendemo_output/kubernetes/n8n/README.md) |
+
+**快速开始（本地Docker）**:
+
+Windows:
+```powershell
+docker run -d --name n8n -p 5678:5678 -v C:\n8n-data:/home/node/.n8n n8nio/n8n
+```
+
+Mac/Linux:
+```bash
+docker run -d --name n8n -p 5678:5678 -v ~/.n8n:/home/node/.n8n n8nio/n8n
+```
+
+访问地址: http://localhost:5678
+
+**功能覆盖**:
+- ✅ 工作流创建与管理
+- ✅ 400+ 集成节点
+- ✅ Webhook 触发器
+- ✅ 定时任务调度
+- ✅ 数据处理与转换
+- ✅ AI/ChatGPT 集成
+- ✅ 邮件/Slack/企业微信通知
+
+**工作流案例**:
+- 定时发送邮件提醒
+- Webhook 数据接收与处理
+- GitHub 仓库监控与通知
+- 自动化数据同步
+- 表单数据处理
+- AI 问答机器人
+
+**版本兼容性**:
+- Windows 10/11 ✅
+- macOS 12+ ✅
+- Kubernetes v1.23.x+ ✅
+
+</details>
+
 ---
 
 ## 🎯 使用场景
@@ -1335,13 +1404,16 @@ opendemo/
 │   ├── unit/              # 单元测试
 │   ├── integration/       # 集成测试
 │   └── e2e/               # 端到端测试
-├── docs/                  # 文档
+├── docs/                  # 文档目录
+│   ├── README.md          # 文档索引
+│   ├── demo-list.md       # Demo完整清单
+│   ├── status/            # 项目状态
+│   ├── reports/           # 测试报告
+│   └── guides/            # 使用指南
 ├── check/                 # 质量检查报告
 ├── README.md              # 项目说明
-├── STATUS.md              # 项目状态
-├── STATUS_KUBEFLOW.md     # Kubeflow进度
 ├── LICENSE                # 许可证
-├── setup.py               # 安装配置
+├── pyproject.toml         # 项目配置
 └── requirements.txt       # 依赖项
 ```
 

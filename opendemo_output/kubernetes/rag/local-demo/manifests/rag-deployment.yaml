@@ -1,0 +1,68 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rag-platform
+  namespace: rag-system
+  labels:
+    app: rag-platform
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rag-platform
+  template:
+    metadata:
+      labels:
+        app: rag-platform
+    spec:
+      serviceAccountName: rag-platform-sa
+      containers:
+      - name: rag-platform
+        image: rag-platform:latest
+        ports:
+        - containerPort: 8080
+        env:
+        - name: CONFIG_PATH
+          value: /etc/config/config.yaml
+        - name: LLM_API_KEY
+          valueFrom:
+            secretKeyRef:
+              name: rag-platform-secrets
+              key: llm-api-key
+        - name: VECTOR_DB_API_KEY
+          valueFrom:
+            secretKeyRef:
+              name: rag-platform-secrets
+              key: vector-db-api-key
+        volumeMounts:
+        - name: config-volume
+          mountPath: /etc/config
+        - name: secrets-volume
+          mountPath: /etc/secrets
+          readOnly: true
+        resources:
+          requests:
+            cpu: "1"
+            memory: "2Gi"
+          limits:
+            cpu: "2"
+            memory: "4Gi"
+        livenessProbe:
+          httpGet:
+            path: /api/v1/health
+            port: 8080
+          initialDelaySeconds: 30
+          periodSeconds: 30
+        readinessProbe:
+          httpGet:
+            path: /api/v1/health
+            port: 8080
+          initialDelaySeconds: 10
+          periodSeconds: 10
+      volumes:
+      - name: config-volume
+        configMap:
+          name: rag-platform-config
+      - name: secrets-volume
+        secret:
+          secretName: rag-platform-secrets

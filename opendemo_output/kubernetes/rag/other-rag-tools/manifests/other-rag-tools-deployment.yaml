@@ -1,0 +1,73 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: other-rag-tools
+  namespace: other-rag-tools-system
+  labels:
+    app: other-rag-tools
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: other-rag-tools
+  template:
+    metadata:
+      labels:
+        app: other-rag-tools
+    spec:
+      serviceAccountName: other-rag-tools-sa
+      containers:
+      - name: other-rag-tools
+        image: other-rag-tools:latest
+        ports:
+        - containerPort: 8080
+        env:
+        - name: CONFIG_PATH
+          value: /etc/config/config.yaml
+        - name: LLM_API_KEY
+          valueFrom:
+            secretKeyRef:
+              name: other-rag-tools-secrets
+              key: llm-api-key
+        - name: VECTOR_DB_API_KEY
+          valueFrom:
+            secretKeyRef:
+              name: other-rag-tools-secrets
+              key: vector-db-api-key
+        volumeMounts:
+        - name: config-volume
+          mountPath: /etc/config
+        - name: secrets-volume
+          mountPath: /etc/secrets
+          readOnly: true
+        - name: other-rag-tools-data
+          mountPath: /app/data
+        resources:
+          requests:
+            cpu: "1"
+            memory: "2Gi"
+          limits:
+            cpu: "2"
+            memory: "4Gi"
+        livenessProbe:
+          httpGet:
+            path: /api/v1/health
+            port: 8080
+          initialDelaySeconds: 30
+          periodSeconds: 30
+        readinessProbe:
+          httpGet:
+            path: /api/v1/health
+            port: 8080
+          initialDelaySeconds: 10
+          periodSeconds: 10
+      volumes:
+      - name: config-volume
+        configMap:
+          name: other-rag-tools-config
+      - name: secrets-volume
+        secret:
+          secretName: other-rag-tools-secrets
+      - name: other-rag-tools-data
+        persistentVolumeClaim:
+          claimName: other-rag-tools-data-pvc

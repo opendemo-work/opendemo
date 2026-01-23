@@ -1,0 +1,90 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: n8n
+  namespace: n8n-system
+  labels:
+    app: n8n
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: n8n
+  template:
+    metadata:
+      labels:
+        app: n8n
+    spec:
+      serviceAccountName: n8n-sa
+      containers:
+      - name: n8n
+        image: n8nio/n8n:latest
+        ports:
+        - containerPort: 5678
+        env:
+        - name: N8N_HOST
+          value: "0.0.0.0"
+        - name: N8N_PORT
+          value: "5678"
+        - name: N8N_PROTOCOL
+          value: "http"
+        - name: N8N_ENCRYPTION_KEY
+          valueFrom:
+            secretKeyRef:
+              name: n8n-secrets
+              key: n8n-encryption-key
+        - name: DB_TYPE
+          value: "postgres"
+        - name: DB_POSTGRESDB
+          value: "n8n"
+        - name: DB_POSTGRES_HOST
+          value: "postgres"
+        - name: DB_POSTGRES_PORT
+          value: "5432"
+        - name: DB_POSTGRES_USER
+          valueFrom:
+            secretKeyRef:
+              name: n8n-secrets
+              key: postgres-user
+        - name: DB_POSTGRES_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: n8n-secrets
+              key: postgres-password
+        volumeMounts:
+        - name: config-volume
+          mountPath: /etc/config
+        - name: secrets-volume
+          mountPath: /etc/secrets
+          readOnly: true
+        - name: n8n-data
+          mountPath: /home/node/.n8n
+        resources:
+          requests:
+            cpu: "1"
+            memory: "2Gi"
+          limits:
+            cpu: "2"
+            memory: "4Gi"
+        livenessProbe:
+          httpGet:
+            path: /healthz
+            port: 5678
+          initialDelaySeconds: 30
+          periodSeconds: 30
+        readinessProbe:
+          httpGet:
+            path: /healthz
+            port: 5678
+          initialDelaySeconds: 10
+          periodSeconds: 10
+      volumes:
+      - name: config-volume
+        configMap:
+          name: n8n-config
+      - name: secrets-volume
+        secret:
+          secretName: n8n-secrets
+      - name: n8n-data
+        persistentVolumeClaim:
+          claimName: n8n-data-pvc

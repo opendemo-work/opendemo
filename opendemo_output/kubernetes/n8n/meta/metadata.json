@@ -1,0 +1,45 @@
+{
+  "name": "basic-n8n",
+  "version": "1.1.0",
+  "description": "n8n工作流平台部署 - 支持本地部署(Windows/Mac)和Kubernetes部署",
+  "author": "opendemo",
+  "difficulty": "intermediate",
+  "category": "n8n",
+  "tags": ["n8n", "automation", "workflow", "kubernetes", "docker", "local-deployment"],
+  "kubernetes_version": "v1.23+",
+  "created_at": "2026-01-21",
+  "updated_at": "2026-01-22",
+  "files": [
+    "README.md",
+    "local/LOCAL_DEPLOYMENT.md",
+    "workflows/WORKFLOW_EXAMPLES.md",
+    "manifests/n8n-deployment.yaml",
+    "manifests/n8n-service.yaml",
+    "manifests/configmap.yaml",
+    "manifests/secret.yaml",
+    "manifests/rbac.yaml",
+    "meta/metadata.json"
+  ],
+  "services": [
+    {
+      "name": "n8n",
+      "type": "LoadBalancer",
+      "port": 5678
+    }
+  ],
+  "dependencies": [
+    "postgres",
+    "persistent-storage"
+  ],
+  "local_deployment": {
+    "platforms": ["windows", "macos", "linux"],
+    "methods": ["docker", "npm", "homebrew"],
+    "docker_image": "n8nio/n8n:latest",
+    "default_port": 5678
+  },
+  "health_check": {
+    "endpoint": "/healthz",
+    "interval": "30s",
+    "timeout": "10s"
+  }
+}

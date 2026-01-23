@@ -1,0 +1,73 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: maxkb
+  namespace: maxkb-system
+  labels:
+    app: maxkb
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: maxkb
+  template:
+    metadata:
+      labels:
+        app: maxkb
+    spec:
+      serviceAccountName: maxkb-sa
+      containers:
+      - name: maxkb
+        image: maxkb:latest
+        ports:
+        - containerPort: 8080
+        env:
+        - name: CONFIG_PATH
+          value: /etc/config/config.yaml
+        - name: LLM_API_KEY
+          valueFrom:
+            secretKeyRef:
+              name: maxkb-secrets
+              key: llm-api-key
+        - name: VECTOR_DB_API_KEY
+          valueFrom:
+            secretKeyRef:
+              name: maxkb-secrets
+              key: vector-db-api-key
+        volumeMounts:
+        - name: config-volume
+          mountPath: /etc/config
+        - name: secrets-volume
+          mountPath: /etc/secrets
+          readOnly: true
+        - name: maxkb-data
+          mountPath: /app/data
+        resources:
+          requests:
+            cpu: "1"
+            memory: "2Gi"
+          limits:
+            cpu: "2"
+            memory: "4Gi"
+        livenessProbe:
+          httpGet:
+            path: /api/v1/health
+            port: 8080
+          initialDelaySeconds: 30
+          periodSeconds: 30
+        readinessProbe:
+          httpGet:
+            path: /api/v1/health
+            port: 8080
+          initialDelaySeconds: 10
+          periodSeconds: 10
+      volumes:
+      - name: config-volume
+        configMap:
+          name: maxkb-config
+      - name: secrets-volume
+        secret:
+          secretName: maxkb-secrets
+      - name: maxkb-data
+        persistentVolumeClaim:
+          claimName: maxkb-data-pvc

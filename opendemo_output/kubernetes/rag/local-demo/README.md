@@ -20,12 +20,12 @@
 
 ## 配置文件
 
-- `rag-deployment.yaml` - RAG 平台部署配置
-- `rag-service.yaml` - RAG 平台服务暴露配置
-- `configmap.yaml` - 配置管理
-- `secret.yaml` - 密钥管理
-- `rbac.yaml` - 权限控制
-- `metadata.json` - 案例元数据
+- `manifests/rag-deployment.yaml` - RAG 平台部署配置
+- `manifests/rag-service.yaml` - RAG 平台服务暴露配置
+- `manifests/configmap.yaml` - 配置管理
+- `manifests/secret.yaml` - 密钥管理
+- `manifests/rbac.yaml` - 权限控制
+- `meta/metadata.json` - 案例元数据（CLI / 工具使用）
 
 ## 部署步骤
 
@@ -46,11 +46,8 @@ kubectl create secret generic rag-platform-secrets \
   --from-literal=vector-db-api-key=YOUR_VECTOR_DB_API_KEY \
   --namespace rag-system
 
-# 2. 部署 RAG 平台
-kubectl apply -f rbac.yaml
-kubectl apply -f configmap.yaml
-kubectl apply -f rag-deployment.yaml
-kubectl apply -f rag-service.yaml
+# 2. 部署 RAG 平台（一次性应用所有清单）
+kubectl apply -f manifests/
 
 # 3. 验证部署
 kubectl get pods -n rag-system

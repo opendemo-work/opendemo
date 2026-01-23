@@ -20,12 +20,12 @@
 
 ## 配置文件
 
-- `maxkb-deployment.yaml` - MaxKB 部署配置
-- `maxkb-service.yaml` - MaxKB 服务暴露配置
-- `configmap.yaml` - 配置管理
-- `secret.yaml` - 密钥管理
-- `rbac.yaml` - 权限控制
-- `metadata.json` - 案例元数据
+- `manifests/maxkb-deployment.yaml` - MaxKB 部署配置
+- `manifests/maxkb-service.yaml` - MaxKB 服务暴露配置
+- `manifests/configmap.yaml` - 配置管理
+- `manifests/secret.yaml` - 密钥管理
+- `manifests/rbac.yaml` - 权限控制
+- `meta/metadata.json` - 案例元数据（CLI / 工具使用）
 
 ## 部署步骤
 
@@ -46,11 +46,8 @@ kubectl create secret generic maxkb-secrets \
   --from-literal=vector-db-api-key=YOUR_VECTOR_DB_API_KEY \
   --namespace maxkb-system
 
-# 2. 部署 MaxKB
-kubectl apply -f rbac.yaml
-kubectl apply -f configmap.yaml
-kubectl apply -f maxkb-deployment.yaml
-kubectl apply -f maxkb-service.yaml
+# 2. 部署 MaxKB（一次性应用所有清单）
+kubectl apply -f manifests/
 
 # 3. 验证部署
 kubectl get pods -n maxkb-system
