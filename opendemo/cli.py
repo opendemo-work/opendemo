@@ -526,7 +526,6 @@ def search(language, keywords):
     # 初始化服务
     config = ConfigService()
     storage = StorageService(config)
-    repository = DemoRepository(storage, config)
 
     # 获取输出目录
     output_dir = storage.get_output_directory()
@@ -925,63 +924,24 @@ def _update_status_md(output_dir: Path, status_path: Path):
 
     now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     content = re.sub(
-        r"\*\*检查时间\*\*: \d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}",
-        f"**检查时间**: {now}", content
+        r"\*\*检查时间\*\*: \d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}", f"**检查时间**: {now}", content
     )
 
     lang_map = {"python": "Python", "go": "Go", "nodejs": "Node.js", "kubernetes": "Kubernetes"}
     for lang, name in lang_map.items():
         data = stats.get(lang, {"base": 0, "libraries": {}, "tools": {}})
-        total = data.get("base", 0) + sum(data.get("libraries", {}).values()) + sum(data.get("tools", {}).values())
-        content = re.sub(rf"\| {name} \| \d+ \|", f"| {name} | {total} |", content)
+        total = (
+            data.get("base", 0)
+            + sum(data.get("libraries", {}).values())
+            + sum(data.get("tools", {}).values())
+        )
+        pattern = rf"\| {name} \| \d+ \|"
+        replacement = f"| {name} | {total} |"
+        content = re.sub(pattern, replacement, content)
 
     content = re.sub(
-        r"\| \*\*总计\*\* \| \*\*\d+\*\* \|",
-        f"| **总计** | **{totals['grand_total']}** |", content
+        r"\| \*\*总计\*\* \| \*\*\d+\*\* \|", f"| **总计** | **{totals['grand_total']}** |", content
     )
-
-    with open(status_path, "w", encoding="utf-8") as f:
-        f.write(content)
-
-
-def main():
-    """主入口"""
-    try:
-        cli()
-    except KeyboardInterrupt:
-        print_warning("\n操作已取消")
-        sys.exit(0)
-    except Exception as e:
-        print_error(f"发生错误: {e}")
-        logger = get_logger(__name__)
-        logger.exception("Unexpected error")
-        sys.exit(1)
-
-
-if __name__ == "__main__":
-    main()
-    main()
-
-
-if __name__ == "__main__":
-    main()
-
-if __name__ == "__main__":
-    main()
-
-    lang_map = {"python": "Python", "go": "Go", "nodejs": "Node.js", "kubernetes": "Kubernetes"}
-    for lang, name in lang_map.items():
-        data = stats.get(lang, {"base": 0, "libraries": {}, "tools": {}})
-        total = data.get("base", 0) + sum(data.get("libraries", {}).values()) + sum(data.get("tools", {}).values())
-        content = re.sub(rf"\| {name} \| \d+ \|", f"| {name} | {total} |", content)
-
-    content = re.sub(
-        r"\| \*\*总计\*\* \| \*\*\d+\*\* \|",
-        f"| **总计** | **{totals['grand_total']}** |", content
-    )
-
-    with open(status_path, "w", encoding="utf-8") as f:
-        f.write(content)
 
 
 def main():

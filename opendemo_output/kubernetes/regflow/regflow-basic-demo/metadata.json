@@ -1,0 +1,26 @@
+{
+  "name": "regflow-basic-demo",
+  "title": "RegFlow 基础演示",
+  "language": "kubernetes",
+  "keywords": [
+    "regflow",
+    "kubernetes",
+    "workflow",
+    "registry",
+    "container",
+    "automation"
+  ],
+  "description": "演示如何使用 RegFlow - 一�?Kubernetes 原生的容器镜像注册表工作流引擎，用于自动化管理容器镜像注册表相关的任�?,
+  "difficulty": "intermediate",
+  "author": "OpenDemo Community",
+  "created_at": "2026-01-27T00:00:00",
+  "updated_at": "2026-01-27T00:00:00",
+  "version": "1.0.0",
+  "dependencies": {
+    "kubernetes": ">=1.19",
+    "helm": ">=3.0"
+  },
+  "category": "kubernetes-workflow",
+  "verified": false,
+  "library": "regflow"
+}

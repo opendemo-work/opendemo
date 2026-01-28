@@ -62,10 +62,10 @@ def print_demo_result(demo_info: Dict[str, Any]):
     verified = demo_info.get("verified", False)
     exec_time = demo_info.get("execution_time", "N/A")
     if verified:
-        console.print(f"\n[bold]验证状态:[/bold] [green][OK] 已验证通过[/green]")
+        console.print("\n[bold]验证状态:[/bold] [green][OK] 已验证通过[/green]")
         console.print(f"[bold]执行时间:[/bold] {exec_time}")
     else:
-        console.print(f"\n[bold]验证状态:[/bold] [yellow]未启用验证[/yellow]")
+        console.print("\n[bold]验证状态:[/bold] [yellow]未启用验证[/yellow]")
 
     # 快速开始
     quick_start = demo_info.get("quick_start", [])
@@ -123,7 +123,7 @@ def print_search_results(results: List[Dict[str, Any]], total: int = None):
         )
 
     console.print(table)
-    console.print(f"\n使用 [bold]'opendemo get <语言> <关键字>'[/bold] 获取具体demo\n")
+    console.print("\n使用 [bold]'opendemo get <语言> <关键字>'[/bold] 获取具体demo\n")
 
 
 def print_config_list(config: Dict[str, Any]):

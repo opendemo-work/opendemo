@@ -2,7 +2,7 @@
   "name": "basic-llmops",
   "language": "kubernetes",
   "category": "llmops",
-  "description": "Kubernetes LLMOps实战指南，涵盖大模型训练微调、推理优化、数据管理、监控和安全等内容",
+  "description": "Kubernetes LLMOps实战指南，涵盖大模型训练微调、推理优化、数据管理、监控和安全等内�?,
   "keywords": [
     "kubernetes",
     "llmops",

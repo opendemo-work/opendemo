@@ -3,7 +3,7 @@
   "title": "Kubernetes资源不足问题排查实战",
   "language": "kubernetes",
   "keywords": ["kubernetes", "resource", "shortage", "cpu", "memory", "disk", "troubleshooting"],
-  "description": "全面的Kubernetes资源不足问题排查指南，包含CPU、内存、磁盘等资源不足情况的排查方法和解决方案。",
+  "description": "全面的Kubernetes资源不足问题排查指南，包含CPU、内存、磁盘等资源不足情况的排查方法和解决方案�?,
   "difficulty": "intermediate",
   "author": "Kubernetes专家团队",
   "created_at": "2026-01-20T00:00:00Z",

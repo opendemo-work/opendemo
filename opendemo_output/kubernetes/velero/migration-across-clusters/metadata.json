@@ -1,5 +1,5 @@
 {
-  "name": "跨集群资源迁移演示",
+  "name": "跨集群资源迁移演�?,
   "language": "kubernetes",
   "keywords": [
     "velero",
@@ -8,7 +8,7 @@
     "workload-portability",
     "kubernetes"
   ],
-  "description": "演示如何使用Velero在不同Kubernetes集群间迁移工作负载",
+  "description": "演示如何使用Velero在不同Kubernetes集群间迁移工作负�?,
   "difficulty": "advanced",
   "author": "",
   "created_at": "2026-01-11T23:45:00.000000",

@@ -8,7 +8,7 @@
     "inference",
     "kubernetes"
   ],
-  "description": "一个展示如何在Kubernetes上使用KServe实现多模型服务的可执行演示",
+  "description": "一个展示如何在Kubernetes上使用KServe实现多模型服务的可执行演�?,
   "difficulty": "intermediate",
   "author": "",
   "created_at": "2026-01-07T18:15:23.233023",

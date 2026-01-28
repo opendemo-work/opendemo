@@ -1,14 +1,14 @@
 {
-  "name": "Helm基础安装与使用演示",
+  "name": "Helm基础安装与使用演�?,
   "language": "kubernetes",
   "keywords": [
     "helm",
     "kubernetes",
     "charts",
     "部署",
-    "包管理"
+    "包管�?
   ],
-  "description": "一个展示Helm在Kubernetes中基本安装和使用的入门级演示项目。",
+  "description": "一个展示Helm在Kubernetes中基本安装和使用的入门级演示项目�?,
   "difficulty": "beginner",
   "author": "",
   "created_at": "2025-12-13T13:42:58.008619",

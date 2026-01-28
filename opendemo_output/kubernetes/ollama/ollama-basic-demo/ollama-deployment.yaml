@@ -1,0 +1,149 @@
+# Ollama 服务部署配置
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: ollama-system
+---
+# 模型存储 PVC
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: ollama-models-pvc
+  namespace: ollama-system
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 50Gi
+---
+# Ollama 服务部署
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ollama
+  namespace: ollama-system
+  labels:
+    app: ollama
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ollama
+  template:
+    metadata:
+      labels:
+        app: ollama
+    spec:
+      containers:
+      - name: ollama
+        image: ollama/ollama:latest
+        ports:
+        - containerPort: 11434
+        env:
+        - name: OLLAMA_HOST
+          value: "0.0.0.0"
+        - name: OLLAMA_PORT
+          value: "11434"
+        - name: OLLAMA_NUM_PARALLEL
+          value: "1"
+        - name: OLLAMA_MAX_LOADED_MODELS
+          value: "1"
+        resources:
+          requests:
+            memory: "8Gi"
+            cpu: "2000m"
+          limits:
+            memory: "16Gi"
+            cpu: "4000m"
+            # 如果有GPU支持，取消下面的注释
+            # nvidia.com/gpu: 1
+        volumeMounts:
+        - name: models
+          mountPath: /root/.ollama
+        livenessProbe:
+          httpGet:
+            path: /api/tags
+            port: 11434
+          initialDelaySeconds: 30
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /api/tags
+            port: 11434
+          initialDelaySeconds: 5
+          periodSeconds: 5
+      volumes:
+      - name: models
+        persistentVolumeClaim:
+          claimName: ollama-models-pvc
+---
+# Ollama 服务暴露
+apiVersion: v1
+kind: Service
+metadata:
+  name: ollama-service
+  namespace: ollama-system
+spec:
+  selector:
+    app: ollama
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 11434
+      nodePort: 31434
+  type: NodePort
+---
+# Ollama 服务入口
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ollama-ingress
+  namespace: ollama-system
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+  - host: ollama.local
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: ollama-service
+            port:
+              number: 80
+---
+# Ollama 模型加载 Job
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: ollama-model-loader
+  namespace: ollama-system
+spec:
+  template:
+    spec:
+      containers:
+      - name: model-loader
+        image: ollama/ollama:latest
+        command: ["/bin/sh", "-c"]
+        args:
+        - |
+          # 拉取模型
+          ollama pull llama3
+          ollama pull mistral
+          
+          # 检查可用模型
+          ollama list
+        env:
+        - name: OLLAMA_HOST
+          value: "ollama-service.ollama-system.svc.cluster.local"
+        volumeMounts:
+        - name: models
+          mountPath: /root/.ollama
+      restartPolicy: Never
+      volumes:
+      - name: models
+        persistentVolumeClaim:
+          claimName: ollama-models-pvc

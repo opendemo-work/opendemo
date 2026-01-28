@@ -3,7 +3,7 @@
   "title": "Kubernetes网络实战指南",
   "language": "kubernetes",
   "keywords": ["kubernetes", "network", "pod-network", "service", "ingress", "network-policy", "cni", "dns"],
-  "description": "全面的Kubernetes网络实战指南，涵盖Pod网络、Service网络、Ingress网络、Network Policy、CNI插件配置和DNS解析等内容。",
+  "description": "全面的Kubernetes网络实战指南，涵盖Pod网络、Service网络、Ingress网络、Network Policy、CNI插件配置和DNS解析等内容�?,
   "difficulty": "intermediate",
   "author": "Kubernetes专家团队",
   "created_at": "2026-01-20T00:00:00Z",

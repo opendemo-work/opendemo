@@ -1,0 +1,28 @@
+{
+  "name": "ollama-basic-demo",
+  "title": "Ollama 基础演示",
+  "language": "kubernetes",
+  "keywords": [
+    "ollama",
+    "llm",
+    "large-language-model",
+    "ai",
+    "ml",
+    "local-ai",
+    "model-serving",
+    "kubernetes"
+  ],
+  "description": "演示如何�?Kubernetes 环境中部署和使用 Ollama - 一个用于在本地运行大型语言模型的工具，支持多种流行开源模�?,
+  "difficulty": "intermediate",
+  "author": "OpenDemo Community",
+  "created_at": "2026-01-27T00:00:00",
+  "updated_at": "2026-01-27T00:00:00",
+  "version": "1.0.0",
+  "dependencies": {
+    "kubernetes": ">=1.19",
+    "ollama": ">=0.1"
+  },
+  "category": "ai-infrastructure",
+  "verified": false,
+  "library": "ollama"
+}

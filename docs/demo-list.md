@@ -1,6 +1,6 @@
 # Demo 列表
 
-> 自动生成于 2026-01-14 11:55:59
+> 自动生成于 2026-01-28 01:00:53
 
 本文件记录了所有可用的 Demo，由 CLI 操作后自动更新。
 
@@ -8,26 +8,51 @@
 
 | 语言 | 基础 Demo | 第三方库/工具 | 总计 |
 |------|----------|--------------|------|
-| 🐍 Python | 51 | 26 | 77 |
+| 🐍 Python | 51 | 27 | 78 |
 | 🐹 Go | 92 | 1 | 93 |
 | 🟢 Node.js | 67 | 0 | 67 |
-| ⎈ Kubernetes | 0 | 70 | 70 |
-| **总计** | - | - | **307** |
+| ⎈ Kubernetes | 0 | 122 | 122 |
+| **总计** | - | - | **360** |
 
 ## 📑 目录
 
 - [🐍 Python](#python)
   - [iterator](#python-iterator)
+  - [langgraph](#python-langgraph)
   - [numpy](#python-numpy)
 - [🐹 Go](#go)
   - [context](#go-context)
 - [🟢 Node.js](#nodejs)
 - [⎈ Kubernetes](#kubernetes)
+  - [agent](#kubernetes-agent)
+  - [ai-infra](#kubernetes-ai-infra)
+  - [crd](#kubernetes-crd)
+  - [efk](#kubernetes-efk)
+  - [elk](#kubernetes-elk)
   - [fluid](#kubernetes-fluid)
+  - [gemini](#kubernetes-gemini)
+  - [grafana](#kubernetes-grafana)
+  - [jaeger](#kubernetes-jaeger)
   - [kubeflow](#kubernetes-kubeflow)
   - [kubeskoop](#kubernetes-kubeskoop)
+  - [llmops](#kubernetes-llmops)
+  - [loki](#kubernetes-loki)
+  - [mcp](#kubernetes-mcp)
+  - [modelscope](#kubernetes-modelscope)
+  - [n8n](#kubernetes-n8n)
+  - [network](#kubernetes-network)
+  - [ollama](#kubernetes-ollama)
+  - [opentelemetry](#kubernetes-opentelemetry)
+  - [operator](#kubernetes-operator)
   - [operator-framework](#kubernetes-operator-framework)
+  - [prometheus](#kubernetes-prometheus)
+  - [rag](#kubernetes-rag)
+  - [rbac](#kubernetes-rbac)
+  - [regflow](#kubernetes-regflow)
+  - [storage](#kubernetes-storage)
+  - [troubleshooting](#kubernetes-troubleshooting)
   - [velero](#kubernetes-velero)
+  - [zipkin](#kubernetes-zipkin)
 
 ## 🐍 Python
 <a name="python"></a>
@@ -96,6 +121,13 @@
 | # | 名称 | 描述 | 目录 |
 |---|------|------|------|
 | 1 | Python迭代器实战演示 | 通过实际示例深入理解Python中迭代器的工作原理和使用场景。 | `iterator` |
+
+#### langgraph
+<a name="python-langgraph"></a>
+
+| # | 名称 | 描述 | 目录 |
+|---|------|------|------|
+| 1 | basic-agent |  | `basic-agent` |
 
 #### numpy
 <a name="python-numpy"></a>
@@ -317,6 +349,49 @@
 
 ### 工具 Demo
 
+#### agent
+<a name="kubernetes-agent"></a>
+
+| # | 名称 | 描述 | 目录 |
+|---|------|------|------|
+| 1 | alibaba |  | `alibaba` |
+| 2 | amazon |  | `amazon` |
+| 3 | bytedance |  | `bytedance` |
+| 4 | google |  | `google` |
+| 5 | meta |  | `meta` |
+| 6 | microsoft |  | `microsoft` |
+| 7 | openai |  | `openai` |
+| 8 | others |  | `others` |
+| 9 | tencent |  | `tencent` |
+
+#### ai-infra
+<a name="kubernetes-ai-infra"></a>
+
+| # | 名称 | 描述 | 目录 |
+|---|------|------|------|
+| 1 | basic-ai-infra |  | `basic-ai-infra` |
+
+#### crd
+<a name="kubernetes-crd"></a>
+
+| # | 名称 | 描述 | 目录 |
+|---|------|------|------|
+| 1 | basic-crd |  | `basic-crd` |
+
+#### efk
+<a name="kubernetes-efk"></a>
+
+| # | 名称 | 描述 | 目录 |
+|---|------|------|------|
+| 1 | basic-efk | Kubernetes 中部�?EFK (Elasticsearch + Fluentd + Kibana) 堆栈进... | `basic-efk` |
+
+#### elk
+<a name="kubernetes-elk"></a>
+
+| # | 名称 | 描述 | 目录 |
+|---|------|------|------|
+| 1 | basic-elk | Kubernetes 中部�?ELK (Elasticsearch + Logstash + Kibana) 堆栈... | `basic-elk` |
+
 #### fluid
 <a name="kubernetes-fluid"></a>
 
@@ -324,44 +399,65 @@
 |---|------|------|------|
 | 1 | kubernetes-data-orchestration-caching-demo | 演示在Kubernetes中使用ConfigMap和EmptyDir进行数据编排与临时缓存的实践示例 | `data-orchestration-caching-demo` |
 
+#### gemini
+<a name="kubernetes-gemini"></a>
+
+| # | 名称 | 描述 | 目录 |
+|---|------|------|------|
+| 1 | gemini-cli-demo |  | `gemini-cli-demo` |
+
+#### grafana
+<a name="kubernetes-grafana"></a>
+
+| # | 名称 | 描述 | 目录 |
+|---|------|------|------|
+| 1 | basic-grafana |  | `basic-grafana` |
+
+#### jaeger
+<a name="kubernetes-jaeger"></a>
+
+| # | 名称 | 描述 | 目录 |
+|---|------|------|------|
+| 1 | basic-jaeger |  | `basic-jaeger` |
+
 #### kubeflow
 <a name="kubernetes-kubeflow"></a>
 
 | # | 名称 | 描述 | 目录 |
 |---|------|------|------|
 | 1 | Dashboard RBAC Configuration | Configure Role-Based Access Control for Kubeflow Dashboar... | `dashboard-rbac-configuration` |
-| 2 | Katib Bayesian Optimization | Use Bayesian optimization for intelligent hyperparameter ... | `katib-bayesian-optimization` |
-| 3 | Katib Early Stopping | Implement early stopping strategies in Katib experiments ... | `katib-early-stopping` |
-| 4 | Katib NAS Experiment | Perform Neural Architecture Search using Kubeflow Katib f... | `katib-nas-experiment` |
-| 5 | Katib Random Search | Perform hyperparameter optimization using random search a... | `katib-random-search` |
-| 6 | Katib超参数调优基础 | 演示使用Katib进行基础超参数搜索和调优 | `katib-hyperparameter-tuning` |
-| 7 | KServe Batch Inference | Configure batch inference jobs for processing large datas... | `kserve-batch-inference` |
-| 8 | KServe Canary Rollout | Implement canary deployment strategy for ML models using ... | `kserve-canary-rollout` |
-| 9 | KServe Custom Predictor | Build and deploy custom prediction logic with KServe cust... | `kserve-custom-predictor` |
-| 10 | KServe GPU Inference | Deploy and optimize GPU-accelerated inference services wi... | `kserve-gpu-inference` |
-| 11 | KServe Model Deployment | Deploy machine learning models as serverless inference se... | `kserve-model-deployment` |
-| 12 | KServe Transformer Integration | Add data preprocessing and transformation logic to KServe... | `kserve-transformer-integration` |
-| 13 | kserve-ab-testing-demo | 使用KServe实现机器学习模型的A/B测试和流量分流部署 | `kserve-ab-testing-demo` |
-| 14 | kserve-autoscaling-config-demo | 展示 KServe 模型服务的自动扩缩容配置实践 | `kserve-autoscaling-config-demo` |
-| 15 | kserve-explainer-integration-demo | 展示如何在KServe中集成模型解释器（Explainer）以实现AI模型预测的可解释性。 | `kserve-explainer-integration-demo` |
-| 16 | kserve-model-monitoring-demo | A demo showing how to set up model monitoring for KServe ... | `kserve-model-monitoring-demo` |
-| 17 | kserve-multi-model-serving-demo | 一个展示如何在Kubernetes上使用KServe实现多模型服务的可执行演示 | `kserve-multi-model-serving-demo` |
-| 18 | kserve-request-logging-demo | 演示如何在KServe中启用请求日志记录以监控模型推理流量 | `kserve-request-logging-demo` |
-| 19 | Kubeflow Dashboard基础安装与配置 | 演示Kubeflow Central Dashboard的基础安装、部署和访问配置 | `dashboard-basic-setup` |
-| 20 | Kubeflow Notebook服务器创建与配置 | 演示如何在Kubeflow中创建和配置Jupyter Notebook服务器 | `notebook-server-creation` |
-| 21 | Kubeflow Pipeline Python组件开发 | 演示如何使用Python函数创建轻量级Kubeflow Pipeline组件 | `pipeline-python-component` |
-| 22 | Kubeflow Pipeline工作流编排 | 演示如何定义和执行完整的机器学习工作流Pipeline | `pipeline-workflow-orchestration` |
-| 23 | Model Registry Metadata Tracking | Track comprehensive metadata for ML models in Kubeflow Mo... | `model-registry-metadata-tracking` |
-| 24 | Model Registry Pipeline Integration | Integrate Kubeflow Model Registry with Pipelines for auto... | `model-registry-pipeline-integration` |
-| 25 | Model Registry Registration | Register and manage ML models in Kubeflow Model Registry | `model-registry-registration` |
-| 26 | Model Registry Version Management | Manage multiple versions of ML models using Kubeflow Mode... | `model-registry-version-management` |
-| 27 | Notebook Custom Image | Create and use custom Docker images for Kubeflow Notebook... | `notebook-custom-image` |
-| 28 | Notebook GPU Allocation | Configure and allocate GPU resources for Kubeflow Noteboo... | `notebook-gpu-allocation` |
-| 29 | Notebook Persistent Storage | Configure persistent volumes for Kubeflow Notebooks to pr... | `notebook-persistent-storage` |
-| 30 | Pipeline Artifact Tracking | Track, store, and manage artifacts (datasets, models, met... | `pipeline-artifact-tracking` |
-| 31 | Pipeline Container Component | Build and use container-based components in Kubeflow Pipe... | `pipeline-container-component` |
-| 32 | Pipeline Experiment Management | Create, run, and compare Kubeflow Pipeline experiments to... | `pipeline-experiment-management` |
-| 33 | Pipeline Parameterized Execution | Create parameterized Kubeflow Pipelines that accept runti... | `pipeline-parameterized-execution` |
+| 2 | dashboard-basic-setup |  | `dashboard-basic-setup` |
+| 3 | Katib Bayesian Optimization | Use Bayesian optimization for intelligent hyperparameter ... | `katib-bayesian-optimization` |
+| 4 | Katib Early Stopping | Implement early stopping strategies in Katib experiments ... | `katib-early-stopping` |
+| 5 | Katib NAS Experiment | Perform Neural Architecture Search using Kubeflow Katib f... | `katib-nas-experiment` |
+| 6 | Katib Random Search | Perform hyperparameter optimization using random search a... | `katib-random-search` |
+| 7 | Katib超参数调优基础 | 演示使用Katib进行基础超参数搜索和调优 | `katib-hyperparameter-tuning` |
+| 8 | KServe Batch Inference | Configure batch inference jobs for processing large datas... | `kserve-batch-inference` |
+| 9 | KServe Canary Rollout | Implement canary deployment strategy for ML models using ... | `kserve-canary-rollout` |
+| 10 | KServe Custom Predictor | Build and deploy custom prediction logic with KServe cust... | `kserve-custom-predictor` |
+| 11 | KServe GPU Inference | Deploy and optimize GPU-accelerated inference services wi... | `kserve-gpu-inference` |
+| 12 | KServe Model Deployment | Deploy machine learning models as serverless inference se... | `kserve-model-deployment` |
+| 13 | KServe Transformer Integration | Add data preprocessing and transformation logic to KServe... | `kserve-transformer-integration` |
+| 14 | kserve-ab-testing-demo |  | `kserve-ab-testing-demo` |
+| 15 | kserve-autoscaling-config-demo | 展示 KServe 模型服务的自动扩缩容配置实践 | `kserve-autoscaling-config-demo` |
+| 16 | kserve-explainer-integration-demo |  | `kserve-explainer-integration-demo` |
+| 17 | kserve-model-monitoring-demo | A demo showing how to set up model monitoring for KServe ... | `kserve-model-monitoring-demo` |
+| 18 | kserve-multi-model-serving-demo |  | `kserve-multi-model-serving-demo` |
+| 19 | kserve-request-logging-demo | 演示如何在KServe中启用请求日志记录以监控模型推理流量 | `kserve-request-logging-demo` |
+| 20 | Model Registry Metadata Tracking | Track comprehensive metadata for ML models in Kubeflow Mo... | `model-registry-metadata-tracking` |
+| 21 | Model Registry Pipeline Integration | Integrate Kubeflow Model Registry with Pipelines for auto... | `model-registry-pipeline-integration` |
+| 22 | Model Registry Registration | Register and manage ML models in Kubeflow Model Registry | `model-registry-registration` |
+| 23 | Model Registry Version Management | Manage multiple versions of ML models using Kubeflow Mode... | `model-registry-version-management` |
+| 24 | Notebook Custom Image | Create and use custom Docker images for Kubeflow Notebook... | `notebook-custom-image` |
+| 25 | Notebook GPU Allocation | Configure and allocate GPU resources for Kubeflow Noteboo... | `notebook-gpu-allocation` |
+| 26 | Notebook Persistent Storage | Configure persistent volumes for Kubeflow Notebooks to pr... | `notebook-persistent-storage` |
+| 27 | notebook-server-creation |  | `notebook-server-creation` |
+| 28 | Pipeline Artifact Tracking | Track, store, and manage artifacts (datasets, models, met... | `pipeline-artifact-tracking` |
+| 29 | Pipeline Container Component | Build and use container-based components in Kubeflow Pipe... | `pipeline-container-component` |
+| 30 | Pipeline Experiment Management | Create, run, and compare Kubeflow Pipeline experiments to... | `pipeline-experiment-management` |
+| 31 | Pipeline Parameterized Execution | Create parameterized Kubeflow Pipelines that accept runti... | `pipeline-parameterized-execution` |
+| 32 | pipeline-python-component |  | `pipeline-python-component` |
+| 33 | pipeline-workflow-orchestration |  | `pipeline-workflow-orchestration` |
 | 34 | PyTorchJob Basic Training | Run single-node PyTorch training jobs on Kubernetes using... | `trainer-pytorchjob-basic` |
 | 35 | PyTorchJob Distributed Training | Configure and run distributed PyTorch training across mul... | `trainer-pytorchjob-distributed` |
 | 36 | Spark Operator Basic Job | Run Apache Spark applications on Kubernetes using Kubeflo... | `spark-operator-basic-job` |
@@ -377,46 +473,178 @@
 
 | # | 名称 | 描述 | 目录 |
 |---|------|------|------|
-| 1 | Helm基础安装与使用演示 | 一个展示Helm在Kubernetes中基本安装和使用的入门级演示项目。 | `helm-basic-installation-guide` |
-| 2 | Kubernetes Event Probes 配置演示 | 通过实际示例展示 Kubernetes 中事件探针的配置与使用 | `event-probes-configuration` |
-| 3 | Kubernetes Metric Probes 配置演示 | 展示如何在 Kubernetes 中配置基于指标的健康探针以提升应用可靠性。 | `metric-probes-configuration` |
-| 4 | Kubernetes_Prometheus_Integration_Demo | 展示如何在Kubernetes中集成Prometheus进行应用和服务监控 | `prometheus-integration` |
-| 5 | Kubernetes延迟检测配置演示 | 展示如何在Kubernetes中配置延迟检测以监控网络性能。 | `latency-detection-configuration` |
-| 6 | Kubernetes网络拓扑可视化演示 | 通过Kubernetes自定义资源和监控工具实现网络拓扑的可视化展示 | `network-topology-visualization` |
-| 7 | Loki日志事件接收器配置演示 | 演示如何在Kubernetes中配置Loki作为日志事件接收器 | `loki-event-sink-configuration` |
-| 8 | packet-capture-demo | 使用Sidecar容器在Kubernetes中实现安全的网络数据包捕获演示 | `packet-capture-demo` |
-| 9 | Pod连通性诊断演示 | 演示如何在Kubernetes中诊断Pod之间的网络连通性问题。 | `pod-connectivity-diagnosis` |
-| 10 | service-access-diagnosis-demo | 演示如何诊断Kubernetes服务访问问题的实用示例 | `service-access-diagnosis` |
+| 1 | event-probes-configuration |  | `event-probes-configuration` |
+| 2 | helm-basic-installation-guide |  | `helm-basic-installation-guide` |
+| 3 | latency-detection-configuration |  | `latency-detection-configuration` |
+| 4 | loki-event-sink-configuration |  | `loki-event-sink-configuration` |
+| 5 | metric-probes-configuration |  | `metric-probes-configuration` |
+| 6 | network-topology-visualization |  | `network-topology-visualization` |
+| 7 | packet-capture-demo |  | `packet-capture-demo` |
+| 8 | pod-connectivity-diagnosis |  | `pod-connectivity-diagnosis` |
+| 9 | prometheus-integration |  | `prometheus-integration` |
+| 10 | service-access-diagnosis |  | `service-access-diagnosis` |
+
+#### llmops
+<a name="kubernetes-llmops"></a>
+
+| # | 名称 | 描述 | 目录 |
+|---|------|------|------|
+| 1 | basic-llmops |  | `basic-llmops` |
+
+#### loki
+<a name="kubernetes-loki"></a>
+
+| # | 名称 | 描述 | 目录 |
+|---|------|------|------|
+| 1 | basic-loki |  | `basic-loki` |
+
+#### mcp
+<a name="kubernetes-mcp"></a>
+
+| # | 名称 | 描述 | 目录 |
+|---|------|------|------|
+| 1 | alibaba |  | `alibaba` |
+| 2 | amazon |  | `amazon` |
+| 3 | bytedance |  | `bytedance` |
+| 4 | google |  | `google` |
+| 5 | meta |  | `meta` |
+| 6 | microsoft |  | `microsoft` |
+| 7 | openai |  | `openai` |
+| 8 | others |  | `others` |
+| 9 | tencent |  | `tencent` |
+
+#### modelscope
+<a name="kubernetes-modelscope"></a>
+
+| # | 名称 | 描述 | 目录 |
+|---|------|------|------|
+| 1 | modelscope-basic-demo |  | `modelscope-basic-demo` |
+
+#### n8n
+<a name="kubernetes-n8n"></a>
+
+| # | 名称 | 描述 | 目录 |
+|---|------|------|------|
+| 1 | local |  | `local` |
+| 2 | manifests |  | `manifests` |
+| 3 | meta |  | `meta` |
+| 4 | workflows |  | `workflows` |
+
+#### network
+<a name="kubernetes-network"></a>
+
+| # | 名称 | 描述 | 目录 |
+|---|------|------|------|
+| 1 | basic-networking |  | `basic-networking` |
+
+#### ollama
+<a name="kubernetes-ollama"></a>
+
+| # | 名称 | 描述 | 目录 |
+|---|------|------|------|
+| 1 | ollama-basic-demo |  | `ollama-basic-demo` |
+
+#### opentelemetry
+<a name="kubernetes-opentelemetry"></a>
+
+| # | 名称 | 描述 | 目录 |
+|---|------|------|------|
+| 1 | basic-opentelemetry |  | `basic-opentelemetry` |
+
+#### operator
+<a name="kubernetes-operator"></a>
+
+| # | 名称 | 描述 | 目录 |
+|---|------|------|------|
+| 1 | basic-operator |  | `basic-operator` |
 
 #### operator-framework
 <a name="kubernetes-operator-framework"></a>
 
 | # | 名称 | 描述 | 目录 |
 |---|------|------|------|
-| 1 | CRD自定义资源定义演示 | 展示如何定义和使用CustomResourceDefinition扩展Kubernetes API，创建自定义资源类型 | `crd-basic-usage` |
-| 2 | Kubernetes Operator控制器开发演示 | 使用Kubebuilder框架开发完整的Kubernetes Operator，实现自定义资源的自动化管理 | `operator-controller-demo` |
+| 1 | crd-basic-usage |  | `crd-basic-usage` |
+| 2 | operator-controller-demo |  | `operator-controller-demo` |
+
+#### prometheus
+<a name="kubernetes-prometheus"></a>
+
+| # | 名称 | 描述 | 目录 |
+|---|------|------|------|
+| 1 | basic-prometheus |  | `basic-prometheus` |
+
+#### rag
+<a name="kubernetes-rag"></a>
+
+| # | 名称 | 描述 | 目录 |
+|---|------|------|------|
+| 1 | local-demo |  | `local-demo` |
+| 2 | maxkb |  | `maxkb` |
+| 3 | other-rag-tools |  | `other-rag-tools` |
+
+#### rbac
+<a name="kubernetes-rbac"></a>
+
+| # | 名称 | 描述 | 目录 |
+|---|------|------|------|
+| 1 | basic-rbac |  | `basic-rbac` |
+
+#### regflow
+<a name="kubernetes-regflow"></a>
+
+| # | 名称 | 描述 | 目录 |
+|---|------|------|------|
+| 1 | regflow-basic-demo |  | `regflow-basic-demo` |
+
+#### storage
+<a name="kubernetes-storage"></a>
+
+| # | 名称 | 描述 | 目录 |
+|---|------|------|------|
+| 1 | basic-storage |  | `basic-storage` |
+
+#### troubleshooting
+<a name="kubernetes-troubleshooting"></a>
+
+| # | 名称 | 描述 | 目录 |
+|---|------|------|------|
+| 1 | control-plane-failure |  | `control-plane-failure` |
+| 2 | network-policy |  | `network-policy` |
+| 3 | node-failure |  | `node-failure` |
+| 4 | persistent-storage |  | `persistent-storage` |
+| 5 | pod-troubleshooting |  | `pod-troubleshooting` |
+| 6 | resource-shortage |  | `resource-shortage` |
+| 7 | scheduling-failure |  | `scheduling-failure` |
+| 8 | service-connectivity |  | `service-connectivity` |
 
 #### velero
 <a name="kubernetes-velero"></a>
 
 | # | 名称 | 描述 | 目录 |
 |---|------|------|------|
-| 1 | Velero基础安装与配置演示 | 演示如何使用Helm安装Velero，并配置MinIO作为对象存储后端，完成Velero的基础安装和配置 | `basic-installation` |
-| 2 | 卷快照位置配置演示 | 演示如何配置多个VolumeSnapshotLocation以支持不同存储提供商 | `volume-snapshot-location` |
-| 3 | 命名空间级别备份演示 | 演示如何使用Velero备份指定命名空间的所有资源并进行恢复验证 | `namespace-backup` |
-| 4 | 备份恢复完整流程演示 | 演示完整的备份→删除→恢复流程，重点展示恢复验证方法 | `backup-restore` |
-| 5 | 备份数据加密演示 | 演示如何启用备份数据加密，保护敏感资源 | `backup-encryption` |
-| 6 | 备份清理与保留策略演示 | 演示如何手动删除备份、配置自动清理策略和管理对象存储空间 | `backup-deletion` |
-| 7 | 备份状态监控与告警演示 | 演示如何监控Velero备份任务状态并配置告警规则 | `backup-monitoring` |
-| 8 | 备份钩子操作演示 | 演示如何使用备份钩子在备份前后执行自定义操作 | `backup-hooks` |
-| 9 | 完整灾难恢复演练 | 模拟完整的灾难场景，演示灾难恢复的完整流程和RTO/RPO测量 | `disaster-recovery-simulation` |
-| 10 | 定时备份策略配置演示 | 演示如何创建定时备份计划，并配置备份保留策略 | `scheduled-backup` |
-| 11 | 持久卷快照备份演示 | 演示如何使用CSI快照功能备份持久卷数据 | `pv-snapshot-backup` |
-| 12 | 资源过滤与选择器演示 | 演示如何使用标签选择器、资源类型过滤等实现精细化备份 | `resource-filtering` |
-| 13 | 跨命名空间恢复映射演示 | 演示如何将备份的资源恢复到不同的命名空间 | `namespace-mapping` |
-| 14 | 跨集群资源迁移演示 | 演示如何使用Velero在不同Kubernetes集群间迁移工作负载 | `migration-across-clusters` |
+| 1 | backup-deletion |  | `backup-deletion` |
+| 2 | backup-encryption |  | `backup-encryption` |
+| 3 | basic-installation |  | `basic-installation` |
+| 4 | migration-across-clusters |  | `migration-across-clusters` |
+| 5 | namespace-mapping |  | `namespace-mapping` |
+| 6 | pv-snapshot-backup |  | `pv-snapshot-backup` |
+| 7 | resource-filtering |  | `resource-filtering` |
+| 8 | volume-snapshot-location |  | `volume-snapshot-location` |
+| 9 | 命名空间级别备份演示 | 演示如何使用Velero备份指定命名空间的所有资源并进行恢复验证 | `namespace-backup` |
+| 10 | 备份恢复完整流程演示 | 演示完整的备份→删除→恢复流程，重点展示恢复验证方法 | `backup-restore` |
+| 11 | 备份状态监控与告警演示 | 演示如何监控Velero备份任务状态并配置告警规则 | `backup-monitoring` |
+| 12 | 备份钩子操作演示 | 演示如何使用备份钩子在备份前后执行自定义操作 | `backup-hooks` |
+| 13 | 完整灾难恢复演练 | 模拟完整的灾难场景，演示灾难恢复的完整流程和RTO/RPO测量 | `disaster-recovery-simulation` |
+| 14 | 定时备份策略配置演示 | 演示如何创建定时备份计划，并配置备份保留策略 | `scheduled-backup` |
 | 15 | 集群级别全量备份演示 | 演示如何执行集群级别全量备份，包括CRD资源和持久卷 | `cluster-backup` |
+
+#### zipkin
+<a name="kubernetes-zipkin"></a>
+
+| # | 名称 | 描述 | 目录 |
+|---|------|------|------|
+| 1 | basic-zipkin |  | `basic-zipkin` |
 
 ---
 
-*本文件由 opendemo CLI 自动生成，最后更新: 2026-01-14 11:55:59*
+*本文件由 opendemo CLI 自动生成，最后更新: 2026-01-28 01:00:53*

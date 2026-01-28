@@ -55,7 +55,7 @@ def main():
             language = input("输入语言 (如 python): ").strip()
             keywords = input("输入关键字 (可选,空格分隔): ").strip()
 
-            cmd = ["python", "-m", "opendemo.cli", "search", language]
+            cmd = ["python", "-m", "opendemo", "search", language]
             if keywords:
                 cmd.extend(keywords.split())
             subprocess.run(cmd)
@@ -65,7 +65,7 @@ def main():
             topic = input("输入主题 (如 元组): ").strip()
             verify = input("是否启用验证? (y/n): ").strip().lower()
 
-            cmd = ["python", "-m", "opendemo.cli", "get", language, topic]
+            cmd = ["python", "-m", "opendemo", "get", language, topic]
             if verify in ("y", "yes", "是"):
                 cmd.append("--verify")
             subprocess.run(cmd)
@@ -76,7 +76,7 @@ def main():
             difficulty = input("难度级别 (beginner/intermediate/advanced, 默认beginner): ").strip()
             verify = input("是否启用验证? (y/n): ").strip().lower()
 
-            cmd = ["python", "-m", "opendemo.cli", "new", language, topic]
+            cmd = ["python", "-m", "opendemo", "new", language, topic]
             if difficulty:
                 cmd.extend(["--difficulty", difficulty])
             if verify in ("y", "yes", "是"):
@@ -93,17 +93,17 @@ def main():
             config_choice = input("\n请选择 (1-4): ").strip()
 
             if config_choice == "1":
-                subprocess.run(["python", "-m", "opendemo.cli", "config", "init"])
+                subprocess.run(["python", "-m", "opendemo", "config", "init"])
             elif config_choice == "2":
                 api_key = input("输入API密钥: ").strip()
                 subprocess.run(
-                    ["python", "-m", "opendemo.cli", "config", "set", "ai.api_key", api_key]
+                    ["python", "-m", "opendemo", "config", "set", "ai.api_key", api_key]
                 )
             elif config_choice == "3":
-                subprocess.run(["python", "-m", "opendemo.cli", "config", "list"])
+                subprocess.run(["python", "-m", "opendemo", "config", "list"])
 
         elif choice == "5":
-            subprocess.run(["python", "-m", "opendemo.cli", "--help"])
+            subprocess.run(["python", "-m", "opendemo", "--help"])
         else:
             print("\n无效选项,请重试")
 

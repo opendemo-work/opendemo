@@ -1,0 +1,27 @@
+{
+  "name": "modelscope-basic-demo",
+  "title": "ModelScope 基础演示",
+  "language": "kubernetes",
+  "keywords": [
+    "modelscope",
+    "maas",
+    "model-as-a-service",
+    "aliyun",
+    "machine-learning",
+    "deep-learning",
+    "model-deployment"
+  ],
+  "description": "演示如何�?Kubernetes 环境中部署和使用 ModelScope - 阿里云模型开放平台，提供从模型探索、推理、训练、部署到应用的一站式服务",
+  "difficulty": "intermediate",
+  "author": "OpenDemo Community",
+  "created_at": "2026-01-27T00:00:00",
+  "updated_at": "2026-01-27T00:00:00",
+  "version": "1.0.0",
+  "dependencies": {
+    "kubernetes": ">=1.19",
+    "modelscope": ">=1.0"
+  },
+  "category": "ai-infrastructure",
+  "verified": false,
+  "library": "modelscope"
+}

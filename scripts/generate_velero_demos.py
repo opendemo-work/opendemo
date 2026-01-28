@@ -108,7 +108,7 @@ demos = [
     }
 ]
 
-base_path = r"C:\Users\Allen\Documents\GitHub\opendemo-cli\opendemo_output\kubernetes\velero"
+base_path = r"C:\Users\Allen\Documents\GitHub\opendemo\opendemo_output\kubernetes\velero"
 
 for demo in demos:
     demo_path = os.path.join(base_path, demo["name"])
@@ -316,7 +316,7 @@ demos = [
     }
 ]
 
-base_path = r"C:\Users\Allen\Documents\GitHub\opendemo-cli\opendemo_output\kubernetes\velero"
+base_path = r"C:\Users\Allen\Documents\GitHub\opendemo\opendemo_output\kubernetes\velero"
 
 for demo in demos:
     demo_path = os.path.join(base_path, demo["name"])

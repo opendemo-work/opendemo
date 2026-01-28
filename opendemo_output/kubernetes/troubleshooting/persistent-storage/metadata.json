@@ -1,9 +1,9 @@
 {
   "name": "persistent-storage",
-  "title": "Kubernetes持久化存储问题排查实战",
+  "title": "Kubernetes持久化存储问题排查实�?,
   "language": "kubernetes",
   "keywords": ["kubernetes", "persistent-storage", "pvc", "pv", "storage-class", "troubleshooting"],
-  "description": "全面的Kubernetes持久化存储问题排查指南，包含PVC绑定失败、PV挂载失败、存储类配置问题、持久化卷扩容问题等排查方法和解决方案。",
+  "description": "全面的Kubernetes持久化存储问题排查指南，包含PVC绑定失败、PV挂载失败、存储类配置问题、持久化卷扩容问题等排查方法和解决方案�?,
   "difficulty": "intermediate",
   "author": "Kubernetes专家团队",
   "created_at": "2026-01-20T00:00:00Z",
@@ -12,7 +12,7 @@
   "verified": true,
   "category": "故障排查",
   "library": "troubleshooting",
-  "tags": ["故障排查", "持久化存储", "PVC", "PV", "StorageClass"],
+  "tags": ["故障排查", "持久化存�?, "PVC", "PV", "StorageClass"],
   "requires": ["kubectl"],
   "estimated_time": "45分钟"
 }

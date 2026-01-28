@@ -1,7 +1,7 @@
 {
   "name": "basic-n8n",
   "version": "1.1.0",
-  "description": "n8n工作流平台部署 - 支持本地部署(Windows/Mac)和Kubernetes部署",
+  "description": "n8n工作流平台部�?- 支持本地部署(Windows/Mac)和Kubernetes部署",
   "author": "opendemo",
   "difficulty": "intermediate",
   "category": "n8n",

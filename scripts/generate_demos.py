@@ -110,7 +110,7 @@ class DemoGenerator:
         Returns:
             bool: 是否成功
         """
-        cmd = ["python", "-m", "opendemo.cli", "new", language, topic, "--difficulty", difficulty]
+        cmd = ["python", "-m", "opendemo", "new", language, topic, "--difficulty", difficulty]
 
         for attempt in range(retry + 1):
             try:

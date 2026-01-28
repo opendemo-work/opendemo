@@ -1,0 +1,164 @@
+# Gemini CLI 服务部署配置
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: gemini-system
+---
+# Gemini API 密钥 Secret
+apiVersion: v1
+kind: Secret
+metadata:
+  name: gemini-secret
+  namespace: gemini-system
+type: Opaque
+data:
+  api-key: <base64-encoded-api-key>
+---
+# Gemini CLI 服务部署
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gemini-cli
+  namespace: gemini-system
+  labels:
+    app: gemini-cli
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gemini-cli
+  template:
+    metadata:
+      labels:
+        app: gemini-cli
+    spec:
+      containers:
+      - name: gemini-cli
+        image: node:18-alpine
+        command: ["/bin/sh", "-c"]
+        args:
+        - |
+          # 安装 Gemini CLI
+          npm install -g @google/generative-ai-cli
+          
+          # 保持容器运行
+          tail -f /dev/null
+        env:
+        - name: GEMINI_API_KEY
+          valueFrom:
+            secretKeyRef:
+              name: gemini-secret
+              key: api-key
+        - name: GOOGLE_CLOUD_PROJECT
+          value: "your-project-id"
+        resources:
+          requests:
+            memory: "512Mi"
+            cpu: "250m"
+          limits:
+            memory: "1Gi"
+            cpu: "500m"
+        volumeMounts:
+        - name: gemini-config
+          mountPath: /root/.config/gemini
+      volumes:
+      - name: gemini-config
+        emptyDir: {}
+---
+# Gemini CLI 服务暴露
+apiVersion: v1
+kind: Service
+metadata:
+  name: gemini-cli-service
+  namespace: gemini-system
+spec:
+  selector:
+    app: gemini-cli
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+  type: ClusterIP
+---
+# Gemini 任务配置
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: gemini-task
+  namespace: gemini-system
+spec:
+  template:
+    spec:
+      containers:
+      - name: gemini-task
+        image: node:18-alpine
+        command: ["/bin/sh", "-c"]
+        args:
+        - |
+          # 安装依赖
+          npm install -g @google/generative-ai-cli
+          
+          # 运行 Gemini 命令
+          echo "Running Gemini task..."
+          gemini generate "Summarize the benefits of Kubernetes" > /tmp/output.txt
+          
+          # 输出结果
+          cat /tmp/output.txt
+        env:
+        - name: GEMINI_API_KEY
+          valueFrom:
+            secretKeyRef:
+              name: gemini-secret
+              key: api-key
+        resources:
+          requests:
+            memory: "512Mi"
+            cpu: "250m"
+          limits:
+            memory: "1Gi"
+            cpu: "500m"
+      restartPolicy: Never
+  backoffLimit: 4
+---
+# Gemini 定时任务 CronJob
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: gemini-cronjob
+  namespace: gemini-system
+spec:
+  schedule: "0 9 * * *"  # 每天上午9点运行
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: gemini-cronjob
+            image: node:18-alpine
+            command: ["/bin/sh", "-c"]
+            args:
+            - |
+              # 安装依赖
+              npm install -g @google/generative-ai-cli
+              
+              # 运行每日摘要任务
+              DATE=$(date)
+              echo "Daily report for $DATE" > /tmp/daily-report.txt
+              gemini generate "Provide a brief summary of best practices for Kubernetes security" >> /tmp/daily-report.txt
+              
+              # 输出结果
+              cat /tmp/daily-report.txt
+            env:
+            - name: GEMINI_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: gemini-secret
+                  key: api-key
+            resources:
+              requests:
+                memory: "512Mi"
+                cpu: "250m"
+              limits:
+                memory: "1Gi"
+                cpu: "500m"
+          restartPolicy: OnFailure

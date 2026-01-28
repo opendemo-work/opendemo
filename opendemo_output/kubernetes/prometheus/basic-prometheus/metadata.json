@@ -4,7 +4,7 @@
   "keywords": ["prometheus", "monitoring", "metrics", "kubernetes", "observability"],
   "description": "Kubernetes 中部署和使用 Prometheus 进行监控的基础案例",
   "difficulty": "intermediate",
-  "author": "opendemo-cli",
+  "author": "opendemo",,
   "created_at": "2024-01-20T00:00:00Z",
   "updated_at": "2024-01-20T00:00:00Z",
   "version": "1.0.0",

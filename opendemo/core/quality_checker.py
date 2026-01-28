@@ -225,7 +225,7 @@ class QualityChecker:
             包含输出和退出码的字典
         """
         try:
-            cmd = [sys.executable, "-c", "from opendemo.cli import main; main()"] + args
+            cmd = [sys.executable, "-c", "from opendemo import main; main()"] + args
             result = subprocess.run(
                 cmd, cwd=str(self.project_root), capture_output=True, text=True, timeout=60
             )

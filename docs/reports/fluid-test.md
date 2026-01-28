@@ -28,7 +28,7 @@
 | kubectl版本 | v1.34.1 |
 | Kustomize版本 | v5.7.1 |
 | PyYAML | 已安装 |
-| 工作目录 | C:\Users\Allen\Documents\GitHub\opendemo-cli |
+| 工作目录 | C:\Users\Allen\Documents\GitHub\opendemo |
 
 ---
 
@@ -798,7 +798,7 @@ demo-list.md 已更新 (总计 307 个 demo)
 Python版本: Python 3.11.9
 kubectl版本: v1.34.1
 Kustomize版本: v5.7.1
-工作目录: C:\Users\Allen\Documents\GitHub\opendemo-cli
+工作目录: C:\Users\Allen\Documents\GitHub\opendemo
 ```
 
 ### B. 使用的测试命令
@@ -835,4 +835,4 @@ python -m opendemo.cli get kubernetes fluid data-orchestration
 
 **报告版本**：1.0
 
-**报告路径**：C:\Users\Allen\Documents\GitHub\opendemo-cli\test_reports\fluid_demo_test_report.md
+**报告路径**：C:\Users\Allen\Documents\GitHub\opendemo\test_reports\fluid_demo_test_report.md

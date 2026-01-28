@@ -62,7 +62,7 @@ DEMOS = {
 
 def generate_demo(language, topic, difficulty, output_file):
     """生成单个 Demo 并记录结果"""
-    cmd = ["python", "-m", "opendemo.cli", "new", language, topic, "--difficulty", difficulty]
+    cmd = ["python", "-m", "opendemo", "new", language, topic, "--difficulty", difficulty]
 
     print(f"\n正在生成: {language} - {topic}")
 

@@ -1,9 +1,9 @@
 {
   "name": "service-connectivity",
-  "title": "Kubernetes服务连通性问题排查实战",
+  "title": "Kubernetes服务连通性问题排查实�?,
   "language": "kubernetes",
   "keywords": ["kubernetes", "service", "connectivity", "dns", "network", "troubleshooting"],
-  "description": "全面的Kubernetes服务连通性问题排查指南，包含服务DNS解析、端口配置、选择器匹配、网络策略等问题的排查方法和解决方案。",
+  "description": "全面的Kubernetes服务连通性问题排查指南，包含服务DNS解析、端口配置、选择器匹配、网络策略等问题的排查方法和解决方案�?,
   "difficulty": "intermediate",
   "author": "Kubernetes专家团队",
   "created_at": "2026-01-20T00:00:00Z",
@@ -12,7 +12,7 @@
   "verified": true,
   "category": "故障排查",
   "library": "troubleshooting",
-  "tags": ["故障排查", "服务", "连通性", "DNS"],
+  "tags": ["故障排查", "服务", "连通�?, "DNS"],
   "requires": ["kubectl"],
   "estimated_time": "45分钟"
 }

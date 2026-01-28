@@ -59,7 +59,7 @@ NODEJS_DEMOS = [
 
 def generate_demo(language, topic, difficulty):
     """生成单个 Demo"""
-    cmd = ["python", "-m", "opendemo.cli", "new", language, topic, "--difficulty", difficulty]
+    cmd = ["python", "-m", "opendemo", "new", language, topic, "--difficulty", difficulty]
 
     print(f"\n{'='*60}")
     print(f"[{language.upper()}] 正在生成: {topic}")

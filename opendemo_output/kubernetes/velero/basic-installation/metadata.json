@@ -1,5 +1,5 @@
 {
-  "name": "Velero基础安装与配置演示",
+  "name": "Velero基础安装与配置演�?,
   "language": "kubernetes",
   "keywords": [
     "velero",
@@ -8,7 +8,7 @@
     "backup-storage",
     "kubernetes"
   ],
-  "description": "演示如何使用Helm安装Velero，并配置MinIO作为对象存储后端，完成Velero的基础安装和配置",
+  "description": "演示如何使用Helm安装Velero，并配置MinIO作为对象存储后端，完成Velero的基础安装和配�?,
   "difficulty": "beginner",
   "author": "",
   "created_at": "2026-01-11T23:42:00.000000",

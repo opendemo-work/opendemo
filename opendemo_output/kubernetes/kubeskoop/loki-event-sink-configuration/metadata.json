@@ -1,5 +1,5 @@
 {
-  "name": "Loki日志事件接收器配置演示",
+  "name": "Loki日志事件接收器配置演�?,
   "language": "kubernetes",
   "keywords": [
     "loki",
@@ -8,7 +8,7 @@
     "kubernetes",
     "grafana"
   ],
-  "description": "演示如何在Kubernetes中配置Loki作为日志事件接收器",
+  "description": "演示如何在Kubernetes中配置Loki作为日志事件接收�?,
   "difficulty": "intermediate",
   "author": "",
   "created_at": "2025-12-13T13:38:42.221533",

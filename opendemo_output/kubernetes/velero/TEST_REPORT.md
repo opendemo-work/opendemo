@@ -206,4 +206,5 @@ opendemo_output/kubernetes/velero/
 
 **报告生成时间**: 2026-01-11 23:50:00  
 **报告生成者**: Automated Test System  
-**项目版本**: opendemo-cli v1.0.0
+**项目版本**: opendemo v1.0.0
+

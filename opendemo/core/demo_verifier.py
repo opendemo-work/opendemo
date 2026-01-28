@@ -564,8 +564,9 @@ class DemoVerifier:
                     except subprocess.TimeoutExpired:
                         result["warnings"].append(f"Dry-run timeout for {yaml_file.name}")
                     except Exception as e:
-                        result["warnings"].append(f"Dry-run error for {yaml_file.name}: {str(e)}")
-                
+                        error_msg = f"Dry-run error for {yaml_file.name}: {str(e)}"
+                        result["warnings"].append(error_msg)
+
                 if dry_run_passed:
                     result["steps"].append("All YAML files passed dry-run validation")
 

@@ -1,0 +1,28 @@
+{
+  "name": "gemini-cli-demo",
+  "title": "Gemini CLI 基础演示",
+  "language": "kubernetes",
+  "keywords": [
+    "gemini",
+    "google-ai",
+    "cli",
+    "multi-modal",
+    "llm",
+    "ai",
+    "ml",
+    "kubernetes"
+  ],
+  "description": "演示如何�?Kubernetes 环境中部署和使用 Gemini CLI - Google 的多模态AI模型命令行工具，支持文本、图像等多种数据类型的处�?,
+  "difficulty": "intermediate",
+  "author": "OpenDemo Community",
+  "created_at": "2026-01-27T00:00:00",
+  "updated_at": "2026-01-27T00:00:00",
+  "version": "1.0.0",
+  "dependencies": {
+    "kubernetes": ">=1.19",
+    "nodejs": ">=16.0"
+  },
+  "category": "ai-infrastructure",
+  "verified": false,
+  "library": "gemini"
+}

@@ -3,7 +3,7 @@
   "title": "Kubernetes存储实战指南",
   "language": "kubernetes",
   "keywords": ["kubernetes", "storage", "volume", "persistent-volume", "pvc", "storage-class", "dynamic-provisioning"],
-  "description": "全面的Kubernetes存储实战指南，涵盖卷、持久卷、持久卷声明、存储类、动态卷供应和存储故障排查等内容。",
+  "description": "全面的Kubernetes存储实战指南，涵盖卷、持久卷、持久卷声明、存储类、动态卷供应和存储故障排查等内容�?,
   "difficulty": "intermediate",
   "author": "Kubernetes专家团队",
   "created_at": "2026-01-20T00:00:00Z",

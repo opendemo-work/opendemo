@@ -1,9 +1,9 @@
 {
-  "name": "Kubernetes网络拓扑可视化演示",
+  "name": "Kubernetes网络拓扑可视化演�?,
   "language": "kubernetes",
   "keywords": [
     "网络拓扑",
-    "可视化",
+    "可视�?,
     "Kubernetes",
     "CNI",
     "监控"

@@ -37,14 +37,15 @@ class DemoListUpdater:
         """
         self.output_dir = output_dir
         self.demo_list_path = demo_list_path
-        self.mapping_path = mapping_path or (Path(__file__).parent.parent.parent / "data" / "demo_mapping.json")
+        data_path = Path(__file__).parent.parent.parent / "data" / "demo_mapping.json"
+        self.mapping_path = mapping_path or data_path
         self.logger = get_logger(__name__)
 
     def load_mapping(self) -> Dict[str, List[Dict[str, Any]]]:
         """加载 demo_mapping.json"""
         if not self.mapping_path.exists():
             return {}
-        
+
         try:
             with open(self.mapping_path, "r", encoding="utf-8") as f:
                 return json.load(f)
@@ -86,7 +87,9 @@ class DemoListUpdater:
                             if lib_dir.is_dir():
                                 for demo_dir in lib_dir.iterdir():
                                     if demo_dir.is_dir():
-                                        demo_info = self._extract_demo_info(demo_dir, language, lib_dir.name)
+                                        demo_info = self._extract_demo_info(
+                                            demo_dir, language, lib_dir.name
+                                        )
                                         if demo_info:
                                             demos.append(demo_info)
                     else:
@@ -96,7 +99,9 @@ class DemoListUpdater:
 
         return demos
 
-    def _extract_demo_info(self, demo_dir: Path, language: str, category: Optional[str] = None) -> Optional[Dict[str, Any]]:
+    def _extract_demo_info(
+        self, demo_dir: Path, language: str, category: Optional[str] = None
+    ) -> Optional[Dict[str, Any]]:
         """
         提取 demo 信息
 
@@ -109,7 +114,7 @@ class DemoListUpdater:
             demo 信息字典
         """
         metadata_file = demo_dir / "metadata.json"
-        
+
         info = {
             "folder": demo_dir.name,
             "name": demo_dir.name,
@@ -129,7 +134,6 @@ class DemoListUpdater:
                 info["difficulty"] = metadata.get("difficulty", "beginner")
             except Exception:
                 pass
-
         return info
 
     def collect_all_demos(self) -> Dict[str, Dict[str, List[Dict[str, Any]]]]:
@@ -147,13 +151,11 @@ class DemoListUpdater:
             }
         """
         all_demos = {}
-
         for lang in SUPPORTED_LANGUAGES:
             demos = self.scan_demos(lang)
-            
+
             base_demos = []
             libraries = {}
-            
             for demo in demos:
                 category = demo.get("category")
                 if category:
@@ -162,17 +164,13 @@ class DemoListUpdater:
                     libraries[category].append(demo)
                 else:
                     base_demos.append(demo)
-            
+
             # 按名称排序
             base_demos.sort(key=lambda x: x["name"].lower())
             for lib_name in libraries:
                 libraries[lib_name].sort(key=lambda x: x["name"].lower())
-            
-            all_demos[lang] = {
-                "base": base_demos,
-                "libraries": libraries
-            }
 
+            all_demos[lang] = {"base": base_demos, "libraries": libraries}
         return all_demos
 
     def generate_markdown(self) -> str:
@@ -196,29 +194,37 @@ class DemoListUpdater:
 
         # 统计摘要
         total_count = 0
-        summary_lines = ["## 📊 统计摘要", "", "| 语言 | 基础 Demo | 第三方库/工具 | 总计 |", "|------|----------|--------------|------|"]
-        
+        summary_lines = [
+            "## 📊 统计摘要",
+            "",
+            "| 语言 | 基础 Demo | 第三方库/工具 | 总计 |",
+            "|------|----------|--------------|------|",
+        ]
+
         for lang in SUPPORTED_LANGUAGES:
             config = LANGUAGE_CONFIG.get(lang, {"emoji": "", "name": lang})
             data = all_demos.get(lang, {"base": [], "libraries": {}})
-            
+
             base_count = len(data["base"])
             lib_count = sum(len(demos) for demos in data["libraries"].values())
             lang_total = base_count + lib_count
             total_count += lang_total
-            
-            summary_lines.append(f"| {config['emoji']} {config['name']} | {base_count} | {lib_count} | {lang_total} |")
-        
+
+            summary_lines.append(
+                f"| {config['emoji']} {config['name']} | {base_count} | {lib_count} | {lang_total} |"
+            )
+
         summary_lines.append(f"| **总计** | - | - | **{total_count}** |")
         lines.extend(summary_lines)
         lines.append("")
-
         # 目录
-        lines.extend([
-            "## 📑 目录",
-            "",
-        ])
-        
+        lines.extend(
+            [
+                "## 📑 目录",
+                "",
+            ]
+        )
+
         for lang in SUPPORTED_LANGUAGES:
             config = LANGUAGE_CONFIG.get(lang, {"emoji": "", "name": lang})
             data = all_demos.get(lang, {"base": [], "libraries": {}})
@@ -227,22 +233,23 @@ class DemoListUpdater:
                 if data["libraries"]:
                     for lib_name in sorted(data["libraries"].keys()):
                         lines.append(f"  - [{lib_name}](#{lang.lower()}-{lib_name.lower()})")
-        
         lines.append("")
 
         # 各语言详细列表
         for lang in SUPPORTED_LANGUAGES:
             config = LANGUAGE_CONFIG.get(lang, {"emoji": "", "name": lang})
             data = all_demos.get(lang, {"base": [], "libraries": {}})
-            
+
             if not data["base"] and not data["libraries"]:
                 continue
 
-            lines.extend([
-                f"## {config['emoji']} {config['name']}",
-                f"<a name=\"{lang.lower()}\"></a>",
-                "",
-            ])
+            lines.extend(
+                [
+                    f"## {config['emoji']} {config['name']}",
+                    f'<a name="{lang.lower()}"></a>',
+                    "",
+                ]
+            )
 
             # 基础 Demo
             if data["base"]:
@@ -250,7 +257,7 @@ class DemoListUpdater:
                 lines.append("")
                 lines.append("| # | 名称 | 描述 | 目录 |")
                 lines.append("|---|------|------|------|")
-                
+
                 for i, demo in enumerate(data["base"], 1):
                     name = demo.get("name", demo["folder"])
                     desc = demo.get("description", "-")
@@ -258,7 +265,7 @@ class DemoListUpdater:
                         desc = desc[:57] + "..."
                     folder = demo["folder"]
                     lines.append(f"| {i} | {name} | {desc} | `{folder}` |")
-                
+
                 lines.append("")
 
             # 第三方库/工具 Demo
@@ -266,15 +273,15 @@ class DemoListUpdater:
                 category_name = "工具" if lang.lower() == "kubernetes" else "第三方库"
                 lines.append(f"### {category_name} Demo")
                 lines.append("")
-                
+
                 for lib_name in sorted(data["libraries"].keys()):
                     lib_demos = data["libraries"][lib_name]
                     lines.append(f"#### {lib_name}")
-                    lines.append(f"<a name=\"{lang.lower()}-{lib_name.lower()}\"></a>")
+                    lines.append(f'<a name="{lang.lower()}-{lib_name.lower()}"></a>')
                     lines.append("")
                     lines.append("| # | 名称 | 描述 | 目录 |")
                     lines.append("|---|------|------|------|")
-                    
+
                     for i, demo in enumerate(lib_demos, 1):
                         name = demo.get("name", demo["folder"])
                         desc = demo.get("description", "-")
@@ -282,15 +289,17 @@ class DemoListUpdater:
                             desc = desc[:57] + "..."
                         folder = demo["folder"]
                         lines.append(f"| {i} | {name} | {desc} | `{folder}` |")
-                    
+
                     lines.append("")
 
         # 页脚
-        lines.extend([
-            "---",
-            "",
-            f"*本文件由 opendemo CLI 自动生成，最后更新: {now}*",
-        ])
+        lines.extend(
+            [
+                "---",
+                "",
+                f"*本文件由 opendemo CLI 自动生成，最后更新: {now}*",
+            ]
+        )
 
         return "\n".join(lines)
 
@@ -303,13 +312,13 @@ class DemoListUpdater:
         """
         try:
             content = self.generate_markdown()
-            
+
             with open(self.demo_list_path, "w", encoding="utf-8") as f:
                 f.write(content)
-            
+
             self.logger.info(f"demo-list.md updated at {self.demo_list_path}")
             return True
-            
+
         except Exception as e:
             self.logger.error(f"Failed to update demo-list.md: {e}")
             return False
@@ -322,7 +331,7 @@ class DemoListUpdater:
             摘要字符串
         """
         all_demos = self.collect_all_demos()
-        
+
         parts = []
         total = 0
         for lang in SUPPORTED_LANGUAGES:
@@ -332,7 +341,7 @@ class DemoListUpdater:
             if count > 0:
                 parts.append(f"{config['name']}: {count}")
             total += count
-        
+
         return f"总计 {total} 个 demo ({', '.join(parts)})"
 
 

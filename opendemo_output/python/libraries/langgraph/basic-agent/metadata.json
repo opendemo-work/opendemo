@@ -1,0 +1,30 @@
+﻿{
+  "name": "langgraph-basic-agent",
+  "language": "python",
+  "keywords": [
+    "langgraph",
+    "agent",
+    "ai",
+    "workflow",
+    "state-graph",
+    "multi-step",
+    "decision-making"
+  ],
+  "description": "LangGraph基础Agent演示，展示如何使用LangGraph构建一个简单的对话Agent",
+  "difficulty": "beginner",
+  "author": "OpenDemo CLI",
+  "created_at": "2026-01-27T23:05:00",
+  "updated_at": "2026-01-27T23:05:00",
+  "version": "1.0.0",
+  "dependencies": {
+    "python": ">=3.8",
+    "packages": [
+      "langgraph>=0.2.0",
+      "langchain-core>=0.3.0",
+      "langchain-community>=0.3.0",
+      "typing-extensions>=4.0.0"
+    ]
+  },
+  "verified": false,
+  "category": "langgraph"
+}

@@ -615,7 +615,7 @@ class AIService:
                 "is_library": True,
                 "confidence": 0.6,
                 "library_name": kw,
-                "description": f"符合库名特征，可能是库名",
+                "description": "符合库名特征，可能是库名",
             }
 
         return {

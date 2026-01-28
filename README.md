@@ -1,4 +1,4 @@
-# 🛠️ Open Demo CLI
+# 🛠️ Open Demo
 
 > 智能化编程学习CLI工具 - 快速获取高质量、可执行的Demo代码，支持多语言、多场景、多维度的技术学习与实践
 
@@ -38,7 +38,7 @@
 
 ## � 项目简介
 
-Open Demo CLI 是一个智能化的编程学习工具，旨在帮助开发者快速获取高质量、可执行的代码示例，加速技术学习与实践。
+Open Demo 是一个智能化的编程学习工具，旨在帮助开发者快速获取高质量、可执行的代码示例，加速技术学习与实践。
 
 ### 核心特性
 
@@ -208,8 +208,9 @@ opendemo check --report
 | 🐳 **Docker** | 0 | troubleshooting(1) | 1 | ✅ 全部通过 |
 | 📦 **Containerd** | 0 | troubleshooting(1) | 1 | ✅ 全部通过 |
 | 🏃 **Runc** | 0 | troubleshooting(1) | 1 | ✅ 全部通过 |
-| ⎈ **Kubernetes** | 0 | fluid(1), kubeflow(42), kubeskoop(10), operator-framework(2), velero(15), operator(1), crd(1), rbac(1), prometheus(1), grafana(1), efk(1), elk(1), loki(1), jaeger(1), zipkin(1), opentelemetry(1), troubleshooting(8), network(1), storage(1), ai-infra(1), llmops(1), agent(9), mcp(9), rag(3), n8n(1, 含本地部署), vibe-coding(4) | 119 | ✅ 全部通过 |
-| **总计** | **210** | **150** | **360** | ✅ |
+| 🤖 **Vibe Coding** | 0 | gemini-cli(1), local-demo(1), other-cli(1), qoder-cli(1) | 4 | ✅ 全部通过 |
+| ⎈ **Kubernetes** | 0 | fluid(1), kubeflow(42), kubeskoop(10), operator-framework(2), velero(15), operator(1), crd(1), rbac(1), prometheus(1), grafana(1), efk(1), elk(1), loki(1), jaeger(1), zipkin(1), opentelemetry(1), troubleshooting(8), network(1), storage(1), ai-infra(1), llmops(1), agent(9), mcp(9), rag(3), n8n(1, 含本地部署), regflow(1), modelscope(1), ollama(1), gemini(1) | 119 | ✅ 全部通过 |
+| **总计** | **210** | **158** | **368** | ✅ |
 
 > 说明：Kubernetes 中 rag(3) 和 n8n(1) 目录下的案例已采用统一的 `README + manifests + meta` 目录结构，便于学习与自动化工具使用。
 
@@ -990,6 +991,43 @@ kubectl get pods
 
 </details>
 
+### 🤖 Vibe Coding (4个)
+
+<details>
+<summary><b>🤖 Vibe Coding编码助手 (4个)</b> - 点击展开</summary>
+
+> 路径: `opendemo_output/vibe-coding/`
+
+| # | Demo名称 | 功能说明 | 难度 | 状态 |
+|---|---------|---------|------|------|
+| 1 | `gemini-cli` | Gemini CLI编码助手服务，基于Google多模态AI模型的智能编码助手 | intermediate | ✅ |
+| 2 | `local-demo` | 本地Vibe Coding服务部署案例，演示完整的部署配置和运行流程 | intermediate | ✅ |
+| 3 | `other-cli` | 其他CLI工具编码助手，支持多种编程语言的智能编码建议 | intermediate | ✅ |
+| 4 | `qoder-cli` | Qoder CLI编码助手，提供代码审查和优化建议 | intermediate | ✅ |
+
+**功能覆盖**:
+- ✅ 智能编码助手服务部署与配置
+- ✅ 多种编程语言支持
+- ✅ 代码生成与优化建议
+- ✅ API接口与模型推理
+- ✅ 认证与安全管理
+- ✅ 任务调度与批处理
+
+**版本兼容性**:
+- Kubernetes v1.19.x+ 完全兼容
+- Kubernetes v1.20.x+ 完全兼容
+- Kubernetes v1.21.x+ 完全兼容
+- Kubernetes v1.22.x+ 完全兼容
+- Kubernetes v1.23.x+ 完全兼容
+- Kubernetes v1.24.x+ 完全兼容
+- Kubernetes v1.25.x+ 完全兼容
+- Kubernetes v1.26.x+ 完全兼容
+- Kubernetes v1.27.x+ 完全兼容
+- Kubernetes v1.28.x+ 完全兼容
+- Kubernetes v1.29.x+ 完全兼容
+
+</details>
+
 ### 🌐 Kubernetes网络 (1个)
 
 <details>
@@ -1072,6 +1110,167 @@ kubectl get pods
 </details>
 
 ### 🤖 Kubernetes AI基础设施 (1个)
+
+<details>
+<summary><b>🔄 RegFlow工作流引擎 (1个)</b> - 点击展开</summary>
+
+> 路径: `opendemo_output/kubernetes/regflow/`
+
+| # | Demo名称 | 功能说明 | 难度 | 状态 |
+|---|---------|---------|------|------|
+| 1 | `regflow-basic-demo` | RegFlow工作流引擎基础案例，演示如何使用Kubernetes原生的容器镜像注册表工作流引擎 | intermediate | ✅ |
+
+**功能覆盖**:
+- ✅ RegFlow控制器部署与配置
+- ✅ 注册表工作流定义与执行
+- ✅ 镜像扫描与验证任务
+- ✅ 工作流触发与调度机制
+- ✅ 注册表生命周期管理
+- ✅ 安全合规性检查
+
+**版本兼容性**:
+- Kubernetes v1.20.x+ 完全兼容
+- Kubernetes v1.21.x+ 完全兼容
+- Kubernetes v1.22.x+ 完全兼容
+- Kubernetes v1.23.x+ 完全兼容
+- Kubernetes v1.24.x+ 完全兼容
+- Kubernetes v1.25.x+ 完全兼容
+- Kubernetes v1.26.x+ 完全兼容
+- Kubernetes v1.27.x+ 完全兼容
+- Kubernetes v1.28.x+ 完全兼容
+- Kubernetes v1.29.x+ 完全兼容
+
+</details>
+
+<details>
+<summary><b>🤖 Gemini CLI多模态AI服务 (1个)</b> - 点击展开</summary>
+
+> 路径: `opendemo_output/kubernetes/gemini/`
+
+| # | Demo名称 | 功能说明 | 难度 | 状态 |
+|---|---------|---------|------|------|
+| 1 | `gemini-cli-demo` | Gemini CLI多模态AI服务基础案例，演示如何在Kubernetes环境中部署和使用Google的多模态AI模型命令行工具 | intermediate | ✅ |
+
+**功能覆盖**:
+- ✅ Gemini CLI服务部署与配置
+- ✅ 多模态AI模型服务架构
+- ✅ 文本、图像等多类型数据处理
+- ✅ API接口与模型推理
+- ✅ 认证与安全管理
+- ✅ 任务调度与批处理
+
+**版本兼容性**:
+- Kubernetes v1.19.x+ 完全兼容
+- Kubernetes v1.20.x+ 完全兼容
+- Kubernetes v1.21.x+ 完全兼容
+- Kubernetes v1.22.x+ 完全兼容
+- Kubernetes v1.23.x+ 完全兼容
+- Kubernetes v1.24.x+ 完全兼容
+- Kubernetes v1.25.x+ 完全兼容
+- Kubernetes v1.26.x+ 完全兼容
+- Kubernetes v1.27.x+ 完全兼容
+- Kubernetes v1.28.x+ 完全兼容
+- Kubernetes v1.29.x+ 完全兼容
+
+</details>
+
+<details>
+<summary><b>🤖 Ollama大语言模型服务 (1个)</b> - 点击展开</summary>
+
+> 路径: `opendemo_output/kubernetes/ollama/`
+
+| # | Demo名称 | 功能说明 | 难度 | 状态 |
+|---|---------|---------|------|------|
+| 1 | `ollama-basic-demo` | Ollama大语言模型服务基础案例，演示如何在Kubernetes环境中部署和使用本地LLM服务 | intermediate | ✅ |
+
+**功能覆盖**:
+- ✅ Ollama服务部署与配置
+- ✅ 大语言模型（LLM）服务架构
+- ✅ 模型管理与加载
+- ✅ API接口与模型推理
+- ✅ 模型存储与持久化管理
+- ✅ 服务健康检查与监控
+
+**版本兼容性**:
+- Kubernetes v1.19.x+ 完全兼容
+- Kubernetes v1.20.x+ 完全兼容
+- Kubernetes v1.21.x+ 完全兼容
+- Kubernetes v1.22.x+ 完全兼容
+- Kubernetes v1.23.x+ 完全兼容
+- Kubernetes v1.24.x+ 完全兼容
+- Kubernetes v1.25.x+ 完全兼容
+- Kubernetes v1.26.x+ 完全兼容
+- Kubernetes v1.27.x+ 完全兼容
+- Kubernetes v1.28.x+ 完全兼容
+- Kubernetes v1.29.x+ 完全兼容
+
+</details>
+
+<details>
+<summary><b>🤖 ModelScope模型开放平台 (1个)</b> - 点击展开</summary>
+
+> 路径: `opendemo_output/kubernetes/modelscope/`
+
+| # | Demo名称 | 功能说明 | 难度 | 状态 |
+|---|---------|---------|------|------|
+| 1 | `modelscope-basic-demo` | ModelScope模型开放平台基础案例，演示如何在Kubernetes环境中部署和使用阿里云模型即服务平台 | intermediate | ✅ |
+
+**功能覆盖**:
+- ✅ ModelScope服务部署与配置
+- ✅ 模型即服务(MaaS)平台架构
+- ✅ 预训练模型管理与使用
+- ✅ 模型推理与微调服务
+- ✅ 模型缓存与存储管理
+- ✅ 模型服务的健康检查与监控
+
+**版本兼容性**:
+- Kubernetes v1.20.x+ 完全兼容
+- Kubernetes v1.21.x+ 完全兼容
+- Kubernetes v1.22.x+ 完全兼容
+- Kubernetes v1.23.x+ 完全兼容
+- Kubernetes v1.24.x+ 完全兼容
+- Kubernetes v1.25.x+ 完全兼容
+- Kubernetes v1.26.x+ 完全兼容
+- Kubernetes v1.27.x+ 完全兼容
+- Kubernetes v1.28.x+ 完全兼容
+- Kubernetes v1.29.x+ 完全兼容
+
+</details>
+
+<details>
+<summary><b>🤖 Vibe Coding编码助手 (4个)</b> - 点击展开</summary>
+
+> 路径: `opendemo_output/vibe-coding/`
+
+| # | Demo名称 | 功能说明 | 难度 | 状态 |
+|---|---------|---------|------|------|
+| 1 | `gemini-cli` | Gemini CLI编码助手服务，基于Google多模态AI模型的智能编码助手 | intermediate | ✅ |
+| 2 | `local-demo` | 本地Vibe Coding服务部署案例，演示完整的部署配置和运行流程 | intermediate | ✅ |
+| 3 | `other-cli` | 其他CLI工具编码助手，支持多种编程语言的智能编码建议 | intermediate | ✅ |
+| 4 | `qoder-cli` | Qoder CLI编码助手，提供代码审查和优化建议 | intermediate | ✅ |
+
+**功能覆盖**:
+- ✅ 智能编码助手服务部署与配置
+- ✅ 多种编程语言支持
+- ✅ 代码生成与优化建议
+- ✅ API接口与模型推理
+- ✅ 认证与安全管理
+- ✅ 任务调度与批处理
+
+**版本兼容性**:
+- Kubernetes v1.19.x+ 完全兼容
+- Kubernetes v1.20.x+ 完全兼容
+- Kubernetes v1.21.x+ 完全兼容
+- Kubernetes v1.22.x+ 完全兼容
+- Kubernetes v1.23.x+ 完全兼容
+- Kubernetes v1.24.x+ 完全兼容
+- Kubernetes v1.25.x+ 完全兼容
+- Kubernetes v1.26.x+ 完全兼容
+- Kubernetes v1.27.x+ 完全兼容
+- Kubernetes v1.28.x+ 完全兼容
+- Kubernetes v1.29.x+ 完全兼容
+
+</details>
 
 <details>
 <summary><b>🤖 Kubernetes AI基础设施实战指南 (1个)</b> - 点击展开</summary>
@@ -1578,7 +1777,7 @@ MIT License
 
 - **Stack Overflow**：使用 `opendemo` 标签提问
 - **Discord**：[加入社区](https://discord.gg/opendemo)
-- **Twitter**：[关注更新](https://twitter.com/opendemo_cli)
+- **Twitter**：[关注更新](https://twitter.com/opendemo)
 
 ### 开发团队
 
@@ -1642,4 +1841,4 @@ python code/logging_demo.py
 
 ---
 
-**Open Demo CLI** - 让编程学习更简单、更高效！ 🎉
+**Open Demo** - 让编程学习更简单、更高效！ 🎉

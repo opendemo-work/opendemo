@@ -2,7 +2,7 @@
   "name": "basic-ai-infra",
   "language": "kubernetes",
   "category": "ai-infra",
-  "description": "Kubernetes AI基础设施实战指南，涵盖GPU资源管理、分布式训练、模型服务、数据管理和监控等内容",
+  "description": "Kubernetes AI基础设施实战指南，涵盖GPU资源管理、分布式训练、模型服务、数据管理和监控等内�?,
   "keywords": [
     "kubernetes",
     "ai-infrastructure",

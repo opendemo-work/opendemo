@@ -1,0 +1,110 @@
+# ModelScope 服务部署配置
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: modelscope-system
+---
+# 模型缓存 PVC
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: models-cache-pvc
+  namespace: modelscope-system
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 50Gi
+---
+# ModelScope 服务部署
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: modelscope-service
+  namespace: modelscope-system
+  labels:
+    app: modelscope-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: modelscope-service
+  template:
+    metadata:
+      labels:
+        app: modelscope-service
+    spec:
+      containers:
+      - name: modelscope-container
+        image: registry.cn-beijing.aliyuncs.com/modelscope/modelscope:latest
+        ports:
+        - containerPort: 8080
+        env:
+        - name: MODELSCOPE_ENV
+          value: "production"
+        - name: MODELSCOPE_CACHE_DIR
+          value: "/root/.cache/modelscope"
+        resources:
+          requests:
+            memory: "2Gi"
+            cpu: "1000m"
+          limits:
+            memory: "4Gi"
+            cpu: "2000m"
+        volumeMounts:
+        - name: models-cache
+          mountPath: /root/.cache/modelscope
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 8080
+          initialDelaySeconds: 30
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /ready
+            port: 8080
+          initialDelaySeconds: 5
+          periodSeconds: 5
+      volumes:
+      - name: models-cache
+        persistentVolumeClaim:
+          claimName: models-cache-pvc
+---
+# ModelScope 服务暴露
+apiVersion: v1
+kind: Service
+metadata:
+  name: modelscope-service
+  namespace: modelscope-system
+spec:
+  selector:
+    app: modelscope-service
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+      nodePort: 30080
+  type: NodePort
+---
+# ModelScope 服务入口
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: modelscope-ingress
+  namespace: modelscope-system
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+  - host: modelscope.local
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: modelscope-service
+            port:
+              number: 80

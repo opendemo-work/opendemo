@@ -239,7 +239,7 @@ def generate_single_demo(demo_config: dict, retry: int = 2, delay: int = 5) -> b
     cmd = [
         "python",
         "-m",
-        "opendemo.cli",
+        "opendemo",
         "new",
         "kubernetes",
         keywords,

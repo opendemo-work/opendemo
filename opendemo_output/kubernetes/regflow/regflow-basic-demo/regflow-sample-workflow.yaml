@@ -1,0 +1,160 @@
+# RegFlow 示例工作流定义
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: registryworkflows.regflow.k8s.io
+spec:
+  group: regflow.k8s.io
+  versions:
+  - name: v1alpha1
+    served: true
+    storage: true
+    schema:
+      openAPIV3Schema:
+        type: object
+        properties:
+          spec:
+            type: object
+            properties:
+              tasks:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                    image:
+                      type: string
+                    command:
+                      type: array
+                      items:
+                        type: string
+                    args:
+                      type: array
+                      items:
+                        type: string
+                  required:
+                  - name
+                  - image
+              triggers:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    type:
+                      type: string
+                    cron:
+                      type: string
+                    endpoint:
+                      type: string
+          status:
+            type: object
+            properties:
+              phase:
+                type: string
+              startTime:
+                type: string
+              completionTime:
+                type: string
+  scope: Namespaced
+  names:
+    plural: registryworkflows
+    singular: registryworkflow
+    kind: RegistryWorkflow
+---
+# RegFlow 控制器部署
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: regflow-controller
+  namespace: regflow-system
+  labels:
+    app: regflow-controller
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: regflow-controller
+  template:
+    metadata:
+      labels:
+        app: regflow-controller
+    spec:
+      serviceAccountName: regflow-controller
+      containers:
+      - name: controller
+        image: regflow/controller:latest
+        ports:
+        - containerPort: 8080
+        env:
+        - name: REGFLOW_NAMESPACE
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.namespace
+        - name: REGFLOW_SERVICE_ACCOUNT
+          valueFrom:
+            fieldRef:
+              fieldPath: spec.serviceAccountName
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: regflow-controller
+  namespace: regflow-system
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: regflow-controller-role
+rules:
+- apiGroups: [""]
+  resources: ["pods", "services", "secrets", "configmaps"]
+  verbs: ["*"]
+- apiGroups: ["apps"]
+  resources: ["deployments", "daemonsets", "replicasets", "statefulsets"]
+  verbs: ["*"]
+- apiGroups: ["batch"]
+  resources: ["jobs", "cronjobs"]
+  verbs: ["*"]
+- apiGroups: ["regflow.k8s.io"]
+  resources: ["registryworkflows"]
+  verbs: ["*"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: regflow-controller-binding
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: regflow-controller-role
+subjects:
+- kind: ServiceAccount
+  name: regflow-controller
+  namespace: regflow-system
+---
+# 示例 RegFlow 工作流实例
+apiVersion: regflow.k8s.io/v1alpha1
+kind: RegistryWorkflow
+metadata:
+  name: sample-regflow-workflow
+  namespace: default
+spec:
+  tasks:
+    - name: scan-images
+      image: registry-scanner:latest
+      command: ["/bin/sh"]
+      args: ["-c", "scan-registry --repo=my-registry.com/my-app --output=results.json"]
+    - name: validate-images
+      image: validator:latest
+      command: ["/bin/sh"]
+      args: ["-c", "validate --config=config.yaml --input=results.json"]
+    - name: tag-images
+      image: tagger:latest
+      command: ["/bin/sh"]
+      args: ["-c", "tag --source=validated.json --tags=stable,latest"]
+  triggers:
+    - type: schedule
+      cron: "0 2 * * *"
+    - type: webhook
+      endpoint: /webhooks/registry-updates

@@ -1,5 +1,5 @@
 {
-  "name": "持久卷快照备份演示",
+  "name": "持久卷快照备份演�?,
   "language": "kubernetes",
   "keywords": [
     "velero",
@@ -8,7 +8,7 @@
     "persistent-volume",
     "kubernetes"
   ],
-  "description": "演示如何使用CSI快照功能备份持久卷数据",
+  "description": "演示如何使用CSI快照功能备份持久卷数�?,
   "difficulty": "intermediate",
   "author": "",
   "created_at": "2026-01-11T23:45:00.000000",

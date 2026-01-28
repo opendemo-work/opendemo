@@ -159,14 +159,12 @@ class ReadmeUpdater:
                 else:
                     lib_info = "-"
 
-            lines.append(
-                f"| {config['emoji']} **{config['name']}** | {base} | {lib_info} | {total} | ✅ 全部通过 |"
-            )
+            table_row = f"| {config['emoji']} **{config['name']}** | {base} | {lib_info} | {total} | ✅ 全部通过 |"
+            lines.append(table_row)
 
         # 总计行
-        lines.append(
-            f"| **总计** | **{totals['base_total']}** | **{totals['lib_total'] + totals['tool_total']}** | **{totals['grand_total']}** | ✅ |"
-        )
+        total_row = f"| **总计** | **{totals['base_total']}** | **{totals['lib_total'] + totals['tool_total']}** | **{totals['grand_total']}** | ✅ |"
+        lines.append(total_row)
 
         return "\n".join(lines)
 
