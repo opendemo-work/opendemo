@@ -1,0 +1,554 @@
+# Kubernetes大模型微调生产环境部署配置
+
+## 1. 命名空间和资源配置
+
+```yaml
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: model-finetuning-prod
+  labels:
+    environment: production
+    purpose: model-finetuning
+    domain: ai-ml
+---
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: finetuning-resource-quota
+  namespace: model-finetuning-prod
+spec:
+  hard:
+    requests.cpu: "64"
+    requests.memory: 512Gi
+    requests.nvidia.com/gpu: "16"
+    limits.cpu: "128"
+    limits.memory: 1024Gi
+    limits.nvidia.com/gpu: "32"
+    persistentvolumeclaims: "20"
+    services.loadbalancers: "5"
+---
+# 网络策略
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: finetuning-network-policy
+  namespace: model-finetuning-prod
+spec:
+  podSelector:
+    matchLabels:
+      app: model-finetuning
+  policyTypes:
+  - Ingress
+  - Egress
+  ingress:
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          name: monitoring
+    - namespaceSelector:
+        matchLabels:
+          name: ingress-nginx
+    ports:
+    - protocol: TCP
+      port: 8080
+  egress:
+  - to:
+    - namespaceSelector:
+        matchLabels:
+          name: kube-system
+    ports:
+    - protocol: TCP
+      port: 53
+    - protocol: UDP
+      port: 53
+```
+
+## 2. 微调训练Job配置
+
+```yaml
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: lora-finetuning-job
+  namespace: model-finetuning-prod
+  labels:
+    app: model-finetuning
+    technique: lora
+    priority: high
+spec:
+  parallelism: 1
+  completions: 1
+  backoffLimit: 3
+  template:
+    spec:
+      containers:
+      - name: finetuning-container
+        image: ai-research/model-finetuning:latest
+        command: ["python", "finetune_model.py"]
+        args:
+        - --model-name=meta-llama/Llama-2-13b-hf
+        - --technique=lora
+        - --lora-r=64
+        - --lora-alpha=32
+        - --batch-size=4
+        - --epochs=3
+        - --learning-rate=2e-4
+        - --dataset-path=/data/training-data
+        - --output-path=/output/fine-tuned-model
+        env:
+        - name: HF_TOKEN
+          valueFrom:
+            secretKeyRef:
+              name: huggingface-token
+              key: token
+        - name: WANDB_API_KEY
+          valueFrom:
+            secretKeyRef:
+              name: wandb-api-key
+              key: api-key
+        - name: NVIDIA_VISIBLE_DEVICES
+          value: "all"
+        - name: CUDA_LAUNCH_BLOCKING
+          value: "1"
+        resources:
+          requests:
+            nvidia.com/gpu: "4"
+            cpu: "16"
+            memory: "128Gi"
+          limits:
+            nvidia.com/gpu: "4"
+            cpu: "32"
+            memory: "256Gi"
+        volumeMounts:
+        - name: training-data
+          mountPath: /data
+        - name: model-output
+          mountPath: /output
+        - name: cache-volume
+          mountPath: /root/.cache
+        securityContext:
+          runAsNonRoot: true
+          runAsUser: 1000
+          capabilities:
+            drop:
+            - ALL
+        readinessProbe:
+          exec:
+            command: ["cat", "/tmp/ready"]
+          initialDelaySeconds: 30
+          periodSeconds: 10
+        livenessProbe:
+          exec:
+            command: ["cat", "/tmp/alive"]
+          initialDelaySeconds: 60
+          periodSeconds: 30
+      volumes:
+      - name: training-data
+        persistentVolumeClaim:
+          claimName: finetuning-data-pvc
+      - name: model-output
+        persistentVolumeClaim:
+          claimName: finetuning-models-pvc
+      - name: cache-volume
+        emptyDir: {}
+      restartPolicy: OnFailure
+      nodeSelector:
+        nvidia.com/gpu.present: "true"
+      tolerations:
+      - key: "nvidia.com/gpu"
+        operator: "Exists"
+        effect: "NoSchedule"
+```
+
+## 3. 分布式微调配置
+
+```yaml
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: distributed-finetuning
+  namespace: model-finetuning-prod
+spec:
+  parallelism: 4
+  completions: 4
+  template:
+    spec:
+      containers:
+      - name: distributed-worker
+        image: ai-research/distributed-finetuning:latest
+        command: ["torchrun"]
+        args:
+        - --nproc_per_node=2
+        - --nnodes=4
+        - --node_rank=$(NODE_RANK)
+        - --master_addr=$(MASTER_ADDR)
+        - --master_port=12355
+        - finetune_distributed.py
+        - --model=meta-llama/Llama-2-70b-hf
+        - --technique=qlora
+        - --batch-size=2
+        - --gradient-accumulation=8
+        env:
+        - name: NODE_RANK
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.annotations['batch.kubernetes.io/job-completion-index']
+        - name: MASTER_ADDR
+          value: "distributed-finetuning-headless.model-finetuning-prod.svc.cluster.local"
+        - name: NCCL_DEBUG
+          value: "INFO"
+        - name: NCCL_SOCKET_IFNAME
+          value: "eth0"
+        resources:
+          requests:
+            nvidia.com/gpu: "2"
+            cpu: "16"
+            memory: "128Gi"
+          limits:
+            nvidia.com/gpu: "2"
+            cpu: "32"
+            memory: "256Gi"
+        volumeMounts:
+        - name: shared-data
+          mountPath: /data
+        - name: model-checkpoints
+          mountPath: /checkpoints
+      volumes:
+      - name: shared-data
+        persistentVolumeClaim:
+          claimName: distributed-training-data-pvc
+      - name: model-checkpoints
+        persistentVolumeClaim:
+          claimName: model-checkpoints-pvc
+      restartPolicy: OnFailure
+```
+
+## 4. 微调服务部署
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: finetuned-model-service
+  namespace: model-finetuning-prod
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: finetuned-model
+  template:
+    metadata:
+      labels:
+        app: finetuned-model
+        version: v1.0.0
+    spec:
+      containers:
+      - name: model-server
+        image: ai-research/model-server:latest
+        command: ["python", "serve_model.py"]
+        args:
+        - --model-path=/models/finetuned-model
+        - --port=8000
+        - --max-batch-size=32
+        ports:
+        - containerPort: 8000
+          name: http
+        resources:
+          requests:
+            nvidia.com/gpu: "1"
+            cpu: "8"
+            memory: "64Gi"
+          limits:
+            nvidia.com/gpu: "1"
+            cpu: "16"
+            memory: "128Gi"
+        volumeMounts:
+        - name: model-storage
+          mountPath: /models
+        env:
+        - name: MODEL_NAME
+          value: "finetuned-domain-model"
+        - name: SERVING_MODE
+          value: "production"
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 8000
+          initialDelaySeconds: 30
+          periodSeconds: 10
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 8000
+          initialDelaySeconds: 60
+          periodSeconds: 30
+      volumes:
+      - name: model-storage
+        persistentVolumeClaim:
+          claimName: finetuned-models-pvc
+      nodeSelector:
+        nvidia.com/gpu.present: "true"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: finetuned-model-service
+  namespace: model-finetuning-prod
+spec:
+  selector:
+    app: finetuned-model
+  ports:
+  - port: 80
+    targetPort: 8000
+    name: http
+  type: LoadBalancer
+```
+
+## 5. 监控和告警配置
+
+```yaml
+# Prometheus监控配置
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: finetuning-monitor
+  namespace: monitoring
+spec:
+  selector:
+    matchLabels:
+      app: model-finetuning
+  endpoints:
+  - port: metrics
+    path: /metrics
+    interval: 30s
+  - port: http
+    path: /health
+    interval: 60s
+---
+# 告警规则
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: finetuning-alerts
+  namespace: monitoring
+spec:
+  groups:
+  - name: finetuning.rules
+    rules:
+    - alert: FinetuningJobFailed
+      expr: kube_job_status_failed{job="finetuning-job"} > 0
+      for: 5m
+      labels:
+        severity: critical
+      annotations:
+        summary: "Finetuning job failed"
+        description: "Finetuning job {{ $labels.job }} has failed"
+    
+    - alert: HighGPUMemoryUsage
+      expr: avg(rate(DCGM_FI_DEV_MEM_COPY_UTIL[5m])) > 90
+      for: 2m
+      labels:
+        severity: warning
+      annotations:
+        summary: "High GPU memory usage"
+        description: "GPU memory usage is {{ $value }}%"
+    
+    - alert: LongTrainingDuration
+      expr: time() - kube_job_status_start_time{job=~"finetuning.*"} > 7200
+      for: 10m
+      labels:
+        severity: warning
+      annotations:
+        summary: "Long training duration"
+        description: "Training job running for more than 2 hours"
+```
+
+## 6. 存储配置
+
+```yaml
+# 训练数据PVC
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: finetuning-data-pvc
+  namespace: model-finetuning-prod
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 2Ti
+  storageClassName: fast-ssd
+---
+# 模型输出PVC
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: finetuning-models-pvc
+  namespace: model-finetuning-prod
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 500Gi
+  storageClassName: fast-ssd
+---
+# 检查点存储PVC
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: model-checkpoints-pvc
+  namespace: model-finetuning-prod
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 1Ti
+  storageClassName: fast-ssd
+```
+
+## 7. 安全配置
+
+```yaml
+# Pod安全策略
+apiVersion: policy/v1beta1
+kind: PodSecurityPolicy
+metadata:
+  name: finetuning-psp
+spec:
+  privileged: false
+  allowPrivilegeEscalation: false
+  requiredDropCapabilities:
+  - ALL
+  volumes:
+  - configMap
+  - emptyDir
+  - projected
+  - secret
+  - persistentVolumeClaim
+  hostNetwork: false
+  hostIPC: false
+  hostPID: false
+  runAsUser:
+    rule: MustRunAsNonRoot
+  seLinux:
+    rule: RunAsAny
+  supplementalGroups:
+    rule: MustRunAs
+    ranges:
+    - min: 1
+      max: 65535
+  fsGroup:
+    rule: MustRunAs
+    ranges:
+    - min: 1
+      max: 65535
+---
+# 密钥管理
+apiVersion: v1
+kind: Secret
+metadata:
+  name: model-secrets
+  namespace: model-finetuning-prod
+type: Opaque
+data:
+  hf-token: <base64-encoded-huggingface-token>
+  wandb-key: <base64-encoded-wandb-api-key>
+  encryption-key: <base64-encoded-encryption-key>
+```
+
+## 8. 自动扩缩容配置
+
+```yaml
+# HPA配置
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: finetuned-model-hpa
+  namespace: model-finetuning-prod
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: finetuned-model-service
+  minReplicas: 2
+  maxReplicas: 10
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 70
+  - type: Resource
+    resource:
+      name: memory
+      target:
+        type: Utilization
+        averageUtilization: 80
+  - type: Pods
+    pods:
+      metric:
+        name: requests_per_second
+      target:
+        type: AverageValue
+        averageValue: "100"
+  behavior:
+    scaleDown:
+      stabilizationWindowSeconds: 300
+      policies:
+      - type: Percent
+        value: 10
+        periodSeconds: 60
+    scaleUp:
+      stabilizationWindowSeconds: 60
+      policies:
+      - type: Percent
+        value: 50
+        periodSeconds: 60
+```
+
+## 9. 成本优化配置
+
+```yaml
+# Spot实例配置
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cost-optimized-finetuning
+  namespace: model-finetuning-prod
+spec:
+  template:
+    spec:
+      tolerations:
+      - key: "spot-instance"
+        operator: "Equal"
+        value: "true"
+        effect: "NoSchedule"
+      affinity:
+        nodeAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+          - weight: 1
+            preference:
+              matchExpressions:
+              - key: "node.kubernetes.io/instance-type"
+                operator: In
+                values: ["p3dn.24xlarge", "p4d.24xlarge"]
+      containers:
+      - name: training-job
+        # 配置检查点和优雅终止
+        lifecycle:
+          preStop:
+            exec:
+              command: ["/bin/sh", "-c", "python save_checkpoint.py && sleep 30"]
+```
+
+这个完整的Kubernetes部署配置提供了：
+✅ 生产级的微调训练环境
+✅ 分布式训练支持
+✅ 模型服务化部署
+✅ 完善的监控告警体系
+✅ 安全和成本优化策略

@@ -1,0 +1,44 @@
+{
+  "name": "Kubernetes Deployment基础实战",
+  "language": "kubernetes",
+  "category": "workload",
+  "subcategory": "deployment-basics",
+  "difficulty": "intermediate",
+  "keywords": [
+    "kubernetes",
+    "deployment",
+    "rolling-update",
+    "rollback",
+    "autoscaling"
+  ],
+  "description": "深入学习Kubernetes Deployment的核心功能：滚动更新、回滚操作、自动扩缩容等应用部署管理技能",
+  "version": "1.0.0",
+  "author": "OpenDemo Team",
+  "created_at": "2026-01-30",
+  "updated_at": "2026-01-30",
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "prerequisites": [
+    "Pod基础知识",
+    "Kubernetes基础概念",
+    "kubectl命令行工具"
+  ],
+  "learning_objectives": [
+    "理解Deployment的核心概念和工作机制",
+    "掌握滚动更新和回滚操作",
+    "学会自动扩缩容配置",
+    "掌握版本管理和更新策略",
+    "理解健康检查与部署的协同工作"
+  ],
+  "estimated_time": "2-3小时",
+  "compatibility": {
+    "kubernetes": ">=1.19",
+    "features": [
+      "rolling-update",
+      "rollback",
+      "horizontal-pod-autoscaler"
+    ]
+  }
+}

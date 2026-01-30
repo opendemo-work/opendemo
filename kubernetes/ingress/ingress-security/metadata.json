@@ -1,0 +1,46 @@
+{
+  "name": "Kubernetes Ingress安全配置实战",
+  "language": "kubernetes",
+  "category": "ingress",
+  "subcategory": "security",
+  "difficulty": "advanced",
+  "keywords": [
+    "kubernetes",
+    "ingress",
+    "security",
+    "authentication",
+    "authorization",
+    "network-policy",
+    "waf"
+  ],
+  "description": "全面掌握Kubernetes Ingress的安全配置，包括认证授权、网络安全、访问控制等企业级安全实践",
+  "version": "1.0.0",
+  "author": "OpenDemo Team",
+  "created_at": "2026-01-30",
+  "updated_at": "2026-01-30",
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "prerequisites": [
+    "Kubernetes Ingress基础知识",
+    "网络安全基础概念",
+    "认证授权机制理解"
+  ],
+  "learning_objectives": [
+    "掌握多种认证方式的配置和实现",
+    "能够设计和实施网络安全策略",
+    "理解访问控制的最佳实践",
+    "配置WAF和攻击防护机制",
+    "建立安全审计和监控体系"
+  ],
+  "estimated_time": "3-4小时",
+  "compatibility": {
+    "kubernetes": ">=1.19",
+    "security_tools": [
+      "oauth2-proxy",
+      "modsecurity",
+      "cert-manager"
+    ]
+  }
+}

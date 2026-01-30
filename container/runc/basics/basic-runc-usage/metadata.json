@@ -1,0 +1,43 @@
+{
+  "name": "Runc基础使用入门",
+  "language": "runc",
+  "category": "container",
+  "subcategory": "runc-basics",
+  "difficulty": "advanced",
+  "keywords": [
+    "runc",
+    "oci",
+    "container-runtime",
+    "low-level",
+    "security"
+  ],
+  "description": "Runc容器运行时基础入门实战：从OCI规范到容器执行的完整指南",
+  "version": "1.0.0",
+  "author": "OpenDemo Team",
+  "created_at": "2026-01-30",
+  "updated_at": "2026-01-30",
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "prerequisites": [
+    "Linux系统管理经验",
+    "容器技术深入理解",
+    "系统调用和安全机制知识"
+  ],
+  "learning_objectives": [
+    "理解OCI运行时规范和runc架构",
+    "掌握runc安装和基本配置",
+    "学会bundle创建和配置文件编写",
+    "掌握容器生命周期管理",
+    "理解资源限制和安全配置"
+  ],
+  "estimated_time": "4-5小时",
+  "compatibility": {
+    "runc_version": ">=1.1.0",
+    "operating_systems": [
+      "linux"
+    ],
+    "kernel_version": ">=4.0"
+  }
+}

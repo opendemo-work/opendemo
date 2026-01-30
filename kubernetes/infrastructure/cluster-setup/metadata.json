@@ -1,0 +1,52 @@
+{
+  "name": "Kubernetes集群搭建和初始化实战",
+  "language": "kubernetes",
+  "category": "infrastructure",
+  "subcategory": "cluster-setup",
+  "difficulty": "advanced",
+  "keywords": [
+    "kubernetes",
+    "cluster",
+    "kubeadm",
+    "high-availability",
+    "installation"
+  ],
+  "description": "全面掌握Kubernetes集群的部署、初始化和配置管理，从单节点开发环境到生产级高可用集群的完整搭建指南",
+  "version": "1.0.0",
+  "author": "OpenDemo Team",
+  "created_at": "2026-01-30",
+  "updated_at": "2026-01-30",
+  "files": [
+    "README.md",
+    "kubeadm-config.yaml",
+    "ha-config.yaml",
+    "metadata.json"
+  ],
+  "prerequisites": [
+    "Linux系统管理基础",
+    "网络基础知识",
+    "容器技术基础",
+    "系统安全配置经验"
+  ],
+  "learning_objectives": [
+    "掌握Kubernetes集群规划和架构设计",
+    "学会单节点和多节点集群搭建方法",
+    "理解高可用集群配置要点",
+    "掌握网络插件和存储配置",
+    "学会集群初始化和验证方法"
+  ],
+  "estimated_time": "4-6小时",
+  "compatibility": {
+    "kubernetes": ">=1.20",
+    "operating_systems": [
+      "CentOS 7+",
+      "Ubuntu 18.04+",
+      "RHEL 7+"
+    ],
+    "container_runtimes": [
+      "containerd",
+      "docker",
+      "cri-o"
+    ]
+  }
+}

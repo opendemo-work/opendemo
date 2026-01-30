@@ -1,0 +1,44 @@
+{
+  "name": "Kubernetes网络组件故障排查和维护实战",
+  "language": "kubernetes",
+  "category": "network",
+  "subcategory": "troubleshooting",
+  "difficulty": "advanced",
+  "keywords": [
+    "kubernetes",
+    "network",
+    "troubleshooting",
+    "maintenance",
+    "diagnostics"
+  ],
+  "description": "系统化Kubernetes网络组件故障诊断：从DNS解析到存储卷，构建完整的网络运维体系",
+  "version": "1.0.0",
+  "author": "OpenDemo Team",
+  "created_at": "2026-01-30",
+  "updated_at": "2026-01-30",
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "prerequisites": [
+    "网络组件基础知识",
+    "Kubernetes运维经验",
+    "故障排查技能"
+  ],
+  "learning_objectives": [
+    "掌握系统化网络故障排查方法",
+    "学会自动化诊断工具使用",
+    "具备存储组件维护能力",
+    "实施性能瓶颈分析技能",
+    "建立预防性维护体系"
+  ],
+  "estimated_time": "4-5小时",
+  "compatibility": {
+    "kubernetes": ">=1.20",
+    "troubleshooting_tools": [
+      "kubectl",
+      "network-utils",
+      "storage-diagnostics"
+    ]
+  }
+}

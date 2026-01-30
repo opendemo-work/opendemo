@@ -1,0 +1,40 @@
+{
+  "name": "Kubernetes Workload高级特性实战",
+  "language": "kubernetes",
+  "category": "workload",
+  "subcategory": "advanced",
+  "difficulty": "advanced",
+  "keywords": [
+    "kubernetes",
+    "workload",
+    "affinity",
+    "toleration",
+    "resource-management"
+  ],
+  "description": "深入探索Kubernetes Workload的高级功能：亲和性配置、污点容忍、资源管理、调度优化等企业级特性",
+  "version": "1.0.0",
+  "author": "OpenDemo Team",
+  "created_at": "2026-01-30",
+  "updated_at": "2026-01-30",
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "prerequisites": [
+    "Workload基础知识",
+    "调度概念理解",
+    "资源管理经验"
+  ],
+  "learning_objectives": [
+    "掌握高级亲和性和反亲和性配置",
+    "理解污点和容忍度的深度应用",
+    "学会资源配额和限制管理",
+    "掌握自定义调度策略",
+    "理解拓扑感知和区域调度"
+  ],
+  "estimated_time": "3-4小时",
+  "compatibility": {
+    "kubernetes": ">=1.20",
+    "advanced_scheduling": true
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "name": "CoreDNS高级特性实战",
+  "language": "kubernetes",
+  "category": "network",
+  "subcategory": "coredns-advanced",
+  "difficulty": "advanced",
+  "keywords": [
+    "kubernetes",
+    "coredns",
+    "dns-federation",
+    "custom-dns",
+    "security"
+  ],
+  "description": "深入探索CoreDNS高级功能：自定义DNS配置、联邦DNS、安全加固等企业级DNS解决方案",
+  "version": "1.0.0",
+  "author": "OpenDemo Team",
+  "created_at": "2026-01-30",
+  "updated_at": "2026-01-30",
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "prerequisites": [
+    "CoreDNS基础配置经验",
+    "DNS系统管理经验",
+    "安全配置理解"
+  ],
+  "learning_objectives": [
+    "掌握自定义DNS配置和插件开发",
+    "学会联邦DNS架构设计",
+    "理解DNS安全加固方案",
+    "掌握高级性能优化技能",
+    "具备完善的监控告警能力"
+  ],
+  "estimated_time": "4-5小时",
+  "compatibility": {
+    "kubernetes": ">=1.20",
+    "coredns_version": ">=1.8.0",
+    "advanced_dns": true
+  }
+}

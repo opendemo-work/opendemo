@@ -1,0 +1,40 @@
+{
+  "name": "Kubernetes网络组件生产环境最佳实践",
+  "language": "kubernetes",
+  "category": "network",
+  "subcategory": "production",
+  "difficulty": "expert",
+  "keywords": [
+    "kubernetes",
+    "network",
+    "production",
+    "high-availability",
+    "best-practices"
+  ],
+  "description": "企业级Kubernetes网络组件解决方案：高可用架构、性能优化、安全加固、监控告警等生产环境必备技能",
+  "version": "1.0.0",
+  "author": "OpenDemo Team",
+  "created_at": "2026-01-30",
+  "updated_at": "2026-01-30",
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "prerequisites": [
+    "网络组件高级配置经验",
+    "生产环境运维经验",
+    "系统架构设计能力"
+  ],
+  "learning_objectives": [
+    "设计高可用网络组件架构",
+    "实施性能优化调优方案",
+    "配置企业级安全体系",
+    "建立完善监控告警体系",
+    "优化资源成本和利用效率"
+  ],
+  "estimated_time": "5-6小时",
+  "compatibility": {
+    "kubernetes": ">=1.22",
+    "production_ready": true
+  }
+}

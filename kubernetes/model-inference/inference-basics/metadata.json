@@ -1,0 +1,75 @@
+{
+  "name": "inference-basics",
+  "title": "推理基础入门",
+  "category": "model-inference",
+  "subcategory": "basics",
+  "difficulty": "beginner",
+  "estimated_time": "15小时",
+  "version": "1.0.0",
+  "created_at": "2026-01-30",
+  "updated_at": "2026-01-30",
+  "author": "OpenDemo Team",
+  "description": "Kubernetes大模型推理服务的基础入门教程，涵盖环境搭建、基础服务部署、模型转换等核心内容",
+  "keywords": [
+    "kubernetes",
+    "model-inference",
+    "basics",
+    "environment-setup",
+    "model-deployment"
+  ],
+  "prerequisites": [
+    "Kubernetes基础知识",
+    "Docker容器基础",
+    "Python编程基础"
+  ],
+  "learning_objectives": [
+    "掌握Kubernetes推理环境的搭建方法",
+    "学会部署基础的AI推理服务",
+    "理解模型转换和优化的基本流程",
+    "具备基础的推理服务测试能力"
+  ],
+  "files": [
+    {
+      "name": "README.md",
+      "type": "documentation",
+      "description": "详细的推理基础入门教程文档"
+    },
+    {
+      "name": "inference_server.py",
+      "type": "code",
+      "description": "基础图像分类推理服务实现"
+    },
+    {
+      "name": "Dockerfile",
+      "type": "configuration",
+      "description": "推理服务Docker镜像配置"
+    },
+    {
+      "name": "deployment.yaml",
+      "type": "configuration",
+      "description": "Kubernetes部署配置文件"
+    },
+    {
+      "name": "model_conversion.py",
+      "type": "code",
+      "description": "模型转换和优化脚本"
+    },
+    {
+      "name": "test_inference.py",
+      "type": "code",
+      "description": "推理服务测试脚本"
+    },
+    {
+      "name": "benchmark_inference.py",
+      "type": "code",
+      "description": "性能基准测试脚本"
+    }
+  ],
+  "components": [
+    "环境准备和搭建",
+    "基础推理服务实现",
+    "模型转换与优化",
+    "服务部署和测试",
+    "性能监控基础"
+  ]
+}

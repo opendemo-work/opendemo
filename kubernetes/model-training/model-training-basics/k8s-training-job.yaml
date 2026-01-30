@@ -1,0 +1,85 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: cifar10-training-job
+  namespace: model-training-basics
+  labels:
+    app: model-training
+    framework: pytorch
+    dataset: cifar10
+spec:
+  template:
+    spec:
+      containers:
+      - name: training-container
+        image: your-registry/model-training-basics:latest
+        command: ["python3", "train-simple-example.py"]
+        args:
+        - --epochs=10
+        - --batch-size=32
+        - --lr=0.001
+        - --data-dir=/data
+        - --checkpoint-dir=/output/checkpoints
+        - --save-every=2
+        env:
+        - name: WANDB_API_KEY
+          valueFrom:
+            secretKeyRef:
+              name: wandb-secret
+              key: api-key
+        resources:
+          requests:
+            cpu: "4"
+            memory: "8Gi"
+            nvidia.com/gpu: "1"
+          limits:
+            cpu: "8"
+            memory: "16Gi"
+            nvidia.com/gpu: "1"
+        volumeMounts:
+        - name: data-volume
+          mountPath: /data
+        - name: output-volume
+          mountPath: /output
+        - name: shm-volume
+          mountPath: /dev/shm
+      volumes:
+      - name: data-volume
+        persistentVolumeClaim:
+          claimName: training-data-pvc
+      - name: output-volume
+        persistentVolumeClaim:
+          claimName: training-output-pvc
+      - name: shm-volume
+        emptyDir:
+          medium: Memory
+          sizeLimit: 2Gi
+      restartPolicy: OnFailure
+      nodeSelector:
+        nvidia.com/gpu.present: "true"
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: training-data-pvc
+  namespace: model-training-basics
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Gi
+  storageClassName: fast-ssd
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: training-output-pvc
+  namespace: model-training-basics
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 20Gi
+  storageClassName: fast-ssd

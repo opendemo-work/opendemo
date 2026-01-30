@@ -1,0 +1,44 @@
+{
+  "name": "CoreDNS基础入门实战",
+  "language": "kubernetes",
+  "category": "network",
+  "subcategory": "coredns-basics",
+  "difficulty": "intermediate",
+  "keywords": [
+    "kubernetes",
+    "coredns",
+    "dns",
+    "service-discovery",
+    "networking"
+  ],
+  "description": "全面掌握Kubernetes DNS服务核心组件：从基础配置到高级服务发现的完整实践指南",
+  "version": "1.0.0",
+  "author": "OpenDemo Team",
+  "created_at": "2026-01-30",
+  "updated_at": "2026-01-30",
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "prerequisites": [
+    "Kubernetes基础知识",
+    "DNS基础概念",
+    "服务发现理解"
+  ],
+  "learning_objectives": [
+    "理解CoreDNS的核心概念和工作原理",
+    "掌握CoreDNS基础配置和管理",
+    "学会服务发现和DNS解析配置",
+    "掌握性能调优和监控配置",
+    "具备故障排查和问题解决能力"
+  ],
+  "estimated_time": "3-4小时",
+  "compatibility": {
+    "kubernetes": ">=1.19",
+    "dns_features": [
+      "service-discovery",
+      "pod-dns",
+      "custom-dns"
+    ]
+  }
+}

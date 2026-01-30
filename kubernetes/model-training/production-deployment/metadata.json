@@ -1,0 +1,136 @@
+{
+  "name": "production-deployment",
+  "title": "生产环境部署",
+  "language": "kubernetes",
+  "category": "model-training",
+  "subcategory": "production",
+  "description": "大模型生产环境部署的完整实战指南，涵盖高可用架构、自动扩缩容、成本优化、安全合规等企业级部署技术",
+  "keywords": [
+    "kubernetes",
+    "production-deployment",
+    "high-availability",
+    "autoscaling",
+    "cost-optimization",
+    "security",
+    "monitoring",
+    "ci-cd"
+  ],
+  "version": "1.0.0",
+  "created_at": "2026-01-30",
+  "updated_at": "2026-01-30",
+  "difficulty": "advanced",
+  "estimated_time": "20-25 hours",
+  "compatibility": {
+    "kubernetes": ["v1.23.x", "v1.24.x", "v1.25.x", "v1.26.x", "v1.27.x", "v1.28.x", "v1.29.x"],
+    "gpu": ["nvidia-a100", "nvidia-h100", "nvidia-l4"],
+    "cuda": ["11.7", "11.8", "12.0", "12.1"]
+  },
+  "author": "opendemo",
+  "maintainers": ["opendemo"],
+  "license": "MIT",
+  "status": "active",
+  "tags": [
+    "ai",
+    "machine-learning",
+    "production",
+    "deployment",
+    "enterprise",
+    "scalability"
+  ],
+  "prerequisites": [
+    "model-training-basics",
+    "distributed-training-advanced",
+    "model-finetuning-optimization",
+    "Kubernetes运维经验",
+    "云平台管理经验"
+  ],
+  "learning_objectives": [
+    "掌握生产级大模型部署架构设计",
+    "学会高可用和容错机制实现",
+    "理解资源调度和成本优化策略",
+    "掌握安全合规配置方法",
+    "具备生产环境监控和运维能力"
+  ],
+  "components": [
+    {
+      "name": "architecture-design",
+      "title": "架构设计",
+      "files": ["ha-deployment.yaml", "network-policy.yaml", "resource-quota.yaml"]
+    },
+    {
+      "name": "service-mesh",
+      "title": "服务网格",
+      "files": ["istio-gateway.yaml", "virtual-service.yaml", "destination-rule.yaml"]
+    },
+    {
+      "name": "scaling-management",
+      "title": "扩缩容管理",
+      "files": ["hpa-config.yaml", "vpa-config.yaml", "cluster-autoscaler.yaml"]
+    },
+    {
+      "name": "cost-optimization",
+      "title": "成本优化",
+      "files": ["spot-instances.yaml", "budget-alerts.yaml", "resource-limits.yaml"]
+    },
+    {
+      "name": "security-compliance",
+      "title": "安全合规",
+      "files": ["pod-security-policy.yaml", "tls-certificates.yaml", "vault-integration.yaml"]
+    },
+    {
+      "name": "monitoring-observability",
+      "title": "监控可观测性",
+      "files": ["prometheus-rules.yaml", "service-monitor.yaml", "logging-config.yaml"]
+    },
+    {
+      "name": "disaster-recovery",
+      "title": "灾备恢复",
+      "files": ["multi-region-deploy.yaml", "backup-strategy.yaml", "failover-config.yaml"]
+    },
+    {
+      "name": "ci-cd-pipeline",
+      "title": "CI/CD流水线",
+      "files": ["argocd-application.yaml", "tekton-pipeline.yaml", "blue-green-deploy.yaml"]
+    }
+  ],
+  "deployment_architecture": {
+    "high_availability": {
+      "replicas": 3,
+      "availability_zones": 3,
+      "load_balancing": "round_robin",
+      "health_checks": true
+    },
+    "scaling": {
+      "horizontal_scaling": true,
+      "vertical_scaling": true,
+      "cluster_scaling": true,
+      "auto_healing": true
+    },
+    "security": {
+      "network_isolation": true,
+      "tls_encryption": true,
+      "rbac_enabled": true,
+      "secrets_management": true
+    }
+  },
+  "performance_benchmarks": {
+    "latency_sla": {
+      "p95_response_time_ms": 2000,
+      "p99_response_time_ms": 5000
+    },
+    "throughput_targets": {
+      "requests_per_second": 1000,
+      "concurrent_users": 10000
+    },
+    "availability_sla": {
+      "uptime_percentage": 99.9,
+      "mttr_minutes": 5
+    }
+  },
+  "cost_optimization": {
+    "spot_instance_usage": "70%",
+    "resource_utilization_target": "70-80%",
+    "monthly_budget_usd": 50000,
+    "cost_alerting_threshold": "80%"
+  }
+}

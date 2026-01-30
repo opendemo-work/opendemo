@@ -1,0 +1,43 @@
+{
+  "name": "Docker基础使用入门",
+  "language": "docker",
+  "category": "container",
+  "subcategory": "docker-basics",
+  "difficulty": "beginner",
+  "keywords": [
+    "docker",
+    "container",
+    "image",
+    "dockerfile",
+    "containerization"
+  ],
+  "description": "Docker容器技术基础入门实战：从安装配置到基本操作的完整指南",
+  "version": "1.0.0",
+  "author": "OpenDemo Team",
+  "created_at": "2026-01-30",
+  "updated_at": "2026-01-30",
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "prerequisites": [
+    "Linux/Windows/macOS基础操作",
+    "命令行使用经验"
+  ],
+  "learning_objectives": [
+    "理解Docker核心概念和架构",
+    "掌握Docker环境安装和配置",
+    "学会镜像管理和容器操作",
+    "掌握数据卷和网络配置",
+    "能够部署简单的容器化应用"
+  ],
+  "estimated_time": "2-3小时",
+  "compatibility": {
+    "docker_version": ">=20.10",
+    "operating_systems": [
+      "linux",
+      "windows",
+      "macos"
+    ]
+  }
+}

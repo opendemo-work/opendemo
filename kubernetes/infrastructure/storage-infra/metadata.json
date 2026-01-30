@@ -1,0 +1,44 @@
+{
+  "name": "Kubernetes存储基础设施实战",
+  "language": "kubernetes",
+  "category": "infrastructure",
+  "subcategory": "storage-infra",
+  "difficulty": "advanced",
+  "keywords": [
+    "kubernetes",
+    "storage",
+    "csi",
+    "persistent-volume",
+    "storage-class"
+  ],
+  "description": "深入学习Kubernetes存储系统：本地存储、CSI驱动、存储类管理等企业级存储解决方案",
+  "version": "1.0.0",
+  "author": "OpenDemo Team",
+  "created_at": "2026-01-30",
+  "updated_at": "2026-01-30",
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "prerequisites": [
+    "存储基础知识",
+    "Kubernetes存储概念",
+    "CSI驱动理解"
+  ],
+  "learning_objectives": [
+    "掌握本地和网络存储配置",
+    "学会CSI驱动部署管理",
+    "理解存储类动态供应",
+    "掌握存储性能优化方法",
+    "实施数据保护策略"
+  ],
+  "estimated_time": "4-5小时",
+  "compatibility": {
+    "kubernetes": ">=1.20",
+    "storage_features": [
+      "csi",
+      "dynamic-provisioning",
+      "snapshot"
+    ]
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "name": "Kubernetes Pod基础入门实战",
+  "language": "kubernetes",
+  "category": "workload",
+  "subcategory": "pod-basics",
+  "difficulty": "beginner",
+  "keywords": [
+    "kubernetes",
+    "pod",
+    "container",
+    "lifecycle",
+    "health-check"
+  ],
+  "description": "全面掌握Kubernetes Pod的核心概念、基础配置和生命周期管理，从零开始构建容器化应用部署",
+  "version": "1.0.0",
+  "author": "OpenDemo Team",
+  "created_at": "2026-01-30",
+  "updated_at": "2026-01-30",
+  "files": [
+    "README.md",
+    "simple-pod.yaml",
+    "multi-container-pod.yaml",
+    "config-pod.yaml",
+    "metadata.json"
+  ],
+  "prerequisites": [
+    "kubernetes基础知识",
+    "docker容器基础",
+    "kubectl命令行工具",
+    "基本的YAML语法"
+  ],
+  "learning_objectives": [
+    "理解Pod的核心概念和工作机制",
+    "掌握Pod的基础配置和部署方法",
+    "学会多容器Pod的设计和配置",
+    "掌握资源限制和健康检查配置",
+    "理解Pod生命周期和状态管理"
+  ],
+  "estimated_time": "2-3小时",
+  "compatibility": {
+    "kubernetes": ">=1.19",
+    "container_runtimes": [
+      "docker",
+      "containerd",
+      "cri-o"
+    ]
+  }
+}

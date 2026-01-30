@@ -1,0 +1,49 @@
+{
+  "name": "Kubernetes PV/PVC基础入门实战",
+  "language": "kubernetes",
+  "category": "pv-pvc",
+  "subcategory": "basics",
+  "difficulty": "beginner",
+  "keywords": [
+    "kubernetes",
+    "pv",
+    "pvc",
+    "persistent-volume",
+    "persistent-volume-claim",
+    "storage"
+  ],
+  "description": "全面掌握Kubernetes持久卷(PV)和持久卷声明(PVC)的核心概念、基础配置和实际应用，从零开始构建数据持久化解决方案",
+  "version": "1.0.0",
+  "author": "OpenDemo Team",
+  "created_at": "2026-01-30",
+  "updated_at": "2026-01-30",
+  "files": [
+    "README.md",
+    "pv-configs.yaml",
+    "pvc-configs.yaml",
+    "pod-with-pvc.yaml",
+    "metadata.json"
+  ],
+  "prerequisites": [
+    "kubernetes基础知识",
+    "kubectl命令行工具",
+    "基本的YAML语法",
+    "Linux文件系统基础"
+  ],
+  "learning_objectives": [
+    "理解PV和PVC的核心概念及工作机制",
+    "掌握静态PV的创建和配置方法",
+    "学会PVC的声明和使用方式",
+    "理解访问模式和回收策略的配置",
+    "掌握PV/PVC的绑定机制和生命周期管理"
+  ],
+  "estimated_time": "2-3小时",
+  "compatibility": {
+    "kubernetes": ">=1.19",
+    "storage_backends": [
+      "local-storage",
+      "nfs",
+      "hostPath"
+    ]
+  }
+}

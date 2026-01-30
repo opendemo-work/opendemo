@@ -4,7 +4,7 @@
 
 [![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://python.org)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![Demos](https://img.shields.io/badge/Demos-334-orange.svg)](#demo-statistics)
+[![Demos](https://img.shields.io/badge/Demos-389-orange.svg)](#demo-statistics)
 [![Tests](https://img.shields.io/badge/Tests-180-green.svg)](#开发指南)
 
 ---
@@ -203,16 +203,20 @@ opendemo check --report
 | 语言 | 基础Demo | 第三方库/工具 | 总计 | 测试状态 |
 |---------|----------|----------|------|----------|
 | 🐍 **Python** | 51 | iterator(1), numpy(25) | 77 | ✅ 全部通过 |
-| 🐹 **Go** | 92 | context(1) | 93 | ✅ 全部通过 |
+| 🐹 **Go** | 92 | context(1), libraries(1) | 94 | ✅ 全部通过 |
 | 🟢 **Node.js** | 67 | - | 67 | ✅ 全部通过 |
-| 🐳 **Docker** | 0 | troubleshooting(1) | 1 | ✅ 全部通过 |
-| 📦 **Containerd** | 0 | troubleshooting(1) | 1 | ✅ 全部通过 |
-| 🏃 **Runc** | 0 | troubleshooting(1) | 1 | ✅ 全部通过 |
+| 🐳 **Docker** | 1 | basics(1) | 2 | ✅ 全部通过 |
+| 📦 **Containerd** | 1 | basics(1) | 2 | ✅ 全部通过 |
+| 🏃 **Runc** | 1 | basics(1) | 2 | ✅ 全部通过 |
 | 🤖 **Vibe Coding** | 0 | gemini-cli(1), local-demo(1), other-cli(1), qoder-cli(1) | 4 | ✅ 全部通过 |
-| ⎈ **Kubernetes** | 0 | fluid(1), kubeflow(42), kubeskoop(10), operator-framework(2), velero(15), operator(1), crd(1), rbac(1), prometheus(1), grafana(1), efk(1), elk(1), loki(1), jaeger(1), zipkin(1), opentelemetry(1), troubleshooting(8), network(1), storage(1), ai-infra(1), llmops(1), agent(9), mcp(9), rag(3), n8n(1, 含本地部署), regflow(1), modelscope(1), ollama(1), gemini(1) | 119 | ✅ 全部通过 |
-| **总计** | **210** | **158** | **368** | ✅ |
+| ⎈ **Kubernetes** | 0 | fluid(1), kubeflow(42), kubeskoop(10), operator-framework(2), velero(15), operator(1), crd(1), rbac(1), prometheus(1), grafana(1), efk(1), elk(1), loki(1), jaeger(1), zipkin(1), opentelemetry(1), troubleshooting(8), network(9), storage(1), ai-infra(1), llmops(1), agent(9), mcp(9), rag(3), n8n(1, 含本地部署), regflow(1), modelscope(1), ollama(1), gemini(1), service(5), ingress(5), pv-pvc(6), workload(8), infrastructure(10) | 166 | ✅ 全部通过 |
+| 🤖 **AI/ML** | 0 | machine-learning(0), deep-learning(0), nlp(0), computer-vision(0) | 0 | ⏳ 规划中 |
+| 📦 **Container** | 3 | docker(2), containerd(2), runc(2) | 9 | ✅ 全部通过 |
+| **总计** | **214** | **177** | **391** | ✅ |
 
 > 说明：Kubernetes 中 rag(3) 和 n8n(1) 目录下的案例已采用统一的 `README + manifests + meta` 目录结构，便于学习与自动化工具使用。
+> 
+> **新增说明**：全面补齐了所有技术栈的主目录文档，包括Python(77个案例)、Go(94个案例)、Node.js(67个案例)、Kubernetes(166个案例)、Container(9个案例)等核心技术栈的完整指南文档。每个技术栈都提供了专业的README.md和metadata.json文件，包含详细的学习路径、案例统计、环境配置指导和学习建议。同时完善了Go libraries等重要二级目录的文档结构，确保整个项目文档体系的专业性和完整性。
 
 ---
 
@@ -570,7 +574,7 @@ opendemo check --report
 
 ---
 
-### ⎈ Kubernetes (93个)
+### ⎈ Kubernetes (98个)
 
 **重要说明**：Kubernetes案例不能直接通过opendemo CLI执行，需要用户在自己的Kubernetes集群上使用kubectl命令运行。使用流程如下：
 
@@ -872,6 +876,126 @@ kubectl get pods
 | # | Demo名称 | 功能说明 | 难度 | 状态 |
 |---|---------|---------|------|------|
 | 1 | `basic-opentelemetry` | Kubernetes 中部署 OpenTelemetry Collector 进行可观测性数据收集的基础案例 | intermediate | ✅ |
+
+</details>
+
+<details>
+<summary><b>🌐 Kubernetes Service服务管理 (5个)</b> - 点击展开</summary>
+
+> 路径: `opendemo_output/kubernetes/service/`
+
+| # | Demo名称 | 功能说明 | 难度 | 状态 |
+|---|---------|---------|------|------|
+| 1 | `service-types-overview` | Service类型详解与实战（ClusterIP、NodePort、LoadBalancer、Headless） | beginner | ✅ |
+| 2 | `advanced-features` | Service高级特性实战（Session Affinity、多端口、健康检查） | intermediate | ✅ |
+| 3 | `network-security` | Service网络安全与访问控制（Network Policies、RBAC、TLS） | advanced | ✅ |
+| 4 | `production-best-practices` | Service生产环境最佳实践（高可用、性能优化、监控） | advanced | ✅ |
+| 5 | `troubleshooting-monitoring` | Service故障排查与监控实战（诊断方法、监控体系） | advanced | ✅ |
+
+**功能覆盖**:
+- ✅ 四种Service类型详解和实际应用
+- ✅ 高级特性配置和优化技巧
+- ✅ 网络安全策略和访问控制
+- ✅ 生产环境高可用架构设计
+- ✅ 系统化故障排查和监控体系
+
+**学习路径**:
+1. 从基础Service类型开始学习
+2. 掌握高级配置和优化技巧
+3. 学习网络安全和访问控制
+4. 实践生产环境最佳实践
+5. 掌握故障排查和监控技能
+
+</details>
+
+<details>
+<summary><b>🌐 Kubernetes Ingress入口管理 (5个)</b> - 点击展开</summary>
+
+> 路径: `opendemo_output/kubernetes/ingress/`
+
+| # | Demo名称 | 功能说明 | 难度 | 状态 |
+|---|---------|---------|------|------|
+| 1 | `ingress-basics` | Ingress基础入门实战（核心概念、控制器安装、基础路由） | beginner | ✅ |
+| 2 | `ingress-advanced` | Ingress高级特性实战（TLS证书、路径重写、蓝绿部署） | intermediate | ✅ |
+| 3 | `ingress-security` | Ingress安全配置实战（认证授权、网络安全、访问控制） | advanced | ✅ |
+| 4 | `ingress-production` | Ingress生产最佳实践（高可用、性能优化、监控告警） | advanced | ✅ |
+| 5 | `ingress-troubleshooting` | Ingress故障排查与监控实战（系统化排查、监控体系） | advanced | ✅ |
+
+**功能覆盖**:
+- ✅ Ingress核心概念和控制器部署
+- ✅ 基础路由配置和高级特性
+- ✅ TLS/SSL证书管理和安全配置
+- ✅ 生产环境高可用架构设计
+- ✅ 系统化故障排查和监控体系
+
+**学习路径**:
+1. 从Ingress基础概念和控制器安装开始
+2. 掌握基础路由和高级配置技巧
+3. 学习安全配置和证书管理
+4. 实践生产环境最佳实践
+5. 掌握故障排查和监控技能
+
+</details>
+
+<details>
+<summary><b>💾 Kubernetes PV/PVC/StorageClass存储管理 (5个)</b> - 点击展开</summary>
+
+> 路径: `opendemo_output/kubernetes/pv-pvc/`
+
+| # | Demo名称 | 功能说明 | 难度 | 状态 |
+|---|---------|---------|------|------|
+| 1 | `pv-pvc-basics` | PV/PVC基础入门实战（核心概念、静态供应、基础配置） | beginner | ✅ |
+| 2 | `storage-class-basics` | StorageClass基础实战（动态供应、基础配置、供应器管理） | intermediate | ✅ |
+| 3 | `pv-pvc-advanced` | PV/PVC高级特性实战（访问模式、回收策略、容量调整） | advanced | ✅ |
+| 4 | `storage-class-advanced` | StorageClass高级特性实战（参数调优、拓扑感知、多租户） | advanced | ✅ |
+| 5 | `pv-pvc-production` | PV/PVC生产最佳实践（高可用、性能优化、监控告警） | advanced | ✅ |
+| 6 | `pv-pvc-troubleshooting` | PV/PVC故障排查与监控实战（系统化排查、监控体系） | advanced | ✅ |
+
+**功能覆盖**:
+- ✅ PV/PVC核心概念和静态/动态供应机制
+- ✅ StorageClass配置和动态卷供应
+- ✅ 高级访问模式和回收策略优化
+- ✅ 存储性能调优和容量管理
+- ✅ 生产环境高可用架构设计
+- ✅ 系统化故障排查和监控体系
+
+**学习路径**:
+1. 从PV/PVC基础概念和静态供应开始
+2. 掌握StorageClass和动态供应机制
+3. 学习高级特性和性能优化
+4. 实践生产环境最佳实践
+5. 掌握故障排查和监控技能
+
+</details>
+
+<details>
+<summary><b>🌐 Kubernetes网络组件实战 (8个)</b> - 点击展开</summary>
+
+> 路径: `opendemo_output/kubernetes/network/`
+
+| # | Demo名称 | 功能说明 | 难度 | 状态 |
+|---|---------|---------|------|------|
+| 1 | `terway-basics` | Terway网络插件基础入门实战（阿里云CNI插件、网络配置、策略管理） | intermediate | ✅ |
+| 2 | `coredns-basics` | CoreDNS基础入门实战（DNS服务配置、服务发现、性能调优） | intermediate | ✅ |
+| 3 | `csi-plugin-basics` | CSI Plugin基础入门实战（存储驱动、动态供应、卷管理） | intermediate | ✅ |
+| 4 | `terway-advanced` | Terway高级特性实战（网络策略、多网卡、安全组集成） | advanced | ✅ |
+| 5 | `coredns-advanced` | CoreDNS高级特性实战（自定义DNS、联邦DNS、安全配置） | advanced | ✅ |
+| 6 | `csi-plugin-advanced` | CSI Plugin高级特性实战（快照、克隆、拓扑感知） | advanced | ✅ |
+| 7 | `network-production` | Kubernetes网络组件生产环境最佳实践（高可用、监控告警、性能优化） | expert | ✅ |
+| 8 | `network-troubleshooting` | Kubernetes网络组件故障排查和维护实战（诊断工具、性能分析、应急处理） | advanced | ✅ |
+
+**功能覆盖**:
+- ✅ Terway阿里云CNI插件从基础到高级的完整配置
+- ✅ CoreDNS DNS服务从基础到高级的企业级配置
+- ✅ CSI存储插件从基础到高级的存储管理
+- ✅ 网络组件生产环境高可用架构设计
+- ✅ 系统化网络故障排查和维护体系
+
+**学习路径**:
+1. 从Terway、CoreDNS、CSI的基础概念开始
+2. 掌握各组件的高级特性和企业级配置
+3. 学习生产环境的最佳实践和高可用设计
+4. 掌握系统化的故障排查和维护技能
 
 </details>
 

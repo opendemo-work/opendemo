@@ -1,0 +1,44 @@
+{
+  "name": "Kubernetes备份和灾备恢复实战",
+  "language": "kubernetes",
+  "category": "infrastructure",
+  "subcategory": "backup-disaster",
+  "difficulty": "advanced",
+  "keywords": [
+    "kubernetes",
+    "backup",
+    "disaster-recovery",
+    "velero",
+    "etcd"
+  ],
+  "description": "企业级Kubernetes数据保护解决方案：集群备份、应用数据备份、灾难恢复等完整数据保护体系",
+  "version": "1.0.0",
+  "author": "OpenDemo Team",
+  "created_at": "2026-01-30",
+  "updated_at": "2026-01-30",
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "prerequisites": [
+    "备份恢复基础",
+    "数据保护概念",
+    "灾难恢复经验"
+  ],
+  "learning_objectives": [
+    "掌握集群状态备份方法",
+    "学会应用数据保护策略",
+    "实施灾难恢复演练",
+    "配置备份自动化流程",
+    "构建跨地域容灾体系"
+  ],
+  "estimated_time": "4-5小时",
+  "compatibility": {
+    "kubernetes": ">=1.20",
+    "backup_tools": [
+      "velero",
+      "etcdctl",
+      "restic"
+    ]
+  }
+}

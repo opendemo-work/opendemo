@@ -1,0 +1,41 @@
+{
+  "name": "Node.js技术栈完整指南",
+  "language": "nodejs",
+  "category": "programming-language",
+  "subcategory": "main",
+  "difficulty": "beginner-to-advanced",
+  "keywords": [
+    "nodejs",
+    "javascript",
+    "web-development",
+    "express",
+    "async-programming"
+  ],
+  "description": "Node.js从基础到全栈开发的完整学习体系，包含67个核心案例",
+  "version": "1.0.0",
+  "author": "OpenDemo Team",
+  "created_at": "2026-01-30",
+  "updated_at": "2026-01-30",
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "prerequisites": [
+    "JavaScript基础知识",
+    "前端开发经验",
+    "计算机网络基础"
+  ],
+  "learning_objectives": [
+    "掌握Node.js核心概念和运行机制",
+    "精通现代JavaScript语法特性",
+    "具备Web应用开发能力",
+    "理解异步编程模型",
+    "掌握生产环境部署技能"
+  ],
+  "estimated_time": "100-130小时",
+  "compatibility": {
+    "nodejs_versions": ["16.x", "18.x", "20.x"],
+    "npm_versions": [">=8.0.0"],
+    "operating_systems": ["windows", "linux", "macos"]
+  }
+}

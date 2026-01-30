@@ -1,0 +1,89 @@
+{
+  "name": "model-training",
+  "title": "Kubernetes大模型训练实战指南",
+  "language": "kubernetes",
+  "category": "model-training",
+  "description": "从入门到生产环境的完整Kubernetes大模型训练实战案例体系，涵盖基础训练、分布式训练、微调优化、生产部署和监控运维五大模块",
+  "keywords": [
+    "kubernetes",
+    "model-training",
+    "large-language-models",
+    "distributed-training",
+    "deep-learning",
+    "gpu",
+    "pytorch",
+    "tensorflow",
+    "deepspeed",
+    "fsdp",
+    "lora",
+    "quantization",
+    "production-deployment",
+    "monitoring"
+  ],
+  "version": "1.0.0",
+  "created_at": "2026-01-30",
+  "updated_at": "2026-01-30",
+  "difficulty": "comprehensive",
+  "estimated_time": "120-180 hours",
+  "compatibility": {
+    "kubernetes": ["v1.23.x", "v1.24.x", "v1.25.x", "v1.26.x", "v1.27.x", "v1.28.x", "v1.29.x"],
+    "gpu": ["nvidia-a100", "nvidia-h100", "nvidia-l4", "nvidia-v100"],
+    "cuda": ["11.7", "11.8", "12.0", "12.1"]
+  },
+  "author": "opendemo",
+  "maintainers": ["opendemo"],
+  "license": "MIT",
+  "status": "active",
+  "tags": [
+    "ai", 
+    "machine-learning", 
+    "deep-learning", 
+    "gpu", 
+    "training", 
+    "distributed-computing",
+    "production",
+    "monitoring"
+  ],
+  "modules": [
+    {
+      "name": "model-training-basics",
+      "title": "大模型训练基础入门",
+      "difficulty": "beginner",
+      "estimated_time": "8-12 hours",
+      "prerequisites": ["Kubernetes基础", "Docker基础", "Python基础"]
+    },
+    {
+      "name": "distributed-training-advanced",
+      "title": "分布式训练进阶",
+      "difficulty": "intermediate",
+      "estimated_time": "15-20 hours",
+      "prerequisites": ["基础训练知识", "GPU基础知识", "网络基础"]
+    },
+    {
+      "name": "model-finetuning-optimization",
+      "title": "模型微调与优化",
+      "difficulty": "intermediate",
+      "estimated_time": "12-16 hours",
+      "prerequisites": ["深度学习基础", "PyTorch/TensorFlow基础"]
+    },
+    {
+      "name": "production-deployment",
+      "title": "生产环境部署",
+      "difficulty": "advanced",
+      "estimated_time": "20-25 hours",
+      "prerequisites": ["Kubernetes运维经验", "Linux系统管理"]
+    },
+    {
+      "name": "monitoring-operations",
+      "title": "监控与运维",
+      "difficulty": "advanced",
+      "estimated_time": "15-20 hours",
+      "prerequisites": ["监控系统基础", "性能调优经验"]
+    }
+  ],
+  "learning_path": {
+    "beginner": ["model-training-basics"],
+    "intermediate": ["model-training-basics", "distributed-training-advanced", "model-finetuning-optimization"],
+    "advanced": ["model-training-basics", "distributed-training-advanced", "model-finetuning-optimization", "production-deployment", "monitoring-operations"]
+  }
+}

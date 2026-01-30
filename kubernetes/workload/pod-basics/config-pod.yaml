@@ -1,0 +1,47 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-config
+  namespace: pod-demo
+  labels:
+    demo: pod-basics
+data:
+  app.properties: |
+    server.port=8080
+    logging.level=INFO
+    app.name=Kubernetes Demo App
+  database.properties: |
+    db.host=localhost
+    db.port=3306
+    db.name=demo_db
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: configmap-pod
+  namespace: pod-demo
+  labels:
+    app: config-app
+    demo: pod-basics
+spec:
+  containers:
+  - name: config-app
+    image: nginx:1.21
+    env:
+    - name: APP_ENV
+      value: "demo"
+    - name: DATABASE_HOST
+      valueFrom:
+        configMapKeyRef:
+          name: app-config
+          key: db.host
+    envFrom:
+    - configMapRef:
+        name: app-config
+    volumeMounts:
+    - name: config-volume
+      mountPath: /etc/app-config
+  volumes:
+  - name: config-volume
+    configMap:
+      name: app-config

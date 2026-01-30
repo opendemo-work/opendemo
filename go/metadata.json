@@ -1,0 +1,41 @@
+{
+  "name": "Go技术栈完整指南",
+  "language": "go",
+  "category": "programming-language",
+  "subcategory": "main",
+  "difficulty": "beginner-to-advanced",
+  "keywords": [
+    "go",
+    "golang",
+    "concurrency",
+    "web-development",
+    "microservices"
+  ],
+  "description": "Go语言从基础到企业级应用的完整学习体系，包含92个基础案例和1个第三方库案例",
+  "version": "1.0.0",
+  "author": "OpenDemo Team",
+  "created_at": "2026-01-30",
+  "updated_at": "2026-01-30",
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "prerequisites": [
+    "基础编程概念",
+    "计算机基础知识",
+    "英语阅读能力"
+  ],
+  "learning_objectives": [
+    "掌握Go语言基础语法和核心特性",
+    "精通Go并发编程模型",
+    "具备Web应用开发能力",
+    "理解企业级Go应用架构",
+    "掌握Go生态系统和工具链"
+  ],
+  "estimated_time": "120-150小时",
+  "compatibility": {
+    "go_versions": ["1.19", "1.20", "1.21"],
+    "operating_systems": ["windows", "linux", "macos"],
+    "build_tools": ["go mod", "gofmt", "golint"]
+  }
+}

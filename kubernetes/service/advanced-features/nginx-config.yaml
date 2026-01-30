@@ -1,0 +1,62 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: nginx-config
+  namespace: service-advanced
+data:
+  default.conf: |
+    server {
+        listen 8080;
+        server_name localhost;
+        
+        location / {
+            return 200 "Hello from $hostname (Pod IP: $server_addr)\n";
+            add_header Content-Type text/plain;
+        }
+        
+        location /healthz {
+            return 200 "OK\n";
+            add_header Content-Type text/plain;
+        }
+        
+        location /ready {
+            return 200 "Ready\n";
+            add_header Content-Type text/plain;
+        }
+        
+        location /healthz/startup {
+            return 200 "Started\n";
+            add_header Content-Type text/plain;
+        }
+        
+        location /metrics {
+            return 200 "metrics_placeholder\n";
+            add_header Content-Type text/plain;
+        }
+    }
+    
+    server {
+        listen 8443 ssl;
+        server_name localhost;
+        
+        ssl_certificate /etc/ssl/certs/nginx.crt;
+        ssl_certificate_key /etc/ssl/private/nginx.key;
+        
+        location / {
+            return 200 "HTTPS Hello from $hostname\n";
+            add_header Content-Type text/plain;
+        }
+    }
+    
+    server {
+        listen 9090;
+        server_name localhost;
+        
+        location /metrics {
+            return 200 "# HELP http_requests_total Total HTTP requests
+# TYPE http_requests_total counter
+http_requests_total{method=\"GET\",code=\"200\"} 42
+";
+            add_header Content-Type text/plain;
+        }
+    }

@@ -1,0 +1,45 @@
+{
+  "name": "Kubernetes监控和日志基础设施实战",
+  "language": "kubernetes",
+  "category": "infrastructure",
+  "subcategory": "monitoring-logging",
+  "difficulty": "advanced",
+  "keywords": [
+    "kubernetes",
+    "monitoring",
+    "logging",
+    "prometheus",
+    "grafana"
+  ],
+  "description": "企业级Kubernetes监控和日志解决方案：Prometheus、Grafana、ELK等完整可观测性体系搭建",
+  "version": "1.0.0",
+  "author": "OpenDemo Team",
+  "created_at": "2026-01-30",
+  "updated_at": "2026-01-30",
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "prerequisites": [
+    "监控系统基础知识",
+    "日志管理经验",
+    "Kubernetes运维技能"
+  ],
+  "learning_objectives": [
+    "构建完整的监控体系",
+    "实施日志收集和分析",
+    "配置可视化和告警",
+    "掌握性能测试方法",
+    "具备故障诊断能力"
+  ],
+  "estimated_time": "4-6小时",
+  "compatibility": {
+    "kubernetes": ">=1.20",
+    "monitoring_stack": [
+      "prometheus",
+      "grafana",
+      "elasticsearch",
+      "fluentd"
+    ]
+  }
+}

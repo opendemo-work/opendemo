@@ -1,0 +1,46 @@
+{
+  "name": "Kubernetes Ingress高级特性实战",
+  "language": "kubernetes",
+  "category": "ingress",
+  "subcategory": "advanced",
+  "difficulty": "intermediate",
+  "keywords": [
+    "kubernetes",
+    "ingress",
+    "tls",
+    "ssl",
+    "rewrite",
+    "annotations",
+    "canary",
+    "blue-green"
+  ],
+  "description": "深入探索Kubernetes Ingress的高级功能：TLS/SSL证书管理、路径重写、自定义注解、蓝绿部署等企业级特性",
+  "version": "1.0.0",
+  "author": "OpenDemo Team",
+  "created_at": "2026-01-30",
+  "updated_at": "2026-01-30",
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "prerequisites": [
+    "Kubernetes Ingress基础知识",
+    "kubectl命令行熟练使用",
+    "基本的网络和安全概念"
+  ],
+  "learning_objectives": [
+    "掌握TLS/SSL证书的配置和管理",
+    "能够实现复杂的路径重写规则",
+    "熟练使用各种自定义注解优化性能",
+    "实施蓝绿部署和金丝雀发布策略",
+    "配置请求重定向和安全防护"
+  ],
+  "estimated_time": "3-4小时",
+  "compatibility": {
+    "kubernetes": ">=1.19",
+    "ingress_controllers": [
+      "nginx-ingress",
+      "traefik"
+    ]
+  }
+}

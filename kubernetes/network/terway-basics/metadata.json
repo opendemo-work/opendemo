@@ -1,0 +1,44 @@
+{
+  "name": "Terway网络插件基础入门实战",
+  "language": "kubernetes",
+  "category": "network",
+  "subcategory": "terway-basics",
+  "difficulty": "intermediate",
+  "keywords": [
+    "kubernetes",
+    "terway",
+    "cni",
+    "alibaba-cloud",
+    "network-plugin"
+  ],
+  "description": "全面掌握阿里云Terway CNI网络插件：从基础配置到高级网络策略管理的完整实践指南",
+  "version": "1.0.0",
+  "author": "OpenDemo Team",
+  "created_at": "2026-01-30",
+  "updated_at": "2026-01-30",
+  "files": [
+    "README.md",
+    "terway-daemonset.yaml",
+    "terway-config.yaml",
+    "metadata.json"
+  ],
+  "prerequisites": [
+    "Kubernetes基础知识",
+    "阿里云账号和凭证",
+    "网络基础概念",
+    "CNI插件了解"
+  ],
+  "learning_objectives": [
+    "理解Terway网络插件的核心概念和工作原理",
+    "掌握Terway插件的安装和基础配置",
+    "学会网络策略配置和安全组集成",
+    "掌握IP地址管理和弹性网卡配置",
+    "理解与CoreDNS、Service的协同工作机制"
+  ],
+  "estimated_time": "3-4小时",
+  "compatibility": {
+    "kubernetes": ">=1.20",
+    "cloud_provider": "alibaba-cloud",
+    "cni_version": ">=0.3.1"
+  }
+}

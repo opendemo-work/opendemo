@@ -1,0 +1,42 @@
+{
+  "name": "Kubernetes技术栈完整指南",
+  "language": "kubernetes",
+  "category": "container-orchestration",
+  "subcategory": "main",
+  "difficulty": "beginner-to-expert",
+  "keywords": [
+    "kubernetes",
+    "container-orchestration",
+    "devops",
+    "cloud-native",
+    "container-platform"
+  ],
+  "description": "Kubernetes从基础到企业级运维的完整学习体系，包含166个核心案例",
+  "version": "1.0.0",
+  "author": "OpenDemo Team",
+  "created_at": "2026-01-30",
+  "updated_at": "2026-01-30",
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "prerequisites": [
+    "容器技术基础(Docker)",
+    "Linux系统管理",
+    "网络基础知识",
+    "YAML配置经验"
+  ],
+  "learning_objectives": [
+    "掌握Kubernetes核心概念和资源对象",
+    "具备容器编排和管理工作负载能力",
+    "精通网络和存储配置管理",
+    "掌握企业级运维和故障排查技能",
+    "理解云原生架构设计理念"
+  ],
+  "estimated_time": "200-250小时",
+  "compatibility": {
+    "kubernetes_versions": [">=1.20"],
+    "cloud_providers": ["aws", "azure", "gcp", "alibaba-cloud"],
+    "tools": ["kubectl", "helm", "kustomize"]
+  }
+}

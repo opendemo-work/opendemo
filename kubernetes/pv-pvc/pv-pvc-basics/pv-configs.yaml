@@ -1,0 +1,50 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-local-1
+  labels:
+    type: local
+    demo: pv-pvc-basics
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 5Gi
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  hostPath:
+    path: "/tmp/k8s-pv-demo/pv1"
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-local-2
+  labels:
+    type: local
+    demo: pv-pvc-basics
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 10Gi
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Recycle
+  hostPath:
+    path: "/tmp/k8s-pv-demo/pv2"
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-local-3
+  labels:
+    type: local
+    demo: pv-pvc-basics
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 2Gi
+  accessModes:
+    - ReadOnlyMany
+  persistentVolumeReclaimPolicy: Delete
+  hostPath:
+    path: "/tmp/k8s-pv-demo/pv3"

@@ -1,0 +1,43 @@
+{
+  "name": "Container技术栈完整指南",
+  "language": "container",
+  "category": "container-technology",
+  "subcategory": "main",
+  "difficulty": "beginner-to-advanced",
+  "keywords": [
+    "docker",
+    "containerd",
+    "runc",
+    "container-runtime",
+    "oci-specification"
+  ],
+  "description": "容器技术从基础到企业级应用的完整学习体系，包含9个核心案例",
+  "version": "1.0.0",
+  "author": "OpenDemo Team",
+  "created_at": "2026-01-30",
+  "updated_at": "2026-01-30",
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "prerequisites": [
+    "Linux系统基础",
+    "命令行操作经验",
+    "虚拟化技术了解",
+    "网络基础知识"
+  ],
+  "learning_objectives": [
+    "掌握主流容器技术的基本使用",
+    "理解容器运行时的工作原理",
+    "具备容器安全管理能力",
+    "掌握容器性能优化技巧",
+    "理解OCI标准规范"
+  ],
+  "estimated_time": "40-60小时",
+  "compatibility": {
+    "operating_systems": ["linux", "windows(wsl)", "macos"],
+    "docker_versions": [">=20.10"],
+    "containerd_versions": [">=1.6.0"],
+    "runc_versions": [">=1.1.0"]
+  }
+}

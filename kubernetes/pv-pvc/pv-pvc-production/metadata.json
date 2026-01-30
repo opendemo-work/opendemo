@@ -1,0 +1,41 @@
+{
+  "name": "Kubernetes PV/PVC生产环境最佳实践",
+  "language": "kubernetes",
+  "category": "pv-pvc",
+  "subcategory": "production",
+  "difficulty": "advanced",
+  "keywords": [
+    "kubernetes",
+    "pv",
+    "pvc",
+    "production",
+    "high-availability",
+    "monitoring"
+  ],
+  "description": "企业级Kubernetes存储解决方案：高可用架构、性能优化、监控告警、灾备恢复等生产环境必备技能",
+  "version": "1.0.0",
+  "author": "OpenDemo Team",
+  "created_at": "2026-01-30",
+  "updated_at": "2026-01-30",
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "prerequisites": [
+    "PV/PVC高级特性",
+    "生产环境运维经验",
+    "监控系统基础知识"
+  ],
+  "learning_objectives": [
+    "设计高可用存储架构",
+    "实施性能优化策略",
+    "建立完善的监控告警体系",
+    "制定灾备恢复方案",
+    "优化存储成本和资源利用"
+  ],
+  "estimated_time": "4-5小时",
+  "compatibility": {
+    "kubernetes": ">=1.20",
+    "production_ready": true
+  }
+}

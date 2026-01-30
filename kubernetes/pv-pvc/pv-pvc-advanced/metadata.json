@@ -1,0 +1,46 @@
+{
+  "name": "Kubernetes PV/PVC高级特性实战",
+  "language": "kubernetes",
+  "category": "pv-pvc",
+  "subcategory": "advanced",
+  "difficulty": "advanced",
+  "keywords": [
+    "kubernetes",
+    "pv",
+    "pvc",
+    "advanced-features",
+    "storage-migration",
+    "capacity-expansion"
+  ],
+  "description": "深入探索Kubernetes PV/PVC的高级功能：访问模式详解、回收策略优化、容量调整、存储迁移等企业级特性",
+  "version": "1.0.0",
+  "author": "OpenDemo Team",
+  "created_at": "2026-01-30",
+  "updated_at": "2026-01-30",
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "prerequisites": [
+    "PV/PVC基础知识",
+    "StorageClass基础",
+    "Kubernetes 1.22+版本",
+    "存储后端管理经验"
+  ],
+  "learning_objectives": [
+    "掌握高级访问模式配置和使用",
+    "理解回收策略的优化配置",
+    "学会存储容量的动态调整",
+    "掌握存储迁移和复制技术",
+    "配置存储安全和性能优化"
+  ],
+  "estimated_time": "3-4小时",
+  "compatibility": {
+    "kubernetes": ">=1.22",
+    "features": [
+      "ReadWriteOncePod",
+      "volume-expansion",
+      "storage-migration"
+    ]
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "name": "Kubernetes基础架构故障排查和维护实战",
+  "language": "kubernetes",
+  "category": "infrastructure",
+  "subcategory": "troubleshooting",
+  "difficulty": "advanced",
+  "keywords": [
+    "kubernetes",
+    "infrastructure",
+    "troubleshooting",
+    "maintenance",
+    "diagnostics"
+  ],
+  "description": "系统化Kubernetes基础架构故障诊断：从集群组件到网络存储，构建完整的基础架构运维体系",
+  "version": "1.0.0",
+  "author": "OpenDemo Team",
+  "created_at": "2026-01-30",
+  "updated_at": "2026-01-30",
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "prerequisites": [
+    "Kubernetes运维经验",
+    "故障排查技能",
+    "系统管理基础"
+  ],
+  "learning_objectives": [
+    "掌握系统化故障排查方法",
+    "学会自动化诊断工具使用",
+    "具备性能瓶颈分析能力",
+    "实施安全配置审查",
+    "建立预防性维护体系"
+  ],
+  "estimated_time": "4-5小时",
+  "compatibility": {
+    "kubernetes": ">=1.20",
+    "troubleshooting_tools": [
+      "kubectl",
+      "crictl",
+      "etcdctl"
+    ]
+  }
+}

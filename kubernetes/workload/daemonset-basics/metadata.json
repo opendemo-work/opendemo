@@ -1,0 +1,39 @@
+{
+  "name": "Kubernetes DaemonSet基础实战",
+  "language": "kubernetes",
+  "category": "workload",
+  "subcategory": "daemonset-basics",
+  "difficulty": "intermediate",
+  "keywords": [
+    "kubernetes",
+    "daemonset",
+    "node-level",
+    "system-daemon"
+  ],
+  "description": "深入学习Kubernetes DaemonSet的核心功能：节点级应用部署、系统守护进程管理等基础设施运维技能",
+  "version": "1.0.0",
+  "author": "OpenDemo Team",
+  "created_at": "2026-01-30",
+  "updated_at": "2026-01-30",
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "prerequisites": [
+    "Pod基础知识",
+    "节点管理概念",
+    "污点和容忍度理解"
+  ],
+  "learning_objectives": [
+    "理解DaemonSet的核心概念和适用场景",
+    "掌握节点选择和容忍度配置",
+    "学会系统级应用的部署管理",
+    "掌握DaemonSet更新策略",
+    "理解资源管理和调度优化"
+  ],
+  "estimated_time": "2-3小时",
+  "compatibility": {
+    "kubernetes": ">=1.19",
+    "node_level_deployment": true
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "name": "Kubernetes Ingress基础入门实战",
+  "language": "kubernetes",
+  "category": "ingress",
+  "subcategory": "basics",
+  "difficulty": "beginner",
+  "keywords": [
+    "kubernetes",
+    "ingress",
+    "nginx",
+    "routing",
+    "loadbalancer"
+  ],
+  "description": "全面掌握Kubernetes Ingress的核心概念、控制器安装和基础路由配置，从零开始构建外部访问入口",
+  "version": "1.0.0",
+  "author": "OpenDemo Team",
+  "created_at": "2026-01-30",
+  "updated_at": "2026-01-30",
+  "files": [
+    "README.md",
+    "sample-apps.yaml",
+    "app-configs.yaml",
+    "ingress-rules.yaml",
+    "metadata.json"
+  ],
+  "prerequisites": [
+    "kubernetes基础知识",
+    "kubectl命令行工具",
+    "基本的YAML语法",
+    "网络基础概念"
+  ],
+  "learning_objectives": [
+    "理解Ingress的核心概念和工作原理",
+    "掌握NGINX Ingress Controller的安装和配置",
+    "能够配置基于路径和主机名的路由规则",
+    "学会测试和验证Ingress功能",
+    "掌握基础的故障排查技能"
+  ],
+  "estimated_time": "2-3小时",
+  "compatibility": {
+    "kubernetes": ">=1.19",
+    "ingress_controllers": [
+      "nginx-ingress",
+      "traefik",
+      "haproxy"
+    ]
+  }
+}

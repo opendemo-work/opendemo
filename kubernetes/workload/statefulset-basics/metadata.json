@@ -1,0 +1,39 @@
+{
+  "name": "Kubernetes StatefulSet基础实战",
+  "language": "kubernetes",
+  "category": "workload",
+  "subcategory": "statefulset-basics",
+  "difficulty": "intermediate",
+  "keywords": [
+    "kubernetes",
+    "statefulset",
+    "persistent-storage",
+    "ordered-deployment"
+  ],
+  "description": "全面掌握Kubernetes StatefulSet的核心概念和配置方法，学习有状态应用的部署和管理",
+  "version": "1.0.0",
+  "author": "OpenDemo Team",
+  "created_at": "2026-01-30",
+  "updated_at": "2026-01-30",
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "prerequisites": [
+    "PV/PVC基础知识",
+    "Deployment基础",
+    "Kubernetes网络概念"
+  ],
+  "learning_objectives": [
+    "理解StatefulSet的核心概念和适用场景",
+    "掌握有状态应用的持久化存储配置",
+    "学会稳定的网络标识管理",
+    "掌握有序部署和扩缩容操作",
+    "理解有状态应用的更新策略"
+  ],
+  "estimated_time": "3-4小时",
+  "compatibility": {
+    "kubernetes": ">=1.20",
+    "storage_required": true
+  }
+}

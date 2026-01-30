@@ -1,0 +1,126 @@
+{
+  "name": "monitoring-operations",
+  "title": "监控与运维",
+  "language": "kubernetes",
+  "category": "model-training",
+  "subcategory": "monitoring",
+  "description": "大模型训练和服务过程中的监控体系构建、运维实践和故障处理方法的完整实战指南",
+  "keywords": [
+    "kubernetes",
+    "monitoring",
+    "operations",
+    "observability",
+    "alerting",
+    "troubleshooting",
+    "performance-tuning",
+    "automation"
+  ],
+  "version": "1.0.0",
+  "created_at": "2026-01-30",
+  "updated_at": "2026-01-30",
+  "difficulty": "advanced",
+  "estimated_time": "15-20 hours",
+  "compatibility": {
+    "kubernetes": ["v1.23.x", "v1.24.x", "v1.25.x", "v1.26.x", "v1.27.x", "v1.28.x", "v1.29.x"],
+    "gpu": ["nvidia-a100", "nvidia-h100", "nvidia-l4"],
+    "cuda": ["11.7", "11.8", "12.0", "12.1"]
+  },
+  "author": "opendemo",
+  "maintainers": ["opendemo"],
+  "license": "MIT",
+  "status": "active",
+  "tags": [
+    "ai",
+    "machine-learning",
+    "monitoring",
+    "sre",
+    "devops",
+    "observability"
+  ],
+  "prerequisites": [
+    "model-training-basics",
+    "distributed-training-advanced",
+    "model-finetuning-optimization",
+    "production-deployment",
+    "监控系统基础",
+    "性能调优经验"
+  ],
+  "learning_objectives": [
+    "构建全方位的监控指标体系",
+    "掌握日志收集和分析技术",
+    "学会性能调优和瓶颈诊断",
+    "掌握故障排查和恢复方法",
+    "建立标准化的运维流程"
+  ],
+  "components": [
+    {
+      "name": "monitoring-architecture",
+      "title": "监控架构",
+      "files": ["prometheus-config.yaml", "servicemonitor.yaml", "alertmanager.yaml"]
+    },
+    {
+      "name": "metrics-collection",
+      "title": "指标收集",
+      "files": ["training-metrics.py", "inference-metrics.py", "gpu-monitoring.py"]
+    },
+    {
+      "name": "logging-system",
+      "title": "日志系统",
+      "files": ["structured-logger.py", "elk-stack.yaml", "log-processing.py"]
+    },
+    {
+      "name": "performance-analysis",
+      "title": "性能分析",
+      "files": ["performance-analyzer.py", "profiling-tools.py", "bottleneck-diagnosis.py"]
+    },
+    {
+      "name": "troubleshooting",
+      "title": "故障排查",
+      "files": ["health-checker.py", "auto-recovery.py", "diagnostic-tools.py"]
+    },
+    {
+      "name": "automation-scripts",
+      "title": "自动化脚本",
+      "files": ["model-ops.sh", "maintenance-scripts.py", "backup-restore.py"]
+    },
+    {
+      "name": "dashboards-alerts",
+      "title": "监控面板",
+      "files": ["grafana-dashboard.json", "alert-rules.yaml", "notification-channels.yaml"]
+    }
+  ],
+  "monitoring_layers": {
+    "application": {
+      "metrics": ["training_loss", "accuracy", "inference_latency", "request_count"],
+      "tools": ["custom_exporters", "application_metrics"]
+    },
+    "service": {
+      "metrics": ["availability", "response_time", "error_rate", "throughput"],
+      "tools": ["prometheus", "grafana", "alertmanager"]
+    },
+    "infrastructure": {
+      "metrics": ["cpu_usage", "memory_usage", "disk_io", "network_traffic"],
+      "tools": ["node_exporter", "cadvisor", "blackbox_exporter"]
+    },
+    "hardware": {
+      "metrics": ["gpu_utilization", "temperature", "power_consumption", "memory_usage"],
+      "tools": ["dcgm_exporter", "ipmi_exporter", "smartmon_exporter"]
+    }
+  },
+  "alerting_strategy": {
+    "severity_levels": ["critical", "warning", "info"],
+    "notification_channels": ["slack", "email", "pagerduty", "webhook"],
+    "escalation_policy": {
+      "warning_timeout": "5m",
+      "critical_timeout": "1m",
+      "page_after": "15m"
+    }
+  },
+  "automation_capabilities": {
+    "health_checks": true,
+    "auto_recovery": true,
+    "capacity_planning": true,
+    "performance_optimization": true,
+    "incident_response": true
+  }
+}

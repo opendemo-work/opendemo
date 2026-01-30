@@ -1,0 +1,91 @@
+{
+  "name": "distributed-training-advanced",
+  "title": "分布式训练进阶",
+  "language": "kubernetes",
+  "category": "model-training",
+  "subcategory": "distributed-training",
+  "description": "Kubernetes分布式大模型训练的高级实战案例，涵盖DDP、FSDP、DeepSpeed等主流框架及性能优化技术",
+  "keywords": [
+    "kubernetes",
+    "distributed-training",
+    "ddp",
+    "fsdp",
+    "deepspeed",
+    "multi-gpu",
+    "performance-optimization",
+    "nccl"
+  ],
+  "version": "1.0.0",
+  "created_at": "2026-01-30",
+  "updated_at": "2026-01-30",
+  "difficulty": "intermediate",
+  "estimated_time": "15-20 hours",
+  "compatibility": {
+    "kubernetes": ["v1.23.x", "v1.24.x", "v1.25.x", "v1.26.x", "v1.27.x", "v1.28.x", "v1.29.x"],
+    "gpu": ["nvidia-a100", "nvidia-h100", "nvidia-l4"],
+    "cuda": ["11.7", "11.8", "12.0", "12.1"]
+  },
+  "author": "opendemo",
+  "maintainers": ["opendemo"],
+  "license": "MIT",
+  "status": "active",
+  "tags": [
+    "ai",
+    "machine-learning",
+    "deep-learning",
+    "gpu",
+    "distributed-training",
+    "performance"
+  ],
+  "prerequisites": [
+    "model-training-basics",
+    "GPU基础知识",
+    "网络通信基础",
+    "PyTorch进阶知识"
+  ],
+  "learning_objectives": [
+    "掌握分布式训练的核心概念和架构模式",
+    "熟练使用DDP、FSDP、DeepSpeed等分布式框架",
+    "理解通信优化和性能调优技术",
+    "具备分布式训练故障诊断能力",
+    "能够设计生产级分布式训练系统"
+  ],
+  "components": [
+    {
+      "name": "parallel-strategies",
+      "title": "并行策略实现",
+      "files": ["data_parallel.py", "model_parallel.py", "pipeline_parallel.py"]
+    },
+    {
+      "name": "framework-integration",
+      "title": "框架集成",
+      "files": ["ddp_training.py", "fsdp_training.py", "deepspeed_training.py"]
+    },
+    {
+      "name": "optimization-techniques",
+      "title": "优化技术",
+      "files": ["gradient_compression.py", "mixed_precision.py", "communication_optimization.py"]
+    },
+    {
+      "name": "monitoring-debugging",
+      "title": "监控调试",
+      "files": ["training_monitor.py", "profiler_tools.py", "health_checker.py"]
+    }
+  ],
+  "hardware_requirements": {
+    "minimum": {
+      "nodes": 2,
+      "gpus_per_node": 2,
+      "cpu_cores": 16,
+      "memory_gb": 64,
+      "storage_gb": 500
+    },
+    "recommended": {
+      "nodes": 4,
+      "gpus_per_node": 4,
+      "cpu_cores": 32,
+      "memory_gb": 128,
+      "storage_gb": 1000
+    }
+  }
+}

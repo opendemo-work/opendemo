@@ -1,0 +1,52 @@
+{
+  "name": "Kubernetes Service类型详解与实战",
+  "language": "kubernetes",
+  "category": "service",
+  "subcategory": "basics",
+  "difficulty": "beginner",
+  "keywords": [
+    "kubernetes",
+    "service",
+    "clusterip",
+    "nodeport",
+    "loadbalancer",
+    "headless",
+    "externalname"
+  ],
+  "description": "详细介绍Kubernetes四种核心Service类型：ClusterIP、NodePort、LoadBalancer、Headless，以及ExternalName服务，通过实际部署示例帮助深入理解每种类型的特点、使用场景和配置方法。",
+  "version": "1.0.0",
+  "author": "OpenDemo Team",
+  "created_at": "2026-01-30",
+  "updated_at": "2026-01-30",
+  "files": [
+    "README.md",
+    "nginx-deployment.yaml",
+    "nginx-clusterip-service.yaml",
+    "nginx-nodeport-service.yaml",
+    "nginx-loadbalancer-service.yaml",
+    "nginx-headless-service.yaml",
+    "external-database-service.yaml",
+    "metadata.json"
+  ],
+  "prerequisites": [
+    "kubernetes基础知识",
+    "kubectl命令行工具",
+    "基本的YAML语法"
+  ],
+  "learning_objectives": [
+    "掌握四种Service类型的特点和使用场景",
+    "能够根据需求选择合适的Service类型",
+    "理解Service的负载均衡和发现机制",
+    "学会配置和调试各种Service问题"
+  ],
+  "estimated_time": "2-3小时",
+  "compatibility": {
+    "kubernetes": ">=1.20",
+    "cloud_providers": [
+      "aws",
+      "gcp",
+      "azure",
+      "aliyun"
+    ]
+  }
+}

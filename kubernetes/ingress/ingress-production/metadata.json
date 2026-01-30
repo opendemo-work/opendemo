@@ -1,0 +1,45 @@
+{
+  "name": "Kubernetes Ingress生产环境最佳实践",
+  "language": "kubernetes",
+  "category": "ingress",
+  "subcategory": "production",
+  "difficulty": "advanced",
+  "keywords": [
+    "kubernetes",
+    "ingress",
+    "production",
+    "high-availability",
+    "performance",
+    "monitoring"
+  ],
+  "description": "企业级Kubernetes Ingress部署、运维和优化的完整指南，涵盖高可用、性能调优、监控告警等关键生产要素",
+  "version": "1.0.0",
+  "author": "OpenDemo Team",
+  "created_at": "2026-01-30",
+  "updated_at": "2026-01-30",
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "prerequisites": [
+    "Kubernetes Ingress高级特性知识",
+    "生产环境运维经验",
+    "性能优化基础"
+  ],
+  "learning_objectives": [
+    "掌握高可用Ingress架构设计",
+    "能够实施性能优化策略",
+    "建立完善的监控告警体系",
+    "制定灾备恢复计划",
+    "实施成本优化措施"
+  ],
+  "estimated_time": "4-5小时",
+  "compatibility": {
+    "kubernetes": ">=1.19",
+    "monitoring_tools": [
+      "prometheus",
+      "grafana",
+      "alertmanager"
+    ]
+  }
+}

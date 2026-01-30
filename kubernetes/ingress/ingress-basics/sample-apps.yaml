@@ -1,0 +1,137 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app1-deployment
+  namespace: ingress-demo
+  labels:
+    app: app1
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: app1
+  template:
+    metadata:
+      labels:
+        app: app1
+    spec:
+      containers:
+      - name: app1
+        image: nginx:1.21
+        ports:
+        - containerPort: 80
+        env:
+        - name: APP_NAME
+          value: "Application 1"
+        volumeMounts:
+        - name: nginx-config
+          mountPath: /etc/nginx/conf.d
+      volumes:
+      - name: nginx-config
+        configMap:
+          name: app1-config
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: app1-service
+  namespace: ingress-demo
+spec:
+  selector:
+    app: app1
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app2-deployment
+  namespace: ingress-demo
+  labels:
+    app: app2
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: app2
+  template:
+    metadata:
+      labels:
+        app: app2
+    spec:
+      containers:
+      - name: app2
+        image: nginx:1.21
+        ports:
+        - containerPort: 80
+        env:
+        - name: APP_NAME
+          value: "Application 2"
+        volumeMounts:
+        - name: nginx-config
+          mountPath: /etc/nginx/conf.d
+      volumes:
+      - name: nginx-config
+        configMap:
+          name: app2-config
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: app2-service
+  namespace: ingress-demo
+spec:
+  selector:
+    app: app2
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: default-app-deployment
+  namespace: ingress-demo
+  labels:
+    app: default-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: default-app
+  template:
+    metadata:
+      labels:
+        app: default-app
+    spec:
+      containers:
+      - name: default-app
+        image: nginx:1.21
+        ports:
+        - containerPort: 80
+        env:
+        - name: APP_NAME
+          value: "Default Application"
+        volumeMounts:
+        - name: nginx-config
+          mountPath: /etc/nginx/conf.d
+      volumes:
+      - name: nginx-config
+        configMap:
+          name: default-app-config
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: default-service
+  namespace: ingress-demo
+spec:
+  selector:
+    app: default-app
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80

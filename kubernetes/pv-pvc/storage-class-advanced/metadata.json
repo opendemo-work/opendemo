@@ -1,0 +1,44 @@
+{
+  "name": "Kubernetes StorageClass高级特性实战",
+  "language": "kubernetes",
+  "category": "pv-pvc",
+  "subcategory": "storage-class-advanced",
+  "difficulty": "advanced",
+  "keywords": [
+    "kubernetes",
+    "storageclass",
+    "topology-aware",
+    "multi-tenancy",
+    "performance-tuning"
+  ],
+  "description": "深入掌握Kubernetes StorageClass的高级配置：参数调优、卷绑定模式、拓扑感知、多租户隔离等企业级存储管理",
+  "version": "1.0.0",
+  "author": "OpenDemo Team",
+  "created_at": "2026-01-30",
+  "updated_at": "2026-01-30",
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "prerequisites": [
+    "StorageClass基础知识",
+    "云存储后端经验",
+    "Kubernetes高级特性理解"
+  ],
+  "learning_objectives": [
+    "掌握StorageClass参数深度调优",
+    "理解拓扑感知存储配置",
+    "实现多租户存储隔离",
+    "配置性能分级存储策略",
+    "优化存储成本和资源利用"
+  ],
+  "estimated_time": "3-4小时",
+  "compatibility": {
+    "kubernetes": ">=1.21",
+    "cloud_providers": [
+      "aws",
+      "azure",
+      "gcp"
+    ]
+  }
+}

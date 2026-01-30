@@ -1,0 +1,43 @@
+{
+  "name": "Containerd基础使用入门",
+  "language": "containerd",
+  "category": "container",
+  "subcategory": "containerd-basics",
+  "difficulty": "intermediate",
+  "keywords": [
+    "containerd",
+    "oci",
+    "container-runtime",
+    "kubernetes",
+    "cri"
+  ],
+  "description": "Containerd容器运行时基础入门实战：从安装配置到基本操作的完整指南",
+  "version": "1.0.0",
+  "author": "OpenDemo Team",
+  "created_at": "2026-01-30",
+  "updated_at": "2026-01-30",
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "prerequisites": [
+    "容器技术基础概念",
+    "Linux系统管理经验",
+    "命令行操作熟练度"
+  ],
+  "learning_objectives": [
+    "理解Containerd架构和OCI标准",
+    "掌握Containerd安装和配置",
+    "学会镜像和容器管理操作",
+    "理解命名空间和快照机制",
+    "掌握基本的故障排查技能"
+  ],
+  "estimated_time": "3-4小时",
+  "compatibility": {
+    "containerd_version": ">=1.6.0",
+    "operating_systems": [
+      "linux"
+    ],
+    "kubernetes_compatible": true
+  }
+}

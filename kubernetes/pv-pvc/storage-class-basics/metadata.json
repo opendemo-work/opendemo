@@ -1,0 +1,50 @@
+{
+  "name": "Kubernetes StorageClass基础实战",
+  "language": "kubernetes",
+  "category": "pv-pvc",
+  "subcategory": "storage-class-basics",
+  "difficulty": "intermediate",
+  "keywords": [
+    "kubernetes",
+    "storageclass",
+    "dynamic-provisioning",
+    "csi",
+    "storage-provisioner"
+  ],
+  "description": "深入学习Kubernetes StorageClass的核心概念和动态卷供应机制，掌握存储资源的自动化管理",
+  "version": "1.0.0",
+  "author": "OpenDemo Team",
+  "created_at": "2026-01-30",
+  "updated_at": "2026-01-30",
+  "files": [
+    "README.md",
+    "storageclass-configs.yaml",
+    "dynamic-pvc.yaml",
+    "pod-with-dynamic-pvc.yaml",
+    "metadata.json"
+  ],
+  "prerequisites": [
+    "PV/PVC基础知识",
+    "Kubernetes存储概念",
+    "kubectl命令行工具",
+    "YAML配置语法"
+  ],
+  "learning_objectives": [
+    "理解StorageClass的核心概念和工作机制",
+    "掌握动态卷供应的配置和使用",
+    "学会配置不同存储后端的StorageClass",
+    "掌握存储扩容和参数调优技能",
+    "理解卷绑定模式和拓扑感知配置"
+  ],
+  "estimated_time": "2-3小时",
+  "compatibility": {
+    "kubernetes": ">=1.19",
+    "storage_backends": [
+      "local-storage",
+      "nfs",
+      "aws-ebs",
+      "azure-disk",
+      "gce-pd"
+    ]
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "name": "Kubernetes RBAC权限管理和认证授权实战",
+  "language": "kubernetes",
+  "category": "infrastructure",
+  "subcategory": "rbac-auth",
+  "difficulty": "advanced",
+  "keywords": [
+    "kubernetes",
+    "rbac",
+    "authentication",
+    "authorization",
+    "security"
+  ],
+  "description": "深入学习Kubernetes RBAC权限控制系统：用户认证、角色授权、访问控制等企业级安全配置实践",
+  "version": "1.0.0",
+  "author": "OpenDemo Team",
+  "created_at": "2026-01-30",
+  "updated_at": "2026-01-30",
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "prerequisites": [
+    "Kubernetes基础知识",
+    "安全概念理解",
+    "认证授权基础"
+  ],
+  "learning_objectives": [
+    "掌握RBAC核心概念和配置方法",
+    "学会用户认证和权限管理",
+    "理解服务账户安全管理",
+    "掌握审计日志配置和分析",
+    "实施企业级安全最佳实践"
+  ],
+  "estimated_time": "3-4小时",
+  "compatibility": {
+    "kubernetes": ">=1.19",
+    "security_features": [
+      "rbac",
+      "audit",
+      "authentication"
+    ]
+  }
+}

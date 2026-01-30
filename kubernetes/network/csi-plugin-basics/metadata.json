@@ -1,0 +1,45 @@
+{
+  "name": "CSI Plugin基础入门实战",
+  "language": "kubernetes",
+  "category": "network",
+  "subcategory": "csi-plugin-basics",
+  "difficulty": "intermediate",
+  "keywords": [
+    "kubernetes",
+    "csi",
+    "storage",
+    "plugin",
+    "dynamic-provisioning"
+  ],
+  "description": "全面掌握Kubernetes存储驱动插件：从基础配置到动态卷供应的完整存储管理实践",
+  "version": "1.0.0",
+  "author": "OpenDemo Team",
+  "created_at": "2026-01-30",
+  "updated_at": "2026-01-30",
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "prerequisites": [
+    "存储基础知识",
+    "Kubernetes存储概念",
+    "CSI标准了解"
+  ],
+  "learning_objectives": [
+    "理解CSI插件架构和工作原理",
+    "掌握CSI插件部署和配置",
+    "学会动态卷供应配置",
+    "掌握存储类管理优化",
+    "具备存储性能调优能力"
+  ],
+  "estimated_time": "3-4小时",
+  "compatibility": {
+    "kubernetes": ">=1.20",
+    "csi_version": ">=1.0.0",
+    "storage_features": [
+      "dynamic-provisioning",
+      "volume-expansion",
+      "snapshot"
+    ]
+  }
+}
