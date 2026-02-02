@@ -1,0 +1,25 @@
+{
+  "name": "ai-ml-calculus-basics",
+  "version": "1.0.0",
+  "description": "微积分基础 - 导数、偏导数、梯度、积分等核心概念",
+  "main": "calculus_basics.py",
+  "scripts": {
+    "start": "python calculus_basics.py",
+    "test": "python -m pytest test_calculus.py -v"
+  },
+  "dependencies": {
+    "numpy": "^1.24.0",
+    "matplotlib": "^3.7.0",
+    "scipy": "^1.10.0"
+  },
+  "devDependencies": {
+    "pytest": "^7.0.0"
+  },
+  "keywords": [
+    "calculus",
+    "derivative",
+    "gradient",
+    "integration",
+    "machine-learning"
+  ]
+}

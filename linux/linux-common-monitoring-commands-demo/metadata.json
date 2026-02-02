@@ -1,0 +1,64 @@
+{
+  "name": "Linux常用系统监控命令综合演示",
+  "language": "linux",
+  "keywords": [
+    "ps",
+    "df",
+    "du",
+    "iostat",
+    "sar",
+    "system-monitoring",
+    "performance-analysis"
+  ],
+  "description": "详细介绍Linux系统中最常用的监控命令(ps,df,du,iostat,sar)的使用方法和实际应用场景，包含完整的脚本示例和最佳实践",
+  "difficulty": "intermediate",
+  "author": "OpenDemo Team",
+  "created_at": "2026-02-02",
+  "updated_at": "2026-02-02",
+  "version": "1.0.0",
+  "dependencies": {
+    "required_packages": ["sysstat", "procps"],
+    "minimum_kernel": "3.10",
+    "supported_distros": ["ubuntu", "centos", "rhel", "debian"]
+  },
+  "verified": true,
+  "estimated_time": "3-4小时",
+  "prerequisites": [
+    "Linux基础命令使用经验",
+    "系统管理基础知识",
+    "shell脚本编写能力"
+  ],
+  "learning_outcomes": [
+    "熟练掌握ps、df、du等核心监控命令",
+    "能够进行全面的系统资源分析",
+    "具备磁盘空间和IO性能优化能力",
+    "掌握历史数据分析和趋势预测",
+    "能够编写自动化系统监控脚本"
+  ],
+  "related_cases": [
+    "linux-netstat-network-monitoring-demo",
+    "linux-tsar-system-monitoring-demo",
+    "linux-top-process-monitoring-demo"
+  ],
+  "validation_commands": [
+    "ps aux | head -5",
+    "df -h",
+    "du -sh /tmp/",
+    "iostat -x 1 1",
+    "sar -u 1 1"
+  ],
+  "files": [
+    "README.md",
+    "metadata.json",
+    "scripts/system_health_check.sh",
+    "scripts/disk_space_monitor.sh",
+    "scripts/process_analyzer.sh",
+    "scripts/io_performance_monitor.sh",
+    "examples/ps_examples.txt",
+    "examples/df_examples.txt",
+    "examples/du_examples.txt",
+    "docs/ps_command_guide.md",
+    "docs/df_du_guide.md",
+    "docs/iostat_analysis.md"
+  ]
+}

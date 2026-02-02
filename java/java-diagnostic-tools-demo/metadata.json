@@ -1,0 +1,58 @@
+{
+  "name": "Java诊断工具与Arthas实战演示",
+  "language": "java",
+  "keywords": [
+    "arthas",
+    "jvm-diagnostic",
+    "performance-analysis",
+    "memory-leak",
+    "thread-analysis",
+    "gc-tuning"
+  ],
+  "description": "详细介绍Java应用诊断工具和Arthas在线诊断平台的使用方法，涵盖JVM性能分析、内存泄漏检测、线程状态分析等核心诊断技能",
+  "difficulty": "advanced",
+  "author": "OpenDemo Team",
+  "created_at": "2026-02-02",
+  "updated_at": "2026-02-02",
+  "version": "1.0.0",
+  "dependencies": {
+    "java_version": "8+",
+    "required_tools": ["jps", "jstack", "jmap", "jstat", "jinfo"],
+    "optional_tools": ["arthas", "eclipse-mat"]
+  },
+  "verified": true,
+  "estimated_time": "4-5小时",
+  "prerequisites": [
+    "Java编程基础",
+    "JVM基础知识",
+    "Linux系统操作经验",
+    "应用部署和运维经验"
+  ],
+  "learning_outcomes": [
+    "熟练掌握Arthas在线诊断工具的使用",
+    "具备JVM性能监控和调优能力",
+    "能够进行内存泄漏检测和分析",
+    "掌握线程状态分析和死锁检测",
+    "具备生产环境问题快速排查能力"
+  ],
+  "related_cases": [
+    "java-performance-tuning-demo",
+    "java-memory-management-demo"
+  ],
+  "validation_commands": [
+    "java -jar arthas-boot.jar --version",
+    "jps -l",
+    "jstat -gc $(jps | head -1 | awk '{print $1}')",
+    "./scripts/jvm_monitor.sh --check-health"
+  ],
+  "files": [
+    "README.md",
+    "metadata.json",
+    "scripts/arthas_launcher.sh",
+    "scripts/jvm_monitor.sh",
+    "scripts/thread_analyzer.sh",
+    "configs/arthas_config.properties",
+    "examples/arthas_commands_demo.txt",
+    "docs/arthas_user_guide.md"
+  ]
+}

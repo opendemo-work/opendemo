@@ -1,0 +1,59 @@
+{
+  "name": "Linux生产环境运维命令详解演示",
+  "language": "linux",
+  "keywords": [
+    "production-ops",
+    "systemd",
+    "log-management",
+    "security-hardening",
+    "performance-tuning",
+    "disaster-recovery"
+  ],
+  "description": "详细介绍Linux生产环境中的核心运维命令和最佳实践，涵盖服务管理、日志分析、安全加固、性能调优等企业级运维技能",
+  "difficulty": "advanced",
+  "author": "OpenDemo Team",
+  "created_at": "2026-02-02",
+  "updated_at": "2026-02-02",
+  "version": "1.0.0",
+  "dependencies": {
+    "required_packages": ["systemd", "logrotate", "audit", "firewalld"],
+    "minimum_kernel": "3.10",
+    "supported_distros": ["centos", "rhel", "ubuntu", "debian"]
+  },
+  "verified": true,
+  "estimated_time": "4-5小时",
+  "prerequisites": [
+    "Linux系统管理经验",
+    "生产环境运维基础",
+    "系统安全知识",
+    "shell脚本编程能力"
+  ],
+  "learning_outcomes": [
+    "掌握生产环境服务管理的最佳实践",
+    "具备日志分析和故障排查能力",
+    "能够进行系统安全加固和审计",
+    "掌握性能调优和资源优化技能",
+    "具备灾难恢复和备份管理能力"
+  ],
+  "related_cases": [
+    "linux-netstat-network-monitoring-demo",
+    "linux-tsar-system-monitoring-demo",
+    "linux-top-process-monitoring-demo"
+  ],
+  "validation_commands": [
+    "systemctl status sshd",
+    "journalctl -u nginx --since '1 hour ago'",
+    "auditctl -l",
+    "./scripts/service_manager.sh --health-check"
+  ],
+  "files": [
+    "README.md",
+    "metadata.json",
+    "scripts/service_manager.sh",
+    "scripts/log_analyzer.sh",
+    "scripts/security_checker.sh",
+    "configs/systemd_service_template.conf",
+    "examples/service_management.txt",
+    "docs/production_best_practices.md"
+  ]
+}

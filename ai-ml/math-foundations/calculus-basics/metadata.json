@@ -1,0 +1,35 @@
+{
+  "case_id": "ai-ml-calculus-basics",
+  "name": "微积分基础",
+  "category": "ai-ml",
+  "subcategory": "数学基础",
+  "difficulty": "中级",
+  "estimated_time": "2小时",
+  "prerequisites": [
+    "基础数学知识",
+    "Python编程基础",
+    "ai-ml-linear-algebra-basics"
+  ],
+  "learning_objectives": [
+    "掌握导数和偏导数的计算方法",
+    "理解梯度下降算法的原理和实现",
+    "学会数值积分的各种方法",
+    "理解链式法则在神经网络中的应用"
+  ],
+  "tags": [
+    "微积分",
+    "导数",
+    "梯度下降",
+    "积分",
+    "链式法则"
+  ],
+  "related_cases": [
+    "ai-ml-linear-algebra-basics",
+    "ai-ml-gradient-descent-demo"
+  ],
+  "created_date": "2024-01-15",
+  "last_updated": "2024-01-15",
+  "author": "OpenDemo Team",
+  "version": "1.0.0",
+  "status": "complete"
+}

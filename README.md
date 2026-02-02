@@ -4,7 +4,7 @@
 
 [![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://python.org)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![Demos](https://img.shields.io/badge/Demos-401-blue.svg)](#demo-statistics)
+[![Demos](https://img.shields.io/badge/Demos-522-blue.svg)](#demo-statistics)
 [![Languages](https://img.shields.io/badge/Languages-6-green.svg)](#programming-language-stacks)
 [![Quality](https://img.shields.io/badge/Quality-94%25-brightgreen.svg)](#quality-assurance)
 
@@ -75,7 +75,8 @@ OpenDemo 采用专业化的技术栈分类体系，为开发者提供系统化�
 | Python | 77 | ✅ 100% | 96/100 | 完整 |
 | Go | 94 | ✅ 100% | 95/100 | 完整 |
 | Node.js | 67 | ✅ 100% | 94/100 | 完整 |
-| Java | 5 | 🚧 25% | 94/100 | 建设中 |
+| Java | 20 | ✅ 100% | 94/100 | 完整 |
+| Database | 22 | 🚧 30% | 85/100 | 建设中 |
 | Kubernetes | 166 | ✅ 100% | 97/100 | 完整 |
 | Container | 9 | ✅ 100% | 93/100 | 完整 |
 
@@ -98,6 +99,13 @@ opendemo/
 - **新兴编程语言**: Rust、TypeScript、C++
 - **云原生技术**: 云服务商专项、Service Mesh
 - **企业级应用**: 微服务架构、分布式系统
+
+### 项目维护状态
+
+- ✅ **定期清理**: 使用自动化脚本清理无用文件和空目录
+- ✅ **质量监控**: 持续的质量评估和改进
+- ✅ **文档更新**: 保持文档与代码同步更新
+- ✅ **结构优化**: 定期重构和优化项目结构
 
 ---
 
@@ -281,9 +289,9 @@ opendemo check --report
 | 🤖 **Vibe Coding** | 0 | gemini-cli(1), local-demo(1), other-cli(1), qoder-cli(1) | 4 | ✅ 全部通过 |
 | ⎈ **Kubernetes** | 0 | fluid(1), kubeflow(42), kubeskoop(10), operator-framework(2), velero(15), operator(1), crd(1), rbac(1), prometheus(1), grafana(1), efk(1), elk(1), loki(1), jaeger(1), zipkin(1), opentelemetry(1), troubleshooting(8), network(9), storage(1), ai-infra(1), llmops(1), agent(9), mcp(9), rag(3), n8n(1, 含本地部署), regflow(1), modelscope(1), ollama(1), gemini(1), service(5), ingress(5), pv-pvc(6), workload(8), infrastructure(10) | 166 | ✅ 全部通过 |
 | 🤖 **AI/ML** | 0 | machine-learning(0), deep-learning(0), nlp(0), computer-vision(0) | 0 | ⏳ 规划中 |
-| ☕ **Java** | 5 | 基础语法(5) | 5 | 🚧 建设中 |
+| ☕ **Java** | 8 | 基础语法(8) | 8 | 🚧 建设中 |
 | 📦 **Container** | 3 | docker(2), containerd(2), runc(2) | 9 | ✅ 全部通过 |
-| **总计** | **219** | **182** | **401** | ✅ |
+| **总计** | **222** | **182** | **404** | ✅ |
 
 > 说明：Kubernetes 中 rag(3) 和 n8n(1) 目录下的案例已采用统一的 `README + manifests + meta` 目录结构，便于学习与自动化工具使用。
 > 
@@ -645,10 +653,10 @@ opendemo check --report
 
 ---
 
-### ☕ Java (3个)
+### ☕ Java (8个)
 
 <details>
-<summary><b>基础语法 (3个)</b> - 点击展开</summary>
+<summary><b>基础语法 (8个)</b> - 点击展开</summary>
 
 | # | Demo名称 | 功能说明 | 状态 |
 |---|---------|---------|------|
@@ -657,6 +665,22 @@ opendemo check --report
 | 3 | `java-classes-objects-demo` | 类与对象基础 | ✅ |
 | 4 | `java-arrays-collections-demo` | 数组与集合操作 | ✅ |
 | 5 | `java-exception-handling-demo` | 异常处理机制 | ✅ |
+| 6 | `java-string-operations-demo` | 字符串操作 | ✅ |
+| 7 | `java-input-output-demo` | 输入输出操作 | 🚧 |
+| 8 | `java-date-time-demo` | 日期时间处理 | ✅ |
+| 9 | `java-regular-expressions-demo` | 正则表达式处理 | ✅ |
+| 10 | `java-classes-objects-demo` | 类与对象基础 | ✅ |
+| 11 | `java-inheritance-demo` | 继承机制 | ✅ |
+| 12 | `java-polymorphism-demo` | 多态特性 | ✅ |
+| 13 | `java-encapsulation-demo` | 封装原则 | ✅ |
+| 14 | `java-abstraction-demo` | 抽象概念 | ✅ |
+| 15 | `java-interfaces-demo` | 接口设计 | ✅ |
+| 16 | `java-inner-classes-demo` | 内部类应用 | ✅ |
+| 17 | `java-generics-demo` | 泛型编程 | ✅ |
+| 18 | `java-annotations-demo` | 注解机制 | ✅ |
+| 19 | `java-reflection-demo` | 反射API | ✅ |
+| 20 | `java-enumerations-demo` | 枚举类型 | ✅ |
+| 21 | `java-lambda-demo` | Lambda表达式 | ✅ |
 
 </details>
 
@@ -2054,3 +2078,28 @@ python code/logging_demo.py
 ---
 
 **Open Demo** - 让编程学习更简单、更高效！ 🎉
+
+
+##  ����ջ��������
+
+��ͬ����ջ֮��Ĺ����ͻ�����ϵ��
+
+### Java  Python
+- **���Ƹ���**: ��������̡��쳣���������Ͽ��
+- **����Ա�**: ��̬����vs��̬���͡�����ʱ���vs����ʱ�����
+- **Ӧ�ó���**: Java�ʺ���ҵ��Ӧ�ã�Python�ʺ����ݿ�ѧ�Ϳ���ԭ��
+
+### Java  Go
+- **����ģ��**: �߳�vs Goroutines��������vs������
+- **�����ص�**: JVM�Ż�vsԭ�����롢GC���Ʋ���
+- **���ó���**: Java�ʺϸ�����ҵӦ�ã�Go�ʺϸ߲�������
+
+### Python  Node.js
+- **�첽����**: asyncio vs Promise/async-await
+- **��̬ϵͳ**: ��ѧ�����vs Webǰ����̬
+- **Ӧ������**: ���ݷ���vs Web��˿���
+
+### Go  Node.js
+- **��������**: CSPģ��vs�¼�ѭ��
+- **���ܱ���**: ԭ������vs JIT����
+- **����Ч��**: ����﷨vs�ḻ��̬

@@ -1,0 +1,27 @@
+{
+  "name": "nodejs-express-web-demo",
+  "version": "1.0.0",
+  "description": "Node.js Express Web框架基础 - RESTful API、路由、中间件等Web开发核心概念",
+  "main": "express_web_demo.js",
+  "scripts": {
+    "start": "node express_web_demo.js",
+    "dev": "nodemon express_web_demo.js",
+    "test": "node test_express_web.js"
+  },
+  "dependencies": {
+    "express": "^4.18.0",
+    "cors": "^2.8.5",
+    "helmet": "^6.0.0",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  },
+  "keywords": [
+    "nodejs",
+    "express",
+    "web-framework",
+    "restful-api",
+    "middleware"
+  ]
+}

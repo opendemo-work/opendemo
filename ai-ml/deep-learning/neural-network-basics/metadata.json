@@ -1,0 +1,35 @@
+{
+  "case_id": "ai-ml-neural-network-basics",
+  "name": "神经网络基础",
+  "category": "ai-ml",
+  "subcategory": "深度学习",
+  "difficulty": "高级",
+  "estimated_time": "3小时",
+  "prerequisites": [
+    "ai-ml-linear-algebra-basics",
+    "ai-ml-calculus-basics"
+  ],
+  "learning_objectives": [
+    "掌握感知机的工作原理和实现",
+    "理解多层感知机的结构和训练方法",
+    "熟悉常用激活函数的特点和应用",
+    "学会反向传播算法的手动实现"
+  ],
+  "tags": [
+    "神经网络",
+    "感知机",
+    "多层感知机",
+    "反向传播",
+    "激活函数"
+  ],
+  "related_cases": [
+    "ai-ml-linear-regression",
+    "ai-ml-decision-tree",
+    "ai-ml-convolutional-neural-network"
+  ],
+  "created_date": "2024-01-15",
+  "last_updated": "2024-01-15",
+  "author": "OpenDemo Team",
+  "version": "1.0.0",
+  "status": "complete"
+}

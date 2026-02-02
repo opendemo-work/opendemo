@@ -1,0 +1,60 @@
+{
+  "name": "Linux高级性能监控与分析详解演示",
+  "language": "linux",
+  "keywords": [
+    "performance-monitoring",
+    "system-analysis",
+    "cpu-profiling",
+    "memory-analysis",
+    "io-bottleneck",
+    "network-performance",
+    "cgroups",
+    "resource-isolation"
+  ],
+  "description": "详细介绍Linux系统高级性能监控和分析技术，涵盖CPU、内存、IO、网络等子系统的深度分析方法和优化技巧",
+  "difficulty": "expert",
+  "author": "OpenDemo Team",
+  "created_at": "2026-02-02",
+  "updated_at": "2026-02-02",
+  "version": "1.0.0",
+  "dependencies": {
+    "required_packages": ["perf", "sysstat", "blktrace", "numactl"],
+    "minimum_kernel": "4.0",
+    "supported_distros": ["centos", "rhel", "ubuntu", "debian"]
+  },
+  "verified": true,
+  "estimated_time": "4-5小时",
+  "prerequisites": [
+    "Linux系统管理高级经验",
+    "性能监控和调优基础",
+    "内核调试和分析能力",
+    "shell脚本高级编程"
+  ],
+  "learning_outcomes": [
+    "掌握系统级性能瓶颈深度分析方法",
+    "熟练使用perf、blktrace等高级分析工具",
+    "具备CPU、内存、IO子系统优化能力",
+    "理解cgroups资源隔离和限制机制",
+    "能够进行复杂系统性能调优"
+  ],
+  "related_cases": [
+    "linux-tsar-system-monitoring-demo",
+    "linux-production-ops-commands-demo"
+  ],
+  "validation_commands": [
+    "perf --version",
+    "blktrace --version",
+    "numactl --hardware",
+    "./scripts/cpu_performance_analyzer.sh"
+  ],
+  "files": [
+    "README.md",
+    "metadata.json",
+    "scripts/cpu_performance_analyzer.sh",
+    "scripts/memory_profiler.sh",
+    "scripts/io_bottleneck_detector.sh",
+    "configs/perf_config.conf",
+    "examples/cpu_flame_graph.svg",
+    "docs/performance_troubleshooting.md"
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "case_id": "ai-ml-linear-algebra-basics",
+  "name": "线性代数基础",
+  "category": "ai-ml",
+  "subcategory": "数学基础",
+  "difficulty": "中级",
+  "estimated_time": "2小时",
+  "prerequisites": [
+    "基础数学知识",
+    "Python编程基础"
+  ],
+  "learning_objectives": [
+    "掌握向量和矩阵的基本运算",
+    "理解特征值分解的原理和应用",
+    "学会奇异值分解的概念和用途",
+    "了解线性代数在机器学习中的应用"
+  ],
+  "tags": [
+    "线性代数",
+    "向量",
+    "矩阵",
+    "特征值分解",
+    "奇异值分解"
+  ],
+  "related_cases": [
+    "ai-ml-calculus-basics",
+    "ai-ml-probability-statistics"
+  ],
+  "created_date": "2024-01-15",
+  "last_updated": "2024-01-15",
+  "author": "OpenDemo Team",
+  "version": "1.0.0",
+  "status": "complete"
+}

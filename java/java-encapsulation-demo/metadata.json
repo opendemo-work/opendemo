@@ -1,0 +1,37 @@
+{
+  "case_id": "java-encapsulation-demo",
+  "name": "Java封装原则完整示例",
+  "category": "java",
+  "subcategory": "面向对象",
+  "difficulty": "中级",
+  "estimated_time": "3小时",
+  "prerequisites": [
+    "java-classes-objects-demo",
+    "java-polymorphism-demo"
+  ],
+  "learning_objectives": [
+    "理解封装的基本概念和重要性",
+    "掌握数据隐藏和访问控制的实现",
+    "学会设计和使用不可变对象",
+    "掌握验证逻辑的封装方法",
+    "理解配置管理的封装设计",
+    "了解线程安全的封装考虑"
+  ],
+  "tags": [
+    "封装",
+    "数据隐藏",
+    "不可变对象",
+    "验证封装",
+    "配置管理",
+    "线程安全"
+  ],
+  "related_cases": [
+    "java-classes-objects-demo",
+    "java-polymorphism-demo"
+  ],
+  "created_date": "2024-01-15",
+  "last_updated": "2024-01-15",
+  "author": "OpenDemo Team",
+  "version": "1.0.0",
+  "status": "complete"
+}

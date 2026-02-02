@@ -1,0 +1,34 @@
+{
+  "case_id": "ai-ml-convolutional-neural-network",
+  "name": "卷积神经网络基础",
+  "category": "ai-ml",
+  "subcategory": "深度学习",
+  "difficulty": "高级",
+  "estimated_time": "3小时",
+  "prerequisites": [
+    "ai-ml-neural-network-basics"
+  ],
+  "learning_objectives": [
+    "掌握卷积操作的数学原理和实现",
+    "理解池化操作的作用和应用",
+    "学会CNN网络架构的设计方法",
+    "理解计算机视觉中的特征提取机制"
+  ],
+  "tags": [
+    "卷积神经网络",
+    "CNN",
+    "计算机视觉",
+    "图像处理",
+    "特征提取"
+  ],
+  "related_cases": [
+    "ai-ml-neural-network-basics",
+    "ai-ml-image-classification",
+    "ai-ml-object-detection"
+  ],
+  "created_date": "2024-01-15",
+  "last_updated": "2024-01-15",
+  "author": "OpenDemo Team",
+  "version": "1.0.0",
+  "status": "complete"
+}

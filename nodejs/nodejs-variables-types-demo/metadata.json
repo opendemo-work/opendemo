@@ -1,0 +1,33 @@
+{
+  "case_id": "nodejs-variables-types-demo",
+  "name": "Node.js变量和数据类型基础",
+  "category": "nodejs",
+  "subcategory": "基础语法",
+  "difficulty": "初级",
+  "estimated_time": "1小时",
+  "prerequisites": [
+    "基本编程概念"
+  ],
+  "learning_objectives": [
+    "掌握var、let、const三种变量声明方式的区别",
+    "理解JavaScript七种基本数据类型的特性和应用",
+    "学会引用数据类型的使用方法",
+    "掌握类型检测和转换的技术"
+  ],
+  "tags": [
+    "nodejs",
+    "javascript",
+    "变量声明",
+    "数据类型",
+    "es6"
+  ],
+  "related_cases": [
+    "nodejs-control-flow-demo",
+    "nodejs-functions-demo"
+  ],
+  "created_date": "2024-01-15",
+  "last_updated": "2024-01-15",
+  "author": "OpenDemo Team",
+  "version": "1.0.0",
+  "status": "complete"
+}

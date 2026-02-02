@@ -1,0 +1,17 @@
+{
+  "case_id": "java-annotations-demo",
+  "name": "Java注解机制示例",
+  "category": "java",
+  "subcategory": "高级特性",
+  "difficulty": "中级",
+  "estimated_time": "2小时",
+  "prerequisites": ["java-classes-objects-demo"],
+  "learning_objectives": ["掌握注解的定义、使用和处理"],
+  "tags": ["注解", "元注解", "注解处理器"],
+  "related_cases": ["java-classes-objects-demo"],
+  "created_date": "2024-01-15",
+  "last_updated": "2024-01-15",
+  "author": "OpenDemo Team",
+  "version": "1.0.0",
+  "status": "complete"
+}

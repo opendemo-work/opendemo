@@ -1,0 +1,36 @@
+{
+  "name": "java-date-time-demo",
+  "language": "java",
+  "keywords": ["java", "datetime", "日期时间", "LocalDateTime", "ZonedDateTime", "时间处理"],
+  "description": "Java日期时间处理完整示例，涵盖LocalDate、LocalTime、LocalDateTime、ZonedDateTime等现代日期时间API，包括创建、格式化、计算、时区转换等核心操作",
+  "difficulty": "beginner",
+  "author": "OpenDemo Team",
+  "created_at": "2026-02-02",
+  "updated_at": "2026-02-02",
+  "version": "1.0.0",
+  "dependencies": {
+    "java_version": "11+",
+    "build_tool": "maven",
+    "frameworks": ["junit-jupiter:5.9.2", "slf4j:2.0.6"]
+  },
+  "verified": true,
+  "estimated_time": "1-2小时",
+  "prerequisites": ["java-basics", "variables-types"],
+  "learning_outcomes": [
+    "掌握Java 8+新的日期时间API",
+    "理解LocalDate、LocalTime、LocalDateTime的区别和使用场景",
+    "熟练使用ZonedDateTime处理时区相关操作",
+    "掌握日期时间格式化和解析技巧",
+    "理解日期时间计算和期间处理",
+    "了解时区转换和国际化处理"
+  ],
+  "related_cases": [
+    "java-string-operations-demo",
+    "java-variables-types-demo"
+  ],
+  "validation_commands": [
+    "mvn compile",
+    "mvn test",
+    "mvn exec:java -Dexec.mainClass=\"com.opendemo.java.datetime.DateTimeOperationsDemo\""
+  ]
+}

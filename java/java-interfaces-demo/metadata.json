@@ -1,0 +1,35 @@
+{
+  "case_id": "java-interfaces-demo",
+  "name": "Java接口设计完整示例",
+  "category": "java",
+  "subcategory": "面向对象",
+  "difficulty": "中级",
+  "estimated_time": "3小时",
+  "prerequisites": [
+    "java-classes-objects-demo",
+    "java-abstraction-demo"
+  ],
+  "learning_objectives": [
+    "掌握接口的基本定义和实现",
+    "理解默认方法和静态方法的使用",
+    "学会函数式接口和Lambda表达式",
+    "掌握接口继承和多实现",
+    "理解回调机制和事件处理"
+  ],
+  "tags": [
+    "接口",
+    "函数式接口",
+    "Lambda表达式",
+    "回调机制",
+    "默认方法"
+  ],
+  "related_cases": [
+    "java-abstraction-demo",
+    "java-lambda-demo"
+  ],
+  "created_date": "2024-01-15",
+  "last_updated": "2024-01-15",
+  "author": "OpenDemo Team",
+  "version": "1.0.0",
+  "status": "complete"
+}

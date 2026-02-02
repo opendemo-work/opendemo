@@ -1,0 +1,24 @@
+{
+  "name": "ai-ml-linear-algebra-basics",
+  "version": "1.0.0",
+  "description": "线性代数基础 - 向量、矩阵运算、特征值分解等核心概念",
+  "main": "linear_algebra_basics.py",
+  "scripts": {
+    "start": "python linear_algebra_basics.py",
+    "test": "python -m pytest test_linear_algebra.py -v"
+  },
+  "dependencies": {
+    "numpy": "^1.24.0",
+    "matplotlib": "^3.7.0"
+  },
+  "devDependencies": {
+    "pytest": "^7.0.0"
+  },
+  "keywords": [
+    "linear-algebra",
+    "vector",
+    "matrix",
+    "eigenvalues",
+    "machine-learning"
+  ]
+}

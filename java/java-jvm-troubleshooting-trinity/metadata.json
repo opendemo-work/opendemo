@@ -1,0 +1,59 @@
+{
+  "name": "JVM性能分析三剑客实战演示",
+  "language": "java",
+  "keywords": [
+    "jvm-troubleshooting",
+    "jps",
+    "jstack",
+    "jmap",
+    "thread-analysis",
+    "memory-leak",
+    "performance-diagnostics"
+  ],
+  "description": "详细介绍Java应用性能分析的三大核心工具(jps,jstack,jmap)使用方法，涵盖线程分析、内存检测、死锁排查等实战技能",
+  "difficulty": "advanced",
+  "author": "OpenDemo Team",
+  "created_at": "2026-02-02",
+  "updated_at": "2026-02-02",
+  "version": "1.0.0",
+  "dependencies": {
+    "java_version": "8+",
+    "required_tools": ["jps", "jstack", "jmap", "jstat"],
+    "optional_tools": ["eclipse-mat", "jvisualvm"]
+  },
+  "verified": true,
+  "estimated_time": "3-4小时",
+  "prerequisites": [
+    "Java编程基础",
+    "JVM内存管理知识",
+    "Linux系统操作经验",
+    "应用运维经验"
+  ],
+  "learning_outcomes": [
+    "熟练掌握JVM三剑客工具的使用",
+    "具备线程状态分析和死锁检测能力",
+    "能够进行内存泄漏检测和分析",
+    "掌握生产环境快速问题排查流程",
+    "具备JVM性能调优基础能力"
+  ],
+  "related_cases": [
+    "java-diagnostic-tools-demo",
+    "java-performance-tuning-demo"
+  ],
+  "validation_commands": [
+    "jps -l",
+    "jstack $(jps | head -1 | awk '{print $1}')",
+    "jmap -heap $(jps | head -1 | awk '{print $1}')",
+    "./scripts/jvm_trinity_analyzer.sh --quick-check"
+  ],
+  "files": [
+    "README.md",
+    "metadata.json",
+    "scripts/jvm_trinity_analyzer.sh",
+    "scripts/thread_dump_analyzer.sh",
+    "scripts/memory_leak_detector.sh",
+    "configs/jvm_monitoring.conf",
+    "examples/thread_dump_samples.txt",
+    "docs/jvm_trinity_guide.md"
+  ]
+}

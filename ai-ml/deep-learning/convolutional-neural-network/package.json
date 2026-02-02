@@ -1,0 +1,25 @@
+{
+  "name": "ai-ml-convolutional-neural-network",
+  "version": "1.0.0",
+  "description": "卷积神经网络基础 - 卷积层、池化层、CNN架构等核心概念",
+  "main": "cnn_basics.py",
+  "scripts": {
+    "start": "python cnn_basics.py",
+    "test": "python -m pytest test_cnn.py -v"
+  },
+  "dependencies": {
+    "numpy": "^1.24.0",
+    "matplotlib": "^3.7.0",
+    "torch": "^2.0.0",
+    "torchvision": "^0.15.0"
+  },
+  "devDependencies": {
+    "pytest": "^7.0.0"
+  },
+  "keywords": [
+    "convolutional-neural-network",
+    "cnn",
+    "computer-vision",
+    "image-classification"
+  ]
+}

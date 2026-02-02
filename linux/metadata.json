@@ -1,0 +1,152 @@
+{
+  "name": "Linux系统管理与监控完整指南",
+  "language": "linux",
+  "category": "system-administration",
+  "subcategory": "main",
+  "difficulty": "beginner-to-advanced",
+  "keywords": [
+    "linux",
+    "system-monitoring",
+    "network-administration",
+    "performance-tuning",
+    "troubleshooting"
+  ],
+  "description": "Linux系统管理和监控的完整学习体系，包含网络命令、系统监控工具、进程管理等核心技能的详细演示案例",
+  "version": "1.0.0",
+  "author": "OpenDemo Team",
+  "created_at": "2026-02-02",
+  "updated_at": "2026-02-02",
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "prerequisites": [
+    "Linux基础命令使用经验",
+    "计算机系统基础知识",
+    "网络协议基础概念"
+  ],
+  "learning_objectives": [
+    "掌握Linux网络监控命令(netstat, ss等)的使用",
+    "熟练运用系统性能监控工具(tsar, top等)",
+    "具备进程管理和资源优化能力",
+    "能够进行系统故障排查和性能分析",
+    "掌握企业级系统运维最佳实践",
+    "具备生产环境服务管理和安全加固能力",
+    "能够设计和实施自动化运维解决方案",
+    "掌握系统级性能瓶颈深度分析方法",
+    "具备复杂系统性能调优和资源隔离能力",
+    "掌握系统安全审计和日志分析技能",
+    "具备安全事件响应和威胁分析能力"
+  ],
+  "estimated_time": "30-35小时",
+  "compatibility": {
+    "supported_distros": ["ubuntu", "centos", "rhel", "debian", "fedora"],
+    "minimum_kernel": "3.10",
+    "required_tools": ["net-tools", "sysstat", "procps", "systemd", "audit", "ansible", "perf", "blktrace", "rsyslog", "fail2ban"]
+  },
+  "demos": [
+    {
+      "name": "linux-netstat-network-monitoring-demo",
+      "title": "netstat网络监控命令详解演示",
+      "description": "详细介绍netstat命令在网络监控、故障排查和安全审计中的应用",
+      "difficulty": "intermediate",
+      "estimated_time": "2-3小时",
+      "keywords": ["netstat", "network-monitoring", "tcp-ip", "troubleshooting"]
+    },
+    {
+      "name": "linux-tsar-system-monitoring-demo",
+      "title": "tsar系统性能监控工具详解演示",
+      "description": "阿里巴巴开源的tsar系统性能监控工具全方位演示",
+      "difficulty": "advanced",
+      "estimated_time": "3-4小时",
+      "keywords": ["tsar", "system-monitoring", "performance-analysis", "capacity-planning"]
+    },
+    {
+      "name": "linux-top-process-monitoring-demo",
+      "title": "top进程监控命令详解演示",
+      "description": "Linux top命令在进程监控和系统性能分析中的应用",
+      "difficulty": "intermediate",
+      "estimated_time": "2-3小时",
+      "keywords": ["top", "process-monitoring", "system-performance", "resource-management"]
+    },
+    {
+      "name": "linux-common-monitoring-commands-demo",
+      "title": "常用系统监控命令综合演示",
+      "description": "ps、df、du、iostat、sar等核心监控命令的综合应用",
+      "difficulty": "intermediate",
+      "estimated_time": "3-4小时",
+      "keywords": ["ps", "df", "du", "iostat", "sar", "system-monitoring"]
+    },
+    {
+      "name": "linux-production-ops-commands-demo",
+      "title": "生产环境运维命令详解演示",
+      "description": "企业级服务管理、安全加固、自动化运维等生产环境核心技能",
+      "difficulty": "advanced",
+      "estimated_time": "4-5小时",
+      "keywords": ["production-ops", "systemd", "security", "automation", "disaster-recovery"]
+    },
+    {
+      "name": "linux-advanced-performance-monitoring-demo",
+      "title": "高级性能监控与分析详解演示",
+      "description": "系统级性能瓶颈深度分析、CPU内存IO网络子系统优化、资源隔离等高级技能",
+      "difficulty": "expert",
+      "estimated_time": "4-5小时",
+      "keywords": ["performance-monitoring", "system-analysis", "cpu-profiling", "resource-isolation"]
+    },
+    {
+      "name": "linux-security-logging-demo",
+      "title": "安全监控与日志管理详解演示",
+      "description": "系统安全审计、入侵检测、日志分析、合规检查等企业级安全运维技能",
+      "difficulty": "advanced",
+      "estimated_time": "4-5小时",
+      "keywords": ["security-monitoring", "log-management", "audit", "intrusion-detection"]
+    }
+  ],
+  "learning_path": [
+    {
+      "phase": "基础入门",
+      "content": [
+        "熟悉Linux基础命令和系统概念",
+        "掌握基本的网络知识和TCP/IP协议",
+        "了解进程管理和系统资源概念"
+      ],
+      "estimated_duration": "2-3天"
+    },
+    {
+      "phase": "核心技能",
+      "content": [
+        "深入学习netstat网络监控",
+        "掌握top进程监控技巧",
+        "学习系统性能分析方法"
+      ],
+      "estimated_duration": "4-5天"
+    },
+    {
+      "phase": "高级应用",
+      "content": [
+        "精通tsar性能监控工具",
+        "掌握复杂故障排查技能",
+        "学习自动化监控脚本开发"
+      ],
+      "estimated_duration": "5-7天"
+    },
+    {
+      "phase": "企业级应用",
+      "content": [
+        "企业级服务管理和监控",
+        "安全加固和合规审计",
+        "灾备恢复方案实施"
+      ],
+      "estimated_duration": "4-5天"
+    },
+    {
+      "phase": "专家级提升",
+      "content": [
+        "高可用架构设计",
+        "自动化运维体系建设",
+        "运维标准和流程制定"
+      ],
+      "estimated_duration": "3-4天"
+    }
+  ]
+}

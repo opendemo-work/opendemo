@@ -1,0 +1,32 @@
+{
+  "case_id": "python-variables-types-demo",
+  "name": "Python变量和数据类型基础",
+  "category": "python",
+  "subcategory": "基础语法",
+  "difficulty": "初级",
+  "estimated_time": "1小时",
+  "prerequisites": [
+    "基本编程概念"
+  ],
+  "learning_objectives": [
+    "掌握Python变量赋值和命名规则",
+    "理解所有内置数据类型的特性和应用",
+    "学会类型转换的方法和注意事项",
+    "掌握类型检查技术和内存管理机制"
+  ],
+  "tags": [
+    "python",
+    "variables",
+    "data-types",
+    "builtin-types"
+  ],
+  "related_cases": [
+    "python-control-flow-demo",
+    "python-functions-demo"
+  ],
+  "created_date": "2024-01-15",
+  "last_updated": "2024-01-15",
+  "author": "OpenDemo Team",
+  "version": "1.0.0",
+  "status": "complete"
+}

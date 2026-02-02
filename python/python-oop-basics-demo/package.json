@@ -1,0 +1,21 @@
+{
+  "name": "python-oop-basics-demo",
+  "version": "1.0.0",
+  "description": "Python面向对象编程基础 - 类定义、继承、多态、封装等OOP核心概念",
+  "main": "oop_basics_demo.py",
+  "scripts": {
+    "start": "python oop_basics_demo.py",
+    "test": "python -m pytest test_oop_basics.py -v"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "pytest": "^7.0.0"
+  },
+  "keywords": [
+    "python",
+    "oop",
+    "object-oriented-programming",
+    "classes",
+    "inheritance"
+  ]
+}

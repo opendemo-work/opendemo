@@ -1,0 +1,17 @@
+{
+  "case_id": "java-enumerations-demo",
+  "name": "Java枚举类型示例",
+  "category": "java",
+  "subcategory": "基础语法",
+  "difficulty": "初级",
+  "estimated_time": "1小时",
+  "prerequisites": ["java-classes-objects-demo"],
+  "learning_objectives": ["掌握枚举类型的定义和使用"],
+  "tags": ["枚举", "enum", "常量"],
+  "related_cases": ["java-classes-objects-demo"],
+  "created_date": "2024-01-15",
+  "last_updated": "2024-01-15",
+  "author": "OpenDemo Team",
+  "version": "1.0.0",
+  "status": "complete"
+}

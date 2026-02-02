@@ -1,0 +1,17 @@
+{
+  "case_id": "java-reflection-demo",
+  "name": "Java反射API示例",
+  "category": "java",
+  "subcategory": "高级特性",
+  "difficulty": "高级",
+  "estimated_time": "3小时",
+  "prerequisites": ["java-classes-objects-demo"],
+  "learning_objectives": ["掌握反射API的使用和动态编程"],
+  "tags": ["反射", "动态代理", "运行时类型信息"],
+  "related_cases": ["java-classes-objects-demo"],
+  "created_date": "2024-01-15",
+  "last_updated": "2024-01-15",
+  "author": "OpenDemo Team",
+  "version": "1.0.0",
+  "status": "complete"
+}

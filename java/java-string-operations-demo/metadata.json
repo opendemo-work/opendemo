@@ -1,0 +1,36 @@
+{
+  "name": "java-string-operations-demo",
+  "language": "java",
+  "keywords": ["java", "string", "字符串", "操作", "文本处理"],
+  "description": "Java字符串操作完整示例，涵盖String类的各种常用方法和最佳实践，包括创建、比较、查找、修改、格式化等操作",
+  "difficulty": "beginner",
+  "author": "OpenDemo Team",
+  "created_at": "2026-02-02",
+  "updated_at": "2026-02-02",
+  "version": "1.0.0",
+  "dependencies": {
+    "java_version": "11+",
+    "build_tool": "maven",
+    "frameworks": ["junit-jupiter:5.9.2", "slf4j:2.0.6"]
+  },
+  "verified": true,
+  "estimated_time": "1-2小时",
+  "prerequisites": ["java-basics", "variables-types"],
+  "learning_outcomes": [
+    "掌握Java字符串的多种创建方式",
+    "理解字符串比较的不同方法和区别",
+    "熟练使用字符串查找和修改操作",
+    "掌握字符串分割、连接和格式化技巧",
+    "了解字符串验证和正则表达式应用",
+    "理解字符串不可变性和性能优化"
+  ],
+  "related_cases": [
+    "java-variables-types-demo",
+    "java-regular-expressions-demo"
+  ],
+  "validation_commands": [
+    "mvn compile",
+    "mvn test",
+    "mvn exec:java -Dexec.mainClass=\"com.opendemo.java.string.StringOperationsDemo\""
+  ]
+}

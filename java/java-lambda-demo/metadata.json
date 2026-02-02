@@ -1,0 +1,17 @@
+{
+  "case_id": "java-lambda-demo",
+  "name": "Java Lambda表达式示例",
+  "category": "java",
+  "subcategory": "函数式编程",
+  "difficulty": "中级",
+  "estimated_time": "2小时",
+  "prerequisites": ["java-interfaces-demo"],
+  "learning_objectives": ["掌握Lambda表达式和函数式编程"],
+  "tags": ["Lambda", "函数式接口", "Stream API"],
+  "related_cases": ["java-interfaces-demo"],
+  "created_date": "2024-01-15",
+  "last_updated": "2024-01-15",
+  "author": "OpenDemo Team",
+  "version": "1.0.0",
+  "status": "complete"
+}

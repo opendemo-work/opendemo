@@ -1,0 +1,19 @@
+{
+  "name": "nodejs-variables-types-demo",
+  "version": "1.0.0",
+  "description": "Node.js变量和数据类型基础 - var、let、const声明及JavaScript数据类型",
+  "main": "variables_types_demo.js",
+  "scripts": {
+    "start": "node variables_types_demo.js",
+    "test": "node test_variables_types.js"
+  },
+  "dependencies": {},
+  "devDependencies": {},
+  "keywords": [
+    "nodejs",
+    "javascript",
+    "variables",
+    "data-types",
+    "es6"
+  ]
+}

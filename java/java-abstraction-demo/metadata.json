@@ -1,0 +1,38 @@
+{
+  "case_id": "java-abstraction-demo",
+  "name": "Java抽象概念完整示例",
+  "category": "java",
+  "subcategory": "面向对象",
+  "difficulty": "中级",
+  "estimated_time": "3小时",
+  "prerequisites": [
+    "java-classes-objects-demo",
+    "java-inheritance-demo",
+    "java-encapsulation-demo"
+  ],
+  "learning_objectives": [
+    "理解抽象类和抽象方法的概念及应用",
+    "掌握接口抽象和默认方法的使用",
+    "学会模板方法设计模式的实现",
+    "理解多重继承的抽象设计",
+    "掌握多态抽象的灵活运用"
+  ],
+  "tags": [
+    "抽象类",
+    "抽象方法",
+    "接口抽象",
+    "模板方法",
+    "多重继承",
+    "多态抽象"
+  ],
+  "related_cases": [
+    "java-inheritance-demo",
+    "java-encapsulation-demo",
+    "java-interfaces-demo"
+  ],
+  "created_date": "2024-01-15",
+  "last_updated": "2024-01-15",
+  "author": "OpenDemo Team",
+  "version": "1.0.0",
+  "status": "complete"
+}

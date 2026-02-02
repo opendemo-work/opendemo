@@ -504,11 +504,14 @@ public class ClassesObjectsDemo {
 
 ### 步骤5：编译和运行
 ```bash
-# 编译所有Java文件
-javac src/main/java/com/example/*.java
+# 使用Maven编译
+mvn compile
 
 # 运行程序
-java com.example.ClassesObjectsDemo
+mvn exec:java -Dexec.mainClass="com.opendemo.java.oop.ClassesObjectsDemo"
+
+# 运行测试
+mvn test
 ```
 
 预期输出：

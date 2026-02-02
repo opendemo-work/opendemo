@@ -1,0 +1,56 @@
+{
+  "name": "Linux top进程监控命令详解演示",
+  "language": "linux",
+  "keywords": [
+    "top",
+    "process-monitoring",
+    "system-performance",
+    "resource-management",
+    "troubleshooting"
+  ],
+  "description": "详细介绍Linux top命令在进程监控、系统性能分析和资源管理中的应用，包含交互操作和自动化脚本示例",
+  "difficulty": "intermediate",
+  "author": "OpenDemo Team",
+  "created_at": "2026-02-02",
+  "updated_at": "2026-02-02",
+  "version": "1.0.0",
+  "dependencies": {
+    "required_packages": ["procps"],
+    "minimum_kernel": "2.6",
+    "supported_distros": ["ubuntu", "centos", "rhel", "debian", "fedora"]
+  },
+  "verified": true,
+  "estimated_time": "2-3小时",
+  "prerequisites": [
+    "Linux基础命令使用经验",
+    "进程管理基础知识",
+    "系统监控概念理解"
+  ],
+  "learning_outcomes": [
+    "熟练掌握top命令的各种交互操作",
+    "能够准确解读进程状态和资源使用信息",
+    "具备系统性能瓶颈分析能力",
+    "掌握进程管理和优化技巧",
+    "能够编写自动化监控脚本"
+  ],
+  "related_cases": [
+    "linux-netstat-network-monitoring-demo",
+    "linux-tsar-system-monitoring-demo"
+  ],
+  "validation_commands": [
+    "top -b -n 1",
+    "top -u $(whoami)",
+    "./scripts/process_monitor.sh"
+  ],
+  "files": [
+    "README.md",
+    "metadata.json",
+    "configs/top_defaults.conf",
+    "scripts/process_monitor.sh",
+    "scripts/resource_analyzer.sh",
+    "scripts/process_killer.sh",
+    "examples/top_basic_output.txt",
+    "docs/top_fields_explained.md",
+    "docs/interactive_commands.md"
+  ]
+}

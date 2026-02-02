@@ -1,0 +1,17 @@
+{
+  "case_id": "java-inner-classes-demo",
+  "name": "Java内部类应用示例",
+  "category": "java",
+  "subcategory": "高级特性",
+  "difficulty": "中级",
+  "estimated_time": "2小时",
+  "prerequisites": ["java-classes-objects-demo"],
+  "learning_objectives": ["掌握各种内部类的使用场景和语法"],
+  "tags": ["内部类", "嵌套类", "匿名内部类"],
+  "related_cases": ["java-classes-objects-demo"],
+  "created_date": "2024-01-15",
+  "last_updated": "2024-01-15",
+  "author": "OpenDemo Team",
+  "version": "1.0.0",
+  "status": "complete"
+}

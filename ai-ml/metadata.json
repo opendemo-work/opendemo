@@ -1,0 +1,55 @@
+{
+  "name": "ai-ml-tech-stack",
+  "language": "python",
+  "keywords": ["ai", "ml", "machine-learning", "deep-learning", "data-science", "tensorflow", "pytorch"],
+  "description": "AI/机器学习技术栈完整学习体系，涵盖从基础理论到实际应用的全方位案例",
+  "difficulty": "intermediate-to-advanced",
+  "author": "OpenDemo Team",
+  "created_at": "2026-02-02",
+  "updated_at": "2026-02-02",
+  "version": "1.0.0",
+  "dependencies": {
+    "python_version": "3.8+",
+    "core_libraries": ["numpy", "pandas", "matplotlib", "scikit-learn"],
+    "ml_frameworks": ["tensorflow", "pytorch", "keras"],
+    "visualization": ["seaborn", "plotly"],
+    "data_processing": ["scipy", "pillow"]
+  },
+  "verified": false,
+  "estimated_completion_time": "12周",
+  "prerequisites": ["python-basics", "mathematics", "statistics"],
+  "learning_paths": [
+    {
+      "name": "基础理论系列",
+      "cases": 15,
+      "duration": "3周",
+      "topics": ["linear-algebra", "calculus", "probability", "statistics", "optimization"]
+    },
+    {
+      "name": "机器学习基础",
+      "cases": 20,
+      "duration": "4周",
+      "topics": ["supervised-learning", "unsupervised-learning", "model-evaluation", "feature-engineering"]
+    },
+    {
+      "name": "深度学习进阶",
+      "cases": 25,
+      "duration": "3周",
+      "topics": ["neural-networks", "cnn", "rnn", "transformer", "gan"]
+    },
+    {
+      "name": "实际应用系列",
+      "cases": 20,
+      "duration": "2周",
+      "topics": ["computer-vision", "nlp", "recommendation", "time-series", "reinforcement-learning"]
+    }
+  ],
+  "total_cases": 80,
+  "completion_status": "planning",
+  "quality_standards": {
+    "readme_length": ">=1000字",
+    "code_quality": "遵循PEP 8规范",
+    "test_coverage": ">=85%",
+    "documentation": "包含数学原理和实现细节"
+  }
+}

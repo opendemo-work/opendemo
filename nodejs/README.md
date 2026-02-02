@@ -181,3 +181,17 @@ npm init -y
 ---
 
 > **💡 提示**: Node.js特别适合构建I/O密集型应用和实时应用，在现代Web开发中占据重要地位。
+
+## 🔗 相关技术栈交叉引用
+
+### 与Java的关联
+- [Java基础语法](../java/README.md) - 静态类型vs动态类型
+- [Java类与继承](../java/java-inheritance-demo/) - 类继承vs原型继承
+
+### 与Python的关联
+- [Python基础语法](../python/README.md) - 动态类型语言对比
+- [Python异步编程](../python/async-programming/) - asyncio vs Promise
+
+### 与Go的关联
+- [Go基础语法](../go/README.md) - 静态类型语言对比
+- [Go并发模型](../go/go-goroutines-demo/) - CSP vs 事件循环

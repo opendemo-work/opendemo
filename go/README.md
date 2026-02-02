@@ -60,7 +60,8 @@ opendemo get go http-server
 | 基础语法 | ~70 | ✅ 基本完成 |
 | 企业级开发 | ~20 | ✅ 基本完成 |
 | 第三方库 | 1 | ✅ 完成 |
-| **总计** | **93** | ✅ |
+| 排查工具 | 1 | ✅ 新增 |
+| **总计** | **94** | ✅ |
 
 ---
 
@@ -169,3 +170,17 @@ go install github.com/go-delve/delve/cmd/dlv@latest
 ---
 
 > **💡 提示**: Go语言特别适合构建高性能的后端服务和微服务架构，在云原生时代具有重要地位。
+
+## 🔗 相关技术栈交叉引用
+
+### 与Java的关联
+- [Java基础语法](../java/README.md) - 面向对象编程
+- [Java并发编程](../java/java-threading-demo/) - 线程vs Goroutines
+
+### 与Python的关联
+- [Python基础语法](../python/README.md) - 动态类型语言对比
+- [Python并发](../python/multithreading/) - 多线程vs Goroutines
+
+### 与Node.js的关联
+- [Node.js异步编程](../nodejs/nodejs-promises-demo/) - 事件循环机制
+- [Node.js并发](../nodejs/nodejs-worker-threads-multithreading-demo/) - 多线程vs Goroutines

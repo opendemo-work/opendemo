@@ -1,0 +1,35 @@
+{
+  "case_id": "python-oop-basics-demo",
+  "name": "Python面向对象编程基础",
+  "category": "python",
+  "subcategory": "高级特性",
+  "difficulty": "中级",
+  "estimated_time": "2小时",
+  "prerequisites": [
+    "python-variables-types-demo",
+    "python-control-flow-demo"
+  ],
+  "learning_objectives": [
+    "掌握Python类的定义和使用方法",
+    "理解继承机制和多态实现",
+    "学会封装原则和访问控制",
+    "掌握抽象类和特殊方法的应用"
+  ],
+  "tags": [
+    "python",
+    "oop",
+    "object-oriented-programming",
+    "classes",
+    "inheritance"
+  ],
+  "related_cases": [
+    "python-variables-types-demo",
+    "python-control-flow-demo",
+    "python-decorators-demo"
+  ],
+  "created_date": "2024-01-15",
+  "last_updated": "2024-01-15",
+  "author": "OpenDemo Team",
+  "version": "1.0.0",
+  "status": "complete"
+}

@@ -62,11 +62,11 @@ javac -version
 
 | 分类 | 案例数量 | 状态 |
 |------|----------|------|
-| 基础语法 | 20 | 5/20 完成 |
+| 基础语法 | 20 | ✅ 100% 完成 |
 | 企业级开发 | 25 | 🚧 建设中 |
 | DevOps工具 | 10 | 🚧 建设中 |
-| 高级架构 | 15 | 🚧 建设中 |
-| **总计** | **70** | 🚧 |
+| 高级架构 | 17 | 🚧 建设中 |
+| **总计** | **72** | 🚧 |
 
 ---
 
@@ -79,23 +79,23 @@ javac -version
 1. ✅ `java-variables-types-demo` - 变量与数据类型
 2. ✅ `java-control-flow-demo` - 控制流程语句
 3. ✅ `java-arrays-collections-demo` - 数组与集合
-4. 🚧 `java-string-operations-demo` - 字符串操作
+4. ✅ `java-string-operations-demo` - 字符串操作
 5. ✅ `java-exception-handling-demo` - 异常处理机制
-6. `java-input-output-demo` - 输入输出操作
-7. `java-date-time-demo` - 日期时间处理
-8. `java-regular-expressions-demo` - 正则表达式应用
-9. `java-classes-objects-demo` - 类与对象基础
-10. `java-inheritance-demo` - 继承机制
-11. `java-polymorphism-demo` - 多态特性
-12. `java-encapsulation-demo` - 封装原则
-13. `java-abstraction-demo` - 抽象概念
-14. `java-interfaces-demo` - 接口设计
-15. `java-inner-classes-demo` - 内部类应用
-16. `java-generics-demo` - 泛型编程
-17. `java-annotations-demo` - 注解机制
-18. `java-reflection-demo` - 反射API
-19. `java-enumerations-demo` - 枚举类型
-20. `java-lambda-expressions-demo` - Lambda表达式
+6. ✅ `java-input-output-demo` - 输入输出操作
+7. ✅ `java-date-time-demo` - 日期时间处理
+8. ✅ `java-regular-expressions-demo` - 正则表达式应用
+9. ✅ `java-classes-objects-demo` - 类与对象基础
+10. ✅ `java-inheritance-demo` - 继承机制
+11. ✅ `java-polymorphism-demo` - 多态特性
+12. ✅ `java-encapsulation-demo` - 封装原则
+13. ✅ `java-abstraction-demo` - 抽象概念
+14. ✅ `java-interfaces-demo` - 接口设计
+15. ✅ `java-inner-classes-demo` - 内部类应用
+16. ✅ `java-generics-demo` - 泛型编程
+17. ✅ `java-annotations-demo` - 注解机制
+18. ✅ `java-reflection-demo` - 反射API
+19. ✅ `java-enumerations-demo` - 枚举类型
+20. ✅ `java-lambda-expressions-demo` - Lambda表达式
 
 </details>
 
@@ -148,7 +148,7 @@ javac -version
 
 </details>
 
-### 高级架构 (15个)
+### 高级架构 (17个)
 <details>
 <summary>点击查看完整列表</summary>
 
@@ -167,6 +167,8 @@ javac -version
 13. `jwt-token-security-demo` - JWT令牌安全
 14. `csrf-protection-demo` - CSRF防护机制
 15. `sql-injection-prevention-demo` - SQL注入防范
+16. `java-diagnostic-tools-demo` - Java诊断工具与Arthas实战
+17. `java-jvm-troubleshooting-trinity` - JVM性能分析三剑客实战
 
 </details>
 
@@ -217,3 +219,17 @@ gradle -version
 ---
 
 > **💡 提示**: Java是企业级应用开发的主流语言，掌握好Spring生态系统和微服务架构对职业发展非常重要。
+
+## 🔗 相关技术栈交叉引用
+
+### 与Python的关联
+- [Python基础语法案例](../python/README.md) - 对应的基础编程概念
+- [Python面向对象](../python/oop-classes/) - 类似概念的Python实现
+
+### 与Go的关联
+- [Go基础语法](../go/README.md) - 简洁语法对比
+- [Go并发编程](../go/go-goroutines-demo/) - 不同的并发模型
+
+### 与Node.js的关联
+- [Node.js异步编程](../nodejs/nodejs-promises-demo/) - JavaScript异步处理
+- [Node.js类与继承](../nodejs/nodejs-class-inheritance-demo/) - 原型继承vs类继承

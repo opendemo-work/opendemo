@@ -1,0 +1,20 @@
+{
+  "name": "nodejs-control-flow-demo",
+  "version": "1.0.0",
+  "description": "Node.js控制流基础 - 条件语句、循环语句、异常处理等控制结构",
+  "main": "control_flow_demo.js",
+  "scripts": {
+    "start": "node control_flow_demo.js",
+    "test": "node test_control_flow.js"
+  },
+  "dependencies": {},
+  "devDependencies": {},
+  "keywords": [
+    "nodejs",
+    "javascript",
+    "control-flow",
+    "conditional-statements",
+    "loops",
+    "error-handling"
+  ]
+}

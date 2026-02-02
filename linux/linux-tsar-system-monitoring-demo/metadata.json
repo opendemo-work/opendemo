@@ -1,0 +1,58 @@
+{
+  "name": "Linux tsar系统性能监控工具详解演示",
+  "language": "linux",
+  "keywords": [
+    "tsar",
+    "system-monitoring",
+    "performance-analysis",
+    "capacity-planning",
+    "troubleshooting"
+  ],
+  "description": "详细介绍阿里巴巴开源的tsar系统性能监控工具，涵盖CPU、内存、网络、IO等全方位监控和分析",
+  "difficulty": "advanced",
+  "author": "OpenDemo Team",
+  "created_at": "2026-02-02",
+  "updated_at": "2026-02-02",
+  "version": "1.0.0",
+  "dependencies": {
+    "required_packages": ["tsar"],
+    "minimum_kernel": "3.10",
+    "supported_distros": ["centos", "rhel", "ubuntu", "debian"]
+  },
+  "verified": true,
+  "estimated_time": "3-4小时",
+  "prerequisites": [
+    "Linux系统管理经验",
+    "系统性能监控基础知识",
+    "shell脚本编写能力",
+    "性能调优经验"
+  ],
+  "learning_outcomes": [
+    "熟练掌握tsar工具的各项监控模块",
+    "能够进行系统性能瓶颈分析",
+    "具备容量规划和资源优化能力",
+    "掌握自定义监控模块开发",
+    "理解企业级性能监控最佳实践"
+  ],
+  "related_cases": [
+    "linux-netstat-network-monitoring-demo",
+    "linux-top-process-monitoring-demo"
+  ],
+  "validation_commands": [
+    "tsar --version",
+    "tsar --list",
+    "tsar --cpu -i 1",
+    "./scripts/system_monitor.sh"
+  ],
+  "files": [
+    "README.md",
+    "metadata.json",
+    "configs/tsar.conf",
+    "scripts/system_monitor.sh",
+    "scripts/performance_analyzer.sh",
+    "scripts/alert_generator.sh",
+    "examples/tsar_basic_output.txt",
+    "docs/tsar_modules_guide.md",
+    "docs/performance_troubleshooting.md"
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "name": "Linux netstat网络监控命令详解演示",
+  "language": "linux",
+  "keywords": [
+    "netstat",
+    "network-monitoring",
+    "tcp-ip",
+    "connection-analysis",
+    "troubleshooting",
+    "security-audit"
+  ],
+  "description": "详细介绍Linux netstat命令在网络监控、故障排查和安全审计中的应用，包含丰富的实战示例和最佳实践",
+  "difficulty": "intermediate",
+  "author": "OpenDemo Team",
+  "created_at": "2026-02-02",
+  "updated_at": "2026-02-02",
+  "version": "1.0.0",
+  "dependencies": {
+    "required_packages": ["net-tools"],
+    "minimum_kernel": "3.10",
+    "supported_distros": ["ubuntu", "centos", "rhel", "debian"]
+  },
+  "verified": true,
+  "estimated_time": "2-3小时",
+  "prerequisites": [
+    "Linux基础命令使用经验",
+    "TCP/IP网络基础知识",
+    "基本的shell脚本编写能力"
+  ],
+  "learning_outcomes": [
+    "熟练掌握netstat命令的各种选项和组合使用",
+    "能够分析网络连接状态和识别异常连接",
+    "具备基本的网络故障排查能力",
+    "理解网络安全监控的基本方法",
+    "掌握网络性能监控的实际应用"
+  ],
+  "related_cases": [
+    "linux-tsar-system-monitoring-demo",
+    "linux-top-process-monitoring-demo"
+  ],
+  "validation_commands": [
+    "netstat -tulnp",
+    "netstat -an | awk '/^tcp/' | wc -l",
+    "./scripts/network_monitor.sh"
+  ],
+  "files": [
+    "README.md",
+    "metadata.json",
+    "scripts/network_monitor.sh",
+    "scripts/connection_analyzer.sh",
+    "scripts/port_scanner.sh",
+    "examples/netstat_basic.txt",
+    "examples/netstat_advanced.txt",
+    "docs/netstat_options_guide.md",
+    "docs/network_troubleshooting.md"
+  ]
+}

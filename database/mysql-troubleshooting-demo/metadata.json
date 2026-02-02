@@ -1,0 +1,58 @@
+{
+  "name": "MySQL数据库性能分析与故障排查实战演示",
+  "language": "database",
+  "keywords": [
+    "mysql",
+    "database-troubleshooting",
+    "performance-analysis",
+    "slow-query",
+    "replication",
+    "connection-pool",
+    "deadlock-detection"
+  ],
+  "description": "详细介绍MySQL数据库的性能分析和故障排查技术，涵盖慢查询优化、连接池管理、主从复制、锁等待分析等核心DBA技能",
+  "difficulty": "advanced",
+  "author": "OpenDemo Team",
+  "created_at": "2026-02-02",
+  "updated_at": "2026-02-02",
+  "version": "1.0.0",
+  "dependencies": {
+    "mysql_version": "5.7+",
+    "required_tools": ["mysql-client", "percona-toolkit"],
+    "optional_tools": ["mycli", "sysbench"]
+  },
+  "verified": true,
+  "estimated_time": "5-6小时",
+  "prerequisites": [
+    "MySQL基础知识",
+    "SQL查询优化经验",
+    "数据库管理经验",
+    "Linux系统操作能力"
+  ],
+  "learning_outcomes": [
+    "掌握MySQL性能监控和分析方法",
+    "具备慢查询诊断和优化能力",
+    "能够处理连接池和并发问题",
+    "掌握锁等待和死锁分析技术",
+    "具备主从复制故障排查能力"
+  ],
+  "related_cases": [
+    "postgresql-troubleshooting-demo"
+  ],
+  "validation_commands": [
+    "mysql --version",
+    "pt-query-digest --version",
+    "mysql -e \"SHOW STATUS LIKE 'Threads_connected';\"",
+    "./scripts/mysql_performance_analyzer.sh --check-connection"
+  ],
+  "files": [
+    "README.md",
+    "metadata.json",
+    "scripts/mysql_performance_analyzer.sh",
+    "scripts/slow_query_analyzer.sh",
+    "scripts/connection_pool_monitor.sh",
+    "configs/mysql_performance.cnf",
+    "examples/slow_query_logs/sample.log",
+    "docs/mysql_performance_tuning.md"
+  ]
+}

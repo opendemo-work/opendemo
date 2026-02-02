@@ -1,0 +1,48 @@
+{
+  "name": "database-tech-stack",
+  "language": "database",
+  "keywords": ["mysql", "postgresql", "database-administration", "performance-tuning", "troubleshooting"],
+  "description": "数据库技术栈完整学习体系，涵盖MySQL和PostgreSQL两大主流关系型数据库的基础管理到高级优化的完整案例",
+  "difficulty": "beginner-to-advanced",
+  "author": "OpenDemo Team",
+  "created_at": "2026-02-02",
+  "updated_at": "2026-02-02",
+  "version": "1.0.0",
+  "dependencies": {
+    "mysql_version": "5.7+",
+    "postgresql_version": "10+",
+    "required_tools": ["mysql-client", "postgresql-client"],
+    "optional_tools": ["percona-toolkit", "pgbadger", "mycli", "pgcli"]
+  },
+  "verified": false,
+  "estimated_completion_time": "6周",
+  "prerequisites": ["database-basics", "sql-fundamentals", "linux-administration"],
+  "learning_paths": [
+    {
+      "name": "基础管理系列",
+      "cases": 8,
+      "duration": "2周",
+      "topics": ["installation", "configuration", "backup", "monitoring", "security"]
+    },
+    {
+      "name": "性能优化系列",
+      "cases": 6,
+      "duration": "2周",
+      "topics": ["query-optimization", "index-design", "configuration-tuning", "partitioning"]
+    },
+    {
+      "name": "故障排查系列",
+      "cases": 4,
+      "duration": "2周",
+      "topics": ["troubleshooting", "performance-analysis", "replication", "recovery"]
+    }
+  ],
+  "total_cases": 22,
+  "completion_status": "in-progress",
+  "quality_standards": {
+    "readme_length": ">=800字",
+    "environment_setup": "完整的环境配置指南",
+    "practical_examples": "可重现的操作步骤",
+    "troubleshooting": "详细的故障排查方案"
+  }
+}

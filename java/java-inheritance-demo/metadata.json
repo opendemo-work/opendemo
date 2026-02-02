@@ -1,0 +1,36 @@
+{
+  "case_id": "java-inheritance-demo",
+  "name": "Java继承机制完整示例",
+  "category": "java",
+  "subcategory": "面向对象",
+  "difficulty": "中级",
+  "estimated_time": "3小时",
+  "prerequisites": [
+    "java-classes-objects-demo"
+  ],
+  "learning_objectives": [
+    "理解类继承的基本概念和语法",
+    "掌握方法重写和@Override注解的使用",
+    "学会super关键字的正确使用",
+    "理解多层继承的实现机制",
+    "掌握多态性的应用和类型转换",
+    "了解继承设计的最佳实践"
+  ],
+  "tags": [
+    "继承",
+    "方法重写",
+    "super关键字",
+    "多态性",
+    "类型转换",
+    "继承层次"
+  ],
+  "related_cases": [
+    "java-classes-objects-demo",
+    "java-polymorphism-demo"
+  ],
+  "created_date": "2024-01-15",
+  "last_updated": "2024-01-15",
+  "author": "OpenDemo Team",
+  "version": "1.0.0",
+  "status": "complete"
+}

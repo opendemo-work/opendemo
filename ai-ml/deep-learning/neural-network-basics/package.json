@@ -1,0 +1,24 @@
+{
+  "name": "ai-ml-neural-network-basics",
+  "version": "1.0.0",
+  "description": "神经网络基础 - 感知机、多层感知机、反向传播等核心概念",
+  "main": "neural_network_basics.py",
+  "scripts": {
+    "start": "python neural_network_basics.py",
+    "test": "python -m pytest test_neural_network.py -v"
+  },
+  "dependencies": {
+    "numpy": "^1.24.0",
+    "matplotlib": "^3.7.0",
+    "torch": "^2.0.0"
+  },
+  "devDependencies": {
+    "pytest": "^7.0.0"
+  },
+  "keywords": [
+    "neural-network",
+    "perceptron",
+    "backpropagation",
+    "deep-learning"
+  ]
+}

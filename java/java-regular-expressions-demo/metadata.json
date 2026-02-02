@@ -1,0 +1,36 @@
+{
+  "case_id": "java-regular-expressions-demo",
+  "name": "Java正则表达式完整示例",
+  "category": "java",
+  "subcategory": "基础语法",
+  "difficulty": "中级",
+  "estimated_time": "2小时",
+  "prerequisites": [
+    "java-string-operations-demo",
+    "java-control-flow-demo"
+  ],
+  "learning_objectives": [
+    "掌握Java正则表达式基础语法",
+    "学会Pattern和Matcher类的使用",
+    "理解文本验证、提取、替换技术",
+    "掌握复杂数据解析方法",
+    "了解正则表达式性能优化"
+  ],
+  "tags": [
+    "正则表达式",
+    "Pattern",
+    "Matcher",
+    "文本处理",
+    "数据验证",
+    "性能优化"
+  ],
+  "related_cases": [
+    "java-string-operations-demo",
+    "java-input-output-demo"
+  ],
+  "created_date": "2024-01-15",
+  "last_updated": "2024-01-15",
+  "author": "OpenDemo Team",
+  "version": "1.0.0",
+  "status": "complete"
+}

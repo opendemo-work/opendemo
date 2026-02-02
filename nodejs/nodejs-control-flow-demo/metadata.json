@@ -1,0 +1,33 @@
+{
+  "case_id": "nodejs-control-flow-demo",
+  "name": "Node.js控制流基础",
+  "category": "nodejs",
+  "subcategory": "基础语法",
+  "difficulty": "初级",
+  "estimated_time": "1.5小时",
+  "prerequisites": [
+    "nodejs-variables-types-demo"
+  ],
+  "learning_objectives": [
+    "掌握条件语句的使用方法和最佳实践",
+    "理解各种循环语句的应用场景",
+    "学会数组高级迭代方法的使用",
+    "掌握异常处理机制和错误处理策略"
+  ],
+  "tags": [
+    "nodejs",
+    "javascript",
+    "control-flow",
+    "conditional-statements",
+    "loops"
+  ],
+  "related_cases": [
+    "nodejs-variables-types-demo",
+    "nodejs-functions-demo"
+  ],
+  "created_date": "2024-01-15",
+  "last_updated": "2024-01-15",
+  "author": "OpenDemo Team",
+  "version": "1.0.0",
+  "status": "complete"
+}
