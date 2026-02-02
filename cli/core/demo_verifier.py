@@ -10,7 +10,7 @@ import tempfile
 import shutil
 from pathlib import Path
 from typing import Dict, Any
-from opendemo.utils.logger import get_logger
+from opendemo.services.java_verifier import JavaVerifier
 
 logger = get_logger(__name__)
 
@@ -203,16 +203,8 @@ class DemoVerifier:
         Returns:
             验证结果
         """
-        # Java验证的简化实现
-        result = {
-            "verified": False,
-            "method": "java",
-            "steps": [],
-            "outputs": [],
-            "errors": ["Java verification not fully implemented yet"],
-        }
-
-        return result
+        java_verifier = JavaVerifier(self.config)
+        return java_verifier.verify(demo_path)
 
     def _verify_go(self, demo_path: Path) -> Dict[str, Any]:
         """

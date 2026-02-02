@@ -1,0 +1,39 @@
+{
+  "name": "java-arrays-collections-demo",
+  "language": "java",
+  "keywords": ["java", "arrays", "collections", "list", "set", "map"],
+  "description": "Java数组与集合操作完整演示，涵盖一维数组、多维数组、List、Set、Map等核心数据结构的使用方法和最佳实践",
+  "difficulty": "intermediate",
+  "author": "OpenDemo Team",
+  "created_at": "2026-01-31",
+  "updated_at": "2026-01-31",
+  "version": "1.0.0",
+  "dependencies": {
+    "java_version": "11+",
+    "build_tool": "none",
+    "frameworks": []
+  },
+  "verified": false,
+  "estimated_time": "3-4小时",
+  "prerequisites": ["java-variables-types-demo", "java-control-flow-demo", "java-classes-objects-demo"],
+  "learning_outcomes": [
+    "掌握数组的声明、初始化和基本操作",
+    "理解多维数组的使用方法和内存布局",
+    "熟练使用List、Set、Map等集合类",
+    "了解不同集合实现类的特点和适用场景",
+    "掌握集合工具类和泛型的使用",
+    "能够在实际项目中合理选择数据结构"
+  ],
+  "examples_covered": [
+    "一维数组的三种初始化方式",
+    "多维数组（规则和不规则）操作",
+    "数组遍历和工具类方法",
+    "ArrayList、LinkedList、Vector的使用",
+    "HashSet、LinkedHashSet、TreeSet的特点",
+    "HashMap、LinkedHashMap、TreeMap的应用",
+    "集合遍历的多种方式",
+    "泛型集合和通配符的使用",
+    "实际业务场景的数据处理",
+    "性能对比和选择建议"
+  ]
+}

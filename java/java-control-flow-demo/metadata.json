@@ -1,0 +1,36 @@
+{
+  "name": "java-control-flow-demo",
+  "language": "java",
+  "keywords": ["java", "control-flow", "loops", "conditions", "statements"],
+  "description": "Java控制流程语句完整演示，涵盖条件语句、循环语句、跳转语句等核心控制结构",
+  "difficulty": "beginner",
+  "author": "OpenDemo Team",
+  "created_at": "2026-01-30",
+  "updated_at": "2026-01-30",
+  "version": "1.0.0",
+  "dependencies": {
+    "java_version": "11+",
+    "build_tool": "none",
+    "frameworks": []
+  },
+  "verified": false,
+  "estimated_time": "2-3小时",
+  "prerequisites": ["java-variables-types-demo"],
+  "learning_outcomes": [
+    "掌握各种条件语句的使用场景和语法",
+    "熟练运用不同类型的循环结构",
+    "理解跳转语句的控制流程",
+    "学会设计复杂的嵌套控制结构",
+    "能够解决实际的业务逻辑问题"
+  ],
+  "examples_covered": [
+    "if-else条件语句",
+    "switch语句和switch表达式",
+    "for、while、do-while循环",
+    "增强for循环(for-each)",
+    "break和continue跳转语句",
+    "带标签的break和continue",
+    "嵌套控制结构",
+    "实际应用场景示例"
+  ]
+}

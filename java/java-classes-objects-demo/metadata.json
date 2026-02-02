@@ -1,0 +1,37 @@
+{
+  "name": "java-classes-objects-demo",
+  "language": "java",
+  "keywords": ["java", "oop", "classes", "objects", "encapsulation"],
+  "description": "Java面向对象编程基础演示，涵盖类定义、对象创建、封装性、构造方法等核心OOP概念",
+  "difficulty": "beginner",
+  "author": "OpenDemo Team",
+  "created_at": "2026-01-30",
+  "updated_at": "2026-01-30",
+  "version": "1.0.0",
+  "dependencies": {
+    "java_version": "11+",
+    "build_tool": "none",
+    "frameworks": []
+  },
+  "verified": false,
+  "estimated_time": "3-4小时",
+  "prerequisites": ["java-variables-types-demo", "java-control-flow-demo"],
+  "learning_outcomes": [
+    "理解类和对象的基本概念",
+    "掌握成员变量和方法的定义",
+    "学会使用构造方法初始化对象",
+    "理解封装原则和访问控制",
+    "掌握this关键字的使用",
+    "学会对象间关系的建立和使用"
+  ],
+  "examples_covered": [
+    "类的基本定义和结构",
+    "成员变量和成员方法",
+    "构造方法的重载",
+    "Getter和Setter方法",
+    "访问修饰符(private/public)",
+    "静态变量和静态方法",
+    "对象间的关系建立",
+    "toString、equals、hashCode方法重写"
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "name": "java-tech-stack",
+  "language": "java",
+  "keywords": ["java", "spring", "enterprise", "oop", "microservices"],
+  "description": "Java技术栈完整学习体系，涵盖基础语法到企业级开发的70+个高质量案例",
+  "difficulty": "beginner-to-advanced",
+  "author": "OpenDemo Team",
+  "created_at": "2026-01-30",
+  "updated_at": "2026-01-30",
+  "version": "1.0.0",
+  "dependencies": {
+    "jdk_version": "11+",
+    "build_tools": ["maven", "gradle"],
+    "ides": ["intellij-idea", "eclipse", "vscode"]
+  },
+  "verified": false,
+  "estimated_completion_time": "8周",
+  "prerequisites": ["programming-basics"],
+  "learning_paths": [
+    {
+      "name": "基础语法系列",
+      "cases": 20,
+      "duration": "2周",
+      "topics": ["variables", "control-flow", "oop", "collections", "exceptions"]
+    },
+    {
+      "name": "企业级开发系列", 
+      "cases": 25,
+      "duration": "3周",
+      "topics": ["spring", "data-access", "microservices", "messaging"]
+    },
+    {
+      "name": "DevOps工具系列",
+      "cases": 10,
+      "duration": "2周", 
+      "topics": ["build-tools", "testing", "ci-cd", "deployment"]
+    },
+    {
+      "name": "高级架构系列",
+      "cases": 15,
+      "duration": "1周",
+      "topics": ["design-patterns", "performance", "security", "architecture"]
+    }
+  ],
+  "total_cases": 70,
+  "completion_status": "in-progress",
+  "quality_standards": {
+    "readme_length": ">=800字",
+    "code_quality": "遵循Google Java Style Guide",
+    "test_coverage": ">=80%",
+    "documentation": "完整环境配置和运行指南"
+  }
+}
