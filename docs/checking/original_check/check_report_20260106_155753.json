@@ -1,0 +1,102 @@
+{
+  "timestamp": "2026-01-06T15:57:38.504255",
+  "summary": {
+    "overall_status": "PASS",
+    "unit_tests_status": "PASS",
+    "cli_tests_status": "PASS",
+    "unit_tests_passed": 180,
+    "unit_tests_total": 180,
+    "cli_tests_passed": 9,
+    "cli_tests_total": 9,
+    "errors_count": 0
+  },
+  "unit_tests": {
+    "status": "PASS",
+    "passed": 180,
+    "failed": 0,
+    "errors": 0,
+    "total": 180,
+    "output": " 680-709, 722-737, 750-775, 787-804, 828, 842, 865, 867, 873, 875, 890-932, 944-974, 992-1016, 1020-1024\nopendemo\\core\\demo_search.py             121     42     60      4    62%   98->97, 128-134, 162->166, 187-209, 256-257, 261-262, 285-315, 357-358\nopendemo\\core\\demo_verifier.py           293     85    102     32    68%   49, 89->99, 100->113, 102-110, 116-118, 148, 159-161, 175, 192-194, 207-215, 239-240, 251-264, 277-278, 300, 318->321, 325-332, 358-359, 369->386, 380-383, 391->403, 393->398, 395->393, 399-401, 412-424, 426->429, 433-440, 469, 483-485, 490-493, 508->520, 513-517, 529->539, 532-536, 540-543, 558-566, 572-574, 603->609\nopendemo\\core\\quality_checker.py         104      1     14      1    98%   90\nopendemo\\core\\readme_updater.py          115     16     42      7    82%   60-61, 71->70, 73->70, 78->77, 81-85, 92, 152, 245-247, 281-285\nopendemo\\services\\__init__.py              0      0      0      0   100%\nopendemo\\services\\ai_service.py          155     43     50     13    67%   33->exit, 70->67, 73->67, 237->247, 241-244, 257, 259, 261, 266-280, 289-291, 300-324, 346-347, 428-431, 442-444, 467, 608-621\nopendemo\\services\\config_service.py      113     41     34      6    60%   89->93, 93->99, 100-102, 121-123, 178-201, 211-217, 226-240, 254, 260->267, 263-264, 269\nopendemo\\services\\storage_service.py     172      6     52     10    93%   45->49, 66->68, 78->71, 309, 315, 320, 328, 332, 350, 354->318\nopendemo\\utils\\__init__.py                 0      0      0      0   100%\nopendemo\\utils\\formatters.py             126     55     40      5    52%   54->62, 65-66, 73-75, 80, 146-147, 163-164, 174-175, 185, 195-253\nopendemo\\utils\\logger.py                  23      0      4      0   100%\n----------------------------------------------------------------------------------\nTOTAL                                   2097    845    750     97    55%\nCoverage HTML written to dir htmlcov\n============================= 180 passed in 5.28s =============================\n"
+  },
+  "cli_tests": {
+    "status": "PASS",
+    "passed": 9,
+    "failed": 0,
+    "total": 9,
+    "tests": [
+      {
+        "name": "version",
+        "command": "--version",
+        "status": "PASS",
+        "exit_code": 0,
+        "output_match": true,
+        "exit_code_match": true
+      },
+      {
+        "name": "help",
+        "command": "--help",
+        "status": "PASS",
+        "exit_code": 0,
+        "output_match": true,
+        "exit_code_match": true
+      },
+      {
+        "name": "search_all_languages",
+        "command": "search",
+        "status": "PASS",
+        "exit_code": 0,
+        "output_match": true,
+        "exit_code_match": true
+      },
+      {
+        "name": "search_python",
+        "command": "search python",
+        "status": "PASS",
+        "exit_code": 0,
+        "output_match": true,
+        "exit_code_match": true
+      },
+      {
+        "name": "search_with_keyword",
+        "command": "search python logging",
+        "status": "PASS",
+        "exit_code": 0,
+        "output_match": true,
+        "exit_code_match": true
+      },
+      {
+        "name": "get_existing_demo",
+        "command": "get python logging",
+        "status": "PASS",
+        "exit_code": 0,
+        "output_match": true,
+        "exit_code_match": true
+      },
+      {
+        "name": "get_unsupported_language",
+        "command": "get rust test",
+        "status": "PASS",
+        "exit_code": 1,
+        "output_match": true,
+        "exit_code_match": true
+      },
+      {
+        "name": "config_list",
+        "command": "config list",
+        "status": "PASS",
+        "exit_code": 0,
+        "output_match": true,
+        "exit_code_match": true
+      },
+      {
+        "name": "new_unsupported_language",
+        "command": "new ruby test",
+        "status": "PASS",
+        "exit_code": 1,
+        "output_match": true,
+        "exit_code_match": true
+      }
+    ]
+  },
+  "errors": []
+}

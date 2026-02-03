@@ -1,0 +1,32 @@
+{
+  "name": "coredns-advanced-features",
+  "title": "CoreDNS 高级特性与自定义配置",
+  "description": "企业级 CoreDNS 高级功能、插件开发和自定义配置完整指南",
+  "difficulty": "expert",
+  "estimated_time": "180",
+  "keywords": ["kubernetes", "coredns", "plugins", "federation", "advanced"],
+  "category": "高级特性",
+  "library": "coredns",
+  "author": "OpenDemo Team",
+  "created_at": "2026-02-03T23:45:00Z",
+  "updated_at": "2026-02-03T23:45:00Z",
+  "version": "1.0.0",
+  "prerequisites": ["coredns基础", "kubernetes网络", "go编程"],
+  "learning_objectives": [
+    "掌握CoreDNS插件开发技能",
+    "实现联邦DNS和条件转发",
+    "配置高级安全防护",
+    "实施性能优化策略",
+    "建立完整的监控体系"
+  ],
+  "technologies": ["Kubernetes", "CoreDNS", "Go", "DNSSEC"],
+  "tools": ["kubectl", "go", "prometheus", "grafana"],
+  "environments": ["生产环境", "多集群环境", "安全环境"],
+  "validation_criteria": [
+    "自定义插件功能正常",
+    "联邦DNS解析正确",
+    "安全配置有效防护",
+    "性能指标达到要求",
+    "监控告警体系完整"
+  ]
+}

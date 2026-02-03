@@ -1,0 +1,32 @@
+{
+  "name": "nginx-controller",
+  "title": "NGINX Ingress Controller 生产级部署",
+  "description": "企业级 NGINX Ingress Controller 部署、配置和管理完整指南",
+  "difficulty": "advanced",
+  "estimated_time": "120",
+  "keywords": ["kubernetes", "ingress", "nginx", "controller", "production"],
+  "category": "控制器管理",
+  "library": "controllers",
+  "author": "OpenDemo Team",
+  "created_at": "2026-02-03T22:00:00Z",
+  "updated_at": "2026-02-03T22:00:00Z",
+  "version": "1.0.0",
+  "prerequisites": ["kubernetes基础", "ingress概念"],
+  "learning_objectives": [
+    "掌握NGINX Ingress Controller生产级部署",
+    "理解高可用和性能优化配置",
+    "实施安全加固措施",
+    "建立监控告警体系",
+    "具备故障排查和运维能力"
+  ],
+  "technologies": ["Kubernetes", "NGINX", "Ingress", "Helm", "Prometheus"],
+  "tools": ["kubectl", "helm", "prometheus", "grafana"],
+  "environments": ["生产环境", "多云环境", "混合云"],
+  "validation_criteria": [
+    "控制器部署符合生产环境要求",
+    "高可用配置完整有效",
+    "安全措施到位",
+    "监控告警体系健全",
+    "性能优化配置合理"
+  ]
+}

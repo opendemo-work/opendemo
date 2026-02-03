@@ -1,0 +1,111 @@
+version: '3.8'
+
+services:
+  haproxy:
+    image: haproxy:2.4
+    container_name: haproxy-lb
+    ports:
+      - "8080:80"
+      - "8443:443"
+      - "8404:8404"
+    volumes:
+      - ./haproxy:/usr/local/etc/haproxy:ro
+      - ./logs:/var/log/haproxy
+    depends_on:
+      - web-server-1
+      - web-server-2
+      - web-server-3
+      - api-server-1
+      - api-server-2
+    networks:
+      - demo-network
+    sysctls:
+      - net.ipv4.ip_unprivileged_port_start=0
+
+  # Web服务器集群
+  web-server-1:
+    image: nginx:alpine
+    container_name: web-server-1
+    volumes:
+      - ./backend-services/web-app/html:/usr/share/nginx/html:ro
+      - ./backend-services/web-app/conf:/etc/nginx/conf.d:ro
+    environment:
+      - SERVER_NAME=web1
+    networks:
+      - demo-network
+
+  web-server-2:
+    image: nginx:alpine
+    container_name: web-server-2
+    volumes:
+      - ./backend-services/web-app/html:/usr/share/nginx/html:ro
+      - ./backend-services/web-app/conf:/etc/nginx/conf.d:ro
+    environment:
+      - SERVER_NAME=web2
+    networks:
+      - demo-network
+
+  web-server-3:
+    image: nginx:alpine
+    container_name: web-server-3
+    volumes:
+      - ./backend-services/web-app/html:/usr/share/nginx/html:ro
+      - ./backend-services/web-app/conf:/etc/nginx/conf.d:ro
+    environment:
+      - SERVER_NAME=web3
+    networks:
+      - demo-network
+
+  # API服务器集群
+  api-server-1:
+    image: node:16-alpine
+    container_name: api-server-1
+    working_dir: /app
+    volumes:
+      - ./backend-services/api-server:/app
+    command: sh -c "npm install && npm start"
+    environment:
+      - SERVER_ID=api1
+      - PORT=3000
+    networks:
+      - demo-network
+
+  api-server-2:
+    image: node:16-alpine
+    container_name: api-server-2
+    working_dir: /app
+    volumes:
+      - ./backend-services/api-server:/app
+    command: sh -c "npm install && npm start"
+    environment:
+      - SERVER_ID=api2
+      - PORT=3000
+    networks:
+      - demo-network
+
+  # 健康检查服务
+  health-checker:
+    image: alpine:latest
+    container_name: health-checker
+    command: >
+      sh -c "
+        apk add --no-cache curl;
+        while true; do
+          echo \"=== Health Check Results ===\";
+          echo \"HAProxy Stats:\";
+          curl -s http://haproxy:8404/stats | grep -E '(UP|DOWN)' || echo 'Stats not available';
+          echo \"Backend Health:\";
+          curl -s http://web-server-1/health || echo 'web-server-1: DOWN';
+          curl -s http://web-server-2/health || echo 'web-server-2: DOWN';
+          curl -s http://web-server-3/health || echo 'web-server-3: DOWN';
+          sleep 30;
+        done
+      "
+    depends_on:
+      - haproxy
+    networks:
+      - demo-network
+
+networks:
+  demo-network:
+    driver: bridge

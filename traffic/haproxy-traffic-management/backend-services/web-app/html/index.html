@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HAProxy 负载均衡演示</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .header {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+        }
+        .server-info {
+            background: #e8f4fd;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+            border-left: 4px solid #2196F3;
+        }
+        .endpoint {
+            background: #f9f9f9;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 3px;
+            border: 1px solid #ddd;
+        }
+        .button {
+            background: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .button:hover {
+            background: #45a049;
+        }
+        .health-status {
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+        .healthy {
+            background: #dff0d8;
+            border: 1px solid #d6e9c6;
+            color: #3c763d;
+        }
+        .unhealthy {
+            background: #f2dede;
+            border: 1px solid #ebccd1;
+            color: #a94442;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🚀 HAProxy 负载均衡演示</h1>
+            <p>欢迎来到高可用Web应用演示环境</p>
+        </div>
+
+        <div class="server-info">
+            <h3>🖥️ 服务器信息</h3>
+            <p><strong>服务器名称:</strong> <span id="server-name">Loading...</span></p>
+            <p><strong>服务器IP:</strong> <span id="server-ip">Loading...</span></p>
+            <p><strong>当前时间:</strong> <span id="current-time"></span></p>
+            <p><strong>请求计数:</strong> <span id="request-count">0</span></p>
+        </div>
+
+        <div class="endpoint">
+            <h3>🔗 可用端点</h3>
+            <a href="/health" class="button">健康检查</a>
+            <a href="/api/info" class="button">API信息</a>
+            <a href="/static/style.css" class="button">静态资源</a>
+            <a href="/mobile" class="button">移动端页面</a>
+        </div>
+
+        <div class="endpoint">
+            <h3>📊 负载测试</h3>
+            <button class="button" onclick="loadTest()">发起负载测试</button>
+            <button class="button" onclick="stressTest()">压力测试</button>
+            <div id="test-results"></div>
+        </div>
+
+        <div class="endpoint">
+            <h3>🏥 健康状态</h3>
+            <div id="health-status" class="health-status healthy">
+                ✔️ 服务运行正常
+            </div>
+        </div>
+
+        <div class="endpoint">
+            <h3>📈 实时统计</h3>
+            <div id="statistics">
+                <p>连接数: <span id="connections">0</span></p>
+                <p>处理请求数: <span id="processed-requests">0</span></p>
+                <p>平均响应时间: <span id="avg-response-time">0ms</span></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 获取服务器信息
+        fetch('/api/server-info')
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('server-name').textContent = data.serverName;
+                document.getElementById('server-ip').textContent = data.serverIp;
+            })
+            .catch(error => {
+                console.error('Error fetching server info:', error);
+                document.getElementById('server-name').textContent = 'Unknown';
+                document.getElementById('server-ip').textContent = 'Unknown';
+            });
+
+        // 更新时间
+        function updateTime() {
+            document.getElementById('current-time').textContent = new Date().toLocaleString();
+        }
+        setInterval(updateTime, 1000);
+        updateTime();
+
+        // 请求计数
+        let requestCount = 0;
+        function incrementRequestCount() {
+            requestCount++;
+            document.getElementById('request-count').textContent = requestCount;
+        }
+        incrementRequestCount();
+
+        // 负载测试
+        function loadTest() {
+            const resultsDiv = document.getElementById('test-results');
+            resultsDiv.innerHTML = '<p>正在执行负载测试...</p>';
+            
+            const startTime = Date.now();
+            let completedRequests = 0;
+            const totalRequests = 10;
+            
+            for(let i = 0; i < totalRequests; i++) {
+                fetch('/api/test-endpoint')
+                    .then(() => {
+                        completedRequests++;
+                        if(completedRequests === totalRequests) {
+                            const endTime = Date.now();
+                            const duration = endTime - startTime;
+                            resultsDiv.innerHTML = `
+                                <p>✅ 负载测试完成!</p>
+                                <p>总请求数: ${totalRequests}</p>
+                                <p>总耗时: ${duration}ms</p>
+                                <p>平均响应时间: ${(duration/totalRequests).toFixed(2)}ms</p>
+                            `;
+                        }
+                    })
+                    .catch(error => {
+                        resultsDiv.innerHTML += `<p>❌ 请求失败: ${error.message}</p>`;
+                    });
+            }
+        }
+
+        // 压力测试
+        function stressTest() {
+            const resultsDiv = document.getElementById('test-results');
+            resultsDiv.innerHTML = '<p>正在执行压力测试...</p>';
+            
+            let activeRequests = 0;
+            const maxConcurrent = 20;
+            const testDuration = 10000; // 10秒
+            
+            const startTime = Date.now();
+            const interval = setInterval(() => {
+                if(Date.now() - startTime > testDuration) {
+                    clearInterval(interval);
+                    resultsDiv.innerHTML += '<p>🏁 压力测试结束</p>';
+                    return;
+                }
+                
+                if(activeRequests < maxConcurrent) {
+                    activeRequests++;
+                    fetch('/api/stress-test')
+                        .then(() => {
+                            activeRequests--;
+                        })
+                        .catch(() => {
+                            activeRequests--;
+                        });
+                }
+            }, 100);
+        }
+
+        // 模拟统计数据更新
+        setInterval(() => {
+            document.getElementById('connections').textContent = Math.floor(Math.random() * 50) + 10;
+            document.getElementById('processed-requests').textContent = Math.floor(Math.random() * 1000) + 500;
+            document.getElementById('avg-response-time').textContent = (Math.random() * 50 + 10).toFixed(2) + 'ms';
+        }, 2000);
+
+        // 模拟健康检查
+        setInterval(() => {
+            const isHealthy = Math.random() > 0.1; // 90%概率健康
+            const healthDiv = document.getElementById('health-status');
+            if(isHealthy) {
+                healthDiv.className = 'health-status healthy';
+                healthDiv.innerHTML = '✔️ 服务运行正常';
+            } else {
+                healthDiv.className = 'health-status unhealthy';
+                healthDiv.innerHTML = '⚠️ 服务出现异常';
+            }
+        }, 5000);
+    </script>
+</body>
+</html>

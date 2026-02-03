@@ -1,0 +1,826 @@
+{
+  "report_metadata": {
+    "report_date": "2026-01-04",
+    "report_version": "1.0",
+    "project_version": "0.1.0",
+    "checker": "Automated Quality System"
+  },
+  "executive_summary": {
+    "overall_status": "QUALIFIED",
+    "overall_score": 70,
+    "overall_grade": "合格",
+    "key_findings": {
+      "strengths": [
+        "CLI功能测试100%通过（9/9）",
+        "Flake8代码规范检查通过，无错误",
+        "项目结构清晰，模块划分合理",
+        "README文档完整，包含详细的使用说明"
+      ],
+      "improvements_needed": [
+        "代码覆盖率仅16%，远低于70%最低要求",
+        "16个文件需要Black格式化",
+        "Mypy类型检查发现106个错误",
+        "1个单元测试失败",
+        "7个核心模块缺少单元测试"
+      ],
+      "critical_issues": [
+        "代码覆盖率严重不足（16% << 70%）",
+        "大量类型注解问题（106个Mypy错误）",
+        "核心功能模块测试缺失"
+      ]
+    }
+  },
+  "dimension_scores": {
+    "code_quality": {
+      "score": 22,
+      "max_score": 30,
+      "weight": 0.30,
+      "status": "NEEDS_IMPROVEMENT",
+      "breakdown": {
+        "code_standards": {
+          "score": 12,
+          "max_score": 15,
+          "details": {
+            "black_format": {
+              "score": 4,
+              "max_score": 5,
+              "files_need_reformat": 16,
+              "pass_rate": 0.80
+            },
+            "flake8_check": {
+              "score": 5,
+              "max_score": 5,
+              "error_count": 0,
+              "pass_rate": 1.00
+            },
+            "type_annotations": {
+              "score": 3,
+              "max_score": 10,
+              "mypy_errors": 106,
+              "pass_rate": 0.30
+            }
+          }
+        },
+        "code_complexity": {
+          "score": 5,
+          "max_score": 8,
+          "large_files": [
+            {"file": "demo_repository.py", "size_kb": 34.6, "lines": 1014},
+            {"file": "demo_verifier.py", "size_kb": 23.3, "lines": 642},
+            {"file": "ai_service.py", "size_kb": 18.7, "lines": 568}
+          ]
+        },
+        "quality_issues": {
+          "score": 5,
+          "max_score": 7,
+          "summary": {
+            "black_issues": 16,
+            "flake8_errors": 0,
+            "mypy_errors": 106,
+            "test_failures": 1
+          }
+        }
+      }
+    },
+    "test_quality": {
+      "score": 20,
+      "max_score": 35,
+      "weight": 0.35,
+      "status": "NEEDS_IMPROVEMENT",
+      "breakdown": {
+        "unit_test_coverage": {
+          "score": 5,
+          "max_score": 15,
+          "overall_coverage": 0.16,
+          "target_coverage": 0.70,
+          "ideal_coverage": 0.80,
+          "total_statements": 2103,
+          "covered_statements": 345,
+          "missing_statements": 1758
+        },
+        "unit_test_pass_rate": {
+          "score": 10,
+          "max_score": 12,
+          "total_tests": 33,
+          "passed": 32,
+          "failed": 1,
+          "errors": 0,
+          "pass_rate": 0.97
+        },
+        "cli_functional_tests": {
+          "score": 5,
+          "max_score": 5,
+          "total_tests": 9,
+          "passed": 9,
+          "failed": 0,
+          "pass_rate": 1.00
+        },
+        "test_coverage_gaps": {
+          "score": 0,
+          "max_score": 3,
+          "missing_test_modules": [
+            "demo_generator.py",
+            "demo_verifier.py",
+            "readme_updater.py",
+            "quality_checker.py",
+            "ai_service.py",
+            "storage_service.py",
+            "formatters.py"
+          ]
+        }
+      }
+    },
+    "architecture_design": {
+      "score": 16,
+      "max_score": 20,
+      "weight": 0.20,
+      "status": "GOOD",
+      "breakdown": {
+        "module_organization": {
+          "score": 8,
+          "max_score": 9,
+          "total_modules": 12,
+          "core_modules": 7,
+          "service_modules": 3,
+          "util_modules": 2
+        },
+        "design_patterns": {
+          "score": 5,
+          "max_score": 6,
+          "applied_patterns": [
+            "Single Responsibility",
+            "Dependency Injection",
+            "Service Layer"
+          ]
+        },
+        "error_handling": {
+          "score": 3,
+          "max_score": 5
+        }
+      }
+    },
+    "documentation_completeness": {
+      "score": 12,
+      "max_score": 15,
+      "weight": 0.15,
+      "status": "GOOD",
+      "breakdown": {
+        "project_documentation": {
+          "score": 8,
+          "max_score": 9,
+          "readme_complete": true,
+          "missing_items": ["Developer contribution guide"]
+        },
+        "code_documentation": {
+          "score": 2,
+          "max_score": 4,
+          "module_docs": true,
+          "class_docs": true,
+          "function_docs": "partial",
+          "parameter_docs": "incomplete"
+        },
+        "developer_documentation": {
+          "score": 2,
+          "max_score": 2,
+          "installation_guide": true,
+          "configuration_guide": true,
+          "test_guide": "basic"
+        }
+      }
+    }
+  },
+  "standards_compliance": {
+    "flake8_errors": {
+      "actual": 0,
+      "minimum_requirement": 5,
+      "target": 0,
+      "compliant": true
+    },
+    "mypy_errors": {
+      "actual": 106,
+      "minimum_requirement": 10,
+      "target": 0,
+      "compliant": false
+    },
+    "black_format_consistency": {
+      "actual": 0.80,
+      "minimum_requirement": 1.00,
+      "target": 1.00,
+      "compliant": false
+    },
+    "unit_test_coverage": {
+      "actual": 0.16,
+      "minimum_requirement": 0.70,
+      "target": 0.80,
+      "compliant": false
+    },
+    "unit_test_pass_rate": {
+      "actual": 0.97,
+      "minimum_requirement": 1.00,
+      "target": 1.00,
+      "compliant": false
+    },
+    "cli_test_pass_rate": {
+      "actual": 1.00,
+      "minimum_requirement": 0.90,
+      "target": 1.00,
+      "compliant": true
+    }
+  },
+  "improvement_priorities": {
+    "high_priority": [
+      {
+        "id": 1,
+        "title": "提升测试覆盖率",
+        "current": "16%",
+        "target": "70%",
+        "urgency": "CRITICAL",
+        "estimated_effort": "1-2 weeks",
+        "actions": [
+          "为0%覆盖率模块编写测试",
+          "提升低覆盖率模块测试",
+          "重点关注cli.py, ai_service.py, storage_service.py"
+        ]
+      },
+      {
+        "id": 2,
+        "title": "修复类型注解问题",
+        "current": "106 errors",
+        "target": "<10 errors",
+        "urgency": "HIGH",
+        "estimated_effort": "1 week",
+        "actions": [
+          "修复pyproject.toml配置",
+          "添加Optional类型注解（45处）",
+          "明确函数返回值类型（30处）",
+          "修复对象属性定义问题（31处）"
+        ]
+      },
+      {
+        "id": 3,
+        "title": "统一代码格式",
+        "current": "16 files need reformat",
+        "target": "0 files need reformat",
+        "urgency": "MEDIUM",
+        "estimated_effort": "1 hour",
+        "actions": [
+          "运行 black opendemo/ tests/"
+        ]
+      },
+      {
+        "id": 4,
+        "title": "修复失败的测试",
+        "current": "1 failed",
+        "target": "0 failed",
+        "urgency": "MEDIUM",
+        "estimated_effort": "2 hours",
+        "actions": [
+          "分析test_generate_safe_name失败原因",
+          "修复代码或更新测试用例"
+        ]
+      }
+    ],
+    "medium_priority": [
+      {
+        "id": 5,
+        "title": "重构大型模块",
+        "estimated_effort": "1-2 months",
+        "actions": [
+          "拆分demo_repository.py (386行)",
+          "拆分demo_verifier.py (294行)"
+        ]
+      },
+      {
+        "id": 6,
+        "title": "完善错误处理",
+        "estimated_effort": "2-3 weeks",
+        "actions": [
+          "定义自定义异常类型",
+          "建立统一错误处理机制"
+        ]
+      }
+    ],
+    "low_priority": [
+      {
+        "id": 7,
+        "title": "建立CI/CD流程",
+        "estimated_effort": "3-6 months",
+        "actions": [
+          "配置GitHub Actions",
+          "自动运行质量检查",
+          "建立质量门禁"
+        ]
+      }
+    ]
+  },
+  "module_coverage_details": [
+    {"module": "__init__.py", "statements": 8, "coverage": 1.00, "status": "EXCELLENT"},
+    {"module": "core/__init__.py", "statements": 9, "coverage": 1.00, "status": "EXCELLENT"},
+    {"module": "config_service.py", "statements": 114, "coverage": 0.64, "status": "FAIR"},
+    {"module": "demo_search.py", "statements": 121, "coverage": 0.65, "status": "FAIR"},
+    {"module": "logger.py", "statements": 24, "coverage": 0.29, "status": "POOR"},
+    {"module": "demo_repository.py", "statements": 386, "coverage": 0.27, "status": "POOR"},
+    {"module": "demo_generator.py", "statements": 46, "coverage": 0.20, "status": "POOR"},
+    {"module": "quality_checker.py", "statements": 104, "coverage": 0.17, "status": "POOR"},
+    {"module": "readme_updater.py", "statements": 115, "coverage": 0.14, "status": "POOR"},
+    {"module": "demo_verifier.py", "statements": 294, "coverage": 0.07, "status": "VERY_POOR"},
+    {"module": "cli.py", "statements": 429, "coverage": 0.00, "status": "NO_COVERAGE"},
+    {"module": "ai_service.py", "statements": 155, "coverage": 0.00, "status": "NO_COVERAGE"},
+    {"module": "storage_service.py", "statements": 172, "coverage": 0.00, "status": "NO_COVERAGE"},
+    {"module": "formatters.py", "statements": 126, "coverage": 0.00, "status": "NO_COVERAGE"}
+  ],
+  "test_execution_summary": {
+    "unit_tests": {
+      "status": "FAIL",
+      "total": 33,
+      "passed": 32,
+      "failed": 1,
+      "errors": 0,
+      "pass_rate": 0.97,
+      "failed_tests": [
+        {
+          "name": "test_generate_safe_name",
+          "file": "tests/test_demo_manager.py",
+          "reason": "AssertionError: assert 'nodejs-demo-1767511612' == 'nodejs-demo'"
+        }
+      ]
+    },
+    "cli_tests": {
+      "status": "PASS",
+      "total": 9,
+      "passed": 9,
+      "failed": 0,
+      "pass_rate": 1.00,
+      "tests": [
+        {"name": "version", "status": "PASS"},
+        {"name": "help", "status": "PASS"},
+        {"name": "search_all_languages", "status": "PASS"},
+        {"name": "search_python", "status": "PASS"},
+        {"name": "search_with_keyword", "status": "PASS"},
+        {"name": "get_existing_demo", "status": "PASS"},
+        {"name": "get_unsupported_language", "status": "PASS"},
+        {"name": "config_list", "status": "PASS"},
+        {"name": "new_unsupported_language", "status": "PASS"}
+      ]
+    }
+  },
+  "static_analysis_summary": {
+    "black_format_check": {
+      "status": "FAIL",
+      "files_need_reformat": 16,
+      "files_ok": 4,
+      "total_files": 20
+    },
+    "flake8_check": {
+      "status": "PASS",
+      "error_count": 0,
+      "warning_count": 0
+    },
+    "mypy_check": {
+      "status": "FAIL",
+      "error_count": 106,
+      "files_with_errors": 11,
+      "error_types": {
+        "implicit_optional": 45,
+        "no_any_return": 30,
+        "attr_defined": 31
+      }
+    }
+  },
+  "next_check_plan": {
+    "next_check_date": "2026-01-11",
+    "check_frequency": "weekly",
+    "expected_improvements": [
+      "测试覆盖率提升至40%+",
+      "Mypy错误减少至50个以内",
+      "所有测试通过",
+      "代码格式100%一致"
+    ]
+  },
+  "tool_versions": {
+    "python": "3.11.9",
+    "pytest": "9.0.2",
+    "pytest-cov": "7.0.0",
+    "black": "25.12.0",
+    "flake8": "7.3.0",
+    "mypy": "1.19.1"
+  },
+  "related_files": {
+    "unit_test_report": "check/check_report_20260104_152619.json",
+    "coverage_report": "coverage.json",
+    "comprehensive_report": "check/comprehensive_quality_report.md"
+  }
+}
+{
+  "report_metadata": {
+    "report_date": "2026-01-04",
+    "report_version": "1.0",
+    "project_version": "0.1.0",
+    "checker": "Automated Quality System"
+  },
+  "executive_summary": {
+    "overall_status": "QUALIFIED",
+    "overall_score": 70,
+    "overall_grade": "合格",
+    "key_findings": {
+      "strengths": [
+        "CLI功能测试100%通过（9/9）",
+        "Flake8代码规范检查通过，无错误",
+        "项目结构清晰，模块划分合理",
+        "README文档完整，包含详细的使用说明"
+      ],
+      "improvements_needed": [
+        "代码覆盖率仅16%，远低于70%最低要求",
+        "16个文件需要Black格式化",
+        "Mypy类型检查发现106个错误",
+        "1个单元测试失败",
+        "7个核心模块缺少单元测试"
+      ],
+      "critical_issues": [
+        "代码覆盖率严重不足（16% << 70%）",
+        "大量类型注解问题（106个Mypy错误）",
+        "核心功能模块测试缺失"
+      ]
+    }
+  },
+  "dimension_scores": {
+    "code_quality": {
+      "score": 22,
+      "max_score": 30,
+      "weight": 0.30,
+      "status": "NEEDS_IMPROVEMENT",
+      "breakdown": {
+        "code_standards": {
+          "score": 12,
+          "max_score": 15,
+          "details": {
+            "black_format": {
+              "score": 4,
+              "max_score": 5,
+              "files_need_reformat": 16,
+              "pass_rate": 0.80
+            },
+            "flake8_check": {
+              "score": 5,
+              "max_score": 5,
+              "error_count": 0,
+              "pass_rate": 1.00
+            },
+            "type_annotations": {
+              "score": 3,
+              "max_score": 10,
+              "mypy_errors": 106,
+              "pass_rate": 0.30
+            }
+          }
+        },
+        "code_complexity": {
+          "score": 5,
+          "max_score": 8,
+          "large_files": [
+            {"file": "demo_repository.py", "size_kb": 34.6, "lines": 1014},
+            {"file": "demo_verifier.py", "size_kb": 23.3, "lines": 642},
+            {"file": "ai_service.py", "size_kb": 18.7, "lines": 568}
+          ]
+        },
+        "quality_issues": {
+          "score": 5,
+          "max_score": 7,
+          "summary": {
+            "black_issues": 16,
+            "flake8_errors": 0,
+            "mypy_errors": 106,
+            "test_failures": 1
+          }
+        }
+      }
+    },
+    "test_quality": {
+      "score": 20,
+      "max_score": 35,
+      "weight": 0.35,
+      "status": "NEEDS_IMPROVEMENT",
+      "breakdown": {
+        "unit_test_coverage": {
+          "score": 5,
+          "max_score": 15,
+          "overall_coverage": 0.16,
+          "target_coverage": 0.70,
+          "ideal_coverage": 0.80,
+          "total_statements": 2103,
+          "covered_statements": 345,
+          "missing_statements": 1758
+        },
+        "unit_test_pass_rate": {
+          "score": 10,
+          "max_score": 12,
+          "total_tests": 33,
+          "passed": 32,
+          "failed": 1,
+          "errors": 0,
+          "pass_rate": 0.97
+        },
+        "cli_functional_tests": {
+          "score": 5,
+          "max_score": 5,
+          "total_tests": 9,
+          "passed": 9,
+          "failed": 0,
+          "pass_rate": 1.00
+        },
+        "test_coverage_gaps": {
+          "score": 0,
+          "max_score": 3,
+          "missing_test_modules": [
+            "demo_generator.py",
+            "demo_verifier.py",
+            "readme_updater.py",
+            "quality_checker.py",
+            "ai_service.py",
+            "storage_service.py",
+            "formatters.py"
+          ]
+        }
+      }
+    },
+    "architecture_design": {
+      "score": 16,
+      "max_score": 20,
+      "weight": 0.20,
+      "status": "GOOD",
+      "breakdown": {
+        "module_organization": {
+          "score": 8,
+          "max_score": 9,
+          "total_modules": 12,
+          "core_modules": 7,
+          "service_modules": 3,
+          "util_modules": 2
+        },
+        "design_patterns": {
+          "score": 5,
+          "max_score": 6,
+          "applied_patterns": [
+            "Single Responsibility",
+            "Dependency Injection",
+            "Service Layer"
+          ]
+        },
+        "error_handling": {
+          "score": 3,
+          "max_score": 5
+        }
+      }
+    },
+    "documentation_completeness": {
+      "score": 12,
+      "max_score": 15,
+      "weight": 0.15,
+      "status": "GOOD",
+      "breakdown": {
+        "project_documentation": {
+          "score": 8,
+          "max_score": 9,
+          "readme_complete": true,
+          "missing_items": ["Developer contribution guide"]
+        },
+        "code_documentation": {
+          "score": 2,
+          "max_score": 4,
+          "module_docs": true,
+          "class_docs": true,
+          "function_docs": "partial",
+          "parameter_docs": "incomplete"
+        },
+        "developer_documentation": {
+          "score": 2,
+          "max_score": 2,
+          "installation_guide": true,
+          "configuration_guide": true,
+          "test_guide": "basic"
+        }
+      }
+    }
+  },
+  "standards_compliance": {
+    "flake8_errors": {
+      "actual": 0,
+      "minimum_requirement": 5,
+      "target": 0,
+      "compliant": true
+    },
+    "mypy_errors": {
+      "actual": 106,
+      "minimum_requirement": 10,
+      "target": 0,
+      "compliant": false
+    },
+    "black_format_consistency": {
+      "actual": 0.80,
+      "minimum_requirement": 1.00,
+      "target": 1.00,
+      "compliant": false
+    },
+    "unit_test_coverage": {
+      "actual": 0.16,
+      "minimum_requirement": 0.70,
+      "target": 0.80,
+      "compliant": false
+    },
+    "unit_test_pass_rate": {
+      "actual": 0.97,
+      "minimum_requirement": 1.00,
+      "target": 1.00,
+      "compliant": false
+    },
+    "cli_test_pass_rate": {
+      "actual": 1.00,
+      "minimum_requirement": 0.90,
+      "target": 1.00,
+      "compliant": true
+    }
+  },
+  "improvement_priorities": {
+    "high_priority": [
+      {
+        "id": 1,
+        "title": "提升测试覆盖率",
+        "current": "16%",
+        "target": "70%",
+        "urgency": "CRITICAL",
+        "estimated_effort": "1-2 weeks",
+        "actions": [
+          "为0%覆盖率模块编写测试",
+          "提升低覆盖率模块测试",
+          "重点关注cli.py, ai_service.py, storage_service.py"
+        ]
+      },
+      {
+        "id": 2,
+        "title": "修复类型注解问题",
+        "current": "106 errors",
+        "target": "<10 errors",
+        "urgency": "HIGH",
+        "estimated_effort": "1 week",
+        "actions": [
+          "修复pyproject.toml配置",
+          "添加Optional类型注解（45处）",
+          "明确函数返回值类型（30处）",
+          "修复对象属性定义问题（31处）"
+        ]
+      },
+      {
+        "id": 3,
+        "title": "统一代码格式",
+        "current": "16 files need reformat",
+        "target": "0 files need reformat",
+        "urgency": "MEDIUM",
+        "estimated_effort": "1 hour",
+        "actions": [
+          "运行 black opendemo/ tests/"
+        ]
+      },
+      {
+        "id": 4,
+        "title": "修复失败的测试",
+        "current": "1 failed",
+        "target": "0 failed",
+        "urgency": "MEDIUM",
+        "estimated_effort": "2 hours",
+        "actions": [
+          "分析test_generate_safe_name失败原因",
+          "修复代码或更新测试用例"
+        ]
+      }
+    ],
+    "medium_priority": [
+      {
+        "id": 5,
+        "title": "重构大型模块",
+        "estimated_effort": "1-2 months",
+        "actions": [
+          "拆分demo_repository.py (386行)",
+          "拆分demo_verifier.py (294行)"
+        ]
+      },
+      {
+        "id": 6,
+        "title": "完善错误处理",
+        "estimated_effort": "2-3 weeks",
+        "actions": [
+          "定义自定义异常类型",
+          "建立统一错误处理机制"
+        ]
+      }
+    ],
+    "low_priority": [
+      {
+        "id": 7,
+        "title": "建立CI/CD流程",
+        "estimated_effort": "3-6 months",
+        "actions": [
+          "配置GitHub Actions",
+          "自动运行质量检查",
+          "建立质量门禁"
+        ]
+      }
+    ]
+  },
+  "module_coverage_details": [
+    {"module": "__init__.py", "statements": 8, "coverage": 1.00, "status": "EXCELLENT"},
+    {"module": "core/__init__.py", "statements": 9, "coverage": 1.00, "status": "EXCELLENT"},
+    {"module": "config_service.py", "statements": 114, "coverage": 0.64, "status": "FAIR"},
+    {"module": "demo_search.py", "statements": 121, "coverage": 0.65, "status": "FAIR"},
+    {"module": "logger.py", "statements": 24, "coverage": 0.29, "status": "POOR"},
+    {"module": "demo_repository.py", "statements": 386, "coverage": 0.27, "status": "POOR"},
+    {"module": "demo_generator.py", "statements": 46, "coverage": 0.20, "status": "POOR"},
+    {"module": "quality_checker.py", "statements": 104, "coverage": 0.17, "status": "POOR"},
+    {"module": "readme_updater.py", "statements": 115, "coverage": 0.14, "status": "POOR"},
+    {"module": "demo_verifier.py", "statements": 294, "coverage": 0.07, "status": "VERY_POOR"},
+    {"module": "cli.py", "statements": 429, "coverage": 0.00, "status": "NO_COVERAGE"},
+    {"module": "ai_service.py", "statements": 155, "coverage": 0.00, "status": "NO_COVERAGE"},
+    {"module": "storage_service.py", "statements": 172, "coverage": 0.00, "status": "NO_COVERAGE"},
+    {"module": "formatters.py", "statements": 126, "coverage": 0.00, "status": "NO_COVERAGE"}
+  ],
+  "test_execution_summary": {
+    "unit_tests": {
+      "status": "FAIL",
+      "total": 33,
+      "passed": 32,
+      "failed": 1,
+      "errors": 0,
+      "pass_rate": 0.97,
+      "failed_tests": [
+        {
+          "name": "test_generate_safe_name",
+          "file": "tests/test_demo_manager.py",
+          "reason": "AssertionError: assert 'nodejs-demo-1767511612' == 'nodejs-demo'"
+        }
+      ]
+    },
+    "cli_tests": {
+      "status": "PASS",
+      "total": 9,
+      "passed": 9,
+      "failed": 0,
+      "pass_rate": 1.00,
+      "tests": [
+        {"name": "version", "status": "PASS"},
+        {"name": "help", "status": "PASS"},
+        {"name": "search_all_languages", "status": "PASS"},
+        {"name": "search_python", "status": "PASS"},
+        {"name": "search_with_keyword", "status": "PASS"},
+        {"name": "get_existing_demo", "status": "PASS"},
+        {"name": "get_unsupported_language", "status": "PASS"},
+        {"name": "config_list", "status": "PASS"},
+        {"name": "new_unsupported_language", "status": "PASS"}
+      ]
+    }
+  },
+  "static_analysis_summary": {
+    "black_format_check": {
+      "status": "FAIL",
+      "files_need_reformat": 16,
+      "files_ok": 4,
+      "total_files": 20
+    },
+    "flake8_check": {
+      "status": "PASS",
+      "error_count": 0,
+      "warning_count": 0
+    },
+    "mypy_check": {
+      "status": "FAIL",
+      "error_count": 106,
+      "files_with_errors": 11,
+      "error_types": {
+        "implicit_optional": 45,
+        "no_any_return": 30,
+        "attr_defined": 31
+      }
+    }
+  },
+  "next_check_plan": {
+    "next_check_date": "2026-01-11",
+    "check_frequency": "weekly",
+    "expected_improvements": [
+      "测试覆盖率提升至40%+",
+      "Mypy错误减少至50个以内",
+      "所有测试通过",
+      "代码格式100%一致"
+    ]
+  },
+  "tool_versions": {
+    "python": "3.11.9",
+    "pytest": "9.0.2",
+    "pytest-cov": "7.0.0",
+    "black": "25.12.0",
+    "flake8": "7.3.0",
+    "mypy": "1.19.1"
+  },
+  "related_files": {
+    "unit_test_report": "check/check_report_20260104_152619.json",
+    "coverage_report": "coverage.json",
+    "comprehensive_report": "check/comprehensive_quality_report.md"
+  }
+}

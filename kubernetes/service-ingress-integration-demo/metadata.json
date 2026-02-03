@@ -1,0 +1,32 @@
+{
+  "name": "service-ingress-integration-demo",
+  "title": "Service和Ingress集成演示",
+  "description": "Service和Ingress协同工作的完整生产级解决方案，展示企业级流量管理的最佳实践",
+  "difficulty": "expert",
+  "estimated_time": "180",
+  "keywords": ["kubernetes", "service", "ingress", "integration", "production"],
+  "category": "网络管理",
+  "library": "integration",
+  "author": "OpenDemo Team",
+  "created_at": "2026-02-03T21:40:00Z",
+  "updated_at": "2026-02-03T21:40:00Z",
+  "version": "1.0.0",
+  "prerequisites": ["kubernetes基础", "service高级", "ingress高级"],
+  "learning_objectives": [
+    "掌握Service和Ingress的深度集成模式",
+    "理解企业级流量治理架构",
+    "实施端到端安全管控策略",
+    "建立统一监控告警体系",
+    "具备复杂故障诊断能力"
+  ],
+  "technologies": ["Kubernetes", "Service", "Ingress", "Istio", "Security"],
+  "tools": ["kubectl", "Helm", "Prometheus", "Jaeger", "Kiali"],
+  "environments": ["生产环境", "多集群", "混合云"],
+  "validation_criteria": [
+    "集成架构设计合理完整",
+    "流量治理策略有效",
+    "安全防护体系健全",
+    "监控告警覆盖全面",
+    "故障恢复机制完善"
+  ]
+}

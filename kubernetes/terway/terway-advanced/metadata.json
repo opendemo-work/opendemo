@@ -1,0 +1,41 @@
+{
+  "name": "Terway高级特性实战",
+  "language": "kubernetes",
+  "category": "network",
+  "subcategory": "terway-advanced",
+  "difficulty": "advanced",
+  "keywords": [
+    "kubernetes",
+    "terway",
+    "network-policy",
+    "multi-eni",
+    "security-group"
+  ],
+  "description": "深入探索阿里云Terway网络插件高级功能：网络策略、多网卡配置、安全组深度集成等企业级特性",
+  "version": "1.0.0",
+  "author": "OpenDemo Team",
+  "created_at": "2026-01-30",
+  "updated_at": "2026-01-30",
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "prerequisites": [
+    "Terway基础配置经验",
+    "网络策略理解",
+    "阿里云网络产品熟悉"
+  ],
+  "learning_objectives": [
+    "掌握高级网络策略配置",
+    "学会多网卡和网络隔离",
+    "理解安全组深度集成",
+    "掌握网络性能调优",
+    "具备混合云网络设计能力"
+  ],
+  "estimated_time": "4-5小时",
+  "compatibility": {
+    "kubernetes": ">=1.20",
+    "terway_version": ">=1.3.0",
+    "advanced_networking": true
+  }
+}

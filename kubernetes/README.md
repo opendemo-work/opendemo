@@ -68,12 +68,12 @@ opendemo get kubernetes model-training-basics
 | 分类 | 案例数量 | 状态 |
 |------|----------|------|
 | 核心概念 | ~30 | ✅ 基本完成 |
-| 网络管理 | ~25 | ✅ 基本完成 |
+| 网络管理 | ~35 | ✅ 完整增强 |
 | 存储管理 | ~20 | ✅ 基本完成 |
 | 企业级运维 | ~90 | ✅ 基本完成 |
 | 大模型训练 | 5 | ✅ 完整增强 |
 | 大模型推理 | 5 | ✅ 新增完成 |
-| **总计** | **176** | ✅ |
+| **总计** | **185** | ✅ |
 
 ---
 
@@ -93,16 +93,37 @@ opendemo get kubernetes model-training-basics
 
 </details>
 
-### 网络管理 (约25个)
+### 网络管理 (约45个)
 <details>
 <summary>点击查看完整列表</summary>
 
-- Service类型详解
-- Ingress入口管理
-- CoreDNS服务发现
-- 网络策略配置
-- Terway网络插件
-- 网络故障排查
+- [service-types-overview](./service/service-types-overview/) - Service类型详解
+- [**service-production-suite**](./service/service-production-suite/) - **Service生产级完整套件** ⭐
+- [ingress-basics](./ingress/ingress-basics/) - Ingress基础入门
+- [ingress-advanced](./ingress/ingress-advanced/) - Ingress高级特性
+- [ingress-security](./ingress/ingress-security/) - Ingress安全配置
+- [ingress-production](./ingress/ingress-production/) - Ingress生产实践
+- [ingress-troubleshooting](./ingress/ingress-troubleshooting/) - Ingress故障排查
+- [**ingress-production-suite**](./ingress/ingress-production-suite/) - **Ingress生产级完整套件** ⭐
+- [**service-ingress-integration-demo**](./service-ingress-integration-demo/) - **Service和Ingress集成演示** ⭐
+- [ingress/controllers/nginx-controller](./ingress/controllers/nginx-controller/) - NGINX控制器管理
+- [ingress/routing-strategies/path-based-routing](./ingress/routing-strategies/path-based-routing/) - 路径路由策略
+- [ingress/security-hardening/tls-ssl-security](./ingress/security-hardening/tls-ssl-security/) - TLS安全加固
+- [ingress/monitoring-operations/prometheus-monitoring](./ingress/monitoring-operations/prometheus-monitoring/) - Prometheus监控
+- [ingress/advanced-features/custom-annotations](./ingress/advanced-features/custom-annotations/) - 自定义注解
+- [network/coredns/coredns-deployment](./network/coredns/coredns-deployment/) - CoreDNS生产部署 ⭐
+- [network/coredns/coredns-advanced-features](./network/coredns/coredns-advanced-features/) - CoreDNS高级特性 ⭐
+- [network/coredns/monitoring-operations](./network/coredns/monitoring-operations/) - CoreDNS监控运维 ⭐
+- [network/coredns/security-hardening](./network/coredns/security-hardening/) - CoreDNS安全加固 ⭐
+- [network/coredns-basics](./network/coredns-basics/) - CoreDNS基础入门
+- [network/coredns-advanced](./network/coredns-advanced/) - CoreDNS高级特性
+- [terway/basics/network-fundamentals](./terway/basics/network-fundamentals/) - Terway网络基础 ⭐
+- [terway/advanced-features/advanced-networking](./terway/advanced-features/advanced-networking/) - Terway高级网络 ⭐
+- [terway/advanced-features/custom-networking](./terway/advanced-features/custom-networking/) - Terway自定义网络 ⭐
+- [terway/deployment/terway-deployment](./terway/deployment/terway-deployment/) - Terway生产部署 ⭐
+- [terway/monitoring-operations/prometheus-monitoring](./terway/monitoring-operations/prometheus-monitoring/) - Terway监控运维 ⭐
+- [terway/security-hardening/network-security](./terway/security-hardening/network-security/) - Terway安全加固 ⭐
+- [network/csi-plugin-basics](./network/csi-plugin-basics/) - CSI存储插件基础
 
 </details>
 
@@ -182,11 +203,13 @@ kubectl krew install ctx ns
 2. **循序渐进**: 按照基础→网络→存储→运维的顺序学习
 3. **重视安全**: Kubernetes安全配置是生产环境的关键
 4. **监控先行**: 建立完善的监控告警体系
-5. **AI训练特别注意**: 大模型训练需要额外关注GPU资源、分布式协调和成本控制
-6. **微调实践重点**: 模型微调应注重参数效率、领域适应和生产部署的完整闭环
-7. **训练体系完整性**: 确保从环境搭建到生产部署的全链路可执行性
-8. **推理服务优化**: AI推理服务需重点关注延迟优化、资源利用率和高可用部署
-6. **文档查阅**: 养成查阅官方文档的习惯
+5. **网络重点**: 深入学习Service和Ingress的生产级配置
+6. **集成思维**: 掌握Service与Ingress的协同工作机制
+7. **AI训练特别注意**: 大模型训练需要额外关注GPU资源、分布式协调和成本控制
+8. **微调实践重点**: 模型微调应注重参数效率、领域适应和生产部署的完整闭环
+9. **训练体系完整性**: 确保从环境搭建到生产部署的全链路可执行性
+10. **推理服务优化**: AI推理服务需重点关注延迟优化、资源利用率和高可用部署
+11. **文档查阅**: 养成查阅官方文档的习惯
 
 ---
 

@@ -1,0 +1,32 @@
+{
+  "name": "path-based-routing",
+  "title": "Ingress 路径路由策略",
+  "description": "企业级 Ingress 路径路由配置、策略管理和流量治理完整解决方案",
+  "difficulty": "advanced",
+  "estimated_time": "90",
+  "keywords": ["kubernetes", "ingress", "routing", "path", "strategy"],
+  "category": "路由策略",
+  "library": "routing",
+  "author": "OpenDemo Team",
+  "created_at": "2026-02-03T22:15:00Z",
+  "updated_at": "2026-02-03T22:15:00Z",
+  "version": "1.0.0",
+  "prerequisites": ["ingress基础", "路由概念"],
+  "learning_objectives": [
+    "掌握多种路径路由配置方法",
+    "理解高级路由策略和权重分配",
+    "实施蓝绿部署和金丝雀发布",
+    "配置负载均衡和会话保持",
+    "具备路由故障排查能力"
+  ],
+  "technologies": ["Kubernetes", "Ingress", "NGINX", "Routing"],
+  "tools": ["kubectl", "curl", "jq"],
+  "environments": ["生产环境", "微服务架构"],
+  "validation_criteria": [
+    "路由配置准确有效",
+    "流量分发策略合理",
+    "负载均衡配置正确",
+    "故障恢复机制完善",
+    "监控指标采集完整"
+  ]
+}

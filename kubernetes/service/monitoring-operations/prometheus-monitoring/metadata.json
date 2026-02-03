@@ -1,0 +1,32 @@
+{
+  "name": "prometheus-monitoring",
+  "title": "Service 监控运维与Prometheus集成",
+  "description": "企业级 Service 监控、告警、日志和运维管理完整解决方案",
+  "difficulty": "advanced",
+  "estimated_time": "150",
+  "keywords": ["kubernetes", "service", "monitoring", "prometheus", "grafana"],
+  "category": "监控运维",
+  "library": "monitoring-operations",
+  "author": "OpenDemo Team",
+  "created_at": "2026-02-03T23:00:00Z",
+  "updated_at": "2026-02-03T23:00:00Z",
+  "version": "1.0.0",
+  "prerequisites": ["kubernetes基础", "prometheus基础", "service管理"],
+  "learning_objectives": [
+    "建立完善的Service监控体系",
+    "配置智能告警和通知机制",
+    "实现日志收集和分析",
+    "构建可视化监控面板",
+    "实施自动化运维策略"
+  ],
+  "technologies": ["Kubernetes", "Prometheus", "Grafana", "Fluentd"],
+  "tools": ["kubectl", "prometheus", "grafana", "fluentd"],
+  "environments": ["生产环境", "监控环境", "日志分析"],
+  "validation_criteria": [
+    "监控指标收集完整准确",
+    "告警策略配置合理有效",
+    "可视化展示清晰直观",
+    "日志收集系统稳定运行",
+    "自动化运维机制健全"
+  ]
+}

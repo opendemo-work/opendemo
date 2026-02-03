@@ -1,0 +1,32 @@
+{
+  "name": "security-hardening",
+  "title": "CoreDNS 安全加固完整指南",
+  "description": "企业级 CoreDNS 安全配置、访问控制和防护策略完整解决方案",
+  "difficulty": "expert",
+  "estimated_time": "180",
+  "keywords": ["kubernetes", "coredns", "security", "hardening", "dnssec"],
+  "category": "安全加固",
+  "library": "coredns",
+  "author": "OpenDemo Team",
+  "created_at": "2026-02-04T00:15:00Z",
+  "updated_at": "2026-02-04T00:15:00Z",
+  "version": "1.0.0",
+  "prerequisites": ["coredns基础", "网络安全", "安全概念"],
+  "learning_objectives": [
+    "掌握CoreDNS安全配置技能",
+    "实施访问控制和防护策略",
+    "配置数据传输加密",
+    "建立安全监控和告警",
+    "执行合规审计和风险评估"
+  ],
+  "technologies": ["Kubernetes", "CoreDNS", "NetworkPolicy", "DNSSEC"],
+  "tools": ["kubectl", "openssl", "prometheus", "falco"],
+  "environments": ["安全环境", "合规环境", "生产环境"],
+  "validation_criteria": [
+    "安全配置符合企业安全标准",
+    "访问控制策略有效实施",
+    "加密传输配置正确",
+    "安全监控体系完整",
+    "合规要求得到满足"
+  ]
+}

@@ -1,0 +1,110 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: terway
+  namespace: kube-system
+  labels:
+    app: terway
+    demo: terway-basics
+spec:
+  selector:
+    matchLabels:
+      app: terway
+  template:
+    metadata:
+      labels:
+        app: terway
+    spec:
+      hostNetwork: true
+      priorityClassName: system-node-critical
+      tolerations:
+      - operator: Exists
+        effect: NoSchedule
+      - operator: Exists
+        effect: NoExecute
+      containers:
+      - name: terway
+        image: registry.cn-hangzhou.aliyuncs.com/acs/terway:v1.3.0
+        imagePullPolicy: Always
+        securityContext:
+          privileged: true
+        env:
+        - name: NODE_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: spec.nodeName
+        - name: POD_NAMESPACE
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.namespace
+        - name: ACCESS_KEY_ID
+          valueFrom:
+            secretKeyRef:
+              name: aliyun-credentials
+              key: access-key-id
+        - name: ACCESS_KEY_SECRET
+          valueFrom:
+            secretKeyRef:
+              name: aliyun-credentials
+              key: access-key-secret
+        - name: REGION
+          value: "cn-hangzhou"
+        volumeMounts:
+        - name: cni-bin
+          mountPath: /opt/cni/bin
+        - name: cni-conf
+          mountPath: /etc/cni/net.d
+        - name: host-var-run
+          mountPath: /var/run
+        - name: host-var-lib-cni
+          mountPath: /var/lib/cni
+        - name: host-var-lib-terway
+          mountPath: /var/lib/terway
+        - name: host-etc-cni-netd
+          mountPath: /etc/cni/net.d
+        - name: host-opt-cni-bin
+          mountPath: /opt/cni/bin
+        - name: host-dev
+          mountPath: /dev
+        - name: host-proc
+          mountPath: /proc
+        - name: host-sys
+          mountPath: /sys
+        resources:
+          requests:
+            cpu: 100m
+            memory: 100Mi
+          limits:
+            cpu: 200m
+            memory: 200Mi
+      volumes:
+      - name: cni-bin
+        hostPath:
+          path: /opt/cni/bin
+      - name: cni-conf
+        hostPath:
+          path: /etc/cni/net.d
+      - name: host-var-run
+        hostPath:
+          path: /var/run
+      - name: host-var-lib-cni
+        hostPath:
+          path: /var/lib/cni
+      - name: host-var-lib-terway
+        hostPath:
+          path: /var/lib/terway
+      - name: host-etc-cni-netd
+        hostPath:
+          path: /etc/cni/net.d
+      - name: host-opt-cni-bin
+        hostPath:
+          path: /opt/cni/bin
+      - name: host-dev
+        hostPath:
+          path: /dev
+      - name: host-proc
+        hostPath:
+          path: /proc
+      - name: host-sys
+        hostPath:
+          path: /sys

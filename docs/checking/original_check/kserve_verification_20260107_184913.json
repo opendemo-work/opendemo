@@ -1,0 +1,177 @@
+{
+  "timestamp": "2026-01-07T18:49:13.083236",
+  "summary": {
+    "total_demos": 12,
+    "verified": 0,
+    "partial_verified": 0,
+    "failed": 12,
+    "pass_rate": "0.0%",
+    "file_structure": {
+      "with_metadata": 12,
+      "with_readme": 6,
+      "with_yaml": 6
+    },
+    "issues": {
+      "total_errors": 0,
+      "total_warnings": 0
+    }
+  },
+  "results": [
+    {
+      "verified": false,
+      "skipped": true,
+      "message": "Verification is disabled",
+      "demo_name": "kserve-ab-testing-demo",
+      "demo_path": "C:\\Users\\Allen\\Documents\\GitHub\\opendemo-cli\\opendemo_output\\kubernetes\\kubeflow\\kserve-ab-testing-demo",
+      "file_structure": {
+        "metadata": true,
+        "readme": true,
+        "yaml_files": 1,
+        "has_yaml": true
+      }
+    },
+    {
+      "verified": false,
+      "skipped": true,
+      "message": "Verification is disabled",
+      "demo_name": "kserve-autoscaling-config-demo",
+      "demo_path": "C:\\Users\\Allen\\Documents\\GitHub\\opendemo-cli\\opendemo_output\\kubernetes\\kubeflow\\kserve-autoscaling-config-demo",
+      "file_structure": {
+        "metadata": true,
+        "readme": true,
+        "yaml_files": 2,
+        "has_yaml": true
+      }
+    },
+    {
+      "verified": false,
+      "skipped": true,
+      "message": "Verification is disabled",
+      "demo_name": "kserve-batch-inference",
+      "demo_path": "C:\\Users\\Allen\\Documents\\GitHub\\opendemo-cli\\opendemo_output\\kubernetes\\kubeflow\\kserve-batch-inference",
+      "file_structure": {
+        "metadata": true,
+        "readme": false,
+        "yaml_files": 0,
+        "has_yaml": false
+      }
+    },
+    {
+      "verified": false,
+      "skipped": true,
+      "message": "Verification is disabled",
+      "demo_name": "kserve-canary-rollout",
+      "demo_path": "C:\\Users\\Allen\\Documents\\GitHub\\opendemo-cli\\opendemo_output\\kubernetes\\kubeflow\\kserve-canary-rollout",
+      "file_structure": {
+        "metadata": true,
+        "readme": false,
+        "yaml_files": 0,
+        "has_yaml": false
+      }
+    },
+    {
+      "verified": false,
+      "skipped": true,
+      "message": "Verification is disabled",
+      "demo_name": "kserve-custom-predictor",
+      "demo_path": "C:\\Users\\Allen\\Documents\\GitHub\\opendemo-cli\\opendemo_output\\kubernetes\\kubeflow\\kserve-custom-predictor",
+      "file_structure": {
+        "metadata": true,
+        "readme": false,
+        "yaml_files": 0,
+        "has_yaml": false
+      }
+    },
+    {
+      "verified": false,
+      "skipped": true,
+      "message": "Verification is disabled",
+      "demo_name": "kserve-explainer-integration-demo",
+      "demo_path": "C:\\Users\\Allen\\Documents\\GitHub\\opendemo-cli\\opendemo_output\\kubernetes\\kubeflow\\kserve-explainer-integration-demo",
+      "file_structure": {
+        "metadata": true,
+        "readme": true,
+        "yaml_files": 1,
+        "has_yaml": true
+      }
+    },
+    {
+      "verified": false,
+      "skipped": true,
+      "message": "Verification is disabled",
+      "demo_name": "kserve-gpu-inference",
+      "demo_path": "C:\\Users\\Allen\\Documents\\GitHub\\opendemo-cli\\opendemo_output\\kubernetes\\kubeflow\\kserve-gpu-inference",
+      "file_structure": {
+        "metadata": true,
+        "readme": false,
+        "yaml_files": 0,
+        "has_yaml": false
+      }
+    },
+    {
+      "verified": false,
+      "skipped": true,
+      "message": "Verification is disabled",
+      "demo_name": "kserve-model-deployment",
+      "demo_path": "C:\\Users\\Allen\\Documents\\GitHub\\opendemo-cli\\opendemo_output\\kubernetes\\kubeflow\\kserve-model-deployment",
+      "file_structure": {
+        "metadata": true,
+        "readme": false,
+        "yaml_files": 0,
+        "has_yaml": false
+      }
+    },
+    {
+      "verified": false,
+      "skipped": true,
+      "message": "Verification is disabled",
+      "demo_name": "kserve-model-monitoring-demo",
+      "demo_path": "C:\\Users\\Allen\\Documents\\GitHub\\opendemo-cli\\opendemo_output\\kubernetes\\kubeflow\\kserve-model-monitoring-demo",
+      "file_structure": {
+        "metadata": true,
+        "readme": true,
+        "yaml_files": 2,
+        "has_yaml": true
+      }
+    },
+    {
+      "verified": false,
+      "skipped": true,
+      "message": "Verification is disabled",
+      "demo_name": "kserve-multi-model-serving-demo",
+      "demo_path": "C:\\Users\\Allen\\Documents\\GitHub\\opendemo-cli\\opendemo_output\\kubernetes\\kubeflow\\kserve-multi-model-serving-demo",
+      "file_structure": {
+        "metadata": true,
+        "readme": true,
+        "yaml_files": 1,
+        "has_yaml": true
+      }
+    },
+    {
+      "verified": false,
+      "skipped": true,
+      "message": "Verification is disabled",
+      "demo_name": "kserve-request-logging-demo",
+      "demo_path": "C:\\Users\\Allen\\Documents\\GitHub\\opendemo-cli\\opendemo_output\\kubernetes\\kubeflow\\kserve-request-logging-demo",
+      "file_structure": {
+        "metadata": true,
+        "readme": true,
+        "yaml_files": 2,
+        "has_yaml": true
+      }
+    },
+    {
+      "verified": false,
+      "skipped": true,
+      "message": "Verification is disabled",
+      "demo_name": "kserve-transformer-integration",
+      "demo_path": "C:\\Users\\Allen\\Documents\\GitHub\\opendemo-cli\\opendemo_output\\kubernetes\\kubeflow\\kserve-transformer-integration",
+      "file_structure": {
+        "metadata": true,
+        "readme": false,
+        "yaml_files": 0,
+        "has_yaml": false
+      }
+    }
+  ]
+}

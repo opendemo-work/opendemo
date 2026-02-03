@@ -1,0 +1,32 @@
+{
+  "name": "custom-resources",
+  "title": "Service 高级特性与自定义资源",
+  "description": "企业级 Service 高级功能、自定义配置和扩展开发完整解决方案",
+  "difficulty": "expert",
+  "estimated_time": "180",
+  "keywords": ["kubernetes", "service", "advanced", "custom-resources", "service-mesh"],
+  "category": "高级特性",
+  "library": "advanced-features",
+  "author": "OpenDemo Team",
+  "created_at": "2026-02-03T22:45:00Z",
+  "updated_at": "2026-02-03T22:45:00Z",
+  "version": "1.0.0",
+  "prerequisites": ["kubernetes基础", "service进阶", "控制器原理"],
+  "learning_objectives": [
+    "掌握Service高级特性和自定义资源配置",
+    "实现复杂的服务网格集成方案",
+    "开发自定义控制器和CRD",
+    "配置多集群服务管理",
+    "实施高级性能优化策略"
+  ],
+  "technologies": ["Kubernetes", "Istio", "Linkerd", "Custom Controllers"],
+  "tools": ["kubectl", "helm", "istioctl", "linkerd"],
+  "environments": ["生产环境", "多集群环境", "混合云"],
+  "validation_criteria": [
+    "高级特性配置符合业务需求",
+    "服务网格集成完整有效",
+    "自定义资源功能正常",
+    "多集群服务管理可靠",
+    "性能优化达到预期效果"
+  ]
+}

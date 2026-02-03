@@ -1,0 +1,32 @@
+{
+  "name": "custom-networking",
+  "title": "Terway 高级特性与自定义配置",
+  "description": "企业级阿里云Terway网络插件高级功能、自定义配置和扩展开发完整指南",
+  "difficulty": "expert",
+  "estimated_time": "180",
+  "keywords": ["kubernetes", "terway", "cni", "networking", "advanced", "custom"],
+  "category": "高级特性",
+  "library": "terway",
+  "author": "OpenDemo Team",
+  "created_at": "2026-02-04T00:45:00Z",
+  "updated_at": "2026-02-04T00:45:00Z",
+  "version": "1.0.0",
+  "prerequisites": ["terway基础", "kubernetes网络", "阿里云网络"],
+  "learning_objectives": [
+    "掌握Terway高级网络配置技能",
+    "实现多网卡管理和网络隔离",
+    "配置精细化访问控制策略",
+    "实施性能优化和QoS管理",
+    "建立完整的监控体系"
+  ],
+  "technologies": ["Kubernetes", "Terway", "阿里云", "CNI", "Go"],
+  "tools": ["kubectl", "aliyun-cli", "prometheus", "grafana"],
+  "environments": ["生产环境", "多区域环境", "混合云"],
+  "validation_criteria": [
+    "自定义网络配置功能正常",
+    "多网卡管理策略有效",
+    "安全访问控制完整",
+    "性能指标达到要求",
+    "监控告警体系健全"
+  ]
+}

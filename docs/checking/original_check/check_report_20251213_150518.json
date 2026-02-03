@@ -1,0 +1,102 @@
+{
+  "timestamp": "2025-12-13T15:05:08.100898",
+  "summary": {
+    "overall_status": "PASS",
+    "unit_tests_status": "PASS",
+    "cli_tests_status": "PASS",
+    "unit_tests_passed": 33,
+    "unit_tests_total": 33,
+    "cli_tests_passed": 9,
+    "cli_tests_total": 9,
+    "errors_count": 0
+  },
+  "unit_tests": {
+    "status": "PASS",
+    "passed": 33,
+    "failed": 0,
+    "errors": 0,
+    "total": 33,
+    "output": "_demo_init PASSED              [ 33%]\ntests/test_demo_manager.py::TestDemo::test_demo_properties PASSED        [ 36%]\ntests/test_demo_manager.py::TestDemo::test_demo_default_properties PASSED [ 39%]\ntests/test_demo_manager.py::TestDemo::test_demo_to_dict PASSED           [ 42%]\ntests/test_demo_manager.py::TestDemoRepository::test_init PASSED         [ 45%]\ntests/test_demo_manager.py::TestDemoRepository::test_generate_safe_name PASSED [ 48%]\ntests/test_demo_manager.py::TestDemoRepository::test_get_file_description PASSED [ 51%]\ntests/test_demo_manager.py::TestDemoRepository::test_load_demo_with_cache PASSED [ 54%]\ntests/test_demo_manager.py::TestDemoRepository::test_load_demo_not_found PASSED [ 57%]\ntests/test_demo_manager.py::TestDemoRepositoryIntegration::test_load_all_demos PASSED [ 60%]\ntests/test_search_engine.py::TestDemoSearch::test_init PASSED            [ 63%]\ntests/test_search_engine.py::TestDemoSearch::test_search_no_demos PASSED [ 66%]\ntests/test_search_engine.py::TestDemoSearch::test_search_all_demos PASSED [ 69%]\ntests/test_search_engine.py::TestDemoSearch::test_search_by_keywords PASSED [ 72%]\ntests/test_search_engine.py::TestDemoSearch::test_search_by_difficulty PASSED [ 75%]\ntests/test_search_engine.py::TestDemoSearch::test_calculate_match_score_name_match PASSED [ 78%]\ntests/test_search_engine.py::TestDemoSearch::test_calculate_match_score_keyword_match PASSED [ 81%]\ntests/test_search_engine.py::TestDemoSearch::test_calculate_match_score_no_match PASSED [ 84%]\ntests/test_search_engine.py::TestDemoSearch::test_find_exact PASSED      [ 87%]\ntests/test_search_engine.py::TestDemoSearch::test_find_exact_not_found PASSED [ 90%]\ntests/test_search_engine.py::TestDemoSearch::test_get_all_languages PASSED [ 93%]\ntests/test_search_engine.py::TestDemoSearch::test_get_statistics PASSED  [ 96%]\ntests/test_search_engine.py::TestDemoSearchSorting::test_sort_demos_by_name PASSED [100%]\n\n============================= 33 passed in 0.42s ==============================\n"
+  },
+  "cli_tests": {
+    "status": "PASS",
+    "passed": 9,
+    "failed": 0,
+    "total": 9,
+    "tests": [
+      {
+        "name": "version",
+        "command": "--version",
+        "status": "PASS",
+        "exit_code": 0,
+        "output_match": true,
+        "exit_code_match": true
+      },
+      {
+        "name": "help",
+        "command": "--help",
+        "status": "PASS",
+        "exit_code": 0,
+        "output_match": true,
+        "exit_code_match": true
+      },
+      {
+        "name": "search_all_languages",
+        "command": "search",
+        "status": "PASS",
+        "exit_code": 0,
+        "output_match": true,
+        "exit_code_match": true
+      },
+      {
+        "name": "search_python",
+        "command": "search python",
+        "status": "PASS",
+        "exit_code": 0,
+        "output_match": true,
+        "exit_code_match": true
+      },
+      {
+        "name": "search_with_keyword",
+        "command": "search python logging",
+        "status": "PASS",
+        "exit_code": 0,
+        "output_match": true,
+        "exit_code_match": true
+      },
+      {
+        "name": "get_existing_demo",
+        "command": "get python logging",
+        "status": "PASS",
+        "exit_code": 0,
+        "output_match": true,
+        "exit_code_match": true
+      },
+      {
+        "name": "get_unsupported_language",
+        "command": "get rust test",
+        "status": "PASS",
+        "exit_code": 1,
+        "output_match": true,
+        "exit_code_match": true
+      },
+      {
+        "name": "config_list",
+        "command": "config list",
+        "status": "PASS",
+        "exit_code": 0,
+        "output_match": true,
+        "exit_code_match": true
+      },
+      {
+        "name": "new_unsupported_language",
+        "command": "new ruby test",
+        "status": "PASS",
+        "exit_code": 1,
+        "output_match": true,
+        "exit_code_match": true
+      }
+    ]
+  },
+  "errors": []
+}
