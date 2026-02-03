@@ -1,0 +1,27 @@
+{
+  "id": "read-write-splitting-demo",
+  "name": "数据库读写分离完整指南",
+  "version": "1.0.0",
+  "author": "OpenDemo",
+  "created_date": "2026-02-02",
+  "last_updated": "2026-02-02",
+  "category": "高可用架构",
+  "subcategory": "读写分离",
+  "tags": ["read-write-splitting", "high-availability", "load-balancing", "performance", "mysql", "postgresql"],
+  "difficulty": "高级",
+  "estimated_time": "300分钟",
+  "prerequisites": ["数据库基础", "主从复制知识", "负载均衡概念"],
+  "learning_objectives": [
+    "掌握读写分离的核心原理和实现方式",
+    "学会配置主从复制和读写路由",
+    "理解负载均衡策略和故障处理机制",
+    "掌握读写分离的监控和性能优化"
+  ],
+  "quality_standards": {
+    "completeness": "100%",
+    "accuracy": "生产环境验证",
+    "clarity": "步骤详细可操作",
+    "relevance": "企业级应用场景"
+  },
+  "validation_status": "pending"
+}

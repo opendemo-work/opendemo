@@ -36,7 +36,7 @@ pip install google-generativeai-cli
 
 ```bash
 # 设置 API 密钥
-export GEMINI_API_KEY="your-api-key-here"
+export GEMINI_api_key: "${API_KEY}"
 
 # 或者通过配置命令
 gemini config set api_key "your-api-key-here"

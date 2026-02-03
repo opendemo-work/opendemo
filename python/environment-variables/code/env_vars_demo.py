@@ -163,7 +163,7 @@ class AppConfig:
 os.environ["APP_NAME"] = "ProductionApp"
 os.environ["DEBUG"] = "false"
 os.environ["DB_HOST"] = "db.example.com"
-os.environ["DB_PASSWORD"] = "secret123"
+os.environ["DB_PASSWORD"] = os.getenv("DB_PASSWORD", "default-password")
 
 config = AppConfig()
 print(f"应用名称: {config.app_name}")
@@ -227,7 +227,7 @@ def load_dotenv(filepath: str = ".env", override: bool = False):
 env_content = """
 # 应用配置
 APP_ENV=development
-SECRET_KEY="my-super-secret-key"
+SECRET_KEY = os.getenv("JWT_SECRET", "default-secret")
 
 # 数据库
 DATABASE_URL='postgres://user:pass@localhost/db'
@@ -277,8 +277,8 @@ class SecretString:
         return False
 
 # 使用示例
-api_key = SecretString(os.getenv("API_KEY", "demo-key-12345"))
-db_password = SecretString(os.getenv("DB_PASSWORD", "secret123"))
+api_key = SecretString(os.getenv("API_KEY", ""))
+db_password = SecretString(os.getenv("DB_PASSWORD", ""))
 
 print(f"API Key: {api_key}")  # 不会泄露
 print(f"DB Password: {db_password}")  # 不会泄露

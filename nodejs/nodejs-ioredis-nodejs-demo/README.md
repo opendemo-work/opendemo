@@ -116,7 +116,7 @@ node connection-pool.js
 A: 表示无法连接 Redis 服务，请确认是否已启动 `redis-server`。
 
 **Q: 如何连接远程 Redis？**
-A: 修改构造函数参数：`new Redis({ host: 'your-host', port: 6379, password: 'your-pass' })`
+A: 修改构造函数参数：`new Redis({ host: 'your-host', port: 6379, password: "${GENERIC_PASSWORD}" })`
 
 **Q: 是否需要手动关闭连接？**
 A: 生产环境中建议在程序退出时调用 `redis.quit()` 关闭连接。

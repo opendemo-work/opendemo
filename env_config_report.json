@@ -1,0 +1,412 @@
+{
+  "summary": {
+    "total_findings": 48,
+    "by_type": {
+      "ENV_FILE": 3,
+      "CONFIG_YAML": 45
+    },
+    "by_severity": {
+      "MEDIUM": 2,
+      "HIGH": 46
+    }
+  },
+  "findings": [
+    {
+      "type": "ENV_FILE",
+      "file": "nodejs\\nodejs-bullnodejs-demo-queue-async-tasks\\.env",
+      "line": 2,
+      "variable": "REDIS_URL",
+      "value_preview": "redis://127.0.0.1:6379",
+      "severity": "MEDIUM"
+    },
+    {
+      "type": "ENV_FILE",
+      "file": "nodejs\\nodejs-nodejsdemo-env-variables-demo\\.env",
+      "line": 1,
+      "variable": "DATABASE_URL",
+      "value_preview": "mongodb://localhost:27017/myapp",
+      "severity": "MEDIUM"
+    },
+    {
+      "type": "ENV_FILE",
+      "file": "nodejs\\nodejs-nodejsdemo-env-variables-demo\\.env",
+      "line": 2,
+      "variable": "API_KEY",
+      "value_preview": "secret123",
+      "severity": "HIGH"
+    },
+    {
+      "type": "CONFIG_YAML",
+      "file": "kubernetes\\agent\\alibaba\\configmap.yaml",
+      "line": 34,
+      "key": "max_tokens",
+      "value_preview": "2048",
+      "severity": "HIGH"
+    },
+    {
+      "type": "CONFIG_YAML",
+      "file": "kubernetes\\agent\\alibaba\\configmap.yaml",
+      "line": 188,
+      "key": "export API_KEY=${API_KEY",
+      "value_preview": "-\"\"}",
+      "severity": "HIGH"
+    },
+    {
+      "type": "CONFIG_YAML",
+      "file": "kubernetes\\agent\\alibaba\\rbac.yaml",
+      "line": 158,
+      "key": "secrets",
+      "value_preview": "20",
+      "severity": "HIGH"
+    },
+    {
+      "type": "CONFIG_YAML",
+      "file": "kubernetes\\agent\\alibaba\\secret.yaml",
+      "line": 17,
+      "key": "jwt-secret",
+      "value_preview": "anB0LXNlY3JldC1kZWZhdWx0  # 示例值，实际部署时需替换",
+      "severity": "HIGH"
+    },
+    {
+      "type": "CONFIG_YAML",
+      "file": "kubernetes\\agent\\alibaba\\secret.yaml",
+      "line": 24,
+      "key": "dingtalk-app-secret",
+      "value_preview": "ZGluZ3RhbGstYXBwLXNlY3JldC1kZWZhdWx0  # 示例值，实际部署时需",
+      "severity": "HIGH"
+    },
+    {
+      "type": "CONFIG_YAML",
+      "file": "kubernetes\\agent\\alibaba\\secret.yaml",
+      "line": 28,
+      "key": "milvus-password",
+      "value_preview": "bWlsdnVzLXBhc3N3b3JkZGVmYXVsdA==  # 示例值，实际部署时需替换",
+      "severity": "HIGH"
+    },
+    {
+      "type": "CONFIG_YAML",
+      "file": "kubernetes\\agent\\alibaba\\secret.yaml",
+      "line": 31,
+      "key": "redis-password",
+      "value_preview": "cmVkaXMtcGFzc3dvcmRkZWZhdWx0  # 示例值，实际部署时需替换",
+      "severity": "HIGH"
+    },
+    {
+      "type": "CONFIG_YAML",
+      "file": "kubernetes\\agent\\alibaba\\secret.yaml",
+      "line": 34,
+      "key": "prometheus-password",
+      "value_preview": "cHJvbWV0aGV1cy1wYXNzd29yZGZlYWx0  # 示例值，实际部署时需替换",
+      "severity": "HIGH"
+    },
+    {
+      "type": "CONFIG_YAML",
+      "file": "kubernetes\\agent\\alibaba\\secret.yaml",
+      "line": 37,
+      "key": "slack-token",
+      "value_preview": "c2xhY2stdG9rZW4tZGVmYXVsdA==  # 示例值，实际部署时需替换",
+      "severity": "HIGH"
+    },
+    {
+      "type": "CONFIG_YAML",
+      "file": "kubernetes\\agent\\alibaba\\secret.yaml",
+      "line": 38,
+      "key": "discord-token",
+      "value_preview": "ZGlzY29yZC10b2tlbi1kZWZhdWx0  # 示例值，实际部署时需替换",
+      "severity": "HIGH"
+    },
+    {
+      "type": "CONFIG_YAML",
+      "file": "kubernetes\\agent\\alibaba\\secret.yaml",
+      "line": 40,
+      "key": "wechat-app-secret",
+      "value_preview": "d2VjaGF0LWFwcC1zZWNyZXQtZGVmYXVsdA==  # 示例值，实际部署时需",
+      "severity": "HIGH"
+    },
+    {
+      "type": "CONFIG_YAML",
+      "file": "kubernetes\\kubeskoop\\latency-detection-configuration\\code\\service-monitor.yaml",
+      "line": 20,
+      "key": "# bearerTokenFile",
+      "value_preview": "/var/run/secrets/kubernetes.io/serviceaccount/toke",
+      "severity": "HIGH"
+    },
+    {
+      "type": "CONFIG_YAML",
+      "file": "kubernetes\\model-training\\model-finetuning-optimization\\k8s-deployment.yaml",
+      "line": 458,
+      "key": "hf-token",
+      "value_preview": "<base64-encoded-huggingface-token>",
+      "severity": "HIGH"
+    },
+    {
+      "type": "CONFIG_YAML",
+      "file": "kubernetes\\n8n\\manifests\\n8n-deployment.yaml",
+      "line": 87,
+      "key": "secretName",
+      "value_preview": "n8n-secrets",
+      "severity": "HIGH"
+    },
+    {
+      "type": "CONFIG_YAML",
+      "file": "kubernetes\\n8n\\manifests\\secret.yaml",
+      "line": 11,
+      "key": "postgres-password",
+      "value_preview": "YOUR_POSTGRES_PASSWORD_BASE64",
+      "severity": "HIGH"
+    },
+    {
+      "type": "CONFIG_YAML",
+      "file": "kubernetes\\network\\terway-basics\\terway-config.yaml",
+      "line": 11,
+      "key": "access-key-secret",
+      "value_preview": "<base64-encoded-access-key-secret>",
+      "severity": "HIGH"
+    },
+    {
+      "type": "CONFIG_YAML",
+      "file": "kubernetes\\prometheus\\basic-prometheus\\prometheus-config.yaml",
+      "line": 27,
+      "key": "bearer_token_file",
+      "value_preview": "/var/run/secrets/kubernetes.io/serviceaccount/toke",
+      "severity": "HIGH"
+    },
+    {
+      "type": "CONFIG_YAML",
+      "file": "kubernetes\\prometheus\\basic-prometheus\\prometheus-config.yaml",
+      "line": 37,
+      "key": "bearer_token_file",
+      "value_preview": "/var/run/secrets/kubernetes.io/serviceaccount/toke",
+      "severity": "HIGH"
+    },
+    {
+      "type": "CONFIG_YAML",
+      "file": "kubernetes\\prometheus\\basic-prometheus\\prometheus-config.yaml",
+      "line": 79,
+      "key": "bearer_token_file",
+      "value_preview": "/var/run/secrets/kubernetes.io/serviceaccount/toke",
+      "severity": "HIGH"
+    },
+    {
+      "type": "CONFIG_YAML",
+      "file": "kubernetes\\rag\\local-demo\\manifests\\configmap.yaml",
+      "line": 18,
+      "key": "max_tokens",
+      "value_preview": "1000",
+      "severity": "HIGH"
+    },
+    {
+      "type": "CONFIG_YAML",
+      "file": "kubernetes\\rag\\local-demo\\manifests\\rag-deployment.yaml",
+      "line": 68,
+      "key": "secretName",
+      "value_preview": "rag-platform-secrets",
+      "severity": "HIGH"
+    },
+    {
+      "type": "CONFIG_YAML",
+      "file": "kubernetes\\rag\\local-demo\\manifests\\secret.yaml",
+      "line": 12,
+      "key": "jwt-secret",
+      "value_preview": "YOUR_JWT_SECRET_BASE64",
+      "severity": "HIGH"
+    },
+    {
+      "type": "CONFIG_YAML",
+      "file": "kubernetes\\rag\\maxkb\\manifests\\configmap.yaml",
+      "line": 21,
+      "key": "max_tokens",
+      "value_preview": "1000",
+      "severity": "HIGH"
+    },
+    {
+      "type": "CONFIG_YAML",
+      "file": "kubernetes\\rag\\maxkb\\manifests\\maxkb-deployment.yaml",
+      "line": 70,
+      "key": "secretName",
+      "value_preview": "maxkb-secrets",
+      "severity": "HIGH"
+    },
+    {
+      "type": "CONFIG_YAML",
+      "file": "kubernetes\\rag\\maxkb\\manifests\\secret.yaml",
+      "line": 12,
+      "key": "jwt-secret",
+      "value_preview": "YOUR_JWT_SECRET_BASE64",
+      "severity": "HIGH"
+    },
+    {
+      "type": "CONFIG_YAML",
+      "file": "kubernetes\\rag\\other-rag-tools\\manifests\\configmap.yaml",
+      "line": 22,
+      "key": "max_tokens",
+      "value_preview": "1000",
+      "severity": "HIGH"
+    },
+    {
+      "type": "CONFIG_YAML",
+      "file": "kubernetes\\rag\\other-rag-tools\\manifests\\other-rag-tools-deployment.yaml",
+      "line": 70,
+      "key": "secretName",
+      "value_preview": "other-rag-tools-secrets",
+      "severity": "HIGH"
+    },
+    {
+      "type": "CONFIG_YAML",
+      "file": "kubernetes\\rag\\other-rag-tools\\manifests\\secret.yaml",
+      "line": 12,
+      "key": "jwt-secret",
+      "value_preview": "YOUR_JWT_SECRET_BASE64",
+      "severity": "HIGH"
+    },
+    {
+      "type": "CONFIG_YAML",
+      "file": "kubernetes\\velero\\basic-installation\\code\\velero-values.yaml",
+      "line": 33,
+      "key": "useSecret",
+      "value_preview": "true",
+      "severity": "HIGH"
+    },
+    {
+      "type": "CONFIG_YAML",
+      "file": "vibe-coding\\gemini-cli\\configmap.yaml",
+      "line": 18,
+      "key": "max_output_tokens",
+      "value_preview": "1000",
+      "severity": "HIGH"
+    },
+    {
+      "type": "CONFIG_YAML",
+      "file": "vibe-coding\\gemini-cli\\gemini-cli-deployment.yaml",
+      "line": 68,
+      "key": "secretName",
+      "value_preview": "gemini-cli-secrets",
+      "severity": "HIGH"
+    },
+    {
+      "type": "CONFIG_YAML",
+      "file": "vibe-coding\\gemini-cli\\secret.yaml",
+      "line": 11,
+      "key": "github-token",
+      "value_preview": "YOUR_GITHUB_TOKEN_BASE64",
+      "severity": "HIGH"
+    },
+    {
+      "type": "CONFIG_YAML",
+      "file": "vibe-coding\\gemini-cli\\secret.yaml",
+      "line": 12,
+      "key": "jwt-secret",
+      "value_preview": "YOUR_JWT_SECRET_BASE64",
+      "severity": "HIGH"
+    },
+    {
+      "type": "CONFIG_YAML",
+      "file": "vibe-coding\\local-demo\\configmap.yaml",
+      "line": 15,
+      "key": "max_tokens",
+      "value_preview": "1000",
+      "severity": "HIGH"
+    },
+    {
+      "type": "CONFIG_YAML",
+      "file": "vibe-coding\\local-demo\\secret.yaml",
+      "line": 11,
+      "key": "github-token",
+      "value_preview": "YOUR_GITHUB_TOKEN_BASE64",
+      "severity": "HIGH"
+    },
+    {
+      "type": "CONFIG_YAML",
+      "file": "vibe-coding\\local-demo\\secret.yaml",
+      "line": 12,
+      "key": "jwt-secret",
+      "value_preview": "YOUR_JWT_SECRET_BASE64",
+      "severity": "HIGH"
+    },
+    {
+      "type": "CONFIG_YAML",
+      "file": "vibe-coding\\local-demo\\vibe-coding-deployment.yaml",
+      "line": 68,
+      "key": "secretName",
+      "value_preview": "vibe-coding-secrets",
+      "severity": "HIGH"
+    },
+    {
+      "type": "CONFIG_YAML",
+      "file": "vibe-coding\\other-cli\\configmap.yaml",
+      "line": 18,
+      "key": "max_tokens",
+      "value_preview": "1000",
+      "severity": "HIGH"
+    },
+    {
+      "type": "CONFIG_YAML",
+      "file": "vibe-coding\\other-cli\\other-cli-deployment.yaml",
+      "line": 68,
+      "key": "secretName",
+      "value_preview": "other-cli-secrets",
+      "severity": "HIGH"
+    },
+    {
+      "type": "CONFIG_YAML",
+      "file": "vibe-coding\\other-cli\\secret.yaml",
+      "line": 11,
+      "key": "github-token",
+      "value_preview": "YOUR_GITHUB_TOKEN_BASE64",
+      "severity": "HIGH"
+    },
+    {
+      "type": "CONFIG_YAML",
+      "file": "vibe-coding\\other-cli\\secret.yaml",
+      "line": 12,
+      "key": "jwt-secret",
+      "value_preview": "YOUR_JWT_SECRET_BASE64",
+      "severity": "HIGH"
+    },
+    {
+      "type": "CONFIG_YAML",
+      "file": "vibe-coding\\qoder-cli\\configmap.yaml",
+      "line": 17,
+      "key": "max_tokens",
+      "value_preview": "1000",
+      "severity": "HIGH"
+    },
+    {
+      "type": "CONFIG_YAML",
+      "file": "vibe-coding\\qoder-cli\\qoder-cli-deployment.yaml",
+      "line": 68,
+      "key": "secretName",
+      "value_preview": "qoder-cli-secrets",
+      "severity": "HIGH"
+    },
+    {
+      "type": "CONFIG_YAML",
+      "file": "vibe-coding\\qoder-cli\\secret.yaml",
+      "line": 11,
+      "key": "github-token",
+      "value_preview": "YOUR_GITHUB_TOKEN_BASE64",
+      "severity": "HIGH"
+    },
+    {
+      "type": "CONFIG_YAML",
+      "file": "vibe-coding\\qoder-cli\\secret.yaml",
+      "line": 12,
+      "key": "jwt-secret",
+      "value_preview": "YOUR_JWT_SECRET_BASE64",
+      "severity": "HIGH"
+    }
+  ],
+  "recommendations": [
+    "环境变量安全建议:",
+    "1. 使用.dockerignore排除.env文件",
+    "2. 在生产环境中使用密钥管理服务",
+    "3. 实施环境变量注入而非硬编码",
+    "4. 定期轮换敏感环境变量",
+    "",
+    "配置文件安全建议:",
+    "1. 使用模板文件和占位符",
+    "2. 将敏感配置外部化",
+    "3. 实施配置文件权限控制",
+    "4. 使用配置管理工具"
+  ]
+}

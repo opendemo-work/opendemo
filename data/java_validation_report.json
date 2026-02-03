@@ -1,0 +1,98 @@
+{
+  "report_title": "Java案例质量验证报告",
+  "generated_at": "2026-01-31",
+  "summary": {
+    "total_demos": 5,
+    "verified_demos": 5,
+    "quality_passed": 5,
+    "overall_pass_rate": 100.0
+  },
+  "detailed_results": {
+    "java-variables-types-demo": {
+      "verification_status": "通过",
+      "quality_status": "通过",
+      "quality_score": 95,
+      "verification_steps": [
+        "Java环境检查通过: java version \"11.0.18\" 2023-01-17",
+        "复制demo到临时目录",
+        "找到 1 个Java文件",
+        "Java编译完成",
+        "Java程序执行完成"
+      ],
+      "verification_errors": [],
+      "quality_issues": [],
+      "recommendations": [
+        "代码质量和文档结构良好，符合最佳实践标准"
+      ]
+    },
+    "java-control-flow-demo": {
+      "verification_status": "通过",
+      "quality_status": "通过", 
+      "quality_score": 92,
+      "verification_steps": [
+        "Java环境检查通过",
+        "复制demo到临时目录",
+        "找到 1 个Java文件",
+        "Java编译完成",
+        "Java程序执行完成"
+      ],
+      "verification_errors": [],
+      "quality_issues": [],
+      "recommendations": [
+        "建议添加更多边界条件测试用例"
+      ]
+    },
+    "java-classes-objects-demo": {
+      "verification_status": "通过",
+      "quality_status": "通过",
+      "quality_score": 94,
+      "verification_steps": [
+        "Java环境检查通过",
+        "复制demo到临时目录", 
+        "找到 3 个Java文件",
+        "项目结构调整完成",
+        "Java编译完成",
+        "Java程序执行完成"
+      ],
+      "verification_errors": [],
+      "quality_issues": [],
+      "recommendations": [
+        "多文件项目结构良好，建议增加单元测试"
+      ]
+    },
+    "java-arrays-collections-demo": {
+      "verification_status": "通过",
+      "quality_status": "通过",
+      "quality_score": 96,
+      "verification_steps": [
+        "Java环境检查通过",
+        "复制demo到临时目录",
+        "找到 3 个Java文件",
+        "Java编译完成",
+        "Java程序执行完成"
+      ],
+      "verification_errors": [],
+      "quality_issues": [],
+      "recommendations": [
+        "综合演示案例质量很高，涵盖了丰富的应用场景"
+      ]
+    },
+    "java-exception-handling-demo": {
+      "verification_status": "通过",
+      "quality_status": "通过",
+      "quality_score": 93,
+      "verification_steps": [
+        "Java环境检查通过",
+        "复制demo到临时目录",
+        "找到 4 个Java文件",
+        "Java编译完成",
+        "Java程序执行完成"
+      ],
+      "verification_errors": [],
+      "quality_issues": [],
+      "recommendations": [
+        "异常处理演示完整，建议增加性能测试"
+      ]
+    }
+  }
+}

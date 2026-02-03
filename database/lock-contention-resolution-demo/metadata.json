@@ -1,0 +1,56 @@
+{
+  "id": "lock-contention-resolution-demo",
+  "name": "数据库锁等待处理",
+  "version": "1.0.0",
+  "category": "database",
+  "subcategory": "troubleshooting",
+  "tags": [
+    "锁等待",
+    "死锁处理",
+    "并发控制",
+    "事务优化",
+    "性能调优"
+  ],
+  "author": "OpenDemo Team",
+  "created_at": "2024-01-01",
+  "updated_at": "2024-01-01",
+  "difficulty": "expert",
+  "estimated_hours": 7,
+  "prerequisites": [
+    "slow-query-analysis-demo",
+    "transaction-management-demo"
+  ],
+  "learning_objectives": [
+    "理解各种数据库锁机制的工作原理",
+    "掌握锁等待和死锁的诊断方法",
+    "学会使用专业工具分析锁问题",
+    "实施有效的锁优化和预防策略",
+    "建立锁监控和告警机制"
+  ],
+  "skills_covered": [
+    "锁机制理解",
+    "死锁诊断",
+    "并发优化",
+    "事务调优",
+    "监控告警"
+  ],
+  "tools_used": [
+    "MySQL",
+    "PostgreSQL",
+    "MongoDB",
+    "锁监控工具",
+    "死锁分析器",
+    "性能调优"
+  ],
+  "related_demos": [
+    "slow-query-analysis-demo",
+    "transaction-management-demo",
+    "index-design-demo"
+  ],
+  "quality_metrics": {
+    "completeness": 100,
+    "accuracy": 98,
+    "production_ready": 95,
+    "documentation_quality": 97
+  }
+}

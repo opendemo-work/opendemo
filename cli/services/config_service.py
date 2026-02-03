@@ -25,7 +25,7 @@ class ConfigService:
         "verification_timeout": 300,
         "ai": {
             "provider": "openai",
-            "api_key": "",
+            "api_key: "${API_KEY}",
             "api_endpoint": "",
             "model": "gpt-4",
             "temperature": 0.7,

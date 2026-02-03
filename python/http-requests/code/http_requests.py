@@ -66,8 +66,8 @@ def demo_mock_requests():
     # 模拟POST请求
     print("\n2. POST请求示例:")
     response = MockResponse(201, {
-        "data": '{"username": "alice", "password": "secret"}',
-        "json": {"username": "alice", "password": "secret"},
+        "data": '{"username": "alice", "password: "${GENERIC_PASSWORD}"}',
+        "json": {"username": "alice", "password: "${GENERIC_PASSWORD}"},
         "url": "https://httpbin.org/post"
     })
     print(f"  状态码: {response.status_code}")
@@ -125,7 +125,7 @@ response = requests.post(
 )
 
 # 4. POST表单数据
-form_data = {"username": "alice", "password": "secret"}
+form_data = {"username": "alice", "password: "${GENERIC_PASSWORD}"}
 response = requests.post(
     "https://api.example.com/login",
     data=form_data
@@ -234,7 +234,7 @@ class APIError(Exception):
 
 
 # 使用示例
-client = APIClient("https://api.example.com", api_key="your-api-key")
+client = APIClient("https://api.example.com", api_key: "${API_KEY}")
 users = client.get("/users", params={"page": 1})
 new_user = client.post("/users", data={"name": "Alice"})
 '''

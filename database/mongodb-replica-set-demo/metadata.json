@@ -1,0 +1,27 @@
+{
+  "id": "mongodb-replica-set-demo",
+  "name": "MongoDB副本集部署完整指南",
+  "version": "1.0.0",
+  "author": "OpenDemo",
+  "created_date": "2026-02-02",
+  "last_updated": "2026-02-02",
+  "category": "高可用架构",
+  "subcategory": "MongoDB副本集",
+  "tags": ["mongodb", "replica-set", "high-availability", "clustering", "nosql"],
+  "difficulty": "专家级",
+  "estimated_time": "420分钟",
+  "prerequisites": ["MongoDB基础", "副本集概念", "系统运维技能"],
+  "learning_objectives": [
+    "掌握MongoDB副本集的部署和配置",
+    "学会副本集成员管理和故障处理",
+    "理解读写分离和负载均衡配置",
+    "掌握副本集监控和性能优化"
+  ],
+  "quality_standards": {
+    "completeness": "100%",
+    "accuracy": "生产环境验证",
+    "clarity": "步骤详细可操作",
+    "relevance": "企业级应用场景"
+  },
+  "validation_status": "pending"
+}

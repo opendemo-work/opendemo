@@ -1,0 +1,27 @@
+{
+  "id": "cloud-databases-demo",
+  "name": "云数据库服务使用完整指南",
+  "version": "1.0.0",
+  "author": "OpenDemo",
+  "created_date": "2026-02-03",
+  "last_updated": "2026-02-03",
+  "category": "云原生数据库",
+  "subcategory": "云数据库服务",
+  "tags": ["cloud-database", "aws-rds", "azure-database", "gcp-cloudsql", "serverless", "managed-service"],
+  "difficulty": "高级",
+  "estimated_time": "240分钟",
+  "prerequisites": ["云计算基础", "数据库基础", "云服务商账号", "基础网络知识"],
+  "learning_objectives": [
+    "掌握主流云数据库服务的特点和使用方法",
+    "学会云数据库的部署、配置和管理技能",
+    "理解云数据库的成本优化和性能调优策略",
+    "掌握云数据库的监控、备份和安全配置"
+  ],
+  "quality_standards": {
+    "completeness": "100%",
+    "accuracy": "生产环境验证",
+    "clarity": "步骤详细可操作",
+    "relevance": "企业级应用场景"
+  },
+  "validation_status": "pending"
+}

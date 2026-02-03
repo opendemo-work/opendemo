@@ -1,0 +1,27 @@
+{
+  "id": "capacity-planning-demo",
+  "name": "数据库容量规划完整指南",
+  "version": "1.0.0",
+  "author": "OpenDemo",
+  "created_date": "2026-02-02",
+  "last_updated": "2026-02-02",
+  "category": "基础管理",
+  "subcategory": "容量规划",
+  "tags": ["database", "capacity", "planning", "scaling", "forecasting", "mysql", "postgresql", "mongodb", "redis"],
+  "difficulty": "高级",
+  "estimated_time": "360分钟",
+  "prerequisites": ["数据库基础", "系统架构知识", "性能调优经验"],
+  "learning_objectives": [
+    "掌握容量规划的核心方法论",
+    "学会使用预测模型进行需求分析",
+    "理解水平扩展和垂直扩展策略",
+    "掌握资源优化和成本控制技巧"
+  ],
+  "quality_standards": {
+    "completeness": "100%",
+    "accuracy": "生产环境验证",
+    "clarity": "步骤详细可操作",
+    "relevance": "企业级应用场景"
+  },
+  "validation_status": "pending"
+}

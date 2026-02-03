@@ -7,7 +7,7 @@ const Queue = require('bull');
 
 // 创建一个名为 'emailQueue' 的队列，连接到 Redis
 // REDIS_URL 示例：redis://127.0.0.1:6379
-const emailQueue = new Queue('emailQueue', process.env.REDIS_URL || 'redis://127.0.0.1:6379');
+const emailQueue = new Queue('emailQueue', process.env.REDIS_URL || 'redis://localhost:6379');
 
 // 异步函数：添加发送邮件任务到队列
 async function addSendEmailJob() {

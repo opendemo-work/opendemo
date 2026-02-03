@@ -1,0 +1,1718 @@
+{
+  "summary": {
+    "total_findings": 209,
+    "log_files_checked": 179,
+    "files_with_sensitive_data": 36,
+    "by_pattern": {
+      "PHONE_NUMBERS": 14,
+      "API_KEYS": 118,
+      "IP_ADDRESSES": 50,
+      "EMAIL_ADDRESSES": 9,
+      "PASSWORDS": 9,
+      "DATABASE_URLS": 5,
+      "TOKENS": 4
+    },
+    "by_severity": {
+      "LOW": 182,
+      "MEDIUM": 9,
+      "HIGH": 18
+    }
+  },
+  "findings": [
+    {
+      "file": ".mypy_cache\\3.9\\traceback.meta.json",
+      "line_number": 1,
+      "pattern_type": "PHONE_NUMBERS",
+      "matched_text": "1767511509",
+      "context": "{\"data_mtime\":1767511509,\"dep_hashes\":[\"a3ce50219c737f51a2b7a1d236d6baed8b9c72f2\",\"31857a7a0492346c12b6dc3b87e80fd9f334abaa\",\"9c86097e1209ffaace56aa493f2ab3fe3c7d2fd1\",\"289df6e71c0e379759d73159f4964ec",
+      "severity": "LOW"
+    },
+    {
+      "file": ".mypy_cache\\3.9\\traceback.meta.json",
+      "line_number": 1,
+      "pattern_type": "PHONE_NUMBERS",
+      "matched_text": "1767511411",
+      "context": "{\"data_mtime\":1767511509,\"dep_hashes\":[\"a3ce50219c737f51a2b7a1d236d6baed8b9c72f2\",\"31857a7a0492346c12b6dc3b87e80fd9f334abaa\",\"9c86097e1209ffaace56aa493f2ab3fe3c7d2fd1\",\"289df6e71c0e379759d73159f4964ec",
+      "severity": "LOW"
+    },
+    {
+      "file": ".mypy_cache\\3.9\\traceback.meta.json",
+      "line_number": 1,
+      "pattern_type": "API_KEYS",
+      "matched_text": "a3ce50219c737f51a2b7a1d236d6baed8b9c72f2",
+      "context": "{\"data_mtime\":1767511509,\"dep_hashes\":[\"a3ce50219c737f51a2b7a1d236d6baed8b9c72f2\",\"31857a7a0492346c12b6dc3b87e80fd9f334abaa\",\"9c86097e1209ffaace56aa493f2ab3fe3c7d2fd1\",\"289df6e71c0e379759d73159f4964ec",
+      "severity": "LOW"
+    },
+    {
+      "file": ".mypy_cache\\3.9\\traceback.meta.json",
+      "line_number": 1,
+      "pattern_type": "API_KEYS",
+      "matched_text": "31857a7a0492346c12b6dc3b87e80fd9f334abaa",
+      "context": "{\"data_mtime\":1767511509,\"dep_hashes\":[\"a3ce50219c737f51a2b7a1d236d6baed8b9c72f2\",\"31857a7a0492346c12b6dc3b87e80fd9f334abaa\",\"9c86097e1209ffaace56aa493f2ab3fe3c7d2fd1\",\"289df6e71c0e379759d73159f4964ec",
+      "severity": "LOW"
+    },
+    {
+      "file": ".mypy_cache\\3.9\\traceback.meta.json",
+      "line_number": 1,
+      "pattern_type": "API_KEYS",
+      "matched_text": "9c86097e1209ffaace56aa493f2ab3fe3c7d2fd1",
+      "context": "{\"data_mtime\":1767511509,\"dep_hashes\":[\"a3ce50219c737f51a2b7a1d236d6baed8b9c72f2\",\"31857a7a0492346c12b6dc3b87e80fd9f334abaa\",\"9c86097e1209ffaace56aa493f2ab3fe3c7d2fd1\",\"289df6e71c0e379759d73159f4964ec",
+      "severity": "LOW"
+    },
+    {
+      "file": ".mypy_cache\\3.9\\traceback.meta.json",
+      "line_number": 1,
+      "pattern_type": "API_KEYS",
+      "matched_text": "289df6e71c0e379759d73159f4964ecca73603b9",
+      "context": "{\"data_mtime\":1767511509,\"dep_hashes\":[\"a3ce50219c737f51a2b7a1d236d6baed8b9c72f2\",\"31857a7a0492346c12b6dc3b87e80fd9f334abaa\",\"9c86097e1209ffaace56aa493f2ab3fe3c7d2fd1\",\"289df6e71c0e379759d73159f4964ec",
+      "severity": "LOW"
+    },
+    {
+      "file": ".mypy_cache\\3.9\\traceback.meta.json",
+      "line_number": 1,
+      "pattern_type": "API_KEYS",
+      "matched_text": "0fe86a965afffbd169a63bbbd9b1464c9ea0cb20",
+      "context": "{\"data_mtime\":1767511509,\"dep_hashes\":[\"a3ce50219c737f51a2b7a1d236d6baed8b9c72f2\",\"31857a7a0492346c12b6dc3b87e80fd9f334abaa\",\"9c86097e1209ffaace56aa493f2ab3fe3c7d2fd1\",\"289df6e71c0e379759d73159f4964ec",
+      "severity": "LOW"
+    },
+    {
+      "file": ".mypy_cache\\3.9\\traceback.meta.json",
+      "line_number": 1,
+      "pattern_type": "API_KEYS",
+      "matched_text": "82d4a798c0d38998639018c1af659633060b83e6",
+      "context": "{\"data_mtime\":1767511509,\"dep_hashes\":[\"a3ce50219c737f51a2b7a1d236d6baed8b9c72f2\",\"31857a7a0492346c12b6dc3b87e80fd9f334abaa\",\"9c86097e1209ffaace56aa493f2ab3fe3c7d2fd1\",\"289df6e71c0e379759d73159f4964ec",
+      "severity": "LOW"
+    },
+    {
+      "file": ".mypy_cache\\3.9\\traceback.meta.json",
+      "line_number": 1,
+      "pattern_type": "API_KEYS",
+      "matched_text": "a1764954046f4786c274729a7d950efa646fa319",
+      "context": "{\"data_mtime\":1767511509,\"dep_hashes\":[\"a3ce50219c737f51a2b7a1d236d6baed8b9c72f2\",\"31857a7a0492346c12b6dc3b87e80fd9f334abaa\",\"9c86097e1209ffaace56aa493f2ab3fe3c7d2fd1\",\"289df6e71c0e379759d73159f4964ec",
+      "severity": "LOW"
+    },
+    {
+      "file": ".mypy_cache\\3.9\\traceback.meta.json",
+      "line_number": 1,
+      "pattern_type": "API_KEYS",
+      "matched_text": "54aea72a5339b98926a3a04bd265830bc5ac9c1f",
+      "context": "{\"data_mtime\":1767511509,\"dep_hashes\":[\"a3ce50219c737f51a2b7a1d236d6baed8b9c72f2\",\"31857a7a0492346c12b6dc3b87e80fd9f334abaa\",\"9c86097e1209ffaace56aa493f2ab3fe3c7d2fd1\",\"289df6e71c0e379759d73159f4964ec",
+      "severity": "LOW"
+    },
+    {
+      "file": ".mypy_cache\\3.9\\traceback.meta.json",
+      "line_number": 1,
+      "pattern_type": "API_KEYS",
+      "matched_text": "91d92bc4ccacd147558e806bcd23381d3e0f5d1a",
+      "context": "{\"data_mtime\":1767511509,\"dep_hashes\":[\"a3ce50219c737f51a2b7a1d236d6baed8b9c72f2\",\"31857a7a0492346c12b6dc3b87e80fd9f334abaa\",\"9c86097e1209ffaace56aa493f2ab3fe3c7d2fd1\",\"289df6e71c0e379759d73159f4964ec",
+      "severity": "LOW"
+    },
+    {
+      "file": ".mypy_cache\\3.9\\traceback.meta.json",
+      "line_number": 1,
+      "pattern_type": "API_KEYS",
+      "matched_text": "8ea4ef8d7d3fab251d328f176a77c42d50ed91a3",
+      "context": "{\"data_mtime\":1767511509,\"dep_hashes\":[\"a3ce50219c737f51a2b7a1d236d6baed8b9c72f2\",\"31857a7a0492346c12b6dc3b87e80fd9f334abaa\",\"9c86097e1209ffaace56aa493f2ab3fe3c7d2fd1\",\"289df6e71c0e379759d73159f4964ec",
+      "severity": "LOW"
+    },
+    {
+      "file": ".mypy_cache\\3.9\\traceback.meta.json",
+      "line_number": 1,
+      "pattern_type": "API_KEYS",
+      "matched_text": "2841dc1bcbe9285308fdc55207703501e97ff966",
+      "context": "{\"data_mtime\":1767511509,\"dep_hashes\":[\"a3ce50219c737f51a2b7a1d236d6baed8b9c72f2\",\"31857a7a0492346c12b6dc3b87e80fd9f334abaa\",\"9c86097e1209ffaace56aa493f2ab3fe3c7d2fd1\",\"289df6e71c0e379759d73159f4964ec",
+      "severity": "LOW"
+    },
+    {
+      "file": ".mypy_cache\\3.9\\email\\errors.data.json",
+      "line_number": 1,
+      "pattern_type": "API_KEYS",
+      "matched_text": "FirstHeaderLineIsContinuationDefect",
+      "context": "{\".class\":\"MypyFile\",\"_fullname\":\"email.errors\",\"future_import_flags\":[],\"is_partial_stub_package\":false,\"is_stub\":true,\"names\":{\".class\":\"SymbolTable\",\"BoundaryError\":{\".class\":\"SymbolTableNode\",\"kin",
+      "severity": "LOW"
+    },
+    {
+      "file": ".mypy_cache\\3.9\\email\\errors.data.json",
+      "line_number": 1,
+      "pattern_type": "API_KEYS",
+      "matched_text": "FirstHeaderLineIsContinuationDefect",
+      "context": "{\".class\":\"MypyFile\",\"_fullname\":\"email.errors\",\"future_import_flags\":[],\"is_partial_stub_package\":false,\"is_stub\":true,\"names\":{\".class\":\"SymbolTable\",\"BoundaryError\":{\".class\":\"SymbolTableNode\",\"kin",
+      "severity": "LOW"
+    },
+    {
+      "file": ".mypy_cache\\3.9\\email\\errors.data.json",
+      "line_number": 1,
+      "pattern_type": "API_KEYS",
+      "matched_text": "FirstHeaderLineIsContinuationDefect",
+      "context": "{\".class\":\"MypyFile\",\"_fullname\":\"email.errors\",\"future_import_flags\":[],\"is_partial_stub_package\":false,\"is_stub\":true,\"names\":{\".class\":\"SymbolTable\",\"BoundaryError\":{\".class\":\"SymbolTableNode\",\"kin",
+      "severity": "LOW"
+    },
+    {
+      "file": ".mypy_cache\\3.9\\email\\errors.data.json",
+      "line_number": 1,
+      "pattern_type": "API_KEYS",
+      "matched_text": "FirstHeaderLineIsContinuationDefect",
+      "context": "{\".class\":\"MypyFile\",\"_fullname\":\"email.errors\",\"future_import_flags\":[],\"is_partial_stub_package\":false,\"is_stub\":true,\"names\":{\".class\":\"SymbolTable\",\"BoundaryError\":{\".class\":\"SymbolTableNode\",\"kin",
+      "severity": "LOW"
+    },
+    {
+      "file": ".mypy_cache\\3.9\\email\\errors.data.json",
+      "line_number": 1,
+      "pattern_type": "API_KEYS",
+      "matched_text": "FirstHeaderLineIsContinuationDefect",
+      "context": "{\".class\":\"MypyFile\",\"_fullname\":\"email.errors\",\"future_import_flags\":[],\"is_partial_stub_package\":false,\"is_stub\":true,\"names\":{\".class\":\"SymbolTable\",\"BoundaryError\":{\".class\":\"SymbolTableNode\",\"kin",
+      "severity": "LOW"
+    },
+    {
+      "file": ".mypy_cache\\3.9\\email\\errors.data.json",
+      "line_number": 1,
+      "pattern_type": "API_KEYS",
+      "matched_text": "InvalidMultipartContentTransferEncodingDefect",
+      "context": "{\".class\":\"MypyFile\",\"_fullname\":\"email.errors\",\"future_import_flags\":[],\"is_partial_stub_package\":false,\"is_stub\":true,\"names\":{\".class\":\"SymbolTable\",\"BoundaryError\":{\".class\":\"SymbolTableNode\",\"kin",
+      "severity": "LOW"
+    },
+    {
+      "file": ".mypy_cache\\3.9\\email\\errors.data.json",
+      "line_number": 1,
+      "pattern_type": "API_KEYS",
+      "matched_text": "InvalidMultipartContentTransferEncodingDefect",
+      "context": "{\".class\":\"MypyFile\",\"_fullname\":\"email.errors\",\"future_import_flags\":[],\"is_partial_stub_package\":false,\"is_stub\":true,\"names\":{\".class\":\"SymbolTable\",\"BoundaryError\":{\".class\":\"SymbolTableNode\",\"kin",
+      "severity": "LOW"
+    },
+    {
+      "file": ".mypy_cache\\3.9\\email\\errors.data.json",
+      "line_number": 1,
+      "pattern_type": "API_KEYS",
+      "matched_text": "InvalidMultipartContentTransferEncodingDefect",
+      "context": "{\".class\":\"MypyFile\",\"_fullname\":\"email.errors\",\"future_import_flags\":[],\"is_partial_stub_package\":false,\"is_stub\":true,\"names\":{\".class\":\"SymbolTable\",\"BoundaryError\":{\".class\":\"SymbolTableNode\",\"kin",
+      "severity": "LOW"
+    },
+    {
+      "file": ".mypy_cache\\3.9\\email\\errors.data.json",
+      "line_number": 1,
+      "pattern_type": "API_KEYS",
+      "matched_text": "InvalidMultipartContentTransferEncodingDefect",
+      "context": "{\".class\":\"MypyFile\",\"_fullname\":\"email.errors\",\"future_import_flags\":[],\"is_partial_stub_package\":false,\"is_stub\":true,\"names\":{\".class\":\"SymbolTable\",\"BoundaryError\":{\".class\":\"SymbolTableNode\",\"kin",
+      "severity": "LOW"
+    },
+    {
+      "file": ".mypy_cache\\3.9\\email\\errors.data.json",
+      "line_number": 1,
+      "pattern_type": "API_KEYS",
+      "matched_text": "InvalidMultipartContentTransferEncodingDefect",
+      "context": "{\".class\":\"MypyFile\",\"_fullname\":\"email.errors\",\"future_import_flags\":[],\"is_partial_stub_package\":false,\"is_stub\":true,\"names\":{\".class\":\"SymbolTable\",\"BoundaryError\":{\".class\":\"SymbolTableNode\",\"kin",
+      "severity": "LOW"
+    },
+    {
+      "file": ".mypy_cache\\3.9\\email\\errors.data.json",
+      "line_number": 1,
+      "pattern_type": "API_KEYS",
+      "matched_text": "MissingHeaderBodySeparatorDefect",
+      "context": "{\".class\":\"MypyFile\",\"_fullname\":\"email.errors\",\"future_import_flags\":[],\"is_partial_stub_package\":false,\"is_stub\":true,\"names\":{\".class\":\"SymbolTable\",\"BoundaryError\":{\".class\":\"SymbolTableNode\",\"kin",
+      "severity": "LOW"
+    },
+    {
+      "file": ".mypy_cache\\3.9\\email\\errors.data.json",
+      "line_number": 1,
+      "pattern_type": "API_KEYS",
+      "matched_text": "MissingHeaderBodySeparatorDefect",
+      "context": "{\".class\":\"MypyFile\",\"_fullname\":\"email.errors\",\"future_import_flags\":[],\"is_partial_stub_package\":false,\"is_stub\":true,\"names\":{\".class\":\"SymbolTable\",\"BoundaryError\":{\".class\":\"SymbolTableNode\",\"kin",
+      "severity": "LOW"
+    },
+    {
+      "file": ".mypy_cache\\3.9\\email\\errors.data.json",
+      "line_number": 1,
+      "pattern_type": "API_KEYS",
+      "matched_text": "MissingHeaderBodySeparatorDefect",
+      "context": "{\".class\":\"MypyFile\",\"_fullname\":\"email.errors\",\"future_import_flags\":[],\"is_partial_stub_package\":false,\"is_stub\":true,\"names\":{\".class\":\"SymbolTable\",\"BoundaryError\":{\".class\":\"SymbolTableNode\",\"kin",
+      "severity": "LOW"
+    },
+    {
+      "file": ".mypy_cache\\3.9\\email\\errors.data.json",
+      "line_number": 1,
+      "pattern_type": "API_KEYS",
+      "matched_text": "MissingHeaderBodySeparatorDefect",
+      "context": "{\".class\":\"MypyFile\",\"_fullname\":\"email.errors\",\"future_import_flags\":[],\"is_partial_stub_package\":false,\"is_stub\":true,\"names\":{\".class\":\"SymbolTable\",\"BoundaryError\":{\".class\":\"SymbolTableNode\",\"kin",
+      "severity": "LOW"
+    },
+    {
+      "file": ".mypy_cache\\3.9\\email\\errors.data.json",
+      "line_number": 1,
+      "pattern_type": "API_KEYS",
+      "matched_text": "MissingHeaderBodySeparatorDefect",
+      "context": "{\".class\":\"MypyFile\",\"_fullname\":\"email.errors\",\"future_import_flags\":[],\"is_partial_stub_package\":false,\"is_stub\":true,\"names\":{\".class\":\"SymbolTable\",\"BoundaryError\":{\".class\":\"SymbolTableNode\",\"kin",
+      "severity": "LOW"
+    },
+    {
+      "file": ".mypy_cache\\3.9\\email\\errors.data.json",
+      "line_number": 1,
+      "pattern_type": "API_KEYS",
+      "matched_text": "MissingHeaderBodySeparatorDefect",
+      "context": "{\".class\":\"MypyFile\",\"_fullname\":\"email.errors\",\"future_import_flags\":[],\"is_partial_stub_package\":false,\"is_stub\":true,\"names\":{\".class\":\"SymbolTable\",\"BoundaryError\":{\".class\":\"SymbolTableNode\",\"kin",
+      "severity": "LOW"
+    },
+    {
+      "file": ".mypy_cache\\3.9\\email\\errors.data.json",
+      "line_number": 1,
+      "pattern_type": "API_KEYS",
+      "matched_text": "MultipartInvariantViolationDefect",
+      "context": "{\".class\":\"MypyFile\",\"_fullname\":\"email.errors\",\"future_import_flags\":[],\"is_partial_stub_package\":false,\"is_stub\":true,\"names\":{\".class\":\"SymbolTable\",\"BoundaryError\":{\".class\":\"SymbolTableNode\",\"kin",
+      "severity": "LOW"
+    },
+    {
+      "file": ".mypy_cache\\3.9\\email\\errors.data.json",
+      "line_number": 1,
+      "pattern_type": "API_KEYS",
+      "matched_text": "MultipartInvariantViolationDefect",
+      "context": "{\".class\":\"MypyFile\",\"_fullname\":\"email.errors\",\"future_import_flags\":[],\"is_partial_stub_package\":false,\"is_stub\":true,\"names\":{\".class\":\"SymbolTable\",\"BoundaryError\":{\".class\":\"SymbolTableNode\",\"kin",
+      "severity": "LOW"
+    },
+    {
+      "file": ".mypy_cache\\3.9\\email\\errors.data.json",
+      "line_number": 1,
+      "pattern_type": "API_KEYS",
+      "matched_text": "MultipartInvariantViolationDefect",
+      "context": "{\".class\":\"MypyFile\",\"_fullname\":\"email.errors\",\"future_import_flags\":[],\"is_partial_stub_package\":false,\"is_stub\":true,\"names\":{\".class\":\"SymbolTable\",\"BoundaryError\":{\".class\":\"SymbolTableNode\",\"kin",
+      "severity": "LOW"
+    },
+    {
+      "file": ".mypy_cache\\3.9\\email\\errors.data.json",
+      "line_number": 1,
+      "pattern_type": "API_KEYS",
+      "matched_text": "MultipartInvariantViolationDefect",
+      "context": "{\".class\":\"MypyFile\",\"_fullname\":\"email.errors\",\"future_import_flags\":[],\"is_partial_stub_package\":false,\"is_stub\":true,\"names\":{\".class\":\"SymbolTable\",\"BoundaryError\":{\".class\":\"SymbolTableNode\",\"kin",
+      "severity": "LOW"
+    },
+    {
+      "file": ".mypy_cache\\3.9\\email\\errors.data.json",
+      "line_number": 1,
+      "pattern_type": "API_KEYS",
+      "matched_text": "MultipartInvariantViolationDefect",
+      "context": "{\".class\":\"MypyFile\",\"_fullname\":\"email.errors\",\"future_import_flags\":[],\"is_partial_stub_package\":false,\"is_stub\":true,\"names\":{\".class\":\"SymbolTable\",\"BoundaryError\":{\".class\":\"SymbolTableNode\",\"kin",
+      "severity": "LOW"
+    },
+    {
+      "file": ".mypy_cache\\3.9\\email\\errors.meta.json",
+      "line_number": 1,
+      "pattern_type": "PHONE_NUMBERS",
+      "matched_text": "1767511508",
+      "context": "{\"data_mtime\":1767511508,\"dep_hashes\":[\"31857a7a0492346c12b6dc3b87e80fd9f334abaa\",\"a1764954046f4786c274729a7d950efa646fa319\",\"9c86097e1209ffaace56aa493f2ab3fe3c7d2fd1\",\"54aea72a5339b98926a3a04bd265830",
+      "severity": "LOW"
+    },
+    {
+      "file": ".mypy_cache\\3.9\\email\\errors.meta.json",
+      "line_number": 1,
+      "pattern_type": "PHONE_NUMBERS",
+      "matched_text": "1767511411",
+      "context": "{\"data_mtime\":1767511508,\"dep_hashes\":[\"31857a7a0492346c12b6dc3b87e80fd9f334abaa\",\"a1764954046f4786c274729a7d950efa646fa319\",\"9c86097e1209ffaace56aa493f2ab3fe3c7d2fd1\",\"54aea72a5339b98926a3a04bd265830",
+      "severity": "LOW"
+    },
+    {
+      "file": ".mypy_cache\\3.9\\email\\errors.meta.json",
+      "line_number": 1,
+      "pattern_type": "API_KEYS",
+      "matched_text": "31857a7a0492346c12b6dc3b87e80fd9f334abaa",
+      "context": "{\"data_mtime\":1767511508,\"dep_hashes\":[\"31857a7a0492346c12b6dc3b87e80fd9f334abaa\",\"a1764954046f4786c274729a7d950efa646fa319\",\"9c86097e1209ffaace56aa493f2ab3fe3c7d2fd1\",\"54aea72a5339b98926a3a04bd265830",
+      "severity": "LOW"
+    },
+    {
+      "file": ".mypy_cache\\3.9\\email\\errors.meta.json",
+      "line_number": 1,
+      "pattern_type": "API_KEYS",
+      "matched_text": "a1764954046f4786c274729a7d950efa646fa319",
+      "context": "{\"data_mtime\":1767511508,\"dep_hashes\":[\"31857a7a0492346c12b6dc3b87e80fd9f334abaa\",\"a1764954046f4786c274729a7d950efa646fa319\",\"9c86097e1209ffaace56aa493f2ab3fe3c7d2fd1\",\"54aea72a5339b98926a3a04bd265830",
+      "severity": "LOW"
+    },
+    {
+      "file": ".mypy_cache\\3.9\\email\\errors.meta.json",
+      "line_number": 1,
+      "pattern_type": "API_KEYS",
+      "matched_text": "9c86097e1209ffaace56aa493f2ab3fe3c7d2fd1",
+      "context": "{\"data_mtime\":1767511508,\"dep_hashes\":[\"31857a7a0492346c12b6dc3b87e80fd9f334abaa\",\"a1764954046f4786c274729a7d950efa646fa319\",\"9c86097e1209ffaace56aa493f2ab3fe3c7d2fd1\",\"54aea72a5339b98926a3a04bd265830",
+      "severity": "LOW"
+    },
+    {
+      "file": ".mypy_cache\\3.9\\email\\errors.meta.json",
+      "line_number": 1,
+      "pattern_type": "API_KEYS",
+      "matched_text": "54aea72a5339b98926a3a04bd265830bc5ac9c1f",
+      "context": "{\"data_mtime\":1767511508,\"dep_hashes\":[\"31857a7a0492346c12b6dc3b87e80fd9f334abaa\",\"a1764954046f4786c274729a7d950efa646fa319\",\"9c86097e1209ffaace56aa493f2ab3fe3c7d2fd1\",\"54aea72a5339b98926a3a04bd265830",
+      "severity": "LOW"
+    },
+    {
+      "file": ".mypy_cache\\3.9\\email\\errors.meta.json",
+      "line_number": 1,
+      "pattern_type": "API_KEYS",
+      "matched_text": "0fe86a965afffbd169a63bbbd9b1464c9ea0cb20",
+      "context": "{\"data_mtime\":1767511508,\"dep_hashes\":[\"31857a7a0492346c12b6dc3b87e80fd9f334abaa\",\"a1764954046f4786c274729a7d950efa646fa319\",\"9c86097e1209ffaace56aa493f2ab3fe3c7d2fd1\",\"54aea72a5339b98926a3a04bd265830",
+      "severity": "LOW"
+    },
+    {
+      "file": ".mypy_cache\\3.9\\email\\errors.meta.json",
+      "line_number": 1,
+      "pattern_type": "API_KEYS",
+      "matched_text": "c5d3eb5df44e13c90e4a9e62524982bb8e20d2c0",
+      "context": "{\"data_mtime\":1767511508,\"dep_hashes\":[\"31857a7a0492346c12b6dc3b87e80fd9f334abaa\",\"a1764954046f4786c274729a7d950efa646fa319\",\"9c86097e1209ffaace56aa493f2ab3fe3c7d2fd1\",\"54aea72a5339b98926a3a04bd265830",
+      "severity": "LOW"
+    },
+    {
+      "file": ".mypy_cache\\3.9\\email\\errors.meta.json",
+      "line_number": 1,
+      "pattern_type": "API_KEYS",
+      "matched_text": "d631adcf1788751ebd0c0f692235f61a420227e3",
+      "context": "{\"data_mtime\":1767511508,\"dep_hashes\":[\"31857a7a0492346c12b6dc3b87e80fd9f334abaa\",\"a1764954046f4786c274729a7d950efa646fa319\",\"9c86097e1209ffaace56aa493f2ab3fe3c7d2fd1\",\"54aea72a5339b98926a3a04bd265830",
+      "severity": "LOW"
+    },
+    {
+      "file": ".mypy_cache\\3.9\\email\\errors.meta.json",
+      "line_number": 1,
+      "pattern_type": "API_KEYS",
+      "matched_text": "2841dc1bcbe9285308fdc55207703501e97ff966",
+      "context": "{\"data_mtime\":1767511508,\"dep_hashes\":[\"31857a7a0492346c12b6dc3b87e80fd9f334abaa\",\"a1764954046f4786c274729a7d950efa646fa319\",\"9c86097e1209ffaace56aa493f2ab3fe3c7d2fd1\",\"54aea72a5339b98926a3a04bd265830",
+      "severity": "LOW"
+    },
+    {
+      "file": ".mypy_cache\\3.9\\rich\\errors.meta.json",
+      "line_number": 1,
+      "pattern_type": "PHONE_NUMBERS",
+      "matched_text": "1767511511",
+      "context": "{\"data_mtime\":1767511511,\"dep_hashes\":[\"a1764954046f4786c274729a7d950efa646fa319\",\"54aea72a5339b98926a3a04bd265830bc5ac9c1f\",\"0fe86a965afffbd169a63bbbd9b1464c9ea0cb20\"],\"dep_lines\":[1,1,1],\"dep_prios\"",
+      "severity": "LOW"
+    },
+    {
+      "file": ".mypy_cache\\3.9\\rich\\errors.meta.json",
+      "line_number": 1,
+      "pattern_type": "PHONE_NUMBERS",
+      "matched_text": "1765335517",
+      "context": "{\"data_mtime\":1767511511,\"dep_hashes\":[\"a1764954046f4786c274729a7d950efa646fa319\",\"54aea72a5339b98926a3a04bd265830bc5ac9c1f\",\"0fe86a965afffbd169a63bbbd9b1464c9ea0cb20\"],\"dep_lines\":[1,1,1],\"dep_prios\"",
+      "severity": "LOW"
+    },
+    {
+      "file": ".mypy_cache\\3.9\\rich\\errors.meta.json",
+      "line_number": 1,
+      "pattern_type": "API_KEYS",
+      "matched_text": "a1764954046f4786c274729a7d950efa646fa319",
+      "context": "{\"data_mtime\":1767511511,\"dep_hashes\":[\"a1764954046f4786c274729a7d950efa646fa319\",\"54aea72a5339b98926a3a04bd265830bc5ac9c1f\",\"0fe86a965afffbd169a63bbbd9b1464c9ea0cb20\"],\"dep_lines\":[1,1,1],\"dep_prios\"",
+      "severity": "LOW"
+    },
+    {
+      "file": ".mypy_cache\\3.9\\rich\\errors.meta.json",
+      "line_number": 1,
+      "pattern_type": "API_KEYS",
+      "matched_text": "54aea72a5339b98926a3a04bd265830bc5ac9c1f",
+      "context": "{\"data_mtime\":1767511511,\"dep_hashes\":[\"a1764954046f4786c274729a7d950efa646fa319\",\"54aea72a5339b98926a3a04bd265830bc5ac9c1f\",\"0fe86a965afffbd169a63bbbd9b1464c9ea0cb20\"],\"dep_lines\":[1,1,1],\"dep_prios\"",
+      "severity": "LOW"
+    },
+    {
+      "file": ".mypy_cache\\3.9\\rich\\errors.meta.json",
+      "line_number": 1,
+      "pattern_type": "API_KEYS",
+      "matched_text": "0fe86a965afffbd169a63bbbd9b1464c9ea0cb20",
+      "context": "{\"data_mtime\":1767511511,\"dep_hashes\":[\"a1764954046f4786c274729a7d950efa646fa319\",\"54aea72a5339b98926a3a04bd265830bc5ac9c1f\",\"0fe86a965afffbd169a63bbbd9b1464c9ea0cb20\"],\"dep_lines\":[1,1,1],\"dep_prios\"",
+      "severity": "LOW"
+    },
+    {
+      "file": ".mypy_cache\\3.9\\rich\\errors.meta.json",
+      "line_number": 1,
+      "pattern_type": "API_KEYS",
+      "matched_text": "cfd7926adb4a02cb6df8794999212c6f026af1f1",
+      "context": "{\"data_mtime\":1767511511,\"dep_hashes\":[\"a1764954046f4786c274729a7d950efa646fa319\",\"54aea72a5339b98926a3a04bd265830bc5ac9c1f\",\"0fe86a965afffbd169a63bbbd9b1464c9ea0cb20\"],\"dep_lines\":[1,1,1],\"dep_prios\"",
+      "severity": "LOW"
+    },
+    {
+      "file": ".mypy_cache\\3.9\\rich\\errors.meta.json",
+      "line_number": 1,
+      "pattern_type": "API_KEYS",
+      "matched_text": "c266a3be0676409f3d728529cc6946bd69b7e791",
+      "context": "{\"data_mtime\":1767511511,\"dep_hashes\":[\"a1764954046f4786c274729a7d950efa646fa319\",\"54aea72a5339b98926a3a04bd265830bc5ac9c1f\",\"0fe86a965afffbd169a63bbbd9b1464c9ea0cb20\"],\"dep_lines\":[1,1,1],\"dep_prios\"",
+      "severity": "LOW"
+    },
+    {
+      "file": ".mypy_cache\\3.9\\rich\\errors.meta.json",
+      "line_number": 1,
+      "pattern_type": "API_KEYS",
+      "matched_text": "2841dc1bcbe9285308fdc55207703501e97ff966",
+      "context": "{\"data_mtime\":1767511511,\"dep_hashes\":[\"a1764954046f4786c274729a7d950efa646fa319\",\"54aea72a5339b98926a3a04bd265830bc5ac9c1f\",\"0fe86a965afffbd169a63bbbd9b1464c9ea0cb20\"],\"dep_lines\":[1,1,1],\"dep_prios\"",
+      "severity": "LOW"
+    },
+    {
+      "file": ".mypy_cache\\3.9\\rich\\traceback.meta.json",
+      "line_number": 1,
+      "pattern_type": "PHONE_NUMBERS",
+      "matched_text": "1767511515",
+      "context": "{\"data_mtime\":1767511515,\"dep_hashes\":[\"59938612c8a443266369650bf45a870fe9b10fcb\",\"3c890e0f7eaaa86a179790bbb11c79af36be90d6\",\"29e44f41b683bb1f71e1307011f194ff14ed558b\",\"eedcd8d6ba2286d70c6d93f80d8736e",
+      "severity": "LOW"
+    },
+    {
+      "file": ".mypy_cache\\3.9\\rich\\traceback.meta.json",
+      "line_number": 1,
+      "pattern_type": "PHONE_NUMBERS",
+      "matched_text": "1765335517",
+      "context": "{\"data_mtime\":1767511515,\"dep_hashes\":[\"59938612c8a443266369650bf45a870fe9b10fcb\",\"3c890e0f7eaaa86a179790bbb11c79af36be90d6\",\"29e44f41b683bb1f71e1307011f194ff14ed558b\",\"eedcd8d6ba2286d70c6d93f80d8736e",
+      "severity": "LOW"
+    },
+    {
+      "file": ".mypy_cache\\3.9\\rich\\traceback.meta.json",
+      "line_number": 1,
+      "pattern_type": "API_KEYS",
+      "matched_text": "59938612c8a443266369650bf45a870fe9b10fcb",
+      "context": "{\"data_mtime\":1767511515,\"dep_hashes\":[\"59938612c8a443266369650bf45a870fe9b10fcb\",\"3c890e0f7eaaa86a179790bbb11c79af36be90d6\",\"29e44f41b683bb1f71e1307011f194ff14ed558b\",\"eedcd8d6ba2286d70c6d93f80d8736e",
+      "severity": "LOW"
+    },
+    {
+      "file": ".mypy_cache\\3.9\\rich\\traceback.meta.json",
+      "line_number": 1,
+      "pattern_type": "API_KEYS",
+      "matched_text": "3c890e0f7eaaa86a179790bbb11c79af36be90d6",
+      "context": "{\"data_mtime\":1767511515,\"dep_hashes\":[\"59938612c8a443266369650bf45a870fe9b10fcb\",\"3c890e0f7eaaa86a179790bbb11c79af36be90d6\",\"29e44f41b683bb1f71e1307011f194ff14ed558b\",\"eedcd8d6ba2286d70c6d93f80d8736e",
+      "severity": "LOW"
+    },
+    {
+      "file": ".mypy_cache\\3.9\\rich\\traceback.meta.json",
+      "line_number": 1,
+      "pattern_type": "API_KEYS",
+      "matched_text": "29e44f41b683bb1f71e1307011f194ff14ed558b",
+      "context": "{\"data_mtime\":1767511515,\"dep_hashes\":[\"59938612c8a443266369650bf45a870fe9b10fcb\",\"3c890e0f7eaaa86a179790bbb11c79af36be90d6\",\"29e44f41b683bb1f71e1307011f194ff14ed558b\",\"eedcd8d6ba2286d70c6d93f80d8736e",
+      "severity": "LOW"
+    },
+    {
+      "file": ".mypy_cache\\3.9\\rich\\traceback.meta.json",
+      "line_number": 1,
+      "pattern_type": "API_KEYS",
+      "matched_text": "eedcd8d6ba2286d70c6d93f80d8736e9c001b234",
+      "context": "{\"data_mtime\":1767511515,\"dep_hashes\":[\"59938612c8a443266369650bf45a870fe9b10fcb\",\"3c890e0f7eaaa86a179790bbb11c79af36be90d6\",\"29e44f41b683bb1f71e1307011f194ff14ed558b\",\"eedcd8d6ba2286d70c6d93f80d8736e",
+      "severity": "LOW"
+    },
+    {
+      "file": ".mypy_cache\\3.9\\rich\\traceback.meta.json",
+      "line_number": 1,
+      "pattern_type": "API_KEYS",
+      "matched_text": "9c2055379baed994b9954ca354cd9790d62e2ae7",
+      "context": "{\"data_mtime\":1767511515,\"dep_hashes\":[\"59938612c8a443266369650bf45a870fe9b10fcb\",\"3c890e0f7eaaa86a179790bbb11c79af36be90d6\",\"29e44f41b683bb1f71e1307011f194ff14ed558b\",\"eedcd8d6ba2286d70c6d93f80d8736e",
+      "severity": "LOW"
+    },
+    {
+      "file": ".mypy_cache\\3.9\\rich\\traceback.meta.json",
+      "line_number": 1,
+      "pattern_type": "API_KEYS",
+      "matched_text": "15bceec5fab8e247aefd4a60324795e46a471853",
+      "context": "{\"data_mtime\":1767511515,\"dep_hashes\":[\"59938612c8a443266369650bf45a870fe9b10fcb\",\"3c890e0f7eaaa86a179790bbb11c79af36be90d6\",\"29e44f41b683bb1f71e1307011f194ff14ed558b\",\"eedcd8d6ba2286d70c6d93f80d8736e",
+      "severity": "LOW"
+    },
+    {
+      "file": ".mypy_cache\\3.9\\rich\\traceback.meta.json",
+      "line_number": 1,
+      "pattern_type": "API_KEYS",
+      "matched_text": "70bb97b778f6ff75fa38bc923895a46be8d0fa9c",
+      "context": "{\"data_mtime\":1767511515,\"dep_hashes\":[\"59938612c8a443266369650bf45a870fe9b10fcb\",\"3c890e0f7eaaa86a179790bbb11c79af36be90d6\",\"29e44f41b683bb1f71e1307011f194ff14ed558b\",\"eedcd8d6ba2286d70c6d93f80d8736e",
+      "severity": "LOW"
+    },
+    {
+      "file": ".mypy_cache\\3.9\\rich\\traceback.meta.json",
+      "line_number": 1,
+      "pattern_type": "API_KEYS",
+      "matched_text": "fd70e4680001dbf8ecc334944bc1621af06b580f",
+      "context": "{\"data_mtime\":1767511515,\"dep_hashes\":[\"59938612c8a443266369650bf45a870fe9b10fcb\",\"3c890e0f7eaaa86a179790bbb11c79af36be90d6\",\"29e44f41b683bb1f71e1307011f194ff14ed558b\",\"eedcd8d6ba2286d70c6d93f80d8736e",
+      "severity": "LOW"
+    },
+    {
+      "file": ".mypy_cache\\3.9\\rich\\traceback.meta.json",
+      "line_number": 1,
+      "pattern_type": "API_KEYS",
+      "matched_text": "754f55dccf0f1a92bf10259b7a086f74a69aa4fb",
+      "context": "{\"data_mtime\":1767511515,\"dep_hashes\":[\"59938612c8a443266369650bf45a870fe9b10fcb\",\"3c890e0f7eaaa86a179790bbb11c79af36be90d6\",\"29e44f41b683bb1f71e1307011f194ff14ed558b\",\"eedcd8d6ba2286d70c6d93f80d8736e",
+      "severity": "LOW"
+    },
+    {
+      "file": ".mypy_cache\\3.9\\rich\\traceback.meta.json",
+      "line_number": 1,
+      "pattern_type": "API_KEYS",
+      "matched_text": "f9b4fc90a98570bb0dbc3c2ea2073d0913b4ea94",
+      "context": "{\"data_mtime\":1767511515,\"dep_hashes\":[\"59938612c8a443266369650bf45a870fe9b10fcb\",\"3c890e0f7eaaa86a179790bbb11c79af36be90d6\",\"29e44f41b683bb1f71e1307011f194ff14ed558b\",\"eedcd8d6ba2286d70c6d93f80d8736e",
+      "severity": "LOW"
+    },
+    {
+      "file": ".mypy_cache\\3.9\\rich\\traceback.meta.json",
+      "line_number": 1,
+      "pattern_type": "API_KEYS",
+      "matched_text": "49e959fd3ce5c651e87a20e854b89be1d56e8483",
+      "context": "{\"data_mtime\":1767511515,\"dep_hashes\":[\"59938612c8a443266369650bf45a870fe9b10fcb\",\"3c890e0f7eaaa86a179790bbb11c79af36be90d6\",\"29e44f41b683bb1f71e1307011f194ff14ed558b\",\"eedcd8d6ba2286d70c6d93f80d8736e",
+      "severity": "LOW"
+    },
+    {
+      "file": ".mypy_cache\\3.9\\rich\\traceback.meta.json",
+      "line_number": 1,
+      "pattern_type": "API_KEYS",
+      "matched_text": "bc574bb4c1b2fd0c5c7718f5f07df2e4cecea4bb",
+      "context": "{\"data_mtime\":1767511515,\"dep_hashes\":[\"59938612c8a443266369650bf45a870fe9b10fcb\",\"3c890e0f7eaaa86a179790bbb11c79af36be90d6\",\"29e44f41b683bb1f71e1307011f194ff14ed558b\",\"eedcd8d6ba2286d70c6d93f80d8736e",
+      "severity": "LOW"
+    },
+    {
+      "file": ".mypy_cache\\3.9\\rich\\traceback.meta.json",
+      "line_number": 1,
+      "pattern_type": "API_KEYS",
+      "matched_text": "a07d5c17e4b01e5e11d2a88283ec735234b9101a",
+      "context": "{\"data_mtime\":1767511515,\"dep_hashes\":[\"59938612c8a443266369650bf45a870fe9b10fcb\",\"3c890e0f7eaaa86a179790bbb11c79af36be90d6\",\"29e44f41b683bb1f71e1307011f194ff14ed558b\",\"eedcd8d6ba2286d70c6d93f80d8736e",
+      "severity": "LOW"
+    },
+    {
+      "file": ".mypy_cache\\3.9\\rich\\traceback.meta.json",
+      "line_number": 1,
+      "pattern_type": "API_KEYS",
+      "matched_text": "14d1d1411f5843ee7d9727ca6f7509c9de3f3c4a",
+      "context": "{\"data_mtime\":1767511515,\"dep_hashes\":[\"59938612c8a443266369650bf45a870fe9b10fcb\",\"3c890e0f7eaaa86a179790bbb11c79af36be90d6\",\"29e44f41b683bb1f71e1307011f194ff14ed558b\",\"eedcd8d6ba2286d70c6d93f80d8736e",
+      "severity": "LOW"
+    },
+    {
+      "file": ".mypy_cache\\3.9\\rich\\traceback.meta.json",
+      "line_number": 1,
+      "pattern_type": "API_KEYS",
+      "matched_text": "b173f92b8db576bbc7169b9406bcdcf95b045404",
+      "context": "{\"data_mtime\":1767511515,\"dep_hashes\":[\"59938612c8a443266369650bf45a870fe9b10fcb\",\"3c890e0f7eaaa86a179790bbb11c79af36be90d6\",\"29e44f41b683bb1f71e1307011f194ff14ed558b\",\"eedcd8d6ba2286d70c6d93f80d8736e",
+      "severity": "LOW"
+    },
+    {
+      "file": ".mypy_cache\\3.9\\rich\\traceback.meta.json",
+      "line_number": 1,
+      "pattern_type": "API_KEYS",
+      "matched_text": "31857a7a0492346c12b6dc3b87e80fd9f334abaa",
+      "context": "{\"data_mtime\":1767511515,\"dep_hashes\":[\"59938612c8a443266369650bf45a870fe9b10fcb\",\"3c890e0f7eaaa86a179790bbb11c79af36be90d6\",\"29e44f41b683bb1f71e1307011f194ff14ed558b\",\"eedcd8d6ba2286d70c6d93f80d8736e",
+      "severity": "LOW"
+    },
+    {
+      "file": ".mypy_cache\\3.9\\rich\\traceback.meta.json",
+      "line_number": 1,
+      "pattern_type": "API_KEYS",
+      "matched_text": "33084551172773c2800efa7f32f15c7e1d2dc074",
+      "context": "{\"data_mtime\":1767511515,\"dep_hashes\":[\"59938612c8a443266369650bf45a870fe9b10fcb\",\"3c890e0f7eaaa86a179790bbb11c79af36be90d6\",\"29e44f41b683bb1f71e1307011f194ff14ed558b\",\"eedcd8d6ba2286d70c6d93f80d8736e",
+      "severity": "LOW"
+    },
+    {
+      "file": ".mypy_cache\\3.9\\rich\\traceback.meta.json",
+      "line_number": 1,
+      "pattern_type": "API_KEYS",
+      "matched_text": "60987ae6aa50a2575be49508ce4585f2525bf187",
+      "context": "{\"data_mtime\":1767511515,\"dep_hashes\":[\"59938612c8a443266369650bf45a870fe9b10fcb\",\"3c890e0f7eaaa86a179790bbb11c79af36be90d6\",\"29e44f41b683bb1f71e1307011f194ff14ed558b\",\"eedcd8d6ba2286d70c6d93f80d8736e",
+      "severity": "LOW"
+    },
+    {
+      "file": ".mypy_cache\\3.9\\rich\\traceback.meta.json",
+      "line_number": 1,
+      "pattern_type": "API_KEYS",
+      "matched_text": "8ea4ef8d7d3fab251d328f176a77c42d50ed91a3",
+      "context": "{\"data_mtime\":1767511515,\"dep_hashes\":[\"59938612c8a443266369650bf45a870fe9b10fcb\",\"3c890e0f7eaaa86a179790bbb11c79af36be90d6\",\"29e44f41b683bb1f71e1307011f194ff14ed558b\",\"eedcd8d6ba2286d70c6d93f80d8736e",
+      "severity": "LOW"
+    },
+    {
+      "file": ".mypy_cache\\3.9\\rich\\traceback.meta.json",
+      "line_number": 1,
+      "pattern_type": "API_KEYS",
+      "matched_text": "289df6e71c0e379759d73159f4964ecca73603b9",
+      "context": "{\"data_mtime\":1767511515,\"dep_hashes\":[\"59938612c8a443266369650bf45a870fe9b10fcb\",\"3c890e0f7eaaa86a179790bbb11c79af36be90d6\",\"29e44f41b683bb1f71e1307011f194ff14ed558b\",\"eedcd8d6ba2286d70c6d93f80d8736e",
+      "severity": "LOW"
+    },
+    {
+      "file": ".mypy_cache\\3.9\\rich\\traceback.meta.json",
+      "line_number": 1,
+      "pattern_type": "API_KEYS",
+      "matched_text": "0fe86a965afffbd169a63bbbd9b1464c9ea0cb20",
+      "context": "{\"data_mtime\":1767511515,\"dep_hashes\":[\"59938612c8a443266369650bf45a870fe9b10fcb\",\"3c890e0f7eaaa86a179790bbb11c79af36be90d6\",\"29e44f41b683bb1f71e1307011f194ff14ed558b\",\"eedcd8d6ba2286d70c6d93f80d8736e",
+      "severity": "LOW"
+    },
+    {
+      "file": ".mypy_cache\\3.9\\rich\\traceback.meta.json",
+      "line_number": 1,
+      "pattern_type": "API_KEYS",
+      "matched_text": "3defe53328c4d784de51415b10f13d37b9035a04",
+      "context": "{\"data_mtime\":1767511515,\"dep_hashes\":[\"59938612c8a443266369650bf45a870fe9b10fcb\",\"3c890e0f7eaaa86a179790bbb11c79af36be90d6\",\"29e44f41b683bb1f71e1307011f194ff14ed558b\",\"eedcd8d6ba2286d70c6d93f80d8736e",
+      "severity": "LOW"
+    },
+    {
+      "file": ".mypy_cache\\3.9\\rich\\traceback.meta.json",
+      "line_number": 1,
+      "pattern_type": "API_KEYS",
+      "matched_text": "a1764954046f4786c274729a7d950efa646fa319",
+      "context": "{\"data_mtime\":1767511515,\"dep_hashes\":[\"59938612c8a443266369650bf45a870fe9b10fcb\",\"3c890e0f7eaaa86a179790bbb11c79af36be90d6\",\"29e44f41b683bb1f71e1307011f194ff14ed558b\",\"eedcd8d6ba2286d70c6d93f80d8736e",
+      "severity": "LOW"
+    },
+    {
+      "file": ".mypy_cache\\3.9\\rich\\traceback.meta.json",
+      "line_number": 1,
+      "pattern_type": "API_KEYS",
+      "matched_text": "9c86097e1209ffaace56aa493f2ab3fe3c7d2fd1",
+      "context": "{\"data_mtime\":1767511515,\"dep_hashes\":[\"59938612c8a443266369650bf45a870fe9b10fcb\",\"3c890e0f7eaaa86a179790bbb11c79af36be90d6\",\"29e44f41b683bb1f71e1307011f194ff14ed558b\",\"eedcd8d6ba2286d70c6d93f80d8736e",
+      "severity": "LOW"
+    },
+    {
+      "file": ".mypy_cache\\3.9\\rich\\traceback.meta.json",
+      "line_number": 1,
+      "pattern_type": "API_KEYS",
+      "matched_text": "54aea72a5339b98926a3a04bd265830bc5ac9c1f",
+      "context": "{\"data_mtime\":1767511515,\"dep_hashes\":[\"59938612c8a443266369650bf45a870fe9b10fcb\",\"3c890e0f7eaaa86a179790bbb11c79af36be90d6\",\"29e44f41b683bb1f71e1307011f194ff14ed558b\",\"eedcd8d6ba2286d70c6d93f80d8736e",
+      "severity": "LOW"
+    },
+    {
+      "file": ".mypy_cache\\3.9\\rich\\traceback.meta.json",
+      "line_number": 1,
+      "pattern_type": "API_KEYS",
+      "matched_text": "7605679c251d5de954302d8b0720ba354946755c",
+      "context": "{\"data_mtime\":1767511515,\"dep_hashes\":[\"59938612c8a443266369650bf45a870fe9b10fcb\",\"3c890e0f7eaaa86a179790bbb11c79af36be90d6\",\"29e44f41b683bb1f71e1307011f194ff14ed558b\",\"eedcd8d6ba2286d70c6d93f80d8736e",
+      "severity": "LOW"
+    },
+    {
+      "file": ".mypy_cache\\3.9\\rich\\traceback.meta.json",
+      "line_number": 1,
+      "pattern_type": "API_KEYS",
+      "matched_text": "b0cf81594fd71966312508bd201c4e03562f5203",
+      "context": "{\"data_mtime\":1767511515,\"dep_hashes\":[\"59938612c8a443266369650bf45a870fe9b10fcb\",\"3c890e0f7eaaa86a179790bbb11c79af36be90d6\",\"29e44f41b683bb1f71e1307011f194ff14ed558b\",\"eedcd8d6ba2286d70c6d93f80d8736e",
+      "severity": "LOW"
+    },
+    {
+      "file": ".mypy_cache\\3.9\\rich\\traceback.meta.json",
+      "line_number": 1,
+      "pattern_type": "API_KEYS",
+      "matched_text": "4fe164eed2b06939c00bf263351a12777d501f9f",
+      "context": "{\"data_mtime\":1767511515,\"dep_hashes\":[\"59938612c8a443266369650bf45a870fe9b10fcb\",\"3c890e0f7eaaa86a179790bbb11c79af36be90d6\",\"29e44f41b683bb1f71e1307011f194ff14ed558b\",\"eedcd8d6ba2286d70c6d93f80d8736e",
+      "severity": "LOW"
+    },
+    {
+      "file": ".mypy_cache\\3.9\\rich\\traceback.meta.json",
+      "line_number": 1,
+      "pattern_type": "API_KEYS",
+      "matched_text": "4f5ff872cd42c6d402f60b25f7440d278117bbf1",
+      "context": "{\"data_mtime\":1767511515,\"dep_hashes\":[\"59938612c8a443266369650bf45a870fe9b10fcb\",\"3c890e0f7eaaa86a179790bbb11c79af36be90d6\",\"29e44f41b683bb1f71e1307011f194ff14ed558b\",\"eedcd8d6ba2286d70c6d93f80d8736e",
+      "severity": "LOW"
+    },
+    {
+      "file": ".mypy_cache\\3.9\\rich\\traceback.meta.json",
+      "line_number": 1,
+      "pattern_type": "API_KEYS",
+      "matched_text": "1335c16e953f4fc9d07e91993118ea4139707b99",
+      "context": "{\"data_mtime\":1767511515,\"dep_hashes\":[\"59938612c8a443266369650bf45a870fe9b10fcb\",\"3c890e0f7eaaa86a179790bbb11c79af36be90d6\",\"29e44f41b683bb1f71e1307011f194ff14ed558b\",\"eedcd8d6ba2286d70c6d93f80d8736e",
+      "severity": "LOW"
+    },
+    {
+      "file": ".mypy_cache\\3.9\\rich\\traceback.meta.json",
+      "line_number": 1,
+      "pattern_type": "API_KEYS",
+      "matched_text": "5f51f5d21a42caa0e4d5ba324ec4596512973403",
+      "context": "{\"data_mtime\":1767511515,\"dep_hashes\":[\"59938612c8a443266369650bf45a870fe9b10fcb\",\"3c890e0f7eaaa86a179790bbb11c79af36be90d6\",\"29e44f41b683bb1f71e1307011f194ff14ed558b\",\"eedcd8d6ba2286d70c6d93f80d8736e",
+      "severity": "LOW"
+    },
+    {
+      "file": ".mypy_cache\\3.9\\rich\\traceback.meta.json",
+      "line_number": 1,
+      "pattern_type": "API_KEYS",
+      "matched_text": "945ced6085e45dc9a679680077b4906cdfc42f15",
+      "context": "{\"data_mtime\":1767511515,\"dep_hashes\":[\"59938612c8a443266369650bf45a870fe9b10fcb\",\"3c890e0f7eaaa86a179790bbb11c79af36be90d6\",\"29e44f41b683bb1f71e1307011f194ff14ed558b\",\"eedcd8d6ba2286d70c6d93f80d8736e",
+      "severity": "LOW"
+    },
+    {
+      "file": ".mypy_cache\\3.9\\rich\\traceback.meta.json",
+      "line_number": 1,
+      "pattern_type": "API_KEYS",
+      "matched_text": "de20de98a1254aeac256dd1ae380f0b3dce3c5db",
+      "context": "{\"data_mtime\":1767511515,\"dep_hashes\":[\"59938612c8a443266369650bf45a870fe9b10fcb\",\"3c890e0f7eaaa86a179790bbb11c79af36be90d6\",\"29e44f41b683bb1f71e1307011f194ff14ed558b\",\"eedcd8d6ba2286d70c6d93f80d8736e",
+      "severity": "LOW"
+    },
+    {
+      "file": ".mypy_cache\\3.9\\rich\\traceback.meta.json",
+      "line_number": 1,
+      "pattern_type": "API_KEYS",
+      "matched_text": "82d4a798c0d38998639018c1af659633060b83e6",
+      "context": "{\"data_mtime\":1767511515,\"dep_hashes\":[\"59938612c8a443266369650bf45a870fe9b10fcb\",\"3c890e0f7eaaa86a179790bbb11c79af36be90d6\",\"29e44f41b683bb1f71e1307011f194ff14ed558b\",\"eedcd8d6ba2286d70c6d93f80d8736e",
+      "severity": "LOW"
+    },
+    {
+      "file": ".mypy_cache\\3.9\\rich\\traceback.meta.json",
+      "line_number": 1,
+      "pattern_type": "API_KEYS",
+      "matched_text": "e70f15d88af2be16f018cd1a1de0f8dd1a83a688",
+      "context": "{\"data_mtime\":1767511515,\"dep_hashes\":[\"59938612c8a443266369650bf45a870fe9b10fcb\",\"3c890e0f7eaaa86a179790bbb11c79af36be90d6\",\"29e44f41b683bb1f71e1307011f194ff14ed558b\",\"eedcd8d6ba2286d70c6d93f80d8736e",
+      "severity": "LOW"
+    },
+    {
+      "file": ".mypy_cache\\3.9\\rich\\traceback.meta.json",
+      "line_number": 1,
+      "pattern_type": "API_KEYS",
+      "matched_text": "6ce633b0ca2a5945861f430ea062eb2a7d4fdda3",
+      "context": "{\"data_mtime\":1767511515,\"dep_hashes\":[\"59938612c8a443266369650bf45a870fe9b10fcb\",\"3c890e0f7eaaa86a179790bbb11c79af36be90d6\",\"29e44f41b683bb1f71e1307011f194ff14ed558b\",\"eedcd8d6ba2286d70c6d93f80d8736e",
+      "severity": "LOW"
+    },
+    {
+      "file": ".mypy_cache\\3.9\\rich\\traceback.meta.json",
+      "line_number": 1,
+      "pattern_type": "API_KEYS",
+      "matched_text": "2841dc1bcbe9285308fdc55207703501e97ff966",
+      "context": "{\"data_mtime\":1767511515,\"dep_hashes\":[\"59938612c8a443266369650bf45a870fe9b10fcb\",\"3c890e0f7eaaa86a179790bbb11c79af36be90d6\",\"29e44f41b683bb1f71e1307011f194ff14ed558b\",\"eedcd8d6ba2286d70c6d93f80d8736e",
+      "severity": "LOW"
+    },
+    {
+      "file": ".pytest_cache\\v\\cache\\nodeids",
+      "line_number": 180,
+      "pattern_type": "API_KEYS",
+      "matched_text": "TestStorageServiceFileOperations",
+      "context": "\"tests/test_storage_service.py::TestStorageServiceFileOperations::test_ensure_directory_failure\",",
+      "severity": "LOW"
+    },
+    {
+      "file": ".pytest_cache\\v\\cache\\nodeids",
+      "line_number": 181,
+      "pattern_type": "API_KEYS",
+      "matched_text": "TestStorageServiceFileOperations",
+      "context": "\"tests/test_storage_service.py::TestStorageServiceFileOperations::test_ensure_directory_success\",",
+      "severity": "LOW"
+    },
+    {
+      "file": ".pytest_cache\\v\\cache\\nodeids",
+      "line_number": 182,
+      "pattern_type": "API_KEYS",
+      "matched_text": "TestStorageServiceFileOperations",
+      "context": "\"tests/test_storage_service.py::TestStorageServiceFileOperations::test_read_file_not_found\",",
+      "severity": "LOW"
+    },
+    {
+      "file": ".pytest_cache\\v\\cache\\nodeids",
+      "line_number": 183,
+      "pattern_type": "API_KEYS",
+      "matched_text": "TestStorageServiceFileOperations",
+      "context": "\"tests/test_storage_service.py::TestStorageServiceFileOperations::test_read_file_success\",",
+      "severity": "LOW"
+    },
+    {
+      "file": ".pytest_cache\\v\\cache\\nodeids",
+      "line_number": 184,
+      "pattern_type": "API_KEYS",
+      "matched_text": "TestStorageServiceFileOperations",
+      "context": "\"tests/test_storage_service.py::TestStorageServiceFileOperations::test_write_file_creates_parent_dirs\",",
+      "severity": "LOW"
+    },
+    {
+      "file": ".pytest_cache\\v\\cache\\nodeids",
+      "line_number": 185,
+      "pattern_type": "API_KEYS",
+      "matched_text": "TestStorageServiceFileOperations",
+      "context": "\"tests/test_storage_service.py::TestStorageServiceFileOperations::test_write_file_failure\",",
+      "severity": "LOW"
+    },
+    {
+      "file": ".pytest_cache\\v\\cache\\nodeids",
+      "line_number": 186,
+      "pattern_type": "API_KEYS",
+      "matched_text": "TestStorageServiceFileOperations",
+      "context": "\"tests/test_storage_service.py::TestStorageServiceFileOperations::test_write_file_success\",",
+      "severity": "LOW"
+    },
+    {
+      "file": "check\\check_report_20260104_152619.json",
+      "line_number": 19,
+      "pattern_type": "PHONE_NUMBERS",
+      "matched_text": "1767511552",
+      "context": "\"output\": \"/test_demo_manager.py::TestDemoRepository::test_load_demo_with_cache PASSED [ 54%]\\ntests/test_demo_manager.py::TestDemoRepository::test_load_demo_not_found PASSED [ 57%]\\ntests/test_demo_m",
+      "severity": "LOW"
+    },
+    {
+      "file": "check\\check_report_20260104_152619.json",
+      "line_number": 19,
+      "pattern_type": "PHONE_NUMBERS",
+      "matched_text": "1767511552",
+      "context": "\"output\": \"/test_demo_manager.py::TestDemoRepository::test_load_demo_with_cache PASSED [ 54%]\\ntests/test_demo_manager.py::TestDemoRepository::test_load_demo_not_found PASSED [ 57%]\\ntests/test_demo_m",
+      "severity": "LOW"
+    },
+    {
+      "file": "container\\containerd\\advanced\\basic-containerd-troubleshooting\\README.md",
+      "line_number": 203,
+      "pattern_type": "IP_ADDRESSES",
+      "matched_text": "8.8.8.8",
+      "context": "crictl run --rm --name test busybox:latest ping -c 3 8.8.8.8",
+      "severity": "LOW"
+    },
+    {
+      "file": "container\\containerd\\advanced\\basic-containerd-troubleshooting\\README.md",
+      "line_number": 235,
+      "pattern_type": "IP_ADDRESSES",
+      "matched_text": "10.88.0.0",
+      "context": "[{\"subnet\": \"10.88.0.0/16\"}]",
+      "severity": "LOW"
+    },
+    {
+      "file": "container\\containerd\\advanced\\basic-containerd-troubleshooting\\README.md",
+      "line_number": 238,
+      "pattern_type": "IP_ADDRESSES",
+      "matched_text": "0.0.0.0",
+      "context": "{\"dst\": \"0.0.0.0/0\"}",
+      "severity": "LOW"
+    },
+    {
+      "file": "container\\docker\\advanced\\troubleshooting\\basic-docker-troubleshooting\\README.md",
+      "line_number": 204,
+      "pattern_type": "IP_ADDRESSES",
+      "matched_text": "8.8.8.8",
+      "context": "docker run --rm busybox ping -c 3 8.8.8.8",
+      "severity": "LOW"
+    },
+    {
+      "file": "container\\docker\\advanced\\troubleshooting\\basic-docker-troubleshooting\\README.md",
+      "line_number": 230,
+      "pattern_type": "IP_ADDRESSES",
+      "matched_text": "8.8.8.8",
+      "context": "\"dns\": [\"8.8.8.8\", \"8.8.4.4\"]",
+      "severity": "LOW"
+    },
+    {
+      "file": "container\\docker\\advanced\\troubleshooting\\basic-docker-troubleshooting\\README.md",
+      "line_number": 230,
+      "pattern_type": "IP_ADDRESSES",
+      "matched_text": "8.8.4.4",
+      "context": "\"dns\": [\"8.8.8.8\", \"8.8.4.4\"]",
+      "severity": "LOW"
+    },
+    {
+      "file": "database\\capacity-planning-demo\\README.md",
+      "line_number": 185,
+      "pattern_type": "PHONE_NUMBERS",
+      "matched_text": "1000000000",
+      "context": "avg_timer_wait/1000000000 as avg_latency_ms,",
+      "severity": "LOW"
+    },
+    {
+      "file": "database\\capacity-planning-demo\\README.md",
+      "line_number": 198,
+      "pattern_type": "PHONE_NUMBERS",
+      "matched_text": "1000000000",
+      "context": "AVG(AVG_TIMER_WAIT)/1000000000 as avg_latency_ms",
+      "severity": "LOW"
+    },
+    {
+      "file": "database\\capacity-planning-demo\\README.md",
+      "line_number": 326,
+      "pattern_type": "PHONE_NUMBERS",
+      "matched_text": "1000000000",
+      "context": "ROUND(AVG_TIMER_WAIT/1000000000, 2) as avg_time_ms",
+      "severity": "LOW"
+    },
+    {
+      "file": "database\\postgresql-troubleshooting-demo\\README.md",
+      "line_number": 324,
+      "pattern_type": "EMAIL_ADDRESSES",
+      "matched_text": "user@example.com",
+      "context": "SELECT * FROM users WHERE email = 'user@example.com';",
+      "severity": "MEDIUM"
+    },
+    {
+      "file": "database\\postgresql-troubleshooting-demo\\README.md",
+      "line_number": 855,
+      "pattern_type": "EMAIL_ADDRESSES",
+      "matched_text": "admin@example.com",
+      "context": "ALERT_EMAIL=\"admin@example.com\"",
+      "severity": "MEDIUM"
+    },
+    {
+      "file": "database\\postgresql-troubleshooting-demo\\README.md",
+      "line_number": 966,
+      "pattern_type": "EMAIL_ADDRESSES",
+      "matched_text": "user@example.com",
+      "context": "EXPLAIN (ANALYZE, BUFFERS) SELECT * FROM users WHERE email = 'user@example.com';",
+      "severity": "MEDIUM"
+    },
+    {
+      "file": "go\\go-go-viper-config-env-integration\\README.md",
+      "line_number": 78,
+      "pattern_type": "IP_ADDRESSES",
+      "matched_text": "0.0.0.0",
+      "context": "export SERVER_HOST=0.0.0.0",
+      "severity": "LOW"
+    },
+    {
+      "file": "go\\go-go-viper-config-env-integration\\README.md",
+      "line_number": 85,
+      "pattern_type": "IP_ADDRESSES",
+      "matched_text": "0.0.0.0",
+      "context": "服务器将在 0.0.0.0:9000 启动",
+      "severity": "LOW"
+    },
+    {
+      "file": "go\\go-go-viper-config-env-integration\\README.md",
+      "line_number": 108,
+      "pattern_type": "IP_ADDRESSES",
+      "matched_text": "0.0.0.0",
+      "context": "服务器将在 0.0.0.0:9000 启动",
+      "severity": "LOW"
+    },
+    {
+      "file": "go\\go-godemo-dependency-injection-demo\\README.md",
+      "line_number": 62,
+      "pattern_type": "EMAIL_ADDRESSES",
+      "matched_text": "alice@example.com",
+      "context": "邮件服务发送消息到: alice@example.com, 内容: 欢迎注册！",
+      "severity": "MEDIUM"
+    },
+    {
+      "file": "htmlcov\\status.json",
+      "line_number": 1,
+      "pattern_type": "API_KEYS",
+      "matched_text": "e3fd9a81bdd23c556588818d9552f8b4",
+      "context": "{\"note\":\"This file is an internal implementation detail to speed up HTML report generation. Its format can change at any time. You might be looking for the JSON report: https://coverage.rtfd.io/cmd.ht",
+      "severity": "LOW"
+    },
+    {
+      "file": "htmlcov\\status.json",
+      "line_number": 1,
+      "pattern_type": "API_KEYS",
+      "matched_text": "ed9ab620599bf47304e1608c8fee6913",
+      "context": "{\"note\":\"This file is an internal implementation detail to speed up HTML report generation. Its format can change at any time. You might be looking for the JSON report: https://coverage.rtfd.io/cmd.ht",
+      "severity": "LOW"
+    },
+    {
+      "file": "htmlcov\\status.json",
+      "line_number": 1,
+      "pattern_type": "API_KEYS",
+      "matched_text": "8d979e905a09576753be2602d41390d0",
+      "context": "{\"note\":\"This file is an internal implementation detail to speed up HTML report generation. Its format can change at any time. You might be looking for the JSON report: https://coverage.rtfd.io/cmd.ht",
+      "severity": "LOW"
+    },
+    {
+      "file": "htmlcov\\status.json",
+      "line_number": 1,
+      "pattern_type": "API_KEYS",
+      "matched_text": "97e5f6e6efbeba0c02801217cb6828e6",
+      "context": "{\"note\":\"This file is an internal implementation detail to speed up HTML report generation. Its format can change at any time. You might be looking for the JSON report: https://coverage.rtfd.io/cmd.ht",
+      "severity": "LOW"
+    },
+    {
+      "file": "htmlcov\\status.json",
+      "line_number": 1,
+      "pattern_type": "API_KEYS",
+      "matched_text": "51de85af78966565761b9d76fe9bd3a4",
+      "context": "{\"note\":\"This file is an internal implementation detail to speed up HTML report generation. Its format can change at any time. You might be looking for the JSON report: https://coverage.rtfd.io/cmd.ht",
+      "severity": "LOW"
+    },
+    {
+      "file": "htmlcov\\status.json",
+      "line_number": 1,
+      "pattern_type": "API_KEYS",
+      "matched_text": "b94d200faff7e8c14ebf0774a03e1263",
+      "context": "{\"note\":\"This file is an internal implementation detail to speed up HTML report generation. Its format can change at any time. You might be looking for the JSON report: https://coverage.rtfd.io/cmd.ht",
+      "severity": "LOW"
+    },
+    {
+      "file": "htmlcov\\status.json",
+      "line_number": 1,
+      "pattern_type": "API_KEYS",
+      "matched_text": "4064509b9cc491888586adccc7d77665",
+      "context": "{\"note\":\"This file is an internal implementation detail to speed up HTML report generation. Its format can change at any time. You might be looking for the JSON report: https://coverage.rtfd.io/cmd.ht",
+      "severity": "LOW"
+    },
+    {
+      "file": "htmlcov\\status.json",
+      "line_number": 1,
+      "pattern_type": "API_KEYS",
+      "matched_text": "5796be6d65f5488a5a4199522e7dd0b6",
+      "context": "{\"note\":\"This file is an internal implementation detail to speed up HTML report generation. Its format can change at any time. You might be looking for the JSON report: https://coverage.rtfd.io/cmd.ht",
+      "severity": "LOW"
+    },
+    {
+      "file": "htmlcov\\status.json",
+      "line_number": 1,
+      "pattern_type": "API_KEYS",
+      "matched_text": "d30f369cff3f86986efa01dbe795cc54",
+      "context": "{\"note\":\"This file is an internal implementation detail to speed up HTML report generation. Its format can change at any time. You might be looking for the JSON report: https://coverage.rtfd.io/cmd.ht",
+      "severity": "LOW"
+    },
+    {
+      "file": "htmlcov\\status.json",
+      "line_number": 1,
+      "pattern_type": "API_KEYS",
+      "matched_text": "85168f0b1d962115e7652a1e913a36d2",
+      "context": "{\"note\":\"This file is an internal implementation detail to speed up HTML report generation. Its format can change at any time. You might be looking for the JSON report: https://coverage.rtfd.io/cmd.ht",
+      "severity": "LOW"
+    },
+    {
+      "file": "htmlcov\\status.json",
+      "line_number": 1,
+      "pattern_type": "API_KEYS",
+      "matched_text": "43d035800988860edef49b23a633c771",
+      "context": "{\"note\":\"This file is an internal implementation detail to speed up HTML report generation. Its format can change at any time. You might be looking for the JSON report: https://coverage.rtfd.io/cmd.ht",
+      "severity": "LOW"
+    },
+    {
+      "file": "htmlcov\\status.json",
+      "line_number": 1,
+      "pattern_type": "API_KEYS",
+      "matched_text": "e712fc4d6d6b55ce414da5248cacae8a",
+      "context": "{\"note\":\"This file is an internal implementation detail to speed up HTML report generation. Its format can change at any time. You might be looking for the JSON report: https://coverage.rtfd.io/cmd.ht",
+      "severity": "LOW"
+    },
+    {
+      "file": "htmlcov\\status.json",
+      "line_number": 1,
+      "pattern_type": "API_KEYS",
+      "matched_text": "01ff447b03d0b9ac38f9dd359efe1921",
+      "context": "{\"note\":\"This file is an internal implementation detail to speed up HTML report generation. Its format can change at any time. You might be looking for the JSON report: https://coverage.rtfd.io/cmd.ht",
+      "severity": "LOW"
+    },
+    {
+      "file": "htmlcov\\status.json",
+      "line_number": 1,
+      "pattern_type": "API_KEYS",
+      "matched_text": "88a6604d9ce19aff998bb54d0b75f463",
+      "context": "{\"note\":\"This file is an internal implementation detail to speed up HTML report generation. Its format can change at any time. You might be looking for the JSON report: https://coverage.rtfd.io/cmd.ht",
+      "severity": "LOW"
+    },
+    {
+      "file": "htmlcov\\status.json",
+      "line_number": 1,
+      "pattern_type": "API_KEYS",
+      "matched_text": "01a8c9a52124e0a6dfaca69df5e6173e",
+      "context": "{\"note\":\"This file is an internal implementation detail to speed up HTML report generation. Its format can change at any time. You might be looking for the JSON report: https://coverage.rtfd.io/cmd.ht",
+      "severity": "LOW"
+    },
+    {
+      "file": "htmlcov\\status.json",
+      "line_number": 1,
+      "pattern_type": "API_KEYS",
+      "matched_text": "fbdaea13d89bf6150e69c894f8083c61",
+      "context": "{\"note\":\"This file is an internal implementation detail to speed up HTML report generation. Its format can change at any time. You might be looking for the JSON report: https://coverage.rtfd.io/cmd.ht",
+      "severity": "LOW"
+    },
+    {
+      "file": "htmlcov\\status.json",
+      "line_number": 1,
+      "pattern_type": "API_KEYS",
+      "matched_text": "585ef08e7d451c7b4a4ae77c9d06e359",
+      "context": "{\"note\":\"This file is an internal implementation detail to speed up HTML report generation. Its format can change at any time. You might be looking for the JSON report: https://coverage.rtfd.io/cmd.ht",
+      "severity": "LOW"
+    },
+    {
+      "file": "htmlcov\\status.json",
+      "line_number": 1,
+      "pattern_type": "API_KEYS",
+      "matched_text": "89aa625c9187c44976b67e24cd720cbc",
+      "context": "{\"note\":\"This file is an internal implementation detail to speed up HTML report generation. Its format can change at any time. You might be looking for the JSON report: https://coverage.rtfd.io/cmd.ht",
+      "severity": "LOW"
+    },
+    {
+      "file": "htmlcov\\z_a688e9ce1c6ab0c6_demo_repository_py.html",
+      "line_number": 1092,
+      "pattern_type": "API_KEYS",
+      "matched_text": "abcdefghijklmnopqrstuvwxyz0123456789",
+      "context": "<p class=\"mis show_mis\"><span class=\"n\"><a id=\"t1008\" href=\"#t1008\">1008</a></span><span class=\"t\">        <span class=\"nam\">allowed_chars</span> <span class=\"op\">=</span> <span class=\"nam\">set</span>",
+      "severity": "LOW"
+    },
+    {
+      "file": "kubernetes\\infrastructure\\cluster-setup\\README.md",
+      "line_number": 102,
+      "pattern_type": "IP_ADDRESSES",
+      "matched_text": "10.244.0.0",
+      "context": "--pod-network-cidr=10.244.0.0/16 \\",
+      "severity": "LOW"
+    },
+    {
+      "file": "kubernetes\\infrastructure\\cluster-setup\\README.md",
+      "line_number": 103,
+      "pattern_type": "IP_ADDRESSES",
+      "matched_text": "192.168.1.100",
+      "context": "--apiserver-advertise-address=192.168.1.100 \\",
+      "severity": "LOW"
+    },
+    {
+      "file": "kubernetes\\infrastructure\\cluster-setup\\README.md",
+      "line_number": 119,
+      "pattern_type": "IP_ADDRESSES",
+      "matched_text": "192.168.1.100",
+      "context": "sudo kubeadm join 192.168.1.100:6443 \\",
+      "severity": "LOW"
+    },
+    {
+      "file": "kubernetes\\infrastructure\\cluster-setup\\README.md",
+      "line_number": 121,
+      "pattern_type": "API_KEYS",
+      "matched_text": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+      "context": "--discovery-token-ca-cert-hash sha256:xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+      "severity": "LOW"
+    },
+    {
+      "file": "kubernetes\\infrastructure\\cluster-setup\\README.md",
+      "line_number": 129,
+      "pattern_type": "IP_ADDRESSES",
+      "matched_text": "192.168.1.200",
+      "context": "负载均衡器 (VIP: 192.168.1.200)",
+      "severity": "LOW"
+    },
+    {
+      "file": "kubernetes\\infrastructure\\cluster-setup\\README.md",
+      "line_number": 130,
+      "pattern_type": "IP_ADDRESSES",
+      "matched_text": "192.168.1.101",
+      "context": "├── Master Node 1 (192.168.1.101)",
+      "severity": "LOW"
+    },
+    {
+      "file": "kubernetes\\infrastructure\\cluster-setup\\README.md",
+      "line_number": 131,
+      "pattern_type": "IP_ADDRESSES",
+      "matched_text": "192.168.1.102",
+      "context": "├── Master Node 2 (192.168.1.102)",
+      "severity": "LOW"
+    },
+    {
+      "file": "kubernetes\\infrastructure\\cluster-setup\\README.md",
+      "line_number": 132,
+      "pattern_type": "IP_ADDRESSES",
+      "matched_text": "192.168.1.103",
+      "context": "└── Master Node 3 (192.168.1.103)",
+      "severity": "LOW"
+    },
+    {
+      "file": "kubernetes\\infrastructure\\cluster-setup\\README.md",
+      "line_number": 135,
+      "pattern_type": "IP_ADDRESSES",
+      "matched_text": "192.168.1.111",
+      "context": "├── Worker Node 1 (192.168.1.111)",
+      "severity": "LOW"
+    },
+    {
+      "file": "kubernetes\\infrastructure\\cluster-setup\\README.md",
+      "line_number": 136,
+      "pattern_type": "IP_ADDRESSES",
+      "matched_text": "192.168.1.112",
+      "context": "├── Worker Node 2 (192.168.1.112)",
+      "severity": "LOW"
+    },
+    {
+      "file": "kubernetes\\infrastructure\\cluster-setup\\README.md",
+      "line_number": 137,
+      "pattern_type": "IP_ADDRESSES",
+      "matched_text": "192.168.1.113",
+      "context": "└── Worker Node 3 (192.168.1.113)",
+      "severity": "LOW"
+    },
+    {
+      "file": "kubernetes\\infrastructure\\cluster-setup\\README.md",
+      "line_number": 149,
+      "pattern_type": "IP_ADDRESSES",
+      "matched_text": "127.0.0.1",
+      "context": "log         127.0.0.1 local2",
+      "severity": "LOW"
+    },
+    {
+      "file": "kubernetes\\infrastructure\\cluster-setup\\README.md",
+      "line_number": 174,
+      "pattern_type": "IP_ADDRESSES",
+      "matched_text": "192.168.1.101",
+      "context": "server master1 192.168.1.101:6443 check",
+      "severity": "LOW"
+    },
+    {
+      "file": "kubernetes\\infrastructure\\cluster-setup\\README.md",
+      "line_number": 175,
+      "pattern_type": "IP_ADDRESSES",
+      "matched_text": "192.168.1.102",
+      "context": "server master2 192.168.1.102:6443 check",
+      "severity": "LOW"
+    },
+    {
+      "file": "kubernetes\\infrastructure\\cluster-setup\\README.md",
+      "line_number": 176,
+      "pattern_type": "IP_ADDRESSES",
+      "matched_text": "192.168.1.103",
+      "context": "server master3 192.168.1.103:6443 check",
+      "severity": "LOW"
+    },
+    {
+      "file": "kubernetes\\infrastructure\\cluster-setup\\README.md",
+      "line_number": 188,
+      "pattern_type": "IP_ADDRESSES",
+      "matched_text": "192.168.1.200",
+      "context": "--control-plane-endpoint \"192.168.1.200:6443\" \\",
+      "severity": "LOW"
+    },
+    {
+      "file": "kubernetes\\infrastructure\\cluster-setup\\README.md",
+      "line_number": 190,
+      "pattern_type": "IP_ADDRESSES",
+      "matched_text": "10.244.0.0",
+      "context": "--pod-network-cidr=10.244.0.0/16 \\",
+      "severity": "LOW"
+    },
+    {
+      "file": "kubernetes\\infrastructure\\cluster-setup\\README.md",
+      "line_number": 194,
+      "pattern_type": "IP_ADDRESSES",
+      "matched_text": "192.168.1.200",
+      "context": "sudo kubeadm join 192.168.1.200:6443 \\",
+      "severity": "LOW"
+    },
+    {
+      "file": "kubernetes\\infrastructure\\cluster-setup\\README.md",
+      "line_number": 196,
+      "pattern_type": "API_KEYS",
+      "matched_text": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+      "context": "--discovery-token-ca-cert-hash sha256:xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx \\",
+      "severity": "LOW"
+    },
+    {
+      "file": "kubernetes\\infrastructure\\cluster-setup\\README.md",
+      "line_number": 198,
+      "pattern_type": "API_KEYS",
+      "matched_text": "yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy",
+      "context": "--certificate-key yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy",
+      "severity": "LOW"
+    },
+    {
+      "file": "kubernetes\\infrastructure\\cluster-setup\\README.md",
+      "line_number": 214,
+      "pattern_type": "IP_ADDRESSES",
+      "matched_text": "10.244.0.0",
+      "context": "cidr: 10.244.0.0/16",
+      "severity": "LOW"
+    },
+    {
+      "file": "kubernetes\\infrastructure\\cluster-setup\\README.md",
+      "line_number": 286,
+      "pattern_type": "IP_ADDRESSES",
+      "matched_text": "192.168.1.50",
+      "context": "server: 192.168.1.50",
+      "severity": "LOW"
+    },
+    {
+      "file": "kubernetes\\infrastructure\\cluster-setup\\README.md",
+      "line_number": 307,
+      "pattern_type": "PASSWORDS",
+      "matched_text": "Password=admin123",
+      "context": "--set grafana.adminPassword=admin123",
+      "severity": "HIGH"
+    },
+    {
+      "file": "kubernetes\\kubeflow\\notebook-custom-image\\code\\requirements.txt",
+      "line_number": 34,
+      "pattern_type": "IP_ADDRESSES",
+      "matched_text": "4.8.0.74",
+      "context": "opencv-python==4.8.0.74",
+      "severity": "LOW"
+    },
+    {
+      "file": "kubernetes\\model-inference\\real-world-case-studies.md",
+      "line_number": 16,
+      "pattern_type": "API_KEYS",
+      "matched_text": "AutoModelForSequenceClassification",
+      "context": "from transformers import AutoTokenizer, AutoModelForSequenceClassification",
+      "severity": "LOW"
+    },
+    {
+      "file": "kubernetes\\model-inference\\real-world-case-studies.md",
+      "line_number": 38,
+      "pattern_type": "API_KEYS",
+      "matched_text": "AutoModelForSequenceClassification",
+      "context": "model = AutoModelForSequenceClassification.from_pretrained(",
+      "severity": "LOW"
+    },
+    {
+      "file": "kubernetes\\model-inference\\real-world-case-studies.md",
+      "line_number": 48,
+      "pattern_type": "API_KEYS",
+      "matched_text": "AutoModelForSequenceClassification",
+      "context": "model = AutoModelForSequenceClassification.from_pretrained(",
+      "severity": "LOW"
+    },
+    {
+      "file": "kubernetes\\model-inference\\real-world-case-studies.md",
+      "line_number": 329,
+      "pattern_type": "IP_ADDRESSES",
+      "matched_text": "0.0.0.0",
+      "context": "uvicorn.run(app, host=\"0.0.0.0\", port=8080)",
+      "severity": "LOW"
+    },
+    {
+      "file": "kubernetes\\model-inference\\real-world-case-studies.md",
+      "line_number": 744,
+      "pattern_type": "IP_ADDRESSES",
+      "matched_text": "0.0.0.0",
+      "context": "uvicorn.run(app, host=\"0.0.0.0\", port=8080)",
+      "severity": "LOW"
+    },
+    {
+      "file": "kubernetes\\model-inference\\real-world-case-studies.md",
+      "line_number": 760,
+      "pattern_type": "API_KEYS",
+      "matched_text": "AutoModelForSequenceClassification",
+      "context": "from transformers import AutoTokenizer, AutoModelForSequenceClassification",
+      "severity": "LOW"
+    },
+    {
+      "file": "kubernetes\\model-inference\\real-world-case-studies.md",
+      "line_number": 778,
+      "pattern_type": "API_KEYS",
+      "matched_text": "AutoModelForSequenceClassification",
+      "context": "model = AutoModelForSequenceClassification.from_pretrained(",
+      "severity": "LOW"
+    },
+    {
+      "file": "kubernetes\\model-inference\\real-world-case-studies.md",
+      "line_number": 786,
+      "pattern_type": "API_KEYS",
+      "matched_text": "AutoModelForSequenceClassification",
+      "context": "model = AutoModelForSequenceClassification.from_pretrained(",
+      "severity": "LOW"
+    },
+    {
+      "file": "kubernetes\\model-inference\\real-world-case-studies.md",
+      "line_number": 1026,
+      "pattern_type": "IP_ADDRESSES",
+      "matched_text": "0.0.0.0",
+      "context": "uvicorn.run(app, host=\"0.0.0.0\", port=8080)",
+      "severity": "LOW"
+    },
+    {
+      "file": "kubernetes\\n8n\\manifests\\configmap.yaml",
+      "line_number": 10,
+      "pattern_type": "IP_ADDRESSES",
+      "matched_text": "0.0.0.0",
+      "context": "host: 0.0.0.0",
+      "severity": "LOW"
+    },
+    {
+      "file": "kubernetes\\n8n\\manifests\\configmap.yaml",
+      "line_number": 21,
+      "pattern_type": "PASSWORDS",
+      "matched_text": "password: ${POSTGRES_PASSWORD}",
+      "context": "password: ${POSTGRES_PASSWORD}",
+      "severity": "HIGH"
+    },
+    {
+      "file": "kubernetes\\n8n\\manifests\\configmap.yaml",
+      "line_number": 32,
+      "pattern_type": "PASSWORDS",
+      "matched_text": "PASSWORD=$(cat",
+      "context": "export POSTGRES_PASSWORD=$(cat /etc/secrets/postgres-password)",
+      "severity": "HIGH"
+    },
+    {
+      "file": "kubernetes\\rag\\local-demo\\manifests\\configmap.yaml",
+      "line_number": 11,
+      "pattern_type": "IP_ADDRESSES",
+      "matched_text": "0.0.0.0",
+      "context": "host: 0.0.0.0",
+      "severity": "LOW"
+    },
+    {
+      "file": "kubernetes\\rag\\maxkb\\manifests\\configmap.yaml",
+      "line_number": 11,
+      "pattern_type": "IP_ADDRESSES",
+      "matched_text": "0.0.0.0",
+      "context": "host: 0.0.0.0",
+      "severity": "LOW"
+    },
+    {
+      "file": "kubernetes\\rag\\other-rag-tools\\manifests\\configmap.yaml",
+      "line_number": 11,
+      "pattern_type": "IP_ADDRESSES",
+      "matched_text": "0.0.0.0",
+      "context": "host: 0.0.0.0",
+      "severity": "LOW"
+    },
+    {
+      "file": "linux\\README.md",
+      "line_number": 36,
+      "pattern_type": "IP_ADDRESSES",
+      "matched_text": "127.0.0.1",
+      "context": "netstat -tulnp | grep -v '127.0.0.1'",
+      "severity": "LOW"
+    },
+    {
+      "file": "linux\\linux-common-monitoring-commands-demo\\README.md",
+      "line_number": 302,
+      "pattern_type": "IP_ADDRESSES",
+      "matched_text": "127.0.0.1",
+      "context": "ping -c 3 127.0.0.1 >/dev/null && echo \"本地网络正常\" || echo \"本地网络异常\"",
+      "severity": "LOW"
+    },
+    {
+      "file": "linux\\linux-netstat-network-monitoring-demo\\README.md",
+      "line_number": 150,
+      "pattern_type": "IP_ADDRESSES",
+      "matched_text": "127.0.0.1",
+      "context": "netstat -tulnp | grep -v '127.0.0.1'",
+      "severity": "LOW"
+    },
+    {
+      "file": "linux\\linux-netstat-network-monitoring-demo\\README.md",
+      "line_number": 156,
+      "pattern_type": "IP_ADDRESSES",
+      "matched_text": "127.0.0.1",
+      "context": "netstat -an | grep ESTABLISHED | grep -v '127.0.0.1' | grep -v '::1'",
+      "severity": "LOW"
+    },
+    {
+      "file": "linux\\linux-netstat-network-monitoring-demo\\scripts\\network_monitor.sh",
+      "line_number": 73,
+      "pattern_type": "IP_ADDRESSES",
+      "matched_text": "127.0.0.1",
+      "context": "local external_listeners=$(echo \"$snapshot\" | grep LISTEN | grep -v '127.0.0.1' | grep -v '::1')",
+      "severity": "LOW"
+    },
+    {
+      "file": "linux\\linux-process-thread-debugging-demo\\README.md",
+      "line_number": 482,
+      "pattern_type": "EMAIL_ADDRESSES",
+      "matched_text": "admin@example.com",
+      "context": "# echo \"High CPU usage detected: $HIGH_COUNT processes above ${THRESHOLD}%\" | mail -s \"CPU Alert\" admin@example.com",
+      "severity": "MEDIUM"
+    },
+    {
+      "file": "linux\\linux-process-thread-debugging-demo\\README.md",
+      "line_number": 745,
+      "pattern_type": "EMAIL_ADDRESSES",
+      "matched_text": "admin@example.com",
+      "context": "echo \"High CPU usage: ${CPU_USAGE}%\" | mail -s \"CPU Alert\" admin@example.com",
+      "severity": "MEDIUM"
+    },
+    {
+      "file": "nodejs\\nodejs-nodejs-swagger-openapi-demo\\app.js",
+      "line_number": 25,
+      "pattern_type": "EMAIL_ADDRESSES",
+      "matched_text": "zhangsan@example.com",
+      "context": "{ id: 1, name: '张三', email: 'zhangsan@example.com' },",
+      "severity": "MEDIUM"
+    },
+    {
+      "file": "nodejs\\nodejs-nodejs-swagger-openapi-demo\\app.js",
+      "line_number": 26,
+      "pattern_type": "EMAIL_ADDRESSES",
+      "matched_text": "lisi@example.com",
+      "context": "{ id: 2, name: '李四', email: 'lisi@example.com' }",
+      "severity": "MEDIUM"
+    },
+    {
+      "file": "nodejs\\nodejs-nodejsdemo-logging-management\\README.md",
+      "line_number": 73,
+      "pattern_type": "IP_ADDRESSES",
+      "matched_text": "192.168.1.10",
+      "context": "{\"name\":\"UserService\",\"hostname\":\"localhost\",\"pid\":12345,\"level\":30,\"msg\":\"用户登录成功\",\"userId\":1001,\"ip\":\"192.168.1.10\",\"time\":\"2023-04-05T10:00:00.000Z\",\"v\":0}",
+      "severity": "LOW"
+    },
+    {
+      "file": "python\\config-management\\code\\config_management.py",
+      "line_number": 58,
+      "pattern_type": "PHONE_NUMBERS",
+      "matched_text": "1234567890",
+      "context": "API_KEY=sk-1234567890",
+      "severity": "LOW"
+    },
+    {
+      "file": "python\\config-management\\code\\config_management.py",
+      "line_number": 113,
+      "pattern_type": "PASSWORDS",
+      "matched_text": "password: str",
+      "context": "password: str = ''",
+      "severity": "HIGH"
+    },
+    {
+      "file": "python\\config-management\\code\\config_management.py",
+      "line_number": 117,
+      "pattern_type": "DATABASE_URLS",
+      "matched_text": "postgresql://{self.user}:{self.password}@{self.host}:{self.port}/{self.name}\"",
+      "context": "return f\"postgresql://{self.user}:{self.password}@{self.host}:{self.port}/{self.name}\"",
+      "severity": "HIGH"
+    },
+    {
+      "file": "python\\config-management\\code\\config_management.py",
+      "line_number": 138,
+      "pattern_type": "PASSWORDS",
+      "matched_text": "password=os.getenv('DB_PASSWORD',",
+      "context": "password=os.getenv('DB_PASSWORD', ''),",
+      "severity": "HIGH"
+    },
+    {
+      "file": "python\\config-management\\code\\config_management.py",
+      "line_number": 149,
+      "pattern_type": "PASSWORDS",
+      "matched_text": "password: "${GENERIC_PASSWORD}"",
+      "context": "password: "${GENERIC_PASSWORD}"",
+      "severity": "HIGH"
+    },
+    {
+      "file": "python\\config-management\\code\\config_management.py",
+      "line_number": 173,
+      "pattern_type": "IP_ADDRESSES",
+      "matched_text": "0.0.0.0",
+      "context": "\"host\": \"0.0.0.0\",",
+      "severity": "LOW"
+    },
+    {
+      "file": "python\\config-management\\code\\config_management.py",
+      "line_number": 267,
+      "pattern_type": "IP_ADDRESSES",
+      "matched_text": "127.0.0.1",
+      "context": "'server': {'host': '127.0.0.1', 'port': 8080}",
+      "severity": "LOW"
+    },
+    {
+      "file": "python\\config-management\\code\\config_management.py",
+      "line_number": 310,
+      "pattern_type": "DATABASE_URLS",
+      "matched_text": "postgresql://',",
+      "context": "if not self.database_url.startswith(('postgresql://', 'mysql://')):",
+      "severity": "HIGH"
+    },
+    {
+      "file": "python\\config-management\\code\\config_management.py",
+      "line_number": 310,
+      "pattern_type": "DATABASE_URLS",
+      "matched_text": "mysql://')):",
+      "context": "if not self.database_url.startswith(('postgresql://', 'mysql://')):",
+      "severity": "HIGH"
+    },
+    {
+      "file": "python\\config-management\\code\\config_management.py",
+      "line_number": 325,
+      "pattern_type": "DATABASE_URLS",
+      "matched_text": "postgresql://localhost/myapp',",
+      "context": "database_url='postgresql://localhost/myapp',",
+      "severity": "HIGH"
+    },
+    {
+      "file": "python\\environment-variables\\code\\env_vars_demo.py",
+      "line_number": 121,
+      "pattern_type": "IP_ADDRESSES",
+      "matched_text": "127.0.0.1",
+      "context": "os.environ[\"ALLOWED_HOSTS\"] = \"localhost,127.0.0.1,example.com\"",
+      "severity": "LOW"
+    },
+    {
+      "file": "python\\environment-variables\\code\\env_vars_demo.py",
+      "line_number": 142,
+      "pattern_type": "IP_ADDRESSES",
+      "matched_text": "0.0.0.0",
+      "context": "host: str = field(default_factory=lambda: os.getenv(\"HOST\", \"0.0.0.0\"))",
+      "severity": "LOW"
+    },
+    {
+      "file": "python\\environment-variables\\code\\env_vars_demo.py",
+      "line_number": 150,
+      "pattern_type": "PASSWORDS",
+      "matched_text": "password: str",
+      "context": "db_password: str = field(default_factory=lambda: os.getenv(\"DB_PASSWORD\", \"\"))",
+      "severity": "HIGH"
+    },
+    {
+      "file": "python\\environment-variables\\code\\env_vars_demo.py",
+      "line_number": 155,
+      "pattern_type": "DATABASE_URLS",
+      "matched_text": "postgresql://{self.db_user}:{self.db_password}@{self.db_host}:{self.db_port}/{self.db_name}\"",
+      "context": "return f\"postgresql://{self.db_user}:{self.db_password}@{self.db_host}:{self.db_port}/{self.db_name}\"",
+      "severity": "HIGH"
+    },
+    {
+      "file": "python\\environment-variables\\code\\env_vars_demo.py",
+      "line_number": 281,
+      "pattern_type": "PASSWORDS",
+      "matched_text": "password = SecretString(os.getenv(\"DB_PASSWORD\",",
+      "context": "db_password = SecretString(os.getenv(\"DB_PASSWORD\", \"secret123\"))",
+      "severity": "HIGH"
+    },
+    {
+      "file": "python\\environment-variables\\code\\env_vars_demo.py",
+      "line_number": 284,
+      "pattern_type": "PASSWORDS",
+      "matched_text": "Password: {db_password}\")",
+      "context": "print(f\"DB Password: {db_password}\")  # 不会泄露",
+      "severity": "HIGH"
+    },
+    {
+      "file": "python\\type-hints\\code\\type_hints_demo.py",
+      "line_number": 284,
+      "pattern_type": "EMAIL_ADDRESSES",
+      "matched_text": "alice@example.com",
+      "context": "\"email\": \"alice@example.com\",",
+      "severity": "MEDIUM"
+    },
+    {
+      "file": "vibe-coding\\gemini-cli\\configmap.yaml",
+      "line_number": 11,
+      "pattern_type": "IP_ADDRESSES",
+      "matched_text": "0.0.0.0",
+      "context": "host: 0.0.0.0",
+      "severity": "LOW"
+    },
+    {
+      "file": "vibe-coding\\gemini-cli\\configmap.yaml",
+      "line_number": 40,
+      "pattern_type": "TOKENS",
+      "matched_text": "TOKEN=$(cat",
+      "context": "export GITHUB_TOKEN=$(cat /etc/secrets/github-token)",
+      "severity": "HIGH"
+    },
+    {
+      "file": "vibe-coding\\local-demo\\configmap.yaml",
+      "line_number": 11,
+      "pattern_type": "IP_ADDRESSES",
+      "matched_text": "0.0.0.0",
+      "context": "host: 0.0.0.0",
+      "severity": "LOW"
+    },
+    {
+      "file": "vibe-coding\\local-demo\\configmap.yaml",
+      "line_number": 37,
+      "pattern_type": "TOKENS",
+      "matched_text": "TOKEN=$(cat",
+      "context": "export GITHUB_TOKEN=$(cat /etc/secrets/github-token)",
+      "severity": "HIGH"
+    },
+    {
+      "file": "vibe-coding\\other-cli\\configmap.yaml",
+      "line_number": 11,
+      "pattern_type": "IP_ADDRESSES",
+      "matched_text": "0.0.0.0",
+      "context": "host: 0.0.0.0",
+      "severity": "LOW"
+    },
+    {
+      "file": "vibe-coding\\other-cli\\configmap.yaml",
+      "line_number": 40,
+      "pattern_type": "TOKENS",
+      "matched_text": "TOKEN=$(cat",
+      "context": "export GITHUB_TOKEN=$(cat /etc/secrets/github-token)",
+      "severity": "HIGH"
+    },
+    {
+      "file": "vibe-coding\\qoder-cli\\configmap.yaml",
+      "line_number": 11,
+      "pattern_type": "IP_ADDRESSES",
+      "matched_text": "0.0.0.0",
+      "context": "host: 0.0.0.0",
+      "severity": "LOW"
+    },
+    {
+      "file": "vibe-coding\\qoder-cli\\configmap.yaml",
+      "line_number": 39,
+      "pattern_type": "TOKENS",
+      "matched_text": "TOKEN=$(cat",
+      "context": "export GITHUB_TOKEN=$(cat /etc/secrets/github-token)",
+      "severity": "HIGH"
+    }
+  ],
+  "recommendations": [
+    "日志安全管理建议:",
+    "==================",
+    "1. 日志脱敏处理:",
+    "   - 实施日志过滤器，自动屏蔽敏感数据",
+    "   - 使用日志脱敏库处理个人信息",
+    "   - 配置日志级别，避免调试信息泄露",
+    "",
+    "2. 访问控制:",
+    "   - 限制日志文件访问权限",
+    "   - 实施日志文件加密存储",
+    "   - 定期清理过期日志文件",
+    "",
+    "3. 监控和审计:",
+    "   - 设置日志访问审计",
+    "   - 实施异常日志监控",
+    "   - 定期进行日志安全审查",
+    "",
+    "4. 输出文件管理:",
+    "   - 避免在输出文件中记录敏感信息",
+    "   - 实施输出文件内容审查机制",
+    "   - 使用临时文件处理敏感数据"
+  ]
+}

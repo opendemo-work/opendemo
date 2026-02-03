@@ -1,0 +1,27 @@
+{
+  "id": "multi-region-deployment-demo",
+  "name": "数据库多区域部署方案完整指南",
+  "version": "1.0.0",
+  "author": "OpenDemo",
+  "created_date": "2026-02-03",
+  "last_updated": "2026-02-03",
+  "category": "云原生数据库",
+  "subcategory": "多区域部署",
+  "tags": ["multi-region", "geo-distribution", "disaster-recovery", "latency-optimization", "data-replication"],
+  "difficulty": "专家级",
+  "estimated_time": "360分钟",
+  "prerequisites": ["分布式系统基础", "网络架构知识", "数据库复制原理", "云服务商多区域部署经验"],
+  "learning_objectives": [
+    "掌握数据库多区域部署的核心架构和实现方案",
+    "学会设计全球分布式的数据库部署策略",
+    "理解跨区域数据同步和一致性保证机制",
+    "掌握多区域部署的监控、故障切换和优化技巧"
+  ],
+  "quality_standards": {
+    "completeness": "100%",
+    "accuracy": "生产环境验证",
+    "clarity": "步骤详细可操作",
+    "relevance": "企业级应用场景"
+  },
+  "validation_status": "pending"
+}

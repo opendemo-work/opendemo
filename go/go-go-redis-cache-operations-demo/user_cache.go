@@ -21,7 +21,7 @@ func main() {
 	// 复用main.go中的Redis客户端初始化逻辑
 	rdb := redis.NewClient(&redis.Options{
 		Addr:     "localhost:6379",
-		Password: "",
+		password: "${GENERIC_PASSWORD}",
 		DB:       0,
 	})
 

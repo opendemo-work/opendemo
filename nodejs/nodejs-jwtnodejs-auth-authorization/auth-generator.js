@@ -7,7 +7,7 @@ const jwt = require('jsonwebtoken');
 
 // 密钥 - 生产环境中应从环境变量读取
 // 注意：这是示例密钥，实际使用中必须保密且足够复杂
-const SECRET_KEY = 'your-super-secret-jwt-key-that-should-be-long-and-random';
+const SECRET_KEY = process.env.JWT_SECRET || "";
 
 // 模拟用户数据（通常来自数据库查询）
 const userPayload = {

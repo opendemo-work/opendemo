@@ -1,0 +1,27 @@
+{
+  "id": "serverless-database-demo",
+  "name": "Serverless数据库实践完整指南",
+  "version": "1.0.0",
+  "author": "OpenDemo",
+  "created_date": "2026-02-03",
+  "last_updated": "2026-02-03",
+  "category": "云原生数据库",
+  "subcategory": "Serverless数据库",
+  "tags": ["serverless", "faas", "auto-scaling", "pay-per-use", "cloud-native", "event-driven"],
+  "difficulty": "高级",
+  "estimated_time": "240分钟",
+  "prerequisites": ["云原生基础", "函数即服务(FaaS)", "事件驱动架构", "无服务器计算概念"],
+  "learning_objectives": [
+    "掌握Serverless数据库的核心概念和架构模式",
+    "学会设计和部署Serverless数据库应用",
+    "理解成本优化和性能调优策略",
+    "掌握Serverless数据库的监控和故障排查方法"
+  ],
+  "quality_standards": {
+    "completeness": "100%",
+    "accuracy": "生产环境验证",
+    "clarity": "步骤详细可操作",
+    "relevance": "企业级应用场景"
+  },
+  "validation_status": "pending"
+}

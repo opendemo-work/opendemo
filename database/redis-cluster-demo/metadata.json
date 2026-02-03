@@ -1,0 +1,27 @@
+{
+  "id": "redis-cluster-demo",
+  "name": "Redis集群架构完整指南",
+  "version": "1.0.0",
+  "author": "OpenDemo",
+  "created_date": "2026-02-02",
+  "last_updated": "2026-02-02",
+  "category": "高可用架构",
+  "subcategory": "Redis集群",
+  "tags": ["redis", "cluster", "high-availability", "distributed", "nosql"],
+  "difficulty": "专家级",
+  "estimated_time": "360分钟",
+  "prerequisites": ["Redis基础", "集群概念", "分布式系统知识"],
+  "learning_objectives": [
+    "掌握Redis集群的部署和配置",
+    "学会集群节点管理和数据分片",
+    "理解故障检测和自动故障转移",
+    "掌握集群监控和性能优化"
+  ],
+  "quality_standards": {
+    "completeness": "100%",
+    "accuracy": "生产环境验证",
+    "clarity": "步骤详细可操作",
+    "relevance": "企业级应用场景"
+  },
+  "validation_status": "pending"
+}

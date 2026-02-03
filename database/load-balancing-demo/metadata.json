@@ -1,0 +1,27 @@
+{
+  "id": "load-balancing-demo",
+  "name": "数据库负载均衡配置完整指南",
+  "version": "1.0.0",
+  "author": "OpenDemo",
+  "created_date": "2026-02-02",
+  "last_updated": "2026-02-02",
+  "category": "高可用架构",
+  "subcategory": "负载均衡",
+  "tags": ["load-balancing", "high-availability", "proxy", "connection-pooling", "performance"],
+  "difficulty": "高级",
+  "estimated_time": "240分钟",
+  "prerequisites": ["数据库基础", "网络基础", "高可用架构概念"],
+  "learning_objectives": [
+    "掌握数据库负载均衡的核心原理和实现方式",
+    "学会配置主流数据库代理和负载均衡器",
+    "理解连接池管理和会话保持机制",
+    "掌握负载均衡策略和性能优化技巧"
+  ],
+  "quality_standards": {
+    "completeness": "100%",
+    "accuracy": "生产环境验证",
+    "clarity": "步骤详细可操作",
+    "relevance": "企业级应用场景"
+  },
+  "validation_status": "pending"
+}

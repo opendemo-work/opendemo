@@ -1,0 +1,27 @@
+{
+  "id": "failover-switching-demo",
+  "name": "数据库故障自动切换完整指南",
+  "version": "1.0.0",
+  "author": "OpenDemo",
+  "created_date": "2026-02-02",
+  "last_updated": "2026-02-02",
+  "category": "高可用架构",
+  "subcategory": "故障自动切换",
+  "tags": ["failover", "high-availability", "automatic-switching", "disaster-recovery", "mysql", "postgresql", "mongodb"],
+  "difficulty": "专家级",
+  "estimated_time": "360分钟",
+  "prerequisites": ["数据库高可用基础", "故障检测知识", "系统运维技能"],
+  "learning_objectives": [
+    "掌握故障检测和自动切换的核心原理",
+    "学会配置主流数据库的自动故障转移",
+    "理解切换过程中的数据一致性和完整性保障",
+    "掌握故障切换的监控和优化策略"
+  ],
+  "quality_standards": {
+    "completeness": "100%",
+    "accuracy": "生产环境验证",
+    "clarity": "步骤详细可操作",
+    "relevance": "企业级应用场景"
+  },
+  "validation_status": "pending"
+}

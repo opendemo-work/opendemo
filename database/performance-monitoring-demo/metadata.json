@@ -1,0 +1,27 @@
+{
+  "id": "performance-monitoring-demo",
+  "name": "数据库性能监控完整指南",
+  "version": "1.0.0",
+  "author": "OpenDemo",
+  "created_date": "2026-02-03",
+  "last_updated": "2026-02-03",
+  "category": "监控告警",
+  "subcategory": "性能监控",
+  "tags": ["performance-monitoring", "database-metrics", "prometheus", "grafana", "apm", "observability"],
+  "difficulty": "高级",
+  "estimated_time": "240分钟",
+  "prerequisites": ["数据库基础", "监控基础", "Prometheus基础", "Grafana基础"],
+  "learning_objectives": [
+    "掌握数据库性能监控的核心指标和监控方法",
+    "学会搭建完整的数据库监控体系",
+    "理解性能瓶颈识别和分析技巧",
+    "掌握监控数据的可视化展示和告警配置"
+  ],
+  "quality_standards": {
+    "completeness": "100%",
+    "accuracy": "生产环境验证",
+    "clarity": "步骤详细可操作",
+    "relevance": "企业级应用场景"
+  },
+  "validation_status": "pending"
+}

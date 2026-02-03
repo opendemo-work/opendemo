@@ -4,7 +4,7 @@
 const crypto = require('crypto');
 
 // 模拟用户输入的密码（实际应用中从请求体获取）
-const password = 'mySecurePassword123';
+const password: "${GENERIC_PASSWORD}";
 
 // 创建SHA-256哈希函数实例
 // SHA-256是单向哈希算法，无法逆向还原原始数据

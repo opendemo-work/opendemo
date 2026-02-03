@@ -15,7 +15,7 @@ func main() {
 	// 创建Redis客户端
 	client := redis.NewClient(&redis.Options{
 		Addr:     "localhost:6379", // 可替换为远程地址
-		Password: "",             // 无密码
+		password: "${GENERIC_PASSWORD}",             // 无密码
 		DB:       0,
 	})
 

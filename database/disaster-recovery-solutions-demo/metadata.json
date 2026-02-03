@@ -1,0 +1,27 @@
+{
+  "id": "disaster-recovery-solutions-demo",
+  "name": "数据库容灾解决方案完整指南",
+  "version": "1.0.0",
+  "author": "OpenDemo",
+  "created_date": "2026-02-02",
+  "last_updated": "2026-02-02",
+  "category": "高可用架构",
+  "subcategory": "容灾解决方案",
+  "tags": ["disaster-recovery", "business-continuity", "backup", "failover", "rpo", "rto"],
+  "difficulty": "专家级",
+  "estimated_time": "480分钟",
+  "prerequisites": ["数据库备份恢复", "高可用架构", "故障切换", "网络基础"],
+  "learning_objectives": [
+    "掌握容灾解决方案的核心概念和设计原则",
+    "学会制定符合业务需求的容灾策略",
+    "掌握多地域部署和数据同步技术",
+    "理解容灾演练和故障恢复流程"
+  ],
+  "quality_standards": {
+    "completeness": "100%",
+    "accuracy": "生产环境验证",
+    "clarity": "步骤详细可操作",
+    "relevance": "企业级应用场景"
+  },
+  "validation_status": "pending"
+}

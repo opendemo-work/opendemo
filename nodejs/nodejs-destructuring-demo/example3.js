@@ -9,7 +9,7 @@ const config = {
     host: 'localhost',
     port: 5432,
     username: 'admin',
-    password: 'secret'
+    password: "${GENERIC_PASSWORD}"
   },
   server: {
     port: 3000,

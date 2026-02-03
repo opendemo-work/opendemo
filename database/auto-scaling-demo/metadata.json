@@ -1,0 +1,27 @@
+{
+  "id": "auto-scaling-demo",
+  "name": "数据库自动扩缩容配置完整指南",
+  "version": "1.0.0",
+  "author": "OpenDemo",
+  "created_date": "2026-02-03",
+  "last_updated": "2026-02-03",
+  "category": "云原生数据库",
+  "subcategory": "自动扩缩容",
+  "tags": ["auto-scaling", "horizontal-scaling", "vertical-scaling", "kubernetes-hpa", "cloud-autoscaling", "performance-tuning"],
+  "difficulty": "专家级",
+  "estimated_time": "300分钟",
+  "prerequisites": ["Kubernetes基础", "数据库性能优化", "监控基础", "云服务商使用经验"],
+  "learning_objectives": [
+    "掌握数据库水平和垂直扩缩容的核心原理",
+    "学会配置Kubernetes HPA和云服务商自动扩缩容",
+    "理解扩缩容策略制定和性能阈值设置",
+    "掌握扩缩容过程中的数据一致性和应用兼容性处理"
+  ],
+  "quality_standards": {
+    "completeness": "100%",
+    "accuracy": "生产环境验证",
+    "clarity": "步骤详细可操作",
+    "relevance": "企业级应用场景"
+  },
+  "validation_status": "pending"
+}

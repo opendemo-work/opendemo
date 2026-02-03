@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 const User = require('./models/User');
 
 // MongoDB 连接字符串（本地默认端口）
-const DB_URI = 'mongodb://127.0.0.1:27017/mongoose_demo';
+const DB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/test';
 
 async function runDemo() {
   try {

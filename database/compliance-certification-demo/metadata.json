@@ -1,0 +1,57 @@
+{
+  "id": "compliance-certification-demo",
+  "name": "数据库合规认证指南",
+  "version": "1.0.0",
+  "category": "database",
+  "subcategory": "security-compliance",
+  "tags": [
+    "合规认证",
+    "SOX",
+    "GDPR",
+    "ISO27001",
+    "HIPAA",
+    "PCI-DSS"
+  ],
+  "author": "OpenDemo Team",
+  "created_at": "2024-01-01",
+  "updated_at": "2024-01-01",
+  "difficulty": "expert",
+  "estimated_hours": 10,
+  "prerequisites": [
+    "audit-logging-demo",
+    "access-control-demo"
+  ],
+  "learning_objectives": [
+    "掌握主流合规标准的核心要求和实施要点",
+    "理解数据库合规认证的评估流程和准备方法",
+    "实施符合合规要求的技术控制措施",
+    "建立持续合规监控和改进机制",
+    "制定合规风险管理和应对策略"
+  ],
+  "skills_covered": [
+    "合规标准理解",
+    "认证准备",
+    "风险评估",
+    "控制实施",
+    "持续监控"
+  ],
+  "tools_used": [
+    "SOX",
+    "GDPR",
+    "ISO27001",
+    "HIPAA",
+    "PCI-DSS",
+    "合规管理工具"
+  ],
+  "related_demos": [
+    "audit-logging-demo",
+    "access-control-demo",
+    "data-encryption-demo"
+  ],
+  "quality_metrics": {
+    "completeness": 100,
+    "accuracy": 98,
+    "production_ready": 95,
+    "documentation_quality": 97
+  }
+}

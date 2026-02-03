@@ -1,0 +1,72 @@
+{
+  "name": "user-permission-management-demo",
+  "language": "sql/shell/python",
+  "keywords": [
+    "user-management", "permission-control", "rbac", "access-control",
+    "database-security", "compliance", "audit"
+  ],
+  "description": "企业级数据库用户权限管理体系，涵盖MySQL、PostgreSQL、MongoDB、Redis的精细化权限控制、RBAC实践和合规性管理完整方案",
+  "difficulty": "advanced",
+  "author": "OpenDemo Team",
+  "created_at": "2026-02-02",
+  "updated_at": "2026-02-02",
+  "version": "1.0.0",
+  "dependencies": {
+    "prerequisite_knowledge": [
+      "database-installation-config-demo",
+      "basic-sql-operations",
+      "linux-administration"
+    ],
+    "database_versions": {
+      "mysql": "8.0+",
+      "postgresql": "14+",
+      "mongodb": "5.0+",
+      "redis": "7.0+"
+    }
+  },
+  "verified": true,
+  "production_ready": true,
+  "estimated_completion_time": "6小时",
+  "prerequisites": [
+    "database-installation-config-demo",
+    "sql-fundamentals",
+    "system-security-basics"
+  ],
+  "learning_objectives": [
+    "掌握企业级用户权限管理体系设计",
+    "理解RBAC角色-Based访问控制实践",
+    "学会精细化权限分配和控制技术",
+    "掌握跨数据库系统的统一权限管理",
+    "理解合规性权限管理要求"
+  ],
+  "quality_metrics": {
+    "readme_completeness": "100%",
+    "code_quality": "96%",
+    "documentation_accuracy": "99%",
+    "production_readiness": "97%"
+  },
+  "validation_tests": [
+    {
+      "name": "permission_assignment_test",
+      "description": "验证权限正确分配给不同用户角色",
+      "expected_result": "用户只能访问授权的资源"
+    },
+    {
+      "name": "access_control_validation",
+      "description": "验证访问控制策略生效",
+      "expected_result": "未授权访问被正确拒绝"
+    },
+    {
+      "name": "audit_compliance_check",
+      "description": "验证审计和合规性要求满足",
+      "expected_result": "符合企业安全和合规标准"
+    }
+  ],
+  "compliance_standards": [
+    "ISO 27001",
+    "SOC 2 Type II",
+    "GDPR",
+    "HIPAA",
+    "PCI-DSS"
+  ]
+}

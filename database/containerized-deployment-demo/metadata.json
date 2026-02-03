@@ -1,0 +1,27 @@
+{
+  "id": "containerized-deployment-demo",
+  "name": "容器化数据库部署完整指南",
+  "version": "1.0.0",
+  "author": "OpenDemo",
+  "created_date": "2026-02-02",
+  "last_updated": "2026-02-02",
+  "category": "云原生数据库",
+  "subcategory": "容器化部署",
+  "tags": ["containerization", "docker", "kubernetes", "database", "cloud-native"],
+  "difficulty": "高级",
+  "estimated_time": "240分钟",
+  "prerequisites": ["Docker基础", "Kubernetes基础", "数据库基础", "容器编排概念"],
+  "learning_objectives": [
+    "掌握数据库容器化部署的核心技术和最佳实践",
+    "学会使用Docker和Kubernetes部署生产级数据库",
+    "理解容器化数据库的存储管理和持久化方案",
+    "掌握容器化数据库的监控和运维策略"
+  ],
+  "quality_standards": {
+    "completeness": "100%",
+    "accuracy": "生产环境验证",
+    "clarity": "步骤详细可操作",
+    "relevance": "企业级应用场景"
+  },
+  "validation_status": "pending"
+}

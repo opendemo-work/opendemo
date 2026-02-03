@@ -354,7 +354,7 @@ class TestAIServiceEdgeCases:
     def test_call_api_with_custom_endpoint(self, mock_config):
         """测试自定义API端点"""
         mock_config.get.side_effect = lambda key, default=None: {
-            "ai.api_key": "test-key",
+            "ai.api_key: "${API_KEY}",
             "ai.api_endpoint": "https://custom.api.com/v1/chat",
             "ai.model": "custom-model",
             "ai.temperature": 0.5,
@@ -372,7 +372,7 @@ class TestAIServiceEdgeCases:
     def test_call_api_with_custom_endpoint(self, mock_config):
         """测试自定义API端点"""
         mock_config.get.side_effect = lambda key, default=None: {
-            "ai.api_key": "test-key",
+            "ai.api_key: "${API_KEY}",
             "ai.api_endpoint": "https://custom.api.com/v1/chat",
             "ai.model": "custom-model",
             "ai.temperature": 0.5,

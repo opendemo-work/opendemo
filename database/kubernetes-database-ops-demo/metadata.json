@@ -1,0 +1,27 @@
+{
+  "id": "kubernetes-database-ops-demo",
+  "name": "Kubernetes数据库运维完整指南",
+  "version": "1.0.0",
+  "author": "OpenDemo",
+  "created_date": "2026-02-02",
+  "last_updated": "2026-02-02",
+  "category": "云原生数据库",
+  "subcategory": "Kubernetes运维",
+  "tags": ["kubernetes", "database-ops", "statefulset", "operator", "helm", "monitoring"],
+  "difficulty": "专家级",
+  "estimated_time": "360分钟",
+  "prerequisites": ["Kubernetes基础", "数据库容器化", "Helm基础", "监控基础"],
+  "learning_objectives": [
+    "掌握Kubernetes环境下数据库的专业运维技能",
+    "学会使用Operator模式管理数据库集群",
+    "理解StatefulSet和持久化存储的最佳实践",
+    "掌握数据库监控、备份和故障处理方案"
+  ],
+  "quality_standards": {
+    "completeness": "100%",
+    "accuracy": "生产环境验证",
+    "clarity": "步骤详细可操作",
+    "relevance": "企业级应用场景"
+  },
+  "validation_status": "pending"
+}

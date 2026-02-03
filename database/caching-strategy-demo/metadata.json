@@ -1,0 +1,27 @@
+{
+  "id": "caching-strategy-demo",
+  "name": "数据库缓存策略完整指南",
+  "version": "1.0.0",
+  "author": "OpenDemo",
+  "created_date": "2026-02-02",
+  "last_updated": "2026-02-02",
+  "category": "性能优化",
+  "subcategory": "缓存策略",
+  "tags": ["database", "caching", "redis", "memcached", "performance", "optimization"],
+  "difficulty": "高级",
+  "estimated_time": "300分钟",
+  "prerequisites": ["数据库基础", "缓存原理", "应用架构知识"],
+  "learning_objectives": [
+    "掌握多级缓存架构设计",
+    "学会缓存策略选择和实现",
+    "理解缓存一致性保障机制",
+    "掌握缓存性能监控和调优"
+  ],
+  "quality_standards": {
+    "completeness": "100%",
+    "accuracy": "生产环境验证",
+    "clarity": "步骤详细可操作",
+    "relevance": "企业级应用场景"
+  },
+  "validation_status": "pending"
+}

@@ -100,7 +100,7 @@ git clone [repository-url]
 cd [agent-directory]
 
 # 3. 配置环境变量
-export API_KEY="your-api-key"
+export api_key: "${API_KEY}"
 export NAMESPACE="default"
 
 # 4. 部署Agent

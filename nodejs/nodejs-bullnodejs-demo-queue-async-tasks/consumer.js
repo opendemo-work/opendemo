@@ -6,7 +6,7 @@ require('dotenv').config();
 const Queue = require('bull');
 
 // 创建与生产者相同的队列实例，确保能消费相同队列
-const emailQueue = new Queue('emailQueue', process.env.REDIS_URL || 'redis://127.0.0.1:6379');
+const emailQueue = new Queue('emailQueue', process.env.REDIS_URL || 'redis://localhost:6379');
 
 // 注册任务处理器：处理队列中的每个任务
 emailQueue.process(async (job) => {

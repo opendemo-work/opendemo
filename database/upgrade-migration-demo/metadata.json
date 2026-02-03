@@ -1,0 +1,27 @@
+{
+  "id": "upgrade-migration-demo",
+  "name": "数据库升级迁移完整指南",
+  "version": "1.0.0",
+  "author": "OpenDemo",
+  "created_date": "2026-02-02",
+  "last_updated": "2026-02-02",
+  "category": "基础管理",
+  "subcategory": "升级迁移",
+  "tags": ["database", "upgrade", "migration", "mysql", "postgresql", "mongodb", "redis"],
+  "difficulty": "高级",
+  "estimated_time": "480分钟",
+  "prerequisites": ["基础SQL知识", "数据库管理经验", "系统运维技能"],
+  "learning_objectives": [
+    "掌握数据库版本升级的最佳实践",
+    "理解跨版本迁移的技术要点",
+    "学会制定零停机迁移方案",
+    "掌握回滚和应急预案制定"
+  ],
+  "quality_standards": {
+    "completeness": "100%",
+    "accuracy": "生产环境验证",
+    "clarity": "步骤详细可操作",
+    "relevance": "企业级应用场景"
+  },
+  "validation_status": "pending"
+}

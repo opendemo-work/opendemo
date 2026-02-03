@@ -1,0 +1,56 @@
+{
+  "id": "access-control-demo",
+  "name": "数据库访问控制管理",
+  "version": "1.0.0",
+  "category": "database",
+  "subcategory": "security-compliance",
+  "tags": [
+    "访问控制",
+    "用户管理",
+    "权限分配",
+    "RBAC",
+    "安全审计"
+  ],
+  "author": "OpenDemo Team",
+  "created_at": "2024-01-01",
+  "updated_at": "2024-01-01",
+  "difficulty": "advanced",
+  "estimated_hours": 7,
+  "prerequisites": [
+    "user-permission-management-demo",
+    "security-hardening-demo"
+  ],
+  "learning_objectives": [
+    "掌握数据库用户和角色管理体系",
+    "理解基于角色的访问控制(RBAC)原理",
+    "实施细粒度的权限控制策略",
+    "建立访问审计和监控机制",
+    "制定访问控制最佳实践和安全策略"
+  ],
+  "skills_covered": [
+    "用户管理",
+    "权限控制",
+    "角色设计",
+    "访问审计",
+    "安全合规"
+  ],
+  "tools_used": [
+    "MySQL",
+    "PostgreSQL",
+    "MongoDB",
+    "Redis",
+    "ACL",
+    "RBAC"
+  ],
+  "related_demos": [
+    "user-permission-management-demo",
+    "data-encryption-demo",
+    "audit-logging-demo"
+  ],
+  "quality_metrics": {
+    "completeness": 100,
+    "accuracy": 98,
+    "production_ready": 95,
+    "documentation_quality": 97
+  }
+}

@@ -58,7 +58,7 @@ go run main.go middleware.go
 
 ### 步骤5：测试登录接口（使用curl）
 ```bash
-curl -X POST http://localhost:8080/login -H "Content-Type: application/json" -d '{"username":"admin","password":"password"}'
+curl -X POST http://localhost:8080/login -H "Content-Type: application/json" -d '{"username":"admin","password: "${GENERIC_PASSWORD}"}'
 ```
 
 预期输出（Token会不同）：

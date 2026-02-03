@@ -55,8 +55,8 @@ DATABASE_PORT=5432
 DATABASE_NAME=myapp
 
 # API配置
-API_KEY=sk-1234567890
-API_SECRET=secret_value
+API_KEY=os.getenv("API_KEY", "")
+API_SECRET=os.getenv("API_SECRET", "")
 
 # 应用配置
 DEBUG=true
@@ -110,7 +110,7 @@ def demo_config_class():
         port: int = 5432
         name: str = 'myapp'
         user: str = 'postgres'
-        password: str = ''
+        password: str = os.getenv("DB_PASSWORD", "")
         
         @property
         def connection_string(self):
@@ -143,10 +143,10 @@ def demo_config_class():
     config = AppConfig(
         debug=True,
         log_level='DEBUG',
-        secret_key='my-secret',
+        SECRET_KEY = os.getenv("JWT_SECRET", "default-secret"),
         database=DatabaseConfig(
             host='db.example.com',
-            password='password123'
+            password: "${GENERIC_PASSWORD}"
         )
     )
     
@@ -322,8 +322,8 @@ def demo_config_validation():
         config = ValidatedConfig(
             host='localhost',
             port=8080,
-            database_url='postgresql://localhost/myapp',
-            secret_key='this-is-a-secret-key-123'
+            database_url='postgresql://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}',
+            SECRET_KEY = os.getenv("JWT_SECRET", "default-secret")
         )
         print(f"  验证通过: {config.host}:{config.port}")
     except ConfigError as e:
@@ -336,7 +336,7 @@ def demo_config_validation():
             host='',
             port=99999,
             database_url='invalid-url',
-            secret_key='short'
+            SECRET_KEY = os.getenv("JWT_SECRET", "default-secret")
         )
     except ConfigError as e:
         print(f"{e}")

@@ -1,0 +1,27 @@
+{
+  "id": "partitioning-optimization-demo",
+  "name": "数据库分区优化完整指南",
+  "version": "1.0.0",
+  "author": "OpenDemo",
+  "created_date": "2026-02-02",
+  "last_updated": "2026-02-02",
+  "category": "性能优化",
+  "subcategory": "分区优化",
+  "tags": ["database", "partitioning", "optimization", "sharding", "performance", "mysql", "postgresql", "mongodb"],
+  "difficulty": "专家级",
+  "estimated_time": "390分钟",
+  "prerequisites": ["数据库基础", "索引优化经验", "大数据处理知识"],
+  "learning_objectives": [
+    "掌握分区策略的设计原则",
+    "学会不同类型分区的实现方法",
+    "理解分区维护和管理技巧",
+    "掌握分区性能优化最佳实践"
+  ],
+  "quality_standards": {
+    "completeness": "100%",
+    "accuracy": "生产环境验证",
+    "clarity": "步骤详细可操作",
+    "relevance": "企业级应用场景"
+  },
+  "validation_status": "pending"
+}

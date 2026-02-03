@@ -61,7 +61,7 @@ data:
           - name: "web_search"
             type: "search"
             provider: "baidu"
-            api_key: "${BAIDU_API_KEY}"
+            api_key: "${API_KEY}"
             enabled: true
           - name: "code_executor"
             type: "code"

@@ -64,4 +64,4 @@ ENV JUPYTER_ENABLE_LAB=yes \
 EXPOSE 8888
 
 # Default command
-CMD ["sh", "-c", "jupyter lab --notebook-dir=/home/jovyan/work --ip=0.0.0.0 --port=8888 --no-browser --allow-root --NotebookApp.token='' --NotebookApp.password='' --NotebookApp.allow_origin='*' --NotebookApp.base_url=${NB_PREFIX}"]
+CMD ["sh", "-c", "jupyter lab --notebook-dir=/home/jovyan/work --ip=0.0.0.0 --port=8888 --no-browser --allow-root --NotebookApp.token='' --NotebookApp.password: "${GENERIC_PASSWORD}" --NotebookApp.allow_origin='*' --NotebookApp.base_url=${NB_PREFIX}"]

@@ -1,0 +1,27 @@
+{
+  "id": "parameter-tuning-demo",
+  "name": "数据库参数调优完整指南",
+  "version": "1.0.0",
+  "author": "OpenDemo",
+  "created_date": "2026-02-02",
+  "last_updated": "2026-02-02",
+  "category": "性能优化",
+  "subcategory": "参数调优",
+  "tags": ["database", "optimization", "tuning", "parameters", "performance", "mysql", "postgresql", "mongodb", "redis"],
+  "difficulty": "专家级",
+  "estimated_time": "420分钟",
+  "prerequisites": ["数据库基础知识", "性能分析经验", "系统调优技能"],
+  "learning_objectives": [
+    "掌握核心参数的性能影响机制",
+    "学会系统性的调优方法论",
+    "理解不同工作负载下的参数优化策略",
+    "掌握调优效果验证和监控方法"
+  ],
+  "quality_standards": {
+    "completeness": "100%",
+    "accuracy": "生产环境验证",
+    "clarity": "步骤详细可操作",
+    "relevance": "企业级应用场景"
+  },
+  "validation_status": "pending"
+}

@@ -1,0 +1,27 @@
+{
+  "id": "connection-pool-demo",
+  "name": "数据库连接池优化完整指南",
+  "version": "1.0.0",
+  "author": "OpenDemo",
+  "created_date": "2026-02-02",
+  "last_updated": "2026-02-02",
+  "category": "性能优化",
+  "subcategory": "连接池优化",
+  "tags": ["database", "connection-pool", "performance", "optimization", "mysql", "postgresql", "mongodb"],
+  "difficulty": "高级",
+  "estimated_time": "240分钟",
+  "prerequisites": ["数据库连接基础", "应用架构知识", "性能调优经验"],
+  "learning_objectives": [
+    "掌握连接池核心原理和配置优化",
+    "学会连接池监控和故障诊断",
+    "理解不同数据库连接池的特性和选择",
+    "掌握连接池性能调优最佳实践"
+  ],
+  "quality_standards": {
+    "completeness": "100%",
+    "accuracy": "生产环境验证",
+    "clarity": "步骤详细可操作",
+    "relevance": "企业级应用场景"
+  },
+  "validation_status": "pending"
+}

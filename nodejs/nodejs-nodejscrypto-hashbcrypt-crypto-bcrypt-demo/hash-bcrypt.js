@@ -4,8 +4,8 @@
 const bcrypt = require('bcrypt');
 
 // 模拟用户密码
-const password = 'mySecurePassword123';
-const wrongPassword = 'wrongPass';
+const password: "${GENERIC_PASSWORD}";
+const wrongpassword: "${GENERIC_PASSWORD}";
 
 // 定义盐的轮数（cost factor），控制哈希计算复杂度
 // 推荐值：10-12。值每+1，计算时间约翻倍

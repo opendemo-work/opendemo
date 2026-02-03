@@ -23,7 +23,7 @@ def mock_config():
     config.get.side_effect = lambda key, default=None: {
         "output_directory": "opendemo_output",
         "user_demo_library": str(Path.home() / ".opendemo" / "demos"),
-        "ai.api_key": "test-key",
+        "ai.api_key: "${API_KEY}",
         "ai.api_endpoint": "https://api.openai.com/v1/chat/completions",
         "ai.model": "gpt-4",
         "ai.temperature": 0.7,
@@ -168,7 +168,7 @@ def mock_config():
     config.get.side_effect = lambda key, default=None: {
         "output_directory": "opendemo_output",
         "user_demo_library": str(Path.home() / ".opendemo" / "demos"),
-        "ai.api_key": "test-key",
+        "ai.api_key: "${API_KEY}",
         "ai.api_endpoint": "https://api.openai.com/v1/chat/completions",
         "ai.model": "gpt-4",
         "ai.temperature": 0.7,
