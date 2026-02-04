@@ -2,6 +2,14 @@
 
 > Kubernetes从基础到企业级运维的完整学习体系，包含171个核心案例
 
+---
+
+## 🚀 快速入口
+
+- 📋 **[K8s 命令行速查表 (k8s-cli.md)](./k8s-cli.md)** - 生产环境必备的Kubernetes命令大全
+- 🔍 **[交叉引用索引](./CROSS-REFERENCE-INDEX.md)** - 完整的案例导航和关联关系
+- 📊 **案例统计**: 185个核心案例，覆盖Kubernetes全技术栈
+
 ## 📋 技术栈概述
 
 Kubernetes是一个开源的容器编排平台，用于自动化部署、扩展和管理容器化应用。本技术栈提供从基础概念到生产运维的完整Kubernetes学习路径。
@@ -47,6 +55,8 @@ Kubernetes是一个开源的容器编排平台，用于自动化部署、扩展�
 
 ## 🚀 快速开始
 
+### 命令行工具使用
+
 ```bash
 # 查看所有Kubernetes案例
 opendemo search kubernetes
@@ -59,7 +69,22 @@ opendemo get kubernetes service-types-overview
 
 # 获取大模型训练案例
 opendemo get kubernetes model-training-basics
+
+# 直接查看K8s CLI速查表
+opendemo get kubernetes k8s-cli-cheatsheet
 ```
+
+### 生产环境常用命令参考
+
+详细命令清单请查看 **[K8s CLI 命令行速查表](./k8s-cli.md)**，包含：
+
+- 集群管理和节点操作
+- Pod 和工作负载管理
+- 服务发现和网络配置
+- 存储管理和配置管理
+- 权限认证和安全加固
+- 监控诊断和调试排错
+- AI/ML 特殊场景命令
 
 ---
 
@@ -225,6 +250,7 @@ kubectl krew install ctx ns
 - 所有案例必须包含可运行的配置文件和部署脚本
 - 建立完整的交叉引用和索引体系便于学习导航
 - 推理案例需包含性能基准测试和监控告警配置
+- CLI命令示例需经过实际环境验证，确保准确性和实用性
 
 ---
 

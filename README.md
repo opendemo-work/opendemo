@@ -677,18 +677,17 @@ cd opendemo
 # 复制环境配置
 cp .env.example .env
 
-# 安装依赖（根据需要选择）
-# Python项目
-pip install -r requirements.txt
+# 编辑配置文件（根据实际需求填写）
+nano .env
+```
 
-# Node.js项目
-npm install
+### 🔒 安全检查
+```bash
+# 运行自动化安全扫描
+./scripts/security/check_security.sh
 
-# Go项目
-go mod tidy
-
-# Java项目
-mvn install
+# 生成项目所需密钥
+./scripts/security/generate_keys.sh
 ```
 
 ### 🚀 运行第一个Demo
@@ -717,6 +716,26 @@ python main.py
 - **后端工程师**: Java → 微服务 → 云原生
 - **数据工程师**: Python → 数据库 → 大数据
 - **DevOps工程师**: Linux → 容器 → Kubernetes
+
+### 🛠️ 开发工具
+
+#### 安全工具
+- `./scripts/security/check_security.sh` - 安全检查
+- `./scripts/security/scan_secrets.py` - 敏感信息扫描
+- `./scripts/security/generate_keys.sh` - 密钥生成
+
+#### 开发辅助
+- `make help` - 查看可用命令
+- `make test` - 运行测试
+- `make lint` - 代码检查
+
+### 📚 文档资源
+- [安全配置指南](SECURITY_CONFIG.md)
+- [跨技术栈索引](docs/CROSS-TECH-INDEX.md)
+- [技术栈规划](java/JAVA-TECH-STACK-COMPLETION-PLAN.md)
+- [项目元数据映射](data/demo_mapping.json)
+- [Java验证报告](data/java_validation_report.json)
+- [详细目录结构](DETAILED_STRUCTURE.md)
 
 ---
 
@@ -772,6 +791,12 @@ python main.py
 - 生产环境使用请进行充分测试
 - 遵循各技术栈的最佳实践
 - 及时关注安全更新和补丁
+
+### 🔒 安全规范
+- ❌ 禁止在代码中硬编码敏感信息
+- 🔁 定期更新密钥和密码
+- 🛡️ 提交前务必运行安全检查
+- 🔐 严格遵循最小权限原则
 
 ---
 
