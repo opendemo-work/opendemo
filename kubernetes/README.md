@@ -104,6 +104,21 @@ opendemo get kubernetes k8s-cli-cheatsheet
 
 ## 📚 详细目录
 
+### 本地开发环境 (新增)
+<details>
+<summary>点击查看本地开发部署方案</summary>
+
+#### macOS本地Kubernetes部署
+- [**local-development**](./local-development/) - **macOS本地开发环境完整指南** ⭐
+  - [minikube部署指南](./local-development/minikube/) - 适合初学者的完整部署教程
+  - [kind部署指南](./local-development/kind/) - 开发者的轻量级选择
+  - [k3s部署指南](./local-development/k3s/) - 资源受限环境的理想方案
+  - [Docker Desktop Kubernetes](./local-development/docker-desktop/) - 一键启用的快速体验
+  - [工具对比选择指南](./local-development/tools-comparison/) - 详细的功能对比和选择建议
+  - [性能优化与故障排除](./local-development/performance-troubleshooting/) - 完整的调优和问题解决指南
+
+</details>
+
 ### 核心概念 (约30个)
 <details>
 <summary>点击查看完整列表</summary>
