@@ -7,7 +7,11 @@
 import yaml
 from pathlib import Path
 from typing import Dict, Any
-from opendemo.utils.logger import get_logger
+# 修复导入路径
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent.parent))
+from utils.logger import get_logger
 
 logger = get_logger(__name__)
 
@@ -25,7 +29,7 @@ class ConfigService:
         "verification_timeout": 300,
         "ai": {
             "provider": "openai",
-            "api_key: "${API_KEY}",
+            "api_key": "${API_KEY}",
             "api_endpoint": "",
             "model": "gpt-4",
             "temperature": 0.7,

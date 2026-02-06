@@ -5,11 +5,16 @@ Demo仓库管理模块
 整合了原 demo_manager, library_manager, library_detector, contribution 的功能。
 """
 
+# 修复导入路径
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent.parent))
+
 import json
 from datetime import datetime
 from pathlib import Path
 from typing import Dict, Any, Optional, List, Tuple
-from opendemo.utils.logger import get_logger
+from utils.logger import get_logger
 
 logger = get_logger(__name__)
 

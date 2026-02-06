@@ -4,13 +4,19 @@
 负责验证demo的可执行性。
 """
 
+# 修复导入路径
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent.parent))
+
 import sys
 import subprocess
 import tempfile
 import shutil
 from pathlib import Path
 from typing import Dict, Any
-from opendemo.services.java_verifier import JavaVerifier
+from services.java_verifier import JavaVerifier
+from utils.logger import get_logger
 
 logger = get_logger(__name__)
 

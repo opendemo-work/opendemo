@@ -4,6 +4,11 @@
 执行单元测试和CLI功能测试，生成检查报告。
 """
 
+# 修复导入路径
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent.parent))
+
 import subprocess
 import sys
 import json
@@ -12,7 +17,7 @@ from pathlib import Path
 from datetime import datetime
 from typing import Dict, List, Any
 
-from opendemo.utils.logger import get_logger
+from utils.logger import get_logger
 
 
 class QualityChecker:

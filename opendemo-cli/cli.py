@@ -10,17 +10,20 @@ import click
 from pathlib import Path
 from typing import List, Dict, Any, Optional
 
-from opendemo.services.config_service import ConfigService
-from opendemo.services.storage_service import StorageService
-from opendemo.services.ai_service import AIService
-from opendemo.core.demo_repository import DemoRepository
-from opendemo.core.demo_search import DemoSearch
-from opendemo.core.demo_generator import DemoGenerator
-from opendemo.core.demo_verifier import DemoVerifier
-from opendemo.core.readme_updater import ReadmeUpdater
-from opendemo.core.quality_checker import QualityChecker
-from opendemo.core.demo_list_updater import DemoListUpdater
-from opendemo.utils.formatters import (
+# 添加包路径
+sys.path.insert(0, str(Path(__file__).parent))
+
+from services.config_service import ConfigService
+from services.storage_service import StorageService
+from services.ai_service import AIService
+from core.demo_repository import DemoRepository
+from core.demo_search import DemoSearch
+from core.demo_generator import DemoGenerator
+from core.demo_verifier import DemoVerifier
+from core.readme_updater import ReadmeUpdater
+from core.quality_checker import QualityChecker
+from core.demo_list_updater import DemoListUpdater
+from utils.formatters import (
     print_success,
     print_error,
     print_warning,
@@ -31,7 +34,7 @@ from opendemo.utils.formatters import (
     print_progress,
     print_library_info,
 )
-from opendemo.utils.logger import setup_logger, get_logger
+from utils.logger import setup_logger, get_logger
 
 # 支持的语言列表
 SUPPORTED_LANGUAGES = ["python", "java", "go", "nodejs", "kubernetes"]

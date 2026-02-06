@@ -10,7 +10,9 @@ import tempfile
 import shutil
 from pathlib import Path
 from typing import Dict, Any, List, Tuple
-from opendemo.utils.logger import get_logger
+# 修复导入路径
+sys.path.insert(0, str(Path(__file__).parent.parent))
+from utils.logger import get_logger
 
 logger = get_logger(__name__)
 

@@ -1,7 +1,12 @@
+# 修复导入路径
+import sys
 from pathlib import Path
-from opendemo.services.config_service import ConfigService
-from opendemo.services.storage_service import StorageService
-from opendemo.core.readme_updater import ReadmeUpdater
+sys.path.insert(0, str(Path(__file__).parent.parent))
+
+from pathlib import Path
+from services.config_service import ConfigService
+from services.storage_service import StorageService
+from core.readme_updater import ReadmeUpdater
 
 output_dir = Path("opendemo_output")
 readme_path = Path("README.md")

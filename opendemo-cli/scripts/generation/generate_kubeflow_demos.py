@@ -4,6 +4,11 @@ Kubeflow Demo批量生成脚本
 根据设计文档批量生成35个Kubeflow Demo，使用CLI命令行方式
 """
 
+# 修复导入路径
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent.parent))
+
 import sys
 import subprocess
 import time
@@ -15,7 +20,7 @@ from datetime import datetime
 project_root = Path(__file__).parent.parent
 sys.path.insert(0, str(project_root))
 
-from opendemo.utils.logger import get_logger
+from utils.logger import get_logger
 
 logger = get_logger(__name__)
 

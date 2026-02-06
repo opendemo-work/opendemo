@@ -7,7 +7,10 @@ Java质量检查器模块
 import re
 from pathlib import Path
 from typing import Dict, List, Any
-from opendemo.utils.logger import get_logger
+# 修复导入路径
+import sys
+sys.path.insert(0, str(Path(__file__).parent.parent))
+from utils.logger import get_logger
 
 logger = get_logger(__name__)
 

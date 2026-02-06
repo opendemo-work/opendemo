@@ -50,6 +50,7 @@ config/secrets/
 *.pem
 *.crt
 *.cert
+credentials.json
 
 # ===== 临时文件 =====
 tmp/
@@ -67,3 +68,4 @@ temp/
 # opendemo_output/
 *.local.yaml
 check/
+node_modules/

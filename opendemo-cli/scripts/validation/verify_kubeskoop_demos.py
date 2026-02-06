@@ -2,6 +2,11 @@
 KubeSkoop Demo 批量验证脚本
 """
 
+# 修复导入路径
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent.parent))
+
 import sys
 from pathlib import Path
 
@@ -9,8 +14,8 @@ from pathlib import Path
 project_root = Path(__file__).parent.parent
 sys.path.insert(0, str(project_root))
 
-from opendemo.services.config_service import ConfigService
-from opendemo.core.demo_verifier import DemoVerifier
+from services.config_service import ConfigService
+from core.demo_verifier import DemoVerifier
 
 
 def verify_all_kubeskoop_demos():

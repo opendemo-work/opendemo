@@ -5,9 +5,14 @@ Demo搜索引擎模块
 整合了原 search_engine 和 library_manager 的搜索逻辑。
 """
 
+# 修复导入路径
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent.parent))
+
 from typing import List, Dict, Any, Optional, Tuple
-from opendemo.core.demo_repository import Demo
-from opendemo.utils.logger import get_logger
+from core.demo_repository import Demo
+from utils.logger import get_logger
 
 logger = get_logger(__name__)
 

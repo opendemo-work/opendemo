@@ -4,12 +4,17 @@ Demo List 自动更新模块
 负责在 CLI 操作后自动更新 demo-list.md 文件。
 """
 
+# 修复导入路径
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent.parent))
+
 import json
 from pathlib import Path
 from datetime import datetime
 from typing import Dict, List, Any, Optional
 
-from opendemo.utils.logger import get_logger
+from utils.logger import get_logger
 
 # 支持的语言列表
 SUPPORTED_LANGUAGES = ["python", "go", "nodejs", "kubernetes"]

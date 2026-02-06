@@ -4,11 +4,16 @@ README.md 自动更新模块
 负责在demo生成后自动更新README.md中的统计信息。
 """
 
+# 修复导入路径
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent.parent))
+
 import re
 from pathlib import Path
 from typing import Dict, Any
 
-from opendemo.utils.logger import get_logger
+from utils.logger import get_logger
 
 # 支持的语言列表
 SUPPORTED_LANGUAGES = ["python", "go", "nodejs", "java", "kubernetes"]

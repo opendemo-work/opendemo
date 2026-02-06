@@ -3,10 +3,15 @@
 协调AI服务生成demo，补充元数据。
 """
 
+# 修复导入路径
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent.parent))
+
 from datetime import datetime
 from typing import Dict, Any, Optional
 from pathlib import Path
-from opendemo.utils.logger import get_logger
+from utils.logger import get_logger
 
 logger = get_logger(__name__)
 

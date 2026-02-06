@@ -4,6 +4,11 @@ KServe Demo 批量验证脚本
 验证所有 KServe Demo 的静态和 Dry-run 完整性
 """
 
+# 修复导入路径
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent.parent))
+
 import sys
 import json
 from pathlib import Path
@@ -14,9 +19,9 @@ from typing import Dict, List, Any
 project_root = Path(__file__).parent.parent
 sys.path.insert(0, str(project_root))
 
-from opendemo.services.config_service import ConfigService
-from opendemo.core.demo_verifier import DemoVerifier
-from opendemo.utils.logger import get_logger
+from services.config_service import ConfigService
+from core.demo_verifier import DemoVerifier
+from utils.logger import get_logger
 
 logger = get_logger(__name__)
 
@@ -343,9 +348,9 @@ from typing import Dict, List, Any
 project_root = Path(__file__).parent.parent
 sys.path.insert(0, str(project_root))
 
-from opendemo.services.config_service import ConfigService
-from opendemo.core.demo_verifier import DemoVerifier
-from opendemo.utils.logger import get_logger
+from services.config_service import ConfigService
+from core.demo_verifier import DemoVerifier
+from utils.logger import get_logger
 
 logger = get_logger(__name__)
 
