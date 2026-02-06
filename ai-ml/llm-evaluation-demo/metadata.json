@@ -1,0 +1,37 @@
+{
+  "name": "大语言模型评估实战演示",
+  "description": "通过实际示例展示大语言模型评估的各种技术，包括指标计算、安全性评估、模型对齐等。",
+  "tags": [
+    "ai",
+    "llm",
+    "evaluation",
+    "metrics",
+    "rlhf",
+    "safety",
+    "alignment",
+    "nlp"
+  ],
+  "difficulty": "高级",
+  "estimated_time": "8小时",
+  "prerequisites": [
+    "自然语言处理基础",
+    "机器学习评估概念",
+    "Python编程技能",
+    "模型训练经验"
+  ],
+  "learning_objectives": [
+    "掌握大语言模型评估的基本指标和方法",
+    "学会使用RLHF和RLAIF进行模型对齐",
+    "理解模型安全性和偏见评估技巧",
+    "掌握评估框架和工具的使用方法"
+  ],
+  "technical_requirements": [
+    "GPU或CPU环境",
+    "Python 3.8+",
+    "至少16GB内存"
+  ],
+  "related_demos": [
+    "ai-ml/llm-training-demo",
+    "ai-ml/llm-inference-demo"
+  ]
+}

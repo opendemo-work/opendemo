@@ -1,0 +1,36 @@
+{
+  "name": "Linux htop系统监控工具详解演示",
+  "description": "通过实际示例展示Linux htop命令的各种用法，包括系统资源监控、进程管理、性能分析等系统监控操作。",
+  "tags": [
+    "linux",
+    "system-monitoring",
+    "htop",
+    "process-management",
+    "performance-analysis",
+    "resource-monitoring",
+    "system-administration"
+  ],
+  "difficulty": "中级",
+  "estimated_time": "2小时",
+  "prerequisites": [
+    "基础Linux命令知识",
+    "系统资源管理基础知识",
+    "进程管理基础知识"
+  ],
+  "learning_objectives": [
+    "掌握htop命令的基本语法和交互式操作",
+    "学会使用htop进行系统资源监控",
+    "理解进程管理和性能分析方法",
+    "掌握系统监控最佳实践"
+  ],
+  "technical_requirements": [
+    "Linux系统",
+    "htop工具",
+    "系统监控权限"
+  ],
+  "related_demos": [
+    "linux-top-process-monitoring-demo",
+    "linux-advanced-performance-monitoring-demo",
+    "linux-tsar-system-monitoring-demo"
+  ]
+}

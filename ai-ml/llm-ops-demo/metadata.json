@@ -1,0 +1,39 @@
+{
+  "name": "大语言模型运维实战演示",
+  "description": "通过实际示例展示大语言模型运维的各种技术，包括部署、监控、伸缩、安全等。",
+  "tags": [
+    "ai",
+    "llm",
+    "operations",
+    "mlops",
+    "kubernetes",
+    "deployment",
+    "monitoring",
+    "devops"
+  ],
+  "difficulty": "高级",
+  "estimated_time": "10小时",
+  "prerequisites": [
+    "Kubernetes基础知识",
+    "容器化技术经验",
+    "Python编程技能",
+    "云原生概念理解"
+  ],
+  "learning_objectives": [
+    "掌握大语言模型的部署和管理策略",
+    "学会使用Kubernetes进行模型服务管理",
+    "理解性能监控和资源优化技巧",
+    "掌握模型安全和访问控制方法"
+  ],
+  "technical_requirements": [
+    "Kubernetes集群",
+    "Docker环境",
+    "Python 3.8+",
+    "至少64GB内存"
+  ],
+  "related_demos": [
+    "ai-ml/llm-training-demo",
+    "ai-ml/llm-fine-tuning-demo",
+    "ai-ml/llm-inference-demo"
+  ]
+}

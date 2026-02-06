@@ -4288,7 +4288,7 @@ iperf3 -s &                         # 服务端
 iperf3 -c <server-ip> -t 30         # 客户端测试
 ```
 
-### 容器化环境命令
+# 容器化环境命令
 ```bash
 # Docker基础命令
 docker ps -a                      # 所有容器状态
@@ -4307,3 +4307,253 @@ docker run --memory=1g --cpus=1.5 <image>  # 资源限制运行
 docker update --memory=2g <container>      # 动态调整资源
 ```
 
+---
+
+## 实用技巧
+
+### 高级kubectl技巧
+```bash
+# 使用JSONPath提取特定信息
+kubectl get pods -o jsonpath='{.items[*].metadata.name}'
+kubectl get nodes -o jsonpath='{.items[*].status.addresses[?(@.type=="InternalIP")].address}'
+
+# 格式化输出
+kubectl get pods -o wide
+kubectl get pods -o yaml
+kubectl get pods -o json
+
+# 条件筛选
+kubectl get pods --field-selector status.phase=Running
+kubectl get pods -l app=myapp
+kubectl get pods --all-namespaces --field-selector spec.restartPolicy=Always
+
+# 临时修改资源
+kubectl patch pod <pod-name> -p '{"spec":{"containers":[{"name":"<container-name>","image":"<new-image>"}]}}'
+
+# 从标准输入应用配置
+cat pod.yaml | kubectl apply -f -
+
+# 查看资源的完整配置
+kubectl get pod <pod-name> -o yaml --export
+
+# 生成资源清单
+kubectl create deployment myapp --image=nginx --dry-run=client -o yaml
+
+# 查看API资源
+kubectl api-resources
+kubectl api-versions
+
+# 查看资源支持的操作
+kubectl explain pod
+kubectl explain pod.spec.containers
+
+# 批量操作
+kubectl get pods -o name | xargs kubectl label pods environment=production
+
+# 资源配额管理
+kubectl describe quota -n <namespace>
+
+# 节点维护
+kubectl cordon <node-name>  # 标记节点不可调度
+kubectl uncordon <node-name>  # 恢复节点调度
+kubectl drain <node-name> --ignore-daemonsets  # 安全驱逐节点上的Pod
+
+# 事件查看
+kubectl get events --sort-by='.lastTimestamp' -A
+
+# 条件等待
+kubectl wait --for=condition=Ready pod/<pod-name>
+kubectl wait --for=jsonpath='{.status.phase}=Succeeded' job/<job-name>
+
+# 服务端应用
+kubectl apply -f <file> --server-side
+
+# 资源删除策略
+kubectl delete pod <pod-name> --grace-period=30
+kubectl delete pod <pod-name> --force --grace-period=0
+```
+
+### kubectl插件和配置
+```bash
+# 安装kubectl插件
+kubectl krew install <plugin-name>
+kubectl krew list
+kubectl krew upgrade
+
+# 常用插件
+kubectl neat <resource>  # 清理输出格式
+kubectl tree <resource>  # 显示资源依赖树
+kubectl outdate <image>  # 检查镜像更新
+kubectl who-can <verb> <resource>  # 检查权限
+
+# 配置管理
+kubectl config view
+kubectl config get-contexts
+kubectl config use-context <context-name>
+kubectl config set-context <context-name> --namespace=<namespace>
+
+# 别名设置
+kubectl config set-aliases  # 如果支持的话
+```
+
+### 调试和故障排除高级技巧
+```bash
+# Pod调试
+kubectl debug <pod-name> -it --image=busybox -- sh  # 添加调试容器
+kubectl run debug-pod --image=nicolaka/netshoot --rm -it -- sh  # 临时调试Pod
+
+# 网络调试
+kubectl run test-pod --image=nicolaka/netshoot --rm -it -- sh
+# 在调试Pod中进行网络测试
+nslookup kubernetes.default
+ping google.com
+nc -zv <service-name> <port>
+
+# 日志聚合和分析
+kubectl logs <pod-name> | grep -i error
+kubectl logs <pod-name> --since=1h | tail -100
+
+# 资源性能分析
+kubectl top pods --containers
+kubectl top nodes
+kubectl describe node <node-name> | grep -A 10 "Allocated resources"
+
+# 状态检查脚本
+cat > health-check.sh << 'EOF'
+#!/bin/bash
+echo "=== 集群健康检查 ==="
+kubectl get nodes
+echo -e "\n=== 异常Pod ==="
+kubectl get pods --all-namespaces --field-selector=status.phase!=Running,status.phase!=Succeeded
+echo -e "\n=== 资源使用 ==="
+kubectl top nodes
+EOF
+
+chmod +x health-check.sh
+```
+
+### 生产环境最佳实践
+```bash
+# 资源限制设置
+resources:
+  requests:
+    memory: "64Mi"
+    cpu: "250m"
+  limits:
+    memory: "128Mi"
+    cpu: "500m"
+
+# 健康检查配置
+livenessProbe:
+  httpGet:
+    path: /healthz
+    port: 8080
+  initialDelaySeconds: 30
+  periodSeconds: 10
+
+readinessProbe:
+  httpGet:
+    path: /ready
+    port: 8080
+  initialDelaySeconds: 5
+  periodSeconds: 5
+
+# 安全上下文
+securityContext:
+  runAsNonRoot: true
+  runAsUser: 1000
+  fsGroup: 2000
+
+# Pod优先级
+priorityClassName: high-priority
+
+# 资源配额示例
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: compute-quota
+  namespace: <namespace>
+spec:
+  hard:
+    requests.cpu: "1"
+    requests.memory: 1Gi
+    limits.cpu: "2"
+    limits.memory: 2Gi
+```
+
+### 脚本自动化示例
+```bash
+# 部署验证脚本
+validate_deployment() {
+  DEPLOYMENT=$1
+  NAMESPACE=${2:-default}
+  TIMEOUT=${3:-300}
+  
+  echo "Waiting for deployment $DEPLOYMENT in namespace $NAMESPACE to be ready..."
+  kubectl wait --for=condition=Available=True deployment/$DEPLOYMENT -n $NAMESPACE --timeout=${TIMEOUT}s
+  
+  if [ $? -eq 0 ]; then
+    echo "✅ Deployment $DEPLOYMENT is ready"
+  else
+    echo "❌ Deployment $DEPLOYMENT failed to become ready"
+    return 1
+  fi
+}
+
+# 蓝绿部署示例
+blue_green_deploy() {
+  NEW_VERSION=$1
+  CURRENT_DEPLOYMENT="myapp-green"
+  NEW_DEPLOYMENT="myapp-blue"
+  
+  # 部署新版本
+  kubectl set image deployment/$NEW_DEPLOYMENT app=myapp:$NEW_VERSION
+  
+  # 验证新版本
+  validate_deployment $NEW_DEPLOYMENT
+  
+  # 更新服务指向新版本
+  kubectl patch service/myapp-service -p "{\"spec\":{\"selector\":{\"version\":\"$NEW_VERSION\"}}}"
+  
+  # 删除旧版本
+  kubectl scale deployment/$CURRENT_DEPLOYMENT --replicas=0
+}
+
+# 回滚脚本
+rollback_deployment() {
+  DEPLOYMENT=$1
+  NAMESPACE=${2:-default}
+  
+  # 查看历史版本
+  kubectl rollout history deployment/$DEPLOYMENT -n $NAMESPACE
+  
+  # 回滚到上一版本
+  kubectl rollout undo deployment/$DEPLOYMENT -n $NAMESPACE
+  
+  # 监控回滚进度
+  kubectl rollout status deployment/$DEPLOYMENT -n $NAMESPACE
+}
+
+# 备份配置
+backup_configs() {
+  NAMESPACE=${1:-default}
+  BACKUP_DIR="./backup-$(date +%Y%m%d-%H%M%S)"
+  mkdir -p $BACKUP_DIR
+  
+  kubectl get all -n $NAMESPACE -o yaml > $BACKUP_DIR/resources.yaml
+  kubectl get secrets -n $NAMESPACE -o yaml > $BACKUP_DIR/secrets.yaml
+  kubectl get configmaps -n $NAMESPACE -o yaml > $BACKUP_DIR/configmaps.yaml
+  
+  echo "Configs backed up to $BACKUP_DIR"
+}
+```
+
+> **💡 提示**：
+> - 定期备份重要配置文件
+> - 在生产环境操作前先在测试环境验证
+> - 使用命名空间隔离不同环境的应用
+> - 配置适当的资源限制防止资源滥用
+> - 启用监控和告警以便及时发现问题
+> - 使用RBAC控制访问权限
+> - 对敏感信息使用Secrets而非ConfigMaps
+> - 定期更新基础镜像以修复安全漏洞

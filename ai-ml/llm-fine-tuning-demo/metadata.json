@@ -1,0 +1,38 @@
+{
+  "name": "大语言模型微调实战演示",
+  "description": "通过实际示例展示大语言模型微调的各种技术，包括LoRA、P-Tuning等参数高效微调方法。",
+  "tags": [
+    "ai",
+    "llm",
+    "fine-tuning",
+    "lora",
+    "transformers",
+    "peft",
+    "machine-learning",
+    "nlp"
+  ],
+  "difficulty": "高级",
+  "estimated_time": "8小时",
+  "prerequisites": [
+    "深度学习基础知识",
+    "PyTorch/TensorFlow经验",
+    "自然语言处理基础",
+    "Python编程技能"
+  ],
+  "learning_objectives": [
+    "掌握大语言模型微调的基本概念和方法",
+    "学会使用LoRA、P-Tuning等参数高效微调技术",
+    "理解数据集准备和预处理技巧",
+    "掌握微调过程中的性能优化和资源管理"
+  ],
+  "technical_requirements": [
+    "GPU环境（推荐NVIDIA GPU）",
+    "Python 3.8+",
+    "至少16GB内存"
+  ],
+  "related_demos": [
+    "ai-ml/llm-training-demo",
+    "ai-ml/llm-inference-demo",
+    "ai-ml/llm-ops-demo"
+  ]
+}

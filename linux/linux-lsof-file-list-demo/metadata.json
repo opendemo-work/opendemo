@@ -1,0 +1,36 @@
+{
+  "name": "Linux lsof文件列表工具详解演示",
+  "description": "通过实际示例展示Linux lsof命令的各种用法，包括文件描述符监控、网络连接查看、进程文件访问分析等操作。",
+  "tags": [
+    "linux",
+    "file-descriptor",
+    "lsof",
+    "process-monitoring",
+    "network-connections",
+    "file-access",
+    "troubleshooting"
+  ],
+  "difficulty": "中级",
+  "estimated_time": "2小时",
+  "prerequisites": [
+    "基础Linux命令知识",
+    "进程和文件系统基础知识",
+    "网络基础知识"
+  ],
+  "learning_objectives": [
+    "掌握lsof命令的基本语法和常用选项",
+    "学会使用lsof进行文件描述符监控",
+    "理解网络连接和进程分析方法",
+    "掌握故障排查和安全审计技巧"
+  ],
+  "technical_requirements": [
+    "Linux系统",
+    "lsof工具",
+    "网络连接"
+  ],
+  "related_demos": [
+    "linux-netstat-network-monitoring-demo",
+    "linux-process-thread-debugging-demo",
+    "linux-advanced-performance-monitoring-demo"
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "name": "NGINX 负载均衡演示",
+  "description": "使用 NGINX 实现高性能 HTTP/TCP 负载均衡的完整解决方案演示",
+  "category": "traffic",
+  "tags": ["nginx", "load-balancing", "high-availability", "reverse-proxy", "performance"],
+  "difficulty": "intermediate",
+  "estimated_time": "3-5 hours",
+  "prerequisites": ["http-protocols", "networking-fundamentals"],
+  "learning_objectives": [
+    "掌握 NGINX 负载均衡的核心配置",
+    "理解不同负载均衡算法的特点和适用场景",
+    "学会健康检查和故障转移配置",
+    "实现会话保持和粘性负载",
+    "优化负载均衡器性能和可靠性"
+  ],
+  "technologies": ["NGINX", "Docker", "HTTP", "TCP/IP"],
+  "created_at": "2026-02-05",
+  "updated_at": "2026-02-05",
+  "status": "planned",
+  "version": "1.0.0"
+}

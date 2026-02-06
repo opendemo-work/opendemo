@@ -1,0 +1,37 @@
+{
+  "name": "AI模型监控与可观测性实战演示",
+  "description": "通过实际示例展示AI模型监控的最佳实践，包括性能监控、漂移检测、可解释性等。",
+  "tags": [
+    "ai",
+    "monitoring",
+    "observability",
+    "prometheus",
+    "evidently",
+    "drift-detection",
+    "explainability",
+    "model-ops"
+  ],
+  "difficulty": "高级",
+  "estimated_time": "10小时",
+  "prerequisites": [
+    "机器学习基础",
+    "Python编程技能",
+    "监控系统概念",
+    "数据分析经验"
+  ],
+  "learning_objectives": [
+    "掌握AI模型性能监控的最佳实践",
+    "学会数据漂移和概念漂移检测技术",
+    "理解模型可解释性和公平性监控方法",
+    "掌握AI系统可观测性架构设计"
+  ],
+  "technical_requirements": [
+    "Docker环境",
+    "Python 3.8+",
+    "Prometheus监控系统"
+  ],
+  "related_demos": [
+    "ai-ml/llm-ops-demo",
+    "ai-ml/llm-evaluation-demo"
+  ]
+}

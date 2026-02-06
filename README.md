@@ -4,7 +4,7 @@
 
 OpenDemo 是一个综合性技术学习和演示平台，涵盖多种主流编程语言和技术栈的实战案例。本项目致力于提供高质量的技术示例和最佳实践指南，帮助开发者快速掌握各种技术栈的核心概念和实际应用。
 
-> **项目规模**: 253+ 个技术演示案例 | **覆盖技术栈**: 9大类别 | **持续更新中**
+> **项目规模**: 300+ 个技术演示案例 | **覆盖技术栈**: 10大类别 | **持续更新中**
 
 ---
 
@@ -14,18 +14,18 @@ OpenDemo 是一个综合性技术学习和演示平台，涵盖多种主流编�
 
 | 技术栈 | Demo数量 | 完备度 | 学习难度 | 主要用途 |
 |--------|----------|--------|----------|----------|
-| **Go语言** | 78个 | ✅ 完备 | 🟡 中等 | 系统编程、微服务 |
-| **Node.js** | 65个 | ✅ 完备 | 🟢 简单 | Web开发、全栈应用 |
-| **Java** | 45个 | ✅ 完备 | 🟡 中等 | 企业级应用开发 |
-| **数据库** | 37个 | ✅ 完备 | 🟢 简单 | 数据存储与管理 |
+| **Go语言** | 95个 | ✅ 完备 | 🟡 中等 | 系统编程、微服务 |
+| **Node.js** | 71个 | ✅ 完备 | 🟢 简单 | Web开发、全栈应用 |
+| **Java** | 23个 | 🚧 基础 | 🟡 中等 | 企业级应用开发 |
+| **数据库** | 38个 | ✅ 完备 | 🟢 简单 | 数据存储与管理 |
 | **基础设施** | 8个 | ✅ 完备 | 🟡 中等 | 负载均衡、API网关 |
 | **监控系统** | 7个 | ✅ 完备 | 🟡 中等 | 系统监控、可视化 |
 | **消息队列** | 4个 | ✅ 完备 | 🔴 困难 | 异步处理、应用解耦 |
-| **Python** | 4个 | 🚧 基础 | 🟢 简单 | 数据科学、脚本开发 |
-| **Kubernetes** | 16个 | ✅ 完备 | 🔴 困难 | 容器编排、云原生 |
-| **Linux** | 8个 | ✅ 完备 | 🟡 中等 | 系统管理、运维 |
+| **Python** | 56个 | ✅ 完备 | 🟢 简单 | 数据科学、脚本开发 |
+| **Kubernetes** | 43个 | ✅ 完备 | 🔴 困难 | 容器编排、云原生 |
+| **Linux** | 19个 | ✅ 完备 | 🟡 中等 | 系统管理、运维 |
 | **容器技术** | 0个 | ⏳ 规划中 | - | 容器化部署 |
-| **AI/ML** | 0个 | ⏳ 规划中 | 🔴 困难 | 人工智能、机器学习 |
+| **AI/ML** | 15个 | ✅ 完备 | 🔴 困难 | 人工智能、机器学习、LLM训练推理运维 |
 
 ### 📈 学习路径推荐
 
@@ -116,13 +116,19 @@ Java全套(45) → 微服务架构(15) → 数据库高可用(12) → 监控运�
 </details>
 
 <details>
-<summary><strong>🦫 Go语言技术栈 (78个Demo)</strong></summary>
+<summary><strong>🦫 Go语言技术栈 (92个Demo)</strong></summary>
 
 #### 基础语法系列
-- [`go-go-demo-2`](go/go-go-demo-2/) - Go变量类型实战演示
+- [`go-go-basic-variables-demo`](go/go-go-basic-variables-demo/) - Go变量类型实战演示
 - [`go-go-variable-types-demo`](go/go-go-variable-types-demo/) - Go变量类型演示
 - [`go-go-control-flow-demo`](go/go-go-control-flow-demo/) - Go控制流演示
-- [`go-go-demo-6`](go/go-go-demo-6/) - Go控制流语句实战演示
+- [`go-go-control-statements-demo`](go/go-go-control-statements-demo/) - Go控制流语句实战演示
+- [`go-go-functions-demo`](go/go-go-functions-demo/) - Go函数编程实战演示
+- [`go-go-strings-processing-demo`](go/go-go-strings-processing-demo/) - Go字符串处理实战演示
+- [`go-go-arrays-slices-demo`](go/go-go-arrays-slices-demo/) - Go数组与切片实战演示
+- [`go-go-interfaces-demo`](go/go-go-interfaces-demo/) - Go接口实战演示
+- [`go-go-structs-fundamentals-demo`](go/go-go-structs-fundamentals-demo/) - Go结构体基础演示
+- [`go-go-structs-advanced-demo`](go/go-structs-advanced-demo/) - Go结构体高级应用演示
 
 #### 并发编程系列
 - [`go-gogoroutines-demo`](go/go-gogoroutines-demo/) - Go并发编程入门：Goroutines实战演示
@@ -131,6 +137,8 @@ Java全套(45) → 微服务架构(15) → 数据库高可用(12) → 监控运�
 - [`go-go-channels-demo`](go/go-go-channels-demo/) - Go Channels 实战演示
 - [`go-go-select-demo`](go/go-go-select-demo/) - Go Select 机制实战演示
 - [`go-gomutexwaitgroup-mutex-waitgroup-demo`](go/go-gomutexwaitgroup-mutex-waitgroup-demo/) - Go并发编程实战：Mutex与WaitGroup
+- [`go-go-concurrency-primitives-demo`](go/go-go-concurrency-primitives-demo/) - Go并发原语实战演示
+- [`go-go-closures-demo`](go/go-go-closures-demo/) - Go闭包编程实战演示
 
 #### Web开发系列
 - [`go-ginwebdemo-web-framework-intro`](go/go-ginwebdemo-web-framework-intro/) - Gin框架Web开发入门Demo
@@ -163,6 +171,12 @@ Java全套(45) → 微服务架构(15) → 数据库高可用(12) → 监控运�
 - [`go-go-viper-config-env-integration`](go/go-go-viper-config-env-integration/) - Go Viper配置管理与环境变量集成示例
 - [`go-gocron-cron-scheduler-demo`](go/go-gocron-cron-scheduler-demo/) - Go定时任务调度Cron示例
 - [`go-gocontextdemo-timeout-context-demo`](go/go-gocontextdemo-timeout-context-demo/) - Go超时控制与Context实践Demo
+- [`go-go-reflection-meta-programming-demo`](go/go-go-reflection-meta-programming-demo/) - Go反射与元编程实战演示
+- [`go-go-file-io-demo`](go/go-go-file-io-demo/) - Go文件操作实战演示
+- [`go-go-time-processing-demo`](go/go-go-time-processing-demo/) - Go时间处理实战演示
+- [`go-go-templates-demo`](go/go-go-templates-demo/) - Go模板引擎实战演示
+- [`go-go-regex-text-matching-demo`](go/go-go-regex-text-matching-demo/) - Go正则表达式文本匹配实战演示
+- [`go-go-rate-limiting-circuit-breaker-demo`](go/go-go-rate-limiting-circuit-breaker-demo/) - Go限流与熔断机制实战演示
 
 #### 性能优化系列
 - [`go-go-pprof-demo`](go/go-go-pprof-demo/) - Go pprof性能分析实战演示
@@ -508,7 +522,7 @@ Java全套(45) → 微服务架构(15) → 数据库高可用(12) → 监控运�
 </details>
 
 <details>
-<summary><strong>🐧 Linux技术栈 (8个Demo)</strong></summary>
+<summary><strong>🐧 Linux技术栈 (16个Demo)</strong></summary>
 
 #### 系统监控系列
 - [`linux-common-monitoring-commands-demo`](linux/linux-common-monitoring-commands-demo/) - Linux常用监控命令演示
@@ -518,6 +532,10 @@ Java全套(45) → 微服务架构(15) → 数据库高可用(12) → 监控运�
 
 #### 网络监控系列
 - [`linux-netstat-network-monitoring-demo`](linux/linux-netstat-network-monitoring-demo/) - Linux netstat网络监控演示
+- [`linux-nc-network-connections-demo`](linux/linux-nc-network-connections-demo/) - Linux nc网络连接工具演示
+- [`linux-nslookup-dns-lookup-demo`](linux/linux-nslookup-dns-lookup-demo/) - Linux nslookup DNS查询工具演示
+- [`linux-dig-dns-utility-demo`](linux/linux-dig-dns-utility-demo/) - Linux dig DNS查询工具演示
+- [`linux-traceroute-network-path-demo`](linux/linux-traceroute-network-path-demo/) - Linux traceroute网络路径跟踪演示
 
 #### 进程调试系列
 - [`linux-process-thread-debugging-demo`](linux/linux-process-thread-debugging-demo/) - Linux进程线程调试演示
@@ -527,6 +545,24 @@ Java全套(45) → 微服务架构(15) → 数据库高可用(12) → 监控运�
 
 #### 安全日志系列
 - [`linux-security-logging-demo`](linux/linux-security-logging-demo/) - Linux安全日志演示
+
+#### 数据同步系列
+- [`linux-rsync-file-sync-demo`](linux/linux-rsync-file-sync-demo/) - Linux rsync文件同步工具演示
+
+#### 文件监控系列
+- [`linux-lsof-file-list-demo`](linux/linux-lsof-file-list-demo/) - Linux lsof文件列表工具演示
+
+#### 系统监控系列 (新增)
+- [`linux-htop-system-monitor-demo`](linux/linux-htop-system-monitor-demo/) - Linux htop系统监控工具演示
+
+#### 磁盘IO监控系列
+- [`linux-iotop-disk-monitor-demo`](linux/linux-iotop-disk-monitor-demo/) - Linux iotop磁盘IO监控工具演示
+
+#### 网络配置系列
+- [`linux-ifconfig-network-config-demo`](linux/linux-ifconfig-network-config-demo/) - Linux ifconfig网络配置工具演示
+
+#### 现代网络管理系列
+- [`linux-iproute2-network-tool-demo`](linux/linux-iproute2-network-tool-demo/) - Linux iproute2网络工具演示
 
 </details>
 
@@ -551,6 +587,51 @@ Java全套(45) → 微服务架构(15) → 数据库高可用(12) → 监控运�
 
 #### 数据科学系列
 - [`data-science`](ai-ml/data-science/) - 数据科学实践
+
+#### 大语言模型训练系列
+- [`llm-training-demo`](ai-ml/llm-training-demo/) - 大语言模型训练实战演示
+
+#### 大语言模型微调系列
+- [`llm-fine-tuning-demo`](ai-ml/llm-fine-tuning-demo/) - 大语言模型微调实战演示
+
+#### 大语言模型推理系列
+- [`llm-inference-demo`](ai-ml/llm-inference-demo/) - 大语言模型推理实战演示
+
+#### 大语言模型运维系列
+- [`llm-ops-demo`](ai-ml/llm-ops-demo/) - 大语言模型运维实战演示
+
+#### 大语言模型分布式训练系列
+- [`llm-distributed-training-demo`](ai-ml/llm-distributed-training-demo/) - 大语言模型分布式训练实战演示
+
+#### 大语言模型评估系列
+- [`llm-evaluation-demo`](ai-ml/llm-evaluation-demo/) - 大语言模型评估实战演示
+
+#### 大语言模型压缩系列
+- [`llm-compression-demo`](ai-ml/llm-compression-demo/) - 大语言模型压缩实战演示
+
+#### MLOps流水线系列
+- [`mlops-pipeline-demo`](ai-ml/mlops-pipeline-demo/) - MLOps流水线实战演示
+
+#### RAG系统系列
+- [`rag-pipeline-demo`](ai-ml/rag-pipeline-demo/) - RAG(检索增强生成)管道实战演示
+
+#### AI模型监控系列
+- [`model-monitoring-demo`](ai-ml/model-monitoring-demo/) - AI模型监控与可观测性实战演示
+
+#### 联邦学习系列
+- [`federated-learning-demo`](ai-ml/federated-learning-demo/) - 联邦学习实战演示
+
+#### AutoML系列
+- [`automl-demo`](ai-ml/automl-demo/) - AutoML(自动化机器学习)实战演示
+
+#### 模型服务系列
+- [`model-serving-demo`](ai-ml/model-serving-demo/) - AI模型部署与推理服务实战演示
+
+#### 计算机视觉系列
+- [`computer-vision-demo`](ai-ml/computer-vision-demo/) - 计算机视觉实战演示
+
+#### 自然语言处理系列
+- [`nlp-foundation-demo`](ai-ml/nlp-foundation-demo/) - 自然语言处理基础实战演示
 
 </details>
 
@@ -766,7 +847,7 @@ python main.py
 ## 📊 项目统计
 
 ### 📈 当前状态
-- **总Demo数量**: 265个
+- **总Demo数量**: 285个
 - **技术栈覆盖**: 12大类别
 - **文档完备度**: 100%
 - **代码质量**: ⭐⭐⭐⭐⭐
@@ -797,6 +878,12 @@ python main.py
 - 🔁 定期更新密钥和密码
 - 🛡️ 提交前务必运行安全检查
 - 🔐 严格遵循最小权限原则
+
+### 📊 Kubernetes CLI文档统计
+- **基础命令文档**: 56个核心kubectl命令 ([k8s-cli.md](kubernetes/k8s-cli.md))
+- **详细命令文档**: 110个kubectl及相关生态工具命令 ([k8s-cli-detail.md](kubernetes/k8s-cli-detail.md))
+- **文档总行数**: 13,418行 (基础文档4,559行 + 详细文档8,859行)
+- **涵盖领域**: 基础操作、集群管理、网络存储、安全监控、AI/ML平台、服务网格、GitOps等
 
 ---
 

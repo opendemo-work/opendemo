@@ -1,0 +1,37 @@
+{
+  "name": "AI模型部署与推理服务实战演示",
+  "description": "通过实际示例展示AI模型部署的最佳实践，包括服务架构、版本管理、性能优化等。",
+  "tags": [
+    "ai",
+    "model-serving",
+    "fastapi",
+    "docker",
+    "kubernetes",
+    "inference-optimization",
+    "model-deployment",
+    "ml-infrastructure"
+  ],
+  "difficulty": "高级",
+  "estimated_time": "12小时",
+  "prerequisites": [
+    "机器学习基础",
+    "Python编程技能",
+    "Web开发概念",
+    "容器化技术经验"
+  ],
+  "learning_objectives": [
+    "掌握AI模型部署的最佳实践和架构模式",
+    "学会模型版本管理和A/B测试策略",
+    "理解批量推理和实时推理优化技术",
+    "掌握模型服务的监控和弹性伸缩方法"
+  ],
+  "technical_requirements": [
+    "Docker环境",
+    "Python 3.8+",
+    "Kubernetes集群（可选）"
+  ],
+  "related_demos": [
+    "ai-ml/llm-inference-demo",
+    "ai-ml/llm-ops-demo"
+  ]
+}

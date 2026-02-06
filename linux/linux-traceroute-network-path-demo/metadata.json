@@ -1,0 +1,36 @@
+{
+  "name": "Linux traceroute网络路径跟踪详解演示",
+  "description": "通过实际示例展示Linux traceroute命令的各种用法，包括网络路径跟踪、延迟检测、路由问题诊断等网络操作。",
+  "tags": [
+    "linux",
+    "network",
+    "traceroute",
+    "path-tracing",
+    "network-troubleshooting",
+    "latency-analysis",
+    "routing"
+  ],
+  "difficulty": "中级",
+  "estimated_time": "2小时",
+  "prerequisites": [
+    "基础Linux命令知识",
+    "网络基础知识",
+    "TCP/IP协议基础"
+  ],
+  "learning_objectives": [
+    "掌握traceroute命令的基本语法和常用选项",
+    "学会使用traceroute进行网络路径分析",
+    "理解网络延迟和路由问题诊断方法",
+    "掌握网络故障排查的实用技巧"
+  ],
+  "technical_requirements": [
+    "Linux系统",
+    "traceroute工具",
+    "网络连接"
+  ],
+  "related_demos": [
+    "linux-ping-network-test-demo",
+    "linux-mtr-network-diagnostic-demo",
+    "linux-netstat-network-monitoring-demo"
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "name": "AutoML(自动化机器学习)实战演示",
+  "description": "通过实际示例展示AutoML的实现和应用，包括自动特征工程、模型选择、超参数优化等。",
+  "tags": [
+    "ai",
+    "automl",
+    "hyperparameter-optimization",
+    "autogluon",
+    "tpot",
+    "h2o",
+    "neural-architecture-search",
+    "machine-learning"
+  ],
+  "difficulty": "高级",
+  "estimated_time": "12小时",
+  "prerequisites": [
+    "机器学习基础",
+    "Python编程技能",
+    "数据科学概念",
+    "优化算法概念"
+  ],
+  "learning_objectives": [
+    "掌握AutoML的基本概念和核心技术",
+    "学会自动特征工程和模型选择方法",
+    "理解超参数优化和神经架构搜索技术",
+    "掌握AutoML系统的部署和应用技巧"
+  ],
+  "technical_requirements": [
+    "GPU或CPU环境",
+    "Python 3.8+",
+    "至少16GB内存"
+  ],
+  "related_demos": [
+    "ai-ml/mlops-pipeline-demo",
+    "ai-ml/llm-training-demo"
+  ]
+}

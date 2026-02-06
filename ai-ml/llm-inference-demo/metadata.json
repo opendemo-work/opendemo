@@ -1,0 +1,38 @@
+{
+  "name": "大语言模型推理实战演示",
+  "description": "通过实际示例展示大语言模型推理的各种优化技术，包括量化、蒸馏、服务部署等。",
+  "tags": [
+    "ai",
+    "llm",
+    "inference",
+    "quantization",
+    "optimization",
+    "transformers",
+    "pytorch",
+    "nlp"
+  ],
+  "difficulty": "高级",
+  "estimated_time": "6小时",
+  "prerequisites": [
+    "深度学习基础知识",
+    "PyTorch/TensorFlow经验",
+    "自然语言处理基础",
+    "Python编程技能"
+  ],
+  "learning_objectives": [
+    "掌握大语言模型推理的基本概念和优化技术",
+    "学会使用量化、蒸馏等模型优化方法",
+    "理解推理服务部署和性能优化技巧",
+    "掌握批处理和缓存策略"
+  ],
+  "technical_requirements": [
+    "GPU或CPU环境",
+    "Python 3.8+",
+    "至少16GB内存"
+  ],
+  "related_demos": [
+    "ai-ml/llm-training-demo",
+    "ai-ml/llm-fine-tuning-demo",
+    "ai-ml/llm-ops-demo"
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "name": "RAG(检索增强生成)管道实战演示",
+  "description": "通过实际示例展示RAG系统的构建和应用，包括向量数据库、文档嵌入、检索增强生成等。",
+  "tags": [
+    "ai",
+    "rag",
+    "vector-database",
+    "embedding",
+    "retrieval-augmented-generation",
+    "langchain",
+    "chromadb",
+    "llm"
+  ],
+  "difficulty": "高级",
+  "estimated_time": "10小时",
+  "prerequisites": [
+    "自然语言处理基础",
+    "Python编程技能",
+    "机器学习概念",
+    "向量数据库概念"
+  ],
+  "learning_objectives": [
+    "掌握向量数据库的基本原理和应用",
+    "学会文档嵌入和相似性检索技术",
+    "理解RAG系统的架构设计和实现",
+    "掌握检索增强生成的实际应用方法"
+  ],
+  "technical_requirements": [
+    "GPU或CPU环境",
+    "Python 3.8+",
+    "至少16GB内存"
+  ],
+  "related_demos": [
+    "ai-ml/llm-inference-demo",
+    "ai-ml/llm-ops-demo"
+  ]
+}

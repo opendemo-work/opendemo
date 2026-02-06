@@ -1,0 +1,37 @@
+{
+  "name": "大语言模型压缩实战演示",
+  "description": "通过实际示例展示大语言模型压缩的各种技术，包括量化、剪枝、知识蒸馏等。",
+  "tags": [
+    "ai",
+    "llm",
+    "compression",
+    "quantization",
+    "pruning",
+    "distillation",
+    "optimization",
+    "nlp"
+  ],
+  "difficulty": "高级",
+  "estimated_time": "10小时",
+  "prerequisites": [
+    "深度学习基础知识",
+    "PyTorch/TensorFlow经验",
+    "模型优化概念",
+    "Python编程技能"
+  ],
+  "learning_objectives": [
+    "掌握大语言模型压缩的基本技术和方法",
+    "学会使用量化、剪枝和知识蒸馏技术",
+    "理解压缩模型的性能评估和权衡分析",
+    "掌握压缩模型的部署和推理优化技巧"
+  ],
+  "technical_requirements": [
+    "GPU或CPU环境",
+    "Python 3.8+",
+    "至少32GB内存"
+  ],
+  "related_demos": [
+    "ai-ml/llm-inference-demo",
+    "ai-ml/llm-ops-demo"
+  ]
+}

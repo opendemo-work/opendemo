@@ -1,0 +1,37 @@
+{
+  "name": "大语言模型分布式训练实战演示",
+  "description": "通过实际示例展示大语言模型分布式训练的各种技术，包括并行策略、框架使用等。",
+  "tags": [
+    "ai",
+    "llm",
+    "distributed-training",
+    "deepspeed",
+    "fsdp",
+    "pytorch",
+    "parallel-computing",
+    "hpc"
+  ],
+  "difficulty": "专家级",
+  "estimated_time": "15小时",
+  "prerequisites": [
+    "分布式系统概念",
+    "PyTorch经验",
+    "高性能计算基础",
+    "Python编程技能"
+  ],
+  "learning_objectives": [
+    "掌握分布式训练的基本原理和策略",
+    "学会使用数据并行、模型并行和流水线并行技术",
+    "理解DeepSpeed和FSDP等分布式训练框架",
+    "掌握大规模训练的资源管理和优化技巧"
+  ],
+  "technical_requirements": [
+    "多GPU集群环境",
+    "Python 3.8+",
+    "至少64GB内存"
+  ],
+  "related_demos": [
+    "ai-ml/llm-training-demo",
+    "ai-ml/llm-ops-demo"
+  ]
+}

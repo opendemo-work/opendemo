@@ -1,0 +1,21 @@
+{
+  "name": "HAProxy SSL 终止演示",
+  "description": "使用 HAProxy 实现 SSL/TLS 终止的负载均衡解决方案演示",
+  "category": "traffic",
+  "tags": ["haproxy", "ssl", "tls", "load-balancing", "https", "security"],
+  "difficulty": "intermediate",
+  "estimated_time": "3-4 hours",
+  "prerequisites": ["networking-basics", "ssl-tls-fundamentals"],
+  "learning_objectives": [
+    "理解 SSL/TLS 终止的概念和优势",
+    "掌握 HAProxy SSL 配置方法",
+    "学会证书管理和自动续期",
+    "配置安全的 HTTPS 服务",
+    "优化 SSL 性能和安全性"
+  ],
+  "technologies": ["HAProxy", "OpenSSL", "Docker", "Let's Encrypt"],
+  "created_at": "2026-02-05",
+  "updated_at": "2026-02-05",
+  "status": "planned",
+  "version": "1.0.0"
+}

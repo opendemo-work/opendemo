@@ -1,0 +1,36 @@
+{
+  "name": "Linux nslookup DNS查询工具详解演示",
+  "description": "通过实际示例展示Linux nslookup命令的各种用法，包括域名解析、DNS记录查询、反向解析等DNS操作。",
+  "tags": [
+    "linux",
+    "network",
+    "dns",
+    "nslookup",
+    "domain-resolution",
+    "dns-records",
+    "dns-troubleshooting"
+  ],
+  "difficulty": "初级",
+  "estimated_time": "1.5小时",
+  "prerequisites": [
+    "基础Linux命令知识",
+    "DNS基础知识",
+    "网络基础知识"
+  ],
+  "learning_objectives": [
+    "掌握nslookup命令的基本语法和常用选项",
+    "学会使用nslookup进行域名解析",
+    "理解DNS记录类型和解析结果",
+    "掌握DNS故障排查的基本方法"
+  ],
+  "technical_requirements": [
+    "Linux系统",
+    "dnsutils工具包",
+    "网络连接"
+  ],
+  "related_demos": [
+    "linux-dig-dns-utility-demo",
+    "linux-host-command-demo",
+    "linux-whois-domain-info-demo"
+  ]
+}

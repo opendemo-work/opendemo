@@ -1,0 +1,36 @@
+{
+  "name": "Linux ifconfig网络配置工具详解演示",
+  "description": "通过实际示例展示Linux ifconfig命令的各种用法，包括网络接口配置、IP地址分配、网络参数调整等网络配置操作。",
+  "tags": [
+    "linux",
+    "network-configuration",
+    "ifconfig",
+    "network-interface",
+    "ip-address",
+    "network-administration",
+    "system-administration"
+  ],
+  "difficulty": "中级",
+  "estimated_time": "2小时",
+  "prerequisites": [
+    "基础Linux命令知识",
+    "网络基础知识",
+    "IP地址和子网划分知识"
+  ],
+  "learning_objectives": [
+    "掌握ifconfig命令的基本语法和常用选项",
+    "学会使用ifconfig进行网络接口配置",
+    "理解IP地址分配和网络参数调整方法",
+    "掌握网络配置最佳实践"
+  ],
+  "technical_requirements": [
+    "Linux系统",
+    "网络接口",
+    "root权限"
+  ],
+  "related_demos": [
+    "linux-netstat-network-monitoring-demo",
+    "linux-nc-network-connections-demo",
+    "linux-dig-dns-utility-demo"
+  ]
+}

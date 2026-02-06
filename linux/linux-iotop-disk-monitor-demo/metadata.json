@@ -1,0 +1,36 @@
+{
+  "name": "Linux iotop磁盘IO监控工具详解演示",
+  "description": "通过实际示例展示Linux iotop命令的各种用法，包括磁盘IO监控、IO性能分析、IO密集型进程识别等磁盘性能监控操作。",
+  "tags": [
+    "linux",
+    "disk-io",
+    "iotop",
+    "io-monitoring",
+    "performance-analysis",
+    "disk-performance",
+    "storage-monitoring"
+  ],
+  "difficulty": "中级",
+  "estimated_time": "2小时",
+  "prerequisites": [
+    "基础Linux命令知识",
+    "磁盘IO和存储管理基础知识",
+    "系统性能监控基础知识"
+  ],
+  "learning_objectives": [
+    "掌握iotop命令的基本语法和交互式操作",
+    "学会使用iotop进行磁盘IO监控",
+    "理解IO性能分析和瓶颈识别方法",
+    "掌握IO性能监控最佳实践"
+  ],
+  "technical_requirements": [
+    "Linux系统",
+    "iotop工具",
+    "root权限"
+  ],
+  "related_demos": [
+    "linux-advanced-performance-monitoring-demo",
+    "linux-common-monitoring-commands-demo",
+    "linux-process-thread-debugging-demo"
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "name": "Linux nc网络连接工具详解演示",
+  "description": "通过实际示例展示Linux nc(netcat)命令的各种用法，包括端口扫描、连接测试、文件传输等网络操作。",
+  "tags": [
+    "linux",
+    "network",
+    "nc",
+    "netcat",
+    "port-scan",
+    "network-troubleshooting",
+    "connection-test"
+  ],
+  "difficulty": "中级",
+  "estimated_time": "2小时",
+  "prerequisites": [
+    "基础Linux命令知识",
+    "网络基础知识",
+    "TCP/IP协议基础"
+  ],
+  "learning_objectives": [
+    "掌握nc命令的基本语法和常用选项",
+    "学会使用nc进行端口扫描和连接测试",
+    "理解nc在文件传输中的应用",
+    "掌握nc在故障排查中的实用技巧"
+  ],
+  "technical_requirements": [
+    "Linux系统",
+    "nc(netcat)工具",
+    "网络连接"
+  ],
+  "related_demos": [
+    "linux-netstat-network-monitoring-demo",
+    "linux-nslookup-dns-lookup-demo",
+    "linux-dig-dns-utility-demo"
+  ]
+}

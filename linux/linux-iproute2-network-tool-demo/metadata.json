@@ -1,0 +1,36 @@
+{
+  "name": "Linux iproute2网络工具详解演示",
+  "description": "通过实际示例展示Linux iproute2命令的各种用法，包括网络接口配置、路由管理、网络命名空间等现代网络配置操作。",
+  "tags": [
+    "linux",
+    "network-configuration",
+    "iproute2",
+    "ip-command",
+    "network-administration",
+    "network-namespaces",
+    "system-administration"
+  ],
+  "difficulty": "中级",
+  "estimated_time": "2小时",
+  "prerequisites": [
+    "基础Linux命令知识",
+    "网络基础知识",
+    "IP地址和路由知识"
+  ],
+  "learning_objectives": [
+    "掌握iproute2命令的基本语法和常用选项",
+    "学会使用ip命令进行网络配置",
+    "理解网络命名空间和高级网络配置方法",
+    "掌握现代网络管理最佳实践"
+  ],
+  "technical_requirements": [
+    "Linux系统",
+    "网络接口",
+    "root权限"
+  ],
+  "related_demos": [
+    "linux-ifconfig-network-config-demo",
+    "linux-netstat-network-monitoring-demo",
+    "linux-nc-network-connections-demo"
+  ]
+}

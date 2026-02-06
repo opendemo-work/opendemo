@@ -1,0 +1,37 @@
+{
+  "name": "联邦学习实战演示",
+  "description": "通过实际示例展示联邦学习的实现和应用，包括联邦算法、隐私保护、系统部署等。",
+  "tags": [
+    "ai",
+    "federated-learning",
+    "privacy-preserving",
+    "flwr",
+    "differential-privacy",
+    "secure-aggregation",
+    "distributed-learning",
+    "edge-ai"
+  ],
+  "difficulty": "高级",
+  "estimated_time": "12小时",
+  "prerequisites": [
+    "机器学习基础",
+    "Python编程技能",
+    "分布式系统概念",
+    "隐私保护概念"
+  ],
+  "learning_objectives": [
+    "掌握联邦学习的基本概念和架构",
+    "学会联邦平均算法(FedAvg)的实现",
+    "理解联邦学习中的隐私保护技术",
+    "掌握联邦学习系统的部署和管理方法"
+  ],
+  "technical_requirements": [
+    "Python 3.8+",
+    "多节点环境",
+    "至少16GB内存"
+  ],
+  "related_demos": [
+    "ai-ml/mlops-pipeline-demo",
+    "ai-ml/model-monitoring-demo"
+  ]
+}

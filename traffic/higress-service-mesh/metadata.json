@@ -1,0 +1,21 @@
+{
+  "name": "Higress 服务网格演示",
+  "description": "基于 Istio 的云原生 API 网关服务网格功能演示",
+  "category": "traffic",
+  "tags": ["higress", "service-mesh", "api-gateway", "istio", "microservices"],
+  "difficulty": "advanced",
+  "estimated_time": "4-6 hours",
+  "prerequisites": ["kubernetes-basics", "docker-compose"],
+  "learning_objectives": [
+    "掌握 Higress 服务网格的核心概念",
+    "学会配置流量路由和负载均衡",
+    "理解服务安全和认证机制",
+    "熟悉监控和链路追踪配置",
+    "实践灰度发布和蓝绿部署"
+  ],
+  "technologies": ["Higress", "Istio", "Kubernetes", "Docker"],
+  "created_at": "2026-02-05",
+  "updated_at": "2026-02-05",
+  "status": "planned",
+  "version": "1.0.0"
+}

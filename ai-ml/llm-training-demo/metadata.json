@@ -1,0 +1,38 @@
+{
+  "name": "大语言模型训练实战演示",
+  "description": "通过实际示例展示大语言模型训练的各种技术，包括分布式训练、数据处理、模型优化等。",
+  "tags": [
+    "ai",
+    "llm",
+    "training",
+    "distributed-training",
+    "transformers",
+    "deepspeed",
+    "pytorch",
+    "nlp"
+  ],
+  "difficulty": "高级",
+  "estimated_time": "12小时",
+  "prerequisites": [
+    "深度学习基础知识",
+    "分布式系统概念",
+    "大规模数据处理经验",
+    "Python编程技能"
+  ],
+  "learning_objectives": [
+    "掌握大语言模型预训练的基本流程和关键技术",
+    "学会使用分布式训练策略和优化方法",
+    "理解训练数据准备和质量控制技巧",
+    "掌握训练过程监控和故障排除方法"
+  ],
+  "technical_requirements": [
+    "多GPU集群环境",
+    "Python 3.8+",
+    "至少128GB内存"
+  ],
+  "related_demos": [
+    "ai-ml/llm-fine-tuning-demo",
+    "ai-ml/llm-inference-demo",
+    "ai-ml/llm-ops-demo"
+  ]
+}

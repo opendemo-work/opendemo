@@ -1,0 +1,37 @@
+{
+  "name": "MLOps流水线实战演示",
+  "description": "通过实际示例展示端到端MLOps流水线的设计和实现，包括自动化训练、验证、部署等。",
+  "tags": [
+    "ai",
+    "mlops",
+    "pipeline",
+    "mlflow",
+    "prefect",
+    "dvc",
+    "ci/cd",
+    "experiment-tracking"
+  ],
+  "difficulty": "高级",
+  "estimated_time": "12小时",
+  "prerequisites": [
+    "机器学习基础",
+    "Python编程技能",
+    "CI/CD概念",
+    "容器化技术经验"
+  ],
+  "learning_objectives": [
+    "掌握端到端MLOps流水线的设计和实现",
+    "学会使用MLflow进行实验跟踪和模型管理",
+    "理解模型训练、验证、部署的自动化流程",
+    "掌握CI/CD在机器学习项目中的应用"
+  ],
+  "technical_requirements": [
+    "Docker环境",
+    "Python 3.8+",
+    "Git版本控制"
+  ],
+  "related_demos": [
+    "ai-ml/llm-training-demo",
+    "ai-ml/llm-ops-demo"
+  ]
+}

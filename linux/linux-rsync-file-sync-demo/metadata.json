@@ -1,0 +1,36 @@
+{
+  "name": "Linux rsync文件同步工具详解演示",
+  "description": "通过实际示例展示Linux rsync命令的各种用法，包括文件同步、备份策略、远程同步等数据操作。",
+  "tags": [
+    "linux",
+    "file-sync",
+    "backup",
+    "rsync",
+    "data-sync",
+    "incremental-backup",
+    "remote-sync"
+  ],
+  "difficulty": "中级",
+  "estimated_time": "2小时",
+  "prerequisites": [
+    "基础Linux命令知识",
+    "文件系统基础知识",
+    "SSH和网络基础知识"
+  ],
+  "learning_objectives": [
+    "掌握rsync命令的基本语法和常用选项",
+    "学会使用rsync进行文件同步和备份",
+    "理解增量备份和远程同步技术",
+    "掌握数据同步最佳实践"
+  ],
+  "technical_requirements": [
+    "Linux系统",
+    "rsync工具",
+    "SSH连接（用于远程同步）"
+  ],
+  "related_demos": [
+    "linux-production-ops-commands-demo",
+    "linux-common-monitoring-commands-demo",
+    "linux-security-logging-demo"
+  ]
+}

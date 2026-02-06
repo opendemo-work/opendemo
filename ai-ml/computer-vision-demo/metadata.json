@@ -1,0 +1,37 @@
+{
+  "name": "计算机视觉实战演示",
+  "description": "通过实际示例展示计算机视觉的核心技术，包括图像分类、目标检测、图像分割等。",
+  "tags": [
+    "ai",
+    "computer-vision",
+    "image-classification",
+    "object-detection",
+    "image-segmentation",
+    "resnet",
+    "yolo",
+    "cnn"
+  ],
+  "difficulty": "高级",
+  "estimated_time": "15小时",
+  "prerequisites": [
+    "深度学习基础",
+    "PyTorch经验",
+    "图像处理概念",
+    "Python编程技能"
+  ],
+  "learning_objectives": [
+    "掌握计算机视觉基础概念和核心技术",
+    "学会图像分类、目标检测和图像分割技术",
+    "理解深度学习在计算机视觉中的应用",
+    "掌握计算机视觉模型的部署和优化方法"
+  ],
+  "technical_requirements": [
+    "GPU环境",
+    "Python 3.8+",
+    "至少16GB内存"
+  ],
+  "related_demos": [
+    "ai-ml/llm-training-demo",
+    "ai-ml/model-serving-demo"
+  ]
+}
