@@ -55,6 +55,14 @@ which docker || echo "请安装Docker Desktop"
 | [工具对比选择](./tools-comparison/README.md) | 详细的工具对比分析和选择建议 |
 | [性能优化指南](./performance-troubleshooting/performance.md) | 系统调优和资源配置优化 |
 | [故障排除](./performance-troubleshooting/troubleshooting.md) | 常见问题解决和调试方法 |
+| [多集群管理](./best-practices/multi-cluster/README.md) | 本地多集群管理最佳实践 |
+| [开发工作流](./best-practices/dev-workflow/README.md) | 高效开发、测试、调试工作流 |
+| [网络存储配置](./best-practices/network-storage/README.md) | 网络与存储最佳配置指南 |
+| [安全最佳实践](./best-practices/security/README.md) | Kubernetes 安全配置和管理 |
+| [CI/CD 集成](./best-practices/cicd/README.md) | 本地开发与 CI/CD 流水线集成 |
+| [监控日志](./best-practices/monitoring-logging/README.md) | 监控、日志收集与分析 |
+| [最佳实践汇总](./BEST_PRACTICES_SUMMARY.md) | 本地开发最佳实践完整指南 |
+| [快速参考卡](./QUICK_REFERENCE.md) | 常用命令和最佳实践速查表 |
 
 ## 🎯 场景选择指南
 

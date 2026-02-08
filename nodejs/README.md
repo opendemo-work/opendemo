@@ -2,6 +2,10 @@
 
 > Node.js从基础到全栈开发的完整学习体系，包含71个核心案例
 
+## 🚀 快速入门
+
+想要快速上手Node.js开发？查看我们的 [Node.js CLI 命令行速查表](./cli/nodejs-cli.md) 获取npm/yarn包管理、调试工具和部署命令！
+
 ## 📋 技术栈概述
 
 Node.js是一个基于Chrome V8引擎的JavaScript运行时环境，用于构建快速、可扩展的网络应用。本技术栈提供从前端到后端的完整JavaScript开发生态学习路径。

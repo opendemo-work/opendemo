@@ -4,7 +4,79 @@
 
 OpenDemo 是一个综合性技术学习和演示平台，涵盖多种主流编程语言和技术栈的实战案例。本项目致力于提供高质量的技术示例和最佳实践指南，帮助开发者快速掌握各种技术栈的核心概念和实际应用。
 
-> **项目规模**: 300+ 个技术演示案例 | **覆盖技术栈**: 12大类别 | **持续更新中**
+> **项目规模**: 532+ 个技术演示案例 | **覆盖技术栈**: 12大类别 | **持续更新中**
+
+---
+
+## 🚀 快速入门 - CLI命令行速查表
+
+为了帮助开发者快速上手各技术栈，我们为每个技术目录都提供了专业的CLI命令行速查表：
+
+| 技术栈 | CLI文档 | 核心工具 | 适用场景 |
+|--------|---------|----------|----------|
+| **[Kubernetes](./kubernetes/)** | [k8s-cli.md](./kubernetes/cli/k8s-cli.md) • [k8s-cli-detail.md](./kubernetes/cli/k8s-cli-detail.md) | kubectl、helm、kustomize | 容器编排、云原生运维 |
+| **[Linux](./linux/)** | [linux-cli.md](./linux/cli/linux-cli.md) • [linux-cli-detail.md](./linux/cli/linux-cli-detail.md) | ps、top、netstat、ss | 系统管理、运维监控 |
+| **[Database](./database/)** | [database-cli.md](./database/cli/database-cli.md) • [database-cli-detail.md](./database/cli/database-cli-detail.md) | mysql、psql、mongo、redis-cli | 数据库管理、性能优化 |
+| **[AI/ML](./ai-ml/)** | [ai-ml-cli.md](./ai-ml/cli/ai-ml-cli.md) | python、pip、torch、transformers | 机器学习、深度学习 |
+| **[Container](./container/)** | [container-cli.md](./container/cli/container-cli.md) | docker、containerd、runc | 容器化部署、镜像管理 |
+| **[Go](./go/)** | [go-cli.md](./go/cli/go-cli.md) | go、gomod、delve | Go语言开发、调试 |
+| **[Java](./java/)** | [java-cli.md](./java/cli/java-cli.md) | java、javac、mvn、jstack | Java开发、JVM调优 |
+| **[Node.js](./nodejs/)** | [nodejs-cli.md](./nodejs/cli/nodejs-cli.md) | npm、yarn、node、pm2 | Node.js开发、包管理 |
+| **[Python](./python/)** | [python-cli.md](./python/cli/python-cli.md) | python、pip、venv、pytest | Python开发、虚拟环境 |
+| **[Messaging](./messaging/)** | [messaging-cli.md](./messaging/cli/messaging-cli.md) | rocketmq、kafka、rabbitmq | 消息队列、事件驱动 |
+| **[Monitoring](./monitoring/)** | [monitoring-cli.md](./monitoring/cli/monitoring-cli.md) | prometheus、grafana、elk | 系统监控、日志分析 |
+| **[Traffic](./traffic/)** | [nginx-cli.md](./traffic/cli/nginx-cli.md) | nginx、haproxy | 负载均衡、流量管理 |
+
+## 📚 命名规范大全
+
+为确保代码质量和团队协作效率，我们为每个技术栈制定了详细的命名规范：
+
+| 技术栈 | 命名规范文档 | 覆盖范围 | 更新时间 |
+|--------|-------------|----------|----------|
+| **[AI/ML](./ai-ml/)** | [NAMING_CONVENTIONS.md](./ai-ml/NAMING_CONVENTIONS.md) | 模型、数据集、训练过程、部署运维 | 2026-02-07 |
+| **[Container](./container/)** | [NAMING_CONVENTIONS.md](./container/NAMING_CONVENTIONS.md) | 镜像、容器、编排配置、监控告警 | 2026-02-07 |
+| **[Database](./database/)** | [NAMING_CONVENTIONS.md](./database/NAMING_CONVENTIONS.md) | 表结构、索引、存储过程、备份恢复 | 2026-02-07 |
+| **[Go](./go/)** | [NAMING_CONVENTIONS.md](./go/NAMING_CONVENTIONS.md) | 包、变量、函数、接口、并发处理 | 2026-02-07 |
+| **[Java](./java/)** | [NAMING_CONVENTIONS.md](./java/NAMING_CONVENTIONS.md) | 类、方法、变量、注解、异常处理 | 2026-02-07 |
+| **[Kubernetes](./kubernetes/)** | [NAMING_CONVENTIONS.md](./kubernetes/NAMING_CONVENTIONS.md) | 资源对象、标签、配置、网络策略 | 2026-02-07 |
+| **[Linux](./linux/)** | [NAMING_CONVENTIONS.md](./linux/NAMING_CONVENTIONS.md) | 系统服务、脚本、配置文件、日志管理 | 2026-02-07 |
+| **[Messaging](./messaging/)** | [NAMING_CONVENTIONS.md](./messaging/NAMING_CONVENTIONS.md) | 队列、主题、路由键、消费者生产者 | 2026-02-07 |
+| **[Monitoring](./monitoring/)** | [NAMING_CONVENTIONS.md](./monitoring/NAMING_CONVENTIONS.md) | 监控指标、告警规则、仪表板、日志监控 | 2026-02-07 |
+| **[Node.js](./nodejs/)** | [NAMING_CONVENTIONS.md](./nodejs/NAMING_CONVENTIONS.md) | 模块、路由、中间件、错误处理、测试 | 2026-02-07 |
+| **[Python](./python/)** | [NAMING_CONVENTIONS.md](./python/NAMING_CONVENTIONS.md) | 类、函数、变量、装饰器、类型提示 | 2026-02-07 |
+
+> **💡 提示**: 所有命名规范均按照生产环境问题排查和解决的实际场景编写，包含最佳实践示例和故障处理指南。
+
+## 📈 项目统计与进展
+
+### ✅ 已完成工作
+- **11/11** 技术栈命名规范文档创建完成
+- **100%** 核心技术栈覆盖
+- **统一标准** 的命名规范体系建立
+- **生产导向** 的问题排查场景融入
+
+### 🎯 技术栈覆盖详情
+| 技术栈 | CLI文档 | 命名规范 | 完备度 | 特色亮点 |
+|--------|---------|----------|--------|----------|
+| **AI/ML** | ✅ 完备 | ✅ 完备 | 100% | 模型生命周期管理 |
+| **Container** | ✅ 完备 | ✅ 完备 | 100% | 容器化部署最佳实践 |
+| **Database** | ✅ 完备 | ✅ 完备 | 100% | 数据库运维全场景 |
+| **Go** | ✅ 完备 | ✅ 完备 | 100% | 并发安全与性能优化 |
+| **Java** | ✅ 完备 | ✅ 完备 | 100% | 企业级应用开发规范 |
+| **Kubernetes** | ✅ 完备 | ✅ 完备 | 100% | 云原生资源管理 |
+| **Linux** | ✅ 完备 | ✅ 完备 | 100% | 系统运维自动化 |
+| **Messaging** | ✅ 完备 | ✅ 完备 | 100% | 消息队列可靠性保障 |
+| **Monitoring** | ✅ 完备 | ✅ 完备 | 100% | 全链路可观测性 |
+| **Node.js** | ✅ 完备 | ✅ 完备 | 100% | 现代Web开发实践 |
+| **Python** | ✅ 完备 | ✅ 完备 | 100% | 数据科学与工程化 |
+
+### 🚀 下一步计划
+- [ ] 完善各技术栈的最佳实践案例
+- [ ] 建立跨技术栈的集成示例
+- [ ] 开发自动化代码检查工具
+- [ ] 构建团队协作规范手册
+
+---
 
 ---
 
@@ -25,7 +97,7 @@ OpenDemo 是一个综合性技术学习和演示平台，涵盖多种主流编�
 | **监控系统** | 7个 | ✅ 完备 | 🟡 中等 | 系统监控、可视化 |
 | **消息队列** | 4个 | ✅ 完备 | 🔴 困难 | 异步处理、应用解耦 |
 | **Python** | 56个 | ✅ 完备 | 🟢 简单 | 数据科学、脚本开发 |
-| **Kubernetes** | 51个 | ✅ 完备 | 🔴 困难 | 容器编排、云原生 |
+| **Kubernetes** | 170个 | ✅ 完备 | 🔴 困难 | 容器编排、云原生 |
 | **Linux** | 19个 | ✅ 完备 | 🟡 中等 | 系统管理、运维 |
 | **容器技术** | 8个 | ✅ 完备 | 🟡 中等 | 容器化部署 |
 | **AI/ML** | 15个 | ✅ 完备 | 🔴 困难 | 人工智能、机器学习、LLM训练推理运维 |
@@ -454,7 +526,7 @@ Java企业级(10) → 微服务架构(8) → 数据库高可用(6) → 监控运
 </details>
 
 <details>
-<summary><strong>☸️ Kubernetes技术栈 (16个Demo)</strong></summary>
+<summary><strong>☸️ Kubernetes技术栈 (170个Demo)</strong></summary>
 
 #### 基础概念系列
 - [`workload`](kubernetes/workload/) - 工作负载管理
@@ -976,7 +1048,7 @@ git checkout -b feature/new-demo-example
 - ✅ 遵循代码风格指南
 
 #### 4. Pull Request模板
-```markdown
+```
 ## 新增示例: [技术栈名称] - [功能描述]
 
 ### 变更内容
@@ -1024,7 +1096,7 @@ git checkout -b feature/new-demo-example
 
 #### 按技术栈分类
 - **编程语言**: Go(95) + Node.js(71) + Java(23) + Python(56) = 245个
-- **基础设施**: 数据库(38) + 容器(8) + Kubernetes(51) + Linux(19) = 116个
+- **基础设施**: 数据库(38) + 容器(8) + Kubernetes(170) + Linux(19) = 235个
 - **运维工具**: 监控(7) + 消息队列(4) = 11个
 - **前沿技术**: AI/ML(15) = 15个
 
