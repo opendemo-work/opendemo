@@ -1,0 +1,12 @@
+{
+  "id": "kubernetes-architecture-overview",
+  "name": "Kubernetes 架构全景图",
+  "category": "architecture-fundamentals",
+  "difficulty": "intermediate",
+  "duration": "45min",
+  "tags": ["architecture", "control-plane", "data-plane", "components"],
+  "prerequisites": ["kubernetes-basics"],
+  "related": ["core-components-deep-dive", "cluster-configuration-parameters"],
+  "version": "1.25+",
+  "lastUpdated": "2026-03-05"
+}
