@@ -1,0 +1,12 @@
+{
+  "name": "Topic Cheat Sheet",
+  "category": "kubernetes",
+  "tech_stack": [
+    "Kubernetes"
+  ],
+  "description": "Kubernetes Topic Cheat Sheet demonstration and best practices",
+  "difficulty": "intermediate",
+  "dependencies": [
+    "kubectl"
+  ]
+}

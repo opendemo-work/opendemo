@@ -1,0 +1,8 @@
+{
+  "name": "wireshark-packet-analysis",
+  "category": "networking",
+  "tech_stack": ["Networking", "Linux"],
+  "description": "wireshark-packet-analysis networking case",
+  "difficulty": "intermediate",
+  "dependencies": []
+}

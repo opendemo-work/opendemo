@@ -1,0 +1,106 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: gateway-advanced
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true  # 开启服务发现
+          lower-case-service-id: true
+      routes:
+        # 用户服务路由 - 带限流
+        - id: user-service
+          uri: lb://user-service
+          predicates:
+            - Path=/api/users/**
+          filters:
+            - name: RequestRateLimiter
+              args:
+                redis-rate-limiter.replenishRate: 10  # 每秒补充10个令牌
+                redis-rate-limiter.burstCapacity: 20  # 突发容量20
+                key-resolver: "#{@ipKeyResolver}"      # 使用IP限流
+            - name: CircuitBreaker
+              args:
+                name: userServiceCircuitBreaker
+                fallbackUri: forward:/fallback/users
+
+        # 订单服务路由 - 带熔断
+        - id: order-service
+          uri: lb://order-service
+          predicates:
+            - Path=/api/orders/**
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: orderServiceCircuitBreaker
+                fallbackUri: forward:/fallback/orders
+            - StripPrefix=1
+
+        # 灰度发布路由
+        - id: product-service-v1
+          uri: lb://product-service-v1
+          predicates:
+            - Path=/api/products/**
+            - Weight=product-service, 80  # 80%流量
+
+        - id: product-service-v2
+          uri: lb://product-service-v2
+          predicates:
+            - Path=/api/products/**
+            - Weight=product-service, 20  # 20%流量
+
+        # 重写路径
+        - id: rewrite-route
+          uri: lb://legacy-service
+          predicates:
+            - Path=/api/old/**
+          filters:
+            - RewritePath=/api/old/(?<segment>.*), /api/new/$\\{segment}
+
+      # 全局默认过滤器
+      default-filters:
+        - AddResponseHeader=X-Gateway, SpringCloudGateway
+        - AddResponseHeader=X-Response-Time, ${NOW}
+
+  # Redis配置（用于限流）
+  redis:
+    host: localhost
+    port: 6379
+
+# Eureka配置
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
+# 熔断配置
+resilience4j:
+  circuitbreaker:
+    configs:
+      default:
+        slidingWindowSize: 10
+        failureRateThreshold: 50
+        waitDurationInOpenState: 10000
+    instances:
+      userServiceCircuitBreaker:
+        baseConfig: default
+      orderServiceCircuitBreaker:
+        baseConfig: default
+
+# Actuator配置
+management:
+  endpoints:
+    web:
+      exposure:
+        include: gateway,health,info
+  endpoint:
+    gateway:
+      enabled: true
+
+logging:
+  level:
+    org.springframework.cloud.gateway: DEBUG
+    reactor.netty: INFO

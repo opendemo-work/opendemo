@@ -1,0 +1,12 @@
+{
+  "name": "Platform Ops",
+  "category": "kubernetes",
+  "tech_stack": [
+    "Kubernetes"
+  ],
+  "description": "Kubernetes Platform Ops demonstration and best practices",
+  "difficulty": "intermediate",
+  "dependencies": [
+    "kubectl"
+  ]
+}

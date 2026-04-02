@@ -1,10 +1,10 @@
 {
-  "name": "datetime",
-  "language": "python",
-  "keywords": [
-    "datetime"
+  "name": "DateTime Module Demo",
+  "category": "python-standard-library",
+  "tech_stack": [
+    "Python"
   ],
-  "description": "Python datetime demo",
+  "description": "Python日期时间处理演示，datetime、timezone、timedelta",
   "difficulty": "beginner",
-  "verified": true
+  "dependencies": []
 }

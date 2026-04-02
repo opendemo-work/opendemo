@@ -1,0 +1,8 @@
+{
+  "name": "FDE Disaster Recovery",
+  "category": "security",
+  "tech_stack": ["FDE", "Disaster Recovery", "Backup", "Business Continuity"],
+  "description": "FDE灾难恢复：密钥备份、紧急恢复、灾难测试、业务连续性",
+  "difficulty": "advanced",
+  "dependencies": ["cryptsetup", "Python"]
+}

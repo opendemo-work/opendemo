@@ -1,11 +1,10 @@
 {
-  "name": "type-hints",
-  "language": "python",
-  "keywords": [
-    "type",
-    "hints"
+  "name": "Type Hints Demo",
+  "category": "python-core",
+  "tech_stack": [
+    "Python"
   ],
-  "description": "Python type-hints demo",
-  "difficulty": "beginner",
-  "verified": true
+  "description": "Python类型提示演示，typing、类型检查、mypy",
+  "difficulty": "intermediate",
+  "dependencies": []
 }

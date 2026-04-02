@@ -1,0 +1,8 @@
+{
+  "name": "SRE Fundamentals",
+  "category": "sre",
+  "tech_stack": ["SRE", "DevOps", "Reliability"],
+  "description": "SRE基础与核心原则：服务水平、错误预算、风险管理",
+  "difficulty": "beginner",
+  "dependencies": []
+}

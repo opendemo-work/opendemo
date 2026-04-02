@@ -1,0 +1,8 @@
+{
+  "name": "Docker vs VM",
+  "category": "virtualization",
+  "tech_stack": ["Docker", "VM", "KVM", "Container"],
+  "description": "Docker容器与虚拟机对比：架构、性能、安全、场景分析",
+  "difficulty": "intermediate",
+  "dependencies": ["docker", "kvm"]
+}

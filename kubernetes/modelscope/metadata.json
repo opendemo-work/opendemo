@@ -1,0 +1,8 @@
+{
+  "name": "ModelScope Model Serving",
+  "category": "kubernetes",
+  "tech_stack": ["Kubernetes", "ModelScope", "AI", "MaaS"],
+  "description": "ModelScope模型服务：下载管理、推理部署、弹性伸缩",
+  "difficulty": "intermediate",
+  "dependencies": ["python"]
+}

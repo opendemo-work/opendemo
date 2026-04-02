@@ -1,0 +1,12 @@
+{
+  "name": "Container Image Management",
+  "category": "kubernetes",
+  "tech_stack": [
+    "Kubernetes"
+  ],
+  "description": "Kubernetes Container Image Management demonstration and best practices",
+  "difficulty": "intermediate",
+  "dependencies": [
+    "kubectl"
+  ]
+}

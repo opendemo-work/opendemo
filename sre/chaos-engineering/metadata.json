@@ -1,0 +1,8 @@
+{
+  "name": "Chaos Engineering",
+  "category": "sre",
+  "tech_stack": ["SRE", "Chaos Mesh", "Litmus", "Resilience"],
+  "description": "混沌工程实践：故障注入、韧性测试、游戏日演练",
+  "difficulty": "advanced",
+  "dependencies": ["kubernetes", "chaos-mesh"]
+}

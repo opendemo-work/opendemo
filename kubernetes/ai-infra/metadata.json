@@ -1,0 +1,8 @@
+{
+  "name": "AI Infrastructure on Kubernetes",
+  "category": "kubernetes",
+  "tech_stack": ["Kubernetes", "GPU", "AI", "MLOps"],
+  "description": "K8s AI基础设施：GPU管理、分布式训练、推理服务",
+  "difficulty": "advanced",
+  "dependencies": ["helm"]
+}

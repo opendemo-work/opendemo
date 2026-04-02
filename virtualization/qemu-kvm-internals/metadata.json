@@ -1,0 +1,8 @@
+{
+  "name": "QEMU/KVM Internals",
+  "category": "virtualization",
+  "tech_stack": ["QEMU", "KVM", "Linux Kernel", "VT-x"],
+  "description": "QEMU/KVM虚拟化原理：CPU/内存虚拟化、VirtIO、设备直通",
+  "difficulty": "advanced",
+  "dependencies": ["qemu", "kvm"]
+}

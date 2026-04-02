@@ -1,0 +1,8 @@
+{
+  "name": "CommandLineRunner Demo",
+  "category": "spring-core",
+  "tech_stack": ["Java", "Spring Boot"],
+  "description": "启动任务演示，CommandLineRunner",
+  "difficulty": "beginner",
+  "dependencies": []
+}

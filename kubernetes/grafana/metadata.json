@@ -1,0 +1,12 @@
+{
+  "name": "Grafana",
+  "category": "kubernetes",
+  "tech_stack": [
+    "Kubernetes"
+  ],
+  "description": "Kubernetes Grafana demonstration and best practices",
+  "difficulty": "intermediate",
+  "dependencies": [
+    "kubectl"
+  ]
+}

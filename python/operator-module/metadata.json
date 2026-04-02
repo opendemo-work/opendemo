@@ -1,11 +1,10 @@
 {
-  "name": "operator-module",
-  "language": "python",
-  "keywords": [
-    "operator",
-    "module"
+  "name": "Operator Module Demo",
+  "category": "python-standard-library",
+  "tech_stack": [
+    "Python"
   ],
-  "description": "Python operator-module demo",
+  "description": "Python Operator模块演示，函数式操作符",
   "difficulty": "beginner",
-  "verified": true
+  "dependencies": []
 }

@@ -1,0 +1,8 @@
+{
+  "name": "Java JVM Internals",
+  "category": "java",
+  "tech_stack": ["Java", "JVM", "GC", "Performance"],
+  "description": "Java虚拟机内部原理：内存模型、垃圾收集、JIT编译、调优",
+  "difficulty": "advanced",
+  "dependencies": ["Java"]
+}

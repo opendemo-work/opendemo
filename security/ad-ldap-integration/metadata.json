@@ -1,0 +1,8 @@
+{
+  "name": "AD/LDAP Integration",
+  "category": "security",
+  "tech_stack": ["FDE", "Active Directory", "LDAP", "BitLocker", "GPO"],
+  "description": "FDE与AD集成：密钥存储、组策略、LDAP查询、企业部署",
+  "difficulty": "advanced",
+  "dependencies": ["PowerShell", "Python", "ldap3"]
+}

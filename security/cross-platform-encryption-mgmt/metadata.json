@@ -1,0 +1,8 @@
+{
+  "name": "Cross-Platform Encryption Management",
+  "category": "security",
+  "tech_stack": ["FDE", "Cross-Platform", "Python", "BitLocker", "FileVault", "LUKS"],
+  "description": "跨平台统一加密管理：统一API、集中控制、合规报告",
+  "difficulty": "advanced",
+  "dependencies": ["Python"]
+}

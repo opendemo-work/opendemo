@@ -1,0 +1,12 @@
+{
+  "name": "Topic Deployment",
+  "category": "kubernetes",
+  "tech_stack": [
+    "Kubernetes"
+  ],
+  "description": "Kubernetes Topic Deployment demonstration and best practices",
+  "difficulty": "intermediate",
+  "dependencies": [
+    "kubectl"
+  ]
+}

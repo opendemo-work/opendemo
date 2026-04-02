@@ -1,11 +1,10 @@
 {
-  "name": "profiling-optimization",
-  "language": "python",
-  "keywords": [
-    "profiling",
-    "optimization"
+  "name": "Profiling and Optimization Demo",
+  "category": "python-performance",
+  "tech_stack": [
+    "Python"
   ],
-  "description": "Python profiling-optimization demo",
-  "difficulty": "beginner",
-  "verified": true
+  "description": "Python性能分析演示，cProfile、line_profiler、优化技巧",
+  "difficulty": "advanced",
+  "dependencies": []
 }

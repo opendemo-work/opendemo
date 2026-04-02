@@ -1,0 +1,8 @@
+{
+  "name": "AI Security on Kubernetes",
+  "category": "kubernetes",
+  "tech_stack": ["Kubernetes", "AI", "Security", "LLM"],
+  "description": "K8s AI安全：提示词防护、模型安全、容器加固",
+  "difficulty": "advanced",
+  "dependencies": ["kubectl"]
+}

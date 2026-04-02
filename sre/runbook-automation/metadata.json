@@ -1,0 +1,8 @@
+{
+  "name": "Runbook Automation",
+  "category": "sre",
+  "tech_stack": ["SRE", "Rundeck", "Automation"],
+  "description": "运行手册自动化：告警响应、故障自愈、运维脚本",
+  "difficulty": "intermediate",
+  "dependencies": ["rundeck"]
+}

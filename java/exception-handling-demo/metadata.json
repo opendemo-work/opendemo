@@ -1,0 +1,8 @@
+{
+  "name": "Exception Handling Demo",
+  "category": "web",
+  "tech_stack": ["Java", "Spring Boot"],
+  "description": "全局异常处理演示，统一错误响应格式",
+  "difficulty": "beginner",
+  "dependencies": ["spring-boot-starter-web"]
+}

@@ -1,0 +1,8 @@
+{
+  "name": "Cache ConcurrentMap Demo",
+  "category": "web",
+  "tech_stack": ["Java", "Spring Boot", "Cache"],
+  "description": "本地缓存演示，ConcurrentHashMap",
+  "difficulty": "beginner",
+  "dependencies": ["spring-boot-starter-cache"]
+}

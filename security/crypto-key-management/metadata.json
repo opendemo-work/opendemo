@@ -1,0 +1,8 @@
+{
+  "name": "Cryptographic Key Management",
+  "category": "security",
+  "tech_stack": ["Cryptography", "PKI", "HSM", "KMS"],
+  "description": "密钥管理：生命周期、轮换策略、层级设计、合规要求",
+  "difficulty": "advanced",
+  "dependencies": ["openssl"]
+}

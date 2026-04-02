@@ -1,0 +1,8 @@
+{
+  "name": "ELK Stack",
+  "category": "kubernetes",
+  "tech_stack": ["Kubernetes", "Elasticsearch", "Logstash", "Kibana", "Logging"],
+  "description": "ELK日志分析栈：Elasticsearch、Logstash、Kibana集成",
+  "difficulty": "intermediate",
+  "dependencies": ["kubectl"]
+}

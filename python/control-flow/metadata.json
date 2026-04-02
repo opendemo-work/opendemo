@@ -1,11 +1,10 @@
 {
-  "name": "control-flow",
-  "language": "python",
-  "keywords": [
-    "control",
-    "flow"
+  "name": "Control Flow Demo",
+  "category": "python-core",
+  "tech_stack": [
+    "Python"
   ],
-  "description": "Python control-flow demo",
+  "description": "Python控制流演示，if/else/for/while/break/continue",
   "difficulty": "beginner",
-  "verified": true
+  "dependencies": []
 }

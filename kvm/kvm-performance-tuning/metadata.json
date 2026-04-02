@@ -1,0 +1,8 @@
+{
+  "name": "KVM Performance Tuning",
+  "category": "kvm",
+  "tech_stack": ["KVM", "QEMU", "Libvirt", "Performance"],
+  "description": "KVM性能调优：CPU、内存、磁盘、网络优化策略",
+  "difficulty": "advanced",
+  "dependencies": ["kvm", "qemu", "libvirt"]
+}

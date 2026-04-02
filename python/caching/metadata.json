@@ -1,10 +1,10 @@
 {
-  "name": "caching",
-  "language": "python",
-  "keywords": [
-    "caching"
+  "name": "Caching Demo",
+  "category": "python-performance",
+  "tech_stack": [
+    "Python"
   ],
-  "description": "Python caching demo",
-  "difficulty": "beginner",
-  "verified": true
+  "description": "Python缓存演示，functools.lru_cache、cachetools",
+  "difficulty": "intermediate",
+  "dependencies": []
 }

@@ -1,11 +1,10 @@
 {
-  "name": "json-yaml",
-  "language": "python",
-  "keywords": [
-    "json",
-    "yaml"
+  "name": "JSON and YAML Processing Demo",
+  "category": "python-standard-library",
+  "tech_stack": [
+    "Python"
   ],
-  "description": "Python json-yaml demo",
+  "description": "Python JSON和YAML处理演示，序列化、反序列化",
   "difficulty": "beginner",
-  "verified": true
+  "dependencies": []
 }

@@ -1,11 +1,8 @@
 {
-  "name": "async-programming",
-  "language": "python",
-  "keywords": [
-    "async",
-    "programming"
-  ],
-  "description": "Python async-programming demo",
-  "difficulty": "beginner",
-  "verified": true
+  "name": "Python Async Programming Demo",
+  "category": "python-core",
+  "tech_stack": ["Python", "asyncio", "async/await"],
+  "description": "Python异步编程演示，async/await、asyncio、异步IO、并发执行",
+  "difficulty": "intermediate",
+  "dependencies": ["aiohttp"]
 }

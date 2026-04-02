@@ -1,0 +1,8 @@
+{
+  "name": "Validation Demo",
+  "category": "web",
+  "tech_stack": ["Java", "Spring Boot", "Spring Validation", "Hibernate Validator"],
+  "description": "Spring Boot参数校验演示，包含JSR-380注解、自定义校验、分组校验",
+  "difficulty": "beginner",
+  "dependencies": ["spring-boot-starter-validation"]
+}

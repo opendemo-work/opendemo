@@ -1,11 +1,10 @@
 {
-  "name": "serialization-pickle",
-  "language": "python",
-  "keywords": [
-    "serialization",
-    "pickle"
+  "name": "Serialization and Pickle Demo",
+  "category": "python-standard-library",
+  "tech_stack": [
+    "Python"
   ],
-  "description": "Python serialization-pickle demo",
-  "difficulty": "beginner",
-  "verified": true
+  "description": "Python序列化演示，pickle、json、marshal",
+  "difficulty": "intermediate",
+  "dependencies": []
 }

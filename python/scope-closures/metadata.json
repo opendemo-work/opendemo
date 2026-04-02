@@ -1,11 +1,10 @@
 {
-  "name": "scope-closures",
-  "language": "python",
-  "keywords": [
-    "scope",
-    "closures"
+  "name": "Scope and Closures Demo",
+  "category": "python-core",
+  "tech_stack": [
+    "Python"
   ],
-  "description": "Python scope-closures demo",
-  "difficulty": "beginner",
-  "verified": true
+  "description": "Python作用域和闭包演示，LEGB规则、nonlocal、闭包",
+  "difficulty": "intermediate",
+  "dependencies": []
 }

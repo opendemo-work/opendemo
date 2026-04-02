@@ -1,0 +1,8 @@
+{
+  "name": "Jaeger Distributed Tracing",
+  "category": "kubernetes",
+  "tech_stack": ["Kubernetes", "Jaeger", "OpenTelemetry", "Tracing"],
+  "description": "Jaeger分布式链路追踪：调用链可视化、性能分析",
+  "difficulty": "advanced",
+  "dependencies": ["kubectl", "docker"]
+}

@@ -1,11 +1,10 @@
 {
-  "name": "string-operations",
-  "language": "python",
-  "keywords": [
-    "string",
-    "operations"
+  "name": "String Operations Demo",
+  "category": "python-core",
+  "tech_stack": [
+    "Python"
   ],
-  "description": "Python string-operations demo",
+  "description": "Python字符串操作演示，格式化、正则、编码",
   "difficulty": "beginner",
-  "verified": true
+  "dependencies": []
 }

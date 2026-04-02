@@ -1,0 +1,8 @@
+{
+  "name": "Ollama LLM Deployment",
+  "category": "kubernetes",
+  "tech_stack": ["Kubernetes", "Ollama", "LLM", "AI"],
+  "description": "Ollama本地LLM部署：模型管理、API服务、GPU加速",
+  "difficulty": "intermediate",
+  "dependencies": ["ollama"]
+}

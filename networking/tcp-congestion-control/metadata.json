@@ -1,0 +1,8 @@
+{
+  "name": "TCP Congestion Control",
+  "category": "networking",
+  "tech_stack": ["TCP", "Networking", "Linux Kernel"],
+  "description": "TCP拥塞控制算法演示：CUBIC、BBR、Reno、Tahoe原理与配置",
+  "difficulty": "advanced",
+  "dependencies": ["iperf3"]
+}

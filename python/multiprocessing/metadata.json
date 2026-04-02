@@ -1,10 +1,10 @@
 {
-  "name": "multiprocessing",
-  "language": "python",
-  "keywords": [
-    "multiprocessing"
+  "name": "Multiprocessing Demo",
+  "category": "python-concurrency",
+  "tech_stack": [
+    "Python"
   ],
-  "description": "Python multiprocessing demo",
-  "difficulty": "beginner",
-  "verified": true
+  "description": "Python多进程编程演示，Process、Pool、Queue",
+  "difficulty": "intermediate",
+  "dependencies": []
 }

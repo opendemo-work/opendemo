@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: redis-cache-demo
+  cache:
+    type: redis
+  redis:
+    host: localhost
+    port: 6379
+
+server:
+  port: 8080

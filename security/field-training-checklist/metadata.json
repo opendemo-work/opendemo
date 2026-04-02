@@ -1,0 +1,8 @@
+{
+  "name": "ufield training checklist",
+  "category": "security",
+  "tech_stack": ["FDE", "Security"],
+  "description": "field training checklist 实践",
+  "difficulty": "intermediate",
+  "dependencies": []
+}

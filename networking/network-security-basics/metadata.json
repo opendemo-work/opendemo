@@ -1,0 +1,8 @@
+{
+  "name": "network-security-basics",
+  "category": "networking",
+  "tech_stack": ["Networking", "Linux"],
+  "description": "network-security-basics networking case",
+  "difficulty": "intermediate",
+  "dependencies": []
+}

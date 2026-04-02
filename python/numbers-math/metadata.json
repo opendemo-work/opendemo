@@ -1,11 +1,10 @@
 {
-  "name": "numbers-math",
-  "language": "python",
-  "keywords": [
-    "numbers",
-    "math"
+  "name": "Numbers and Math Demo",
+  "category": "python-core",
+  "tech_stack": [
+    "Python"
   ],
-  "description": "Python numbers-math demo",
+  "description": "Python数值和数学演示，math、random、decimal",
   "difficulty": "beginner",
-  "verified": true
+  "dependencies": []
 }

@@ -1,11 +1,10 @@
 {
-  "name": "threading-synchronization",
-  "language": "python",
-  "keywords": [
-    "threading",
-    "synchronization"
+  "name": "Threading Synchronization Demo",
+  "category": "python-concurrency",
+  "tech_stack": [
+    "Python"
   ],
-  "description": "Python threading-synchronization demo",
-  "difficulty": "beginner",
-  "verified": true
+  "description": "Python线程同步演示，Lock、RLock、Condition、Semaphore",
+  "difficulty": "advanced",
+  "dependencies": []
 }

@@ -1,0 +1,8 @@
+{
+  "name": "VPN Implementation",
+  "category": "networking",
+  "tech_stack": ["WireGuard", "OpenVPN", "IPsec", "VPN"],
+  "description": "VPN实现方案：WireGuard、OpenVPN、IPsec配置",
+  "difficulty": "intermediate",
+  "dependencies": ["wireguard", "openvpn"]
+}

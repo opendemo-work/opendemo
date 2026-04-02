@@ -1,0 +1,8 @@
+{
+  "name": "JUnit5 Testing Demo",
+  "category": "testing",
+  "tech_stack": ["Java", "Spring Boot", "JUnit5", "AssertJ"],
+  "description": "JUnit5单元测试框架演示，包含生命周期、参数化测试、嵌套测试、动态测试和AssertJ断言",
+  "difficulty": "intermediate",
+  "dependencies": ["junit-jupiter", "assertj-core"]
+}

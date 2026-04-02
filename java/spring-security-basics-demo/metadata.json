@@ -1,0 +1,12 @@
+{
+  "name": "spring-security-basics-demo",
+  "language": "java",
+  "keywords": ["spring", "security", "authentication", "authorization"],
+  "description": "Spring Security基础安全演示，展示认证和授权",
+  "difficulty": "intermediate",
+  "created_at": "2026-04-12",
+  "dependencies": {
+    "java_version": "11+",
+    "spring-security": "5.7.1"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "name": "Java DDD Aggregates",
+  "category": "java",
+  "tech_stack": ["Java", "DDD", "Aggregates", "Domain-Driven Design"],
+  "description": "Java DDD聚合：聚合根、实体、值对象、领域事件",
+  "difficulty": "advanced",
+  "dependencies": ["Java"]
+}

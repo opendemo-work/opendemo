@@ -1,0 +1,8 @@
+{
+  "name": "Kubernetes Operator",
+  "category": "kubernetes",
+  "tech_stack": ["Kubernetes", "Operator", "Controller", "CRD"],
+  "description": "K8s Operator开发：自动化运维、Controller模式、OLM",
+  "difficulty": "advanced",
+  "dependencies": ["operator-sdk"]
+}

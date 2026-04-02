@@ -1,0 +1,8 @@
+{
+  "name": "Node.js Design Patterns",
+  "category": "nodejs",
+  "tech_stack": ["Node.js", "Design Patterns", "JavaScript"],
+  "description": "Node.js设计模式：模块、观察者、工厂、中间件、异步模式",
+  "difficulty": "advanced",
+  "dependencies": ["Node.js"]
+}

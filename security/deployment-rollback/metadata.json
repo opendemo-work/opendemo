@@ -1,0 +1,8 @@
+{
+  "name": "udeployment rollback",
+  "category": "security",
+  "tech_stack": ["FDE", "Security"],
+  "description": "deployment rollback 实践",
+  "difficulty": "intermediate",
+  "dependencies": []
+}

@@ -1,0 +1,8 @@
+{
+  "name": "SPIFFE/SPIRE Identity",
+  "category": "kubernetes",
+  "tech_stack": ["Kubernetes", "SPIFFE", "SPIRE", "mTLS", "Zero Trust"],
+  "description": "SPIFFE/SPIRE零信任身份：工作负载认证、SVID管理、mTLS",
+  "difficulty": "advanced",
+  "dependencies": ["helm"]
+}

@@ -1,0 +1,8 @@
+{
+  "name": "Rook Ceph Storage",
+  "category": "kubernetes",
+  "tech_stack": ["Kubernetes", "Rook", "Ceph", "Storage", "CSI"],
+  "description": "Rook Ceph存储：云原生块存储、文件系统、对象存储",
+  "difficulty": "advanced",
+  "dependencies": ["kubectl"]
+}

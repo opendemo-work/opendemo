@@ -1,0 +1,8 @@
+{
+  "name": "Event Listener Demo",
+  "category": "web",
+  "tech_stack": ["Java", "Spring Boot"],
+  "description": "事件监听演示，ApplicationEvent和@EventListener",
+  "difficulty": "intermediate",
+  "dependencies": ["spring-boot-starter-web"]
+}

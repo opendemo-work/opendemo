@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: sentinel-demo
+
+server:
+  port: 8080
+
+# Sentinel配置
+spring.cloud.sentinel:
+  transport:
+    dashboard: localhost:8858  # Sentinel控制台地址
+    port: 8719                  # 应用与控制台通信端口
+  enabled: true
+  eager: true  # 取消控制台懒加载
+
+# 日志级别
+logging:
+  level:
+    com.alibaba.csp.sentinel: DEBUG

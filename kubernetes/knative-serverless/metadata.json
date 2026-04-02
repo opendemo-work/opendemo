@@ -1,0 +1,8 @@
+{
+  "name": "Knative Serverless",
+  "category": "kubernetes",
+  "tech_stack": ["Kubernetes", "Knative", "Serverless"],
+  "description": "Knative无服务器平台：Serving、Eventing、自动扩缩容",
+  "difficulty": "advanced",
+  "dependencies": ["kubectl"]
+}

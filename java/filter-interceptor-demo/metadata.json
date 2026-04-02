@@ -1,0 +1,8 @@
+{
+  "name": "Filter Interceptor Demo",
+  "category": "web",
+  "tech_stack": ["Java", "Spring Boot"],
+  "description": "过滤器拦截器演示，Filter和Interceptor",
+  "difficulty": "intermediate",
+  "dependencies": ["spring-boot-starter-web"]
+}

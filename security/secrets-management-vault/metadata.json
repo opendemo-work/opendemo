@@ -1,0 +1,8 @@
+{
+  "name": "Secrets Management with Vault",
+  "category": "security",
+  "tech_stack": ["Vault", "Security", "Secrets", "Kubernetes"],
+  "description": "Vault密钥管理：动态凭证、KV引擎、K8s集成、PKI",
+  "difficulty": "advanced",
+  "dependencies": ["vault"]
+}

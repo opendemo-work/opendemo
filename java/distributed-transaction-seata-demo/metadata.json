@@ -1,0 +1,8 @@
+{
+  "name": "Distributed Transaction Seata Demo",
+  "category": "microservices",
+  "tech_stack": ["Java", "Spring Boot", "Seata", "MySQL", "Spring Cloud Alibaba"],
+  "description": "Seata分布式事务演示：AT模式、微服务一致性、订单库存账户事务",
+  "difficulty": "advanced",
+  "dependencies": ["spring-cloud-starter-alibaba-seata", "spring-cloud-starter-openfeign", "spring-boot-starter-data-jpa"]
+}

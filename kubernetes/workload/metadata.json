@@ -1,0 +1,8 @@
+{
+  "name": "Kubernetes Workloads",
+  "category": "kubernetes",
+  "tech_stack": ["Kubernetes", "Deployment", "StatefulSet", "HPA", "Jobs"],
+  "description": "K8s工作负载管理：Deployment、StatefulSet、HPA、CronJob",
+  "difficulty": "intermediate",
+  "dependencies": ["kubectl"]
+}

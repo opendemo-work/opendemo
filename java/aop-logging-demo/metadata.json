@@ -1,0 +1,8 @@
+{
+  "name": "AOP Logging Demo",
+  "category": "spring-core",
+  "tech_stack": ["Java", "Spring Boot", "AOP"],
+  "description": "AOP日志演示，方法调用记录",
+  "difficulty": "intermediate",
+  "dependencies": ["spring-boot-starter-aop"]
+}

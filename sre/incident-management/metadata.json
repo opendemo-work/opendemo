@@ -1,0 +1,8 @@
+{
+  "name": "Incident Management",
+  "category": "sre",
+  "tech_stack": ["SRE", "PagerDuty", "Slack", "Ops"],
+  "description": "事件管理响应：严重级别、指挥体系、沟通流程",
+  "difficulty": "intermediate",
+  "dependencies": ["pagerduty"]
+}

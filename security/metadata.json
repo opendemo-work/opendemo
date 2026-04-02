@@ -1,0 +1,8 @@
+{
+  "name": "Security Collection",
+  "category": "security",
+  "tech_stack": ["Security", "Encryption", "FDE", "TPM", "HSM"],
+  "description": "信息安全合集：全盘加密、密钥管理、安全启动、硬件安全",
+  "difficulty": "advanced",
+  "dependencies": []
+}

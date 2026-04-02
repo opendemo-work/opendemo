@@ -1,0 +1,8 @@
+{
+  "name": "Spring Security JWT Demo",
+  "category": "security",
+  "tech_stack": ["Java", "Spring Boot", "Spring Security", "JWT"],
+  "description": "Spring Security JWT认证授权演示，包含令牌生成、验证、无状态认证",
+  "difficulty": "intermediate",
+  "dependencies": ["spring-boot-starter-security", "jjwt-api", "jjwt-impl", "jjwt-jackson"]
+}

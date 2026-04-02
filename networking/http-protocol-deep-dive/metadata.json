@@ -1,0 +1,8 @@
+{
+  "name": "http-protocol-deep-dive",
+  "category": "networking",
+  "tech_stack": ["Networking", "Linux"],
+  "description": "http-protocol-deep-dive networking case",
+  "difficulty": "intermediate",
+  "dependencies": []
+}

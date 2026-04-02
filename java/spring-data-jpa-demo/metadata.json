@@ -1,0 +1,14 @@
+{
+  "name": "spring-data-jpa-demo",
+  "language": "java",
+  "keywords": ["spring", "jpa", "hibernate", "database", "orm"],
+  "description": "Spring Data JPA数据持久化演示，展示CRUD和查询方法",
+  "difficulty": "intermediate",
+  "created_at": "2026-04-12",
+  "dependencies": {
+    "java_version": "11+",
+    "spring-data-jpa": "2.7.0",
+    "hibernate": "5.6.9.Final",
+    "database": "h2"
+  }
+}

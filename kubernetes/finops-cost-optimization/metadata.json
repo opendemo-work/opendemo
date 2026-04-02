@@ -1,0 +1,8 @@
+{
+  "name": "FinOps Cost Optimization",
+  "category": "kubernetes",
+  "tech_stack": ["Kubernetes", "FinOps", "Cost Optimization", "Kubecost"],
+  "description": "Kubernetes成本优化：FinOps实践、资源优化、成本监控",
+  "difficulty": "intermediate",
+  "dependencies": ["helm"]
+}

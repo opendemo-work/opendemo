@@ -1,0 +1,8 @@
+{
+  "name": "Recovery Key Escrow",
+  "category": "security",
+  "tech_stack": ["FDE", "Key Escrow", "Azure AD", "Encryption"],
+  "description": "恢复密钥托管：加密存储、访问控制、审计日志、合规交付",
+  "difficulty": "advanced",
+  "dependencies": ["Python", "Azure AD"]
+}

@@ -1,11 +1,10 @@
 {
-  "name": "pathlib-os",
-  "language": "python",
-  "keywords": [
-    "pathlib",
-    "os"
+  "name": "Pathlib and OS Module Demo",
+  "category": "python-standard-library",
+  "tech_stack": [
+    "Python"
   ],
-  "description": "Python pathlib-os demo",
+  "description": "Python路径和系统操作演示，pathlib、os、shutil",
   "difficulty": "beginner",
-  "verified": true
+  "dependencies": []
 }

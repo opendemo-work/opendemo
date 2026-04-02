@@ -1,0 +1,8 @@
+{
+  "name": "File Upload Demo",
+  "category": "web",
+  "tech_stack": ["Java", "Spring Boot"],
+  "description": "文件上传演示，MultipartFile处理",
+  "difficulty": "beginner",
+  "dependencies": ["spring-boot-starter-web"]
+}

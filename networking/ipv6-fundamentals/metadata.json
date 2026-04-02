@@ -1,0 +1,8 @@
+{
+  "name": "IPv6 Fundamentals",
+  "category": "networking",
+  "tech_stack": ["IPv6", "Networking", "Linux"],
+  "description": "IPv6基础与部署：地址格式、SLAAC、双栈配置",
+  "difficulty": "intermediate",
+  "dependencies": ["iproute2"]
+}

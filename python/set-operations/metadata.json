@@ -1,11 +1,10 @@
 {
-  "name": "set-operations",
-  "language": "python",
-  "keywords": [
-    "set",
-    "operations"
+  "name": "Set Operations Demo",
+  "category": "python-core",
+  "tech_stack": [
+    "Python"
   ],
-  "description": "Python set-operations demo",
+  "description": "Python集合操作演示，集合运算、去重、 frozenset",
   "difficulty": "beginner",
-  "verified": true
+  "dependencies": []
 }

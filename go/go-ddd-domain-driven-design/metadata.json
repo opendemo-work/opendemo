@@ -1,0 +1,8 @@
+{
+  "name": "Go DDD Domain-Driven Design",
+  "category": "go",
+  "tech_stack": ["Go", "DDD", "Domain-Driven Design"],
+  "description": "Go领域驱动设计：分层架构、聚合、领域服务、仓库模式",
+  "difficulty": "advanced",
+  "dependencies": ["Go"]
+}

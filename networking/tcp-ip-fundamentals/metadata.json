@@ -1,0 +1,8 @@
+{
+  "name": "TCP/IP Fundamentals Demo",
+  "category": "networking",
+  "tech_stack": ["Networking", "TCP/IP"],
+  "description": "TCP/IP协议基础演示，涵盖OSI模型、TCP三次握手、IP地址分类",
+  "difficulty": "beginner",
+  "dependencies": []
+}

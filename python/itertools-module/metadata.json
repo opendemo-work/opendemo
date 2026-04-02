@@ -1,11 +1,10 @@
 {
-  "name": "itertools-module",
-  "language": "python",
-  "keywords": [
-    "itertools",
-    "module"
+  "name": "Itertools Module Demo",
+  "category": "python-standard-library",
+  "tech_stack": [
+    "Python"
   ],
-  "description": "Python itertools-module demo",
-  "difficulty": "beginner",
-  "verified": true
+  "description": "Python Itertools模块演示，迭代器工具、组合、排列",
+  "difficulty": "intermediate",
+  "dependencies": []
 }

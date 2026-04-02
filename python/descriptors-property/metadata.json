@@ -1,11 +1,10 @@
 {
-  "name": "descriptors-property",
-  "language": "python",
-  "keywords": [
-    "descriptors",
-    "property"
+  "name": "Descriptors and Property Demo",
+  "category": "python-core",
+  "tech_stack": [
+    "Python"
   ],
-  "description": "Python descriptors-property demo",
-  "difficulty": "beginner",
-  "verified": true
+  "description": "Python描述符和property演示，__get__/__set__、属性装饰器",
+  "difficulty": "advanced",
+  "dependencies": []
 }

@@ -1,0 +1,8 @@
+{
+  "name": "Go Design Patterns",
+  "category": "go",
+  "tech_stack": ["Go", "Design Patterns", "GoF"],
+  "description": "Go设计模式：创建型、结构型、行为型模式及Go惯用模式",
+  "difficulty": "advanced",
+  "dependencies": ["Go"]
+}

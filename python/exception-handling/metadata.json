@@ -1,11 +1,10 @@
 {
-  "name": "exception-handling",
-  "language": "python",
-  "keywords": [
-    "exception",
-    "handling"
+  "name": "Exception Handling Demo",
+  "category": "python-core",
+  "tech_stack": [
+    "Python"
   ],
-  "description": "Python exception-handling demo",
+  "description": "Python异常处理演示，try/except/finally、自定义异常",
   "difficulty": "beginner",
-  "verified": true
+  "dependencies": []
 }

@@ -1,0 +1,8 @@
+{
+  "name": "Offline Deployment",
+  "category": "security",
+  "tech_stack": ["FDE", "Offline", "Vault", "Air-gapped"],
+  "description": "FDE离线部署方案：隔离网络、本地KMS、离线介质",
+  "difficulty": "advanced",
+  "dependencies": ["Vault", "Python"]
+}

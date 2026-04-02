@@ -1,11 +1,10 @@
 {
-  "name": "context-managers",
-  "language": "python",
-  "keywords": [
-    "context",
-    "managers"
+  "name": "Context Managers Demo",
+  "category": "python-core",
+  "tech_stack": [
+    "Python"
   ],
-  "description": "Python context-managers demo",
-  "difficulty": "beginner",
-  "verified": true
+  "description": "Python上下文管理器演示，with语句、__enter__/__exit__",
+  "difficulty": "intermediate",
+  "dependencies": []
 }

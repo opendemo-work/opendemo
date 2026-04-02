@@ -1,0 +1,8 @@
+{
+  "name": "Model Context Protocol",
+  "category": "kubernetes",
+  "tech_stack": ["MCP", "AI", "LLM", "Integration"],
+  "description": "MCP模型上下文协议：AI与外部工具集成标准",
+  "difficulty": "advanced",
+  "dependencies": ["node"]
+}

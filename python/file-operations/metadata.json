@@ -1,11 +1,10 @@
 {
-  "name": "file-operations",
-  "language": "python",
-  "keywords": [
-    "file",
-    "operations"
+  "name": "File Operations Demo",
+  "category": "python-core",
+  "tech_stack": [
+    "Python"
   ],
-  "description": "Python file-operations demo",
+  "description": "Python文件操作演示，读写、上下文管理器、路径处理",
   "difficulty": "beginner",
-  "verified": true
+  "dependencies": []
 }

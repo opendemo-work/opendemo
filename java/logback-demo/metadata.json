@@ -1,0 +1,8 @@
+{
+  "name": "Logback Demo",
+  "category": "logging",
+  "tech_stack": ["Java", "Spring Boot", "Logback"],
+  "description": "日志配置演示，Logback和SLF4J",
+  "difficulty": "beginner",
+  "dependencies": ["spring-boot-starter-web"]
+}

@@ -1,0 +1,8 @@
+{
+  "name": "Spring Cloud Alibaba Sentinel Demo",
+  "category": "microservices",
+  "tech_stack": ["Java", "Spring Boot", "Spring Cloud Alibaba", "Sentinel"],
+  "description": "Spring Cloud Alibaba Sentinel流量控制、熔断降级、系统保护演示",
+  "difficulty": "intermediate",
+  "dependencies": ["spring-cloud-starter-alibaba-sentinel"]
+}

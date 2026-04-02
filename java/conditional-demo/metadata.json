@@ -1,0 +1,8 @@
+{
+  "name": "Conditional Demo",
+  "category": "spring-core",
+  "tech_stack": ["Java", "Spring Boot"],
+  "description": "条件装配演示，@Conditional和@Profile",
+  "difficulty": "intermediate",
+  "dependencies": ["spring-boot-starter-web"]
+}

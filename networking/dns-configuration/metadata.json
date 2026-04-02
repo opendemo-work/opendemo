@@ -1,0 +1,8 @@
+{
+  "name": "DNS Configuration",
+  "category": "networking",
+  "tech_stack": ["DNS", "BIND", "CoreDNS", "Networking"],
+  "description": "DNS配置与服务搭建：BIND、CoreDNS、DNS记录类型",
+  "difficulty": "intermediate",
+  "dependencies": ["bind9"]
+}

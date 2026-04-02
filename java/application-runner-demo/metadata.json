@@ -1,0 +1,8 @@
+{
+  "name": "ApplicationRunner Demo",
+  "category": "spring-core",
+  "tech_stack": ["Java", "Spring Boot"],
+  "description": "启动任务演示，ApplicationRunner",
+  "difficulty": "beginner",
+  "dependencies": []
+}

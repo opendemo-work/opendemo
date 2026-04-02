@@ -1,0 +1,8 @@
+{
+  "name": "MongoDB Integration Demo",
+  "category": "database",
+  "tech_stack": ["Java", "Spring Boot", "Spring Data MongoDB", "MongoDB"],
+  "description": "Spring Data MongoDB集成演示，包含文档模型、嵌套文档、数组查询、审计功能",
+  "difficulty": "intermediate",
+  "dependencies": ["spring-boot-starter-data-mongodb"]
+}

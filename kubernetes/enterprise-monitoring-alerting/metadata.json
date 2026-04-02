@@ -1,0 +1,13 @@
+{
+  "name": "Enterprise Monitoring Alerting",
+  "category": "kubernetes",
+  "tech_stack": [
+    "Kubernetes",
+    "Prometheus"
+  ],
+  "description": "Kubernetes Enterprise Monitoring Alerting demonstration and best practices",
+  "difficulty": "intermediate",
+  "dependencies": [
+    "kubectl"
+  ]
+}

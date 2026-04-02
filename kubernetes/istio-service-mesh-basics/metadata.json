@@ -1,0 +1,8 @@
+{
+  "name": "Istio Service Mesh Basics",
+  "category": "kubernetes",
+  "tech_stack": ["Kubernetes", "Istio", "Envoy", "Service Mesh"],
+  "description": "Istio服务网格基础：流量管理、安全、可观测性、灰度发布",
+  "difficulty": "advanced",
+  "dependencies": ["kubectl", "istioctl"]
+}

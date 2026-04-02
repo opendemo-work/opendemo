@@ -1,0 +1,8 @@
+{
+  "name": "Socket Programming Demo",
+  "category": "networking",
+  "tech_stack": ["Networking", "Socket", "TCP/UDP"],
+  "description": "Socket编程实战，多语言实现网络通信",
+  "difficulty": "intermediate",
+  "dependencies": []
+}

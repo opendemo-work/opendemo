@@ -1,0 +1,8 @@
+{
+  "name": "Compliance and Audit (GDPR/HIPAA/PCI-DSS)",
+  "category": "security",
+  "tech_stack": ["FDE", "GDPR", "HIPAA", "PCI-DSS", "Compliance"],
+  "description": "FDE合规审计：GDPR/HIPAA/PCI-DSS要求、审计日志、自动化检查",
+  "difficulty": "advanced",
+  "dependencies": ["Python"]
+}

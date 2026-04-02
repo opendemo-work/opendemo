@@ -1,10 +1,10 @@
 {
-  "name": "dataclasses",
-  "language": "python",
-  "keywords": [
-    "dataclasses"
+  "name": "Dataclasses Demo",
+  "category": "python-core",
+  "tech_stack": [
+    "Python"
   ],
-  "description": "Python dataclasses demo",
+  "description": "Python数据类演示，@dataclass、字段、默认值",
   "difficulty": "beginner",
-  "verified": true
+  "dependencies": []
 }

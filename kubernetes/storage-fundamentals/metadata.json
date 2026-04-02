@@ -1,0 +1,12 @@
+{
+  "name": "Storage Fundamentals",
+  "category": "kubernetes",
+  "tech_stack": [
+    "Kubernetes"
+  ],
+  "description": "Kubernetes Storage Fundamentals demonstration and best practices",
+  "difficulty": "beginner",
+  "dependencies": [
+    "kubectl"
+  ]
+}

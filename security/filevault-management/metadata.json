@@ -1,0 +1,8 @@
+{
+  "name": "FileVault Management",
+  "category": "security",
+  "tech_stack": ["FileVault", "macOS", "MDM", "Security"],
+  "description": "FileVault管理：全盘加密、恢复密钥、MDM集成",
+  "difficulty": "intermediate",
+  "dependencies": ["fdesetup"]
+}

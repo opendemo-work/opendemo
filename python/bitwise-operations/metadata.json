@@ -1,11 +1,10 @@
 {
-  "name": "bitwise-operations",
-  "language": "python",
-  "keywords": [
-    "bitwise",
-    "operations"
+  "name": "Bitwise Operations Demo",
+  "category": "python-core",
+  "tech_stack": [
+    "Python"
   ],
-  "description": "Python bitwise-operations demo",
-  "difficulty": "beginner",
-  "verified": true
+  "description": "Python位运算演示，位操作、掩码、标志位",
+  "difficulty": "intermediate",
+  "dependencies": []
 }

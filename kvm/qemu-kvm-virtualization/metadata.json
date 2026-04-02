@@ -1,0 +1,8 @@
+{
+  "name": "qemu-kvm-virtualization",
+  "category": "kvm",
+  "tech_stack": ["KVM", "Libvirt", "Linux"],
+  "description": "qemu-kvm-virtualization kvm case",
+  "difficulty": "intermediate",
+  "dependencies": ["kvm"]
+}

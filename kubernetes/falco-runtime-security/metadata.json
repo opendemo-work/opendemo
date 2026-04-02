@@ -1,0 +1,8 @@
+{
+  "name": "Falco Runtime Security",
+  "category": "kubernetes",
+  "tech_stack": ["Kubernetes", "Falco", "Security", "eBPF"],
+  "description": "Falco运行时安全：系统调用监控、异常检测、安全告警",
+  "difficulty": "advanced",
+  "dependencies": ["helm"]
+}

@@ -1,0 +1,8 @@
+{
+  "name": "Prometheus and Grafana",
+  "category": "kubernetes",
+  "tech_stack": ["Kubernetes", "Prometheus", "Grafana", "Monitoring"],
+  "description": "Prometheus监控与Grafana可视化：指标收集、告警、仪表板",
+  "difficulty": "intermediate",
+  "dependencies": ["kubectl", "helm"]
+}

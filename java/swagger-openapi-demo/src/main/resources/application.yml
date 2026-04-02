@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: swagger-demo
+
+server:
+  port: 8080
+
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+    enabled: true
+  packages-to-scan: com.example.demo.controller

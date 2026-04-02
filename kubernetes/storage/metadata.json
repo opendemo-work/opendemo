@@ -1,0 +1,8 @@
+{
+  "name": "Kubernetes Storage",
+  "category": "kubernetes",
+  "tech_stack": ["Kubernetes", "CSI", "StorageClass", "VolumeSnapshot"],
+  "description": "K8s存储管理：CSI驱动、快照克隆、存储扩容、性能优化",
+  "difficulty": "advanced",
+  "dependencies": ["kubectl"]
+}

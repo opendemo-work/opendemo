@@ -1,0 +1,8 @@
+{
+  "name": "Cilium Service Mesh",
+  "category": "kubernetes",
+  "tech_stack": ["Kubernetes", "Cilium", "eBPF", "Service Mesh"],
+  "description": "Cilium服务网格：eBPF网络、安全策略、可观测性",
+  "difficulty": "advanced",
+  "dependencies": ["helm"]
+}

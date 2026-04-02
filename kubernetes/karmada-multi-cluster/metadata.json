@@ -1,0 +1,8 @@
+{
+  "name": "Karmada Multi-Cluster Management",
+  "category": "kubernetes",
+  "tech_stack": ["Kubernetes", "Karmada", "Multi-Cluster"],
+  "description": "Karmada多集群管理：资源分发、策略配置、故障转移",
+  "difficulty": "advanced",
+  "dependencies": ["kubectl"]
+}

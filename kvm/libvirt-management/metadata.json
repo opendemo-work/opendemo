@@ -1,0 +1,8 @@
+{
+  "name": "libvirt-management",
+  "category": "kvm",
+  "tech_stack": ["KVM", "Libvirt", "Linux"],
+  "description": "libvirt-management kvm case",
+  "difficulty": "intermediate",
+  "dependencies": ["kvm"]
+}

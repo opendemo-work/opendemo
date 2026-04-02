@@ -1,0 +1,8 @@
+{
+  "name": "Actuator Demo",
+  "category": "monitoring",
+  "tech_stack": ["Java", "Spring Boot", "Actuator"],
+  "description": "Spring Boot Actuator监控演示",
+  "difficulty": "beginner",
+  "dependencies": ["spring-boot-starter-actuator"]
+}

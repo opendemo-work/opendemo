@@ -1,0 +1,8 @@
+{
+  "name": "RestTemplate Demo",
+  "category": "web",
+  "tech_stack": ["Java", "Spring Boot"],
+  "description": "HTTP客户端演示，RestTemplate使用",
+  "difficulty": "beginner",
+  "dependencies": ["spring-boot-starter-web"]
+}

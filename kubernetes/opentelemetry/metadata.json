@@ -1,0 +1,8 @@
+{
+  "name": "OpenTelemetry",
+  "category": "kubernetes",
+  "tech_stack": ["Kubernetes", "OpenTelemetry", "Observability"],
+  "description": "OpenTelemetry可观测性标准：追踪、指标、日志",
+  "difficulty": "advanced",
+  "dependencies": ["otel-collector"]
+}

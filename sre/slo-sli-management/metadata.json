@@ -1,0 +1,8 @@
+{
+  "name": "SLI/SLO Management",
+  "category": "sre",
+  "tech_stack": ["SRE", "SLI", "SLO", "Prometheus"],
+  "description": "服务级别管理：黄金指标、SLO设定、错误预算监控",
+  "difficulty": "intermediate",
+  "dependencies": ["prometheus"]
+}

@@ -1,0 +1,12 @@
+{
+  "name": "Network Advanced",
+  "category": "kubernetes",
+  "tech_stack": [
+    "Kubernetes"
+  ],
+  "description": "Kubernetes Network Advanced demonstration and best practices",
+  "difficulty": "advanced",
+  "dependencies": [
+    "kubectl"
+  ]
+}

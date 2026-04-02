@@ -1,0 +1,8 @@
+{
+  "name": "FDE with LUKS",
+  "category": "security",
+  "tech_stack": ["Linux", "LUKS", "dm-crypt", "FDE"],
+  "description": "Linux全盘加密：LUKS配置、密钥管理、系统加密、性能优化",
+  "difficulty": "advanced",
+  "dependencies": ["cryptsetup"]
+}

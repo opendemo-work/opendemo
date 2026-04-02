@@ -1,0 +1,8 @@
+{
+  "name": "Zipkin Distributed Tracing",
+  "category": "kubernetes",
+  "tech_stack": ["Kubernetes", "Zipkin", "Tracing", "Observability"],
+  "description": "Zipkin分布式追踪：链路收集、存储分析、性能监控",
+  "difficulty": "intermediate",
+  "dependencies": ["docker"]
+}

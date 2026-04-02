@@ -1,11 +1,10 @@
 {
-  "name": "environment-variables",
-  "language": "python",
-  "keywords": [
-    "environment",
-    "variables"
+  "name": "Environment Variables Demo",
+  "category": "python-standard-library",
+  "tech_stack": [
+    "Python"
   ],
-  "description": "Python environment-variables demo",
+  "description": "Python环境变量演示，os.environ、python-dotenv",
   "difficulty": "beginner",
-  "verified": true
+  "dependencies": []
 }

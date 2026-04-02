@@ -1,0 +1,8 @@
+{
+  "name": "Virtualization Concepts Demo",
+  "category": "virtualization",
+  "tech_stack": ["Virtualization", "Hypervisor"],
+  "description": "虚拟化概念与原理，Type1/Type2虚拟化，VM vs Container对比",
+  "difficulty": "beginner",
+  "dependencies": []
+}

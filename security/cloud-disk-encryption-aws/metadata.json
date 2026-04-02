@@ -1,0 +1,8 @@
+{
+  "name": "Cloud Disk Encryption - AWS",
+  "category": "security",
+  "tech_stack": ["AWS", "KMS", "EBS", "S3", "RDS", "Encryption"],
+  "description": "AWS云磁盘加密：KMS、EBS、S3、RDS加密配置与监控",
+  "difficulty": "advanced",
+  "dependencies": ["AWS CLI", "Python"]
+}

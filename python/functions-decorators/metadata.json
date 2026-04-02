@@ -1,11 +1,10 @@
 {
-  "name": "functions-decorators",
-  "language": "python",
-  "keywords": [
-    "functions",
-    "decorators"
+  "name": "Functions and Decorators Demo",
+  "category": "python-core",
+  "tech_stack": [
+    "Python"
   ],
-  "description": "Python functions-decorators demo",
-  "difficulty": "beginner",
-  "verified": true
+  "description": "Python函数与装饰器演示，高阶函数、闭包、装饰器",
+  "difficulty": "intermediate",
+  "dependencies": []
 }

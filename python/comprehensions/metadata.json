@@ -1,10 +1,10 @@
 {
-  "name": "comprehensions",
-  "language": "python",
-  "keywords": [
-    "comprehensions"
+  "name": "Comprehensions Demo",
+  "category": "python-core",
+  "tech_stack": [
+    "Python"
   ],
-  "description": "Python comprehensions demo",
+  "description": "Python推导式演示，列表/字典/集合推导式",
   "difficulty": "beginner",
-  "verified": true
+  "dependencies": []
 }

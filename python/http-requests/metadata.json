@@ -1,11 +1,10 @@
 {
-  "name": "http-requests",
-  "language": "python",
-  "keywords": [
-    "http",
-    "requests"
+  "name": "HTTP Requests Demo",
+  "category": "python-networking",
+  "tech_stack": [
+    "Python"
   ],
-  "description": "Python http-requests demo",
+  "description": "Python HTTP请求演示，requests库、API调用",
   "difficulty": "beginner",
-  "verified": true
+  "dependencies": []
 }

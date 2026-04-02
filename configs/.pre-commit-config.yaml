@@ -1,0 +1,69 @@
+# Pre-commit 配置
+# 安装: pip install pre-commit
+# 使用: pre-commit install (安装钩子)
+#       pre-commit run --all-files (手动运行)
+
+repos:
+  # 通用检查
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.5.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-yaml
+      - id: check-added-large-files
+        args: ['--maxkb=1000']
+      - id: check-merge-conflict
+      - id: check-case-conflict
+      - id: detect-private-key
+      - id: mixed-line-ending
+
+  # Python 代码格式化 (Black)
+  - repo: https://github.com/psf/black
+    rev: 23.12.1
+    hooks:
+      - id: black
+        language_version: python3
+        files: ^(opendemo-cli|python)/.*\.py$
+        args: ['--config=pyproject.toml']
+
+  # Python 导入排序 (isort)
+  - repo: https://github.com/pycqa/isort
+    rev: 5.13.2
+    hooks:
+      - id: isort
+        files: ^(opendemo-cli|python)/.*\.py$
+        args: ['--settings-path=pyproject.toml']
+
+  # Python Lint (Flake8)
+  - repo: https://github.com/pycqa/flake8
+    rev: 7.0.0
+    hooks:
+      - id: flake8
+        files: ^(opendemo-cli|python)/.*\.py$
+        args: ['--config=pyproject.toml']
+
+  # Go Lint
+  - repo: https://github.com/golangci/golangci-lint
+    rev: v1.55.2
+    hooks:
+      - id: golangci-lint
+        entry: golangci-lint run
+        types: [go]
+        files: ^go/.*\.go$
+        args: ['--config=configs/.golangci.yml']
+
+  # Node.js 代码格式化 (Prettier)
+  - repo: https://github.com/pre-commit/mirrors-prettier
+    rev: v3.1.0
+    hooks:
+      - id: prettier
+        files: ^nodejs/.*\.(js|json|md)$
+        args: ['--config=configs/.prettierrc']
+
+  # Markdown 检查
+  - repo: https://github.com/igorshubovych/markdownlint-cli
+    rev: v0.38.0
+    hooks:
+      - id: markdownlint
+        args: ['--fix']

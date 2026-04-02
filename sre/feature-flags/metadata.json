@@ -1,0 +1,8 @@
+{
+  "name": "Feature Flags",
+  "category": "sre",
+  "tech_stack": ["SRE", "LaunchDarkly", "Unleash"],
+  "description": "特性开关管理：灰度发布、A/B测试、动态配置",
+  "difficulty": "intermediate",
+  "dependencies": []
+}

@@ -1,0 +1,8 @@
+{
+  "name": "Argo Workflows",
+  "category": "kubernetes",
+  "tech_stack": ["Kubernetes", "Argo Workflows", "DAG", "CI/CD"],
+  "description": "Argo工作流引擎：DAG编排、步骤控制、事件触发",
+  "difficulty": "intermediate",
+  "dependencies": ["kubectl"]
+}

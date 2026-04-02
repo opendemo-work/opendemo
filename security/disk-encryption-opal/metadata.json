@@ -1,0 +1,8 @@
+{
+  "name": "Disk Encryption with OPAL",
+  "category": "security",
+  "tech_stack": ["OPAL", "SED", "sedutil", "Hardware"],
+  "description": "OPAL自加密硬盘：SED管理、硬件加密、PBA认证",
+  "difficulty": "advanced",
+  "dependencies": ["sedutil"]
+}

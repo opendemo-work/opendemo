@@ -1,0 +1,8 @@
+{
+  "name": "Async Demo",
+  "category": "concurrency",
+  "tech_stack": ["Java", "Spring Boot", "Spring Async", "CompletableFuture"],
+  "description": "Spring Boot异步处理演示，包含@Async注解、线程池配置、CompletableFuture",
+  "difficulty": "intermediate",
+  "dependencies": ["spring-boot-starter-web"]
+}

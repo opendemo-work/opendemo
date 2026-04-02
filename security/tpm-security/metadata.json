@@ -1,0 +1,8 @@
+{
+  "name": "TPM Security",
+  "category": "security",
+  "tech_stack": ["TPM", "Linux", "Security", "Hardware"],
+  "description": "TPM可信平台模块：密钥密封、PCR测量、LUKS集成、安全启动",
+  "difficulty": "advanced",
+  "dependencies": ["tpm2-tools"]
+}

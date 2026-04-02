@@ -1,0 +1,8 @@
+{
+  "name": "load-balancing-algorithms",
+  "category": "networking",
+  "tech_stack": ["Networking", "Linux"],
+  "description": "load-balancing-algorithms networking case",
+  "difficulty": "intermediate",
+  "dependencies": []
+}

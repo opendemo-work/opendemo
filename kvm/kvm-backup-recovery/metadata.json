@@ -1,0 +1,8 @@
+{
+  "name": "KVM Backup and Recovery",
+  "category": "kvm",
+  "tech_stack": ["KVM", "Libvirt", "Backup", "Recovery"],
+  "description": "KVM备份与恢复：快照、增量备份、自动化策略",
+  "difficulty": "intermediate",
+  "dependencies": ["kvm", "libvirt"]
+}

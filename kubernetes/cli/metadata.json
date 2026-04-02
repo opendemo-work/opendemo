@@ -1,0 +1,8 @@
+{
+  "name": "Kubernetes CLI",
+  "category": "kubernetes",
+  "tech_stack": ["Kubernetes", "kubectl", "CLI"],
+  "description": "Kubectl高级技巧：命令速查、插件工具、诊断调试",
+  "difficulty": "intermediate",
+  "dependencies": ["kubectl"]
+}

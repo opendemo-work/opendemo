@@ -1,0 +1,8 @@
+{
+  "name": "Spring Cloud Alibaba Nacos Demo",
+  "category": "microservices",
+  "tech_stack": ["Java", "Spring Boot", "Spring Cloud Alibaba", "Nacos"],
+  "description": "Spring Cloud Alibaba Nacos服务注册与配置管理演示，支持动态配置刷新",
+  "difficulty": "intermediate",
+  "dependencies": ["spring-cloud-starter-alibaba-nacos-discovery", "spring-cloud-starter-alibaba-nacos-config"]
+}

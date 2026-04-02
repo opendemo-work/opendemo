@@ -1,0 +1,8 @@
+{
+  "name": "Spring Cloud Feign Demo",
+  "category": "microservices",
+  "tech_stack": ["Java", "Spring Boot", "Spring Cloud", "Feign"],
+  "description": "Spring Cloud Feign声明式HTTP客户端，演示服务间调用、负载均衡和服务降级",
+  "difficulty": "intermediate",
+  "dependencies": ["spring-cloud-starter-openfeign", "spring-cloud-starter-netflix-eureka-client"]
+}

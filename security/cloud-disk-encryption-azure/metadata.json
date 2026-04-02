@@ -1,0 +1,8 @@
+{
+  "name": "",
+  "category": "security",
+  "tech_stack": ["FDE", "Security"],
+  "description": "cloud disk encryption azure 实践",
+  "difficulty": "intermediate",
+  "dependencies": []
+}

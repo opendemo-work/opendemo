@@ -1,11 +1,10 @@
 {
-  "name": "abc-interfaces",
-  "language": "python",
-  "keywords": [
-    "abc",
-    "interfaces"
+  "name": "ABC and Interfaces Demo",
+  "category": "python-core",
+  "tech_stack": [
+    "Python"
   ],
-  "description": "Python abc-interfaces demo",
-  "difficulty": "beginner",
-  "verified": true
+  "description": "Python抽象基类演示，ABC、抽象方法、接口",
+  "difficulty": "intermediate",
+  "dependencies": []
 }

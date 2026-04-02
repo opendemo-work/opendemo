@@ -1,0 +1,8 @@
+{
+  "name": "Redis Cache Integration Demo",
+  "category": "microservices",
+  "tech_stack": ["Java", "Spring Boot", "Redis", "Spring Cache"],
+  "description": "Spring Boot集成Redis缓存，演示@Cacheable、@CachePut、@CacheEvict注解的使用",
+  "difficulty": "intermediate",
+  "dependencies": ["spring-boot-starter-data-redis"]
+}

@@ -1,0 +1,8 @@
+{
+  "name": "Bean Validation Demo",
+  "category": "web",
+  "tech_stack": ["Java", "Spring Boot"],
+  "description": "Bean校验演示",
+  "difficulty": "beginner",
+  "dependencies": ["spring-boot-starter-validation"]
+}

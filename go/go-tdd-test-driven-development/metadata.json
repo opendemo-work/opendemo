@@ -1,0 +1,8 @@
+{
+  "name": "Go TDD Test-Driven Development",
+  "category": "go",
+  "tech_stack": ["Go", "TDD", "Testing"],
+  "description": "Go测试驱动开发：TDD循环、测试先行、重构优化",
+  "difficulty": "intermediate",
+  "dependencies": ["Go"]
+}

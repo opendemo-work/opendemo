@@ -1,0 +1,8 @@
+{
+  "name": "KubeSkoop Network Diagnosis",
+  "category": "kubernetes",
+  "tech_stack": ["Kubernetes", "KubeSkoop", "Network", "eBPF"],
+  "description": "KubeSkoop网络诊断：链路发现、策略检查、抓包分析",
+  "difficulty": "advanced",
+  "dependencies": ["kubectl"]
+}

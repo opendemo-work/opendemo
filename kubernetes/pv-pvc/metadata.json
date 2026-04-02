@@ -1,0 +1,8 @@
+{
+  "name": "Persistent Volumes and Claims",
+  "category": "kubernetes",
+  "tech_stack": ["Kubernetes", "Storage", "PV", "PVC", "StatefulSet"],
+  "description": "K8s持久化存储：PV、PVC、StorageClass、动态供给、有状态应用",
+  "difficulty": "intermediate",
+  "dependencies": ["kubectl"]
+}

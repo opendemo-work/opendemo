@@ -1,0 +1,8 @@
+{
+  "name": "Operator Framework",
+  "category": "kubernetes",
+  "tech_stack": ["Kubernetes", "Operator SDK", "OLM", "Go"],
+  "description": "Operator开发框架：SDK工具、Controller开发、OLM发布",
+  "difficulty": "advanced",
+  "dependencies": ["operator-sdk"]
+}

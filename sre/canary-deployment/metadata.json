@@ -1,0 +1,8 @@
+{
+  "name": "Canary Deployment",
+  "category": "sre",
+  "tech_stack": ["SRE", "Flagger", "Istio", "GitOps"],
+  "description": "金丝雀发布：渐进式部署、自动回滚、流量管理",
+  "difficulty": "advanced",
+  "dependencies": ["flagger", "istio"]
+}

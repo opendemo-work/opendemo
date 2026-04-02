@@ -1,11 +1,10 @@
 {
-  "name": "list-operations",
-  "language": "python",
-  "keywords": [
-    "list",
-    "operations"
+  "name": "List Operations Demo",
+  "category": "python-core",
+  "tech_stack": [
+    "Python"
   ],
-  "description": "Python list-operations demo",
+  "description": "Python列表操作演示，切片、推导式、常用方法",
   "difficulty": "beginner",
-  "verified": true
+  "dependencies": []
 }

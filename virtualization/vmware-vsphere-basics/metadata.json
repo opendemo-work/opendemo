@@ -1,0 +1,8 @@
+{
+  "name": "vmware-vsphere-basics",
+  "category": "virtualization",
+  "tech_stack": ["Virtualization", "Linux"],
+  "description": "vmware-vsphere-basics virtualization case",
+  "difficulty": "intermediate",
+  "dependencies": []
+}

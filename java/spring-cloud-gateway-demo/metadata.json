@@ -1,0 +1,13 @@
+{
+  "name": "spring-cloud-gateway-demo",
+  "language": "java",
+  "keywords": ["spring", "cloud", "gateway", "api", "router"],
+  "description": "Spring Cloud Gateway API网关路由演示",
+  "difficulty": "advanced",
+  "created_at": "2026-04-14",
+  "dependencies": {
+    "java_version": "11+",
+    "spring-boot": "2.7.0",
+    "spring-cloud": "2021.0.3"
+  }
+}

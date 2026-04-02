@@ -1,0 +1,8 @@
+{
+  "name": "Profiles Demo",
+  "category": "web",
+  "tech_stack": ["Java", "Spring Boot"],
+  "description": "多环境配置演示，Spring Profiles",
+  "difficulty": "beginner",
+  "dependencies": ["spring-boot-starter-web"]
+}

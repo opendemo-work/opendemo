@@ -1,0 +1,8 @@
+{
+  "name": "Elasticsearch Integration Demo",
+  "category": "database",
+  "tech_stack": ["Java", "Spring Boot", "Spring Data Elasticsearch", "Elasticsearch"],
+  "description": "Spring Data Elasticsearch集成演示，包含全文搜索、中文分词、Query DSL",
+  "difficulty": "intermediate",
+  "dependencies": ["spring-boot-starter-data-elasticsearch"]
+}

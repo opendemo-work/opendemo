@@ -1,11 +1,10 @@
 {
-  "name": "database-sqlite",
-  "language": "python",
-  "keywords": [
-    "database",
-    "sqlite"
+  "name": "SQLite Database Demo",
+  "category": "python-database",
+  "tech_stack": [
+    "Python"
   ],
-  "description": "Python database-sqlite demo",
+  "description": "Python SQLite数据库演示，CRUD、事务、连接池",
   "difficulty": "beginner",
-  "verified": true
+  "dependencies": []
 }

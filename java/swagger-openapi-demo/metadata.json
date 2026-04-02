@@ -1,0 +1,8 @@
+{
+  "name": "Swagger OpenAPI Demo",
+  "category": "documentation",
+  "tech_stack": ["Java", "Spring Boot", "SpringDoc OpenAPI", "Swagger UI"],
+  "description": "Swagger OpenAPI文档生成演示，包含API文档自动生成、交互式测试界面",
+  "difficulty": "beginner",
+  "dependencies": ["springdoc-openapi-ui", "spring-boot-starter-validation"]
+}

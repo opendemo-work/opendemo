@@ -1,0 +1,8 @@
+{
+  "name": "RAG Implementation",
+  "category": "kubernetes",
+  "tech_stack": ["RAG", "Vector DB", "LLM", "LangChain"],
+  "description": "检索增强生成系统：文档处理、向量检索、LLM集成",
+  "difficulty": "advanced",
+  "dependencies": ["python"]
+}

@@ -1,0 +1,8 @@
+{
+  "name": "Field Troubleshooting",
+  "category": "security",
+  "tech_stack": ["FDE", "Troubleshooting", "Python", "Diagnostics"],
+  "description": "FDE现场故障诊断：诊断工具、常见问题、紧急修复",
+  "difficulty": "advanced",
+  "dependencies": ["Python"]
+}

@@ -1,0 +1,8 @@
+{
+  "name": "Kubernetes Troubleshooting",
+  "category": "kubernetes",
+  "tech_stack": ["Kubernetes", "Debugging", "Troubleshooting"],
+  "description": "K8s故障排查：Pod/Node/网络/存储问题诊断与解决",
+  "difficulty": "advanced",
+  "dependencies": ["kubectl"]
+}

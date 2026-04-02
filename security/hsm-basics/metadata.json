@@ -1,0 +1,8 @@
+{
+  "name": "HSM Basics",
+  "category": "security",
+  "tech_stack": ["HSM", "PKCS11", "Cryptography", "Security"],
+  "description": "硬件安全模块：PKCS11接口、密钥保护、CloudHSM",
+  "difficulty": "advanced",
+  "dependencies": ["opensc"]
+}

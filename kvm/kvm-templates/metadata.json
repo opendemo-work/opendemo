@@ -1,0 +1,8 @@
+{
+  "name": "KVM Templates",
+  "category": "kvm",
+  "tech_stack": ["KVM", "Libvirt", "cloud-init", "Templates"],
+  "description": "KVM虚拟机模板：黄金镜像、克隆、cloud-init集成",
+  "difficulty": "intermediate",
+  "dependencies": ["virt-clone", "cloud-init"]
+}

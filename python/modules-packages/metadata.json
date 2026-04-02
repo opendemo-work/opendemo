@@ -1,11 +1,10 @@
 {
-  "name": "modules-packages",
-  "language": "python",
-  "keywords": [
-    "modules",
-    "packages"
+  "name": "Modules and Packages Demo",
+  "category": "python-core",
+  "tech_stack": [
+    "Python"
   ],
-  "description": "Python modules-packages demo",
+  "description": "Python模块和包演示，导入、__init__.py、命名空间",
   "difficulty": "beginner",
-  "verified": true
+  "dependencies": []
 }

@@ -1,0 +1,8 @@
+{
+  "name": "Gemini AI Integration",
+  "category": "kubernetes",
+  "tech_stack": ["Kubernetes", "Gemini", "AI", "Python"],
+  "description": "Gemini AI集成：API调用、多模态应用、K8s部署",
+  "difficulty": "intermediate",
+  "dependencies": ["python"]
+}

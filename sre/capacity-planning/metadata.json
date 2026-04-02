@@ -1,0 +1,8 @@
+{
+  "name": "Capacity Planning",
+  "category": "sre",
+  "tech_stack": ["SRE", "Forecasting", "HPA", "Kubernetes"],
+  "description": "容量规划预测：趋势分析、自动扩缩容、成本优化",
+  "difficulty": "advanced",
+  "dependencies": ["prometheus", "kubernetes"]
+}

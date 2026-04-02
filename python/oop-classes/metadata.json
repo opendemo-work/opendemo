@@ -1,11 +1,8 @@
 {
-  "name": "oop-classes",
-  "language": "python",
-  "keywords": [
-    "oop",
-    "classes"
-  ],
-  "description": "Python oop-classes demo",
+  "name": "Python OOP Classes Demo",
+  "category": "python-core",
+  "tech_stack": ["Python", "OOP"],
+  "description": "Python面向对象编程演示，包含类、继承、多态、封装、抽象基类",
   "difficulty": "beginner",
-  "verified": true
+  "dependencies": []
 }

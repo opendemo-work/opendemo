@@ -1,0 +1,8 @@
+{
+  "name": "Pre-Deployment Assessment",
+  "category": "security",
+  "tech_stack": ["FDE", "Assessment", "Python", "Pre-check"],
+  "description": "FDE部署前评估：系统检查、兼容性验证、风险评估、检查清单",
+  "difficulty": "intermediate",
+  "dependencies": ["Python", "psutil"]
+}

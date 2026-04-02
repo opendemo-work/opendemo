@@ -1,10 +1,10 @@
 {
-  "name": "enums",
-  "language": "python",
-  "keywords": [
-    "enums"
+  "name": "Enums Demo",
+  "category": "python-core",
+  "tech_stack": [
+    "Python"
   ],
-  "description": "Python enums demo",
+  "description": "Python枚举演示，Enum、IntEnum、自动值",
   "difficulty": "beginner",
-  "verified": true
+  "dependencies": []
 }

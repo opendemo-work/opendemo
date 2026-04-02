@@ -1,0 +1,8 @@
+{
+  "name": "Python TDD with pytest",
+  "category": "python",
+  "tech_stack": ["Python", "TDD", "pytest", "Testing"],
+  "description": "Python测试驱动开发：pytest、fixtures、mock、覆盖率",
+  "difficulty": "intermediate",
+  "dependencies": ["Python", "pytest"]
+}

@@ -1,0 +1,8 @@
+{
+  "name": "Schedule Task Demo",
+  "category": "web",
+  "tech_stack": ["Java", "Spring Boot"],
+  "description": "定时任务演示，fixedRate/fixedDelay/Cron表达式",
+  "difficulty": "beginner",
+  "dependencies": ["spring-boot-starter-web"]
+}

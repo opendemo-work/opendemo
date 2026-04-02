@@ -1,0 +1,40 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      routes:
+        # 用户服务路由
+        - id: user-service
+          uri: http://localhost:8081
+          predicates:
+            - Path=/users/**
+          filters:
+            - StripPrefix=0
+        
+        # 订单服务路由
+        - id: order-service
+          uri: http://localhost:8082
+          predicates:
+            - Path=/orders/**
+          filters:
+            - StripPrefix=0
+        
+        # 重试过滤器示例
+        - id: retry-route
+          uri: http://localhost:8081
+          predicates:
+            - Path=/retry/**
+          filters:
+            - name: Retry
+              args:
+                retries: 3
+                statuses: BAD_GATEWAY
+
+# 日志级别
+logging:
+  level:
+    org.springframework.cloud.gateway: DEBUG

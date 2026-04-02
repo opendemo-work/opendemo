@@ -1,0 +1,8 @@
+{
+  "name": "Secure Boot",
+  "category": "security",
+  "tech_stack": ["UEFI", "Secure Boot", "Linux", "MOK"],
+  "description": "UEFI安全启动：信任链、密钥管理、模块签名、MOK",
+  "difficulty": "advanced",
+  "dependencies": ["mokutil"]
+}

@@ -1,0 +1,8 @@
+{
+  "name": "ArgoCD GitOps",
+  "category": "kubernetes",
+  "tech_stack": ["Kubernetes", "ArgoCD", "GitOps", "Kustomize", "Helm"],
+  "description": "ArgoCD GitOps实践：声明式CD、多集群管理、应用生命周期",
+  "difficulty": "advanced",
+  "dependencies": ["kubectl", "argocd"]
+}

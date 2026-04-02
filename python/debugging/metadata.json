@@ -1,10 +1,10 @@
 {
-  "name": "debugging",
-  "language": "python",
-  "keywords": [
-    "debugging"
+  "name": "Debugging Demo",
+  "category": "python-development",
+  "tech_stack": [
+    "Python"
   ],
-  "description": "Python debugging demo",
+  "description": "Python调试演示，pdb、断点、调试技巧",
   "difficulty": "beginner",
-  "verified": true
+  "dependencies": []
 }

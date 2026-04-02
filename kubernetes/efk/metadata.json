@@ -1,0 +1,8 @@
+{
+  "name": "EFK Stack",
+  "category": "kubernetes",
+  "tech_stack": ["Kubernetes", "Elasticsearch", "Fluentd", "Kibana", "Logging"],
+  "description": "EFK日志收集栈：Elasticsearch索引、Fluentd收集、Kibana可视化",
+  "difficulty": "intermediate",
+  "dependencies": ["kubectl"]
+}

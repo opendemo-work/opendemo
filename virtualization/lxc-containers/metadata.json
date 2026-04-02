@@ -1,0 +1,8 @@
+{
+  "name": "LXC Containers",
+  "category": "virtualization",
+  "tech_stack": ["LXC", "LXD", "Linux", "Containers"],
+  "description": "LXC系统容器：容器创建、配置、LXD管理",
+  "difficulty": "intermediate",
+  "dependencies": ["lxc", "lxd"]
+}

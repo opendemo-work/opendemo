@@ -1,10 +1,10 @@
 {
-  "name": "logging",
-  "language": "python",
-  "keywords": [
-    "logging"
+  "name": "Logging Module Demo",
+  "category": "python-standard-library",
+  "tech_stack": [
+    "Python"
   ],
-  "description": "Python logging demo",
-  "difficulty": "beginner",
-  "verified": true
+  "description": "Python日志处理演示，logging配置、级别、处理器",
+  "difficulty": "intermediate",
+  "dependencies": []
 }

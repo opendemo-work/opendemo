@@ -1,0 +1,8 @@
+{
+  "name": "FastAPI Complete Tutorial",
+  "category": "python-web",
+  "tech_stack": ["Python", "FastAPI", "Pydantic", "JWT"],
+  "description": "FastAPI完整实战教程，包含RESTful API、认证授权、数据库操作、异步编程",
+  "difficulty": "intermediate",
+  "dependencies": ["fastapi", "uvicorn", "pydantic", "python-jose", "passlib"]
+}

@@ -1,0 +1,8 @@
+{
+  "name": "Network Security with iptables",
+  "category": "networking",
+  "tech_stack": ["iptables", "Linux", "Firewall", "Security"],
+  "description": "iptables防火墙配置：NAT、安全策略、DDoS防护",
+  "difficulty": "intermediate",
+  "dependencies": ["iptables"]
+}

@@ -1,10 +1,8 @@
 {
-  "name": "multithreading",
-  "language": "python",
-  "keywords": [
-    "multithreading"
-  ],
-  "description": "Python multithreading demo",
-  "difficulty": "beginner",
-  "verified": true
+  "name": "Python Multithreading Demo",
+  "category": "python-concurrency",
+  "tech_stack": ["Python", "threading", "concurrent.futures"],
+  "description": "Python多线程编程演示，threading、线程同步、线程池、GIL",
+  "difficulty": "intermediate",
+  "dependencies": []
 }

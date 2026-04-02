@@ -1,0 +1,8 @@
+{
+  "name": "Apache Kafka Demo",
+  "category": "microservices",
+  "tech_stack": ["Java", "Spring Boot", "Spring Kafka", "Apache Kafka"],
+  "description": "Apache Kafka消息流处理演示，包含Producer、Consumer、Topic配置和多消费组",
+  "difficulty": "intermediate",
+  "dependencies": ["spring-kafka"]
+}

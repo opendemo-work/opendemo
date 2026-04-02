@@ -1,11 +1,10 @@
 {
-  "name": "magic-methods",
-  "language": "python",
-  "keywords": [
-    "magic",
-    "methods"
+  "name": "Magic Methods Demo",
+  "category": "python-core",
+  "tech_stack": [
+    "Python"
   ],
-  "description": "Python magic-methods demo",
-  "difficulty": "beginner",
-  "verified": true
+  "description": "Python魔术方法演示，__str__、__repr__、__eq__等",
+  "difficulty": "intermediate",
+  "dependencies": []
 }

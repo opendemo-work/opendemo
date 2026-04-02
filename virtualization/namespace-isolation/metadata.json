@@ -1,0 +1,8 @@
+{
+  "name": "Linux Namespace Isolation",
+  "category": "virtualization",
+  "tech_stack": ["Linux", "Namespace", "cgroups", "Container"],
+  "description": "Linux命名空间隔离：PID、Network、Mount、User等隔离机制",
+  "difficulty": "advanced",
+  "dependencies": ["unshare", "ip"]
+}

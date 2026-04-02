@@ -1,0 +1,12 @@
+{
+  "name": "Architecture Fundamentals",
+  "category": "kubernetes",
+  "tech_stack": [
+    "Kubernetes"
+  ],
+  "description": "Kubernetes Architecture Fundamentals demonstration and best practices",
+  "difficulty": "beginner",
+  "dependencies": [
+    "kubectl"
+  ]
+}

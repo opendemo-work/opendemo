@@ -1,0 +1,12 @@
+{
+  "name": "Docker Advanced",
+  "category": "kubernetes",
+  "tech_stack": [
+    "Kubernetes"
+  ],
+  "description": "Kubernetes Docker Advanced demonstration and best practices",
+  "difficulty": "advanced",
+  "dependencies": [
+    "kubectl"
+  ]
+}

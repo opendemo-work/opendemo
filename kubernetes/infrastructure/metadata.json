@@ -1,0 +1,8 @@
+{
+  "name": "Kubernetes Infrastructure",
+  "category": "kubernetes",
+  "tech_stack": ["Kubernetes", "Terraform", "Cluster API", "GitOps"],
+  "description": "K8s基础设施管理：IaC、多集群、Cluster API",
+  "difficulty": "advanced",
+  "dependencies": ["terraform", "kubectl"]
+}

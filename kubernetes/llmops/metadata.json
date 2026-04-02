@@ -1,0 +1,8 @@
+{
+  "name": "LLMOps Platform",
+  "category": "kubernetes",
+  "tech_stack": ["Kubernetes", "LLM", "LoRA", "RLHF", "vLLM"],
+  "description": "LLMOps大模型运维：微调、RLHF、量化、推理",
+  "difficulty": "advanced",
+  "dependencies": ["python"]
+}

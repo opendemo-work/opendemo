@@ -1,11 +1,10 @@
 {
-  "name": "iterators-generators",
-  "language": "python",
-  "keywords": [
-    "iterators",
-    "generators"
+  "name": "Iterators and Generators Demo",
+  "category": "python-core",
+  "tech_stack": [
+    "Python"
   ],
-  "description": "Python iterators-generators demo",
-  "difficulty": "beginner",
-  "verified": true
+  "description": "Python迭代器和生成器演示，yield、生成器表达式",
+  "difficulty": "intermediate",
+  "dependencies": []
 }

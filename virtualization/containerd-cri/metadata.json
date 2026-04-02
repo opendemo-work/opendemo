@@ -1,0 +1,8 @@
+{
+  "name": "Containerd and CRI",
+  "category": "virtualization",
+  "tech_stack": ["Containerd", "CRI", "runc", "nerdctl"],
+  "description": "Containerd容器运行时：CRI接口、镜像管理、K8s集成",
+  "difficulty": "advanced",
+  "dependencies": ["containerd", "runc"]
+}

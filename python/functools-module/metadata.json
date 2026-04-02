@@ -1,11 +1,10 @@
 {
-  "name": "functools-module",
-  "language": "python",
-  "keywords": [
-    "functools",
-    "module"
+  "name": "Functools Module Demo",
+  "category": "python-standard-library",
+  "tech_stack": [
+    "Python"
   ],
-  "description": "Python functools-module demo",
-  "difficulty": "beginner",
-  "verified": true
+  "description": "Python Functools模块演示，lru_cache、partial、reduce",
+  "difficulty": "intermediate",
+  "dependencies": []
 }

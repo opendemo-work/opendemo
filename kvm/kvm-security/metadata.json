@@ -1,0 +1,8 @@
+{
+  "name": "KVM Security",
+  "category": "kvm",
+  "tech_stack": ["KVM", "SELinux", "sVirt", "Security"],
+  "description": "KVM安全实践：sVirt、网络安全、存储加密",
+  "difficulty": "advanced",
+  "dependencies": ["selinux", "libvirt"]
+}

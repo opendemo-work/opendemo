@@ -1,0 +1,8 @@
+{
+  "name": "OPA/Gatekeeper Policy",
+  "category": "kubernetes",
+  "tech_stack": ["Kubernetes", "OPA", "Gatekeeper", "Rego"],
+  "description": "OPA/Gatekeeper策略：准入控制、合规检查、策略即代码",
+  "difficulty": "advanced",
+  "dependencies": ["kubectl"]
+}

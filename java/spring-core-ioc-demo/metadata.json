@@ -1,0 +1,38 @@
+{
+  "name": "spring-core-ioc-demo",
+  "language": "java",
+  "keywords": [
+    "spring",
+    "ioc",
+    "di",
+    "dependency-injection",
+    "bean",
+    "container"
+  ],
+  "description": "Spring IoC容器基础演示，展示控制反转和依赖注入的核心概念",
+  "difficulty": "intermediate",
+  "author": "OpenDemo Team",
+  "created_at": "2026-04-11",
+  "updated_at": "2026-04-11",
+  "version": "1.0.0",
+  "dependencies": {
+    "java_version": "11+",
+    "build_tool": "maven",
+    "frameworks": [
+      "spring-context:5.3.21"
+    ]
+  },
+  "estimated_time": "2-3小时",
+  "prerequisites": [
+    "java-basics",
+    "maven-basics",
+    "oop-concepts"
+  ],
+  "learning_outcomes": [
+    "理解IoC容器的概念和作用",
+    "掌握Bean的定义和配置方式",
+    "理解依赖注入的原理和实现",
+    "了解Bean的生命周期管理",
+    "掌握Spring注解的使用"
+  ]
+}

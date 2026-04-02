@@ -1,0 +1,12 @@
+{
+  "name": "Workload Advanced",
+  "category": "kubernetes",
+  "tech_stack": [
+    "Kubernetes"
+  ],
+  "description": "Kubernetes Workload Advanced demonstration and best practices",
+  "difficulty": "advanced",
+  "dependencies": [
+    "kubectl"
+  ]
+}

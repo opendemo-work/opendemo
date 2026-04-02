@@ -1,0 +1,8 @@
+{
+  "name": "Encryption Performance Benchmark",
+  "category": "security",
+  "tech_stack": ["FDE", "Performance", "fio", "Benchmark", "Linux"],
+  "description": "加密性能基准测试：fio测试、性能分析、优化建议",
+  "difficulty": "advanced",
+  "dependencies": ["fio", "Python", "cryptsetup"]
+}

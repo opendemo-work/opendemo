@@ -1,11 +1,10 @@
 {
-  "name": "lambda-expressions",
-  "language": "python",
-  "keywords": [
-    "lambda",
-    "expressions"
+  "name": "Lambda Expressions Demo",
+  "category": "python-core",
+  "tech_stack": [
+    "Python"
   ],
-  "description": "Python lambda-expressions demo",
+  "description": "Python Lambda表达式演示，匿名函数、高阶函数",
   "difficulty": "beginner",
-  "verified": true
+  "dependencies": []
 }

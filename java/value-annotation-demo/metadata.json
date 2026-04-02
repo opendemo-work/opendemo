@@ -1,0 +1,8 @@
+{
+  "name": "Value Annotation Demo",
+  "category": "spring-core",
+  "tech_stack": ["Java", "Spring Boot"],
+  "description": "@Value注解演示，配置注入",
+  "difficulty": "beginner",
+  "dependencies": []
+}

@@ -1,0 +1,8 @@
+{
+  "name": "urook storage orchestration",
+  "category": "kubernetes",
+  "tech_stack": ["kubernetes"],
+  "description": "urook storage orchestration 实践",
+  "difficulty": "advanced",
+  "dependencies": []
+}

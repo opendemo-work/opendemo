@@ -1,0 +1,8 @@
+{
+  "name": "Spring Cloud Gateway Advanced Demo",
+  "category": "microservices",
+  "tech_stack": ["Java", "Spring Boot", "Spring Cloud Gateway", "Redis", "Resilience4j"],
+  "description": "Spring Cloud Gateway高级特性：限流、熔断、鉴权、灰度发布",
+  "difficulty": "advanced",
+  "dependencies": ["spring-cloud-starter-gateway", "spring-boot-starter-data-redis-reactive", "spring-cloud-starter-circuitbreaker-reactor-resilience4j"]
+}

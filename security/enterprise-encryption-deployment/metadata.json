@@ -1,0 +1,8 @@
+{
+  "name": "Enterprise Encryption Deployment",
+  "category": "security",
+  "tech_stack": ["FDE", "MDM", "Intune", "Jamf", "SCCM"],
+  "description": "企业级全盘加密部署：MDM集成、自动化配置、合规报告",
+  "difficulty": "advanced",
+  "dependencies": ["Intune", "Jamf Pro"]
+}

@@ -1,0 +1,8 @@
+{
+  "name": "Loki Log Aggregation",
+  "category": "kubernetes",
+  "tech_stack": ["Kubernetes", "Loki", "Promtail", "Grafana", "LogQL"],
+  "description": "Loki日志聚合系统：轻量级日志收集、LogQL查询、Grafana集成",
+  "difficulty": "intermediate",
+  "dependencies": ["kubectl", "helm"]
+}

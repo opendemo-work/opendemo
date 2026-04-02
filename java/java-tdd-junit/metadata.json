@@ -1,0 +1,8 @@
+{
+  "name": "Java TDD with JUnit",
+  "category": "java",
+  "tech_stack": ["Java", "TDD", "JUnit 5", "Testing"],
+  "description": "Java测试驱动开发：JUnit 5、TDD循环、测试金字塔",
+  "difficulty": "intermediate",
+  "dependencies": ["Java", "JUnit"]
+}

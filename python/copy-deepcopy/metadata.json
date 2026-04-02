@@ -1,11 +1,10 @@
 {
-  "name": "copy-deepcopy",
-  "language": "python",
-  "keywords": [
-    "copy",
-    "deepcopy"
+  "name": "Copy and Deepcopy Demo",
+  "category": "python-core",
+  "tech_stack": [
+    "Python"
   ],
-  "description": "Python copy-deepcopy demo",
+  "description": "Python拷贝演示，浅拷贝、深拷贝、对象复制",
   "difficulty": "beginner",
-  "verified": true
+  "dependencies": []
 }

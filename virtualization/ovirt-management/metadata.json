@@ -1,0 +1,8 @@
+{
+  "name": "ovirt-management",
+  "category": "virtualization",
+  "tech_stack": ["Virtualization", "Linux"],
+  "description": "ovirt-management virtualization case",
+  "difficulty": "intermediate",
+  "dependencies": []
+}

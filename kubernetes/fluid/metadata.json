@@ -1,0 +1,8 @@
+{
+  "name": "Fluid Data Acceleration",
+  "category": "kubernetes",
+  "tech_stack": ["Kubernetes", "Fluid", "Alluxio", "Data Lake"],
+  "description": "Fluid数据加速：数据集抽象、缓存管理、数据预热",
+  "difficulty": "advanced",
+  "dependencies": ["helm"]
+}

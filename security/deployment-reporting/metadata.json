@@ -1,0 +1,8 @@
+{
+  "name": "udeployment reporting",
+  "category": "security",
+  "tech_stack": ["FDE", "Security"],
+  "description": "deployment reporting 实践",
+  "difficulty": "intermediate",
+  "dependencies": []
+}

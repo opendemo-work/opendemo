@@ -1,11 +1,10 @@
 {
-  "name": "socket-networking",
-  "language": "python",
-  "keywords": [
-    "socket",
-    "networking"
+  "name": "Socket Networking Demo",
+  "category": "python-networking",
+  "tech_stack": [
+    "Python"
   ],
-  "description": "Python socket-networking demo",
-  "difficulty": "beginner",
-  "verified": true
+  "description": "Python Socket网络编程演示，TCP/UDP、客户端/服务器",
+  "difficulty": "intermediate",
+  "dependencies": []
 }

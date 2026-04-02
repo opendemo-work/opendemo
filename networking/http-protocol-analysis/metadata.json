@@ -1,0 +1,8 @@
+{
+  "name": "HTTP Protocol Analysis",
+  "category": "networking",
+  "tech_stack": ["HTTP/2", "HTTP/3", "QUIC", "Networking"],
+  "description": "HTTP协议深度分析：HTTP/1.1、HTTP/2、HTTP/3演进与性能对比",
+  "difficulty": "intermediate",
+  "dependencies": ["curl", "nginx"]
+}

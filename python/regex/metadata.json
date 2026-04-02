@@ -1,10 +1,10 @@
 {
-  "name": "regex",
-  "language": "python",
-  "keywords": [
-    "regex"
+  "name": "Regular Expressions Demo",
+  "category": "python-standard-library",
+  "tech_stack": [
+    "Python"
   ],
-  "description": "Python regex demo",
-  "difficulty": "beginner",
-  "verified": true
+  "description": "Python正则表达式演示，re模块、模式匹配",
+  "difficulty": "intermediate",
+  "dependencies": []
 }

@@ -1,0 +1,8 @@
+{
+  "name": "Docker Integration Demo",
+  "category": "devops",
+  "tech_stack": ["Java", "Spring Boot", "Docker", "Docker Compose", "Nginx"],
+  "description": "Docker容器化部署演示，包含多阶段构建、Docker Compose编排、监控栈",
+  "difficulty": "intermediate",
+  "dependencies": ["spring-boot-starter-actuator"]
+}

@@ -1,0 +1,8 @@
+{
+  "name": "BitLocker Management",
+  "category": "security",
+  "tech_stack": ["BitLocker", "Windows", "TPM", "PowerShell"],
+  "description": "BitLocker管理：加密配置、恢复密钥、企业部署",
+  "difficulty": "intermediate",
+  "dependencies": ["PowerShell"]
+}

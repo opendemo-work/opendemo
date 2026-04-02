@@ -1,0 +1,8 @@
+{
+  "name": "BGP Routing",
+  "category": "networking",
+  "tech_stack": ["BGP", "BIRD", "Networking", "Routing"],
+  "description": "BGP边界网关协议：AS间路由、对等体配置、路由策略",
+  "difficulty": "advanced",
+  "dependencies": ["bird2"]
+}

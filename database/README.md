@@ -1,6 +1,6 @@
 # 🗄️ 企业级数据库技术栈完整指南
 
-> 企业级数据库全生命周期管理体系，涵盖关系型(MySQL/PostgreSQL)和NoSQL(MongoDB/Redis)数据库，从基础运维到高可用架构，满足生产环境各种诉求的高质量案例集合
+> 企业级数据库全生命周期管理体系，涵盖关系型(MySQL/PostgreSQL)和NoSQL(MongoDB/Redis)数据库，从基础运维到高可用架构，包含37个案例：MySQL、PostgreSQL、MongoDB、Redis、性能优化、高可用
 
 ## 📋 技术栈概述
 

@@ -1,0 +1,8 @@
+{
+  "name": "network-protocols-analysis",
+  "category": "networking",
+  "tech_stack": ["Networking", "Linux"],
+  "description": "network-protocols-analysis networking case",
+  "difficulty": "intermediate",
+  "dependencies": []
+}

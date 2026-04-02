@@ -1,10 +1,10 @@
 {
-  "name": "metaclasses",
-  "language": "python",
-  "keywords": [
-    "metaclasses"
+  "name": "Metaclasses Demo",
+  "category": "python-core",
+  "tech_stack": [
+    "Python"
   ],
-  "description": "Python metaclasses demo",
-  "difficulty": "beginner",
-  "verified": true
+  "description": "Python元类演示，type、元类编程",
+  "difficulty": "advanced",
+  "dependencies": []
 }

@@ -1,0 +1,8 @@
+{
+  "name": "FDE Field Deployment Automation",
+  "category": "security",
+  "tech_stack": ["FDE", "Ansible", "Python", "Automation", "Deployment"],
+  "description": "FDE现场部署自动化：Ansible Playbook、批量部署、状态监控",
+  "difficulty": "advanced",
+  "dependencies": ["Ansible", "Python"]
+}

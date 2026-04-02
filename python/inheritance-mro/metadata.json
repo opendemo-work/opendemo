@@ -1,11 +1,10 @@
 {
-  "name": "inheritance-mro",
-  "language": "python",
-  "keywords": [
-    "inheritance",
-    "mro"
+  "name": "Inheritance and MRO Demo",
+  "category": "python-core",
+  "tech_stack": [
+    "Python"
   ],
-  "description": "Python inheritance-mro demo",
-  "difficulty": "beginner",
-  "verified": true
+  "description": "Python继承和MRO演示，多重继承、方法解析顺序",
+  "difficulty": "intermediate",
+  "dependencies": []
 }

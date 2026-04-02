@@ -1,0 +1,8 @@
+{
+  "name": "proxmox-ve",
+  "category": "virtualization",
+  "tech_stack": ["Virtualization", "Linux"],
+  "description": "proxmox-ve virtualization case",
+  "difficulty": "intermediate",
+  "dependencies": []
+}

@@ -1,0 +1,8 @@
+{
+  "name": "Kubeflow ML Platform",
+  "category": "kubernetes",
+  "tech_stack": ["Kubernetes", "Kubeflow", "ML", "MLOps"],
+  "description": "Kubeflow机器学习平台：Notebook、Pipeline、Serving",
+  "difficulty": "advanced",
+  "dependencies": ["kubectl"]
+}

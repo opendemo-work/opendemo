@@ -1,0 +1,8 @@
+{
+  "name": "Environment Demo",
+  "category": "spring-core",
+  "tech_stack": ["Java", "Spring Boot"],
+  "description": "Environment演示，环境配置获取",
+  "difficulty": "beginner",
+  "dependencies": []
+}

@@ -1,0 +1,8 @@
+{
+  "name": "KVM High Availability",
+  "category": "kvm",
+  "tech_stack": ["KVM", "Pacemaker", "Corosync", "HA"],
+  "description": "KVM高可用架构：虚拟机热迁移、故障转移、集群管理",
+  "difficulty": "advanced",
+  "dependencies": ["kvm", "pacemaker"]
+}

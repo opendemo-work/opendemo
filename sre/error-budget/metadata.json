@@ -1,0 +1,8 @@
+{
+  "name": "Error Budget",
+  "category": "sre",
+  "tech_stack": ["SRE", "SLO", "Policy"],
+  "description": "错误预算管理：预算计算、消耗跟踪、发布策略",
+  "difficulty": "intermediate",
+  "dependencies": ["prometheus"]
+}

@@ -1,0 +1,12 @@
+{
+  "name": "Cloud Native Api Gateway",
+  "category": "kubernetes",
+  "tech_stack": [
+    "Kubernetes"
+  ],
+  "description": "Kubernetes Cloud Native Api Gateway demonstration and best practices",
+  "difficulty": "intermediate",
+  "dependencies": [
+    "kubectl"
+  ]
+}

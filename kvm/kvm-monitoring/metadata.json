@@ -1,0 +1,8 @@
+{
+  "name": "KVM Monitoring",
+  "category": "kvm",
+  "tech_stack": ["KVM", "Prometheus", "Grafana", "Libvirt"],
+  "description": "KVM监控方案：Prometheus指标、Grafana仪表板、告警",
+  "difficulty": "intermediate",
+  "dependencies": ["prometheus", "libvirt-exporter"]
+}

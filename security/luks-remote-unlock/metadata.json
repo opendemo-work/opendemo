@@ -1,0 +1,8 @@
+{
+  "name": "LUKS Remote Unlock",
+  "category": "security",
+  "tech_stack": ["LUKS", "Dropbear", "SSH", "Initramfs"],
+  "description": "LUKS远程解锁：Dropbear SSH、initramfs配置、无人值守解密",
+  "difficulty": "advanced",
+  "dependencies": ["dropbear-initramfs"]
+}

@@ -1,0 +1,8 @@
+{
+  "name": "Kubernetes Agent",
+  "category": "kubernetes",
+  "tech_stack": ["Kubernetes", "Agent", "DaemonSet", "Monitoring"],
+  "description": "K8s集群智能代理：节点自愈、资源优化、安全审计",
+  "difficulty": "advanced",
+  "dependencies": ["kubectl"]
+}

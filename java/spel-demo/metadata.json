@@ -1,0 +1,8 @@
+{
+  "name": "SpEL Demo",
+  "category": "spring-core",
+  "tech_stack": ["Java", "Spring Boot"],
+  "description": "SpEL表达式演示",
+  "difficulty": "intermediate",
+  "dependencies": []
+}

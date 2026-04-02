@@ -1,11 +1,8 @@
 {
-  "name": "unit-testing",
-  "language": "python",
-  "keywords": [
-    "unit",
-    "testing"
-  ],
-  "description": "Python unit-testing demo",
+  "name": "Python Unit Testing Demo",
+  "category": "python-testing",
+  "tech_stack": ["Python", "unittest", "pytest", "mock"],
+  "description": "Python单元测试演示，unittest、pytest、mock、测试覆盖率",
   "difficulty": "beginner",
-  "verified": true
+  "dependencies": ["pytest", "pytest-cov"]
 }

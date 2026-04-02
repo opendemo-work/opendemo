@@ -1,0 +1,12 @@
+{
+  "name": "spring-mvc-web-demo",
+  "language": "java",
+  "keywords": ["spring", "mvc", "web", "rest", "api"],
+  "description": "Spring MVC Web开发演示，RESTful API设计",
+  "difficulty": "intermediate",
+  "created_at": "2026-04-13",
+  "dependencies": {
+    "java_version": "11+",
+    "spring-webmvc": "5.3.21"
+  }
+}

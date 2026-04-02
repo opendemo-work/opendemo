@@ -1,0 +1,8 @@
+{
+  "name": "Spring Cloud Hystrix Demo",
+  "category": "microservices",
+  "tech_stack": ["Java", "Spring Boot", "Spring Cloud", "Hystrix"],
+  "description": "Spring Cloud Hystrix熔断器演示，包含超时降级、熔断开启/关闭、Fallback处理",
+  "difficulty": "intermediate",
+  "dependencies": ["spring-cloud-starter-netflix-hystrix", "spring-boot-starter-actuator"]
+}

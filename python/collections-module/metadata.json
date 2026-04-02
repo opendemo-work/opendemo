@@ -1,11 +1,10 @@
 {
-  "name": "collections-module",
-  "language": "python",
-  "keywords": [
-    "collections",
-    "module"
+  "name": "Collections Module Demo",
+  "category": "python-standard-library",
+  "tech_stack": [
+    "Python"
   ],
-  "description": "Python collections-module demo",
-  "difficulty": "beginner",
-  "verified": true
+  "description": "Python Collections模块演示，Counter、defaultdict、OrderedDict",
+  "difficulty": "intermediate",
+  "dependencies": []
 }

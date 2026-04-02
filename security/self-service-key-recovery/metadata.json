@@ -1,0 +1,8 @@
+{
+  "name": "Self-Service Key Recovery",
+  "category": "security",
+  "tech_stack": ["FDE", "Self-Service", "Python", "Flask", "MFA"],
+  "description": "自助密钥恢复门户：用户自助、审批流程、安全展示",
+  "difficulty": "intermediate",
+  "dependencies": ["Python", "Flask"]
+}

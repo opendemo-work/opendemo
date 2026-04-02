@@ -1,0 +1,13 @@
+{
+  "name": "Gitops Ci Cd",
+  "category": "kubernetes",
+  "tech_stack": [
+    "Kubernetes",
+    "CI/CD"
+  ],
+  "description": "Kubernetes Gitops Ci Cd demonstration and best practices",
+  "difficulty": "intermediate",
+  "dependencies": [
+    "kubectl"
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "name": "Network Troubleshooting",
+  "category": "networking",
+  "tech_stack": ["Networking", "Troubleshooting", "Linux"],
+  "description": "网络故障排查：ping、traceroute、tcpdump、MTR等工具",
+  "difficulty": "intermediate",
+  "dependencies": ["iputils", "tcpdump"]
+}

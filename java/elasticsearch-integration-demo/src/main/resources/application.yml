@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: elasticsearch-demo
+  elasticsearch:
+    uris: http://localhost:9200
+
+server:
+  port: 8080
+
+elasticsearch:
+  host: localhost
+  port: 9200

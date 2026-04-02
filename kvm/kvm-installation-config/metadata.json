@@ -1,0 +1,8 @@
+{
+  "name": "KVM Installation & Configuration Demo",
+  "category": "virtualization",
+  "tech_stack": ["KVM", "Libvirt", "QEMU"],
+  "description": "KVM安装与配置完整指南，包含网络配置和虚拟机创建",
+  "difficulty": "beginner",
+  "dependencies": []
+}

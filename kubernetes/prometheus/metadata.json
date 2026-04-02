@@ -1,0 +1,13 @@
+{
+  "name": "Prometheus",
+  "category": "kubernetes",
+  "tech_stack": [
+    "Kubernetes",
+    "Prometheus"
+  ],
+  "description": "Kubernetes Prometheus demonstration and best practices",
+  "difficulty": "intermediate",
+  "dependencies": [
+    "kubectl"
+  ]
+}

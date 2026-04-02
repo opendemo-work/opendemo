@@ -1,0 +1,12 @@
+{
+  "name": "Troubleshooting Advanced",
+  "category": "kubernetes",
+  "tech_stack": [
+    "Kubernetes"
+  ],
+  "description": "Kubernetes Troubleshooting Advanced demonstration and best practices",
+  "difficulty": "advanced",
+  "dependencies": [
+    "kubectl"
+  ]
+}

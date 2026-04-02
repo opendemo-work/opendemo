@@ -1,11 +1,10 @@
 {
-  "name": "config-management",
-  "language": "python",
-  "keywords": [
-    "config",
-    "management"
+  "name": "Config Management Demo",
+  "category": "python-standard-library",
+  "tech_stack": [
+    "Python"
   ],
-  "description": "Python config-management demo",
+  "description": "Python配置管理演示，ini、yaml、env配置",
   "difficulty": "beginner",
-  "verified": true
+  "dependencies": []
 }

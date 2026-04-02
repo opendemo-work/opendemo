@@ -1,0 +1,8 @@
+{
+  "name": "SRE Collection",
+  "category": "sre",
+  "tech_stack": ["SRE", "Reliability", "DevOps"],
+  "description": "站点可靠性工程合集：混沌工程、事件管理、容量规划、SLO管理",
+  "difficulty": "intermediate",
+  "dependencies": []
+}

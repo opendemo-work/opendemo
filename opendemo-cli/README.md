@@ -1,13 +1,18 @@
-# OpenDemo CLI 命令行工具
+# OpenDemo CLI v0.3.0
+
+智能化的编程学习辅助CLI工具，支持518+技术案例管理。
+
+---
 
 ## 🎯 概述
 
-OpenDemo CLI是一个功能强大的命令行工具，用于管理和操作OpenDemo技术演示平台。它提供了便捷的方式来浏览、搜索和运行各种技术演示案例。
+OpenDemo CLI是一个功能强大的命令行工具，用于管理和操作OpenDemo技术演示平台。它提供了便捷的方式来浏览、搜索、创建和验证各种技术演示案例。
 
 ## 🏗️ 技术架构
 
 ### 核心组件
-- **主要技术**: Python 3.8+, Click框架
+- **主要技术**: Python 3.9+, Click框架, Rich终端库
+- **架构**: 模块化设计 (60行入口 + 6命令模块)
 - **适用场景**: 命令行操作、自动化脚本、开发工具
 - **难度等级**: 🟢 初级
 
@@ -15,253 +20,271 @@ OpenDemo CLI是一个功能强大的命令行工具，用于管理和操作OpenD
 ```python
 # 核心依赖
 click>=8.0.0              # 命令行界面框架
+rich>=13.0.0              # 终端美化
 requests>=2.25.0          # HTTP客户端
 PyYAML>=5.4.0             # YAML配置处理
 Jinja2>=3.0.0             # 模板引擎
-colorama>=0.4.4           # 终端颜色支持
 ```
+
+---
 
 ## 🚀 快速开始
 
 ### 安装部署
 ```bash
-# 克隆项目
-git clone <repository-url>
+# 进入CLI目录
 cd opendemo-cli
 
 # 安装依赖
 pip install -r requirements.txt
 
-# 安装CLI工具
-pip install -e .
-
 # 验证安装
-opendemo --help
+python -m opendemo --help
 ```
 
 ### 基本使用
 ```bash
 # 查看帮助
-opendemo --help
+python -m opendemo --help
 
-# 列出所有技术栈
-opendemo list stacks
+# 获取已有demo
+python -m opendemo get python logging
 
-# 搜索特定demo
-opendemo search "数据库连接"
+# 搜索demo
+python -m opendemo search kubernetes
+
+# 创建新demo
+python -m opendemo new go microservices
+
+# 运行质量检查
+python -m opendemo check
 ```
+
+---
 
 ## 📁 项目结构
 
 ```
 opendemo-cli/
-├── core/                           # 核心模块
-│   ├── __init__.py
-│   ├── cli.py                     # 主CLI入口
-│   ├── commands/                  # 命令实现
-│   │   ├── list.py               # 列表命令
-│   │   ├── search.py             # 搜索命令
-│   │   ├── run.py                # 运行命令
-│   │   └── config.py             # 配置命令
-│   └── utils/                     # 工具函数
-├── services/                       # 服务模块
-│   ├── __init__.py
-│   ├── demo_manager.py           # Demo管理服务
-│   └── config_service.py         # 配置服务
-├── config/                         # 配置文件
-│   ├── config.yaml               # 主配置文件
-│   └── templates/                # 模板文件
-├── docs/                           # 文档目录
-│   └── usage_guide.md            # 使用指南
-├── tests/                          # 测试目录
-│   ├── test_cli.py
-│   └── test_services.py
-├── requirements.txt                # 依赖列表
-└── README.md                      # 本文件
+├── cli.py                    # 主CLI入口 (60行)
+├── commands/                 # 命令模块
+│   ├── base.py              # 公共函数
+│   ├── get.py               # 获取demo
+│   ├── search.py            # 搜索demo
+│   ├── new.py               # 创建demo
+│   ├── config.py            # 配置管理
+│   └── check.py             # 质量检查
+├── core/                     # 核心模块
+│   ├── demo_repository.py   # Demo仓库
+│   ├── demo_generator.py    # Demo生成器
+│   ├── demo_verifier.py     # Demo验证器
+│   ├── readme_updater.py    # README更新
+│   └── demo_list_updater.py # 列表更新
+├── services/                 # 服务层
+│   ├── config_service.py    # 配置服务
+│   ├── storage_service.py   # 存储服务
+│   └── ai_service.py        # AI服务
+├── utils/                    # 工具函数
+│   ├── formatters.py        # 格式化输出
+│   └── logger.py            # 日志管理
+└── templates/                # 模板文件
+    ├── readme_template.md
+    └── metadata_template.json
 ```
+
+---
 
 ## 🔧 核心功能
 
+### 支持的技术栈 (11个)
+1. **python** - Python编程
+2. **java** - Java编程
+3. **go** - Go编程
+4. **nodejs** - Node.js编程
+5. **kubernetes** - Kubernetes
+6. **database** - 数据库
+7. **networking** - 网络技术
+8. **kvm** - KVM虚拟化
+9. **virtualization** - 虚拟化
+10. **sre** - SRE实践
+11. **security** - 信息安全
+
 ### 主要命令
-1. **list**: 列出技术栈和demo
-2. **search**: 搜索特定技术演示
-3. **run**: 运行指定的demo
-4. **config**: 管理配置设置
 
-### 使用示例
+#### get - 获取Demo
 ```bash
-# 列出所有Go语言demo
-opendemo list demos --stack go
+# 获取已有demo
+opendemo get python logging
 
-# 搜索包含"并发"的demo
-opendemo search "并发" --stack java
+# 强制重新生成
+opendemo get python logging --new
 
-# 运行特定demo
-opendemo run go/go-channels-demo
-
-# 查看demo详情
-opendemo info nodejs/express-demo
+# 验证demo
+opendemo get python logging --verify
 ```
 
-## ⚙️ 配置说明
-
-### 配置文件
-```yaml
-# ~/.opendemo/config.yaml
-general:
-  demo_path: "/path/to/opendemo"
-  default_editor: "vim"
-  color_output: true
-
-api:
-  base_url: "https://api.opendemo.example.com"
-  timeout: 30
-
-logging:
-  level: "INFO"
-  file: "~/.opendemo/logs/cli.log"
-```
-
-### 环境变量
+#### search - 搜索Demo
 ```bash
-OPENDEMO_PATH=/path/to/opendemo      # Demo项目路径
-OPENDEMO_EDITOR=code                 # 默认编辑器
-OPENDEMO_LOG_LEVEL=DEBUG             # 日志级别
+# 搜索关键词
+opendemo search kubernetes
+
+# 指定技术栈搜索
+opendemo search microservices --language go
 ```
 
-## 🔍 故障排除
-
-### 常见问题
-1. **问题**: 命令未找到
-   - **解决方案**: 确认已正确安装并添加到PATH
-
-2. **问题**: 权限被拒绝
-   - **解决方案**: 检查demo目录权限，必要时使用sudo
-
-### 调试模式
+#### new - 创建新Demo
 ```bash
-# 启用详细输出
-opendemo --verbose list stacks
+# 创建新demo
+opendemo new python asyncio
 
-# 启用调试日志
-export OPENDEMO_LOG_LEVEL=DEBUG
-opendemo search "kubernetes"
+# 指定难度
+opendemo new go design-patterns --difficulty advanced
+
+# 创建并验证
+opendemo new java spring-boot --verify
 ```
 
-## 🧪 测试验证
+#### check - 质量检查
+```bash
+# 运行质量检查
+opendemo check
+
+# 检查特定技术栈
+opendemo check --language python
+```
+
+#### config - 配置管理
+```bash
+# 查看配置
+opendemo config show
+
+# 设置API密钥
+opendemo config set ai.api_key YOUR_KEY
+
+# 设置默认输出目录
+opendemo config set output.directory ./output
+```
+
+---
+
+## 📝 使用示例
+
+### 示例1: 获取Go并发编程Demo
+```bash
+opendemo get go goroutines
+
+# 输出:
+# ✓ 成功生成demo
+# 语言: go
+# 主题: goroutines
+# 路径: output/go/go-goroutines-demo
+# 文件:
+#   - README.md
+#   - code/main.go
+#   - metadata.json
+```
+
+### 示例2: 搜索K8s相关Demo
+```bash
+opendemo search kubernetes
+
+# 输出:
+# 找到 10 个匹配结果:
+#   1. kubernetes-deployment
+#   2. kubernetes-service
+#   3. kubernetes-ingress
+#   ...
+```
+
+### 示例3: 创建Python异步编程Demo
+```bash
+opendemo new python asyncio --difficulty intermediate
+
+# 输出:
+# 生成 python - asyncio 的demo (难度: intermediate)
+# ✓ 成功生成demo
+# 路径: output/python/python-asyncio-demo
+```
+
+---
+
+## 🔍 质量检查
+
+CLI工具内置质量检查功能，确保生成的Demo符合五星标准：
+
+```bash
+# 检查所有技术栈
+opendemo check
+
+# 检查结果示例:
+# ┌──────────────────────────────────────────────────────┐
+# │                   质量检查报告                        │
+# ├──────────────┬───────────┬─────────────────┬─────────┤
+# │ 技术栈       │ 案例数    │ README覆盖率    │ 评级    │
+# ├──────────────┼───────────┼─────────────────┼─────────┤
+# │ go           │ 93        │ 100%            │ ⭐⭐⭐⭐⭐ │
+# │ java         │ 70        │ 100%            │ ⭐⭐⭐⭐⭐ │
+# │ nodejs       │ 70        │ 100%            │ ⭐⭐⭐⭐⭐ │
+# │ python       │ 55        │ 100%            │ ⭐⭐⭐⭐⭐ │
+# │ kubernetes   │ 80        │ 100%            │ ⭐⭐⭐⭐⭐ │
+# │ ...          │ ...       │ ...             │ ...     │
+# └──────────────┴───────────┴─────────────────┴─────────┘
+```
+
+---
+
+## 🛠️ 开发指南
+
+### 添加新命令
+```python
+# commands/mycommand.py
+import click
+
+@click.command()
+def mycommand():
+    """我的新命令"""
+    click.echo("Hello, World!")
+
+# cli.py
+from commands.mycommand import mycommand
+cli.add_command(mycommand)
+```
 
 ### 运行测试
 ```bash
 # 运行所有测试
-pytest tests/
+python -m pytest tests/
 
 # 运行特定测试
-pytest tests/test_cli.py::test_list_command
-
-# 生成测试覆盖率报告
-pytest --cov=core --cov-report=html tests/
+python -m pytest tests/test_cli.py -v
 ```
-
-### 功能测试脚本
-```bash
-#!/bin/bash
-# test-cli.sh
-
-echo "Testing OpenDemo CLI..."
-
-# 测试基本命令
-opendemo --version
-opendemo --help
-
-# 测试列表功能
-opendemo list stacks
-opendemo list demos --stack python
-
-# 测试搜索功能
-opendemo search "database" --limit 5
-
-echo "CLI tests completed!"
-```
-
-## 📈 性能优化
-
-### 命令响应时间
-- **基本命令**: < 100ms
-- **列表操作**: < 500ms
-- **搜索操作**: < 1s
-- **运行操作**: 取决于demo复杂度
-
-### 内存使用
-- **基础内存占用**: ~25MB
-- **峰值内存使用**: ~50MB
-
-## 🔒 安全考虑
-
-### 安全特性
-- 输入验证和清理
-- 命令执行沙箱化
-- 配置文件权限控制
-
-### 最佳实践
-- 定期更新依赖包
-- 使用虚拟环境隔离
-- 限制文件系统访问权限
-
-## 🚀 高级用法
-
-### 批量操作
-```bash
-# 批量运行demo
-opendemo batch run --file demo_list.txt
-
-# 批量导出配置
-opendemo export config --format json
-```
-
-### 自定义扩展
-```python
-# 创建自定义命令
-import click
-from core.cli import cli
-
-@cli.command()
-@click.argument('name')
-def hello(name):
-    """Say hello to someone"""
-    click.echo(f'Hello, {name}!')
-
-if __name__ == '__main__':
-    cli()
-```
-
-## 📚 相关资源
-
-### 官方文档
-- [Click官方文档](https://click.palletsprojects.com/)
-- [Python CLI最佳实践](https://docs.python-guide.org/writing/cli/)
-
-### 学习资源
-- 《Click权威指南》
-- Python命令行应用开发教程
-
-## 🤝 贡献指南
-
-欢迎提交Issue和Pull Request！
-
-### 开发环境设置
-```bash
-# 创建开发环境
-python -m venv venv
-source venv/bin/activate
-pip install -e .[dev]
-
-# 运行开发版本
-python -m core.cli --help
-```
-
-## 📄 许可证
-
-本项目采用 MIT 许可证
 
 ---
-*最后更新: 2026年2月3日*
+
+## 📚 相关文档
+
+- [项目主文档](../README.md)
+- [案例列表](../docs/demo-list.md)
+- [执行摘要](../EXECUTIVE_SUMMARY.md)
+
+---
+
+## 📄 版本历史
+
+### v0.3.0 (2026-04-01)
+- 模块化重构：965行 → 60行入口 + 6命令模块
+- 支持11个技术栈
+- 质量检查自动化
+
+### v0.2.0
+- 基础命令实现
+- AI生成集成
+
+### v0.1.0
+- 项目初始化
+- 基础CLI框架
+
+---
+
+**版本**: v0.3.0  
+**支持**: 518+案例 / 11技术栈 / 全五星标准

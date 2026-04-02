@@ -1,0 +1,8 @@
+{
+  "name": "Custom Resource Definitions",
+  "category": "kubernetes",
+  "tech_stack": ["Kubernetes", "CRD", "Operator", "Controller"],
+  "description": "K8s CRD自定义资源：API扩展、Controller开发、Operator模式",
+  "difficulty": "advanced",
+  "dependencies": ["kubectl", "operator-sdk"]
+}

@@ -1,0 +1,8 @@
+{
+  "name": "Disaster Recovery & Business Continuity",
+  "category": "kubernetes",
+  "tech_stack": ["Kubernetes", "Velero", "DR", "Backup"],
+  "description": "K8s灾难恢复：跨区域备份、故障转移、业务连续性",
+  "difficulty": "advanced",
+  "dependencies": ["velero"]
+}

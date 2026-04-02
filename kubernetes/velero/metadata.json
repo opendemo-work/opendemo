@@ -1,0 +1,8 @@
+{
+  "name": "Velero Backup",
+  "category": "kubernetes",
+  "tech_stack": ["Kubernetes", "Velero", "Backup", "Disaster Recovery"],
+  "description": "Velero集群备份：资源备份、PV快照、灾难恢复、跨集群迁移",
+  "difficulty": "intermediate",
+  "dependencies": ["velero"]
+}

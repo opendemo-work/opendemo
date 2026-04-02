@@ -1,11 +1,10 @@
 {
-  "name": "dict-operations",
-  "language": "python",
-  "keywords": [
-    "dict",
-    "operations"
+  "name": "Dictionary Operations Demo",
+  "category": "python-core",
+  "tech_stack": [
+    "Python"
   ],
-  "description": "Python dict-operations demo",
+  "description": "Python字典操作演示，CRUD、遍历、字典方法",
   "difficulty": "beginner",
-  "verified": true
+  "dependencies": []
 }

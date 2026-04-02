@@ -1,0 +1,8 @@
+{
+  "name": "Postmortem Analysis",
+  "category": "sre",
+  "tech_stack": ["SRE", "RCA", "Process"],
+  "description": "事后分析复盘：无责文化、5Whys根因、行动项跟踪",
+  "difficulty": "intermediate",
+  "dependencies": []
+}

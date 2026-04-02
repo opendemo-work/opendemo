@@ -1,0 +1,8 @@
+{
+  "name": "kvm-networking",
+  "category": "kvm",
+  "tech_stack": ["KVM", "Libvirt", "Linux"],
+  "description": "kvm-networking kvm case",
+  "difficulty": "intermediate",
+  "dependencies": ["kvm"]
+}

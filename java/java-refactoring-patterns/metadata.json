@@ -1,0 +1,8 @@
+{
+  "name": "Java Refactoring Patterns",
+  "category": "java",
+  "tech_stack": ["Java", "Refactoring", "Clean Code"],
+  "description": "Java代码重构：重构手法、代码坏味道、最佳实践",
+  "difficulty": "advanced",
+  "dependencies": ["Java"]
+}

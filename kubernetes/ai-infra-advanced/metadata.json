@@ -1,0 +1,8 @@
+{
+  "name": "Advanced AI Infrastructure",
+  "category": "kubernetes",
+  "tech_stack": ["Kubernetes", "AI", "MPI", "FSDP", "InfiniBand"],
+  "description": "高级AI基础设施：多集群训练、网络计算、联邦学习",
+  "difficulty": "advanced",
+  "dependencies": ["mpi-operator"]
+}

@@ -1,0 +1,8 @@
+{
+  "name": "Python Design Patterns",
+  "category": "python",
+  "tech_stack": ["Python", "Design Patterns", "Pythonic"],
+  "description": "Python设计模式：单例、工厂、装饰器、上下文管理器",
+  "difficulty": "advanced",
+  "dependencies": ["Python"]
+}

@@ -1,0 +1,8 @@
+{
+  "name": "WebSocket Realtime Demo",
+  "category": "realtime",
+  "tech_stack": ["Java", "Spring Boot", "Spring WebSocket", "HTML5"],
+  "description": "Spring WebSocket实时通信演示，包含实时聊天室、消息广播、在线用户管理",
+  "difficulty": "intermediate",
+  "dependencies": ["spring-boot-starter-websocket"]
+}

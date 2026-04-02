@@ -1,0 +1,8 @@
+{
+  "name": "Chaos Engineering Production",
+  "category": "kubernetes",
+  "tech_stack": ["Kubernetes", "Chaos Mesh", "SRE", "Resilience"],
+  "description": "混沌工程实践：故障注入、韧性测试、生产验证",
+  "difficulty": "advanced",
+  "dependencies": ["helm"]
+}

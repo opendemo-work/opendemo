@@ -1,0 +1,12 @@
+{
+  "name": "Observability Advanced",
+  "category": "kubernetes",
+  "tech_stack": [
+    "Kubernetes"
+  ],
+  "description": "Kubernetes Observability Advanced demonstration and best practices",
+  "difficulty": "advanced",
+  "dependencies": [
+    "kubectl"
+  ]
+}

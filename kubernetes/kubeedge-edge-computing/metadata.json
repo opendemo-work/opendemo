@@ -1,0 +1,8 @@
+{
+  "name": "KubeEdge Edge Computing",
+  "category": "kubernetes",
+  "tech_stack": ["Kubernetes", "KubeEdge", "Edge Computing", "IoT"],
+  "description": "KubeEdge边缘计算：云边协同、设备管理、离线自治",
+  "difficulty": "advanced",
+  "dependencies": ["keadm"]
+}

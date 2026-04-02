@@ -1,0 +1,8 @@
+{
+  "name": "upython interpreter basics",
+  "category": "python",
+  "tech_stack": ["python"],
+  "description": "upython interpreter basics 实践",
+  "difficulty": "advanced",
+  "dependencies": []
+}

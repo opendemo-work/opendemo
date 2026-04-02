@@ -1,0 +1,8 @@
+{
+  "name": "Mockito Mocking Demo",
+  "category": "testing",
+  "tech_stack": ["Java", "Spring Boot", "JUnit5", "Mockito"],
+  "description": "Mockito Mock测试演示，包含基础Mock、参数匹配器、参数捕获器、调用验证和Spy",
+  "difficulty": "intermediate",
+  "dependencies": ["mockito-core", "mockito-junit-jupiter"]
+}

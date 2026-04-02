@@ -1,0 +1,8 @@
+{
+  "name": "kata-containers",
+  "category": "virtualization",
+  "tech_stack": ["Virtualization", "Linux"],
+  "description": "kata-containers virtualization case",
+  "difficulty": "intermediate",
+  "dependencies": []
+}
