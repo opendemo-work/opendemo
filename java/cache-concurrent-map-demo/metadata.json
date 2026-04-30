@@ -1,8 +1,36 @@
 {
+  "case_id": "cache-concurrent-map-demo",
   "name": "Cache ConcurrentMap Demo",
   "category": "web",
-  "tech_stack": ["Java", "Spring Boot", "Cache"],
-  "description": "本地缓存演示，ConcurrentHashMap",
+  "subcategory": "本地缓存",
   "difficulty": "beginner",
-  "dependencies": ["spring-boot-starter-cache"]
+  "estimated_time": "2小时",
+  "prerequisites": [
+    "Java并发基础",
+    "Spring Boot基础"
+  ],
+  "learning_objectives": [
+    "掌握ConcurrentHashMap实现本地缓存",
+    "理解TTL缓存过期策略的实现",
+    "学会缓存命中/未命中的处理模式",
+    "了解定时淘汰过期缓存的机制"
+  ],
+  "tech_stack": ["Java", "Spring Boot", "ConcurrentHashMap"],
+  "tags": [
+    "缓存",
+    "ConcurrentHashMap",
+    "TTL",
+    "缓存淘汰",
+    "本地缓存"
+  ],
+  "related_cases": [
+    "redis-cache-integration-demo",
+    "spring-core-ioc-demo"
+  ],
+  "dependencies": ["spring-boot-starter-web", "spring-boot-starter-cache"],
+  "created_date": "2024-01-15",
+  "last_updated": "2024-01-15",
+  "author": "OpenDemo Team",
+  "version": "1.0.0",
+  "status": "complete"
 }

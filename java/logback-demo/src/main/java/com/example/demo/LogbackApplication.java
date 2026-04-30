@@ -1,27 +1,23 @@
 package com.example.demo;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import com.example.demo.service.LoggingService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-
-import javax.annotation.PostConstruct;
+import org.springframework.context.ConfigurableApplicationContext;
 
 @SpringBootApplication
 public class LogbackApplication {
-    
-    private static final Logger logger = LoggerFactory.getLogger(LogbackApplication.class);
-    
+
     public static void main(String[] args) {
-        SpringApplication.run(LogbackApplication.class, args);
-    }
-    
-    @PostConstruct
-    public void logMessages() {
-        logger.trace("Trace message");
-        logger.debug("Debug message");
-        logger.info("Info message");
-        logger.warn("Warn message");
-        logger.error("Error message");
+        ConfigurableApplicationContext context = SpringApplication.run(LogbackApplication.class, args);
+
+        LoggingService loggingService = context.getBean(LoggingService.class);
+
+        System.out.println("=== Logback 日志演示 ===");
+        loggingService.demonstrateAllLevels();
+        loggingService.demonstrateParameterizedLogging();
+        loggingService.demonstrateExceptionLogging();
+        loggingService.logWithMdc("user001", "LOGIN");
+        loggingService.logAudit("admin", "CONFIG_CHANGE", "修改系统配置");
     }
 }

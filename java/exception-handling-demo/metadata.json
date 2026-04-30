@@ -2,7 +2,14 @@
   "name": "Exception Handling Demo",
   "category": "web",
   "tech_stack": ["Java", "Spring Boot"],
-  "description": "全局异常处理演示，统一错误响应格式",
+  "description": "Spring Boot 全局异常处理演示 - @RestControllerAdvice、@ExceptionHandler、自定义异常、统一错误响应格式",
   "difficulty": "beginner",
-  "dependencies": ["spring-boot-starter-web"]
+  "dependencies": ["spring-boot-starter-web"],
+  "keywords": ["exception", "RestControllerAdvice", "ExceptionHandler", "error-handling", "custom-exception"],
+  "files": {
+    "controller": ["UserController.java"],
+    "exception": ["BusinessException.java", "ResourceNotFoundException.java"],
+    "handler": ["GlobalExceptionHandler.java"],
+    "model": ["ErrorResponse.java"]
+  }
 }

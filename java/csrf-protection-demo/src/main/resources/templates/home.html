@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title th:text="${title}">CSRF Protection Demo</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, sans-serif; max-width: 800px; margin: 40px auto; padding: 0 20px; color: #333; }
+        h1 { color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 10px; }
+        h2 { color: #2980b9; }
+        .card { background: #f8f9fa; border-radius: 8px; padding: 20px; margin: 15px 0; border-left: 4px solid #3498db; }
+        .warning { border-left-color: #e74c3c; background: #fdf0ed; }
+        .success { border-left-color: #27ae60; background: #edf7f0; }
+        .info { border-left-color: #f39c12; background: #fef9ed; }
+        form { margin: 15px 0; }
+        label { display: block; margin: 8px 0 4px; font-weight: 600; }
+        input[type="text"], input[type="number"] { width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px; box-sizing: border-box; }
+        button { background: #3498db; color: white; padding: 10px 24px; border: none; border-radius: 4px; cursor: pointer; margin-top: 10px; }
+        button:hover { background: #2980b9; }
+        code { background: #e8e8e8; padding: 2px 6px; border-radius: 3px; font-size: 0.9em; }
+        pre { background: #2c3e50; color: #ecf0f1; padding: 16px; border-radius: 6px; overflow-x: auto; }
+        .user-info { float: right; color: #7f8c8d; }
+    </style>
+</head>
+<body>
+    <div class="user-info" th:if="${username}">
+        <span>当前用户: <strong th:text="${username}">user</strong></span>
+    </div>
+    <h1 th:text="${title}">CSRF Protection Demo</h1>
+
+    <div class="card">
+        <h2>什么是 CSRF 攻击</h2>
+        <p>CSRF（Cross-Site Request Forgery，跨站请求伪造）是一种利用已认证用户身份发起恶意请求的攻击方式。攻击者构造恶意页面，诱骗已登录用户访问，利用用户的登录态发起非预期操作。</p>
+    </div>
+
+    <div class="card warning">
+        <h2>模拟转账（受 CSRF 保护）</h2>
+        <p>此表单自动包含 CSRF Token，安全地提交转账请求。</p>
+        <form th:action="@{/api/transfer}" method="post">
+            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+            <label>收款账户:</label>
+            <input type="text" name="toAccount" placeholder="例如: bob" required="required"/>
+            <label>转账金额:</label>
+            <input type="number" name="amount" step="0.01" min="0.01" placeholder="100.00" required="required"/>
+            <button type="submit">安全转账</button>
+        </form>
+    </div>
+
+    <div class="card info">
+        <h2>获取 CSRF Token（API 方式）</h2>
+        <p>对于 AJAX 请求，先获取 CSRF Token：</p>
+        <pre>GET /api/csrf/token
+
+Response:
+{
+  "headerName": "X-XSRF-TOKEN",
+  "parameterName": "_csrf",
+  "token": "xxxx-xxxx-xxxx-xxxx"
+}
+
+然后在请求头中携带:
+X-XSRF-TOKEN: xxxx-xxxx-xxxx-xxxx</pre>
+    </div>
+
+    <div class="card success">
+        <h2>CSRF 防护原理</h2>
+        <p><strong>同步令牌模式（Synchronizer Token Pattern）：</strong>服务器生成随机 Token，嵌入到表单隐藏字段中，提交时验证 Token 是否匹配。攻击者无法获取此 Token，因此无法伪造请求。</p>
+        <p><strong>Double Submit Cookie：</strong>将 CSRF Token 同时存储在 Cookie 和请求参数/Header 中，服务器比较两者是否一致。攻击者无法读取跨域 Cookie 值。</p>
+    </div>
+</body>
+</html>

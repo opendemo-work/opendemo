@@ -2,7 +2,8 @@
   "name": "Filter Interceptor Demo",
   "category": "web",
   "tech_stack": ["Java", "Spring Boot"],
-  "description": "过滤器拦截器演示，Filter和Interceptor",
+  "description": "Servlet Filter 与 HandlerInterceptor 演示 - 请求日志过滤器、认证拦截器、执行顺序对比",
   "difficulty": "intermediate",
-  "dependencies": ["spring-boot-starter-web"]
+  "dependencies": ["spring-boot-starter-web"],
+  "keywords": ["filter", "interceptor", "servlet", "handler-interceptor", "logging", "authentication"]
 }

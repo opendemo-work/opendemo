@@ -1,0 +1,57 @@
+{
+  "name": "垃圾回收调优演示",
+  "language": "java",
+  "keywords": [
+    "garbage-collection",
+    "gc-tuning",
+    "serial-gc",
+    "parallel-gc",
+    "g1gc",
+    "weak-reference",
+    "jvm"
+  ],
+  "description": "详细介绍JVM垃圾回收机制和调优策略，涵盖Serial/Parallel/G1 GC算法对比、GC日志分析、引用类型、GC调优实战",
+  "difficulty": "advanced",
+  "author": "OpenDemo Team",
+  "created_at": "2026-04-30",
+  "updated_at": "2026-04-30",
+  "version": "1.0.0",
+  "dependencies": {
+    "java_version": "11+",
+    "required_tools": ["jdk"]
+  },
+  "verified": true,
+  "estimated_time": "3-4小时",
+  "prerequisites": [
+    "Java编程基础",
+    "JVM内存模型知识",
+    "了解GC基本概念"
+  ],
+  "learning_outcomes": [
+    "理解不同GC算法的工作原理和适用场景",
+    "掌握GC日志的启用和分析方法",
+    "学会使用WeakReference、SoftReference、PhantomReference",
+    "具备根据应用特征选择和调优GC策略的能力"
+  ],
+  "related_cases": [
+    "jvm-memory-management-demo",
+    "application-profiling-demo"
+  ],
+  "validation_commands": [
+    "mvn clean compile",
+    "mvn test"
+  ],
+  "files": [
+    "README.md",
+    "metadata.json",
+    "pom.xml",
+    "src/main/java/com/opendemo/java/jvm/gc/GCDemo.java",
+    "src/main/java/com/opendemo/java/jvm/gc/GCLogDemo.java",
+    "src/main/java/com/opendemo/java/jvm/gc/SerialGCExample.java",
+    "src/main/java/com/opendemo/java/jvm/gc/ParallelGCExample.java",
+    "src/main/java/com/opendemo/java/jvm/gc/G1GCExample.java",
+    "src/main/java/com/opendemo/java/jvm/gc/GCTuningDemo.java",
+    "src/main/java/com/opendemo/java/jvm/gc/WeakReferenceDemo.java",
+    "src/test/java/com/opendemo/java/jvm/gc/GCDemoTest.java"
+  ]
+}

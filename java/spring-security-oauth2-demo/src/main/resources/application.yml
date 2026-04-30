@@ -1,0 +1,17 @@
+jwt:
+  secret: mySecretKeyForJwtTokenGenerationAndValidationMustBe256BitsLong!!
+  issuer: spring-security-oauth2-demo
+
+server:
+  port: 8080
+
+spring:
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: spring-security-oauth2-demo
+
+logging:
+  level:
+    org.springframework.security: DEBUG

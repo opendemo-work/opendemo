@@ -1,0 +1,43 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+group = 'com.opendemo.java'
+version = '1.0.0'
+
+sourceCompatibility = '11'
+targetCompatibility = '11'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.slf4j:slf4j-api:2.0.7'
+    implementation 'org.slf4j:slf4j-simple:2.0.7'
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.9.2'
+}
+
+application {
+    mainClass = 'com.opendemo.java.gradle.GradleBuildDemo'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'com.opendemo.java.gradle.GradleBuildDemo'
+    }
+}
+
+tasks.register('printBuildInfo') {
+    doLast {
+        println "Project: ${project.name}"
+        println "Version: ${project.version}"
+        println "Java: ${java.sourceCompatibility}"
+        println "Build Dir: ${layout.buildDirectory.get()}"
+    }
+}

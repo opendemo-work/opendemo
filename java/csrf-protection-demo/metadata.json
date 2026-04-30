@@ -1,0 +1,7 @@
+{
+  "name": "CSRF Protection Demo",
+  "description": "Spring Boot + Spring Security CSRF 防护示例项目，演示同步令牌模式、SameSite Cookie 以及 REST API 中的 CSRF 防护策略",
+  "technologies": ["Java 11", "Spring Boot 2.7", "Spring Security", "Thymeleaf"],
+  "category": "Java Security",
+  "difficulty": "Intermediate"
+}

@@ -1,0 +1,14 @@
+app:
+  name: opendemo-platform
+  version: 1.0.0
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,refresh
+
+logging:
+  level:
+    root: INFO
+    com.example: DEBUG

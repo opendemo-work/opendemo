@@ -1,0 +1,14 @@
+{
+    "case_id": "template-method-pattern-demo",
+    "name": "模板方法模式演示",
+    "category": "java",
+    "subcategory": "设计模式",
+    "pattern_type": "行为型",
+    "difficulty": "中级",
+    "tags": ["template method", "模板方法", "设计模式", "GoF", "算法骨架"],
+    "description": "展示模板方法模式，包含数据处理和游戏模拟两个示例场景",
+    "implementations": [
+        "DataProcessor",
+        "AbstractGame"
+    ]
+}

@@ -1,0 +1,11 @@
+{
+    "id": "gradle-build-script-demo",
+    "name": "Gradle构建脚本演示",
+    "description": "演示Gradle构建工具的build.gradle配置、任务管理、依赖管理等核心概念",
+    "category": "java-devops",
+    "tags": ["gradle", "build", "groovy", "dsl", "java"],
+    "difficulty": "beginner",
+    "language": "java",
+    "buildTool": "gradle",
+    "estimatedTime": "35min"
+}

@@ -1,0 +1,19 @@
+server:
+  port: 8083
+
+spring:
+  application:
+    name: value-annotation-demo
+
+app:
+  name: "value-annotation-demo"
+  version: "1.0.0"
+  description: "Spring @Value 注解演示项目"
+  timeout: 3000
+  feature:
+    enabled: true
+  supported-locales: "zh_CN,en_US,ja_JP"
+  servers: "server1:8080,server2:8081,server3:8082"
+  retry:
+    max-attempts: 5
+    delay: 2000

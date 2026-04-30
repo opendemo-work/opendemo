@@ -1,0 +1,14 @@
+{
+    "case_id": "factory-pattern-demo",
+    "name": "工厂模式演示",
+    "category": "java",
+    "subcategory": "设计模式",
+    "pattern_type": "创建型",
+    "difficulty": "初级",
+    "tags": ["factory", "工厂", "设计模式", "GoF", "简单工厂", "工厂方法"],
+    "description": "展示简单工厂模式和工厂方法模式，以文档创建为示例场景",
+    "implementations": [
+        "DocumentFactory",
+        "AdvancedDocumentFactory"
+    ]
+}

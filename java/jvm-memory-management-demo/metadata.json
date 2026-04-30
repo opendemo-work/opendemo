@@ -1,0 +1,57 @@
+{
+  "name": "JVM内存管理演示",
+  "language": "java",
+  "keywords": [
+    "jvm",
+    "memory-management",
+    "heap",
+    "stack",
+    "memory-pool",
+    "memory-leak",
+    "object-size"
+  ],
+  "description": "详细介绍JVM内存管理机制，涵盖堆内存与栈内存分析、内存池监控、对象大小估算、内存泄漏检测与诊断等核心知识点",
+  "difficulty": "advanced",
+  "author": "OpenDemo Team",
+  "created_at": "2026-04-30",
+  "updated_at": "2026-04-30",
+  "version": "1.0.0",
+  "dependencies": {
+    "java_version": "11+",
+    "required_tools": ["jdk", "jmap", "jvisualvm"]
+  },
+  "verified": true,
+  "estimated_time": "3-4小时",
+  "prerequisites": [
+    "Java编程基础",
+    "JVM基础知识",
+    "了解内存管理概念"
+  ],
+  "learning_outcomes": [
+    "理解JVM堆内存和栈内存的区别与用途",
+    "掌握MemoryMXBean和Runtime API的使用",
+    "能够监控和分析JVM内存池状态",
+    "学会估算Java对象内存占用",
+    "掌握内存泄漏的检测和诊断方法"
+  ],
+  "related_cases": [
+    "garbage-collection-tuning-demo",
+    "application-profiling-demo"
+  ],
+  "validation_commands": [
+    "mvn clean compile",
+    "mvn test"
+  ],
+  "files": [
+    "README.md",
+    "metadata.json",
+    "pom.xml",
+    "src/main/java/com/opendemo/java/jvm/memory/MemoryDemo.java",
+    "src/main/java/com/opendemo/java/jvm/memory/HeapDemo.java",
+    "src/main/java/com/opendemo/java/jvm/memory/StackDemo.java",
+    "src/main/java/com/opendemo/java/jvm/memory/MemoryPoolDemo.java",
+    "src/main/java/com/opendemo/java/jvm/memory/ObjectSizeDemo.java",
+    "src/main/java/com/opendemo/java/jvm/memory/MemoryLeakDemo.java",
+    "src/test/java/com/opendemo/java/jvm/memory/MemoryDemoTest.java"
+  ]
+}

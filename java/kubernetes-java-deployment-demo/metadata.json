@@ -1,0 +1,11 @@
+{
+    "id": "kubernetes-java-deployment-demo",
+    "name": "Kubernetes Java应用部署演示",
+    "description": "演示Spring Boot应用在Kubernetes上的部署实践，包括Deployment、Service、ConfigMap、Ingress等核心资源",
+    "category": "java-devops",
+    "tags": ["kubernetes", "k8s", "docker", "spring-boot", "deployment", "devops"],
+    "difficulty": "intermediate",
+    "language": "java",
+    "buildTool": "maven",
+    "estimatedTime": "50min"
+}

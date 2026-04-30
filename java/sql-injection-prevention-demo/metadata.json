@@ -1,0 +1,7 @@
+{
+  "name": "SQL Injection Prevention Demo",
+  "description": "Spring Boot + JDBC + H2 示例项目，对比演示 SQL 注入攻击漏洞和安全查询方式，包括 PreparedStatement、JdbcTemplate 参数化查询",
+  "technologies": ["Java 11", "Spring Boot 2.7", "JDBC", "H2 Database"],
+  "category": "Java Security",
+  "difficulty": "Intermediate"
+}

@@ -7,6 +7,5 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class ProfilesApplication {
     public static void main(String[] args) {
         SpringApplication.run(ProfilesApplication.class, args);
-        System.out.println("多环境配置演示应用启动成功!");
     }
 }

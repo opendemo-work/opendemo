@@ -1,0 +1,11 @@
+{
+    "id": "maven-project-structure-demo",
+    "name": "Maven项目结构规范演示",
+    "description": "演示Maven标准项目目录结构、pom.xml配置、生命周期管理等核心概念",
+    "category": "java-devops",
+    "tags": ["maven", "build", "project-structure", "java"],
+    "difficulty": "beginner",
+    "language": "java",
+    "buildTool": "maven",
+    "estimatedTime": "30min"
+}

@@ -1,0 +1,15 @@
+{
+    "name": "mybatis-crud-demo",
+    "displayName": "MyBatis CRUD演示",
+    "description": "Spring Boot + MyBatis CRUD操作演示，展示注解和XML两种映射方式及动态SQL",
+    "category": "java",
+    "tags": ["mybatis", "crud", "spring-boot", "h2", "dynamic-sql"],
+    "difficulty": "intermediate",
+    "dependencies": ["spring-boot-starter-web", "mybatis-spring-boot-starter", "h2"],
+    "mainTechnologies": {
+        "language": "Java 11",
+        "framework": "Spring Boot 2.7.12",
+        "orm": "MyBatis 2.3.1",
+        "database": "H2"
+    }
+}

@@ -1,0 +1,15 @@
+{
+    "name": "jdbc-connection-pool-demo",
+    "displayName": "JDBC连接池演示",
+    "description": "Spring Boot + HikariCP 连接池配置与使用演示，展示JDBC连接池的核心概念和最佳实践",
+    "category": "java",
+    "tags": ["jdbc", "connection-pool", "hikaricp", "spring-boot", "h2"],
+    "difficulty": "intermediate",
+    "dependencies": ["spring-boot-starter-web", "spring-boot-starter-jdbc", "h2"],
+    "mainTechnologies": {
+        "language": "Java 11",
+        "framework": "Spring Boot 2.7.12",
+        "database": "H2",
+        "connectionPool": "HikariCP"
+    }
+}

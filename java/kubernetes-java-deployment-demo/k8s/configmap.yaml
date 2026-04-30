@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: kubernetes-demo-config
+  namespace: kubernetes-demo
+data:
+  welcome-message: "欢迎使用Kubernetes部署演示（来自ConfigMap）"
+  log-level: "INFO"
+  max-connections: "200"
+  feature-flags: "new-feature,experimental-api,maintenance-mode"

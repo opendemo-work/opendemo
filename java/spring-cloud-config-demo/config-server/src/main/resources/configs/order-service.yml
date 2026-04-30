@@ -1,0 +1,12 @@
+server:
+  port: 8081
+
+order:
+  max-items: 100
+  timeout-seconds: 30
+  default-currency: CNY
+
+database:
+  host: localhost
+  port: 3306
+  name: order_db

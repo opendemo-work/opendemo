@@ -1,0 +1,14 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: environment-demo
+  profiles:
+    active: dev
+
+app:
+  name: environment-demo
+  version: 1.0.0
+  feature:
+    enabled: true

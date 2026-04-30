@@ -1,0 +1,14 @@
+{
+    "case_id": "decorator-pattern-demo",
+    "name": "装饰器模式演示",
+    "category": "java",
+    "subcategory": "设计模式",
+    "pattern_type": "结构型",
+    "difficulty": "中级",
+    "tags": ["decorator", "装饰器", "设计模式", "GoF", "包装器"],
+    "description": "展示装饰器模式，包含咖啡配料和通知系统两个示例场景",
+    "implementations": [
+        "CoffeeDecorator",
+        "NotifierDecorator"
+    ]
+}

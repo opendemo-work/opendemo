@@ -1,0 +1,21 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: kubernetes-demo
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+  endpoint:
+    health:
+      show-details: always
+
+app:
+  welcome-message: ${WELCOME_MESSAGE:欢迎使用Kubernetes部署演示应用}
+  feature-flags: ${FEATURE_FLAGS:new-feature,experimental-api}
+  log-level: ${LOG_LEVEL:INFO}
+  max-connections: ${MAX_CONNECTIONS:100}

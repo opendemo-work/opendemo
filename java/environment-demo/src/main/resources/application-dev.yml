@@ -1,0 +1,16 @@
+server:
+  port: 8081
+
+app:
+  name: environment-demo-dev
+  version: 1.0.0-SNAPSHOT
+  feature:
+    enabled: true
+  database:
+    url: jdbc:mysql://localhost:3306/dev_db
+    username: dev_user
+    password: dev_pass
+
+logging:
+  level:
+    root: DEBUG

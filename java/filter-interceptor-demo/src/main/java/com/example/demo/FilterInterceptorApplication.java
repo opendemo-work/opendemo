@@ -7,6 +7,5 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class FilterInterceptorApplication {
     public static void main(String[] args) {
         SpringApplication.run(FilterInterceptorApplication.class, args);
-        System.out.println("过滤器拦截器演示应用启动成功!");
     }
 }

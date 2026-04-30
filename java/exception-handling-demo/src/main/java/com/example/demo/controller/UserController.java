@@ -10,14 +10,14 @@ import java.util.Map;
 @RestController
 @RequestMapping("/api/users")
 public class UserController {
-    
+
     private final Map<Long, String> users = new HashMap<>();
-    
+
     public UserController() {
         users.put(1L, "User1");
         users.put(2L, "User2");
     }
-    
+
     @GetMapping("/{id}")
     public String getUser(@PathVariable Long id) {
         if (!users.containsKey(id)) {
@@ -25,7 +25,7 @@ public class UserController {
         }
         return users.get(id);
     }
-    
+
     @PostMapping
     public String createUser(@RequestParam String name) {
         if (name == null || name.isEmpty()) {
@@ -33,7 +33,7 @@ public class UserController {
         }
         return "用户创建成功: " + name;
     }
-    
+
     @GetMapping("/error")
     public String triggerError() {
         throw new RuntimeException("系统内部错误");

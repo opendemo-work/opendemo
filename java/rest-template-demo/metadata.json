@@ -1,8 +1,36 @@
 {
+  "case_id": "rest-template-demo",
   "name": "RestTemplate Demo",
   "category": "web",
-  "tech_stack": ["Java", "Spring Boot"],
-  "description": "HTTP客户端演示，RestTemplate使用",
+  "subcategory": "HTTP客户端",
   "difficulty": "beginner",
-  "dependencies": ["spring-boot-starter-web"]
+  "estimated_time": "2小时",
+  "prerequisites": [
+    "Spring Boot基础",
+    "HTTP协议基础"
+  ],
+  "learning_objectives": [
+    "掌握RestTemplate的GET/POST/PUT/DELETE方法",
+    "学会超时配置和请求拦截器",
+    "理解exchange()通用请求方法",
+    "了解HttpEntity和ResponseEntity的使用"
+  ],
+  "tech_stack": ["Java", "Spring Boot", "RestTemplate"],
+  "tags": [
+    "RestTemplate",
+    "HTTP客户端",
+    "GET",
+    "POST",
+    "拦截器"
+  ],
+  "related_cases": [
+    "spring-cloud-feign-demo",
+    "spring-mvc-web-demo"
+  ],
+  "dependencies": ["spring-boot-starter-web"],
+  "created_date": "2024-01-15",
+  "last_updated": "2024-01-15",
+  "author": "OpenDemo Team",
+  "version": "1.0.0",
+  "status": "complete"
 }

@@ -1,0 +1,16 @@
+server:
+  port: 8082
+
+app:
+  name: environment-demo-prod
+  version: 1.0.0
+  feature:
+    enabled: false
+  database:
+    url: jdbc:mysql://prod-server:3306/prod_db
+    username: prod_user
+    password: prod_secret_pass
+
+logging:
+  level:
+    root: WARN

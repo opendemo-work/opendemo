@@ -1,0 +1,42 @@
+node {
+    def mavenHome = tool name: 'Maven', type: 'maven'
+    def appName = 'jenkins-pipeline-demo'
+
+    try {
+        stage('Checkout') {
+            checkout scm
+            echo '代码检出完成'
+        }
+
+        stage('Build') {
+            sh "${mavenHome}/bin/mvn clean compile"
+            echo '项目编译完成'
+        }
+
+        stage('Test') {
+            sh "${mavenHome}/bin/mvn test"
+            echo '单元测试执行完成'
+        }
+
+        stage('Package') {
+            sh "${mavenHome}/bin/mvn package -DskipTests"
+            archiveArtifacts artifacts: 'target/*.jar', fingerprint: true
+            echo '项目打包完成'
+        }
+
+        if (env.BRANCH_NAME == 'main') {
+            stage('Deploy') {
+                echo "部署 ${appName} 版本 ${env.BUILD_ID} 到生产环境"
+                sh "${mavenHome}/bin/mvn deploy -DskipTests"
+            }
+        }
+    } catch (Exception e) {
+        currentBuild.result = 'FAILURE'
+        echo "Pipeline 执行失败: ${e.message}"
+        throw e
+    } finally {
+        stage('Cleanup') {
+            cleanWs()
+        }
+    }
+}

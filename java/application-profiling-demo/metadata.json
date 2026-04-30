@@ -1,0 +1,57 @@
+{
+  "name": "应用性能分析演示",
+  "language": "java",
+  "keywords": [
+    "profiling",
+    "jmx",
+    "performance-analysis",
+    "benchmark",
+    "cpu-profiling",
+    "jit-compilation",
+    "hotspot"
+  ],
+  "description": "详细介绍Java应用性能分析方法，涵盖JMX监控、CPU分析、内存分析、基准测试框架、JIT编译优化等核心性能分析技能",
+  "difficulty": "advanced",
+  "author": "OpenDemo Team",
+  "created_at": "2026-04-30",
+  "updated_at": "2026-04-30",
+  "version": "1.0.0",
+  "dependencies": {
+    "java_version": "11+",
+    "required_tools": ["jdk", "jvisualvm", "jconsole"]
+  },
+  "verified": true,
+  "estimated_time": "3-4小时",
+  "prerequisites": [
+    "Java编程基础",
+    "JVM基础知识",
+    "了解性能优化概念"
+  ],
+  "learning_outcomes": [
+    "掌握JMX Bean进行应用监控的方法",
+    "学会使用ThreadMXBean进行CPU时间分析",
+    "掌握内存使用监控和分析技术",
+    "能够构建简单的性能基准测试",
+    "理解JIT编译和热点优化机制"
+  ],
+  "related_cases": [
+    "jvm-memory-management-demo",
+    "garbage-collection-tuning-demo"
+  ],
+  "validation_commands": [
+    "mvn clean compile",
+    "mvn test"
+  ],
+  "files": [
+    "README.md",
+    "metadata.json",
+    "pom.xml",
+    "src/main/java/com/opendemo/java/profiling/ProfilingDemo.java",
+    "src/main/java/com/opendemo/java/profiling/JmxProfilingDemo.java",
+    "src/main/java/com/opendemo/java/profiling/CpuProfilingDemo.java",
+    "src/main/java/com/opendemo/java/profiling/MemoryProfilingDemo.java",
+    "src/main/java/com/opendemo/java/profiling/PerformanceBenchmark.java",
+    "src/main/java/com/opendemo/java/profiling/HotspotDemo.java",
+    "src/test/java/com/opendemo/java/profiling/ProfilingDemoTest.java"
+  ]
+}

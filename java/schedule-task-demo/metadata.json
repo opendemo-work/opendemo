@@ -2,7 +2,8 @@
   "name": "Schedule Task Demo",
   "category": "web",
   "tech_stack": ["Java", "Spring Boot"],
-  "description": "定时任务演示，fixedRate/fixedDelay/Cron表达式",
+  "description": "Spring Boot 定时任务演示 - @Scheduled 注解、Cron 表达式、fixedRate/fixedDelay、SchedulingConfigurer 编程式调度",
   "difficulty": "beginner",
-  "dependencies": ["spring-boot-starter-web"]
+  "dependencies": ["spring-boot-starter-web"],
+  "keywords": ["scheduled", "cron", "fixedRate", "fixedDelay", "task-scheduler", "scheduling"]
 }

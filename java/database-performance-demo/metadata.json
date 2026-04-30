@@ -1,0 +1,61 @@
+{
+  "name": "数据库性能优化演示",
+  "language": "java",
+  "keywords": [
+    "database-performance",
+    "n-plus-1",
+    "batch-insert",
+    "indexing",
+    "connection-pool",
+    "query-optimization",
+    "spring-boot",
+    "jpa"
+  ],
+  "description": "详细介绍数据库性能优化技术，涵盖N+1问题解决、批量操作、索引优化、连接池配置、查询优化等核心技能",
+  "difficulty": "intermediate",
+  "author": "OpenDemo Team",
+  "created_at": "2026-04-30",
+  "updated_at": "2026-04-30",
+  "version": "1.0.0",
+  "dependencies": {
+    "java_version": "11+",
+    "framework": "Spring Boot 2.7.12",
+    "database": "H2 (内嵌)"
+  },
+  "verified": true,
+  "estimated_time": "3-4小时",
+  "prerequisites": [
+    "Java编程基础",
+    "Spring Boot基础知识",
+    "SQL和数据库基础知识",
+    "JPA/Hibernate基础"
+  ],
+  "learning_outcomes": [
+    "识别并解决N+1查询问题",
+    "掌握JPA批量插入和更新技术",
+    "理解数据库索引对查询性能的影响",
+    "掌握连接池配置和优化方法",
+    "学会使用JPA查询优化技巧"
+  ],
+  "related_cases": [
+    "spring-data-jpa-demo",
+    "spring-transaction-demo"
+  ],
+  "validation_commands": [
+    "mvn clean compile",
+    "mvn test"
+  ],
+  "files": [
+    "README.md",
+    "metadata.json",
+    "pom.xml",
+    "src/main/java/com/example/demo/DatabasePerformanceApplication.java",
+    "src/main/java/com/example/demo/entity/Product.java",
+    "src/main/java/com/example/demo/repository/ProductRepository.java",
+    "src/main/java/com/example/demo/service/ProductService.java",
+    "src/main/java/com/example/demo/config/BatchConfig.java",
+    "src/main/java/com/example/demo/controller/PerformanceController.java",
+    "src/main/resources/application.yml",
+    "src/test/java/com/example/demo/DatabasePerformanceApplicationTest.java"
+  ]
+}

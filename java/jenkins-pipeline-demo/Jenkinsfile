@@ -1,0 +1,68 @@
+pipeline {
+    agent any
+
+    environment {
+        MAVEN_HOME = tool name: 'Maven', type: 'maven'
+        JAVA_HOME = tool name: 'JDK11', type: 'jdk'
+        APP_NAME = 'jenkins-pipeline-demo'
+        VERSION = "${env.BUILD_ID}"
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                checkout scm
+                echo '代码检出完成'
+            }
+        }
+
+        stage('Build') {
+            steps {
+                sh '${MAVEN_HOME}/bin/mvn clean compile'
+                echo '项目编译完成'
+            }
+        }
+
+        stage('Test') {
+            steps {
+                sh '${MAVEN_HOME}/bin/mvn test'
+                echo '单元测试执行完成'
+            }
+            post {
+                always {
+                    junit '**/target/surefire-reports/*.xml'
+                }
+            }
+        }
+
+        stage('Package') {
+            steps {
+                sh '${MAVEN_HOME}/bin/mvn package -DskipTests'
+                archiveArtifacts artifacts: 'target/*.jar', fingerprint: true
+                echo '项目打包完成'
+            }
+        }
+
+        stage('Deploy') {
+            when {
+                branch 'main'
+            }
+            steps {
+                echo "部署 ${APP_NAME} 版本 ${VERSION} 到生产环境"
+                sh '${MAVEN_HOME}/bin/mvn deploy -DskipTests'
+            }
+        }
+    }
+
+    post {
+        success {
+            echo 'Pipeline 执行成功!'
+        }
+        failure {
+            echo 'Pipeline 执行失败，请检查日志!'
+        }
+        always {
+            cleanWs()
+        }
+    }
+}

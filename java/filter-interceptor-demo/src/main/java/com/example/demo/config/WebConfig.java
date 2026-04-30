@@ -11,20 +11,23 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
 public class WebConfig implements WebMvcConfigurer {
-    
+
     @Autowired
     private AuthInterceptor authInterceptor;
-    
+
     @Bean
     public FilterRegistrationBean<LoggingFilter> loggingFilter() {
         FilterRegistrationBean<LoggingFilter> registration = new FilterRegistrationBean<>();
         registration.setFilter(new LoggingFilter());
         registration.addUrlPatterns("/api/*");
+        registration.setOrder(1);
         return registration;
     }
-    
+
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(authInterceptor).addPathPatterns("/api/**");
+        registry.addInterceptor(authInterceptor)
+                .addPathPatterns("/api/**")
+                .excludePathPatterns("/api/public/**");
     }
 }

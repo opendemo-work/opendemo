@@ -1,0 +1,58 @@
+{
+  "name": "Java并发编程演示",
+  "language": "java",
+  "keywords": [
+    "concurrent",
+    "multithreading",
+    "thread-pool",
+    "synchronized",
+    "atomic",
+    "blocking-queue",
+    "completable-future"
+  ],
+  "description": "详细介绍Java并发编程技术，涵盖线程创建、同步机制、并发集合、线程池、原子变量、生产者消费者模型等核心并发编程技能",
+  "difficulty": "intermediate",
+  "author": "OpenDemo Team",
+  "created_at": "2026-04-30",
+  "updated_at": "2026-04-30",
+  "version": "1.0.0",
+  "dependencies": {
+    "java_version": "11+",
+    "required_concepts": ["线程基础", "锁机制", "并发集合"]
+  },
+  "verified": true,
+  "estimated_time": "3-4小时",
+  "prerequisites": [
+    "Java编程基础",
+    "多线程基本概念",
+    "了解java.util.concurrent包"
+  ],
+  "learning_outcomes": [
+    "掌握多种线程创建方式及其适用场景",
+    "理解synchronized和ReentrantLock的使用与区别",
+    "掌握并发集合的使用和原理",
+    "学会使用线程池和CompletableFuture",
+    "理解原子变量和CAS机制"
+  ],
+  "related_cases": [
+    "jvm-memory-management-demo",
+    "application-profiling-demo"
+  ],
+  "validation_commands": [
+    "mvn clean compile",
+    "mvn test"
+  ],
+  "files": [
+    "README.md",
+    "metadata.json",
+    "pom.xml",
+    "src/main/java/com/opendemo/java/concurrent/ConcurrentDemo.java",
+    "src/main/java/com/opendemo/java/concurrent/ThreadCreationDemo.java",
+    "src/main/java/com/opendemo/java/concurrent/SynchronizedDemo.java",
+    "src/main/java/com/opendemo/java/concurrent/ConcurrentCollectionsDemo.java",
+    "src/main/java/com/opendemo/java/concurrent/ExecutorServiceDemo.java",
+    "src/main/java/com/opendemo/java/concurrent/AtomicVariableDemo.java",
+    "src/main/java/com/opendemo/java/concurrent/ProducerConsumerDemo.java",
+    "src/test/java/com/opendemo/java/concurrent/ConcurrentDemoTest.java"
+  ]
+}

@@ -1,0 +1,3 @@
+ALTER TABLE customer ADD COLUMN status VARCHAR(20) DEFAULT 'ACTIVE';
+
+UPDATE customer SET status = 'ACTIVE' WHERE status IS NULL;

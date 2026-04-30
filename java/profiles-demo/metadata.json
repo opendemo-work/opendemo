@@ -2,7 +2,8 @@
   "name": "Profiles Demo",
   "category": "web",
   "tech_stack": ["Java", "Spring Boot"],
-  "description": "多环境配置演示，Spring Profiles",
+  "description": "Spring Boot 多环境配置演示 - @Profile 条件注入、application-{profile}.yml 配置隔离、Profile 激活方式",
   "difficulty": "beginner",
-  "dependencies": ["spring-boot-starter-web"]
+  "dependencies": ["spring-boot-starter-web"],
+  "keywords": ["profiles", "environment", "configuration", "multi-environment", "@Profile"]
 }

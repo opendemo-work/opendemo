@@ -1,8 +1,36 @@
 {
+  "case_id": "aop-logging-demo",
   "name": "AOP Logging Demo",
   "category": "spring-core",
-  "tech_stack": ["Java", "Spring Boot", "AOP"],
-  "description": "AOP日志演示，方法调用记录",
+  "subcategory": "AOP日志",
   "difficulty": "intermediate",
-  "dependencies": ["spring-boot-starter-aop"]
+  "estimated_time": "3小时",
+  "prerequisites": [
+    "Spring Boot基础",
+    "AOP基础概念"
+  ],
+  "learning_objectives": [
+    "掌握自定义注解配合AOP实现日志记录",
+    "学会使用@Around通知实现性能监控",
+    "理解切点表达式的编写规范",
+    "掌握日志切面的最佳实践"
+  ],
+  "tech_stack": ["Java", "Spring Boot", "AOP", "SLF4J"],
+  "tags": [
+    "AOP",
+    "日志切面",
+    "自定义注解",
+    "性能监控",
+    "@Loggable"
+  ],
+  "related_cases": [
+    "spring-aop-demo",
+    "logback-demo"
+  ],
+  "dependencies": ["spring-boot-starter-aop", "spring-boot-starter-web"],
+  "created_date": "2024-01-15",
+  "last_updated": "2024-01-15",
+  "author": "OpenDemo Team",
+  "version": "1.0.0",
+  "status": "complete"
 }

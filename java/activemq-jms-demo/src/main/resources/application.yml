@@ -1,0 +1,24 @@
+server:
+  port: 8080
+
+spring:
+  activemq:
+    broker-url: vm://localhost?broker.persistent=false
+    user: admin
+    password: admin
+    packages:
+      trust-all: true
+    in-memory: true
+
+app:
+  queue:
+    email: email-queue
+    notification: notification-queue
+  topic:
+    broadcast: broadcast-topic
+
+logging:
+  level:
+    root: INFO
+    com.example: DEBUG
+    org.apache.activemq: WARN

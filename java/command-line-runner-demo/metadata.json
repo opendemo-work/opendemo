@@ -1,8 +1,34 @@
 {
+  "case_id": "command-line-runner-demo",
   "name": "CommandLineRunner Demo",
   "category": "spring-core",
-  "tech_stack": ["Java", "Spring Boot"],
-  "description": "启动任务演示，CommandLineRunner",
+  "subcategory": "启动任务",
   "difficulty": "beginner",
-  "dependencies": []
+  "estimated_time": "1.5小时",
+  "prerequisites": [
+    "Spring Boot基础"
+  ],
+  "learning_objectives": [
+    "掌握CommandLineRunner接口的使用",
+    "学会使用@Order控制执行顺序",
+    "理解命令行参数的接收和解析",
+    "了解与ApplicationRunner的区别"
+  ],
+  "tech_stack": ["Java", "Spring Boot"],
+  "tags": [
+    "CommandLineRunner",
+    "启动任务",
+    "@Order",
+    "命令行参数"
+  ],
+  "related_cases": [
+    "application-runner-demo",
+    "spring-bean-lifecycle-demo"
+  ],
+  "dependencies": ["spring-boot-starter"],
+  "created_date": "2024-01-15",
+  "last_updated": "2024-01-15",
+  "author": "OpenDemo Team",
+  "version": "1.0.0",
+  "status": "complete"
 }

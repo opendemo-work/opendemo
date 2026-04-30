@@ -1,8 +1,36 @@
 {
+  "case_id": "environment-demo",
   "name": "Environment Demo",
   "category": "spring-core",
-  "tech_stack": ["Java", "Spring Boot"],
-  "description": "Environment演示，环境配置获取",
+  "subcategory": "环境配置",
   "difficulty": "beginner",
-  "dependencies": []
+  "estimated_time": "2小时",
+  "prerequisites": [
+    "Spring Boot基础",
+    "YAML配置基础"
+  ],
+  "learning_objectives": [
+    "理解Spring Environment抽象体系",
+    "掌握Environment API读取配置属性",
+    "学会使用@Value注入配置值",
+    "掌握Spring Profile多环境配置机制"
+  ],
+  "tech_stack": ["Java", "Spring Boot"],
+  "tags": [
+    "Environment",
+    "Profile",
+    "配置管理",
+    "多环境",
+    "@Value"
+  ],
+  "related_cases": [
+    "bean-validation-demo",
+    "value-annotation-demo"
+  ],
+  "dependencies": ["spring-boot-starter-web"],
+  "created_date": "2024-01-15",
+  "last_updated": "2024-01-15",
+  "author": "OpenDemo Team",
+  "version": "1.0.0",
+  "status": "complete"
 }

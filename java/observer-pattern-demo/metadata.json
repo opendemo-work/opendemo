@@ -1,0 +1,14 @@
+{
+    "case_id": "observer-pattern-demo",
+    "name": "观察者模式演示",
+    "category": "java",
+    "subcategory": "设计模式",
+    "pattern_type": "行为型",
+    "difficulty": "中级",
+    "tags": ["observer", "观察者", "设计模式", "GoF", "发布订阅"],
+    "description": "展示观察者模式（发布-订阅模式），包含新闻发布和气象站两个示例场景",
+    "implementations": [
+        "NewsPublisher",
+        "WeatherStation"
+    ]
+}

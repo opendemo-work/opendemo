@@ -1,0 +1,15 @@
+{
+    "name": "database-migration-flyway-demo",
+    "displayName": "Flyway数据库迁移演示",
+    "description": "Spring Boot + Flyway 数据库版本管理演示，展示迁移脚本的编写和管理策略",
+    "category": "java",
+    "tags": ["flyway", "database-migration", "spring-boot", "h2"],
+    "difficulty": "intermediate",
+    "dependencies": ["spring-boot-starter-web", "spring-boot-starter-jdbc", "flyway-core", "h2"],
+    "mainTechnologies": {
+        "language": "Java 11",
+        "framework": "Spring Boot 2.7.12",
+        "migration": "Flyway",
+        "database": "H2"
+    }
+}

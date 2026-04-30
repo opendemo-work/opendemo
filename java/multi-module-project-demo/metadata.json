@@ -1,0 +1,11 @@
+{
+    "id": "multi-module-project-demo",
+    "name": "Maven多模块项目架构演示",
+    "description": "演示Maven多模块项目的分层架构、模块依赖管理、公共组件复用等核心概念",
+    "category": "java-devops",
+    "tags": ["maven", "multi-module", "architecture", "java"],
+    "difficulty": "intermediate",
+    "language": "java",
+    "buildTool": "maven",
+    "estimatedTime": "45min"
+}

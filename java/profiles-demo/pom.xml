@@ -12,10 +12,24 @@
     <artifactId>profiles-demo</artifactId>
     <version>1.0-SNAPSHOT</version>
     <name>Profiles Demo</name>
+    <description>Spring Boot 多环境配置演示 - @Profile、application-{profile}.yml、Profile 激活方式</description>
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
 </project>

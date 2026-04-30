@@ -1,0 +1,11 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: csrf-protection-demo
+
+logging:
+  level:
+    org.springframework.security: DEBUG
+    org.springframework.security.web.csrf: TRACE

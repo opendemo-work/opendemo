@@ -1,8 +1,35 @@
 {
+  "case_id": "logback-demo",
   "name": "Logback Demo",
   "category": "logging",
-  "tech_stack": ["Java", "Spring Boot", "Logback"],
-  "description": "日志配置演示，Logback和SLF4J",
+  "subcategory": "日志框架",
   "difficulty": "beginner",
-  "dependencies": ["spring-boot-starter-web"]
+  "estimated_time": "2.5小时",
+  "prerequisites": [
+    "Spring Boot基础"
+  ],
+  "learning_objectives": [
+    "掌握logback-spring.xml的详细配置",
+    "学会使用MDC实现上下文日志",
+    "理解日志滚动策略和分级存储",
+    "掌握Spring Profile与日志配置结合"
+  ],
+  "tech_stack": ["Java", "Spring Boot", "Logback", "SLF4J"],
+  "tags": [
+    "Logback",
+    "SLF4J",
+    "MDC",
+    "日志滚动",
+    "logback-spring.xml"
+  ],
+  "related_cases": [
+    "actuator-demo",
+    "aop-logging-demo"
+  ],
+  "dependencies": ["spring-boot-starter-web"],
+  "created_date": "2024-01-15",
+  "last_updated": "2024-01-15",
+  "author": "OpenDemo Team",
+  "version": "1.0.0",
+  "status": "complete"
 }

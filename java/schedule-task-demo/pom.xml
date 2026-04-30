@@ -12,10 +12,24 @@
     <artifactId>schedule-task-demo</artifactId>
     <version>1.0-SNAPSHOT</version>
     <name>Schedule Task Demo</name>
+    <description>Spring Boot 定时任务演示 - @Scheduled、Cron 表达式、fixedRate/fixedDelay、SchedulingConfigurer</description>
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
 </project>
