@@ -5,8 +5,8 @@
 import pytest
 from unittest.mock import Mock, patch, MagicMock
 from pathlib import Path
-from services.storage_service import StorageService
-from services.config_service import ConfigService
+from core.storage_service import StorageService
+from core.config_service import ConfigService
 
 
 class TestStorageService:

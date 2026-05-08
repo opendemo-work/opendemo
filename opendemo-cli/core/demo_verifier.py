@@ -15,7 +15,7 @@ import tempfile
 import shutil
 from pathlib import Path
 from typing import Dict, Any
-from services.java_verifier import JavaVerifier
+from core.java_verifier import JavaVerifier
 from utils.logger import get_logger
 
 logger = get_logger(__name__)

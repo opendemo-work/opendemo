@@ -12,8 +12,8 @@ import sys
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
 from cli import cli
-from services.config_service import ConfigService
-from services.storage_service import StorageService
+from core.config_service import ConfigService
+from core.storage_service import StorageService
 from core.demo_repository import DemoRepository
 from core.demo_search import DemoSearch
 from core.demo_generator import DemoGenerator

@@ -6,7 +6,7 @@ config 命令模块
 
 import click
 
-from services.config_service import ConfigService
+from core.config_service import ConfigService
 from utils.formatters import print_success, print_warning, print_config_list
 
 

@@ -18,8 +18,8 @@ sys.path.insert(0, str(project_root))
 # 修改导入路径
 sys.path.insert(0, str(project_root / "cli"))
 
-from services.java_verifier import JavaVerifier
-from services.java_quality_checker import JavaQualityChecker
+from core.java_verifier import JavaVerifier
+from core.java_quality_checker import JavaQualityChecker
 from core.demo_verifier import DemoVerifier
 from utils.logger import get_logger
 

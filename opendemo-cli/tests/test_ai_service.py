@@ -5,8 +5,8 @@ AI 服务测试
 import pytest
 from unittest.mock import Mock, patch, MagicMock
 from pathlib import Path
-from services.ai_service import AIService
-from services.config_service import ConfigService
+from core.ai_service import AIService
+from core.config_service import ConfigService
 
 
 class TestAIService:

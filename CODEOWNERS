@@ -1,0 +1,40 @@
+# CODEOWNERS - OpenDemo 项目代码负责人
+
+# 默认负责人
+* @opendemo/maintainers
+
+# 技术栈负责人
+/go/ @opendemo/go-team
+/java/ @opendemo/java-team
+/nodejs/ @opendemo/nodejs-team
+/python/ @opendemo/python-team
+/kubernetes/ @opendemo/k8s-team
+
+# CLI 工具负责人
+/opendemo-cli/ @opendemo/cli-team
+
+# 配置文件
+/configs/ @opendemo/maintainers
+/.github/ @opendemo/maintainers
+
+# 文档负责人
+/docs/ @opendemo/docs-team
+
+# 脚本目录
+/scripts/ @opendemo/devops-team
+
+# 监控和 SRE
+/monitoring/ @opendemo/sre-team
+/sre/ @opendemo/sre-team
+
+# 安全相关
+/security/ @opendemo/security-team
+
+# 数据库相关
+/database/ @opendemo/db-team
+
+# AI/ML 相关
+/ai-ml/ @opendemo/ai-team
+/kubernetes/ai-infra/ @opendemo/ai-team
+/kubernetes/model-training/ @opendemo/ai-team
+/kubernetes/model-inference/ @opendemo/ai-team

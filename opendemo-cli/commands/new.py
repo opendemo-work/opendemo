@@ -9,9 +9,9 @@ from pathlib import Path
 
 import click
 
-from services.config_service import ConfigService
-from services.storage_service import StorageService
-from services.ai_service import AIService
+from core.config_service import ConfigService
+from core.storage_service import StorageService
+from core.ai_service import AIService
 from core.demo_repository import DemoRepository
 from core.demo_generator import DemoGenerator
 from core.demo_verifier import DemoVerifier

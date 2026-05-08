@@ -11,8 +11,8 @@ from rich.console import Console
 from rich.table import Table
 from rich import box
 
-from services.config_service import ConfigService
-from services.storage_service import StorageService
+from core.config_service import ConfigService
+from core.storage_service import StorageService
 from core.demo_repository import DemoRepository
 from core.demo_search import DemoSearch
 from utils.formatters import print_info, print_error
