@@ -1,0 +1,11 @@
+{
+  "name": "wechat-miniprogram-cloud-db",
+  "language": "nodejs",
+  "keywords": ["wechat", "miniprogram", "cloud", "database", "云数据库", "clouddb"],
+  "description": "微信小程序云开发实战：云数据库增删改查、云函数调用",
+  "difficulty": "intermediate",
+  "dependencies": {},
+  "author": "OpenDemo Team",
+  "created_at": "2026-05-09",
+  "version": "1.0.0"
+}

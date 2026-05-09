@@ -1,0 +1,23 @@
+{
+  "name": "spring-observability-demo",
+  "language": "java",
+  "keywords": [
+    "spring-boot",
+    "observability",
+    "micrometer",
+    "opentelemetry",
+    "prometheus",
+    "metrics"
+  ],
+  "description": "Spring Boot 可观测性深度集成演示：Micrometer 指标采集、OTLP 追踪、健康检查",
+  "difficulty": "advanced",
+  "dependencies": {
+    "spring-boot": "3.2.0",
+    "spring-boot-starter-actuator": "3.2.0",
+    "micrometer-registry-prometheus": "1.12.0"
+  },
+  "author": "OpenDemo Team",
+  "created_at": "2026-05-09",
+  "updated_at": "2026-05-09",
+  "version": "1.0.0"
+}

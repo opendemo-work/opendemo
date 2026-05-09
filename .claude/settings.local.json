@@ -3,7 +3,10 @@
     "allow": [
       "Bash(python *)",
       "Bash(python3 *)",
-      "Bash(chmod +x *)"
+      "Bash(chmod +x *)",
+      "Bash(grep -v -E \"^\\(NAMING_CONVENTIONS|README\\)\\\\.md$\")",
+      "Bash(grep -v -E \"^\\(NAMING_CONVENTIONS|README|metadata\\)\\\\.md$\")",
+      "Bash(grep -v -E \"^\\(NAMING_CONVENTIONS|README|metadata|cli\\)\\\\.md$|metadata\\\\.json\")"
     ]
   }
 }

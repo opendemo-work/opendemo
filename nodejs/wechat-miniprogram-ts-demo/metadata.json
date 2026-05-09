@@ -1,0 +1,11 @@
+{
+  "name": "wechat-miniprogram-ts-demo",
+  "language": "nodejs",
+  "keywords": ["wechat", "miniprogram", "typescript", "ts", "类型安全"],
+  "description": "微信小程序 TypeScript 开发：类型定义、泛型、接口、模块化",
+  "difficulty": "intermediate",
+  "dependencies": {},
+  "author": "OpenDemo Team",
+  "created_at": "2026-05-09",
+  "version": "1.0.0"
+}

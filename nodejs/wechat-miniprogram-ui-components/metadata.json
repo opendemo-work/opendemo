@@ -1,0 +1,11 @@
+{
+  "name": "wechat-miniprogram-ui-components",
+  "language": "nodejs",
+  "keywords": ["wechat", "miniprogram", "vant", "ui-components", "组件库"],
+  "description": "微信小程序 UI 组件库使用：Vant Weapp 组件、表单验证",
+  "difficulty": "beginner",
+  "dependencies": {},
+  "author": "OpenDemo Team",
+  "created_at": "2026-05-09",
+  "version": "1.0.0"
+}

@@ -1,0 +1,14 @@
+{
+  "name": "spring-ai-demo",
+  "language": "java",
+  "keywords": ["spring-boot", "spring-ai", "llm", "rag", "ai"],
+  "description": "Spring AI 演示：ChatClient、向量检索、RAG 实现、多模态支持",
+  "difficulty": "advanced",
+  "dependencies": {
+    "spring-boot": "3.2.0",
+    "spring-ai-openai-spring-boot-starter": "1.0.0"
+  },
+  "author": "OpenDemo Team",
+  "created_at": "2026-05-09",
+  "version": "1.0.0"
+}

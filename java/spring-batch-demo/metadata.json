@@ -1,0 +1,14 @@
+{
+  "name": "spring-batch-demo",
+  "language": "java",
+  "keywords": ["spring-boot", "spring-batch", "batch-processing", "job"],
+  "description": "Spring Batch 批处理演示：Job/Step/Chunk、ItemReader/Processor/Writer",
+  "difficulty": "advanced",
+  "dependencies": {
+    "spring-boot": "3.2.0",
+    "spring-batch": "5.1.0"
+  },
+  "author": "OpenDemo Team",
+  "created_at": "2026-05-09",
+  "version": "1.0.0"
+}

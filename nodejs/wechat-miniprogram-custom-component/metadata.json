@@ -1,0 +1,11 @@
+{
+  "name": "wechat-miniprogram-custom-component",
+  "language": "nodejs",
+  "keywords": ["wechat", "miniprogram", "component", "自定义组件", "插槽"],
+  "description": "微信小程序自定义组件：Component 构造器、插槽、组件通信",
+  "difficulty": "intermediate",
+  "dependencies": {},
+  "author": "OpenDemo Team",
+  "created_at": "2026-05-09",
+  "version": "1.0.0"
+}

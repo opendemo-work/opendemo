@@ -1,0 +1,14 @@
+{
+  "name": "spring-rsocket-demo",
+  "language": "java",
+  "keywords": ["spring-boot", "rsocket", "reactive", "messaging"],
+  "description": "Spring RSocket 响应式消息演示：Request/Response、Fire-and-Forget、Channel",
+  "difficulty": "advanced",
+  "dependencies": {
+    "spring-boot": "3.2.0",
+    "spring-messaging-rsocket": "6.1.0"
+  },
+  "author": "OpenDemo Team",
+  "created_at": "2026-05-09",
+  "version": "1.0.0"
+}

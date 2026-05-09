@@ -1,0 +1,14 @@
+{
+  "name": "spring-kotlin-dsl-demo",
+  "language": "java",
+  "keywords": ["spring-boot", "kotlin", "dsl", "functional-bean"],
+  "description": "Spring Kotlin DSL 演示：函数式 Bean 定义、类型安全配置",
+  "difficulty": "advanced",
+  "dependencies": {
+    "spring-boot": "3.2.0",
+    "kotlin-stdlib": "1.9.22"
+  },
+  "author": "OpenDemo Team",
+  "created_at": "2026-05-09",
+  "version": "1.0.0"
+}

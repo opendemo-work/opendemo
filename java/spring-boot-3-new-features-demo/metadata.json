@@ -1,0 +1,23 @@
+{
+  "name": "spring-boot-3-new-features-demo",
+  "language": "java",
+  "keywords": [
+    "spring-boot",
+    "spring-boot-3",
+    "virtual-threads",
+    "jakarta-ee-10",
+    "java-21",
+    "record-dto"
+  ],
+  "description": "Spring Boot 3.x 新特性演示：Virtual Threads、Record DTO、Jakarta EE 10 等核心功能",
+  "difficulty": "intermediate",
+  "dependencies": {
+    "spring-boot": "3.2.0",
+    "spring-web": "6.1.0",
+    "java": "21"
+  },
+  "author": "OpenDemo Team",
+  "created_at": "2026-05-09",
+  "updated_at": "2026-05-09",
+  "version": "1.0.0"
+}
