@@ -1,0 +1,8 @@
+{
+  "name": "华为云CLI命令速查表",
+  "category": "cloud-cli",
+  "tech_stack": ["华为云", "Huawei Cloud CLI", "ecs", "obs", "vpc", "elb", "rds", "redis", "cce", "functiongraph"],
+  "description": "华为云CLI完整命令参考，覆盖ECS/OBS/VPC/ELB/RDS/Redis/CCE/FunctionGraph等全产品线CLI",
+  "difficulty": "intermediate",
+  "dependencies": ["hwcloud-cli"]
+}

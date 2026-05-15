@@ -1,0 +1,8 @@
+{
+  "name": "阿里云CLI命令速查表",
+  "category": "cloud-cli",
+  "tech_stack": ["阿里云", "Alibaba Cloud CLI", "aliyun", "ECS", "OSS", "VPC", "RDS", "Redis", "ACK", "FC", "SLB"],
+  "description": "阿里云CLI完整命令参考，覆盖计算、存储、数据库、网络、安全、容器等核心产品的命令行操作",
+  "difficulty": "intermediate",
+  "dependencies": ["aliyun-cli"]
+}

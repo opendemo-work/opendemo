@@ -6,7 +6,9 @@
       "Bash(chmod +x *)",
       "Bash(grep -v -E \"^\\(NAMING_CONVENTIONS|README\\)\\\\.md$\")",
       "Bash(grep -v -E \"^\\(NAMING_CONVENTIONS|README|metadata\\)\\\\.md$\")",
-      "Bash(grep -v -E \"^\\(NAMING_CONVENTIONS|README|metadata|cli\\)\\\\.md$|metadata\\\\.json\")"
+      "Bash(grep -v -E \"^\\(NAMING_CONVENTIONS|README|metadata|cli\\)\\\\.md$|metadata\\\\.json\")",
+      "WebSearch",
+      "Bash(grep -n \"^---$\" /Users/allengaller/Documents/GitHub/opendemo-work/opendemo/cloud-cli/huawei/huawei-cli.md)"
     ]
   }
 }

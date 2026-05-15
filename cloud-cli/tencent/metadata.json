@@ -1,0 +1,8 @@
+{
+  "name": "腾讯云CLI命令速查表",
+  "category": "cloud-cli",
+  "tech_stack": ["腾讯云", "Tencent Cloud CLI", "cvm", "cos", "vpc", "clb", "cdb", "redis", "mongo", "TKE", "SCF", "CAM"],
+  "description": "腾讯云CLI完整命令参考，覆盖CVM/COS/VPC/CLB/CDB/Redis/TKE/SCF等全产品线CLI",
+  "difficulty": "intermediate",
+  "dependencies": ["tccli"]
+}

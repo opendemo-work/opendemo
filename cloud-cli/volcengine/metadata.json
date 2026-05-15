@@ -1,0 +1,8 @@
+{
+  "name": "火山引擎CLI命令速查表",
+  "category": "cloud-cli",
+  "tech_stack": ["火山引擎", "Volcengine CLI", "ecs", "tos", "vpc", "clb", "redis", "mysql", "vke"],
+  "description": "火山引擎CLI完整命令参考，覆盖ECS/TOS/VPC/CLB/Redis/MySQL/VKE等全产品线CLI",
+  "difficulty": "intermediate",
+  "dependencies": ["volc"]
+}
