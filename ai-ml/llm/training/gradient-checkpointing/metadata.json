@@ -1,0 +1,32 @@
+{
+  "name": "gradient-checkpointing",
+  "category": "llm-training",
+  "difficulty": "intermediate",
+  "language": "python",
+  "keywords": [
+    "gradient-checkpointing",
+    "activation-checkpointing",
+    "memory-optimization",
+    "recompute",
+    "torch-utils"
+  ],
+  "description": "梯度检查点详解，演示如何用时间换空间训练超大模型",
+  "estimated_time": "2-3 hours",
+  "prerequisites": [
+    "pytorch-basics",
+    "mixed-precision-training"
+  ],
+  "learning_objectives": [
+    "理解梯度检查点原理",
+    "掌握 PyTorch checkpoint API",
+    "学习检查点策略选择",
+    "优化超大模型训练显存"
+  ],
+  "content_types": [
+    "tutorial",
+    "code-implementation",
+    "training-guide"
+  ],
+  "quality_standard": "five-star",
+  "created_date": "2026-06-04"
+}

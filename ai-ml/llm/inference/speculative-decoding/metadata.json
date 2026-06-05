@@ -1,0 +1,32 @@
+{
+  "name": "speculative-decoding",
+  "category": "llm-inference",
+  "difficulty": "advanced",
+  "language": "python",
+  "keywords": [
+    "speculative-decoding",
+    "draft-model",
+    "target-model",
+    "inference-optimization",
+    "acceleration"
+  ],
+  "description": "Speculative Decoding 投机解码：利用小模型加速大模型推理",
+  "estimated_time": "4-5 hours",
+  "prerequisites": [
+    "vllm-inference",
+    "transformer-scratch"
+  ],
+  "learning_objectives": [
+    "理解投机解码的核心思想",
+    "掌握接受/拒绝策略",
+    "实现投机解码算法",
+    "理解自适应 draft 长度"
+  ],
+  "content_types": [
+    "tutorial",
+    "algorithm-implementation",
+    "performance-analysis"
+  ],
+  "quality_standard": "five-star",
+  "created_date": "2026-06-01"
+}

@@ -1,0 +1,14 @@
+{
+  "name": "knowledge-distillation",
+  "category": "llm-optimization",
+  "difficulty": "advanced",
+  "language": "python",
+  "keywords": ["distillation", "knowledge-distillation", "teacher-student", "compression"],
+  "description": "知识蒸馏：从大模型提取知识到小模型",
+  "estimated_time": "4-5 hours",
+  "prerequisites": ["transformer-scratch", "lora-fine-tuning"],
+  "learning_objectives": ["理解知识蒸馏原理", "实现蒸馏损失函数", "掌握 MiniMax 蒸馏"],
+  "content_types": ["tutorial", "optimization-technique"],
+  "quality_standard": "five-star",
+  "created_date": "2026-06-01"
+}

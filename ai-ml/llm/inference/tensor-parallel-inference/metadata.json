@@ -1,0 +1,32 @@
+{
+  "name": "tensor-parallel-inference",
+  "category": "llm-inference",
+  "difficulty": "advanced",
+  "language": "python",
+  "keywords": [
+    "tensor-parallel",
+    "model-parallel",
+    "allreduce",
+    "megatron",
+    "distributed-inference"
+  ],
+  "description": "Tensor Parallel 推理详解：张量并行、AllReduce 通信、多卡模型分片",
+  "estimated_time": "4-5 hours",
+  "prerequisites": [
+    "distributed-training",
+    "gpu-architecture"
+  ],
+  "learning_objectives": [
+    "理解张量并行核心原理",
+    "掌握 Column/Row Parallel 切分策略",
+    "实现 AllReduce 通信",
+    "优化通信与计算重叠"
+  ],
+  "content_types": [
+    "tutorial",
+    "distributed-system",
+    "performance-optimization"
+  ],
+  "quality_standard": "five-star",
+  "created_date": "2026-06-04"
+}

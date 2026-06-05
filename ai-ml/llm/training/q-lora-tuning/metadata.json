@@ -1,0 +1,14 @@
+{
+  "name": "q-lora-tuning",
+  "category": "llm-training",
+  "difficulty": "intermediate",
+  "language": "python",
+  "keywords": ["qlora", "4bit", "lora", "fine-tuning", "peft"],
+  "description": "QLoRA 高效微调：4-bit NF4 量化 + LoRA，消费级 GPU 微调大模型",
+  "estimated_time": "3-4 hours",
+  "prerequisites": ["lora-fine-tuning", "int4-quantization"],
+  "learning_objectives": ["理解 QLoRA 原理", "实现 4-bit 量化加载", "掌握消费级 GPU 微调"],
+  "content_types": ["tutorial", "training-guide"],
+  "quality_standard": "five-star",
+  "created_date": "2026-06-01"
+}

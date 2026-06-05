@@ -1,0 +1,33 @@
+{
+  "name": "toxicity-evaluation",
+  "category": "llm-evaluation",
+  "difficulty": "intermediate",
+  "language": "python",
+  "keywords": [
+    "toxicity",
+    "hate-speech",
+    "harmful-content",
+    "perspective-api",
+    "safety",
+    "evaluation"
+  ],
+  "description": "Toxicity 有害内容检测评测详解：多维度毒性评估、Perspective API、综合安全指标",
+  "estimated_time": "2-3 hours",
+  "prerequisites": [
+    "llm-inference",
+    "safety-evaluation"
+  ],
+  "learning_objectives": [
+    "理解 Toxicity 数据集结构和评测设置",
+    "实现多维度毒性评估方法",
+    "掌握 Perspective API 使用",
+    "分析模型安全性能"
+  ],
+  "content_types": [
+    "tutorial",
+    "evaluation-guide",
+    "results-analysis"
+  ],
+  "quality_standard": "five-star",
+  "created_date": "2026-06-04"
+}

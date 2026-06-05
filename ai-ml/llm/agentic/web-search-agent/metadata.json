@@ -1,0 +1,14 @@
+{
+  "name": "web-search-agent",
+  "category": "llm-agentic",
+  "difficulty": "intermediate",
+  "language": "python",
+  "keywords": ["web-search", "information-retrieval", "real-time", "browsing"],
+  "description": "Web Search Agent 网页搜索 Agent：实时信息获取与知识更新",
+  "estimated_time": "3-4 hours",
+  "prerequisites": ["react-agent"],
+  "learning_objectives": ["掌握搜索查询优化", "实现内容提取", "构建实时问答"],
+  "content_types": ["tutorial", "tool-use"],
+  "quality_standard": "five-star",
+  "created_date": "2026-06-04"
+}

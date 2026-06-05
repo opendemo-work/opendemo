@@ -1,0 +1,32 @@
+{
+  "name": "humaneval-evaluation",
+  "category": "llm-evaluation",
+  "difficulty": "intermediate",
+  "language": "python",
+  "keywords": [
+    "humaneval",
+    "code-generation",
+    "pass@k",
+    "benchmark",
+    "coding-evaluation"
+  ],
+  "description": "HumanEval 代码评测：Pass@k 指标、测试用例执行、代码能力评估",
+  "estimated_time": "3-4 hours",
+  "prerequisites": [
+    "llm-inference",
+    "lm-evaluation-harness"
+  ],
+  "learning_objectives": [
+    "理解 HumanEval 数据集结构",
+    "掌握 Pass@k 指标计算",
+    "实现 HumanEval 评测流程",
+    "对比不同模型的代码能力"
+  ],
+  "content_types": [
+    "tutorial",
+    "evaluation-guide",
+    "benchmark-analysis"
+  ],
+  "quality_standard": "five-star",
+  "created_date": "2026-06-01"
+}

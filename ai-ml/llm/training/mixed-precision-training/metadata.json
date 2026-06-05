@@ -1,0 +1,33 @@
+{
+  "name": "mixed-precision-training",
+  "category": "llm-training",
+  "difficulty": "intermediate",
+  "language": "python",
+  "keywords": [
+    "mixed-precision",
+    "amp",
+    "fp16",
+    "bf16",
+    "loss-scale",
+    "cuda-amp"
+  ],
+  "description": "混合精度训练详解，演示如何利用 FP16/BF16 加速大模型训练并节省显存",
+  "estimated_time": "3-4 hours",
+  "prerequisites": [
+    "pytorch-basics",
+    "gpu-computing"
+  ],
+  "learning_objectives": [
+    "理解混合精度原理",
+    "掌握 PyTorch AMP API",
+    "学习 Loss Scale 机制",
+    "比较 FP16 与 BF16 的差异"
+  ],
+  "content_types": [
+    "tutorial",
+    "code-implementation",
+    "training-guide"
+  ],
+  "quality_standard": "five-star",
+  "created_date": "2026-06-04"
+}

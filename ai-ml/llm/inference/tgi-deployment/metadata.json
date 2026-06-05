@@ -1,0 +1,14 @@
+{
+  "name": "tgi-deployment",
+  "category": "llm-inference",
+  "difficulty": "intermediate",
+  "language": "python",
+  "keywords": ["tgi", "huggingface", "inference", "deployment", "docker"],
+  "description": "Text Generation Inference 部署：HuggingFace TGI 推理服务",
+  "estimated_time": "2-3 hours",
+  "prerequisites": ["llm-inference"],
+  "learning_objectives": ["掌握 TGI 部署方法", "使用 Docker 部署", "调用 OpenAI 兼容 API"],
+  "content_types": ["tutorial", "deployment-guide"],
+  "quality_standard": "five-star",
+  "created_date": "2026-06-01"
+}

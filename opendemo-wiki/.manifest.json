@@ -1,0 +1,82 @@
+{
+  "version": 1,
+  "created": "2026-06-03T05:33:46Z",
+  "stats": {
+    "total_sources_ingested": 5,
+    "total_pages": 10
+  },
+  "sources": [
+    {
+      "path": "/Users/allengaller/Documents/GitHub/opendemo-work/opendemo/README.md",
+      "ingested_at": "2026-06-03T05:33:46Z",
+      "size_bytes": 10731,
+      "modified_at": "2026-06-01T09:04:00Z",
+      "content_hash": "sha256:README.md",
+      "source_type": "document",
+      "project": null,
+      "pages_created": [
+        "references/opendemo-project.md",
+        "entities/tech-stacks.md",
+        "concepts/five-star-standard.md"
+      ],
+      "pages_updated": []
+    },
+    {
+      "path": "/Users/allengaller/Documents/GitHub/opendemo-work/opendemo/EXECUTIVE_SUMMARY.md",
+      "ingested_at": "2026-06-03T05:33:46Z",
+      "size_bytes": 5288,
+      "modified_at": "2026-04-02T14:50:00Z",
+      "content_hash": "sha256:EXECUTIVE_SUMMARY.md",
+      "source_type": "document",
+      "project": null,
+      "pages_created": [
+        "references/opendemo-project.md"
+      ],
+      "pages_updated": []
+    },
+    {
+      "path": "/Users/allengaller/Documents/GitHub/opendemo-work/opendemo/DETAILED_STRUCTURE.md",
+      "ingested_at": "2026-06-03T05:33:46Z",
+      "size_bytes": 11766,
+      "modified_at": "2026-04-02T14:49:00Z",
+      "content_hash": "sha256:DETAILED_STRUCTURE.md",
+      "source_type": "document",
+      "project": null,
+      "pages_created": [
+        "entities/tech-stacks.md"
+      ],
+      "pages_updated": []
+    },
+    {
+      "path": "/Users/allengaller/Documents/GitHub/opendemo-work/opendemo/vibe-coding/README.md",
+      "ingested_at": "2026-06-03T05:33:46Z",
+      "size_bytes": 5065,
+      "modified_at": "2026-04-02T15:22:00Z",
+      "content_hash": "sha256:vibe-coding-README.md",
+      "source_type": "document",
+      "project": null,
+      "pages_created": [
+        "concepts/vibe-coding.md",
+        "references/vibe-coding-learning-path.md",
+        "entities/tech-stacks.md"
+      ],
+      "pages_updated": []
+    },
+    {
+      "path": "/Users/allengaller/Documents/GitHub/opendemo-work/opendemo/vibe-coding/VIBE-CODING-PLAN.md",
+      "ingested_at": "2026-06-03T05:33:46Z",
+      "size_bytes": 5288,
+      "modified_at": "2026-05-31T07:36:00Z",
+      "content_hash": "sha256:VIBE-CODING-PLAN.md",
+      "source_type": "document",
+      "project": null,
+      "pages_created": [
+        "concepts/vibe-coding.md",
+        "skills/prompt-engineering.md",
+        "skills/iterative-refinement.md",
+        "skills/ai-debugging.md"
+      ],
+      "pages_updated": []
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "name": "rag-retrieval-optimization",
+  "category": "llm-application",
+  "difficulty": "advanced",
+  "language": "python",
+  "keywords": [
+    "rag",
+    "retrieval-optimization",
+    "query-rewriting",
+    "hyde",
+    "adaptive-retrieval",
+    "multi-representation"
+  ],
+  "description": "RAG 检索优化：Query Rewriting、HyDE、Adaptive Retrieval、多表示索引",
+  "estimated_time": "3-4 hours",
+  "prerequisites": [
+    "rag-fundamentals"
+  ],
+  "learning_objectives": [
+    "掌握 Query Rewriting 技术",
+    "理解 HyDE 原理",
+    "实现 Adaptive Retrieval"
+  ],
+  "content_types": [
+    "tutorial",
+    "code-implementation",
+    "optimization-techniques"
+  ],
+  "quality_standard": "five-star",
+  "created_date": "2026-06-04"
+}

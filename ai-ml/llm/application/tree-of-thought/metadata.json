@@ -1,0 +1,30 @@
+{
+  "name": "tree-of-thought",
+  "category": "llm-application",
+  "difficulty": "advanced",
+  "language": "python",
+  "keywords": [
+    "tree-of-thought",
+    "tot",
+    "reasoning",
+    "self-evaluation",
+    "multi-path-search"
+  ],
+  "description": "ToT 思维树：多路径探索、自我评估、复杂问题解决能力提升",
+  "estimated_time": "2-3 hours",
+  "prerequisites": [
+    "chain-of-thought"
+  ],
+  "learning_objectives": [
+    "理解 ToT 与 CoT 的区别",
+    "实现 ToT Controller",
+    "应用 ToT 解决复杂问题"
+  ],
+  "content_types": [
+    "tutorial",
+    "code-implementation",
+    "advanced-reasoning"
+  ],
+  "quality_standard": "five-star",
+  "created_date": "2026-06-04"
+}

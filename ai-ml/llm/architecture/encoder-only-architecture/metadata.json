@@ -1,0 +1,34 @@
+{
+  "name": "encoder-only-architecture",
+  "category": "llm-architecture",
+  "difficulty": "intermediate",
+  "language": ["python", "pytorch"],
+  "keywords": [
+    "bert",
+    "encoder-only",
+    "masked-language-model",
+    "bidirectional-attention",
+    "self-supervised-learning",
+    "nlp"
+  ],
+  "description": "深入解析 Encoder-Only 架构，聚焦 BERT 系列模型的掩码语言建模和双向上下文理解机制",
+  "estimated_time": "3-4 hours",
+  "prerequisites": [
+    "transformer-scratch",
+    "deep-learning-basics",
+    "pytorch-fundamentals"
+  ],
+  "learning_objectives": [
+    "理解 Encoder-Only 架构与 Decoder-Only 的区别",
+    "掌握掩码语言建模 (MLM) 的原理",
+    "理解双向上下文注意力的实现",
+    "掌握 BERT 系列模型的架构变体"
+  ],
+  "content_types": [
+    "tutorial",
+    "code-implementation",
+    "architecture-analysis"
+  ],
+  "quality_standard": "five-star",
+  "created_date": "2026-06-04"
+}

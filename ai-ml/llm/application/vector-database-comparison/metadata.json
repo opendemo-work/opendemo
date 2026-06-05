@@ -1,0 +1,33 @@
+{
+  "name": "vector-database-comparison",
+  "category": "llm-application",
+  "difficulty": "intermediate",
+  "language": "python",
+  "keywords": [
+    "vector-database",
+    "milvus",
+    "qdrant",
+    "pinecone",
+    "weaviate",
+    "chroma",
+    "faiss"
+  ],
+  "description": "向量数据库对比：Milvus、Qdrant、Pinecone、Weaviate、Chroma 性能与特性",
+  "estimated_time": "2-3 hours",
+  "prerequisites": [
+    "rag-fundamentals",
+    "vector-database-basics"
+  ],
+  "learning_objectives": [
+    "了解主流向量数据库特性",
+    "掌握各数据库核心实现",
+    "根据场景选择合适数据库"
+  ],
+  "content_types": [
+    "tutorial",
+    "code-implementation",
+    "comparison-analysis"
+  ],
+  "quality_standard": "five-star",
+  "created_date": "2026-06-04"
+}

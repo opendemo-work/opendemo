@@ -1,0 +1,31 @@
+{
+  "name": "batch-inference",
+  "category": "llm-inference",
+  "difficulty": "intermediate",
+  "language": "python",
+  "keywords": [
+    "batch-inference",
+    "dynamic-batching",
+    "static-batching",
+    "throughput",
+    "scheduler"
+  ],
+  "description": "Batch Inference 批处理推理详解：静态批处理、动态批处理、混合调度策略",
+  "estimated_time": "3-4 hours",
+  "prerequisites": [
+    "llm-inference-basics"
+  ],
+  "learning_objectives": [
+    "理解批处理三种形态",
+    "掌握动态批处理调度算法",
+    "实现混合批处理策略",
+    "优化 Padding 减少浪费"
+  ],
+  "content_types": [
+    "tutorial",
+    "scheduler-implementation",
+    "performance-analysis"
+  ],
+  "quality_standard": "five-star",
+  "created_date": "2026-06-04"
+}

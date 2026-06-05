@@ -1,0 +1,31 @@
+{
+  "name": "reranking-optimization",
+  "category": "llm-application",
+  "difficulty": "intermediate",
+  "language": "python",
+  "keywords": [
+    "reranking",
+    "cross-encoder",
+    "mmr",
+    "diversity-reranking",
+    "llm-reranking"
+  ],
+  "description": "Reranking 优化：Cross-Encoder、Diversity Reranking、LLM-based Reranking",
+  "estimated_time": "2-3 hours",
+  "prerequisites": [
+    "rag-fundamentals",
+    "hybrid-search"
+  ],
+  "learning_objectives": [
+    "理解 Reranking 原理",
+    "掌握 Cross-Encoder 实现",
+    "应用 Diversity Reranking"
+  ],
+  "content_types": [
+    "tutorial",
+    "code-implementation",
+    "optimization-techniques"
+  ],
+  "quality_standard": "five-star",
+  "created_date": "2026-06-04"
+}

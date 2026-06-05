@@ -1,0 +1,33 @@
+{
+  "name": "mmlu-evaluation",
+  "category": "llm-evaluation",
+  "difficulty": "intermediate",
+  "language": "python",
+  "keywords": [
+    "mmlu",
+    "massive-multitask-language-understanding",
+    "benchmark",
+    "multiple-choice",
+    "few-shot",
+    "evaluation"
+  ],
+  "description": "MMLU 多任务语言理解评测详解：57个学科、5-shot评测、结果分析",
+  "estimated_time": "3-4 hours",
+  "prerequisites": [
+    "llm-inference",
+    "lm-evaluation-harness"
+  ],
+  "learning_objectives": [
+    "理解 MMLU 数据集结构和评测设置",
+    "实现 MMLU 评测流程",
+    "掌握 Few-shot 示例采样策略",
+    "分析 MMLU 结果和模型能力"
+  ],
+  "content_types": [
+    "tutorial",
+    "evaluation-guide",
+    "results-analysis"
+  ],
+  "quality_standard": "five-star",
+  "created_date": "2026-06-01"
+}

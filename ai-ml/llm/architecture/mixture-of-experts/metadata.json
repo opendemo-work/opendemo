@@ -1,0 +1,32 @@
+{
+  "name": "mixture-of-experts",
+  "category": "llm-architecture",
+  "difficulty": "advanced",
+  "language": "python",
+  "keywords": [
+    "mixture-of-experts",
+    "moe",
+    "sparse-mlp",
+    "routing",
+    "load-balancing"
+  ],
+  "description": "Mixture of Experts 混合专家架构：稀疏激活、路由机制、负载均衡",
+  "estimated_time": "5-6 hours",
+  "prerequisites": [
+    "transformer-scratch",
+    "distributed-training-basics"
+  ],
+  "learning_objectives": [
+    "理解 MoE 核心思想",
+    "掌握 Router 实现",
+    "理解负载均衡机制",
+    "实现 MoE Transformer 层"
+  ],
+  "content_types": [
+    "tutorial",
+    "architecture-implementation",
+    "performance-analysis"
+  ],
+  "quality_standard": "five-star",
+  "created_date": "2026-06-01"
+}

@@ -1,0 +1,14 @@
+{
+  "name": "langchain-agent",
+  "category": "llm-agentic",
+  "difficulty": "intermediate",
+  "language": "python",
+  "keywords": ["langchain", "agent", "tools", "chains"],
+  "description": "LangChain Agent 开发：工具定义、Agent 初始化、Chain 组合",
+  "estimated_time": "3-4 hours",
+  "prerequisites": ["react-agent"],
+  "learning_objectives": ["掌握 LangChain 工具定义", "实现 Agent 开发", "理解 Chain 组合"],
+  "content_types": ["tutorial", "framework-guide"],
+  "quality_standard": "five-star",
+  "created_date": "2026-06-01"
+}

@@ -1,0 +1,29 @@
+{
+  "name": "few-shot-learning",
+  "category": "llm-application",
+  "difficulty": "intermediate",
+  "language": "python",
+  "keywords": [
+    "few-shot",
+    "in-context-learning",
+    "example-selection",
+    "prompt-engineering"
+  ],
+  "description": "Few-Shot Learning：示例选择策略、动态 Few-Shot、格式设计最佳实践",
+  "estimated_time": "2-3 hours",
+  "prerequisites": [
+    "prompt-patterns"
+  ],
+  "learning_objectives": [
+    "理解 In-Context Learning 原理",
+    "掌握示例选择策略",
+    "设计有效的 Few-Shot Prompt"
+  ],
+  "content_types": [
+    "tutorial",
+    "code-implementation",
+    "best-practices"
+  ],
+  "quality_standard": "five-star",
+  "created_date": "2026-06-04"
+}

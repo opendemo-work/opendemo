@@ -1,0 +1,34 @@
+{
+  "name": "tensorrt-inference",
+  "category": "llm-optimization",
+  "difficulty": "advanced",
+  "language": "python",
+  "keywords": [
+    "tensorrt",
+    "trt",
+    "inference-acceleration",
+    "engine-optimization",
+    "onnx",
+    "deployment"
+  ],
+  "description": "TensorRT 推理加速：模型转换、Engine 构建、动态Shape优化与部署实战",
+  "estimated_time": "5-6 hours",
+  "prerequisites": [
+    "transformer-scratch",
+    "gpu-basics",
+    "quantization-basics"
+  ],
+  "learning_objectives": [
+    "掌握 PyTorch → ONNX → TensorRT 转换流程",
+    "理解 TensorRT Engine 构建与优化原理",
+    "实现动态 Shape 配置与批处理优化",
+    "完成生产环境 TensorRT 部署"
+  ],
+  "content_types": [
+    "tutorial",
+    "deployment-guide",
+    "performance-optimization"
+  ],
+  "quality_standard": "five-star",
+  "created_date": "2026-06-04"
+}

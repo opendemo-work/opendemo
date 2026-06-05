@@ -1,0 +1,30 @@
+{
+  "name": "rag-chunking-strategies",
+  "category": "llm-application",
+  "difficulty": "intermediate",
+  "language": "python",
+  "keywords": [
+    "rag",
+    "chunking",
+    "document-splitting",
+    "semantic-chunking",
+    "parent-chunker"
+  ],
+  "description": "RAG 文档分块策略：固定窗口、语义分块、父子块、LLM辅助分块",
+  "estimated_time": "2-3 hours",
+  "prerequisites": [
+    "rag-fundamentals"
+  ],
+  "learning_objectives": [
+    "理解不同分块策略原理",
+    "掌握语义分块实现",
+    "应用父子块策略"
+  ],
+  "content_types": [
+    "tutorial",
+    "code-implementation",
+    "strategy-comparison"
+  ],
+  "quality_standard": "five-star",
+  "created_date": "2026-06-04"
+}

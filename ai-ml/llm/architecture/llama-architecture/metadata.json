@@ -1,0 +1,36 @@
+{
+  "name": "llama-architecture",
+  "category": "llm-architecture",
+  "difficulty": "advanced",
+  "language": ["python", "pytorch"],
+  "keywords": [
+    "llama",
+    "llama2",
+    "llama3",
+    "decoder-only",
+    "rmsnorm",
+    "swiglu",
+    "rope",
+    "open-source-llm"
+  ],
+  "description": "深入解析 LLaMA 模型架构，理解 RMSNorm、SwiGLU、RoPE 等关键优化技术的工程实现",
+  "estimated_time": "5-6 hours",
+  "prerequisites": [
+    "decoder-only-architecture",
+    "rotary-embedding",
+    "deep-learning-basics"
+  ],
+  "learning_objectives": [
+    "理解 LLaMA 架构的核心组件",
+    "掌握 RMSNorm 的实现与优势",
+    "理解 SwiGLU 激活函数的原理",
+    "掌握 RoPE 在 LLaMA 中的应用"
+  ],
+  "content_types": [
+    "tutorial",
+    "code-implementation",
+    "architecture-analysis"
+  ],
+  "quality_standard": "five-star",
+  "created_date": "2026-06-04"
+}

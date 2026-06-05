@@ -1,0 +1,32 @@
+{
+  "name": "llm-as-judge",
+  "category": "llm-evaluation",
+  "difficulty": "intermediate",
+  "language": "python",
+  "keywords": [
+    "llm-as-judge",
+    "evaluation",
+    "pairwise",
+    "scoring",
+    "openai"
+  ],
+  "description": "LLM-as-Judge 评估方法：Prompt 设计、Pairwise 比较、多维度评分",
+  "estimated_time": "3-4 hours",
+  "prerequisites": [
+    "llm-inference",
+    "prompt-engineering"
+  ],
+  "learning_objectives": [
+    "理解 LLM-as-Judge 的原理",
+    "设计有效的评估 Prompt",
+    "实现评分和 Pairwise 评估",
+    "解决位置偏见等问题"
+  ],
+  "content_types": [
+    "tutorial",
+    "evaluation-framework",
+    "prompt-design"
+  ],
+  "quality_standard": "five-star",
+  "created_date": "2026-06-01"
+}

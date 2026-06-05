@@ -1,0 +1,34 @@
+{
+  "name": "vllm-inference",
+  "category": "llm-inference",
+  "difficulty": "intermediate",
+  "language": "python",
+  "keywords": [
+    "vllm",
+    "paged-attention",
+    "continuous-batching",
+    "kv-cache",
+    "high-throughput",
+    "inference"
+  ],
+  "description": "vLLM 高吞吐量推理引擎详解：PagedAttention、Continuous Batching、KV Cache 管理",
+  "estimated_time": "4-5 hours",
+  "prerequisites": [
+    "transformer-scratch",
+    "gpu-basics",
+    "inference-optimization"
+  ],
+  "learning_objectives": [
+    "理解 vLLM 整体架构",
+    "掌握 PagedAttention 原理",
+    "理解 Continuous Batching 机制",
+    "部署 vLLM 推理服务"
+  ],
+  "content_types": [
+    "tutorial",
+    "deployment-guide",
+    "benchmark"
+  ],
+  "quality_standard": "five-star",
+  "created_date": "2026-06-01"
+}

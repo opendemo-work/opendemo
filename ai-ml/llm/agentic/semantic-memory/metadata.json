@@ -1,0 +1,14 @@
+{
+  "name": "semantic-memory",
+  "category": "llm-agentic",
+  "difficulty": "intermediate",
+  "language": "python",
+  "keywords": ["semantic-memory", "embedding", "concept-linking", "similarity"],
+  "description": "Semantic Memory 语义记忆管理：基于语义相似性的动态记忆组织",
+  "estimated_time": "3-4 hours",
+  "prerequisites": ["memory-systems"],
+  "learning_objectives": ["理解语义嵌入", "实现相似度匹配", "构建概念关联"],
+  "content_types": ["tutorial", "memory-pattern"],
+  "quality_standard": "five-star",
+  "created_date": "2026-06-04"
+}

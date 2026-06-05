@@ -1,0 +1,32 @@
+{
+  "name": "multi-agent-collaboration",
+  "category": "llm-agentic",
+  "difficulty": "advanced",
+  "language": "python",
+  "keywords": [
+    "multi-agent",
+    "collaboration",
+    "agent-system",
+    "task-decomposition",
+    "crewai"
+  ],
+  "description": "Multi-Agent 协作系统：多智能体协同、任务分配、结果整合",
+  "estimated_time": "5-6 hours",
+  "prerequisites": [
+    "react-agent",
+    "plan-and-execute"
+  ],
+  "learning_objectives": [
+    "理解 Multi-Agent 协作模式",
+    "实现 Agent 通信协议",
+    "掌握任务分配策略",
+    "实现协作式 Multi-Agent 系统"
+  ],
+  "content_types": [
+    "tutorial",
+    "framework-implementation",
+    "collaboration-patterns"
+  ],
+  "quality_standard": "five-star",
+  "created_date": "2026-06-01"
+}

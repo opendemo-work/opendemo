@@ -1,0 +1,32 @@
+{
+  "name": "fsdp-training",
+  "category": "llm-training",
+  "difficulty": "advanced",
+  "language": "python",
+  "keywords": [
+    "fsdp",
+    "fully-sharded-data-parallel",
+    "pytorch-distributed",
+    "model-sharding",
+    "mixed-precision"
+  ],
+  "description": "FSDP 完全分片数据并行详解，演示 PyTorch 原生大模型训练方案",
+  "estimated_time": "4-5 hours",
+  "prerequisites": [
+    "data-parallel-training",
+    "zero-redundancy-optimizer"
+  ],
+  "learning_objectives": [
+    "理解 FSDP 与 DDP 的区别",
+    "掌握 PyTorch FSDP API",
+    "学习分片策略选择",
+    "理解混合精度和 CPU Offload"
+  ],
+  "content_types": [
+    "tutorial",
+    "code-implementation",
+    "training-guide"
+  ],
+  "quality_standard": "five-star",
+  "created_date": "2026-06-04"
+}

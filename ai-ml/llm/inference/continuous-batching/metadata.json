@@ -1,0 +1,33 @@
+{
+  "name": "continuous-batching",
+  "category": "llm-inference",
+  "difficulty": "advanced",
+  "language": "python",
+  "keywords": [
+    "continuous-batching",
+    "iteration-level-scheduling",
+    "dynamic-batching",
+    "throughput",
+    "vllm",
+    "scheduler"
+  ],
+  "description": "Continuous Batching 详解：迭代级调度、动态批处理、最大化 GPU 利用率",
+  "estimated_time": "4-5 hours",
+  "prerequisites": [
+    "vllm-inference",
+    "paged-attention"
+  ],
+  "learning_objectives": [
+    "理解 Static Batching 的局限性",
+    "掌握 Continuous Batching 核心原理",
+    "实现调度器算法",
+    "理解参数调优策略"
+  ],
+  "content_types": [
+    "tutorial",
+    "scheduler-implementation",
+    "performance-analysis"
+  ],
+  "quality_standard": "five-star",
+  "created_date": "2026-06-01"
+}

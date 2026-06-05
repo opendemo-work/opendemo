@@ -1,0 +1,32 @@
+{
+  "name": "paged-attention",
+  "category": "llm-inference",
+  "difficulty": "intermediate",
+  "language": "python",
+  "keywords": [
+    "paged-attention",
+    "kv-cache",
+    "memory-management",
+    "vllm",
+    "block-table"
+  ],
+  "description": "PagedAttention 详解：类操作系统分页的 KV Cache 内存管理机制",
+  "estimated_time": "3-4 hours",
+  "prerequisites": [
+    "kv-cache-basics",
+    "gpu-memory"
+  ],
+  "learning_objectives": [
+    "理解 PagedAttention 核心思想",
+    "掌握 Block Table 映射机制",
+    "理解显存碎片化问题",
+    "实现 KV Cache 分页管理"
+  ],
+  "content_types": [
+    "tutorial",
+    "algorithm-implementation",
+    "memory-optimization"
+  ],
+  "quality_standard": "five-star",
+  "created_date": "2026-06-04"
+}

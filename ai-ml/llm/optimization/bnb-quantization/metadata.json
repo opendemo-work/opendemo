@@ -1,0 +1,34 @@
+{
+  "name": "bnb-quantization",
+  "category": "llm-optimization",
+  "difficulty": "intermediate",
+  "language": "python",
+  "keywords": [
+    "bitsandbytes",
+    "bnb",
+    "nf4",
+    "double-quantization",
+    "llm.int8",
+    "quantization"
+  ],
+  "description": "BitsAndBytes 量化：NF4 格式、双重量化、LLM.int8() 实现与稳定性问题处理",
+  "estimated_time": "3-4 hours",
+  "prerequisites": [
+    "int8-quantization",
+    "transformer-scratch",
+    "gpu-basics"
+  ],
+  "learning_objectives": [
+    "理解 NF4 (4-bit Normal Float) 数值格式",
+    "掌握 BitsAndBytes 量化配置",
+    "实现 LLM.int8() 推理加速",
+    "处理量化稳定性问题 (overflow)"
+  ],
+  "content_types": [
+    "tutorial",
+    "quantization-config",
+    "stability-guide"
+  ],
+  "quality_standard": "five-star",
+  "created_date": "2026-06-04"
+}

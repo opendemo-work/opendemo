@@ -1,0 +1,14 @@
+{
+  "name": "promptfoo-evaluation",
+  "category": "llm-harness",
+  "difficulty": "intermediate",
+  "language": "yaml",
+  "keywords": ["promptfoo", "prompt-evaluation", "assertions", "regression"],
+  "description": "Promptfoo 自动化评估：Prompt 对比、断言、回归测试",
+  "estimated_time": "2-3 hours",
+  "prerequisites": ["llm-inference"],
+  "learning_objectives": ["掌握 Promptfoo 配置", "实现自动化评估", "理解断言设计"],
+  "content_types": ["tutorial", "tool-guide"],
+  "quality_standard": "five-star",
+  "created_date": "2026-06-01"
+}

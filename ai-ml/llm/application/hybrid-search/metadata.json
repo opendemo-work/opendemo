@@ -1,0 +1,14 @@
+{
+  "name": "hybrid-search",
+  "category": "llm-application",
+  "difficulty": "intermediate",
+  "language": "python",
+  "keywords": ["hybrid-search", "rrf", "bm25", "vector-search", "rag"],
+  "description": "混合搜索：向量检索 + BM25 + RRF 融合",
+  "estimated_time": "3-4 hours",
+  "prerequisites": ["rag-fundamentals"],
+  "learning_objectives": ["理解混合搜索原理", "实现 RRF 融合", "掌握关键词和向量检索结合"],
+  "content_types": ["tutorial", "implementation"],
+  "quality_standard": "five-star",
+  "created_date": "2026-06-01"
+}

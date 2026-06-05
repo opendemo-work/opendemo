@@ -1,0 +1,33 @@
+{
+  "name": "awq-quantization",
+  "category": "llm-optimization",
+  "difficulty": "advanced",
+  "language": "python",
+  "keywords": [
+    "awq",
+    "activation-aware-weight-quantization",
+    "llm-int4",
+    "smoothquant",
+    "quantization"
+  ],
+  "description": "AWQ 激活感知权重量化：原理推导、GPTQ 对比、4bit 低位宽量化实战",
+  "estimated_time": "5-6 hours",
+  "prerequisites": [
+    "gptq-quantization",
+    "int4-quantization",
+    "transformer-scratch"
+  ],
+  "learning_objectives": [
+    "理解 AWQ 量化原理与激活感知机制",
+    "掌握 AWQ 与 GPTQ 的差异与优势",
+    "实现 AWQ 4bit 量化流程",
+    "分析量化误差与精度损失"
+  ],
+  "content_types": [
+    "tutorial",
+    "quantization-comparison",
+    "implementation"
+  ],
+  "quality_standard": "five-star",
+  "created_date": "2026-06-04"
+}

@@ -1,0 +1,33 @@
+{
+  "name": "lm-evaluation-harness",
+  "category": "llm-harness",
+  "difficulty": "intermediate",
+  "language": "python",
+  "keywords": [
+    "lm-evaluation-harness",
+    "benchmark",
+    "evaluation",
+    "mmlu",
+    "humaneval",
+    "eleutherai"
+  ],
+  "description": "LM-Evaluation-Harness 实战：对大模型进行全面评测的标准化框架",
+  "estimated_time": "3-4 hours",
+  "prerequisites": [
+    "transformer-scratch",
+    "llm-inference"
+  ],
+  "learning_objectives": [
+    "理解 LM-Evaluation-Harness 架构",
+    "掌握基本评测命令和配置",
+    "实现自定义任务评测",
+    "理解 Pass@k 等评测指标"
+  ],
+  "content_types": [
+    "tutorial",
+    "evaluation-guide",
+    "benchmark"
+  ],
+  "quality_standard": "five-star",
+  "created_date": "2026-06-01"
+}

@@ -1,0 +1,35 @@
+{
+  "name": "state-space-models",
+  "category": "llm-architecture",
+  "difficulty": "advanced",
+  "language": ["python", "pytorch"],
+  "keywords": [
+    "ssm",
+    "mamba",
+    "state-space-model",
+    "selective-scan",
+    "linear-time-invariant",
+    "lstm",
+    "efficient-inference"
+  ],
+  "description": "深入解析状态空间模型 (SSM)，理解 Mamba 的选择性扫描机制和线性复杂度推理优势",
+  "estimated_time": "6-8 hours",
+  "prerequisites": [
+    "decoder-only-architecture",
+    "deep-learning-basics",
+    "lstm-fundamentals"
+  ],
+  "learning_objectives": [
+    "理解状态空间模型的基本原理",
+    "掌握 Mamba 的选择性扫描机制",
+    "理解 SSM 与 Transformer 的效率对比",
+    "实现简化版 Mamba 模块"
+  ],
+  "content_types": [
+    "tutorial",
+    "code-implementation",
+    "architecture-analysis"
+  ],
+  "quality_standard": "five-star",
+  "created_date": "2026-06-04"
+}

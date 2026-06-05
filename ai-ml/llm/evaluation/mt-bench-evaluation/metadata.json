@@ -1,0 +1,32 @@
+{
+  "name": "mt-bench-evaluation",
+  "category": "llm-evaluation",
+  "difficulty": "intermediate",
+  "language": "python",
+  "keywords": [
+    "mt-bench",
+    "multi-turn",
+    "chat-evaluation",
+    "llm-as-judge",
+    "chatbot"
+  ],
+  "description": "MT-Bench 多轮对话评测：8大类别、LLM-as-Judge、对话质量评估",
+  "estimated_time": "3-4 hours",
+  "prerequisites": [
+    "llm-inference",
+    "llm-as-judge"
+  ],
+  "learning_objectives": [
+    "理解 MT-Bench 评测框架",
+    "掌握多轮对话评测方法",
+    "实现 LLM-as-Judge 评分",
+    "对比不同模型的对话能力"
+  ],
+  "content_types": [
+    "tutorial",
+    "evaluation-guide",
+    "benchmark-analysis"
+  ],
+  "quality_standard": "five-star",
+  "created_date": "2026-06-01"
+}

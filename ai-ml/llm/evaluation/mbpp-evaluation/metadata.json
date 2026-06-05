@@ -1,0 +1,33 @@
+{
+  "name": "mbpp-evaluation",
+  "category": "llm-evaluation",
+  "difficulty": "intermediate",
+  "language": "python",
+  "keywords": [
+    "mbpp",
+    "mostly-basic-python-problems",
+    "pass-at-k",
+    "code-generation",
+    "benchmark",
+    "evaluation"
+  ],
+  "description": "MBPP 编程评测详解：Pass@K指标、代码执行测试、3-shot提示",
+  "estimated_time": "2-3 hours",
+  "prerequisites": [
+    "llm-inference",
+    "lm-evaluation-harness"
+  ],
+  "learning_objectives": [
+    "理解 MBPP 数据集结构和评测设置",
+    "实现 Pass@K 评测指标",
+    "掌握代码执行测试方法",
+    "分析编程任务结果"
+  ],
+  "content_types": [
+    "tutorial",
+    "evaluation-guide",
+    "results-analysis"
+  ],
+  "quality_standard": "five-star",
+  "created_date": "2026-06-04"
+}

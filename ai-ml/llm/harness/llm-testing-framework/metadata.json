@@ -1,0 +1,14 @@
+{
+  "name": "llm-testing-framework",
+  "category": "llm-harness",
+  "difficulty": "intermediate",
+  "language": "python",
+  "keywords": ["testing", "unit-test", "integration-test", "regression", "pytest"],
+  "description": "LLM 测试框架：单元测试、集成测试、回归测试",
+  "estimated_time": "3-4 hours",
+  "prerequisites": ["llm-inference"],
+  "learning_objectives": ["设计 LLM 测试框架", "实现各类测试", "掌握 pytest 集成"],
+  "content_types": ["tutorial", "testing-guide"],
+  "quality_standard": "five-star",
+  "created_date": "2026-06-01"
+}

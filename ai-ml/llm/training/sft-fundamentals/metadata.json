@@ -1,0 +1,32 @@
+{
+  "name": "sft-fundamentals",
+  "category": "llm-training",
+  "difficulty": "intermediate",
+  "language": "python",
+  "keywords": [
+    "sft",
+    "supervised-fine-tuning",
+    "instruction-tuning",
+    "chatml",
+    "transformers"
+  ],
+  "description": "SFT 监督微调基础：指令数据构建、训练策略、Loss 设计",
+  "estimated_time": "4-5 hours",
+  "prerequisites": [
+    "transformer-scratch",
+    "pytorch-basics"
+  ],
+  "learning_objectives": [
+    "理解 SFT 与预训练的区别",
+    "掌握指令数据格式和处理",
+    "实现 SFT 训练流程",
+    "理解只计算 Assistant Loss 的原因"
+  ],
+  "content_types": [
+    "tutorial",
+    "data-processing",
+    "training-guide"
+  ],
+  "quality_standard": "five-star",
+  "created_date": "2026-06-01"
+}

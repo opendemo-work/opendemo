@@ -1,0 +1,33 @@
+{
+  "name": "self-distillation",
+  "category": "llm-optimization",
+  "difficulty": "advanced",
+  "language": "python",
+  "keywords": [
+    "self-distillation",
+    "knowledge-distillation",
+    "label-smoothing",
+    "teacher-free",
+    "deep-learning"
+  ],
+  "description": "Self-Distillation 自蒸馏：无需大模型作为教师、自训练机制、Deep Self-Distillation 实现",
+  "estimated_time": "4-5 hours",
+  "prerequisites": [
+    "transformer-scratch",
+    "knowledge-distillation",
+    "mixed-precision-training"
+  ],
+  "learning_objectives": [
+    "理解自蒸馏与知识蒸馏核心区别",
+    "掌握自蒸馏训练协议设计",
+    "实现 Deep Self-Distillation 多层对齐",
+    "分析自蒸馏对小模型性能提升"
+  ],
+  "content_types": [
+    "tutorial",
+    "distillation-protocol",
+    "implementation"
+  ],
+  "quality_standard": "five-star",
+  "created_date": "2026-06-04"
+}

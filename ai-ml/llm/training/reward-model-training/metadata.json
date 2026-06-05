@@ -1,0 +1,33 @@
+{
+  "name": "reward-model-training",
+  "category": "llm-training",
+  "difficulty": "advanced",
+  "language": "python",
+  "keywords": [
+    "reward-model",
+    "reward-modeling",
+    "preference-learning",
+    "rlhf",
+    "bradley-terry",
+    "human-preference"
+  ],
+  "description": "Reward Model 训练详解，演示如何训练一个模型来评估人类偏好",
+  "estimated_time": "4-5 hours",
+  "prerequisites": [
+    "llm-pretraining-scratch",
+    "sft-fundamentals"
+  ],
+  "learning_objectives": [
+    "理解 Reward Model 原理",
+    "掌握偏好学习损失函数",
+    "实现 Reward Model 训练",
+    "理解 RLHF 中的作用"
+  ],
+  "content_types": [
+    "tutorial",
+    "code-implementation",
+    "training-guide"
+  ],
+  "quality_standard": "five-star",
+  "created_date": "2026-06-04"
+}

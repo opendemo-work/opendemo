@@ -1,0 +1,33 @@
+{
+  "name": "int4-quantization",
+  "category": "llm-optimization",
+  "difficulty": "advanced",
+  "language": "python",
+  "keywords": [
+    "int4",
+    "quantization",
+    "nf4",
+    "qat",
+    "bitsandbytes",
+    "gptq"
+  ],
+  "description": "INT4 量化技术：NF4 格式、QLoRA、双重量化、极低显存推理",
+  "estimated_time": "5-6 hours",
+  "prerequisites": [
+    "int8-quantization",
+    "fp8-quantization"
+  ],
+  "learning_objectives": [
+    "理解 INT4 量化原理",
+    "掌握 NF4 格式",
+    "实现 INT4 量化器",
+    "使用 BitsAndBytes 和 GPTQ"
+  ],
+  "content_types": [
+    "tutorial",
+    "quantization-implementation",
+    "performance-analysis"
+  ],
+  "quality_standard": "five-star",
+  "created_date": "2026-06-01"
+}

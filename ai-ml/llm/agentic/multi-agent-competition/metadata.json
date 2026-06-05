@@ -1,0 +1,14 @@
+{
+  "name": "multi-agent-competition",
+  "category": "llm-agentic",
+  "difficulty": "advanced",
+  "language": "python",
+  "keywords": ["multi-agent", "competition", "adversarial", "debate"],
+  "description": "Multi-Agent 竞争系统：通过对抗式辩论优化解决方案",
+  "estimated_time": "4-5 hours",
+  "prerequisites": ["multi-agent-collaboration"],
+  "learning_objectives": ["理解竞争机制", "实现评判 Agent", "构建对抗系统"],
+  "content_types": ["tutorial", "advanced-pattern"],
+  "quality_standard": "five-star",
+  "created_date": "2026-06-04"
+}

@@ -1,0 +1,33 @@
+{
+  "name": "zero-redundancy-optimizer",
+  "category": "llm-training",
+  "difficulty": "advanced",
+  "language": "python",
+  "keywords": [
+    "zero",
+    "zeroredundancy",
+    "deepspeed",
+    "optimizer-state-partition",
+    "gradient-partition",
+    "parameter-partition"
+  ],
+  "description": "ZeRO 优化器详解，演示如何通过分片消除训练冗余",
+  "estimated_time": "4-5 hours",
+  "prerequisites": [
+    "data-parallel-training",
+    "distributed-training"
+  ],
+  "learning_objectives": [
+    "理解 ZeRO 三阶段原理",
+    "掌握 DeepSpeed ZeRO 配置",
+    "学习内存优化技巧",
+    "理解通信优化策略"
+  ],
+  "content_types": [
+    "tutorial",
+    "code-implementation",
+    "training-guide"
+  ],
+  "quality_standard": "five-star",
+  "created_date": "2026-06-04"
+}

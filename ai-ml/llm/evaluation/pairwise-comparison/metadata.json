@@ -1,0 +1,33 @@
+{
+  "name": "pairwise-comparison",
+  "category": "llm-evaluation",
+  "difficulty": "intermediate",
+  "language": "python",
+  "keywords": [
+    "pairwise-comparison",
+    "elo-rating",
+    "gpt-judge",
+    "relative-evaluation",
+    "benchmark",
+    "evaluation"
+  ],
+  "description": "Pairwise Comparison 成对比较评测详解：Elo评分系统、Judge评判、相对评估",
+  "estimated_time": "2-3 hours",
+  "prerequisites": [
+    "llm-inference",
+    "llm-as-judge"
+  ],
+  "learning_objectives": [
+    "理解 Pairwise Comparison 评测方法",
+    "实现 Elo Rating 评分系统",
+    "掌握 Judge 模型评判流程",
+    "分析相对评估结果"
+  ],
+  "content_types": [
+    "tutorial",
+    "evaluation-guide",
+    "results-analysis"
+  ],
+  "quality_standard": "five-star",
+  "created_date": "2026-06-04"
+}

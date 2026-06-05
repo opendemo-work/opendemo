@@ -1,0 +1,33 @@
+{
+  "name": "truthfulqa-evaluation",
+  "category": "llm-evaluation",
+  "difficulty": "intermediate",
+  "language": "python",
+  "keywords": [
+    "truthfulqa",
+    "truthfulness",
+    "misinformation",
+    "gpt-judge",
+    "benchmark",
+    "evaluation"
+  ],
+  "description": "TruthfulQA 真实性评测详解：Truth/Info双指标、GPT-Judge评估、错误信息检测",
+  "estimated_time": "2-3 hours",
+  "prerequisites": [
+    "llm-inference",
+    "lm-evaluation-harness"
+  ],
+  "learning_objectives": [
+    "理解 TruthfulQA 数据集结构和评测设置",
+    "实现 GPT-Judge 真实性评估",
+    "掌握 Truth × Info 组合指标",
+    "分析模型真实性表现"
+  ],
+  "content_types": [
+    "tutorial",
+    "evaluation-guide",
+    "results-analysis"
+  ],
+  "quality_standard": "five-star",
+  "created_date": "2026-06-04"
+}

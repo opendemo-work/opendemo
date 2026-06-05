@@ -1,0 +1,34 @@
+{
+  "name": "transformer-scratch",
+  "category": "llm-architecture",
+  "difficulty": "intermediate",
+  "language": "python",
+  "keywords": [
+    "transformer",
+    "attention",
+    "self-attention",
+    "multi-head-attention",
+    "positional-encoding",
+    "pytorch"
+  ],
+  "description": "从零实现 Transformer 架构，深入理解注意力机制、位置编码、前馈网络等核心组件",
+  "estimated_time": "4-6 hours",
+  "prerequisites": [
+    "linear-algebra",
+    "deep-learning-basics",
+    "pytorch-fundamentals"
+  ],
+  "learning_objectives": [
+    "理解 Self-Attention 的计算原理",
+    "掌握 Multi-Head Attention 的实现",
+    "理解位置编码的作用和实现",
+    "掌握 Transformer Encoder 的完整结构"
+  ],
+  "content_types": [
+    "tutorial",
+    "code-implementation",
+    "exercises"
+  ],
+  "quality_standard": "five-star",
+  "created_date": "2026-06-01"
+}

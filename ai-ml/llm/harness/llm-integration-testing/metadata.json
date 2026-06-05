@@ -1,0 +1,14 @@
+{
+  "name": "llm-integration-testing",
+  "category": "llm-harness",
+  "difficulty": "intermediate",
+  "language": "python",
+  "keywords": ["testing", "integration", "rag", "chain", "pipeline"],
+  "description": "LLM 集成测试：多模型流水线、RAG、工具调用的端到端验证",
+  "estimated_time": "3-4 hours",
+  "prerequisites": ["llm-unit-testing", "rag-basics"],
+  "learning_objectives": ["掌握 LLM 集成测试", "测试 RAG 流水线", "验证工具调用"],
+  "content_types": ["tutorial", "testing-guide"],
+  "quality_standard": "five-star",
+  "created_date": "2026-06-04"
+}

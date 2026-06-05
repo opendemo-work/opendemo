@@ -1,0 +1,34 @@
+{
+  "name": "decoder-only-architecture",
+  "category": "llm-architecture",
+  "difficulty": "intermediate",
+  "language": ["python", "pytorch"],
+  "keywords": [
+    "gpt",
+    "decoder-only",
+    "causal-attention",
+    "autoregressive",
+    "next-token-prediction",
+    "llm"
+  ],
+  "description": "深入解析 Decoder-Only 架构，聚焦 GPT 系列模型的自回归生成和因果注意力机制",
+  "estimated_time": "3-4 hours",
+  "prerequisites": [
+    "transformer-scratch",
+    "deep-learning-basics",
+    "pytorch-fundamentals"
+  ],
+  "learning_objectives": [
+    "理解 Decoder-Only 与 Encoder-Only 的本质区别",
+    "掌握因果注意力 (Causal Attention) 的实现",
+    "理解自回归生成的核心原理",
+    "掌握 Next Token Prediction 训练范式"
+  ],
+  "content_types": [
+    "tutorial",
+    "code-implementation",
+    "architecture-analysis"
+  ],
+  "quality_standard": "five-star",
+  "created_date": "2026-06-04"
+}

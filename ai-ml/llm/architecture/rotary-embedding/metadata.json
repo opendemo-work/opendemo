@@ -1,0 +1,32 @@
+{
+  "name": "rotary-embedding",
+  "category": "llm-architecture",
+  "difficulty": "advanced",
+  "language": "python",
+  "keywords": [
+    "rotary-embedding",
+    "rope",
+    "position-encoding",
+    "llama",
+    "transformer"
+  ],
+  "description": "RoPE 旋转位置编码详解：原理、实现、与 LLaMA/Qwen 的集成",
+  "estimated_time": "4-5 hours",
+  "prerequisites": [
+    "transformer-scratch",
+    "attention-mechanism"
+  ],
+  "learning_objectives": [
+    "理解 RoPE 的核心思想",
+    "掌握 RoPE 的数学推导",
+    "实现 RoPE 旋转操作",
+    "理解 RoPE 的长度外推能力"
+  ],
+  "content_types": [
+    "tutorial",
+    "code-implementation",
+    "comparison-analysis"
+  ],
+  "quality_standard": "five-star",
+  "created_date": "2026-06-01"
+}

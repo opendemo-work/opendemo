@@ -1,0 +1,14 @@
+{
+  "name": "llm-e2e-testing",
+  "category": "llm-harness",
+  "difficulty": "advanced",
+  "language": "python",
+  "keywords": ["testing", "e2e", "end-to-end", "conversation", "quality-gate"],
+  "description": "LLM 端到端测试：用户场景模拟、对话流程、质量门禁的全链路验证",
+  "estimated_time": "4-5 hours",
+  "prerequisites": ["llm-integration-testing"],
+  "learning_objectives": ["掌握 E2E 测试方法", "模拟用户场景", "设置质量门禁"],
+  "content_types": ["tutorial", "testing-guide"],
+  "quality_standard": "five-star",
+  "created_date": "2026-06-04"
+}

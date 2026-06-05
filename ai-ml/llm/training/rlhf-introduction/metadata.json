@@ -1,0 +1,34 @@
+{
+  "name": "rlhf-introduction",
+  "category": "llm-training",
+  "difficulty": "advanced",
+  "language": "python",
+  "keywords": [
+    "rlhf",
+    "reinforcement-learning",
+    "human-feedback",
+    "ppo",
+    "reward-model",
+    "alignment"
+  ],
+  "description": "RLHF 人类反馈强化学习详解：奖励模型、PPO优化、对齐训练",
+  "estimated_time": "6-8 hours",
+  "prerequisites": [
+    "lora-fine-tuning",
+    "pytorch-basics",
+    "reinforcement-learning-basics"
+  ],
+  "learning_objectives": [
+    "理解 RLHF 三阶段流程",
+    "掌握奖励模型训练方法",
+    "理解 PPO 算法核心原理",
+    "实现 RLHF 训练流程"
+  ],
+  "content_types": [
+    "tutorial",
+    "algorithm-implementation",
+    "alignment-guide"
+  ],
+  "quality_standard": "five-star",
+  "created_date": "2026-06-01"
+}

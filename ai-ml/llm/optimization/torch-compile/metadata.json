@@ -1,0 +1,32 @@
+{
+  "name": "torch-compile",
+  "category": "llm-optimization",
+  "difficulty": "advanced",
+  "language": "python",
+  "keywords": [
+    "torch.compile",
+    "dynamo",
+    "inductor",
+    "optimization",
+    "pytorch"
+  ],
+  "description": "PyTorch torch.compile 编译优化：dynamo 图捕获、inductor 代码生成、推理加速",
+  "estimated_time": "4-5 hours",
+  "prerequisites": [
+    "transformer-scratch",
+    "pytorch-basics"
+  ],
+  "learning_objectives": [
+    "理解 torch.compile 工作原理",
+    "掌握不同优化模式的使用场景",
+    "实现 LLM 推理优化",
+    "配合 DDP 进行训练加速"
+  ],
+  "content_types": [
+    "tutorial",
+    "optimization-technique",
+    "performance-analysis"
+  ],
+  "quality_standard": "five-star",
+  "created_date": "2026-06-01"
+}

@@ -1,0 +1,32 @@
+{
+  "name": "function-calling",
+  "category": "llm-application",
+  "difficulty": "intermediate",
+  "language": "python",
+  "keywords": [
+    "function-calling",
+    "tool-use",
+    "api-integration",
+    "openai",
+    "langchain"
+  ],
+  "description": "Function Calling 工具调用：让 LLM 调用外部 API 和工具",
+  "estimated_time": "3-4 hours",
+  "prerequisites": [
+    "prompt-engineering",
+    "api-basics"
+  ],
+  "learning_objectives": [
+    "理解 Function Calling 工作流程",
+    "掌握 Function Schema 设计",
+    "实现 Function Calling 对话",
+    "使用 LangChain 实现工具调用"
+  ],
+  "content_types": [
+    "tutorial",
+    "code-implementation",
+    "api-integration"
+  ],
+  "quality_standard": "five-star",
+  "created_date": "2026-06-01"
+}

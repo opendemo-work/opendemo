@@ -1,0 +1,34 @@
+{
+  "name": "flash-attention",
+  "category": "llm-architecture",
+  "difficulty": "advanced",
+  "language": ["python", "cuda"],
+  "keywords": [
+    "flash-attention",
+    "cuda",
+    "io-aware",
+    "online-softmax",
+    "memory-optimization",
+    "pytorch"
+  ],
+  "description": "深入解析 Flash Attention 算法原理，理解 IO-Aware 优化和 CUDA 实现",
+  "estimated_time": "6-8 hours",
+  "prerequisites": [
+    "transformer-scratch",
+    "cuda-basics",
+    "gpu-memory-hierarchy"
+  ],
+  "learning_objectives": [
+    "理解 GPU 内存层级和带宽差异",
+    "掌握 Flash Attention 的 IO-Aware 优化思想",
+    "理解 Online Softmax 算法",
+    "实现基本的 Flash Attention"
+  ],
+  "content_types": [
+    "tutorial",
+    "cuda-implementation",
+    "benchmark"
+  ],
+  "quality_standard": "five-star",
+  "created_date": "2026-06-01"
+}

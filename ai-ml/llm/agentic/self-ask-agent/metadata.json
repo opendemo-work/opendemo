@@ -1,0 +1,14 @@
+{
+  "name": "self-ask-agent",
+  "category": "llm-agentic",
+  "difficulty": "intermediate",
+  "language": "python",
+  "keywords": ["self-ask", "questioning", "decomposition", "reasoning"],
+  "description": "Self-Ask 自我提问 Agent：通过引导式提问分解复杂问题",
+  "estimated_time": "3-4 hours",
+  "prerequisites": ["react-agent"],
+  "learning_objectives": ["掌握问题分解技巧", "实现多步推理", "构建问答 Agent"],
+  "content_types": ["tutorial", "reasoning-pattern"],
+  "quality_standard": "five-star",
+  "created_date": "2026-06-04"
+}

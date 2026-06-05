@@ -1,0 +1,33 @@
+{
+  "name": "data-parallel-training",
+  "category": "llm-training",
+  "difficulty": "intermediate",
+  "language": "python",
+  "keywords": [
+    "data-parallel",
+    "DDP",
+    "DistributedDataParallel",
+    "multi-gpu",
+    "allreduce",
+    "pytorch"
+  ],
+  "description": "数据并行训练详解，演示如何利用多 GPU 加速大模型训练",
+  "estimated_time": "3-4 hours",
+  "prerequisites": [
+    "pytorch-basics",
+    "gpu-computing"
+  ],
+  "learning_objectives": [
+    "理解数据并行原理",
+    "掌握 PyTorch DDP 实现",
+    "学习分布式通信机制",
+    "优化多 GPU 训练效率"
+  ],
+  "content_types": [
+    "tutorial",
+    "code-implementation",
+    "training-guide"
+  ],
+  "quality_standard": "five-star",
+  "created_date": "2026-06-04"
+}

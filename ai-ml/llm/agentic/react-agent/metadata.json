@@ -1,0 +1,34 @@
+{
+  "name": "react-agent",
+  "category": "llm-agentic",
+  "difficulty": "advanced",
+  "language": "python",
+  "keywords": [
+    "react",
+    "agent",
+    "reasoning",
+    "acting",
+    "tool-use",
+    "langchain"
+  ],
+  "description": "ReAct Agent 实现：推理与行动相结合的自适应智能体",
+  "estimated_time": "5-6 hours",
+  "prerequisites": [
+    "transformer-scratch",
+    "prompt-engineering",
+    "function-calling"
+  ],
+  "learning_objectives": [
+    "理解 ReAct 范式核心思想",
+    "实现 ReAct Agent 循环",
+    "设计有效的工具接口",
+    "理解 Agent 状态管理"
+  ],
+  "content_types": [
+    "tutorial",
+    "code-implementation",
+    "agent-framework"
+  ],
+  "quality_standard": "five-star",
+  "created_date": "2026-06-01"
+}

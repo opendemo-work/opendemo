@@ -1,0 +1,14 @@
+{
+  "name": "regression-testing",
+  "category": "llm-harness",
+  "difficulty": "intermediate",
+  "language": "python",
+  "keywords": ["testing", "regression", "baseline", "drift", "monitoring"],
+  "description": "LLM 回归测试：基线快照、性能回归检测、行为漂移监控",
+  "estimated_time": "3-4 hours",
+  "prerequisites": ["llm-e2e-testing"],
+  "learning_objectives": ["建立测试基线", "检测性能回归", "监控行为漂移"],
+  "content_types": ["tutorial", "monitoring-guide"],
+  "quality_standard": "five-star",
+  "created_date": "2026-06-04"
+}

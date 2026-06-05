@@ -1,0 +1,32 @@
+{
+  "name": "safety-evaluation",
+  "category": "llm-evaluation",
+  "difficulty": "intermediate",
+  "language": "python",
+  "keywords": [
+    "safety",
+    "harmbench",
+    "toxicity",
+    "harmful-content",
+    "alignment"
+  ],
+  "description": "Safety Evaluation 安全评测：有害内容检测、毒性分析、HarmBench 基准",
+  "estimated_time": "4-5 hours",
+  "prerequisites": [
+    "llm-inference",
+    "llm-as-judge"
+  ],
+  "learning_objectives": [
+    "理解 Safety 评测维度",
+    "实现毒性检测",
+    "使用 LLM-as-Judge 评估安全",
+    "掌握 HarmBench 评测方法"
+  ],
+  "content_types": [
+    "tutorial",
+    "evaluation-guide",
+    "safety-analysis"
+  ],
+  "quality_standard": "five-star",
+  "created_date": "2026-06-01"
+}

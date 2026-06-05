@@ -1,0 +1,14 @@
+{
+  "name": "memory-systems",
+  "category": "llm-agentic",
+  "difficulty": "advanced",
+  "language": "python",
+  "keywords": ["memory", "agent", "episodic", "semantic", "knowledge-graph"],
+  "description": "Agent 记忆系统：短期记忆、长期记忆、情景记忆、语义记忆",
+  "estimated_time": "4-5 hours",
+  "prerequisites": ["react-agent"],
+  "learning_objectives": ["理解记忆系统架构", "实现各类记忆管理", "掌握记忆检索方法"],
+  "content_types": ["tutorial", "memory-implementation"],
+  "quality_standard": "five-star",
+  "created_date": "2026-06-01"
+}

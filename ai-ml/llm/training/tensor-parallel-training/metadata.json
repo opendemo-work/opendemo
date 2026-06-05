@@ -1,0 +1,34 @@
+{
+  "name": "tensor-parallel-training",
+  "category": "llm-training",
+  "difficulty": "advanced",
+  "language": "python",
+  "keywords": [
+    "tensor-parallel",
+    "megatron",
+    "model-sharding",
+    "multi-gpu",
+    "allgather",
+    "column-parallel",
+    "row-parallel"
+  ],
+  "description": "张量并行训练详解，演示如何将大模型权重分片到多 GPU",
+  "estimated_time": "4-5 hours",
+  "prerequisites": [
+    "data-parallel-training",
+    "distributed-training"
+  ],
+  "learning_objectives": [
+    "理解张量并行原理",
+    "掌握 Column/Row 并行实现",
+    "学习 Megatron-LM 分片策略",
+    "理解 3D 并行组合"
+  ],
+  "content_types": [
+    "tutorial",
+    "code-implementation",
+    "training-guide"
+  ],
+  "quality_standard": "five-star",
+  "created_date": "2026-06-04"
+}

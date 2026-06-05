@@ -1,0 +1,32 @@
+{
+  "name": "chain-of-thought",
+  "category": "llm-application",
+  "difficulty": "intermediate",
+  "language": "python",
+  "keywords": [
+    "chain-of-thought",
+    "cot",
+    "reasoning",
+    "tree-of-thought",
+    "prompt-engineering"
+  ],
+  "description": "Chain of Thought 思维链：Zero-shot CoT、Few-shot CoT、Tree of Thought",
+  "estimated_time": "3-4 hours",
+  "prerequisites": [
+    "prompt-patterns",
+    "reasoning-basics"
+  ],
+  "learning_objectives": [
+    "理解 CoT 的核心思想",
+    "实现 Zero-shot 和 Few-shot CoT",
+    "理解 Self-Consistency 机制",
+    "实现 Tree of Thought"
+  ],
+  "content_types": [
+    "tutorial",
+    "prompt-engineering",
+    "reasoning-techniques"
+  ],
+  "quality_standard": "five-star",
+  "created_date": "2026-06-01"
+}

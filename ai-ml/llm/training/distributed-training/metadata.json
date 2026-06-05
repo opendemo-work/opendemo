@@ -1,0 +1,14 @@
+{
+  "name": "distributed-training",
+  "category": "llm-training",
+  "difficulty": "advanced",
+  "language": "python",
+  "keywords": ["distributed", "deepspeed", "zero", "tensor-parallel", "pipeline-parallel"],
+  "description": "分布式训练：Data Parallel、Tensor Parallel、Pipeline Parallel、ZeRO",
+  "estimated_time": "5-6 hours",
+  "prerequisites": ["transformer-scratch", "distributed-basics"],
+  "learning_objectives": ["理解分布式训练策略", "掌握 DeepSpeed ZeRO", "实现多 GPU 训练"],
+  "content_types": ["tutorial", "optimization-technique"],
+  "quality_standard": "five-star",
+  "created_date": "2026-06-01"
+}

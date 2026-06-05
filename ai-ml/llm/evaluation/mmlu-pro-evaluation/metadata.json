@@ -1,0 +1,34 @@
+{
+  "name": "mmlu-pro-evaluation",
+  "category": "llm-evaluation",
+  "difficulty": "intermediate",
+  "language": "python",
+  "keywords": [
+    "mmlu-pro",
+    "high-difficulty",
+    "multiple-choice",
+    "10-way",
+    "benchmark",
+    "evaluation"
+  ],
+  "description": "MMLU-Pro 高难度评测详解：10-way选择、Chain-of-Thought、研究生水平题目",
+  "estimated_time": "3-4 hours",
+  "prerequisites": [
+    "mmlu-evaluation",
+    "llm-inference",
+    "lm-evaluation-harness"
+  ],
+  "learning_objectives": [
+    "理解 MMLU-Pro 与 MMLU 的区别",
+    "实现 10-way 选择题评测",
+    "掌握 Chain-of-Thought 提示技巧",
+    "分析高难度评测结果"
+  ],
+  "content_types": [
+    "tutorial",
+    "evaluation-guide",
+    "results-analysis"
+  ],
+  "quality_standard": "five-star",
+  "created_date": "2026-06-04"
+}

@@ -1,0 +1,33 @@
+{
+  "name": "gsm8k-evaluation",
+  "category": "llm-evaluation",
+  "difficulty": "intermediate",
+  "language": "python",
+  "keywords": [
+    "gsm8k",
+    "grade-school-math",
+    "math-reasoning",
+    "chain-of-thought",
+    "benchmark",
+    "evaluation"
+  ],
+  "description": "GSM8K 数学推理评测详解：Chain-of-Thought、多步推理、答案提取",
+  "estimated_time": "2-3 hours",
+  "prerequisites": [
+    "llm-inference",
+    "lm-evaluation-harness"
+  ],
+  "learning_objectives": [
+    "理解 GSM8K 数据集结构和评测设置",
+    "实现 Chain-of-Thought 提示评测",
+    "掌握数学答案提取方法",
+    "分析多步推理能力"
+  ],
+  "content_types": [
+    "tutorial",
+    "evaluation-guide",
+    "results-analysis"
+  ],
+  "quality_standard": "five-star",
+  "created_date": "2026-06-04"
+}

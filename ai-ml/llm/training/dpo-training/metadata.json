@@ -1,0 +1,32 @@
+{
+  "name": "dpo-training",
+  "category": "llm-training",
+  "difficulty": "advanced",
+  "language": "python",
+  "keywords": [
+    "dpo",
+    "direct-preference-optimization",
+    "alignment",
+    "rlhf",
+    "preference-learning"
+  ],
+  "description": "DPO 直接偏好优化：比 RLHF 更简单的对齐训练方法",
+  "estimated_time": "4-5 hours",
+  "prerequisites": [
+    "rlhf-introduction",
+    "lora-fine-tuning"
+  ],
+  "learning_objectives": [
+    "理解 DPO 的核心思想",
+    "掌握 DPO Loss 的数学推导",
+    "实现 DPO 训练流程",
+    "对比 DPO 与 RLHF 的优劣"
+  ],
+  "content_types": [
+    "tutorial",
+    "algorithm-implementation",
+    "alignment-guide"
+  ],
+  "quality_standard": "five-star",
+  "created_date": "2026-06-01"
+}

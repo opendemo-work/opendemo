@@ -1,0 +1,33 @@
+{
+  "name": "rag-fundamentals",
+  "category": "llm-application",
+  "difficulty": "intermediate",
+  "language": "python",
+  "keywords": [
+    "rag",
+    "retrieval-augmented-generation",
+    "vector-search",
+    "chunking",
+    "langchain",
+    "embedding"
+  ],
+  "description": "RAG 基础架构详解：文档分块、向量检索、混合搜索、上下文增强",
+  "estimated_time": "4-5 hours",
+  "prerequisites": [
+    "transformer-scratch",
+    "vector-database-basics"
+  ],
+  "learning_objectives": [
+    "理解 RAG 完整工作流程",
+    "掌握文档分块策略",
+    "实现向量检索和混合搜索",
+    "构建完整的 RAG Pipeline"
+  ],
+  "content_types": [
+    "tutorial",
+    "code-implementation",
+    "best-practices"
+  ],
+  "quality_standard": "five-star",
+  "created_date": "2026-06-01"
+}

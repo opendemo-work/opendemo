@@ -1,0 +1,36 @@
+{
+  "name": "gpt-architecture",
+  "category": "llm-architecture",
+  "difficulty": "advanced",
+  "language": ["python", "pytorch"],
+  "keywords": [
+    "gpt",
+    "gpt2",
+    "gpt3",
+    "gpt4",
+    "decoder-only",
+    "scaling-law",
+    "in-context-learning",
+    "autoregressive"
+  ],
+  "description": "深入解析 GPT-2/3/4 架构演进，理解从 GPT 到 GPT-4 的关键技术突破和 Scaling Laws",
+  "estimated_time": "5-6 hours",
+  "prerequisites": [
+    "decoder-only-architecture",
+    "transformer-scratch",
+    "deep-learning-basics"
+  ],
+  "learning_objectives": [
+    "理解 GPT 系列的架构演进脉络",
+    "掌握 Scaling Laws 理论和实验验证",
+    "理解 In-Context Learning 的机制",
+    "掌握 GPT-2/3/4 的关键技术改进"
+  ],
+  "content_types": [
+    "tutorial",
+    "code-implementation",
+    "architecture-analysis"
+  ],
+  "quality_standard": "five-star",
+  "created_date": "2026-06-04"
+}

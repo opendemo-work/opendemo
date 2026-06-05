@@ -1,0 +1,33 @@
+{
+  "name": "sparsegpt-pruning",
+  "category": "llm-optimization",
+  "difficulty": "advanced",
+  "language": "python",
+  "keywords": [
+    "sparsegpt",
+    "pruning",
+    "one-shot-pruning",
+    "structured-pruning",
+    "magnitude-pruning"
+  ],
+  "description": "SparseGPT 单次剪枝：原理推导、Mask 计算、与 WTAQ/随机剪枝对比分析",
+  "estimated_time": "4-5 hours",
+  "prerequisites": [
+    "transformer-scratch",
+    "gptq-quantization",
+    "quantization-basics"
+  ],
+  "learning_objectives": [
+    "理解 SparseGPT 剪枝原理与误差修正机制",
+    "掌握 one-shot 剪枝与渐进式剪枝区别",
+    "实现 SparseGPT Mask 计算与稀疏度控制",
+    "对比分析不同剪枝方法效果"
+  ],
+  "content_types": [
+    "tutorial",
+    "pruning-implementation",
+    "comparison-analysis"
+  ],
+  "quality_standard": "five-star",
+  "created_date": "2026-06-04"
+}

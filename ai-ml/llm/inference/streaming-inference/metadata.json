@@ -1,0 +1,32 @@
+{
+  "name": "streaming-inference",
+  "category": "llm-inference",
+  "difficulty": "intermediate",
+  "language": "python",
+  "keywords": [
+    "streaming",
+    "sse",
+    "websocket",
+    "real-time",
+    "token-streaming"
+  ],
+  "description": "Streaming Inference 流式输出详解：SSE 协议、Token 流式生成、前后端实现",
+  "estimated_time": "2-3 hours",
+  "prerequisites": [
+    "llm-inference-basics",
+    "api-development"
+  ],
+  "learning_objectives": [
+    "理解流式输出原理",
+    "掌握 SSE 协议实现",
+    "实现流式推理 API",
+    "开发前端流式消费"
+  ],
+  "content_types": [
+    "tutorial",
+    "api-implementation",
+    "frontend-development"
+  ],
+  "quality_standard": "five-star",
+  "created_date": "2026-06-04"
+}

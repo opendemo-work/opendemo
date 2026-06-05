@@ -1,0 +1,14 @@
+{
+  "name": "long-term-memory",
+  "category": "llm-agentic",
+  "difficulty": "advanced",
+  "language": "python",
+  "keywords": ["long-term-memory", "persistence", "vector-store", "knowledge"],
+  "description": "Long-Term Memory 长期记忆系统：跨会话持久化知识存储与检索",
+  "estimated_time": "4-5 hours",
+  "prerequisites": ["memory-systems"],
+  "learning_objectives": ["理解持久化存储", "实现向量检索", "构建知识库"],
+  "content_types": ["tutorial", "storage-pattern"],
+  "quality_standard": "five-star",
+  "created_date": "2026-06-04"
+}

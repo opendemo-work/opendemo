@@ -1,0 +1,32 @@
+{
+  "name": "kv-cache-optimization",
+  "category": "llm-inference",
+  "difficulty": "intermediate",
+  "language": "python",
+  "keywords": [
+    "kv-cache",
+    "quantization",
+    "prefix-caching",
+    "tiered-storage",
+    "memory-optimization"
+  ],
+  "description": "KV Cache 优化策略详解：量化压缩、缓存复用、分级存储",
+  "estimated_time": "3-4 hours",
+  "prerequisites": [
+    "paged-attention",
+    "gpu-memory"
+  ],
+  "learning_objectives": [
+    "掌握 KV Cache 量化方法",
+    "理解 Prefix Caching 原理",
+    "实现分级存储策略",
+    "综合运用优化技术"
+  ],
+  "content_types": [
+    "tutorial",
+    "optimization-techniques",
+    "performance-analysis"
+  ],
+  "quality_standard": "five-star",
+  "created_date": "2026-06-04"
+}
