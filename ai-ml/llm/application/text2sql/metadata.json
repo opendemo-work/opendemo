@@ -1,0 +1,33 @@
+{
+  "name": "text2sql",
+  "category": "llm-application",
+  "difficulty": "intermediate",
+  "language": "python",
+  "keywords": [
+    "text2sql",
+    "nl2sql",
+    "sql-generation",
+    "database",
+    "prompt-engineering",
+    "schema-understanding"
+  ],
+  "description": "Text2SQL 实战：将自然语言问题转换为可执行 SQL 查询的完整工作流，包括 Schema 理解、Prompt 工程与结果验证",
+  "estimated_time": "4-6 hours",
+  "prerequisites": [
+    "rag-fundamentals",
+    "function-calling"
+  ],
+  "learning_objectives": [
+    "理解 Text2SQL 的核心挑战与常见架构",
+    "掌握 Schema 描述、Few-shot 示例、Self-Correction 等 Prompt 工程技术",
+    "实现一个端到端的 Text2SQL 原型",
+    "学会验证 SQL 正确性与执行安全性"
+  ],
+  "content_types": [
+    "tutorial",
+    "code-implementation",
+    "best-practices"
+  ],
+  "quality_standard": "five-star",
+  "created_date": "2026-06-16"
+}

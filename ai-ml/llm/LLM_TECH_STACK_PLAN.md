@@ -6,10 +6,28 @@
 
 ## 📋 概览
 
-大模型技术栈是 OpenDemo 的核心重点方向，覆盖以下 8 大领域：
+大模型技术栈是 OpenDemo 的核心重点方向，覆盖以下 8 大领域。
 
-| 领域 | 英文 | 核心内容 | 案例数 |
-|------|------|----------|--------|
+### 当前落地状态（截至 2026-06-16）
+
+`ai-ml/llm/` 下已实际落地 **88 个 demo**，各方向分布如下：
+
+| 领域 | 英文 | 已落地数量 | 代表 demo |
+|------|------|-----------|-----------|
+| **训练** | Training | 15 | `lora-fine-tuning`、`rlhf-introduction`、`dpo-training`、`q-lora-tuning`、`fsdp-training`、`llm-pretraining-scratch` |
+| **优化** | Optimization | 12 | `fp8-quantization`、`int4-quantization`、`awq-quantization`、`gptq-quantization`、`knowledge-distillation`、`torch-compile` |
+| **评估** | Evaluation | 11 | `mmlu-evaluation`、`humaneval-evaluation`、`mt-bench-evaluation`、`llm-as-judge`、`safety-evaluation`、`truthfulqa-evaluation` |
+| **应用** | Application | 11 | `rag-fundamentals`、`function-calling`、`chain-of-thought`、`vector-database-comparison`、`few-shot-learning`、`prompt-patterns` |
+| **Agentic** | Agentic AI | 11 | `react-agent`、`langchain-agent`、`multi-agent-collaboration`、`plan-and-execute`、`reflexion-agent`、`web-search-agent` |
+| **推理** | Inference | 10 | `vllm-inference`、`tgi-deployment`、`speculative-decoding`、`continuous-batching`、`paged-attention`、`kv-cache-optimization` |
+| **架构** | Architecture | 10 | `transformer-scratch`、`gpt-architecture`、`llama-architecture`、`flash-attention`、`mixture-of-experts`、`state-space-models` |
+| **Harness** | Harness Engineering | 8 | `lm-evaluation-harness`、`open-llm-leaderboard`、`promptfoo-evaluation`、`llm-testing-framework`、`regression-testing` |
+| **总计** | | **88** | |
+
+### 目标规划
+
+| 领域 | 英文 | 核心内容 | 目标案例数 |
+|------|------|----------|-----------|
 | **架构** | Architecture | Transformer、Attention、Positional Encoding、MoE | 15+ |
 | **训练** | Training | 预训练、SFT、RLHF、Distributed Training、Alignment | 20+ |
 | **推理** | Inference | vLLM、TGI、Continuous Batching、Speculative Decoding | 15+ |
@@ -19,7 +37,20 @@
 | **Harness** | Harness Engineering | Eval Harness、Testing Framework、Benchmark | 10+ |
 | **评估** | Evaluation | MMLU、HumanEval、BBH、MT-Bench、Safety | 15+ |
 
-**总计: 120+ 案例**
+**目标总计: 120+ 案例**
+
+### 已识别缺口清单
+
+按优先级排序的待补齐方向：
+
+- **架构**：KV 压缩、专家路由可视化、Mamba/RetNet 实战、编码器-解码器架构、ALiBi/RoPE 对比
+- **训练**：数据清洗 pipeline、Dora/RS-LoRA、模型 soups、长上下文微调、故障容错训练
+- **推理**：推理引擎对比（vLLM vs TGI vs SGLang）、动态批调度、前缀缓存工程化、多模型服务编排
+- **优化**：GGUF、SmoothQuant、AutoGPTQ、ONNX/TensorRT-LLM 端到端、多教师蒸馏
+- **应用**：Agentic RAG、Text2SQL、代码生成工作流、多语言 RAG、Graph RAG、多模态 RAG
+- **Agentic**：工具调用安全、Agent 评估基准、人机协作循环、CrewAI/AutoGen/Swarm 框架实战
+- **评估**：BBH、Arena、自定义评估 Harness、红队测试、隐私/偏见评测
+- **Harness**：CI 集成评估、A/B 测试框架、生产监控与回滚、模糊测试
 
 ---
 

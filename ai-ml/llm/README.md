@@ -4,12 +4,28 @@
 
 ## 📋 概览
 
-本目录是 OpenDemo 大模型技术的核心重点方向，包含 **120+** 个高质量案例，全面覆盖大模型从理论到实践的完整技术体系。
+本目录是 OpenDemo 大模型技术的核心重点方向，当前已落地 **92 个 demo**，目标覆盖 120+ 个高质量案例，完整覆盖大模型从理论到实践的技术体系。
 
 ## 📊 技术栈全景
 
-| 领域 | 英文 | 案例数 | 核心内容 |
-|------|------|--------|----------|
+### 当前已落地（88 demo）
+
+| 领域 | 英文 | 已落地数量 | 代表 demo |
+|------|------|-----------|-----------|
+| **训练** | Training | 16 | `lora-fine-tuning`、`rlhf-introduction`、`dpo-training`、`data-curation-pipeline` |
+| **优化** | Optimization | 12 | `fp8-quantization`、`int4-quantization`、`awq-quantization` |
+| **评估** | Evaluation | 11 | `mmlu-evaluation`、`humaneval-evaluation`、`mt-bench-evaluation` |
+| **应用** | Application | 12 | `rag-fundamentals`、`function-calling`、`chain-of-thought`、`agentic-rag` |
+| **Agentic** | Agentic AI | 11 | `react-agent`、`langchain-agent`、`multi-agent-collaboration` |
+| **推理** | Inference | 11 | `vllm-inference`、`tgi-deployment`、`speculative-decoding`、`inference-engine-comparison` |
+| **架构** | Architecture | 10 | `transformer-scratch`、`gpt-architecture`、`llama-architecture` |
+| **Harness** | Harness Engineering | 9 | `lm-evaluation-harness`、`open-llm-leaderboard`、`ci-evaluation-harness` |
+| **总计** | | **92** | |
+
+### 目标规划（120+ 案例）
+
+| 领域 | 英文 | 目标案例数 | 核心内容 |
+|------|------|-----------|----------|
 | **架构** | Architecture | 15+ | Transformer、Attention、RoPE、MoE、SSM |
 | **训练** | Training | 20+ | 预训练、SFT、RLHF、LoRA、分布式训练 |
 | **推理** | Inference | 15+ | vLLM、TGI、Continuous Batching、Speculative Decoding |
@@ -19,7 +35,7 @@
 | **Harness** | Harness Engineering | 10+ | Eval Harness、Testing Framework、Benchmark |
 | **评估** | Evaluation | 15+ | MMLU、HumanEval、BBH、MT-Bench、Safety |
 
-**总计: 120+ 案例**
+**目标总计: 120+ 案例**
 
 ---
 
@@ -169,7 +185,39 @@ RAG 基础 → Function Calling → Agent 开发 → 应用集成
 
 ---
 
-## 📈 实现计划
+## 📈 补齐计划与缺口分析
+
+当前 88 个 demo 已覆盖 8 大领域的基础与核心方向，但距离 120+ 目标仍有约 32 个案例的缺口，重点补齐方向如下：
+
+### 分阶段补齐路线
+
+| 阶段 | 时间 | 目标 | 重点补齐方向 |
+|------|------|------|-------------|
+| **短期** | 2026 Q2 | 夯实基础 + 补齐缺口 | 基础预训练、数据工程、模型合并、长上下文推理、KV 压缩 |
+| **中期** | 2026 Q3-Q4 | 深化应用与 Agentic | Agentic RAG、Multi-Agent 编排框架（AutoGen/CrewAI/Swarm）、Agent 评估、可视化评估 |
+| **长期** | 2027 Q1 | 前沿与平台化 | 多模态大模型、MoE 训练、推理系统调度、企业级 LLMOps、在线实验环境 |
+
+### 本次补齐（2026-06-16）
+
+| demo 目录 | 方向 | 补齐内容 |
+|-----------|------|----------|
+| `training/data-curation-pipeline` | 训练 | 大模型数据清洗 Pipeline |
+| `inference/inference-engine-comparison` | 推理 | vLLM / TGI / SGLang 推理引擎横向对比 |
+| `application/agentic-rag` | 应用 | Agentic RAG 架构与实现 |
+| `harness/ci-evaluation-harness` | Harness | LLM CI 集成评估与质量门禁 |
+
+### 按领域缺口清单
+
+- **架构**：KV 压缩、专家路由可视化、Mamba/RetNet 实战、编码器-解码器架构、ALiBi/RoPE 对比
+- **训练**：~~数据清洗 pipeline~~ ✅、`data-curation-pipeline`；Dora/RS-LoRA、模型 soups、长上下文微调、故障容错训练
+- **推理**：~~推理引擎对比（vLLM vs TGI vs SGLang）~~ ✅、`inference-engine-comparison`；动态批调度、前缀缓存工程化、多模型服务编排
+- **优化**：GGUF、SmoothQuant、AutoGPTQ、ONNX/TensorRT-LLM 端到端、多教师蒸馏
+- **应用**：~~Agentic RAG~~ ✅、`agentic-rag`；Text2SQL、代码生成工作流、多语言 RAG、Graph RAG、多模态 RAG
+- **Agentic**：工具调用安全、Agent 评估基准、人机协作循环、CrewAI/AutoGen/Swarm 框架实战
+- **评估**：BBH、Arena、自定义评估 Harness、红队测试、隐私/偏见评测
+- **Harness**：~~CI 集成评估~~ ✅、`ci-evaluation-harness`；A/B 测试框架、生产监控与回滚、模糊测试
+
+### 原始三阶段规划
 
 ### Phase 1: 核心基础 (2026 Q3)
 

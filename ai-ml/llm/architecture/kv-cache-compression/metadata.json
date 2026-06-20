@@ -1,0 +1,34 @@
+{
+  "name": "kv-cache-compression",
+  "category": "llm-architecture",
+  "difficulty": "advanced",
+  "language": "python",
+  "keywords": [
+    "kv-cache",
+    "cache-compression",
+    "gqa",
+    "mla",
+    "attention",
+    "inference-optimization",
+    "memory-efficiency"
+  ],
+  "description": "KV Cache 压缩技术详解：GQA、MLA、量化 KV 等方法如何降低大模型推理显存占用",
+  "estimated_time": "5-7 hours",
+  "prerequisites": [
+    "transformer-scratch",
+    "multi-head-attention"
+  ],
+  "learning_objectives": [
+    "理解 KV Cache 在长序列推理中的显存瓶颈",
+    "掌握 GQA、MLA、KV 量化等压缩技术的核心原理",
+    "能够计算和对比不同压缩策略的显存节省效果",
+    "学会在实际推理框架中选择合适的 KV Cache 压缩方案"
+  ],
+  "content_types": [
+    "tutorial",
+    "code-implementation",
+    "best-practices"
+  ],
+  "quality_standard": "five-star",
+  "created_date": "2026-06-16"
+}

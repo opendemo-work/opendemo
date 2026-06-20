@@ -1,0 +1,25 @@
+{
+  "name": "ci-evaluation-golden-dataset",
+  "version": "1.0.0",
+  "description": "用于 CI 评估的示例黄金数据集",
+  "samples": [
+    {
+      "id": "q1",
+      "input": "中国的首都是哪里？",
+      "expected": "北京是中国的首都。",
+      "category": "geography"
+    },
+    {
+      "id": "q2",
+      "input": "Python 是什么？",
+      "expected": "Python 是一种流行的编程语言。",
+      "category": "tech"
+    },
+    {
+      "id": "q3",
+      "input": "请简述大语言模型的应用场景。",
+      "expected": "大语言模型可用于文本生成、问答、代码生成等任务。",
+      "category": "general"
+    }
+  ]
+}

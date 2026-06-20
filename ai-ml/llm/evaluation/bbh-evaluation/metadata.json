@@ -1,0 +1,34 @@
+{
+  "name": "bbh-evaluation",
+  "category": "llm-evaluation",
+  "difficulty": "advanced",
+  "language": "python",
+  "keywords": [
+    "bbh",
+    "big-bench-hard",
+    "reasoning",
+    "evaluation",
+    "few-shot",
+    "cot",
+    "benchmark"
+  ],
+  "description": "BBH (BIG-Bench Hard) 评测实战：使用 23 个复杂推理任务评估大模型的多步推理能力",
+  "estimated_time": "5-7 hours",
+  "prerequisites": [
+    "mmlu-evaluation",
+    "chain-of-thought"
+  ],
+  "learning_objectives": [
+    "理解 BBH 评测集的构成与设计目标",
+    "掌握 Few-shot CoT 与 Zero-shot CoT 评估方法",
+    "实现 BBH 风格的推理任务评估流程",
+    "学会分析模型在复杂推理任务上的优势与不足"
+  ],
+  "content_types": [
+    "tutorial",
+    "code-implementation",
+    "best-practices"
+  ],
+  "quality_standard": "five-star",
+  "created_date": "2026-06-16"
+}

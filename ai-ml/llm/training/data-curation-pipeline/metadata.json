@@ -1,0 +1,34 @@
+{
+  "name": "data-curation-pipeline",
+  "category": "llm-training",
+  "difficulty": "intermediate",
+  "language": "python",
+  "keywords": [
+    "data-curation",
+    "data-cleaning",
+    "pretraining",
+    "deduplication",
+    "quality-filtering",
+    "pii-removal",
+    "toxicity-filtering"
+  ],
+  "description": "大模型数据清洗 Pipeline 实战：从原始语料到训练就绪数据的完整处理流程，包括去重、质量过滤、隐私脱敏和毒性过滤",
+  "estimated_time": "4-6 hours",
+  "prerequisites": [
+    "llm-pretraining-scratch",
+    "tokenizer-training"
+  ],
+  "learning_objectives": [
+    "理解大模型预训练数据清洗的完整流程",
+    "掌握文本去重、质量过滤、隐私脱敏的核心方法",
+    "实现可扩展的数据清洗 Pipeline",
+    "学会评估清洗前后数据质量与训练效果"
+  ],
+  "content_types": [
+    "tutorial",
+    "code-implementation",
+    "best-practices"
+  ],
+  "quality_standard": "five-star",
+  "created_date": "2026-06-16"
+}

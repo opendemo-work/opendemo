@@ -1,0 +1,34 @@
+{
+  "name": "agentic-rag",
+  "category": "llm-application",
+  "difficulty": "advanced",
+  "language": "python",
+  "keywords": [
+    "agentic-rag",
+    "rag",
+    "agent",
+    "retrieval",
+    "reflection",
+    "tool-use",
+    "query-routing"
+  ],
+  "description": "Agentic RAG 实战：结合智能体能力与检索增强生成，实现查询路由、迭代检索、自我修正与工具调用的高级 RAG 架构",
+  "estimated_time": "5-7 hours",
+  "prerequisites": [
+    "rag-fundamentals",
+    "react-agent"
+  ],
+  "learning_objectives": [
+    "理解 Agentic RAG 与传统 RAG 的核心差异",
+    "掌握查询路由、迭代检索、自我反思等关键技术",
+    "实现一个可运行的 Agentic RAG 原型",
+    "能够评估 Agentic RAG 系统的检索与生成质量"
+  ],
+  "content_types": [
+    "tutorial",
+    "code-implementation",
+    "best-practices"
+  ],
+  "quality_standard": "five-star",
+  "created_date": "2026-06-16"
+}
