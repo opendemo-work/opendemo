@@ -4,7 +4,7 @@
 
 ## 📋 概览
 
-本目录是 OpenDemo 大模型技术的核心重点方向，当前已落地 **92 个 demo**，目标覆盖 120+ 个高质量案例，完整覆盖大模型从理论到实践的技术体系。
+本目录是 OpenDemo 大模型技术的核心重点方向，当前已落地 **96 个 demo**，目标覆盖 120+ 个高质量案例，完整覆盖大模型从理论到实践的技术体系。
 
 ## 📊 技术栈全景
 
@@ -13,14 +13,14 @@
 | 领域 | 英文 | 已落地数量 | 代表 demo |
 |------|------|-----------|-----------|
 | **训练** | Training | 16 | `lora-fine-tuning`、`rlhf-introduction`、`dpo-training`、`data-curation-pipeline` |
-| **优化** | Optimization | 12 | `fp8-quantization`、`int4-quantization`、`awq-quantization` |
-| **评估** | Evaluation | 11 | `mmlu-evaluation`、`humaneval-evaluation`、`mt-bench-evaluation` |
-| **应用** | Application | 12 | `rag-fundamentals`、`function-calling`、`chain-of-thought`、`agentic-rag` |
+| **优化** | Optimization | 13 | `fp8-quantization`、`int4-quantization`、`awq-quantization`、`gguf-quantization` |
+| **评估** | Evaluation | 12 | `mmlu-evaluation`、`humaneval-evaluation`、`mt-bench-evaluation`、`bbh-evaluation` |
+| **应用** | Application | 13 | `rag-fundamentals`、`function-calling`、`chain-of-thought`、`agentic-rag`、`text2sql` |
 | **Agentic** | Agentic AI | 11 | `react-agent`、`langchain-agent`、`multi-agent-collaboration` |
 | **推理** | Inference | 11 | `vllm-inference`、`tgi-deployment`、`speculative-decoding`、`inference-engine-comparison` |
-| **架构** | Architecture | 10 | `transformer-scratch`、`gpt-architecture`、`llama-architecture` |
+| **架构** | Architecture | 11 | `transformer-scratch`、`gpt-architecture`、`llama-architecture`、`kv-cache-compression` |
 | **Harness** | Harness Engineering | 9 | `lm-evaluation-harness`、`open-llm-leaderboard`、`ci-evaluation-harness` |
-| **总计** | | **92** | |
+| **总计** | | **96** | |
 
 ### 目标规划（120+ 案例）
 
@@ -205,16 +205,20 @@ RAG 基础 → Function Calling → Agent 开发 → 应用集成
 | `inference/inference-engine-comparison` | 推理 | vLLM / TGI / SGLang 推理引擎横向对比 |
 | `application/agentic-rag` | 应用 | Agentic RAG 架构与实现 |
 | `harness/ci-evaluation-harness` | Harness | LLM CI 集成评估与质量门禁 |
+| `architecture/kv-cache-compression` | 架构 | KV Cache 压缩技术 |
+| `optimization/gguf-quantization` | 优化 | GGUF 量化与 llama.cpp 部署 |
+| `evaluation/bbh-evaluation` | 评估 | BBH 复杂推理评测 |
+| `application/text2sql` | 应用 | 自然语言转 SQL |
 
 ### 按领域缺口清单
 
-- **架构**：KV 压缩、专家路由可视化、Mamba/RetNet 实战、编码器-解码器架构、ALiBi/RoPE 对比
+- **架构**：~~KV 压缩~~ ✅、`kv-cache-compression`；专家路由可视化、Mamba/RetNet 实战、编码器-解码器架构、ALiBi/RoPE 对比
 - **训练**：~~数据清洗 pipeline~~ ✅、`data-curation-pipeline`；Dora/RS-LoRA、模型 soups、长上下文微调、故障容错训练
 - **推理**：~~推理引擎对比（vLLM vs TGI vs SGLang）~~ ✅、`inference-engine-comparison`；动态批调度、前缀缓存工程化、多模型服务编排
-- **优化**：GGUF、SmoothQuant、AutoGPTQ、ONNX/TensorRT-LLM 端到端、多教师蒸馏
-- **应用**：~~Agentic RAG~~ ✅、`agentic-rag`；Text2SQL、代码生成工作流、多语言 RAG、Graph RAG、多模态 RAG
+- **优化**：~~GGUF~~ ✅、`gguf-quantization`；SmoothQuant、AutoGPTQ、ONNX/TensorRT-LLM 端到端、多教师蒸馏
+- **应用**：~~Agentic RAG~~ ✅、`agentic-rag`；~~Text2SQL~~ ✅、`text2sql`；代码生成工作流、多语言 RAG、Graph RAG、多模态 RAG
 - **Agentic**：工具调用安全、Agent 评估基准、人机协作循环、CrewAI/AutoGen/Swarm 框架实战
-- **评估**：BBH、Arena、自定义评估 Harness、红队测试、隐私/偏见评测
+- **评估**：~~BBH~~ ✅、`bbh-evaluation`；Arena、自定义评估 Harness、红队测试、隐私/偏见评测
 - **Harness**：~~CI 集成评估~~ ✅、`ci-evaluation-harness`；A/B 测试框架、生产监控与回滚、模糊测试
 
 ### 原始三阶段规划
