@@ -1,3 +1,5 @@
+<!-- TEMPLATE: 待完善 - 本 README 包含自动生成的模板内容，需要人工精修 -->
+
 # Tree of Thought (ToT) 思维树
 
 > 本案例详解 ToT 思维树推理框架，通过多路径探索和自我评估提升 LLM 复杂问题解决能力。
@@ -140,3 +142,43 @@ python tree_of_thought/creative_writing.py
 - `chain-of-thought` - 思维链
 - `few-shot-learning` - Few-shot Learning
 - `prompt-patterns` - Prompt 工程
+
+## 🎯 学习目标
+
+完成本案例学习后，你将能够：
+
+- ✅ 理解本案例涉及的 AI/ML 核心概念
+- ✅ 掌握相关的配置与命令
+- ✅ 能够在本地环境中复现
+
+## 🚀 快速开始
+
+### 运行演示
+
+```bash
+# 安装依赖
+pip install -r requirements.txt
+
+# 运行演示
+python code/main.py
+```
+
+## 📖 核心概念
+
+### 1. 基本概念
+
+本节介绍本案例涉及的 AI/ML 核心概念。
+
+### 2. 适用场景
+
+- 场景 1：学术研究
+- 场景 2：工程实践
+- 场景 3：面试准备
+
+## 💻 代码示例
+
+### 基本用法
+
+```bash
+python code/main.py
+```

@@ -1,285 +1,230 @@
-# 大语言模型微调实战演示
+# 大模型微调（LoRA）- 低成本领域适配
+
+> 使用 LoRA（Low-Rank Adaptation）技术对预训练大语言模型进行参数高效微调，演示数据集准备、训练、评估和推理全流程。
+
+---
+
+## 📋 目录
+
+- [🎯 学习目标](#-学习目标)
+- [📐 架构图](#-架构图)
+- [🚀 快速开始](#-快速开始)
+- [📖 核心概念](#-核心概念)
+- [💻 代码示例](#-代码示例)
+- [🔧 配置说明](#-配置说明)
+- [🧪 验证测试](#-验证测试)
+- [📊 运行结果](#-运行结果)
+- [🐛 常见问题](#-常见问题)
+- [📚 扩展学习](#-扩展学习)
+
+---
 
 ## 🎯 学习目标
 
-通过本案例你将掌握：
-- 大语言模型微调的基本概念和方法
-- 使用LoRA、P-Tuning等参数高效微调技术
-- 数据集准备和预处理技巧
-- 微调过程中的性能优化和资源管理
+完成本案例学习后，你将能够：
 
-## 🛠️ 环境准备
+- ✅ 理解 LoRA 微调的参数高效性
+- ✅ 准备指令微调数据集
+- ✅ 使用 Transformers + PEFT 进行 LoRA 训练
+- ✅ 加载微调后的模型进行推理
 
-### 系统要求
-- Python 3.8+
-- GPU环境（推荐NVIDIA GPU，CUDA 11.0+）
-- 至少16GB内存，推荐32GB+
+---
 
-### 依赖安装
-```bash
-pip install torch transformers datasets accelerate peft bitsandbytes
-pip install trl wandb  # 用于训练和实验跟踪
-```
-
-## 📁 项目结构
+## 📐 架构图
 
 ```
-llm-fine-tuning-demo/
-├── README.md                           # 本说明文档
-├── metadata.json                       # 元数据配置
-├── scripts/                           # 实用脚本
-│   ├── prepare_dataset.py             # 数据集准备脚本
-│   ├── fine_tune_model.py             # 模型微调脚本
-│   └── evaluate_model.py              # 模型评估脚本
-├── configs/                           # 配置文件
-│   ├── lora_config.json               # LoRA配置
-│   ├── training_config.json           # 训练配置
-│   └── quantization_config.json       # 量化配置
-├── data/                              # 数据文件
-│   ├── raw/                           # 原始数据
-│   ├── processed/                     # 处理后数据
-│   └── splits/                        # 训练/验证/测试分割
-├── models/                            # 模型文件
-│   ├── base_models/                   # 基础模型
-│   ├── fine_tuned/                    # 微调后模型
-│   └── checkpoints/                   # 检查点
-└── notebooks/                         # Jupyter笔记本
-    ├── 01_data_preparation.ipynb     # 数据准备
-    ├── 02_model_fine_tuning.ipynb    # 模型微调
-    └── 03_evaluation.ipynb           # 模型评估
+预训练模型（如 Qwen/Llama）
+        │
+        ▼
+   LoRA Adapter
+        │
+        ▼
+   领域特定任务
+（客服、代码、医疗等）
 ```
+
+---
 
 ## 🚀 快速开始
 
-### 步骤1：数据准备
+### 环境要求
+
+| 依赖 | 版本要求 | 说明 |
+|------|----------|------|
+| Python | >= 3.9 | 运行训练脚本 |
+| PyTorch | >= 2.0 | 深度学习框架 |
+| Transformers | >= 4.35 | 大模型库 |
+| PEFT | >= 0.6 | 参数高效微调 |
+
+### 安装依赖
 
 ```bash
-# 准备微调数据集
-python scripts/prepare_dataset.py \
-  --input_file data/raw/train.jsonl \
-  --output_dir data/processed/ \
-  --task_type classification
+cd ai-ml/llm-fine-tuning-demo
+pip install -r requirements.txt
 ```
 
-### 步骤2：模型微调
+### 启动训练
 
 ```bash
-# 使用LoRA进行参数高效微调
-python scripts/fine_tune_model.py \
-  --model_name_or_path facebook/opt-350m \
-  --dataset_path data/processed/ \
-  --output_dir models/fine_tuned/ \
-  --peft_method lora \
-  --lora_r 16 \
-  --lora_alpha 32 \
-  --lora_dropout 0.05 \
-  --num_epochs 3 \
-  --batch_size 4 \
-  --gradient_accumulation_steps 4
+python code/fine_tune_lora.py
 ```
 
-### 步骤3：模型评估
+---
 
-```bash
-# 评估微调后模型性能
-python scripts/evaluate_model.py \
-  --model_path models/fine_tuned/ \
-  --test_dataset data/processed/test.jsonl \
-  --metrics accuracy f1
+## 📖 核心概念
+
+### 1. LoRA
+
+LoRA 通过在原始权重矩阵旁路添加低秩矩阵进行微调，只训练少量参数：
+
+```
+W = W_0 + BA
 ```
 
-## 🔍 代码详解
+其中 W_0 冻结，B 和 A 是可训练的低秩矩阵。
 
-### 核心概念解析
+### 2. PEFT
 
-#### 1. 参数高效微调技术
+Parameter-Efficient Fine-Tuning，参数高效微调技术族，包括 LoRA、Prefix Tuning、Prompt Tuning 等。
+
+### 3. 指令微调
+
+将训练数据组织成 `(instruction, input, output)` 格式，让模型学习遵循指令。
+
+---
+
+## 💻 代码示例
+
+### 数据集格式
+
+```json
+[
+  {
+    "instruction": "将以下中文翻译成英文",
+    "input": "你好，世界",
+    "output": "Hello, world"
+  }
+]
+```
+
+### LoRA 训练脚本
+
 ```python
-# LoRA (Low-Rank Adaptation)
+from transformers import AutoModelForCausalLM, AutoTokenizer, TrainingArguments
 from peft import LoraConfig, get_peft_model
+from datasets import load_dataset
+
+model_name = "Qwen/Qwen2-1.5B-Instruct"
+model = AutoModelForCausalLM.from_pretrained(model_name)
+tokenizer = AutoTokenizer.from_pretrained(model_name)
 
 lora_config = LoraConfig(
-    r=16,  # 低秩矩阵的秩
-    lora_alpha=32,  # 缩放因子
-    target_modules=["q_proj", "v_proj"],  # 目标模块
-    lora_dropout=0.05,  # dropout概率
-    bias="none",  # 是否训练偏置
-    task_type="CAUSAL_LM"  # 任务类型
+    r=16,
+    lora_alpha=32,
+    target_modules=["q_proj", "v_proj"],
+    lora_dropout=0.05,
+    bias="none",
+    task_type="CAUSAL_LM"
 )
 
 model = get_peft_model(model, lora_config)
+
+dataset = load_dataset("json", data_files="data/train.jsonl")
+
+training_args = TrainingArguments(
+    output_dir="./output",
+    num_train_epochs=3,
+    per_device_train_batch_size=4,
+    learning_rate=2e-4,
+    logging_steps=10,
+)
+
+# 训练
+from trl import SFTTrainer
+trainer = SFTTrainer(
+    model=model,
+    args=training_args,
+    train_dataset=dataset["train"],
+    tokenizer=tokenizer,
+)
+trainer.train()
 ```
 
-#### 2. 实际应用示例
+### 推理
 
-##### 场景1：指令微调
 ```python
-# 使用Alpaca-style指令微调
-def format_instruction(example):
-    """格式化指令数据"""
-    return f"""### Instruction:
-{example['instruction']}
+from peft import PeftModel
 
-### Input:
-{example['input']}
+model = AutoModelForCausalLM.from_pretrained(model_name)
+model = PeftModel.from_pretrained(model, "./output")
 
-### Response:
-{example['output']}"""
-
-# 准备指令数据集
-dataset = dataset.map(lambda x: {"text": format_instruction(x)})
+inputs = tokenizer("你好", return_tensors="pt")
+outputs = model.generate(**inputs, max_new_tokens=50)
+print(tokenizer.decode(outputs[0]))
 ```
 
-##### 场景2：领域适应
-```python
-# 针对特定领域的微调
-def domain_adaptation_training():
-    """领域适应训练流程"""
-    # 1. 加载基础模型
-    model = AutoModelForCausalLM.from_pretrained(base_model_path)
-    
-    # 2. 应用LoRA适配器
-    model = get_peft_model(model, lora_config)
-    
-    # 3. 准备领域特定数据
-    train_dataset = prepare_domain_data(domain_data_path)
-    
-    # 4. 训练
-    trainer = Trainer(
-        model=model,
-        train_dataset=train_dataset,
-        args=training_args,
-        data_collator=data_collator
-    )
-    
-    trainer.train()
-```
+---
+
+## 🔧 配置说明
+
+| 文件 | 作用 |
+|------|------|
+| `code/fine_tune_lora.py` | LoRA 训练脚本 |
+| `data/train.jsonl` | 训练数据 |
+| `requirements.txt` | Python 依赖 |
+
+---
 
 ## 🧪 验证测试
 
-### 测试1：微调流程验证
-```python
-#!/usr/bin/env python
-# 验证微调流程
-import torch
-from transformers import AutoTokenizer, AutoModelForCausalLM
-from peft import PeftModel
+```bash
+# 检查 CUDA 可用
+python -c "import torch; print(torch.cuda.is_available())"
 
-def test_fine_tuning_pipeline():
-    print("=== 大语言模型微调流程测试 ===")
-    
-    # 加载基础模型和tokenizer
-    model_name = "facebook/opt-350m"
-    tokenizer = AutoTokenizer.from_pretrained(model_name)
-    model = AutoModelForCausalLM.from_pretrained(model_name)
-    
-    # 验证tokenizer功能
-    test_text = "Hello, world!"
-    tokens = tokenizer(test_text)
-    print(f"✅ Tokenizer功能正常，输入: '{test_text}', 输出token数量: {len(tokens['input_ids'])}")
-    
-    # 验证模型前向传播
-    inputs = tokenizer(test_text, return_tensors="pt")
-    with torch.no_grad():
-        outputs = model(**inputs)
-    print(f"✅ 模型前向传播正常，logits形状: {outputs.logits.shape}")
+# 运行训练
+python code/fine_tune_lora.py
 
-if __name__ == "__main__":
-    test_fine_tuning_pipeline()
+# 运行推理
+python code/inference.py
 ```
 
-### 测试2：LoRA适配器验证
-```python
-#!/usr/bin/env python
-# 验证LoRA适配器
-from peft import LoraConfig, get_peft_model
-from transformers import AutoModelForCausalLM
+---
 
-def test_lora_adapter():
-    print("=== LoRA适配器测试 ===")
-    
-    # 加载模型
-    model = AutoModelForCausalLM.from_pretrained("facebook/opt-350m")
-    
-    # 配置LoRA
-    lora_config = LoraConfig(
-        r=8,
-        lora_alpha=16,
-        target_modules=["q_proj", "v_proj"],
-        lora_dropout=0.05,
-        bias="none",
-        task_type="CAUSAL_LM"
-    )
-    
-    # 应用LoRA
-    model = get_peft_model(model, lora_config)
-    
-    # 检查参数数量
-    total_params = sum(p.numel() for p in model.parameters())
-    trainable_params = sum(p.numel() for p in model.parameters() if p.requires_grad)
-    
-    print(f"✅ LoRA适配器应用成功")
-    print(f"总参数: {total_params:,}")
-    print(f"可训练参数: {trainable_params:,}")
-    print(f"参数效率: {(trainable_params/total_params)*100:.2f}%")
+## 📊 运行结果
 
-if __name__ == "__main__":
-    test_lora_adapter()
+```
+训练损失逐步下降：
+Step 10: loss=2.345
+Step 50: loss=1.234
+Step 100: loss=0.876
 ```
 
-## ❓ 常见问题
+---
 
-### Q1: 如何选择合适的LoRA参数？
-**解决方案**：
-```python
-# LoRA参数选择指南
-"""
-- r (rank): 一般选择8, 16, 32, 64。较小的r值更参数高效，较大的r值可能有更好的表现。
-- lora_alpha: 通常设为2*r或4*r。控制缩放程度。
-- lora_dropout: 0.05或0.1，防止过拟合。
-- target_modules: 通常针对Q、V投影矩阵，也可以包括其他线性层。
-"""
-```
+## 🐛 常见问题
 
-### Q2: 如何处理内存不足问题？
-**解决方案**：
-```python
-# 内存优化策略
-from transformers import BitsAndBytesConfig
+### Q1：显存不足？
 
-# 4-bit量化
-bnb_config = BitsAndBytesConfig(
-    load_in_4bit=True,
-    bnb_4bit_quant_type="nf4",
-    bnb_4bit_use_double_quant=True,
-    bnb_4bit_compute_dtype=torch.bfloat16
-)
+**A**：使用更小的 batch size、开启 gradient checkpointing、使用 4-bit/8-bit 量化加载模型。
 
-model = AutoModelForCausalLM.from_pretrained(
-    model_name,
-    quantization_config=bnb_config,
-    device_map="auto"
-)
-```
+### Q2：loss 不下降？
+
+**A**：检查学习率、数据格式和目标模块是否正确。
+
+### Q3：推理输出质量差？
+
+**A**：增加训练数据量、调整 lora_r 和 lora_alpha、增加训练轮数。
+
+---
 
 ## 📚 扩展学习
 
-### 相关技术
-- **QLoRA**: 4-bit量化LoRA，进一步减少内存使用
-- **P-Tuning**: 连续提示学习方法
-- **Adapter**: 插入式适配器方法
-- **Prefix-Tuning**: 前缀微调方法
-
-### 进阶学习路径
-1. 掌握不同微调方法的特点和适用场景
-2. 学习高效的数据预处理和增强技术
-3. 理解模型评估和性能优化策略
-4. 掌握分布式训练和推理优化
-
-### 企业级应用场景
-- 个性化客服机器人微调
-- 行业知识库问答系统
-- 文本摘要和生成应用
-- 代码生成和理解模型
+- [LLM 推理优化](../llm-inference-demo/)
+- [LLM 训练](../llm-training-demo/)
+- [PEFT 官方文档](https://huggingface.co/docs/peft/)
 
 ---
-> **💡 提示**: 大语言模型微调是将通用模型适应特定任务或领域的重要技术，通过参数高效微调方法可以在保持模型性能的同时显著减少计算资源需求。
+
+*最后更新：2026-06-27*  
+*版本：1.1.0*  
+*维护者：OpenDemo Team*

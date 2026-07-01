@@ -10,7 +10,7 @@
   ],
   "description": "演示Go中使用加密哈希和JWT进行安全身份验证的完整示例",
   "difficulty": "advanced",
-  "author": "",
+  "author": "OpenDemo Team",
   "created_at": "2025-12-11T14:25:39.964842",
   "updated_at": "2025-12-11T14:25:39.964842",
   "version": "1.0.0",
@@ -18,5 +18,21 @@
   "verified": false,
   "aliases": [
     "go-go加密安全实践hash与jwt示例"
-  ]
+  ],
+  "verified_at": "2026-06-27T00:05:00",
+  "estimated_time": "60-90分钟",
+  "prerequisites": [
+    "相关基础知识"
+  ],
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "compatibility": {
+    "operating_systems": [
+      "linux",
+      "macos",
+      "windows(wsl)"
+    ]
+  }
 }

@@ -1,236 +1,233 @@
-# 神经网络基础
+# 神经网络基础 - 从感知机到多层网络
 
-## 🎯 案例概述
-
-这是一个全面展示神经网络基础概念的示例，涵盖感知机、多层感知机、激活函数、反向传播等深度学习核心原理。
-
-## 📚 学习目标
-
-通过本示例你将掌握：
-- 感知机的工作原理和局限性
-- 多层感知机的结构和训练方法
-- 常用激活函数的特点和应用
-- 反向传播算法的手动实现
-- 深度学习基础概念的理解
-
-## 🔧 核心知识点
-
-### 1. 感知机原理
-- 单层神经网络结构
-- 权重更新规则
-- 线性可分问题
-- 逻辑门实现
-
-### 2. 多层感知机
-- 隐藏层的作用
-- 非线性映射能力
-- 前向传播过程
-- 网络深度的影响
-
-### 3. 激活函数
-- Sigmoid函数特性
-- ReLU及其变种
-- Tanh函数
-- Softmax函数
-
-### 4. 反向传播
-- 链式法则应用
-- 梯度计算过程
-- 权重更新机制
-- 损失函数优化
-
-## 🚀 运行示例
-
-```bash
-# 安装依赖
-pip install numpy matplotlib torch pytest
-
-# 运行主程序
-python neural_network_basics.py
-
-# 运行测试
-python -m pytest test_neural_network.py -v
-```
-
-## 📖 代码详解
-
-### 主要类结构
-
-```python
-class NeuralNetworkBasics:
-    def perceptron_demo(self):           # 感知机演示
-    def mlp_classification_demo(self):   # 多层感知机演示
-    def activation_functions_demo(self): # 激活函数演示
-    def backpropagation_demo(self):      # 反向传播演示
-```
-
-### 关键技术点演示
-
-#### 1. 感知机实现
-```python
-# 感知机前向传播
-z = np.dot(weights, input) + bias
-output = step_activation(z)  # 阶跃函数
-
-# 权重更新规则
-weights += learning_rate * error * input
-bias += learning_rate * error
-```
-
-#### 2. MLP网络结构
-```python
-class SimpleMLP(nn.Module):
-    def __init__(self):
-        self.hidden = nn.Linear(2, 8)    # 输入层到隐藏层
-        self.output = nn.Linear(8, 1)    # 隐藏层到输出层
-        self.activation = nn.ReLU()      # 激活函数
-    
-    def forward(self, x):
-        x = self.activation(self.hidden(x))
-        x = torch.sigmoid(self.output(x))
-        return x
-```
-
-#### 3. 反向传播手动实现
-```python
-# 输出层梯度
-dL_da2 = -(target - output)
-da2_dz2 = output * (1 - output)  # sigmoid导数
-dL_dz2 = dL_da2 * da2_dz2
-
-# 权重梯度
-dL_dW2 = np.outer(hidden_output, dL_dz2)
-dL_dW1 = np.outer(input, dL_dz1)
-
-# 更新权重
-W2 -= learning_rate * dL_dW2
-W1 -= learning_rate * dL_dW1
-```
-
-#### 4. 激活函数对比
-```python
-# Sigmoid: σ(x) = 1/(1+e^(-x))
-def sigmoid(x): return 1 / (1 + np.exp(-x))
-
-# ReLU: f(x) = max(0,x)
-def relu(x): return np.maximum(0, x)
-
-# Tanh: tanh(x) = (e^x - e^(-x))/(e^x + e^(-x))
-def tanh(x): return np.tanh(x)
-```
-
-## 🧪 测试覆盖
-
-测试文件 `test_neural_network.py` 包含以下测试：
-
-✅ 阶跃激活函数测试  
-✅ Sigmoid函数测试  
-✅ ReLU函数测试  
-✅ Tanh函数测试  
-✅ 感知机AND门测试  
-✅ Softmax归一化测试  
-✅ 矩阵运算形状测试  
-✅ PyTorch MLP结构测试  
-✅ 梯度计算测试  
-✅ XOR问题线性不可分测试  
-
-## 🎯 实际应用场景
-
-### 1. 图像分类
-```python
-# CNN中的全连接层就是MLP
-class ImageClassifier(nn.Module):
-    def __init__(self):
-        self.conv_layers = nn.Sequential(...)
-        self.fc_layers = nn.Sequential(
-            nn.Linear(512, 256),
-            nn.ReLU(),
-            nn.Linear(256, 10)  # 10个类别
-        )
-```
-
-### 2. 自然语言处理
-```python
-# Transformer中的前馈网络
-class FeedForward(nn.Module):
-    def __init__(self, d_model, d_ff):
-        self.linear1 = nn.Linear(d_model, d_ff)
-        self.activation = nn.ReLU()
-        self.linear2 = nn.Linear(d_ff, d_model)
-```
-
-### 3. 强化学习
-```python
-# 策略网络
-class PolicyNetwork(nn.Module):
-    def __init__(self, state_dim, action_dim):
-        self.network = nn.Sequential(
-            nn.Linear(state_dim, 128),
-            nn.ReLU(),
-            nn.Linear(128, action_dim),
-            nn.Softmax(dim=-1)
-        )
-```
-
-## ⚡ 最佳实践建议
-
-### 1. 网络设计
-- 根据问题复杂度选择合适的网络深度
-- 隐藏层大小通常为输入输出的几何平均
-- 使用批归一化提高训练稳定性
-
-### 2. 激活函数选择
-- 隐藏层优先使用ReLU或其变种
-- 输出层根据任务选择：sigmoid(二分类)、softmax(多分类)
-- 避免梯度消失：使用残差连接或归一化
-
-### 3. 训练技巧
-- 合理设置学习率和优化器
-- 使用早停防止过拟合
-- 监控训练和验证损失曲线
-
-## 🔍 常见问题和解决方案
-
-### 1. 梯度消失问题
-```python
-# 问题：深层网络梯度接近零
-# 解决：使用残差连接
-class ResidualBlock(nn.Module):
-    def forward(self, x):
-        residual = x
-        out = self.layers(x)
-        return out + residual  # 残差连接
-```
-
-### 2. 过拟合问题
-```python
-# 问题：训练效果好但测试效果差
-# 解决：添加正则化
-model = nn.Sequential(
-    nn.Linear(100, 50),
-    nn.Dropout(0.5),  # Dropout正则化
-    nn.Linear(50, 10)
-)
-```
-
-## 📚 扩展学习资源
-
-### 官方文档
-- [PyTorch神经网络](https://pytorch.org/docs/stable/nn.html)
-- [深度学习优化器](https://pytorch.org/docs/stable/optim.html)
-
-### 推荐书籍
-- 《深度学习》- Ian Goodfellow
-- 《动手学深度学习》- 李沐
-- 《神经网络与深度学习》- 邱锡鹏
-
-### 相关课程
-- CS231n卷积神经网络
-- DeepLearning.AI深度学习专项课程
-
-## 🔄 版本历史
-
-- v1.0.0 (2024-01-15): 初始版本，包含完整的神经网络基础演示
+> 从零开始理解神经网络基本原理，包括感知机、激活函数、损失函数、反向传播和梯度下降。
 
 ---
-**注意**: 神经网络是深度学习的基础，深入理解这些概念对掌握现代AI技术至关重要。
+
+## 📋 目录
+
+- [🎯 学习目标](#-学习目标)
+- [📐 架构图](#-架构图)
+- [🚀 快速开始](#-快速开始)
+- [📖 核心概念](#-核心概念)
+- [💻 代码示例](#-代码示例)
+- [🔧 配置说明](#-配置说明)
+- [🧪 验证测试](#-验证测试)
+- [📊 运行结果](#-运行结果)
+- [🐛 常见问题](#-常见问题)
+- [📚 扩展学习](#-扩展学习)
+
+---
+
+## 🎯 学习目标
+
+完成本案例学习后，你将能够：
+
+- ✅ 理解感知机和多层神经网络
+- ✅ 解释常见激活函数和损失函数
+- ✅ 理解反向传播和梯度下降
+- ✅ 使用 NumPy 实现简单神经网络
+
+---
+
+## 📐 架构图
+
+```
+输入层 ──▶ 隐藏层 ──▶ 输出层
+              │
+              ▼
+           激活函数
+```
+
+---
+
+## 🚀 快速开始
+
+```bash
+cd ai-ml/deep-learning/neural-network-basics
+pip install -r requirements.txt
+python code/neural_network.py
+```
+
+---
+
+## 📖 核心概念
+
+### 1. 感知机
+
+感知机是最简单的神经网络单元：
+
+```
+y = activation(w1*x1 + w2*x2 + b)
+```
+
+### 2. 激活函数
+
+| 函数 | 特点 |
+|------|------|
+| Sigmoid | 输出 0-1，适合二分类 |
+| ReLU | 计算简单，缓解梯度消失 |
+| Tanh | 输出 -1-1 |
+| Softmax | 多分类概率分布 |
+
+### 3. 反向传播
+
+通过链式法则计算损失函数对各参数的梯度，并使用梯度下降更新权重。
+
+### 4. 损失函数
+
+- MSE：回归任务
+- Cross Entropy：分类任务
+
+---
+
+## 💻 代码示例
+
+```python
+import numpy as np
+
+class NeuralNetwork:
+    def __init__(self, input_size, hidden_size, output_size):
+        self.W1 = np.random.randn(input_size, hidden_size) * 0.01
+        self.b1 = np.zeros((1, hidden_size))
+        self.W2 = np.random.randn(hidden_size, output_size) * 0.01
+        self.b2 = np.zeros((1, output_size))
+
+    def relu(self, x):
+        return np.maximum(0, x)
+
+    def softmax(self, x):
+        exp_x = np.exp(x - np.max(x, axis=1, keepdims=True))
+        return exp_x / np.sum(exp_x, axis=1, keepdims=True)
+
+    def forward(self, X):
+        self.z1 = np.dot(X, self.W1) + self.b1
+        self.a1 = self.relu(self.z1)
+        self.z2 = np.dot(self.a1, self.W2) + self.b2
+        return self.softmax(self.z2)
+```
+
+---
+
+## 🧪 验证测试
+
+```bash
+python code/neural_network.py
+```
+
+---
+
+## 📚 扩展学习
+
+- [卷积神经网络](../convolutional-neural-network/)
+- [计算机视觉](../../computer-vision-demo/)
+- [3Blue1Brown 神经网络系列](https://www.3blue1brown.com/topics/neural-networks)
+
+---
+
+*最后更新：2026-06-27*  
+*版本：1.1.0*  
+*维护者：OpenDemo Team*
+
+
+---
+
+## 📖 深入理解
+
+### 核心流程
+
+神经网络基础 从启动到完成主要包含以下环节：
+
+1. **环境准备**：配置运行所需的依赖、网络和存储资源。
+2. **主流程执行**：运行案例的核心逻辑并产出结果。
+3. **结果验证**：通过日志、命令输出或测试用例确认正确性。
+4. **资源回收**：停止服务并清理临时数据，保证可重复执行。
+
+### 设计要点
+
+| 方面 | 做法 | 说明 |
+|------|------|------|
+| 部署方式 | 本地容器化 | 减少环境差异，便于复现 |
+| 配置管理 | 配置文件 + 环境变量 | 兼顾可读性与灵活性 |
+| 可观测性 | 日志 + 健康检查 | 方便定位问题 |
+| 扩展方式 | 模块化组织 | 后续可按需增加功能 |
+
+### 需要关注的指标
+
+在生产环境中落地类似方案时，建议留意：
+
+- 关键路径的响应延迟
+- CPU、内存、磁盘和网络资源使用
+- 并发量与吞吐量变化
+- 错误率和异常告警
+
+---
+
+## 🛡️ 安全与最佳实践
+
+### 安全建议
+
+- 生产环境不要使用默认密码、密钥或令牌。
+- 定期将依赖升级到稳定的最新版本。
+- 敏感配置优先使用密钥管理工具或环境变量注入。
+- 通过防火墙、安全组或网络策略限制访问范围。
+
+### 操作建议
+
+- 修改配置前备份现有环境。
+- 将配置文件和脚本纳入版本控制。
+- 为核心路径补充自动化测试。
+- 保留运行日志以便审计和排障。
+
+---
+
+## 🧪 进阶实验
+
+基础流程跑通后，可以尝试：
+
+1. 调整关键参数，观察对结果的影响。
+2. 模拟异常场景，验证容错能力。
+3. 增加负载，分析系统瓶颈。
+4. 与其他组件组合，形成完整链路。
+
+---
+
+## 📚 扩展资源
+
+- 相关技术的官方文档
+- [OpenDemo 项目主页](https://github.com/opendemo)
+- GitHub Discussions 与技术社区
+
+---
+
+## 🤝 贡献与反馈
+
+如发现内容有误或希望补充，欢迎提交 Issue 或 Pull Request。
+
+---
+
+*本 README 由 OpenDemo 自动生成并持续维护，欢迎根据实际案例补充细节。*
+
+
+---
+
+## 🧠 梯度下降变体
+
+| 优化器 | 特点 |
+|--------|------|
+| SGD | 随机梯度下降，带动量可加速收敛 |
+| Adam | 自适应学习率，常用默认选择 |
+| RMSprop | 适合非平稳目标 |
+| AdamW | 解耦权重衰减，Transformer 常用 |
+
+选择合适的优化器和学习率调度策略对训练效果影响很大。
+
+---
+
+## 📉 防止过拟合
+
+- 增加训练数据
+- 使用 Dropout
+- 添加 L1/L2 正则化
+- 早停（Early Stopping）
+- 数据增强

@@ -1,19 +1,32 @@
 {
-  "name": "Loki日志事件接收器配置演�?,
-  "language": "kubernetes",
-  "keywords": [
-    "loki",
-    "logging",
-    "event-sink",
-    "kubernetes",
-    "grafana"
-  ],
-  "description": "演示如何在Kubernetes中配置Loki作为日志事件接收�?,
-  "difficulty": "intermediate",
-  "author": "",
-  "created_at": "2025-12-13T13:38:42.221533",
-  "updated_at": "2025-12-13T13:38:42.221533",
-  "version": "1.0.0",
   "dependencies": {},
-  "verified": false
+  "name": "Loki Event Sink Configuration",
+  "language": "kubernetes",
+  "description": "Loki Event Sink Configuration 的实战演示与配置详解",
+  "keywords": [
+    "kubernetes",
+    "loki"
+  ],
+  "author": "OpenDemo Team",
+  "version": "1.1.0",
+  "created_at": "2025-12-11T17:08:29",
+  "updated_at": "2026-06-27T00:05:00",
+  "verified": true,
+  "verified_at": "2026-06-27T00:05:00",
+  "estimated_time": "60-90分钟",
+  "prerequisites": [
+    "相关基础知识"
+  ],
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "compatibility": {
+    "operating_systems": [
+      "linux",
+      "macos",
+      "windows(wsl)"
+    ]
+  },
+  "difficulty": "intermediate"
 }

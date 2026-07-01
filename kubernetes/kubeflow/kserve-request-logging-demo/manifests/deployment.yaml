@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kserve-request-logging-demo
+  labels:
+    app: kserve-request-logging-demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kserve-request-logging-demo
+  template:
+    metadata:
+      labels:
+        app: kserve-request-logging-demo
+    spec:
+      containers:
+      - name: demo
+        image: nginx:alpine
+        ports:
+        - containerPort: 80

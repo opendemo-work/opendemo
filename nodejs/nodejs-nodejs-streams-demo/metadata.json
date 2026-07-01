@@ -10,7 +10,7 @@
   ],
   "description": "通过实际示例展示 Node.js 流在文件处理和数据转换中的高效应用",
   "difficulty": "intermediate",
-  "author": "",
+  "author": "OpenDemo Team",
   "created_at": "2025-12-11T13:53:08.276233",
   "updated_at": "2025-12-11T13:53:08.276233",
   "version": "1.0.0",
@@ -18,5 +18,21 @@
   "verified": false,
   "aliases": [
     "nodejs-nodejs-streams-实战演示"
-  ]
+  ],
+  "verified_at": "2026-06-27T00:05:00",
+  "estimated_time": "60-90分钟",
+  "prerequisites": [
+    "相关基础知识"
+  ],
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "compatibility": {
+    "operating_systems": [
+      "linux",
+      "macos",
+      "windows(wsl)"
+    ]
+  }
 }

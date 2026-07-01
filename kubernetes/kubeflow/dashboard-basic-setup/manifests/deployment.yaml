@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dashboard-basic-setup
+  labels:
+    app: dashboard-basic-setup
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dashboard-basic-setup
+  template:
+    metadata:
+      labels:
+        app: dashboard-basic-setup
+    spec:
+      containers:
+      - name: demo
+        image: nginx:alpine
+        ports:
+        - containerPort: 80

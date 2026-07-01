@@ -1,0 +1,34 @@
+version: '3.8'
+services:
+  haproxy:
+    image: haproxy:2.8-alpine
+    container_name: haproxy-lb
+    ports:
+      - "8080:80"
+    volumes:
+      - ./configs/haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg:ro
+    networks:
+      - backend
+    depends_on:
+      - app1
+      - app2
+
+  app1:
+    image: nginx:alpine
+    container_name: haproxy-app1
+    volumes:
+      - ./html/app1.html:/usr/share/nginx/html/index.html:ro
+    networks:
+      - backend
+
+  app2:
+    image: nginx:alpine
+    container_name: haproxy-app2
+    volumes:
+      - ./html/app2.html:/usr/share/nginx/html/index.html:ro
+    networks:
+      - backend
+
+networks:
+  backend:
+    driver: bridge

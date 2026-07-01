@@ -14,12 +14,20 @@
   "difficulty": "intermediate",
   "author": "OpenDemo Team",
   "created_at": "2026-02-02",
-  "updated_at": "2026-02-02",
+  "updated_at": "2026-06-26T23:50:00",
   "version": "1.0.0",
   "dependencies": {
-    "required_packages": ["sysstat", "procps"],
+    "required_packages": [
+      "sysstat",
+      "procps"
+    ],
     "minimum_kernel": "3.10",
-    "supported_distros": ["ubuntu", "centos", "rhel", "debian"]
+    "supported_distros": [
+      "ubuntu",
+      "centos",
+      "rhel",
+      "debian"
+    ]
   },
   "verified": true,
   "estimated_time": "3-4小时",
@@ -60,5 +68,12 @@
     "docs/ps_command_guide.md",
     "docs/df_du_guide.md",
     "docs/iostat_analysis.md"
-  ]
+  ],
+  "verified_at": "2026-06-26T23:50:00",
+  "compatibility": {
+    "operating_systems": [
+      "linux",
+      "macos"
+    ]
+  }
 }

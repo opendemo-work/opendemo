@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: troubleshooting-advanced
+  labels:
+    app: troubleshooting-advanced
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: troubleshooting-advanced
+  template:
+    metadata:
+      labels:
+        app: troubleshooting-advanced
+    spec:
+      containers:
+      - name: demo
+        image: nginx:alpine
+        ports:
+        - containerPort: 80

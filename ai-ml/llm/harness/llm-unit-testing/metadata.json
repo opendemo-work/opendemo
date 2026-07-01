@@ -2,13 +2,46 @@
   "name": "llm-unit-testing",
   "category": "llm-harness",
   "difficulty": "beginner",
-  "language": "python",
-  "keywords": ["testing", "unit-test", "llm", "pytest", "validation"],
+  "language": "ai-ml",
+  "keywords": [
+    "testing",
+    "unit-test",
+    "llm",
+    "pytest",
+    "validation"
+  ],
   "description": "LLM 单元测试：针对提示词、输出格式、响应时间的独立测试",
   "estimated_time": "2-3 hours",
-  "prerequisites": ["llm-inference"],
-  "learning_objectives": ["掌握 LLM 单元测试方法", "设计测试用例", "验证输出格式"],
-  "content_types": ["tutorial", "testing-guide"],
+  "prerequisites": [
+    "llm-inference"
+  ],
+  "learning_objectives": [
+    "掌握 LLM 单元测试方法",
+    "设计测试用例",
+    "验证输出格式"
+  ],
+  "content_types": [
+    "tutorial",
+    "testing-guide"
+  ],
   "quality_standard": "five-star",
-  "created_date": "2026-06-04"
+  "created_date": "2026-06-04",
+  "dependencies": {},
+  "author": "OpenDemo Team",
+  "version": "1.1.0",
+  "created_at": "2025-12-11T17:08:29",
+  "updated_at": "2026-06-27T00:10:00",
+  "verified": true,
+  "verified_at": "2026-06-27T00:10:00",
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "compatibility": {
+    "operating_systems": [
+      "linux",
+      "macos",
+      "windows(wsl)"
+    ]
+  }
 }

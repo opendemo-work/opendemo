@@ -1,15 +1,19 @@
 {
   "name": "backup-strategy-demo",
-  "language": "shell/python",
+  "language": "database",
   "keywords": [
-    "backup-strategy", "disaster-recovery", "data-protection",
-    "rto-rpo", "3-2-1-principle", "backup-automation"
+    "backup-strategy",
+    "disaster-recovery",
+    "data-protection",
+    "rto-rpo",
+    "3-2-1-principle",
+    "backup-automation"
   ],
   "description": "企业级数据库备份恢复策略完整方案，涵盖MySQL、PostgreSQL、MongoDB、Redis的全栈备份技术、自动化管理和灾难恢复演练",
   "difficulty": "expert",
   "author": "OpenDemo Team",
   "created_at": "2026-02-02",
-  "updated_at": "2026-02-02",
+  "updated_at": "2026-06-26T23:55:00",
   "version": "1.0.0",
   "dependencies": {
     "prerequisite_knowledge": [
@@ -76,5 +80,18 @@
     "rpo_hours": 1,
     "critical_systems_rto_minutes": 60,
     "critical_systems_rpo_minutes": 15
+  },
+  "verified_at": "2026-06-26T23:55:00",
+  "estimated_time": "60-90分钟",
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "compatibility": {
+    "operating_systems": [
+      "linux",
+      "macos",
+      "windows(wsl)"
+    ]
   }
 }

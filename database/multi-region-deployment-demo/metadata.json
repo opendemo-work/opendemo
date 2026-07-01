@@ -7,10 +7,21 @@
   "last_updated": "2026-02-03",
   "category": "云原生数据库",
   "subcategory": "多区域部署",
-  "tags": ["multi-region", "geo-distribution", "disaster-recovery", "latency-optimization", "data-replication"],
-  "difficulty": "专家级",
+  "tags": [
+    "multi-region",
+    "geo-distribution",
+    "disaster-recovery",
+    "latency-optimization",
+    "data-replication"
+  ],
+  "difficulty": "intermediate",
   "estimated_time": "360分钟",
-  "prerequisites": ["分布式系统基础", "网络架构知识", "数据库复制原理", "云服务商多区域部署经验"],
+  "prerequisites": [
+    "分布式系统基础",
+    "网络架构知识",
+    "数据库复制原理",
+    "云服务商多区域部署经验"
+  ],
   "learning_objectives": [
     "掌握数据库多区域部署的核心架构和实现方案",
     "学会设计全球分布式的数据库部署策略",
@@ -23,5 +34,28 @@
     "clarity": "步骤详细可操作",
     "relevance": "企业级应用场景"
   },
-  "validation_status": "pending"
+  "validation_status": "pending",
+  "language": "database",
+  "description": "数据库多区域部署方案完整指南 的实战演示",
+  "keywords": [
+    "database",
+    "mysql",
+    "multi"
+  ],
+  "created_at": "2025-12-11T17:08:29",
+  "updated_at": "2026-06-26T23:55:00",
+  "verified": true,
+  "verified_at": "2026-06-26T23:55:00",
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "dependencies": {},
+  "compatibility": {
+    "operating_systems": [
+      "linux",
+      "macos",
+      "windows(wsl)"
+    ]
+  }
 }

@@ -1,0 +1,10 @@
+apiVersion: networking.higress.io/v1
+kind: McpBridge
+metadata:
+  name: default
+spec:
+  registries:
+    - name: app
+      type: static
+      domain: app
+      port: 80

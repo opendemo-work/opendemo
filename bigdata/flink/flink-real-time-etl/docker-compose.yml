@@ -1,0 +1,27 @@
+version: '3.8'
+services:
+  jobmanager:
+    image: flink:1.18-scala_2.12
+    container_name: flink-jobmanager
+    command: jobmanager
+    environment:
+      - JOB_MANAGER_RPC_ADDRESS=jobmanager
+    ports:
+      - "8081:8081"
+    networks:
+      - flink
+
+  taskmanager:
+    image: flink:1.18-scala_2.12
+    container_name: flink-taskmanager
+    command: taskmanager
+    environment:
+      - JOB_MANAGER_RPC_ADDRESS=jobmanager
+    depends_on:
+      - jobmanager
+    networks:
+      - flink
+
+networks:
+  flink:
+    driver: bridge

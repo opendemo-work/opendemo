@@ -1,0 +1,126 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://opendemo.dev/schemas/metadata-1.0.json",
+  "title": "OpenDemo Metadata Schema v1.0",
+  "description": "五星案例统一的 metadata.json 校验规则",
+  "type": "object",
+  "required": [
+    "name",
+    "language",
+    "difficulty",
+    "description",
+    "keywords",
+    "author",
+    "version",
+    "created_at",
+    "updated_at",
+    "verified"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "minLength": 2,
+      "description": "案例中文名称"
+    },
+    "language": {
+      "type": "string",
+      "enum": [
+        "python",
+        "java",
+        "go",
+        "nodejs",
+        "kubernetes",
+        "database",
+        "networking",
+        "kvm",
+        "virtualization",
+        "container",
+        "sre",
+        "security",
+        "linux",
+        "llm",
+        "bigdata",
+        "ai-ml",
+        "monitoring",
+        "messaging",
+        "traffic"
+      ],
+      "description": "技术栈分类，使用小写枚举值"
+    },
+    "difficulty": {
+      "type": "string",
+      "enum": ["beginner", "intermediate", "advanced", "expert"],
+      "description": "难度等级"
+    },
+    "description": {
+      "type": "string",
+      "minLength": 20,
+      "description": "案例一句话描述"
+    },
+    "keywords": {
+      "type": "array",
+      "minItems": 2,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "description": "关键词列表"
+    },
+    "author": {
+      "type": "string",
+      "minLength": 1,
+      "description": "作者或维护团队，不能为空"
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$",
+      "description": "语义化版本号"
+    },
+    "created_at": {
+      "type": "string",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}(T\\d{2}:\\d{2}:\\d{2}(\\.\\d+)?(Z|[+-]\\d{2}:\\d{2})?)?$",
+      "description": "创建时间，ISO-8601 日期或日期时间"
+    },
+    "updated_at": {
+      "type": "string",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}(T\\d{2}:\\d{2}:\\d{2}(\\.\\d+)?(Z|[+-]\\d{2}:\\d{2})?)?$",
+      "description": "更新时间，ISO-8601 日期或日期时间"
+    },
+    "verified": {
+      "type": "boolean",
+      "description": "是否已通过本地或 CI 验证"
+    },
+    "verified_at": {
+      "type": "string",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}(T\\d{2}:\\d{2}:\\d{2}(\\.\\d+)?(Z|[+-]\\d{2}:\\d{2})?)?$",
+      "description": "验证时间"
+    },
+    "estimated_time": {
+      "type": "string",
+      "description": "预计学习时长，如 '30-60分钟'"
+    },
+    "prerequisites": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "前置知识或环境"
+    },
+    "files": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "案例包含的关键文件清单"
+    },
+    "dependencies": {
+      "type": "object",
+      "description": "依赖项清单"
+    },
+    "compatibility": {
+      "type": "object",
+      "description": "兼容性说明"
+    }
+  },
+  "additionalProperties": true
+}

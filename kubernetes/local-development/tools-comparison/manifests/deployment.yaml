@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tools-comparison
+  labels:
+    app: tools-comparison
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tools-comparison
+  template:
+    metadata:
+      labels:
+        app: tools-comparison
+    spec:
+      containers:
+      - name: demo
+        image: nginx:alpine
+        ports:
+        - containerPort: 80

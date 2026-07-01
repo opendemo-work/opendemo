@@ -1,0 +1,26 @@
+version: '3.8'
+services:
+  higress:
+    image: higress-registry.cn-hangzhou.cr.aliyuncs.com/higress/gateway:v1.3.0
+    container_name: higress-gateway
+    ports:
+      - "8080:8080"
+      - "8443:8443"
+    volumes:
+      - ./configs/higress.yml:/etc/higress/config/higress.yml:ro
+    networks:
+      - backend
+    depends_on:
+      - backend
+
+  backend:
+    image: nginx:alpine
+    container_name: higress-backend
+    volumes:
+      - ./html/index.html:/usr/share/nginx/html/index.html:ro
+    networks:
+      - backend
+
+networks:
+  backend:
+    driver: bridge

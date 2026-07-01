@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: topic-cheat-sheet
+  labels:
+    app: topic-cheat-sheet
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: topic-cheat-sheet
+  template:
+    metadata:
+      labels:
+        app: topic-cheat-sheet
+    spec:
+      containers:
+      - name: demo
+        image: nginx:alpine
+        ports:
+        - containerPort: 80

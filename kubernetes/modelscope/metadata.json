@@ -1,8 +1,45 @@
 {
   "name": "ModelScope Model Serving",
   "category": "kubernetes",
-  "tech_stack": ["Kubernetes", "ModelScope", "AI", "MaaS"],
+  "tech_stack": [
+    "Kubernetes",
+    "ModelScope",
+    "AI",
+    "MaaS"
+  ],
   "description": "ModelScope模型服务：下载管理、推理部署、弹性伸缩",
   "difficulty": "intermediate",
-  "dependencies": ["python"]
+  "dependencies": {
+    "items": [
+      "python"
+    ]
+  },
+  "language": "kubernetes",
+  "keywords": [
+    "kubernetes",
+    "k8s",
+    "modelscope"
+  ],
+  "author": "OpenDemo Team",
+  "version": "1.1.0",
+  "created_at": "2025-12-11T17:08:29",
+  "updated_at": "2026-06-27T00:00:00",
+  "verified": true,
+  "verified_at": "2026-06-27T00:00:00",
+  "estimated_time": "60-90分钟",
+  "prerequisites": [
+    "Kubernetes 基础知识",
+    "kubectl 已安装"
+  ],
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "compatibility": {
+    "operating_systems": [
+      "linux",
+      "macos",
+      "windows(wsl)"
+    ]
+  }
 }

@@ -153,3 +153,46 @@ OpenTelemetry Collector 由三个主要组件组成：
 - [OpenTelemetry Collector 文档](https://opentelemetry.io/docs/collector/)
 - [OpenTelemetry GitHub 仓库](https://github.com/open-telemetry/opentelemetry-collector)
 - [Kubernetes 可观测性最佳实践](https://kubernetes.io/docs/concepts/cluster-administration/logging/)
+
+## 🎯 学习目标
+
+完成本案例学习后，你将能够：
+
+- ✅ 理解本案例涉及的 Kubernetes 核心概念
+- ✅ 掌握相关的资源配置与命令
+- ✅ 能够在本地集群中复现
+
+## 🚀 快速开始
+
+### 部署资源
+
+```bash
+./scripts/apply.sh
+```
+
+### 检查状态
+
+```bash
+./scripts/check.sh
+```
+
+## 📖 核心概念
+
+### 1. 基本概念
+
+本节介绍本案例涉及的 Kubernetes 核心概念。
+
+### 2. 适用场景
+
+- 场景 1：开发与测试
+- 场景 2：生产环境参考
+- 场景 3：故障排查
+
+## 💻 代码示例
+
+### 基本命令
+
+```bash
+# 请根据实际场景替换
+kubectl apply -f manifests/
+```

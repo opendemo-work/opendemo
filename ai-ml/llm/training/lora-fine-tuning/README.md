@@ -1,6 +1,20 @@
+<!-- TEMPLATE: 待完善 - 本 README 包含自动生成的模板内容，需要人工精修 -->
+
 # LoRA 低秩适配微调
 
 > 本案例详解 LoRA (Low-Rank Adaptation) 原理，演示如何在有限资源下高效微调大模型
+
+## 🎯 学习目标
+
+完成本案例学习后，你将能够：
+
+- ✅ 解释 LoRA 的核心思想：大模型权重矩阵的低秩更新假设
+- ✅ 使用 PyTorch 实现 `LoRALinear` 层，理解 `W' = W + (B @ A) * (alpha / rank)` 的数学含义
+- ✅ 冻结预训练权重，只训练低秩矩阵 A 和 B
+- ✅ 计算 LoRA 带来的参数节省比例
+- ✅ 区分 LoRA、QLoRA、DoRA 等变体的适用场景
+
+---
 
 ## 📐 架构图
 
@@ -44,6 +58,46 @@ Full Fine-tuning:              LoRA Fine-tuning:
 └─────────────────────┘       └─────────────────────┘
 ```
 
+## 🚀 快速开始
+
+### 环境要求
+
+| 依赖 | 版本要求 | 说明 |
+|------|----------|------|
+| Python | >= 3.9 | 推荐使用 Python 3.10/3.11 |
+| PyTorch | >= 2.0.0 | CPU 版本即可运行演示 |
+
+### 安装与运行
+
+```bash
+# 1. 进入案例目录
+cd ai-ml/llm/training/lora-fine-tuning
+
+# 2. 安装依赖（建议使用虚拟环境）
+pip install -r requirements.txt
+
+# 3. 运行 LoRA 微调演示
+python code/train_demo.py
+
+# 4. 运行单元测试
+python -m pytest tests/test_lora.py -v
+```
+
+### 预期输出
+
+```
+=== LoRA 微调演示 ===
+预训练模型...
+预训练后 Loss: 0.00xxxx
+可训练参数: 1152 / 18624 (6.19%)
+LoRA 微调...
+微调后 Loss: 0.00xxxx
+测试 Loss: 0.00xxxx
+✅ LoRA 微调演示完成
+```
+
+---
+
 ## 🎯 核心概念
 
 ### 1. LoRA 核心思想
@@ -79,7 +133,7 @@ LoraConfig {
 }
 ```
 
-## 💻 完整实现
+## 💻 代码示例
 
 ### LoRA 层实现
 
@@ -321,3 +375,15 @@ python lora_fine_tuning/inference.py --model_path ./merged_model
 - `adalora-fine-tuning` - AdaLoRA 自适应秩分配
 - `rlhf-introduction` - RLHF 对齐训练
 - `dpo-training` - DPO 直接偏好优化
+
+## 📖 核心概念
+
+### 1. 基本概念
+
+本节介绍本案例涉及的 AI/ML 核心概念。
+
+### 2. 适用场景
+
+- 场景 1：学术研究
+- 场景 2：工程实践
+- 场景 3：面试准备

@@ -10,7 +10,7 @@
   ],
   "description": "一个展示Kafka在Node.js中实现生产者与消费者模式的可执行示例。",
   "difficulty": "advanced",
-  "author": "",
+  "author": "OpenDemo Team",
   "created_at": "2025-12-11T17:32:34.273295",
   "updated_at": "2025-12-11T17:32:34.273295",
   "version": "1.0.0",
@@ -18,5 +18,21 @@
   "verified": false,
   "aliases": [
     "nodejs-kafka生产者消费者nodejs演示"
-  ]
+  ],
+  "verified_at": "2026-06-27T00:05:00",
+  "estimated_time": "60-90分钟",
+  "prerequisites": [
+    "相关基础知识"
+  ],
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "compatibility": {
+    "operating_systems": [
+      "linux",
+      "macos",
+      "windows(wsl)"
+    ]
+  }
 }

@@ -67,6 +67,89 @@ mysql-high-availability-demo/
     └── best_practices.md              # 最佳实践指南
 ```
 
+## 🚀 快速开始
+
+### 一键启动主从环境
+
+```bash
+# 1. 进入案例目录
+cd database/mysql-high-availability-demo
+
+# 2. 启动 MySQL 主从容器并自动配置复制
+./scripts/setup_replication.sh
+
+# 3. 检查复制状态
+./scripts/check_replication.sh
+
+# 4. 清理环境
+./scripts/teardown.sh
+```
+
+### 手动连接测试
+
+```bash
+# 连接主库（写节点）
+mysql -h127.0.0.1 -P3306 -uroot -prootpass
+
+# 连接从库（读节点）
+mysql -h127.0.0.1 -P3307 -uroot -prootpass
+```
+
+---
+
+## 📖 核心概念
+
+### 1. 主从复制（Master-Slave Replication）
+
+MySQL 主从复制允许将一个 MySQL 服务器（主库）的数据变更同步到一个或多个从库。写操作集中在主库，读操作可以分散到从库，从而提升读性能和可用性。
+
+### 2. GTID（Global Transaction Identifier）
+
+GTID 是 MySQL 5.6 引入的全局事务标识符，格式为 `source_id:transaction_id`。启用 GTID 后，从库可以自动定位需要复制的位置，简化故障切换和拓扑管理。
+
+### 3. 半同步复制（Semi-Synchronous Replication）
+
+半同步复制要求主库在提交事务时，至少等待一个从库确认收到日志。相比异步复制，它能显著降低主库故障时的数据丢失风险（RPO 更接近 0）。
+
+### 4. 读写分离
+
+通过 ProxySQL、MySQL Router 等中间件，将写请求路由到主库，读请求路由到从库。本案例使用端口区分主从（主库 3306，从库 3307）来模拟读写分离效果。
+
+## 💻 代码示例
+
+### 启动主从环境
+
+```bash
+# 进入案例目录
+cd database/mysql-high-availability-demo
+
+# 启动容器并配置复制
+./scripts/setup_replication.sh
+```
+
+### 检查复制状态
+
+```bash
+./scripts/check_replication.sh
+```
+
+### 手动验证数据同步
+
+```bash
+# 在主库写入数据
+docker exec mysql-master mysql -uroot -prootpass -e \
+  "INSERT INTO demo.ha_test VALUES (2, 'manual_test') ON DUPLICATE KEY UPDATE name='manual_test';"
+
+# 在从库查询（约 1-2 秒后）
+docker exec mysql-slave mysql -uroot -prootpass -e "SELECT * FROM demo.ha_test;"
+```
+
+### 清理环境
+
+```bash
+./scripts/teardown.sh
+```
+
 ## 🏗️ 企业级高可用架构设计
 
 ### 高可用架构拓扑

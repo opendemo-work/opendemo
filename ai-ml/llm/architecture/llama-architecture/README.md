@@ -1,3 +1,5 @@
+<!-- TEMPLATE: 待完善 - 本 README 包含自动生成的模板内容，需要人工精修 -->
+
 # LLaMA 模型架构
 
 > 本案例深入解析 LLaMA 模型架构，理解 RMSNorm、SwiGLU、RoPE 等关键优化技术的工程实现
@@ -253,3 +255,43 @@ def forward_with_kv_cache(self, x, start_pos, prev_k, prev_v):
 2. **SwiGLU 的效果**：显著提升模型表达能力
 3. **KV Cache 的价值**：大幅加速推理
 4. **RoPE 的优势**：无需学习的位置编码，支持长上下文
+
+## 🎯 学习目标
+
+完成本案例学习后，你将能够：
+
+- ✅ 理解本案例涉及的 AI/ML 核心概念
+- ✅ 掌握相关的配置与命令
+- ✅ 能够在本地环境中复现
+
+## 🚀 快速开始
+
+### 运行演示
+
+```bash
+# 安装依赖
+pip install -r requirements.txt
+
+# 运行演示
+python code/main.py
+```
+
+## 📖 核心概念
+
+### 1. 基本概念
+
+本节介绍本案例涉及的 AI/ML 核心概念。
+
+### 2. 适用场景
+
+- 场景 1：学术研究
+- 场景 2：工程实践
+- 场景 3：面试准备
+
+## 💻 代码示例
+
+### 基本用法
+
+```bash
+python code/main.py
+```

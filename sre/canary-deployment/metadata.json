@@ -1,8 +1,44 @@
 {
   "name": "Canary Deployment",
   "category": "sre",
-  "tech_stack": ["SRE", "Flagger", "Istio", "GitOps"],
+  "tech_stack": [
+    "SRE",
+    "Flagger",
+    "Istio",
+    "GitOps"
+  ],
   "description": "金丝雀发布：渐进式部署、自动回滚、流量管理",
   "difficulty": "advanced",
-  "dependencies": ["flagger", "istio"]
+  "dependencies": {
+    "items": [
+      "flagger",
+      "istio"
+    ]
+  },
+  "language": "python",
+  "keywords": [
+    "python",
+    "canary"
+  ],
+  "author": "OpenDemo Team",
+  "version": "1.1.0",
+  "created_at": "2025-12-11T17:08:29",
+  "updated_at": "2026-06-27T00:05:00",
+  "verified": true,
+  "verified_at": "2026-06-27T00:05:00",
+  "estimated_time": "60-90分钟",
+  "prerequisites": [
+    "相关基础知识"
+  ],
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "compatibility": {
+    "operating_systems": [
+      "linux",
+      "macos",
+      "windows(wsl)"
+    ]
+  }
 }

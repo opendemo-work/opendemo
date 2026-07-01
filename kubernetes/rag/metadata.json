@@ -1,8 +1,45 @@
 {
   "name": "RAG Implementation",
   "category": "kubernetes",
-  "tech_stack": ["RAG", "Vector DB", "LLM", "LangChain"],
+  "tech_stack": [
+    "RAG",
+    "Vector DB",
+    "LLM",
+    "LangChain"
+  ],
   "description": "检索增强生成系统：文档处理、向量检索、LLM集成",
   "difficulty": "advanced",
-  "dependencies": ["python"]
+  "dependencies": {
+    "items": [
+      "python"
+    ]
+  },
+  "language": "kubernetes",
+  "keywords": [
+    "kubernetes",
+    "k8s",
+    "rag"
+  ],
+  "author": "OpenDemo Team",
+  "version": "1.1.0",
+  "created_at": "2025-12-11T17:08:29",
+  "updated_at": "2026-06-27T00:00:00",
+  "verified": true,
+  "verified_at": "2026-06-27T00:00:00",
+  "estimated_time": "60-90分钟",
+  "prerequisites": [
+    "Kubernetes 基础知识",
+    "kubectl 已安装"
+  ],
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "compatibility": {
+    "operating_systems": [
+      "linux",
+      "macos",
+      "windows(wsl)"
+    ]
+  }
 }

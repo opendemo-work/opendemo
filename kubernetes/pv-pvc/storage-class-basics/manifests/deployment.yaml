@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: storage-class-basics
+  labels:
+    app: storage-class-basics
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: storage-class-basics
+  template:
+    metadata:
+      labels:
+        app: storage-class-basics
+    spec:
+      containers:
+      - name: demo
+        image: nginx:alpine
+        ports:
+        - containerPort: 80

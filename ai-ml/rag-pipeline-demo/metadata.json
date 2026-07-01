@@ -11,7 +11,7 @@
     "chromadb",
     "llm"
   ],
-  "difficulty": "高级",
+  "difficulty": "intermediate",
   "estimated_time": "10小时",
   "prerequisites": [
     "自然语言处理基础",
@@ -33,5 +33,28 @@
   "related_demos": [
     "ai-ml/llm-inference-demo",
     "ai-ml/llm-ops-demo"
-  ]
+  ],
+  "dependencies": {},
+  "language": "ai-ml",
+  "keywords": [
+    "ai-ml",
+    "rag"
+  ],
+  "author": "OpenDemo Team",
+  "version": "1.1.0",
+  "created_at": "2025-12-11T17:08:29",
+  "updated_at": "2026-06-27T00:10:00",
+  "verified": true,
+  "verified_at": "2026-06-27T00:10:00",
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "compatibility": {
+    "operating_systems": [
+      "linux",
+      "macos",
+      "windows(wsl)"
+    ]
+  }
 }

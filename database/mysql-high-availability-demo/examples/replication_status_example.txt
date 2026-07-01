@@ -1,0 +1,20 @@
+$ docker exec mysql-slave mysql -uroot -prootpass -e "SHOW REPLICA STATUS\G"
+
+*************************** 1. row ***************************
+             Replica_IO_Running: Yes
+            Replica_SQL_Running: Yes
+                  Source_Host: mysql-master
+                  Source_Port: 3306
+                Source_User: repl
+           Read_Source_Log_Pos: 1234
+                Relay_Log_Pos: 567
+        Replica_SQL_Running_State: Replica has read all relay log; waiting for more updates
+
+$ docker exec mysql-master mysql -uroot -prootpass -e "SHOW MASTER STATUS\G"
+
+*************************** 1. row ***************************
+             File: mysql-bin.000001
+         Position: 1234
+     Binlog_Do_DB:
+ Binlog_Ignore_DB:
+Executed_Gtid_Set: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee:1-10

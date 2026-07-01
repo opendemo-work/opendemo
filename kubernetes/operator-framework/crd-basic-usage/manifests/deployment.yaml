@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: crd-basic-usage
+  labels:
+    app: crd-basic-usage
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: crd-basic-usage
+  template:
+    metadata:
+      labels:
+        app: crd-basic-usage
+    spec:
+      containers:
+      - name: demo
+        image: nginx:alpine
+        ports:
+        - containerPort: 80

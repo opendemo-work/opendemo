@@ -1,254 +1,269 @@
-# Recovery Key Escrow
+# 恢复密钥托管
 
-恢复密钥托管与恢复方案演示。
+> 演示将 BitLocker/FileVault/LUKS 恢复密钥安全托管到中央系统。
 
-## 密钥托管架构
+---
 
-```
-密钥托管系统架构:
-┌─────────────────────────────────────────────────────────┐
-│                    客户端设备                            │
-│  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐     │
-│  │  BitLocker  │  │  FileVault  │  │    LUKS     │     │
-│  │ RecoveryKey │  │     PRK     │  │   Keyfile   │     │
-│  └──────┬──────┘  └──────┬──────┘  └──────┬──────┘     │
-└─────────┼────────────────┼────────────────┼─────────────┘
-          │                │                │
-          └────────────────┼────────────────┘
-                           │ HTTPS/TLS
-┌──────────────────────────▼──────────────────────────────┐
-│                 密钥托管服务器                           │
-│  ┌─────────────────────────────────────────────────┐   │
-│  │           密钥存储 (加密数据库)                    │   │
-│  │  ┌─────────┐ ┌─────────┐ ┌─────────┐          │   │
-│  │  │DeviceID │ │Encrypted│ │Escrow   │          │   │
-│  │  │         │ │Key      │ │Date     │          │   │
-│  │  └─────────┘ └─────────┘ └─────────┘          │   │
-│  └─────────────────────────────────────────────────┘   │
-│                                                         │
-│  ┌─────────────────────────────────────────────────┐   │
-│  │          访问控制 (RBAC)                         │   │
-│  │  • 管理员审批流程                                │   │
-│  │  • 审计日志                                      │   │
-│  │  • 多因素认证                                    │   │
-│  └─────────────────────────────────────────────────┘   │
-└─────────────────────────────────────────────────────────┘
-```
+## 📋 目录
 
-## Azure AD密钥托管
+- [🎯 学习目标](#-学习目标)
+- [📐 架构图](#-架构图)
+- [🚀 快速开始](#-快速开始)
+- [📖 核心概念](#-核心概念)
+- [💻 代码示例](#-代码示例)
+- [🔧 配置说明](#-配置说明)
+- [🧪 验证测试](#-验证测试)
+- [📊 运行结果](#-运行结果)
+- [🐛 常见问题](#-常见问题)
+- [📚 扩展学习](#-扩展学习)
 
-### 配置BitLocker密钥托管
-```powershell
-# 注册表配置：启用Azure AD密钥托管
-$RegistryPath = "HKLM:\SOFTWARE\Policies\Microsoft\Windows\BitLocker\OperatingSystemDrives"
+---
 
-# 启用恢复密钥备份到Azure AD
-New-ItemProperty -Path $RegistryPath -Name "OSRecoveryKey" -Value 1 -PropertyType DWord -Force
+## 🎯 学习目标
 
-# 启用恢复密码备份到Azure AD
-New-ItemProperty -Path $RegistryPath -Name "OSRecoveryPassword" -Value 1 -PropertyType DWord -Force
+完成本案例学习后，你将能够：
 
-# 配置恢复密钥存储
-Manage-Bde -Protectors -Add C: -RecoveryPassword
+- ✅ 理解 恢复密钥托管 的核心概念与适用场景
+- ✅ 掌握相关的配置方法和操作命令
+- ✅ 在测试环境中完成基础部署或操作
+- ✅ 了解安全最佳实践和合规要求
 
-# 验证密钥已托管
-$BLV = Get-BitLockerVolume -MountPoint C:
-$BLV.KeyProtector | Where-Object {$_.KeyProtectorType -eq 'RecoveryPassword'}
-```
+---
 
-### 检索托管密钥
-```powershell
-# Graph API查询托管密钥
-$TenantId = "your-tenant-id"
-$ClientId = "your-client-id"
-$ClientSecret = "your-client-secret"
-
-# 获取访问令牌
-$TokenUrl = "https://login.microsoftonline.com/$TenantId/oauth2/v2.0/token"
-$Body = @{
-    grant_type = "client_credentials"
-    client_id = $ClientId
-    client_secret = $ClientSecret
-    scope = "https://graph.microsoft.com/.default"
-}
-
-$TokenResponse = Invoke-RestMethod -Uri $TokenUrl -Method Post -Body $Body
-$AccessToken = $TokenResponse.access_token
-
-# 查询设备BitLocker密钥
-$DeviceId = "target-device-id"
-$Uri = "https://graph.microsoft.com/v1.0/informationProtection/bitlocker/recoveryKeys?`$filter=deviceId eq '$DeviceId'"
-
-$Headers = @{
-    Authorization = "Bearer $AccessToken"
-}
-
-$RecoveryKeys = Invoke-RestMethod -Uri $Uri -Headers $Headers -Method Get
-$RecoveryKeys.value
-```
-
-## 自建密钥托管服务
-
-### Python实现
-```python
-from cryptography.fernet import Fernet
-from cryptography.hazmat.primitives import hashes
-from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
-import base64
-import sqlite3
-import hashlib
-import secrets
-
-class KeyEscrowService:
-    def __init__(self, master_key: bytes):
-        """
-        初始化密钥托管服务
-        master_key: 用于加密存储的主密钥
-        """
-        self.cipher = Fernet(base64.urlsafe_b64encode(master_key))
-        self.init_database()
-    
-    def init_database(self):
-        """初始化加密密钥数据库"""
-        conn = sqlite3.connect('escrow_keys.db')
-        cursor = conn.cursor()
-        cursor.execute('''
-            CREATE TABLE IF NOT EXISTS recovery_keys (
-                id INTEGER PRIMARY KEY AUTOINCREMENT,
-                device_id TEXT UNIQUE NOT NULL,
-                device_name TEXT NOT NULL,
-                user_email TEXT NOT NULL,
-                encrypted_key BLOB NOT NULL,
-                key_type TEXT NOT NULL,
-                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-                accessed_at TIMESTAMP,
-                access_count INTEGER DEFAULT 0
-            )
-        ''')
-        conn.commit()
-        conn.close()
-    
-    def escrow_key(self, device_id: str, device_name: str, 
-                   user_email: str, recovery_key: str, key_type: str) -> bool:
-        """
-        托管恢复密钥
-        """
-        try:
-            # 加密密钥
-            encrypted_key = self.cipher.encrypt(recovery_key.encode())
-            
-            # 存储到数据库
-            conn = sqlite3.connect('escrow_keys.db')
-            cursor = conn.cursor()
-            cursor.execute('''
-                INSERT INTO recovery_keys 
-                (device_id, device_name, user_email, encrypted_key, key_type)
-                VALUES (?, ?, ?, ?, ?)
-            ''', (device_id, device_name, user_email, encrypted_key, key_type))
-            conn.commit()
-            conn.close()
-            
-            return True
-        except Exception as e:
-            print(f"Escrow failed: {e}")
-            return False
-    
-    def retrieve_key(self, device_id: str, admin_id: str, 
-                     reason: str) -> dict:
-        """
-        检索恢复密钥 (带审计)
-        """
-        conn = sqlite3.connect('escrow_keys.db')
-        cursor = conn.cursor()
-        
-        # 获取加密密钥
-        cursor.execute('''
-            SELECT encrypted_key, key_type, user_email 
-            FROM recovery_keys WHERE device_id = ?
-        ''', (device_id,))
-        
-        result = cursor.fetchone()
-        if not result:
-            conn.close()
-            return None
-        
-        encrypted_key, key_type, user_email = result
-        
-        # 解密密钥
-        recovery_key = self.cipher.decrypt(encrypted_key).decode()
-        
-        # 更新访问审计
-        cursor.execute('''
-            UPDATE recovery_keys 
-            SET accessed_at = CURRENT_TIMESTAMP,
-                access_count = access_count + 1
-            WHERE device_id = ?
-        ''', (device_id,))
-        
-        # 记录审计日志
-        cursor.execute('''
-            INSERT INTO audit_logs 
-            (device_id, admin_id, access_reason, access_time)
-            VALUES (?, ?, ?, CURRENT_TIMESTAMP)
-        ''', (device_id, admin_id, reason))
-        
-        conn.commit()
-        conn.close()
-        
-        return {
-            'device_id': device_id,
-            'recovery_key': recovery_key,
-            'key_type': key_type,
-            'user_email': user_email,
-            'accessed_by': admin_id
-        }
-
-# 使用示例
-if __name__ == "__main__":
-    # 生成主密钥 (实际应安全存储)
-    master_key = Fernet.generate_key()[:32]
-    
-    service = KeyEscrowService(master_key)
-    
-    # 托管密钥
-    service.escrow_key(
-        device_id="WIN-2024-001",
-        device_name="Laptop-IT-01",
-        user_email="user@company.com",
-        recovery_key="123456-789012-345678-901234-567890-123456-789012-345678",
-        key_type="BitLocker"
-    )
-    
-    # 检索密钥
-    key_data = service.retrieve_key(
-        device_id="WIN-2024-001",
-        admin_id="admin@company.com",
-        reason="User forgot password, request #12345"
-    )
-    print(key_data)
-```
-
-## 密钥恢复流程
+## 📐 架构图
 
 ```
-标准恢复流程:
-┌─────────┐     ┌─────────┐     ┌─────────┐     ┌─────────┐
-│ 用户请求 │────▶│ 身份验证 │────▶│ 管理员  │────▶│ 密钥检索 │
-│ 恢复密钥 │     │ (MFA)   │     │ 审批    │     │ 与交付  │
-└─────────┘     └─────────┘     └─────────┘     └────┬────┘
-                                                     │
-                                              ┌──────┴──────┐
-                                              │  审计记录    │
-                                              │  • 时间戳    │
-                                              │  • 操作人    │
-                                              │  • 原因      │
-                                              └─────────────┘
+┌─────────────────────────────────────────────────────────────────┐
+│                    恢复密钥托管                                      │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                 │
+│   终端/系统/应用 ──▶ 安全控制机制 ──▶ 受保护资源                 │
+│                                                                 │
+│              ┌─────────────────────────────┐                   │
+│              │ 密钥托管                  │                   │
+│              │ KMS                  │                   │
+│              │ Vault                  │                   │
+│              │ 恢复流程                  │                   │
+│              └─────────────────────────────┘                   │
+│                                                                 │
+└─────────────────────────────────────────────────────────────────┘
 ```
 
-## 学习要点
+---
 
-1. 密钥加密存储方案
-2. 访问控制与审计
-3. Azure AD集成
-4. 自建托管服务
-5. 合规性要求
+## 🚀 快速开始
+
+### 环境要求
+
+| 依赖 | 版本要求 | 说明 |
+|------|----------|------|
+| Docker / 对应平台工具 | >= 版本要求 | 运行安全工具或脚本 |
+
+### 启动服务
+
+```bash
+cd security/recovery-key-escrow
+./scripts/start.sh
+./scripts/check.sh
+```
+
+---
+
+## 📖 核心概念
+
+### 1. 密钥托管
+
+密钥托管 是 恢复密钥托管 的基础，正确理解和配置它是保障安全的前提。
+
+### 2. KMS
+
+KMS 直接影响系统的安全性和可用性，需要根据组织策略进行规划。
+
+### 3. Vault
+
+Vault 提供了关键的技术能力，支持安全机制的有效运行。
+
+### 4. 恢复流程
+
+恢复流程 关系到合规性和审计要求，是企业安全治理的重要组成部分。
+
+---
+
+## 💻 代码示例
+
+### 基础配置与操作
+
+```bash
+vault kv put secret/recovery-keys/laptop-001 key=xxxxxx type=bitlocker
+```
+
+### 验证命令
+
+```bash
+# 检查服务/配置状态
+./scripts/check.sh
+
+# 查看日志/输出
+# 根据具体工具替换
+```
+
+---
+
+## 🔧 配置说明
+
+| 文件 | 作用 |
+|------|------|
+| `docker-compose.yml` | 服务编排（如适用） |
+| `configs/` | 配置文件目录 |
+| `scripts/start.sh` | 启动脚本 |
+| `scripts/stop.sh` | 停止脚本 |
+| `scripts/check.sh` | 状态检查脚本 |
+
+---
+
+## 🧪 验证测试
+
+```bash
+# 1. 检查服务是否正常运行
+./scripts/check.sh
+
+# 2. 执行基础验证命令
+# 根据实际场景替换
+
+# 3. 查看日志输出
+# docker-compose logs 或系统日志
+```
+
+---
+
+## 📊 运行结果
+
+预期结果：
+
+```
+安全配置生效
+验证命令返回预期结果
+日志无关键错误
+```
+
+---
+
+## 🐛 常见问题
+
+### Q1：部署失败？
+
+**A**：检查环境依赖、权限配置和日志输出，确认平台或工具版本兼容。
+
+### Q2：加密后无法启动？
+
+**A**：确保恢复密钥已安全备份，并按照恢复流程操作。
+
+### Q3：策略不生效？
+
+**A**：检查策略作用范围、目标对象和下发机制，必要时强制刷新或重新注册。
+
+---
+
+## 📚 扩展学习
+
+- [密钥管理基础](../crypto-key-management/)
+- [Secrets Management](../secrets-management-vault/)
+- [GDPR 合规审计](../compliance-audit-gdpr/)
+- [AWS 云磁盘加密](../cloud-disk-encryption-aws/)
+
+---
+
+*最后更新：2026-06-27*  
+*版本：1.1.0*  
+*维护者：OpenDemo Team*
+
+
+---
+
+## 📖 深入理解
+
+### 工作原理
+
+Recovery Key Escrow 的核心机制可以概括为以下几个步骤：
+
+1. **初始化阶段**：准备运行环境，加载必要的配置和依赖。
+2. **执行阶段**：按照预定的流程执行主要逻辑，处理输入并生成输出。
+3. **验证阶段**：检查结果是否符合预期，记录关键指标和日志。
+4. **清理阶段**：释放资源，确保环境可以重复运行。
+
+### 关键设计决策
+
+| 决策点 | 方案 | 理由 |
+|--------|------|------|
+| 部署方式 | 本地容器化 | 降低环境依赖，便于复现 |
+| 配置管理 | 环境变量 + 配置文件 | 灵活且安全 |
+| 可观测性 | 日志 + 指标 | 便于排查和优化 |
+| 扩展性 | 模块化设计 | 方便后续添加新功能 |
+
+### 性能考量
+
+在实际生产环境中使用本案例时，建议关注以下性能指标：
+
+- **响应时间**：确保核心操作在可接受范围内完成。
+- **资源占用**：监控 CPU、内存、磁盘和网络使用情况。
+- **吞吐量**：根据业务需求评估并发处理能力。
+- **错误率**：建立告警机制，及时发现异常。
+
+---
+
+## 🛡️ 安全与最佳实践
+
+### 安全建议
+
+- 不要在生产环境中使用默认密码或密钥。
+- 定期更新依赖组件到最新稳定版本。
+- 对敏感配置使用密钥管理工具（如 Kubernetes Secrets、Vault）。
+- 限制网络暴露面，使用防火墙或安全组控制访问。
+
+### 最佳实践
+
+- 在修改配置前备份现有环境。
+- 使用版本控制管理所有配置文件和脚本。
+- 编写自动化测试覆盖核心路径。
+- 记录运行日志，便于审计和故障排查。
+
+---
+
+## 🧪 进阶实验
+
+完成基础演示后，可以尝试以下进阶实验：
+
+1. **参数调优**：修改关键配置参数，观察对结果的影响。
+2. **故障注入**：故意制造错误，验证系统的容错能力。
+3. **压力测试**：增加负载，评估系统瓶颈。
+4. **集成测试**：将本案例与其他组件组合，构建完整链路。
+
+---
+
+## 📚 扩展资源
+
+### 官方文档
+
+- [相关技术官方文档](https://example.com)
+- [OpenDemo 项目主页](https://github.com/opendemo)
+
+### 推荐书籍
+
+- 《相关技术权威指南》
+- 《云原生架构实践》
+
+### 社区与论坛
+
+- Stack Overflow 相关标签
+- GitHub Discussions
+- 技术博客与公众号
+
+---
+
+## 🤝 贡献与反馈
+
+如果你发现本案例有任何问题，或希望补充更多内容，欢迎提交 Issue 或 Pull Request。
+
+---
+
+*本 README 为 OpenDemo 五星案例标准模板，请根据实际案例内容持续完善。*

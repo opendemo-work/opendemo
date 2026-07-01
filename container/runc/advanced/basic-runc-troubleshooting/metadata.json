@@ -1,8 +1,17 @@
 {
   "name": "basic-runc-troubleshooting",
   "title": "Runc故障排查与应急处理实战",
-  "language": "runc",
-  "keywords": ["runc", "troubleshooting", "container", "故障排查", "应急处理", "container-runtime", "cgroup", "seccomp"],
+  "language": "python",
+  "keywords": [
+    "runc",
+    "troubleshooting",
+    "container",
+    "故障排查",
+    "应急处理",
+    "container-runtime",
+    "cgroup",
+    "seccomp"
+  ],
   "description": "全面的Runc故障排查指南，包含Runc命令执行失败、容器创建失败、容器启动失败、容器运行时错误等常见故障的排查方法和解决方案。",
   "difficulty": "advanced",
   "author": "Runc专家团队",
@@ -12,7 +21,38 @@
   "verified": true,
   "category": "故障排查",
   "library": "troubleshooting",
-  "tags": ["故障排查", "Runc", "容器运行时", "应急处理", "cgroup", "seccomp"],
-  "requires": ["runc", "docker", "systemctl", "journalctl", "df", "free", "seccomp"],
-  "estimated_time": "60分钟"
+  "tags": [
+    "故障排查",
+    "Runc",
+    "容器运行时",
+    "应急处理",
+    "cgroup",
+    "seccomp"
+  ],
+  "requires": [
+    "runc",
+    "docker",
+    "systemctl",
+    "journalctl",
+    "df",
+    "free",
+    "seccomp"
+  ],
+  "estimated_time": "60分钟",
+  "dependencies": {},
+  "verified_at": "2026-06-27T00:05:00",
+  "prerequisites": [
+    "相关基础知识"
+  ],
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "compatibility": {
+    "operating_systems": [
+      "linux",
+      "macos",
+      "windows(wsl)"
+    ]
+  }
 }

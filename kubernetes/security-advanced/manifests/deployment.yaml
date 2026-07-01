@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: security-advanced
+  labels:
+    app: security-advanced
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: security-advanced
+  template:
+    metadata:
+      labels:
+        app: security-advanced
+    spec:
+      containers:
+      - name: demo
+        image: nginx:alpine
+        ports:
+        - containerPort: 80

@@ -10,7 +10,7 @@
   ],
   "description": "通过实际示例深入理解JavaScript中闭包的工作原理和应用场景",
   "difficulty": "intermediate",
-  "author": "",
+  "author": "OpenDemo Team",
   "created_at": "2025-12-11T13:56:31.818439",
   "updated_at": "2025-12-11T13:56:31.818439",
   "version": "1.0.0",
@@ -19,5 +19,21 @@
   "aliases": [
     "nodejs-nodejs闭包实战演示",
     "nodejs-nodejs-demo-9"
-  ]
+  ],
+  "verified_at": "2026-06-27T00:05:00",
+  "estimated_time": "60-90分钟",
+  "prerequisites": [
+    "相关基础知识"
+  ],
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "compatibility": {
+    "operating_systems": [
+      "linux",
+      "macos",
+      "windows(wsl)"
+    ]
+  }
 }

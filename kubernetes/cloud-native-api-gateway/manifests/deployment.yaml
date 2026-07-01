@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cloud-native-api-gateway
+  labels:
+    app: cloud-native-api-gateway
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cloud-native-api-gateway
+  template:
+    metadata:
+      labels:
+        app: cloud-native-api-gateway
+    spec:
+      containers:
+      - name: demo
+        image: nginx:alpine
+        ports:
+        - containerPort: 80

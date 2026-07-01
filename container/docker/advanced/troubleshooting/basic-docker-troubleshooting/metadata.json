@@ -1,8 +1,18 @@
 {
   "name": "basic-docker-troubleshooting",
   "title": "Docker故障排查与应急处理实战",
-  "language": "docker",
-  "keywords": ["docker", "troubleshooting", "container", "故障排查", "应急处理", "docker-daemon", "container-network", "image-pull", "storage-driver"],
+  "language": "python",
+  "keywords": [
+    "docker",
+    "troubleshooting",
+    "container",
+    "故障排查",
+    "应急处理",
+    "docker-daemon",
+    "container-network",
+    "image-pull",
+    "storage-driver"
+  ],
   "description": "全面的Docker故障排查指南，包含Docker守护进程故障、容器启动失败、镜像拉取失败、容器网络问题、存储驱动问题等常见故障的排查方法和解决方案。",
   "difficulty": "intermediate",
   "author": "Docker专家团队",
@@ -12,7 +22,37 @@
   "verified": true,
   "category": "故障排查",
   "library": "troubleshooting",
-  "tags": ["故障排查", "Docker", "容器", "应急处理", "docker-daemon", "container-network"],
-  "requires": ["docker", "systemctl", "journalctl", "netstat", "df", "free"],
-  "estimated_time": "60分钟"
+  "tags": [
+    "故障排查",
+    "Docker",
+    "容器",
+    "应急处理",
+    "docker-daemon",
+    "container-network"
+  ],
+  "requires": [
+    "docker",
+    "systemctl",
+    "journalctl",
+    "netstat",
+    "df",
+    "free"
+  ],
+  "estimated_time": "60分钟",
+  "dependencies": {},
+  "verified_at": "2026-06-27T00:05:00",
+  "prerequisites": [
+    "相关基础知识"
+  ],
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "compatibility": {
+    "operating_systems": [
+      "linux",
+      "macos",
+      "windows(wsl)"
+    ]
+  }
 }

@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: yaml-manifests
+  labels:
+    app: yaml-manifests
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: yaml-manifests
+  template:
+    metadata:
+      labels:
+        app: yaml-manifests
+    spec:
+      containers:
+      - name: demo
+        image: nginx:alpine
+        ports:
+        - containerPort: 80

@@ -1,15 +1,53 @@
 {
-    "name": "hibernate-entity-mapping-demo",
-    "displayName": "Hibernate实体映射演示",
-    "description": "Spring Data JPA + Hibernate 实体关系映射演示，展示各种关联关系和实体生命周期",
-    "category": "java",
-    "tags": ["hibernate", "jpa", "entity-mapping", "spring-data-jpa", "h2"],
-    "difficulty": "intermediate",
-    "dependencies": ["spring-boot-starter-web", "spring-boot-starter-data-jpa", "h2"],
-    "mainTechnologies": {
-        "language": "Java 11",
-        "framework": "Spring Boot 2.7.12",
-        "orm": "Hibernate / Spring Data JPA",
-        "database": "H2"
-    }
+  "name": "hibernate-entity-mapping-demo",
+  "displayName": "Hibernate实体映射演示",
+  "description": "Spring Data JPA + Hibernate 实体关系映射演示，展示各种关联关系和实体生命周期",
+  "category": "java",
+  "tags": [
+    "hibernate",
+    "jpa",
+    "entity-mapping",
+    "spring-data-jpa",
+    "h2"
+  ],
+  "difficulty": "intermediate",
+  "dependencies": {
+    "items": [
+      "spring-boot-starter-web",
+      "spring-boot-starter-data-jpa",
+      "h2"
+    ]
+  },
+  "mainTechnologies": {
+    "language": "Java 11",
+    "framework": "Spring Boot 2.7.12",
+    "orm": "Hibernate / Spring Data JPA",
+    "database": "H2"
+  },
+  "language": "java",
+  "keywords": [
+    "java",
+    "hibernate"
+  ],
+  "author": "OpenDemo Team",
+  "version": "1.1.0",
+  "created_at": "2025-12-11T17:08:29",
+  "updated_at": "2026-06-27T00:05:00",
+  "verified": true,
+  "verified_at": "2026-06-27T00:05:00",
+  "estimated_time": "60-90分钟",
+  "prerequisites": [
+    "相关基础知识"
+  ],
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "compatibility": {
+    "operating_systems": [
+      "linux",
+      "macos",
+      "windows(wsl)"
+    ]
+  }
 }

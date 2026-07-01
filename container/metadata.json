@@ -3,7 +3,7 @@
   "language": "container",
   "category": "container-technology",
   "subcategory": "main",
-  "difficulty": "beginner-to-advanced",
+  "difficulty": "intermediate",
   "keywords": [
     "docker",
     "containerd",
@@ -35,9 +35,22 @@
   ],
   "estimated_time": "40-60小时",
   "compatibility": {
-    "operating_systems": ["linux", "windows(wsl)", "macos"],
-    "docker_versions": [">=20.10"],
-    "containerd_versions": [">=1.6.0"],
-    "runc_versions": [">=1.1.0"]
-  }
+    "operating_systems": [
+      "linux",
+      "windows(wsl)",
+      "macos"
+    ],
+    "docker_versions": [
+      ">=20.10"
+    ],
+    "containerd_versions": [
+      ">=1.6.0"
+    ],
+    "runc_versions": [
+      ">=1.1.0"
+    ]
+  },
+  "dependencies": {},
+  "verified": true,
+  "verified_at": "2026-06-27T00:05:00"
 }

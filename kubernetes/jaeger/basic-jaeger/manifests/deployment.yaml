@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: basic-jaeger
+  labels:
+    app: basic-jaeger
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: basic-jaeger
+  template:
+    metadata:
+      labels:
+        app: basic-jaeger
+    spec:
+      containers:
+      - name: demo
+        image: nginx:alpine
+        ports:
+        - containerPort: 80

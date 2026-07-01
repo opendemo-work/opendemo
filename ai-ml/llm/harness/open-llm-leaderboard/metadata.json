@@ -2,13 +2,46 @@
   "name": "open-llm-leaderboard",
   "category": "llm-harness",
   "difficulty": "intermediate",
-  "language": "python",
-  "keywords": ["leaderboard", "benchmark", "ranking", "evaluation", "comparison"],
+  "language": "ai-ml",
+  "keywords": [
+    "leaderboard",
+    "benchmark",
+    "ranking",
+    "evaluation",
+    "comparison"
+  ],
   "description": "Open LLM Leaderboard：模型评测、排名、能力分析、成本效率对比",
   "estimated_time": "2-3 hours",
-  "prerequisites": ["llm-evaluation-basics"],
-  "learning_objectives": ["理解 LLM 评测方法", "分析模型排名", "对比成本效率"],
-  "content_types": ["tutorial", "analysis-guide"],
+  "prerequisites": [
+    "llm-evaluation-basics"
+  ],
+  "learning_objectives": [
+    "理解 LLM 评测方法",
+    "分析模型排名",
+    "对比成本效率"
+  ],
+  "content_types": [
+    "tutorial",
+    "analysis-guide"
+  ],
   "quality_standard": "five-star",
-  "created_date": "2026-06-04"
+  "created_date": "2026-06-04",
+  "dependencies": {},
+  "author": "OpenDemo Team",
+  "version": "1.1.0",
+  "created_at": "2025-12-11T17:08:29",
+  "updated_at": "2026-06-27T00:10:00",
+  "verified": true,
+  "verified_at": "2026-06-27T00:10:00",
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "compatibility": {
+    "operating_systems": [
+      "linux",
+      "macos",
+      "windows(wsl)"
+    ]
+  }
 }

@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: 03-gpu-scheduling-management
+  labels:
+    app: 03-gpu-scheduling-management
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: 03-gpu-scheduling-management
+  template:
+    metadata:
+      labels:
+        app: 03-gpu-scheduling-management
+    spec:
+      containers:
+      - name: demo
+        image: nginx:alpine
+        ports:
+        - containerPort: 80

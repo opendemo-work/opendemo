@@ -10,7 +10,7 @@
   ],
   "description": "通过实际示例展示Go语言中函数的多种用法，包括基本函数、多返回值、闭包和高阶函数。",
   "difficulty": "beginner",
-  "author": "",
+  "author": "OpenDemo Team",
   "created_at": "2025-12-11T13:24:58.152480",
   "updated_at": "2025-12-11T13:24:58.152480",
   "version": "1.0.0",
@@ -18,5 +18,21 @@
   "verified": false,
   "aliases": [
     "go-go函数编程实战演示"
-  ]
+  ],
+  "verified_at": "2026-06-27T00:05:00",
+  "estimated_time": "60-90分钟",
+  "prerequisites": [
+    "相关基础知识"
+  ],
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "compatibility": {
+    "operating_systems": [
+      "linux",
+      "macos",
+      "windows(wsl)"
+    ]
+  }
 }

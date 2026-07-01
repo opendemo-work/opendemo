@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: advanced-features
+  labels:
+    app: advanced-features
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: advanced-features
+  template:
+    metadata:
+      labels:
+        app: advanced-features
+    spec:
+      containers:
+      - name: demo
+        image: nginx:alpine
+        ports:
+        - containerPort: 80

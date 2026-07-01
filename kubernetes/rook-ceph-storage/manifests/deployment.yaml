@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rook-ceph-storage
+  labels:
+    app: rook-ceph-storage
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rook-ceph-storage
+  template:
+    metadata:
+      labels:
+        app: rook-ceph-storage
+    spec:
+      containers:
+      - name: demo
+        image: nginx:alpine
+        ports:
+        - containerPort: 80

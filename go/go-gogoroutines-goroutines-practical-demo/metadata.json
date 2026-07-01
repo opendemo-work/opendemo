@@ -10,7 +10,7 @@
   ],
   "description": "通过多个实用场景演示Go中goroutines和channel的正确使用方式。",
   "difficulty": "intermediate",
-  "author": "",
+  "author": "OpenDemo Team",
   "created_at": "2025-12-11T16:38:28.278401",
   "updated_at": "2025-12-11T16:38:28.278401",
   "version": "1.0.0",
@@ -18,5 +18,21 @@
   "verified": false,
   "aliases": [
     "go-go并发编程实战goroutines应用示例"
-  ]
+  ],
+  "verified_at": "2026-06-27T00:05:00",
+  "estimated_time": "60-90分钟",
+  "prerequisites": [
+    "相关基础知识"
+  ],
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "compatibility": {
+    "operating_systems": [
+      "linux",
+      "macos",
+      "windows(wsl)"
+    ]
+  }
 }

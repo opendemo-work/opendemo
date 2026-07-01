@@ -4,9 +4,44 @@
   "category": "architecture-fundamentals",
   "difficulty": "intermediate",
   "duration": "45min",
-  "tags": ["architecture", "control-plane", "data-plane", "components"],
-  "prerequisites": ["kubernetes-basics"],
-  "related": ["core-components-deep-dive", "cluster-configuration-parameters"],
-  "version": "1.25+",
-  "lastUpdated": "2026-03-05"
+  "tags": [
+    "architecture",
+    "control-plane",
+    "data-plane",
+    "components"
+  ],
+  "prerequisites": [
+    "kubernetes-basics"
+  ],
+  "related": [
+    "core-components-deep-dive",
+    "cluster-configuration-parameters"
+  ],
+  "version": "1.1.0",
+  "lastUpdated": "2026-03-05",
+  "language": "kubernetes",
+  "description": "Kubernetes 架构全景图 的实战演示",
+  "keywords": [
+    "kubernetes",
+    "k8s",
+    "01"
+  ],
+  "author": "OpenDemo Team",
+  "created_at": "2025-12-11T17:08:29",
+  "updated_at": "2026-06-27T00:00:00",
+  "verified": true,
+  "verified_at": "2026-06-27T00:00:00",
+  "estimated_time": "60-90分钟",
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "dependencies": {},
+  "compatibility": {
+    "operating_systems": [
+      "linux",
+      "macos",
+      "windows(wsl)"
+    ]
+  }
 }

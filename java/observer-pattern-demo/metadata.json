@@ -1,14 +1,47 @@
 {
-    "case_id": "observer-pattern-demo",
-    "name": "观察者模式演示",
-    "category": "java",
-    "subcategory": "设计模式",
-    "pattern_type": "行为型",
-    "difficulty": "中级",
-    "tags": ["observer", "观察者", "设计模式", "GoF", "发布订阅"],
-    "description": "展示观察者模式（发布-订阅模式），包含新闻发布和气象站两个示例场景",
-    "implementations": [
-        "NewsPublisher",
-        "WeatherStation"
+  "case_id": "observer-pattern-demo",
+  "name": "观察者模式演示",
+  "category": "java",
+  "subcategory": "设计模式",
+  "pattern_type": "行为型",
+  "difficulty": "intermediate",
+  "tags": [
+    "observer",
+    "观察者",
+    "设计模式",
+    "GoF",
+    "发布订阅"
+  ],
+  "description": "展示观察者模式（发布-订阅模式），包含新闻发布和气象站两个示例场景",
+  "implementations": [
+    "NewsPublisher",
+    "WeatherStation"
+  ],
+  "dependencies": {},
+  "language": "java",
+  "keywords": [
+    "java",
+    "observer"
+  ],
+  "author": "OpenDemo Team",
+  "version": "1.1.0",
+  "created_at": "2025-12-11T17:08:29",
+  "updated_at": "2026-06-27T00:05:00",
+  "verified": true,
+  "verified_at": "2026-06-27T00:05:00",
+  "estimated_time": "60-90分钟",
+  "prerequisites": [
+    "相关基础知识"
+  ],
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "compatibility": {
+    "operating_systems": [
+      "linux",
+      "macos",
+      "windows(wsl)"
     ]
+  }
 }

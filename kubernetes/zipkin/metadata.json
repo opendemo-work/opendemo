@@ -1,8 +1,45 @@
 {
   "name": "Zipkin Distributed Tracing",
   "category": "kubernetes",
-  "tech_stack": ["Kubernetes", "Zipkin", "Tracing", "Observability"],
+  "tech_stack": [
+    "Kubernetes",
+    "Zipkin",
+    "Tracing",
+    "Observability"
+  ],
   "description": "Zipkin分布式追踪：链路收集、存储分析、性能监控",
   "difficulty": "intermediate",
-  "dependencies": ["docker"]
+  "dependencies": {
+    "items": [
+      "docker"
+    ]
+  },
+  "language": "kubernetes",
+  "keywords": [
+    "kubernetes",
+    "k8s",
+    "zipkin"
+  ],
+  "author": "OpenDemo Team",
+  "version": "1.1.0",
+  "created_at": "2025-12-11T17:08:29",
+  "updated_at": "2026-06-27T00:00:00",
+  "verified": true,
+  "verified_at": "2026-06-27T00:00:00",
+  "estimated_time": "60-90分钟",
+  "prerequisites": [
+    "Kubernetes 基础知识",
+    "kubectl 已安装"
+  ],
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "compatibility": {
+    "operating_systems": [
+      "linux",
+      "macos",
+      "windows(wsl)"
+    ]
+  }
 }

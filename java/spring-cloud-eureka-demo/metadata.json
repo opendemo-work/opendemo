@@ -1,7 +1,12 @@
 {
   "name": "Spring Cloud Eureka Demo",
   "category": "microservices",
-  "tech_stack": ["Java", "Spring Boot", "Spring Cloud", "Netflix Eureka"],
+  "tech_stack": [
+    "Java",
+    "Spring Boot",
+    "Spring Cloud",
+    "Netflix Eureka"
+  ],
   "description": "Spring Cloud Eureka 服务注册发现演示 - Eureka Server 注册中心、Eureka Client 服务提供者、心跳机制、自我保护",
   "difficulty": "advanced",
   "created_at": "2026-04-14",
@@ -10,6 +15,37 @@
     "spring-boot": "2.7.0",
     "spring-cloud": "2021.0.3"
   },
-  "keywords": ["eureka", "service-registry", "service-discovery", "microservices", "netflix", "spring-cloud"],
-  "modules": ["eureka-server", "eureka-client"]
+  "keywords": [
+    "eureka",
+    "service-registry",
+    "service-discovery",
+    "microservices",
+    "netflix",
+    "spring-cloud"
+  ],
+  "modules": [
+    "eureka-server",
+    "eureka-client"
+  ],
+  "language": "java",
+  "author": "OpenDemo Team",
+  "version": "1.1.0",
+  "updated_at": "2026-06-27T00:05:00",
+  "verified": true,
+  "verified_at": "2026-06-27T00:05:00",
+  "estimated_time": "60-90分钟",
+  "prerequisites": [
+    "相关基础知识"
+  ],
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "compatibility": {
+    "operating_systems": [
+      "linux",
+      "macos",
+      "windows(wsl)"
+    ]
+  }
 }

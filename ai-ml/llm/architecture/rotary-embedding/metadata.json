@@ -2,7 +2,7 @@
   "name": "rotary-embedding",
   "category": "llm-architecture",
   "difficulty": "advanced",
-  "language": "python",
+  "language": "ai-ml",
   "keywords": [
     "rotary-embedding",
     "rope",
@@ -28,5 +28,23 @@
     "comparison-analysis"
   ],
   "quality_standard": "five-star",
-  "created_date": "2026-06-01"
+  "created_date": "2026-06-01",
+  "dependencies": {},
+  "author": "OpenDemo Team",
+  "version": "1.1.0",
+  "created_at": "2025-12-11T17:08:29",
+  "updated_at": "2026-06-27T00:10:00",
+  "verified": true,
+  "verified_at": "2026-06-27T00:10:00",
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "compatibility": {
+    "operating_systems": [
+      "linux",
+      "macos",
+      "windows(wsl)"
+    ]
+  }
 }

@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: node-failure
+  labels:
+    app: node-failure
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: node-failure
+  template:
+    metadata:
+      labels:
+        app: node-failure
+    spec:
+      containers:
+      - name: demo
+        image: nginx:alpine
+        ports:
+        - containerPort: 80

@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gitops-ci-cd
+  labels:
+    app: gitops-ci-cd
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gitops-ci-cd
+  template:
+    metadata:
+      labels:
+        app: gitops-ci-cd
+    spec:
+      containers:
+      - name: demo
+        image: nginx:alpine
+        ports:
+        - containerPort: 80

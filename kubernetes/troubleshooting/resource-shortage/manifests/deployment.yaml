@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: resource-shortage
+  labels:
+    app: resource-shortage
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: resource-shortage
+  template:
+    metadata:
+      labels:
+        app: resource-shortage
+    spec:
+      containers:
+      - name: demo
+        image: nginx:alpine
+        ports:
+        - containerPort: 80

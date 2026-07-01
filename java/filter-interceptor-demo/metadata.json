@@ -1,9 +1,45 @@
 {
   "name": "Filter Interceptor Demo",
   "category": "web",
-  "tech_stack": ["Java", "Spring Boot"],
+  "tech_stack": [
+    "Java",
+    "Spring Boot"
+  ],
   "description": "Servlet Filter 与 HandlerInterceptor 演示 - 请求日志过滤器、认证拦截器、执行顺序对比",
   "difficulty": "intermediate",
-  "dependencies": ["spring-boot-starter-web"],
-  "keywords": ["filter", "interceptor", "servlet", "handler-interceptor", "logging", "authentication"]
+  "dependencies": {
+    "items": [
+      "spring-boot-starter-web"
+    ]
+  },
+  "keywords": [
+    "filter",
+    "interceptor",
+    "servlet",
+    "handler-interceptor",
+    "logging",
+    "authentication"
+  ],
+  "language": "java",
+  "author": "OpenDemo Team",
+  "version": "1.1.0",
+  "created_at": "2025-12-11T17:08:29",
+  "updated_at": "2026-06-27T00:05:00",
+  "verified": true,
+  "verified_at": "2026-06-27T00:05:00",
+  "estimated_time": "60-90分钟",
+  "prerequisites": [
+    "相关基础知识"
+  ],
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "compatibility": {
+    "operating_systems": [
+      "linux",
+      "macos",
+      "windows(wsl)"
+    ]
+  }
 }

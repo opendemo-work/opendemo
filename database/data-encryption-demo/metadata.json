@@ -1,15 +1,21 @@
 {
   "name": "data-encryption-demo",
-  "language": "sql/shell/python/javascript",
+  "language": "database",
   "keywords": [
-    "data-encryption", "tde", "field-level-encryption", "tls-ssl",
-    "key-management", "compliance", "gdpr", "hipaa"
+    "data-encryption",
+    "tde",
+    "field-level-encryption",
+    "tls-ssl",
+    "key-management",
+    "compliance",
+    "gdpr",
+    "hipaa"
   ],
   "description": "企业级数据库数据加密保护完整方案，涵盖MySQL、PostgreSQL、MongoDB、Redis的透明加密、字段级加密和传输加密技术",
   "difficulty": "expert",
   "author": "OpenDemo Team",
   "created_at": "2026-02-02",
-  "updated_at": "2026-02-02",
+  "updated_at": "2026-06-26T23:55:00",
   "version": "1.0.0",
   "dependencies": {
     "prerequisite_knowledge": [
@@ -81,5 +87,18 @@
     "key_management": "硬件安全模块(HSM)",
     "access_control": "基于角色的访问控制",
     "audit_logging": "完整的安全审计日志"
+  },
+  "verified_at": "2026-06-26T23:55:00",
+  "estimated_time": "60-90分钟",
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "compatibility": {
+    "operating_systems": [
+      "linux",
+      "macos",
+      "windows(wsl)"
+    ]
   }
 }

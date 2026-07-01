@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: 13-ai-platform-observability
+  labels:
+    app: 13-ai-platform-observability
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: 13-ai-platform-observability
+  template:
+    metadata:
+      labels:
+        app: 13-ai-platform-observability
+    spec:
+      containers:
+      - name: demo
+        image: nginx:alpine
+        ports:
+        - containerPort: 80

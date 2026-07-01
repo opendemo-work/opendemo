@@ -1,10 +1,99 @@
-# Prometheus 指标收集演示
+# Prometheus 指标收集演示 - 系统与服务可观测性基础
 
-## 🎯 概述
+> 通过 Docker Compose 部署完整的 Prometheus + Grafana + Alertmanager 监控栈，演示指标抓取、自定义 Exporter、告警规则与基础仪表盘配置。
 
-本演示展示了如何使用Prometheus进行全面的系统和服务监控，包括自定义指标收集、服务发现、告警规则配置和联邦集群设置。
+---
 
-## 🏗️ 技术架构
+## 📋 目录
+
+- [🎯 学习目标](#-学习目标)
+- [📐 架构图](#-架构图)
+- [🚀 快速开始](#-快速开始)
+- [📖 核心概念](#-核心概念)
+- [💻 代码示例](#-代码示例)
+- [🔧 配置说明](#-配置说明)
+- [🧪 验证测试](#-验证测试)
+- [📊 运行结果](#-运行结果)
+- [🐛 常见问题](#-常见问题)
+- [📚 扩展学习](#-扩展学习)
+
+---
+
+## 🎯 学习目标
+
+完成本案例学习后，你将能够：
+
+- ✅ 解释 Prometheus 的 pull 模型、时间序列数据模型和 PromQL 基础
+- ✅ 使用 Docker Compose 部署 Prometheus + Grafana + Alertmanager
+- ✅ 配置 `scrape_configs` 抓取 Node Exporter 和自定义应用指标
+- ✅ 编写基础告警规则并配置 Alertmanager 路由
+- ✅ 在 Grafana 中导入 Prometheus 数据源并查看预置仪表盘
+
+---
+
+## 📐 架构图
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                   Prometheus 监控架构                            │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                 │
+│   ┌─────────────┐    scrape     ┌───────────────────────┐      │
+│   │   Targets   │◀──────────────│     Prometheus        │      │
+│   │             │   /metrics    │     (TSDB + Server)   │      │
+│   │ Node        │               │                       │      │
+│   │ Exporter    │               │  ┌─────────────────┐  │      │
+│   │ App         │               │  │  Alert Rules    │  │      │
+│   │ Blackbox    │               │  │  Recording Rules│  │      │
+│   └─────────────┘               │  └─────────────────┘  │      │
+│                                  └──────────┬──────────┘      │
+│                                             │                   │
+│                              query/alert    │                   │
+│                                             ▼                   │
+│   ┌─────────────┐                  ┌─────────────────┐         │
+│   │   Grafana   │◀─────────────────│  Alertmanager   │         │
+│   │  (Dashboard)│                  │  (Route/Silence)│         │
+│   └─────────────┘                  └─────────────────┘         │
+│                                                                 │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+---
+
+## 🚀 快速开始
+
+### 环境要求
+
+| 依赖 | 版本要求 | 说明 |
+|------|----------|------|
+| Docker | >= 20.10 | 运行监控组件容器 |
+| Docker Compose | >= 1.29 | 编排完整监控栈 |
+| 浏览器 | 任意 | 访问 Prometheus/Grafana UI |
+
+### 部署步骤
+
+```bash
+# 1. 进入案例目录
+cd monitoring/prometheus-metrics-collection
+
+# 2. 启动监控栈
+./scripts/start.sh
+
+# 3. 验证服务状态
+./scripts/check.sh
+```
+
+### 访问界面
+
+| 服务 | URL | 默认账号 |
+|------|-----|---------|
+| Prometheus | http://localhost:9090 | 无 |
+| Grafana | http://localhost:3000 | admin/admin |
+| Alertmanager | http://localhost:9093 | 无 |
+
+---
+
+## 📖 核心概念
 
 ### 核心组件
 - **主要技术**: Prometheus 2.40+, Alertmanager, Node Exporter
@@ -46,9 +135,9 @@ docker-compose ps
 - **Alertmanager**: http://localhost:9093
 - **Grafana**: http://localhost:3000 (admin/admin)
 
-## 🔧 核心功能演示
+## 💻 代码示例
 
-### 1. 自定义指标收集
+### 示例 1：Prometheus 抓取配置
 ```yaml
 # prometheus/prometheus.yml
 global:

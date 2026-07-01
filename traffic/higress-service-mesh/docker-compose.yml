@@ -1,0 +1,21 @@
+version: '3.8'
+services:
+  higress:
+    image: higress-registry.cn-hangzhou.cr.aliyuncs.com/higress/gateway:v1.3.0
+    container_name: higress-mesh
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./configs/higress.yml:/etc/higress/config/higress.yml:ro
+    networks:
+      - mesh
+
+  app:
+    image: nginx:alpine
+    container_name: higress-mesh-app
+    networks:
+      - mesh
+
+networks:
+  mesh:
+    driver: bridge

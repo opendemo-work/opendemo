@@ -1,8 +1,43 @@
 {
   "name": "Spring Cloud Alibaba Sentinel Demo",
   "category": "microservices",
-  "tech_stack": ["Java", "Spring Boot", "Spring Cloud Alibaba", "Sentinel"],
+  "tech_stack": [
+    "Java",
+    "Spring Boot",
+    "Spring Cloud Alibaba",
+    "Sentinel"
+  ],
   "description": "Spring Cloud Alibaba Sentinel流量控制、熔断降级、系统保护演示",
   "difficulty": "intermediate",
-  "dependencies": ["spring-cloud-starter-alibaba-sentinel"]
+  "dependencies": {
+    "items": [
+      "spring-cloud-starter-alibaba-sentinel"
+    ]
+  },
+  "language": "java",
+  "keywords": [
+    "java",
+    "spring"
+  ],
+  "author": "OpenDemo Team",
+  "version": "1.1.0",
+  "created_at": "2025-12-11T17:08:29",
+  "updated_at": "2026-06-27T00:05:00",
+  "verified": true,
+  "verified_at": "2026-06-27T00:05:00",
+  "estimated_time": "60-90分钟",
+  "prerequisites": [
+    "相关基础知识"
+  ],
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "compatibility": {
+    "operating_systems": [
+      "linux",
+      "macos",
+      "windows(wsl)"
+    ]
+  }
 }

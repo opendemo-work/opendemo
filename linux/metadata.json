@@ -3,7 +3,7 @@
   "language": "linux",
   "category": "system-administration",
   "subcategory": "main",
-  "difficulty": "beginner-to-advanced",
+  "difficulty": "intermediate",
   "keywords": [
     "linux",
     "system-monitoring",
@@ -40,9 +40,26 @@
   ],
   "estimated_time": "30-35小时",
   "compatibility": {
-    "supported_distros": ["ubuntu", "centos", "rhel", "debian", "fedora"],
+    "supported_distros": [
+      "ubuntu",
+      "centos",
+      "rhel",
+      "debian",
+      "fedora"
+    ],
     "minimum_kernel": "3.10",
-    "required_tools": ["net-tools", "sysstat", "procps", "systemd", "audit", "ansible", "perf", "blktrace", "rsyslog", "fail2ban"]
+    "required_tools": [
+      "net-tools",
+      "sysstat",
+      "procps",
+      "systemd",
+      "audit",
+      "ansible",
+      "perf",
+      "blktrace",
+      "rsyslog",
+      "fail2ban"
+    ]
   },
   "demos": [
     {
@@ -51,7 +68,12 @@
       "description": "详细介绍netstat命令在网络监控、故障排查和安全审计中的应用",
       "difficulty": "intermediate",
       "estimated_time": "2-3小时",
-      "keywords": ["netstat", "network-monitoring", "tcp-ip", "troubleshooting"]
+      "keywords": [
+        "netstat",
+        "network-monitoring",
+        "tcp-ip",
+        "troubleshooting"
+      ]
     },
     {
       "name": "linux-tsar-system-monitoring-demo",
@@ -59,7 +81,12 @@
       "description": "阿里巴巴开源的tsar系统性能监控工具全方位演示",
       "difficulty": "advanced",
       "estimated_time": "3-4小时",
-      "keywords": ["tsar", "system-monitoring", "performance-analysis", "capacity-planning"]
+      "keywords": [
+        "tsar",
+        "system-monitoring",
+        "performance-analysis",
+        "capacity-planning"
+      ]
     },
     {
       "name": "linux-top-process-monitoring-demo",
@@ -67,7 +94,12 @@
       "description": "Linux top命令在进程监控和系统性能分析中的应用",
       "difficulty": "intermediate",
       "estimated_time": "2-3小时",
-      "keywords": ["top", "process-monitoring", "system-performance", "resource-management"]
+      "keywords": [
+        "top",
+        "process-monitoring",
+        "system-performance",
+        "resource-management"
+      ]
     },
     {
       "name": "linux-common-monitoring-commands-demo",
@@ -75,7 +107,14 @@
       "description": "ps、df、du、iostat、sar等核心监控命令的综合应用",
       "difficulty": "intermediate",
       "estimated_time": "3-4小时",
-      "keywords": ["ps", "df", "du", "iostat", "sar", "system-monitoring"]
+      "keywords": [
+        "ps",
+        "df",
+        "du",
+        "iostat",
+        "sar",
+        "system-monitoring"
+      ]
     },
     {
       "name": "linux-production-ops-commands-demo",
@@ -83,7 +122,13 @@
       "description": "企业级服务管理、安全加固、自动化运维等生产环境核心技能",
       "difficulty": "advanced",
       "estimated_time": "4-5小时",
-      "keywords": ["production-ops", "systemd", "security", "automation", "disaster-recovery"]
+      "keywords": [
+        "production-ops",
+        "systemd",
+        "security",
+        "automation",
+        "disaster-recovery"
+      ]
     },
     {
       "name": "linux-advanced-performance-monitoring-demo",
@@ -91,7 +136,12 @@
       "description": "系统级性能瓶颈深度分析、CPU内存IO网络子系统优化、资源隔离等高级技能",
       "difficulty": "expert",
       "estimated_time": "4-5小时",
-      "keywords": ["performance-monitoring", "system-analysis", "cpu-profiling", "resource-isolation"]
+      "keywords": [
+        "performance-monitoring",
+        "system-analysis",
+        "cpu-profiling",
+        "resource-isolation"
+      ]
     },
     {
       "name": "linux-security-logging-demo",
@@ -99,7 +149,12 @@
       "description": "系统安全审计、入侵检测、日志分析、合规检查等企业级安全运维技能",
       "difficulty": "advanced",
       "estimated_time": "4-5小时",
-      "keywords": ["security-monitoring", "log-management", "audit", "intrusion-detection"]
+      "keywords": [
+        "security-monitoring",
+        "log-management",
+        "audit",
+        "intrusion-detection"
+      ]
     }
   ],
   "learning_path": [
@@ -148,5 +203,8 @@
       ],
       "estimated_duration": "3-4天"
     }
-  ]
+  ],
+  "dependencies": {},
+  "verified": true,
+  "verified_at": "2026-06-27T00:05:00"
 }

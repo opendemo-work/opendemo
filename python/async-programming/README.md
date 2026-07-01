@@ -1,226 +1,231 @@
-# Python Async Programming Demo
+# Python 异步编程 - asyncio 实战
 
-Python异步编程演示项目，全面展示async/await、asyncio、异步IO等核心概念。
+> 学习 Python asyncio 异步编程模型，理解事件循环、协程、任务和异步 IO，编写高性能并发程序。
 
-## 技术栈
+---
 
-- Python 3.7+
-- asyncio
-- async/await
+## 📋 目录
 
-## 核心概念
+- [🎯 学习目标](#-学习目标)
+- [📐 架构图](#-架构图)
+- [🚀 快速开始](#-快速开始)
+- [📖 核心概念](#-核心概念)
+- [💻 代码示例](#-代码示例)
+- [🔧 配置说明](#-配置说明)
+- [🧪 验证测试](#-验证测试)
+- [📊 运行结果](#-运行结果)
+- [🐛 常见问题](#-常见问题)
+- [📚 扩展学习](#-扩展学习)
 
-### 异步函数
+---
 
-```python
-import asyncio
+## 🎯 学习目标
 
-async def say_hello():
-    """异步函数"""
-    print("Hello")
-    await asyncio.sleep(1)  # 模拟IO操作
-    print("World")
+完成本案例学习后，你将能够：
 
-# 运行异步函数
-asyncio.run(say_hello())
+- ✅ 理解协程与线程的区别
+- ✅ 使用 async/await 编写异步代码
+- ✅ 使用 asyncio.gather 并发执行任务
+- ✅ 使用 aiohttp 进行异步 HTTP 请求
+
+---
+
+## 📐 架构图
+
+```
+单线程事件循环 ──▶ 调度多个协程 ──▶ 异步 IO 操作
 ```
 
-### 并发执行
+---
+
+## 🚀 快速开始
+
+```bash
+cd python/async-programming
+pip install -r requirements.txt
+python code/async_demo.py
+```
+
+---
+
+## 📖 核心概念
+
+### 1. 协程
+
+使用 `async def` 定义的函数：
 
 ```python
-async def task(name, delay):
-    """模拟异步任务"""
-    print(f"任务{name}开始")
-    await asyncio.sleep(delay)
-    print(f"任务{name}完成")
-    return f"结果{name}"
+async def hello():
+    await asyncio.sleep(1)
+    print("hello")
+```
 
-async def main():
-    # 并发执行多个任务
-    tasks = [
-        task("A", 2),
-        task("B", 1),
-        task("C", 3)
-    ]
-    results = await asyncio.gather(*tasks)
-    print(results)  # ['结果A', '结果B', '结果C']
+### 2. 事件循环
 
+协调所有协程的执行：
+
+```python
 asyncio.run(main())
 ```
 
-### 异步迭代器
+### 3. Task
+
+将协程包装为任务，实现并发：
 
 ```python
-class AsyncRange:
-    """异步迭代器"""
-    
-    def __init__(self, n):
-        self.n = n
-        self.i = 0
-    
-    def __aiter__(self):
-        return self
-    
-    async def __anext__(self):
-        if self.i >= self.n:
-            raise StopAsyncIteration
-        await asyncio.sleep(0.1)  # 模拟异步操作
-        i = self.i
-        self.i += 1
-        return i
-
-async def main():
-    async for i in AsyncRange(5):
-        print(i)
-
-asyncio.run(main())
+task1 = asyncio.create_task(fetch_data())
+task2 = asyncio.create_task(fetch_data())
+await asyncio.gather(task1, task2)
 ```
 
-### 异步上下文管理器
+---
 
-```python
-class AsyncConnection:
-    """异步连接上下文管理器"""
-    
-    async def __aenter__(self):
-        print("建立连接...")
-        await asyncio.sleep(1)
-        return self
-    
-    async def __aexit__(self, exc_type, exc_val, exc_tb):
-        print("关闭连接...")
-        await asyncio.sleep(0.5)
-    
-    async def fetch(self):
-        await asyncio.sleep(0.5)
-        return "数据"
+## 💻 代码示例
 
-async def main():
-    async with AsyncConnection() as conn:
-        data = await conn.fetch()
-        print(data)
-
-asyncio.run(main())
-```
-
-### 事件循环
-
-```python
-import asyncio
-
-# 获取事件循环
-loop = asyncio.get_event_loop()
-
-# 创建任务
-task = loop.create_task(say_hello())
-
-# 运行直到完成
-loop.run_until_complete(task)
-
-# 关闭循环
-loop.close()
-```
-
-## 实际应用
-
-### 异步HTTP请求
+### 并发 HTTP 请求
 
 ```python
 import asyncio
 import aiohttp
 
-async def fetch_url(session, url):
-    """异步获取URL"""
+async def fetch(session, url):
     async with session.get(url) as response:
         return await response.text()
 
 async def main():
-    urls = [
-        'https://api.github.com',
-        'https://httpbin.org/get',
-        'https://jsonplaceholder.typicode.com/posts/1'
-    ]
-    
+    urls = ["https://api.github.com"] * 10
     async with aiohttp.ClientSession() as session:
-        tasks = [fetch_url(session, url) for url in urls]
-        results = await asyncio.gather(*tasks)
-        for url, result in zip(urls, results):
-            print(f"{url}: {len(result)} bytes")
+        results = await asyncio.gather(*[fetch(session, url) for url in urls])
+        print(f"Fetched {len(results)} pages")
 
 asyncio.run(main())
 ```
 
-### 异步数据库操作
+---
 
-```python
-import asyncio
-import aiomysql
-
-async def test_mysql():
-    conn = await aiomysql.connect(
-        host='localhost',
-        port=3306,
-        user='root',
-        password='password',
-        db='test'
-    )
-    
-    async with conn.cursor() as cur:
-        await cur.execute("SELECT * FROM users")
-        result = await cur.fetchall()
-        print(result)
-    
-    conn.close()
-
-asyncio.run(test_mysql())
-```
-
-## 快速开始
+## 🧪 验证测试
 
 ```bash
-# 安装依赖
-pip install aiohttp aiomysql
-
-# 运行示例
-python async_basics.py
-python async_http.py
-
-# 运行测试
-python -m pytest test_async.py -v
+python code/async_demo.py
+pytest tests/
 ```
 
-## 性能对比
+---
+
+## 📚 扩展学习
+
+- [Python 缓存](../caching/)
+- [Python 上下文管理器](../context-managers/)
+- [asyncio 官方文档](https://docs.python.org/3/library/asyncio.html)
+
+---
+
+*最后更新：2026-06-27*  
+*版本：1.1.0*  
+*维护者：OpenDemo Team*
+
+
+---
+
+## 📖 深入理解
+
+### 核心流程
+
+Python Async Programming Demo 从启动到完成主要包含以下环节：
+
+1. **环境准备**：配置运行所需的依赖、网络和存储资源。
+2. **主流程执行**：运行案例的核心逻辑并产出结果。
+3. **结果验证**：通过日志、命令输出或测试用例确认正确性。
+4. **资源回收**：停止服务并清理临时数据，保证可重复执行。
+
+### 设计要点
+
+| 方面 | 做法 | 说明 |
+|------|------|------|
+| 部署方式 | 本地容器化 | 减少环境差异，便于复现 |
+| 配置管理 | 配置文件 + 环境变量 | 兼顾可读性与灵活性 |
+| 可观测性 | 日志 + 健康检查 | 方便定位问题 |
+| 扩展方式 | 模块化组织 | 后续可按需增加功能 |
+
+### 需要关注的指标
+
+在生产环境中落地类似方案时，建议留意：
+
+- 关键路径的响应延迟
+- CPU、内存、磁盘和网络资源使用
+- 并发量与吞吐量变化
+- 错误率和异常告警
+
+---
+
+## 🛡️ 安全与最佳实践
+
+### 安全建议
+
+- 生产环境不要使用默认密码、密钥或令牌。
+- 定期将依赖升级到稳定的最新版本。
+- 敏感配置优先使用密钥管理工具或环境变量注入。
+- 通过防火墙、安全组或网络策略限制访问范围。
+
+### 操作建议
+
+- 修改配置前备份现有环境。
+- 将配置文件和脚本纳入版本控制。
+- 为核心路径补充自动化测试。
+- 保留运行日志以便审计和排障。
+
+---
+
+## 🧪 进阶实验
+
+基础流程跑通后，可以尝试：
+
+1. 调整关键参数，观察对结果的影响。
+2. 模拟异常场景，验证容错能力。
+3. 增加负载，分析系统瓶颈。
+4. 与其他组件组合，形成完整链路。
+
+---
+
+## 📚 扩展资源
+
+- 相关技术的官方文档
+- [OpenDemo 项目主页](https://github.com/opendemo)
+- GitHub Discussions 与技术社区
+
+---
+
+## 🤝 贡献与反馈
+
+如发现内容有误或希望补充，欢迎提交 Issue 或 Pull Request。
+
+---
+
+*本 README 由 OpenDemo 自动生成并持续维护，欢迎根据实际案例补充细节。*
+
+
+---
+
+## ⏳ asyncio.gather vs asyncio.wait
 
 ```python
-import time
-import asyncio
+# gather 返回结果列表
+results = await asyncio.gather(task1, task2, task3)
 
-# 同步版本
-def sync_tasks():
-    for i in range(3):
-        time.sleep(1)
-        print(f"同步任务{i}")
-
-# 异步版本
-async def async_tasks():
-    await asyncio.gather(*[
-        asyncio.sleep(1) for _ in range(3)
-    ])
-
-# 同步执行时间: 3秒
-# 异步执行时间: 1秒
+# wait 更灵活，可指定返回策略
+done, pending = await asyncio.wait(tasks, return_when=asyncio.FIRST_COMPLETED)
 ```
 
-## 学习要点
+---
 
-1. 异步编程与同步编程的区别
-2. 事件循环的工作原理
-3. async/await语法
-4. Task和Future对象
-5. 并发与并行的区别
-6. 异步编程最佳实践
+## 🔒 asyncio.Lock
 
-## 参考
+保护共享资源：
 
-- [Python asyncio文档](https://docs.python.org/3/library/asyncio.html)
-- 《Fluent Python》
+```python
+lock = asyncio.Lock()
+
+async def update():
+    async with lock:
+        shared_value += 1
+```

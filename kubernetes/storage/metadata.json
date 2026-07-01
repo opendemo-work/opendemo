@@ -1,8 +1,45 @@
 {
   "name": "Kubernetes Storage",
   "category": "kubernetes",
-  "tech_stack": ["Kubernetes", "CSI", "StorageClass", "VolumeSnapshot"],
+  "tech_stack": [
+    "Kubernetes",
+    "CSI",
+    "StorageClass",
+    "VolumeSnapshot"
+  ],
   "description": "K8s存储管理：CSI驱动、快照克隆、存储扩容、性能优化",
   "difficulty": "advanced",
-  "dependencies": ["kubectl"]
+  "dependencies": {
+    "items": [
+      "kubectl"
+    ]
+  },
+  "language": "kubernetes",
+  "keywords": [
+    "kubernetes",
+    "k8s",
+    "storage"
+  ],
+  "author": "OpenDemo Team",
+  "version": "1.1.0",
+  "created_at": "2025-12-11T17:08:29",
+  "updated_at": "2026-06-27T00:00:00",
+  "verified": true,
+  "verified_at": "2026-06-27T00:00:00",
+  "estimated_time": "60-90分钟",
+  "prerequisites": [
+    "Kubernetes 基础知识",
+    "kubectl 已安装"
+  ],
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "compatibility": {
+    "operating_systems": [
+      "linux",
+      "macos",
+      "windows(wsl)"
+    ]
+  }
 }

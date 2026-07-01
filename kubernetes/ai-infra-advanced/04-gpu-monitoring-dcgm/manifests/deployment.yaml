@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: 04-gpu-monitoring-dcgm
+  labels:
+    app: 04-gpu-monitoring-dcgm
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: 04-gpu-monitoring-dcgm
+  template:
+    metadata:
+      labels:
+        app: 04-gpu-monitoring-dcgm
+    spec:
+      containers:
+      - name: demo
+        image: nginx:alpine
+        ports:
+        - containerPort: 80

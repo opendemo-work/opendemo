@@ -1,0 +1,47 @@
+{
+  "name": "RocketMQ 生产者消费者模式",
+  "language": "messaging",
+  "difficulty": "intermediate",
+  "description": "使用 Docker Compose 部署 Apache RocketMQ，通过 Java/Python 客户端演示基础的生产者-消费者消息收发模式。",
+  "keywords": [
+    "rocketmq",
+    "messaging",
+    "producer",
+    "consumer",
+    "docker-compose"
+  ],
+  "author": "OpenDemo Team",
+  "version": "1.0.0",
+  "created_at": "2026-06-27",
+  "updated_at": "2026-06-27T01:45:00",
+  "verified": true,
+  "verified_at": "2026-06-27T01:45:00",
+  "estimated_time": "60-90分钟",
+  "prerequisites": [
+    "Docker",
+    "Docker Compose",
+    "消息队列基础概念"
+  ],
+  "files": [
+    "README.md",
+    "metadata.json",
+    "docker-compose.yml",
+    "configs/broker.conf",
+    "scripts/start.sh",
+    "scripts/stop.sh",
+    "scripts/check.sh"
+  ],
+  "dependencies": {
+    "software": [
+      "Docker",
+      "Docker Compose"
+    ]
+  },
+  "compatibility": {
+    "operating_systems": [
+      "linux",
+      "macos",
+      "windows(wsl)"
+    ]
+  }
+}

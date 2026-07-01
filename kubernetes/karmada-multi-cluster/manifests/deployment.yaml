@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: karmada-multi-cluster
+  labels:
+    app: karmada-multi-cluster
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: karmada-multi-cluster
+  template:
+    metadata:
+      labels:
+        app: karmada-multi-cluster
+    spec:
+      containers:
+      - name: demo
+        image: nginx:alpine
+        ports:
+        - containerPort: 80

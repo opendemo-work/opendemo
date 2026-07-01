@@ -10,7 +10,7 @@
   ],
   "description": "展示如何在Jest中使用Mock模拟函数、模块和异步行为的完整示例",
   "difficulty": "intermediate",
-  "author": "",
+  "author": "OpenDemo Team",
   "created_at": "2025-12-11T17:47:42.252717",
   "updated_at": "2025-12-11T17:47:42.252717",
   "version": "1.0.0",
@@ -18,5 +18,21 @@
   "verified": false,
   "aliases": [
     "nodejs-jest-mock模拟单元测试demo"
-  ]
+  ],
+  "verified_at": "2026-06-27T00:05:00",
+  "estimated_time": "60-90分钟",
+  "prerequisites": [
+    "相关基础知识"
+  ],
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "compatibility": {
+    "operating_systems": [
+      "linux",
+      "macos",
+      "windows(wsl)"
+    ]
+  }
 }

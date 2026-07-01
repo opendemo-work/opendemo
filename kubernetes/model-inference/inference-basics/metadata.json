@@ -7,7 +7,7 @@
   "estimated_time": "15小时",
   "version": "1.0.0",
   "created_at": "2026-01-30",
-  "updated_at": "2026-01-30",
+  "updated_at": "2026-06-27T00:00:00",
   "author": "OpenDemo Team",
   "description": "Kubernetes大模型推理服务的基础入门教程，涵盖环境搭建、基础服务部署、模型转换等核心内容",
   "keywords": [
@@ -71,5 +71,16 @@
     "模型转换与优化",
     "服务部署和测试",
     "性能监控基础"
-  ]
+  ],
+  "language": "kubernetes",
+  "verified": true,
+  "verified_at": "2026-06-27T00:00:00",
+  "dependencies": {},
+  "compatibility": {
+    "operating_systems": [
+      "linux",
+      "macos",
+      "windows(wsl)"
+    ]
+  }
 }

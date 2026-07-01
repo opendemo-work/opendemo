@@ -8,9 +8,9 @@
     "性能优化",
     "内存缓存"
   ],
-  "description": "演示Go中缓存预热和常见缓存策略的实现",
+  "description": "Go缓存预热与缓存策略演示 的实战演示与配置详解",
   "difficulty": "intermediate",
-  "author": "",
+  "author": "OpenDemo Team",
   "created_at": "2025-12-11T17:51:43.976886",
   "updated_at": "2025-12-11T17:51:43.976886",
   "version": "1.0.0",
@@ -18,5 +18,21 @@
   "verified": false,
   "aliases": [
     "go-go缓存预热与缓存策略演示"
-  ]
+  ],
+  "verified_at": "2026-06-27T00:05:00",
+  "estimated_time": "60-90分钟",
+  "prerequisites": [
+    "相关基础知识"
+  ],
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "compatibility": {
+    "operating_systems": [
+      "linux",
+      "macos",
+      "windows(wsl)"
+    ]
+  }
 }

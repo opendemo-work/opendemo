@@ -1,13 +1,32 @@
 {
-  "name": "basic-jaeger",
+  "dependencies": {},
+  "name": "Basic Jaeger",
   "language": "kubernetes",
-  "keywords": ["jaeger", "distributed-tracing", "opentracing", "kubernetes", "observability"],
-  "description": "Kubernetes 中部�?Jaeger 进行分布式追踪的基础案例",
-  "difficulty": "intermediate",
-  "author": "opendemo",,
-  "created_at": "2024-01-20T00:00:00Z",
-  "updated_at": "2024-01-20T00:00:00Z",
-  "version": "1.0.0",
-  "verified": false,
-  "category": "tracing"
+  "description": "Basic Jaeger 的实战演示与配置详解",
+  "keywords": [
+    "kubernetes",
+    "basic"
+  ],
+  "author": "OpenDemo Team",
+  "version": "1.1.0",
+  "created_at": "2025-12-11T17:08:29",
+  "updated_at": "2026-06-27T00:05:00",
+  "verified": true,
+  "verified_at": "2026-06-27T00:05:00",
+  "estimated_time": "60-90分钟",
+  "prerequisites": [
+    "相关基础知识"
+  ],
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "compatibility": {
+    "operating_systems": [
+      "linux",
+      "macos",
+      "windows(wsl)"
+    ]
+  },
+  "difficulty": "intermediate"
 }

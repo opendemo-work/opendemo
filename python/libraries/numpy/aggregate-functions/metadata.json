@@ -3,13 +3,38 @@
   "library": "numpy",
   "language": "python",
   "title": "聚合函数",
-  "keywords": ["sum", "mean", "std", "聚合", "统计"],
+  "keywords": [
+    "sum",
+    "mean",
+    "std",
+    "聚合",
+    "统计"
+  ],
   "description": "演示 numpy 的聚合函数（sum、mean、std等）",
   "difficulty": "beginner",
   "category": "数学运算",
   "created_at": "2025-12-12T00:00:00",
   "updated_at": "2025-12-12T00:00:00",
   "version": "1.0.0",
-  "dependencies": {"numpy": ">=1.20.0"},
-  "verified": false
+  "dependencies": {
+    "numpy": ">=1.20.0"
+  },
+  "verified": false,
+  "author": "OpenDemo Team",
+  "verified_at": "2026-06-27T00:05:00",
+  "estimated_time": "60-90分钟",
+  "prerequisites": [
+    "相关基础知识"
+  ],
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "compatibility": {
+    "operating_systems": [
+      "linux",
+      "macos",
+      "windows(wsl)"
+    ]
+  }
 }

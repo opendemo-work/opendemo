@@ -10,7 +10,7 @@
   ],
   "description": "一个可运行的Go示例，展示如何使用OpenTelemetry实现分布式追踪",
   "difficulty": "advanced",
-  "author": "",
+  "author": "OpenDemo Team",
   "created_at": "2025-12-11T16:42:09.315431",
   "updated_at": "2025-12-11T16:42:09.315431",
   "version": "1.0.0",
@@ -18,5 +18,21 @@
   "verified": false,
   "aliases": [
     "go-opentelemetry分布式追踪go示例"
-  ]
+  ],
+  "verified_at": "2026-06-27T00:05:00",
+  "estimated_time": "60-90分钟",
+  "prerequisites": [
+    "相关基础知识"
+  ],
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "compatibility": {
+    "operating_systems": [
+      "linux",
+      "macos",
+      "windows(wsl)"
+    ]
+  }
 }

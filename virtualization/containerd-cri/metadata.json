@@ -1,8 +1,44 @@
 {
   "name": "Containerd and CRI",
   "category": "virtualization",
-  "tech_stack": ["Containerd", "CRI", "runc", "nerdctl"],
+  "tech_stack": [
+    "Containerd",
+    "CRI",
+    "runc",
+    "nerdctl"
+  ],
   "description": "Containerd容器运行时：CRI接口、镜像管理、K8s集成",
   "difficulty": "advanced",
-  "dependencies": ["containerd", "runc"]
+  "dependencies": {
+    "items": [
+      "containerd",
+      "runc"
+    ]
+  },
+  "language": "python",
+  "keywords": [
+    "python",
+    "containerd"
+  ],
+  "author": "OpenDemo Team",
+  "version": "1.1.0",
+  "created_at": "2025-12-11T17:08:29",
+  "updated_at": "2026-06-27T00:05:00",
+  "verified": true,
+  "verified_at": "2026-06-27T00:05:00",
+  "estimated_time": "60-90分钟",
+  "prerequisites": [
+    "相关基础知识"
+  ],
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "compatibility": {
+    "operating_systems": [
+      "linux",
+      "macos",
+      "windows(wsl)"
+    ]
+  }
 }

@@ -266,3 +266,15 @@ INT8 量化通常对生成质量影响很小；INT4 量化需要配合 per-chann
 ---
 
 *最后更新：2026-06-16*
+
+## 🚀 快速开始
+
+### 运行演示
+
+```bash
+# 安装依赖
+pip install -r requirements.txt
+
+# 运行演示
+python code/main.py
+```

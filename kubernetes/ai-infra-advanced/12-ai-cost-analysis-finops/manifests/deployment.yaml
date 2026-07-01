@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: 12-ai-cost-analysis-finops
+  labels:
+    app: 12-ai-cost-analysis-finops
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: 12-ai-cost-analysis-finops
+  template:
+    metadata:
+      labels:
+        app: 12-ai-cost-analysis-finops
+    spec:
+      containers:
+      - name: demo
+        image: nginx:alpine
+        ports:
+        - containerPort: 80

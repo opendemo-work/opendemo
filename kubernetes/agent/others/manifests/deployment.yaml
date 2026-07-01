@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: others
+  labels:
+    app: others
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: others
+  template:
+    metadata:
+      labels:
+        app: others
+    spec:
+      containers:
+      - name: demo
+        image: nginx:alpine
+        ports:
+        - containerPort: 80

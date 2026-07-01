@@ -7,10 +7,22 @@
   "last_updated": "2026-02-02",
   "category": "云原生数据库",
   "subcategory": "Kubernetes运维",
-  "tags": ["kubernetes", "database-ops", "statefulset", "operator", "helm", "monitoring"],
-  "difficulty": "专家级",
+  "tags": [
+    "kubernetes",
+    "database-ops",
+    "statefulset",
+    "operator",
+    "helm",
+    "monitoring"
+  ],
+  "difficulty": "intermediate",
   "estimated_time": "360分钟",
-  "prerequisites": ["Kubernetes基础", "数据库容器化", "Helm基础", "监控基础"],
+  "prerequisites": [
+    "Kubernetes基础",
+    "数据库容器化",
+    "Helm基础",
+    "监控基础"
+  ],
   "learning_objectives": [
     "掌握Kubernetes环境下数据库的专业运维技能",
     "学会使用Operator模式管理数据库集群",
@@ -23,5 +35,28 @@
     "clarity": "步骤详细可操作",
     "relevance": "企业级应用场景"
   },
-  "validation_status": "pending"
+  "validation_status": "pending",
+  "language": "database",
+  "description": "Kubernetes数据库运维完整指南 的实战演示",
+  "keywords": [
+    "database",
+    "elasticsearch",
+    "kubernetes"
+  ],
+  "created_at": "2025-12-11T17:08:29",
+  "updated_at": "2026-06-26T23:55:00",
+  "verified": true,
+  "verified_at": "2026-06-26T23:55:00",
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "dependencies": {},
+  "compatibility": {
+    "operating_systems": [
+      "linux",
+      "macos",
+      "windows(wsl)"
+    ]
+  }
 }

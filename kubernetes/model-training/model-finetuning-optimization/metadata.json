@@ -23,16 +23,35 @@
   ],
   "version": "1.0.0",
   "created_at": "2026-01-30",
-  "updated_at": "2026-01-30",
+  "updated_at": "2026-06-27T00:00:00",
   "difficulty": "intermediate",
   "estimated_time": "12-16 hours",
   "compatibility": {
-    "kubernetes": ["v1.23.x", "v1.24.x", "v1.25.x", "v1.26.x", "v1.27.x", "v1.28.x", "v1.29.x"],
-    "gpu": ["nvidia-a100", "nvidia-h100", "nvidia-l4"],
-    "cuda": ["11.7", "11.8", "12.0", "12.1"]
+    "kubernetes": [
+      "v1.23.x",
+      "v1.24.x",
+      "v1.25.x",
+      "v1.26.x",
+      "v1.27.x",
+      "v1.28.x",
+      "v1.29.x"
+    ],
+    "gpu": [
+      "nvidia-a100",
+      "nvidia-h100",
+      "nvidia-l4"
+    ],
+    "cuda": [
+      "11.7",
+      "11.8",
+      "12.0",
+      "12.1"
+    ]
   },
   "author": "opendemo",
-  "maintainers": ["opendemo"],
+  "maintainers": [
+    "opendemo"
+  ],
   "license": "MIT",
   "status": "active",
   "tags": [
@@ -61,32 +80,60 @@
     {
       "name": "peft-techniques",
       "title": "参数高效微调技术",
-      "files": ["lora_implementation.py", "qlora_training.py", "adapter_methods.py", "prefix_tuning.py", "prompt_tuning.py"]
+      "files": [
+        "lora_implementation.py",
+        "qlora_training.py",
+        "adapter_methods.py",
+        "prefix_tuning.py",
+        "prompt_tuning.py"
+      ]
     },
     {
       "name": "quantization-methods",
       "title": "量化技术",
-      "files": ["post_training_quant.py", "qat_implementation.py", "gptq_quantization.py"]
+      "files": [
+        "post_training_quant.py",
+        "qat_implementation.py",
+        "gptq_quantization.py"
+      ]
     },
     {
       "name": "distillation-compression",
       "title": "蒸馏与压缩",
-      "files": ["knowledge_distillation.py", "feature_distillation.py", "pruning_techniques.py"]
+      "files": [
+        "knowledge_distillation.py",
+        "feature_distillation.py",
+        "pruning_techniques.py"
+      ]
     },
     {
       "name": "industry-applications",
       "title": "行业应用场景",
-      "files": ["industry-applications.md", "healthcare_finetuning.py", "finance_finetuning.py", "legal_finetuning.py"]
+      "files": [
+        "industry-applications.md",
+        "healthcare_finetuning.py",
+        "finance_finetuning.py",
+        "legal_finetuning.py"
+      ]
     },
     {
       "name": "production-deployment",
       "title": "生产环境部署",
-      "files": ["k8s_deployment.yaml", "monitoring_config.py", "cost_optimization.py"]
+      "files": [
+        "k8s_deployment.yaml",
+        "monitoring_config.py",
+        "cost_optimization.py"
+      ]
     },
     {
       "name": "evaluation-metrics",
       "title": "评估体系",
-      "files": ["model_evaluator.py", "ab_testing_framework.py", "online_monitoring.py", "compliance_checker.py"]
+      "files": [
+        "model_evaluator.py",
+        "ab_testing_framework.py",
+        "online_monitoring.py",
+        "compliance_checker.py"
+      ]
     }
   ],
   "optimization_strategies": {
@@ -94,31 +141,54 @@
       "parameter_count_ratio": "0.1%",
       "memory_reduction": "99%",
       "training_speedup": "10x",
-      "use_cases": ["chatbots", "domain adaptation", "task specialization", "healthcare", "finance", "legal"]
+      "use_cases": [
+        "chatbots",
+        "domain adaptation",
+        "task specialization",
+        "healthcare",
+        "finance",
+        "legal"
+      ]
     },
     "qlora": {
       "parameter_count_ratio": "0.05%",
       "memory_reduction": "99.5%",
       "training_speedup": "20x",
-      "use_cases": ["large model adaptation", "resource constrained environments", "edge deployment"]
+      "use_cases": [
+        "large model adaptation",
+        "resource constrained environments",
+        "edge deployment"
+      ]
     },
     "prefix_tuning": {
       "parameter_count_ratio": "0.01%",
       "memory_reduction": "99.9%",
       "training_speedup": "50x",
-      "use_cases": ["multi-task learning", "rapid prototyping", "few-shot adaptation"]
+      "use_cases": [
+        "multi-task learning",
+        "rapid prototyping",
+        "few-shot adaptation"
+      ]
     },
     "prompt_tuning": {
       "parameter_count_ratio": "0.02%",
       "memory_reduction": "99.8%",
       "training_speedup": "30x",
-      "use_cases": ["instruction following", "task-specific prompting", "domain adaptation"]
+      "use_cases": [
+        "instruction following",
+        "task-specific prompting",
+        "domain adaptation"
+      ]
     },
     "full_finetuning": {
       "parameter_count_ratio": "100%",
       "memory_reduction": "0%",
       "training_speedup": "1x",
-      "use_cases": ["critical applications", "maximum accuracy required", "research"]
+      "use_cases": [
+        "critical applications",
+        "maximum accuracy required",
+        "research"
+      ]
     }
   },
   "hardware_recommendations": {
@@ -137,5 +207,12 @@
       "cpu_cores": 32,
       "memory_gb": 128
     }
-  }
+  },
+  "verified": true,
+  "verified_at": "2026-06-27T00:00:00",
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "dependencies": {}
 }

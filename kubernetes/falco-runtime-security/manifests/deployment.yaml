@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: falco-runtime-security
+  labels:
+    app: falco-runtime-security
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: falco-runtime-security
+  template:
+    metadata:
+      labels:
+        app: falco-runtime-security
+    spec:
+      containers:
+      - name: demo
+        image: nginx:alpine
+        ports:
+        - containerPort: 80

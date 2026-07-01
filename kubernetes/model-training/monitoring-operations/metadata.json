@@ -17,16 +17,35 @@
   ],
   "version": "1.0.0",
   "created_at": "2026-01-30",
-  "updated_at": "2026-01-30",
+  "updated_at": "2026-06-27T00:00:00",
   "difficulty": "advanced",
   "estimated_time": "15-20 hours",
   "compatibility": {
-    "kubernetes": ["v1.23.x", "v1.24.x", "v1.25.x", "v1.26.x", "v1.27.x", "v1.28.x", "v1.29.x"],
-    "gpu": ["nvidia-a100", "nvidia-h100", "nvidia-l4"],
-    "cuda": ["11.7", "11.8", "12.0", "12.1"]
+    "kubernetes": [
+      "v1.23.x",
+      "v1.24.x",
+      "v1.25.x",
+      "v1.26.x",
+      "v1.27.x",
+      "v1.28.x",
+      "v1.29.x"
+    ],
+    "gpu": [
+      "nvidia-a100",
+      "nvidia-h100",
+      "nvidia-l4"
+    ],
+    "cuda": [
+      "11.7",
+      "11.8",
+      "12.0",
+      "12.1"
+    ]
   },
   "author": "opendemo",
-  "maintainers": ["opendemo"],
+  "maintainers": [
+    "opendemo"
+  ],
   "license": "MIT",
   "status": "active",
   "tags": [
@@ -56,60 +75,132 @@
     {
       "name": "monitoring-architecture",
       "title": "监控架构",
-      "files": ["prometheus-config.yaml", "servicemonitor.yaml", "alertmanager.yaml"]
+      "files": [
+        "prometheus-config.yaml",
+        "servicemonitor.yaml",
+        "alertmanager.yaml"
+      ]
     },
     {
       "name": "metrics-collection",
       "title": "指标收集",
-      "files": ["training-metrics.py", "inference-metrics.py", "gpu-monitoring.py"]
+      "files": [
+        "training-metrics.py",
+        "inference-metrics.py",
+        "gpu-monitoring.py"
+      ]
     },
     {
       "name": "logging-system",
       "title": "日志系统",
-      "files": ["structured-logger.py", "elk-stack.yaml", "log-processing.py"]
+      "files": [
+        "structured-logger.py",
+        "elk-stack.yaml",
+        "log-processing.py"
+      ]
     },
     {
       "name": "performance-analysis",
       "title": "性能分析",
-      "files": ["performance-analyzer.py", "profiling-tools.py", "bottleneck-diagnosis.py"]
+      "files": [
+        "performance-analyzer.py",
+        "profiling-tools.py",
+        "bottleneck-diagnosis.py"
+      ]
     },
     {
       "name": "troubleshooting",
       "title": "故障排查",
-      "files": ["health-checker.py", "auto-recovery.py", "diagnostic-tools.py"]
+      "files": [
+        "health-checker.py",
+        "auto-recovery.py",
+        "diagnostic-tools.py"
+      ]
     },
     {
       "name": "automation-scripts",
       "title": "自动化脚本",
-      "files": ["model-ops.sh", "maintenance-scripts.py", "backup-restore.py"]
+      "files": [
+        "model-ops.sh",
+        "maintenance-scripts.py",
+        "backup-restore.py"
+      ]
     },
     {
       "name": "dashboards-alerts",
       "title": "监控面板",
-      "files": ["grafana-dashboard.json", "alert-rules.yaml", "notification-channels.yaml"]
+      "files": [
+        "grafana-dashboard.json",
+        "alert-rules.yaml",
+        "notification-channels.yaml"
+      ]
     }
   ],
   "monitoring_layers": {
     "application": {
-      "metrics": ["training_loss", "accuracy", "inference_latency", "request_count"],
-      "tools": ["custom_exporters", "application_metrics"]
+      "metrics": [
+        "training_loss",
+        "accuracy",
+        "inference_latency",
+        "request_count"
+      ],
+      "tools": [
+        "custom_exporters",
+        "application_metrics"
+      ]
     },
     "service": {
-      "metrics": ["availability", "response_time", "error_rate", "throughput"],
-      "tools": ["prometheus", "grafana", "alertmanager"]
+      "metrics": [
+        "availability",
+        "response_time",
+        "error_rate",
+        "throughput"
+      ],
+      "tools": [
+        "prometheus",
+        "grafana",
+        "alertmanager"
+      ]
     },
     "infrastructure": {
-      "metrics": ["cpu_usage", "memory_usage", "disk_io", "network_traffic"],
-      "tools": ["node_exporter", "cadvisor", "blackbox_exporter"]
+      "metrics": [
+        "cpu_usage",
+        "memory_usage",
+        "disk_io",
+        "network_traffic"
+      ],
+      "tools": [
+        "node_exporter",
+        "cadvisor",
+        "blackbox_exporter"
+      ]
     },
     "hardware": {
-      "metrics": ["gpu_utilization", "temperature", "power_consumption", "memory_usage"],
-      "tools": ["dcgm_exporter", "ipmi_exporter", "smartmon_exporter"]
+      "metrics": [
+        "gpu_utilization",
+        "temperature",
+        "power_consumption",
+        "memory_usage"
+      ],
+      "tools": [
+        "dcgm_exporter",
+        "ipmi_exporter",
+        "smartmon_exporter"
+      ]
     }
   },
   "alerting_strategy": {
-    "severity_levels": ["critical", "warning", "info"],
-    "notification_channels": ["slack", "email", "pagerduty", "webhook"],
+    "severity_levels": [
+      "critical",
+      "warning",
+      "info"
+    ],
+    "notification_channels": [
+      "slack",
+      "email",
+      "pagerduty",
+      "webhook"
+    ],
     "escalation_policy": {
       "warning_timeout": "5m",
       "critical_timeout": "1m",
@@ -122,5 +213,12 @@
     "capacity_planning": true,
     "performance_optimization": true,
     "incident_response": true
-  }
+  },
+  "verified": true,
+  "verified_at": "2026-06-27T00:00:00",
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "dependencies": {}
 }

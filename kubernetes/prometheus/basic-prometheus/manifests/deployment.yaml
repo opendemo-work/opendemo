@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: basic-prometheus
+  labels:
+    app: basic-prometheus
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: basic-prometheus
+  template:
+    metadata:
+      labels:
+        app: basic-prometheus
+    spec:
+      containers:
+      - name: demo
+        image: nginx:alpine
+        ports:
+        - containerPort: 80

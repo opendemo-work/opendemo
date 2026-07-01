@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: network-storage
+  labels:
+    app: network-storage
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: network-storage
+  template:
+    metadata:
+      labels:
+        app: network-storage
+    spec:
+      containers:
+      - name: demo
+        image: nginx:alpine
+        ports:
+        - containerPort: 80

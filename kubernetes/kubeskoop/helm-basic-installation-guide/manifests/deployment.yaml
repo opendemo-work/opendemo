@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: helm-basic-installation-guide
+  labels:
+    app: helm-basic-installation-guide
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: helm-basic-installation-guide
+  template:
+    metadata:
+      labels:
+        app: helm-basic-installation-guide
+    spec:
+      containers:
+      - name: demo
+        image: nginx:alpine
+        ports:
+        - containerPort: 80

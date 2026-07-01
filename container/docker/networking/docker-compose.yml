@@ -1,0 +1,17 @@
+version: '3.8'
+services:
+  app1:
+    image: nginx:alpine
+    networks:
+      - custom-bridge
+  app2:
+    image: nginx:alpine
+    networks:
+      - custom-bridge
+
+networks:
+  custom-bridge:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.28.0.0/16

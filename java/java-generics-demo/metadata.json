@@ -3,15 +3,47 @@
   "name": "Java泛型编程示例",
   "category": "java",
   "subcategory": "高级特性",
-  "difficulty": "中级",
+  "difficulty": "intermediate",
   "estimated_time": "2小时",
-  "prerequisites": ["java-classes-objects-demo"],
-  "learning_objectives": ["掌握泛型编程的核心概念和应用"],
-  "tags": ["泛型", "类型安全", "通配符"],
-  "related_cases": ["java-classes-objects-demo"],
+  "prerequisites": [
+    "java-classes-objects-demo"
+  ],
+  "learning_objectives": [
+    "掌握泛型编程的核心概念和应用"
+  ],
+  "tags": [
+    "泛型",
+    "类型安全",
+    "通配符"
+  ],
+  "related_cases": [
+    "java-classes-objects-demo"
+  ],
   "created_date": "2024-01-15",
   "last_updated": "2024-01-15",
   "author": "OpenDemo Team",
   "version": "1.0.0",
-  "status": "complete"
+  "status": "complete",
+  "dependencies": {},
+  "language": "java",
+  "description": "Java泛型编程示例 的实战演示与配置详解",
+  "keywords": [
+    "java",
+    "java"
+  ],
+  "created_at": "2025-12-11T17:08:29",
+  "updated_at": "2026-06-27T00:05:00",
+  "verified": true,
+  "verified_at": "2026-06-27T00:05:00",
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "compatibility": {
+    "operating_systems": [
+      "linux",
+      "macos",
+      "windows(wsl)"
+    ]
+  }
 }

@@ -1,0 +1,25 @@
+version: '3.8'
+services:
+  nameserver:
+    image: apache/rocketmq:5.1.4
+    container_name: rmqnameserver-delay
+    command: sh mqnamesrv
+    ports:
+      - "9876:9876"
+    networks:
+      - rocketmq
+
+  broker:
+    image: apache/rocketmq:5.1.4
+    container_name: rmqbroker-delay
+    command: sh mqbroker -n nameserver:9876
+    environment:
+      - NAMESRV_ADDR=nameserver:9876
+    depends_on:
+      - nameserver
+    networks:
+      - rocketmq
+
+networks:
+  rocketmq:
+    driver: bridge

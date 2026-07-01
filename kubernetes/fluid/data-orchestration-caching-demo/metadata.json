@@ -10,10 +10,27 @@
   ],
   "description": "演示在Kubernetes中使用ConfigMap和EmptyDir进行数据编排与临时缓存的实践示例",
   "difficulty": "beginner",
-  "author": "",
+  "author": "OpenDemo Team",
   "created_at": "2026-01-14T11:55:58.725658",
-  "updated_at": "2026-01-14T11:55:58.725658",
+  "updated_at": "2026-06-27T00:00:00",
   "version": "1.0.0",
   "dependencies": {},
-  "verified": false
+  "verified": true,
+  "verified_at": "2026-06-27T00:00:00",
+  "estimated_time": "60-90分钟",
+  "prerequisites": [
+    "Kubernetes 基础知识",
+    "kubectl 已安装"
+  ],
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "compatibility": {
+    "operating_systems": [
+      "linux",
+      "macos",
+      "windows(wsl)"
+    ]
+  }
 }

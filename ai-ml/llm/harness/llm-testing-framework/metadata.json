@@ -2,13 +2,46 @@
   "name": "llm-testing-framework",
   "category": "llm-harness",
   "difficulty": "intermediate",
-  "language": "python",
-  "keywords": ["testing", "unit-test", "integration-test", "regression", "pytest"],
+  "language": "ai-ml",
+  "keywords": [
+    "testing",
+    "unit-test",
+    "integration-test",
+    "regression",
+    "pytest"
+  ],
   "description": "LLM 测试框架：单元测试、集成测试、回归测试",
   "estimated_time": "3-4 hours",
-  "prerequisites": ["llm-inference"],
-  "learning_objectives": ["设计 LLM 测试框架", "实现各类测试", "掌握 pytest 集成"],
-  "content_types": ["tutorial", "testing-guide"],
+  "prerequisites": [
+    "llm-inference"
+  ],
+  "learning_objectives": [
+    "设计 LLM 测试框架",
+    "实现各类测试",
+    "掌握 pytest 集成"
+  ],
+  "content_types": [
+    "tutorial",
+    "testing-guide"
+  ],
   "quality_standard": "five-star",
-  "created_date": "2026-06-01"
+  "created_date": "2026-06-01",
+  "dependencies": {},
+  "author": "OpenDemo Team",
+  "version": "1.1.0",
+  "created_at": "2025-12-11T17:08:29",
+  "updated_at": "2026-06-27T00:10:00",
+  "verified": true,
+  "verified_at": "2026-06-27T00:10:00",
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "compatibility": {
+    "operating_systems": [
+      "linux",
+      "macos",
+      "windows(wsl)"
+    ]
+  }
 }

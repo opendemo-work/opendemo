@@ -1,0 +1,26 @@
+apiVersion: networking.higress.io/v1
+kind: McpBridge
+metadata:
+  name: default
+spec:
+  registries:
+    - name: backend
+      type: static
+      domain: backend
+      port: 80
+---
+apiVersion: networking.higress.io/v1
+kind: Ingress
+metadata:
+  name: demo
+spec:
+  rules:
+    - http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: backend
+                port:
+                  number: 80

@@ -1,8 +1,44 @@
 {
   "name": "Python Unit Testing Demo",
   "category": "python-testing",
-  "tech_stack": ["Python", "unittest", "pytest", "mock"],
+  "tech_stack": [
+    "Python",
+    "unittest",
+    "pytest",
+    "mock"
+  ],
   "description": "Python单元测试演示，unittest、pytest、mock、测试覆盖率",
   "difficulty": "beginner",
-  "dependencies": ["pytest", "pytest-cov"]
+  "dependencies": {
+    "items": [
+      "pytest",
+      "pytest-cov"
+    ]
+  },
+  "language": "python",
+  "keywords": [
+    "python",
+    "unit"
+  ],
+  "author": "OpenDemo Team",
+  "version": "1.1.0",
+  "created_at": "2025-12-11T17:08:29",
+  "updated_at": "2026-06-27T00:05:00",
+  "verified": true,
+  "verified_at": "2026-06-27T00:05:00",
+  "estimated_time": "60-90分钟",
+  "prerequisites": [
+    "相关基础知识"
+  ],
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "compatibility": {
+    "operating_systems": [
+      "linux",
+      "macos",
+      "windows(wsl)"
+    ]
+  }
 }

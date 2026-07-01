@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: container-image-management
+  labels:
+    app: container-image-management
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: container-image-management
+  template:
+    metadata:
+      labels:
+        app: container-image-management
+    spec:
+      containers:
+      - name: demo
+        image: nginx:alpine
+        ports:
+        - containerPort: 80

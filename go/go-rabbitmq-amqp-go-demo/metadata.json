@@ -10,10 +10,26 @@
   ],
   "description": "使用Go实现RabbitMQ AMQP协议的完整示例，涵盖生产者、消费者和工作队列模式。",
   "difficulty": "advanced",
-  "author": "",
+  "author": "OpenDemo Team",
   "created_at": "2025-12-11T16:46:57.405292",
   "updated_at": "2025-12-11T16:46:57.405292",
   "version": "1.0.0",
   "dependencies": {},
-  "verified": false
+  "verified": false,
+  "verified_at": "2026-06-27T00:05:00",
+  "estimated_time": "60-90分钟",
+  "prerequisites": [
+    "相关基础知识"
+  ],
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "compatibility": {
+    "operating_systems": [
+      "linux",
+      "macos",
+      "windows(wsl)"
+    ]
+  }
 }

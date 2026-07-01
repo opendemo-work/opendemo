@@ -1,8 +1,44 @@
 {
   "name": "Python TDD with pytest",
   "category": "python",
-  "tech_stack": ["Python", "TDD", "pytest", "Testing"],
+  "tech_stack": [
+    "Python",
+    "TDD",
+    "pytest",
+    "Testing"
+  ],
   "description": "Python测试驱动开发：pytest、fixtures、mock、覆盖率",
   "difficulty": "intermediate",
-  "dependencies": ["Python", "pytest"]
+  "dependencies": {
+    "items": [
+      "Python",
+      "pytest"
+    ]
+  },
+  "language": "python",
+  "keywords": [
+    "python",
+    "python"
+  ],
+  "author": "OpenDemo Team",
+  "version": "1.1.0",
+  "created_at": "2025-12-11T17:08:29",
+  "updated_at": "2026-06-27T00:05:00",
+  "verified": true,
+  "verified_at": "2026-06-27T00:05:00",
+  "estimated_time": "60-90分钟",
+  "prerequisites": [
+    "相关基础知识"
+  ],
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "compatibility": {
+    "operating_systems": [
+      "linux",
+      "macos",
+      "windows(wsl)"
+    ]
+  }
 }

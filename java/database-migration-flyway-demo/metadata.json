@@ -1,15 +1,53 @@
 {
-    "name": "database-migration-flyway-demo",
-    "displayName": "Flyway数据库迁移演示",
-    "description": "Spring Boot + Flyway 数据库版本管理演示，展示迁移脚本的编写和管理策略",
-    "category": "java",
-    "tags": ["flyway", "database-migration", "spring-boot", "h2"],
-    "difficulty": "intermediate",
-    "dependencies": ["spring-boot-starter-web", "spring-boot-starter-jdbc", "flyway-core", "h2"],
-    "mainTechnologies": {
-        "language": "Java 11",
-        "framework": "Spring Boot 2.7.12",
-        "migration": "Flyway",
-        "database": "H2"
-    }
+  "name": "database-migration-flyway-demo",
+  "displayName": "Flyway数据库迁移演示",
+  "description": "Spring Boot + Flyway 数据库版本管理演示，展示迁移脚本的编写和管理策略",
+  "category": "java",
+  "tags": [
+    "flyway",
+    "database-migration",
+    "spring-boot",
+    "h2"
+  ],
+  "difficulty": "intermediate",
+  "dependencies": {
+    "items": [
+      "spring-boot-starter-web",
+      "spring-boot-starter-jdbc",
+      "flyway-core",
+      "h2"
+    ]
+  },
+  "mainTechnologies": {
+    "language": "Java 11",
+    "framework": "Spring Boot 2.7.12",
+    "migration": "Flyway",
+    "database": "H2"
+  },
+  "language": "java",
+  "keywords": [
+    "java",
+    "database"
+  ],
+  "author": "OpenDemo Team",
+  "version": "1.1.0",
+  "created_at": "2025-12-11T17:08:29",
+  "updated_at": "2026-06-27T00:05:00",
+  "verified": true,
+  "verified_at": "2026-06-27T00:05:00",
+  "estimated_time": "60-90分钟",
+  "prerequisites": [
+    "相关基础知识"
+  ],
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "compatibility": {
+    "operating_systems": [
+      "linux",
+      "macos",
+      "windows(wsl)"
+    ]
+  }
 }

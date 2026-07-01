@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: observability-advanced
+  labels:
+    app: observability-advanced
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: observability-advanced
+  template:
+    metadata:
+      labels:
+        app: observability-advanced
+    spec:
+      containers:
+      - name: demo
+        image: nginx:alpine
+        ports:
+        - containerPort: 80

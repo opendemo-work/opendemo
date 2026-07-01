@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gemini-cli-demo
+  labels:
+    app: gemini-cli-demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gemini-cli-demo
+  template:
+    metadata:
+      labels:
+        app: gemini-cli-demo
+    spec:
+      containers:
+      - name: demo
+        image: nginx:alpine
+        ports:
+        - containerPort: 80

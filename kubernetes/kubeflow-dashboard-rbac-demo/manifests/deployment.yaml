@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kubeflow-dashboard-rbac-demo
+  labels:
+    app: kubeflow-dashboard-rbac-demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kubeflow-dashboard-rbac-demo
+  template:
+    metadata:
+      labels:
+        app: kubeflow-dashboard-rbac-demo
+    spec:
+      containers:
+      - name: demo
+        image: nginx:alpine
+        ports:
+        - containerPort: 80

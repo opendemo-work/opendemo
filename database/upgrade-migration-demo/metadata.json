@@ -7,10 +7,22 @@
   "last_updated": "2026-02-02",
   "category": "基础管理",
   "subcategory": "升级迁移",
-  "tags": ["database", "upgrade", "migration", "mysql", "postgresql", "mongodb", "redis"],
-  "difficulty": "高级",
+  "tags": [
+    "database",
+    "upgrade",
+    "migration",
+    "mysql",
+    "postgresql",
+    "mongodb",
+    "redis"
+  ],
+  "difficulty": "intermediate",
   "estimated_time": "480分钟",
-  "prerequisites": ["基础SQL知识", "数据库管理经验", "系统运维技能"],
+  "prerequisites": [
+    "基础SQL知识",
+    "数据库管理经验",
+    "系统运维技能"
+  ],
   "learning_objectives": [
     "掌握数据库版本升级的最佳实践",
     "理解跨版本迁移的技术要点",
@@ -23,5 +35,28 @@
     "clarity": "步骤详细可操作",
     "relevance": "企业级应用场景"
   },
-  "validation_status": "pending"
+  "validation_status": "pending",
+  "language": "database",
+  "description": "数据库升级迁移完整指南 的实战演示与配置详解",
+  "keywords": [
+    "database",
+    "mysql",
+    "upgrade"
+  ],
+  "created_at": "2025-12-11T17:08:29",
+  "updated_at": "2026-06-26T23:55:00",
+  "verified": true,
+  "verified_at": "2026-06-26T23:55:00",
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "dependencies": {},
+  "compatibility": {
+    "operating_systems": [
+      "linux",
+      "macos",
+      "windows(wsl)"
+    ]
+  }
 }

@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rook-storage-orchestration
+  labels:
+    app: rook-storage-orchestration
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rook-storage-orchestration
+  template:
+    metadata:
+      labels:
+        app: rook-storage-orchestration
+    spec:
+      containers:
+      - name: demo
+        image: nginx:alpine
+        ports:
+        - containerPort: 80

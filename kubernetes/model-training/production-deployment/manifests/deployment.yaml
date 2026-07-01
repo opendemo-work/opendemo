@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: production-deployment
+  labels:
+    app: production-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: production-deployment
+  template:
+    metadata:
+      labels:
+        app: production-deployment
+    spec:
+      containers:
+      - name: demo
+        image: nginx:alpine
+        ports:
+        - containerPort: 80

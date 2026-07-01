@@ -1,0 +1,44 @@
+version: '3.8'
+services:
+  grafana:
+    image: grafana/grafana:10.1.0
+    container_name: grafana-alerting
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./configs/provisioning:/etc/grafana/provisioning:ro
+      - ./configs/alerting:/etc/grafana/alerting:ro
+      - grafana-data:/var/lib/grafana
+    networks:
+      - monitoring
+
+  prometheus:
+    image: prom/prometheus:v2.47.0
+    container_name: alerting-prometheus
+    volumes:
+      - ./configs/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - prometheus-data:/prometheus
+    ports:
+      - "9090:9090"
+    networks:
+      - monitoring
+
+  webhook-receiver:
+    image: python:3.11-alpine
+    container_name: webhook-receiver
+    command: ["sh", "-c", "python -m http.server 5001"]
+    ports:
+      - "5001:5001"
+    networks:
+      - monitoring
+
+volumes:
+  grafana-data:
+  prometheus-data:
+
+networks:
+  monitoring:
+    driver: bridge

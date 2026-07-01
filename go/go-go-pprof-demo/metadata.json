@@ -10,7 +10,7 @@
   ],
   "description": "通过可运行示例展示如何使用Go的pprof工具进行CPU和内存性能分析。",
   "difficulty": "advanced",
-  "author": "",
+  "author": "OpenDemo Team",
   "created_at": "2025-12-11T14:31:01.798328",
   "updated_at": "2025-12-11T14:31:01.798328",
   "version": "1.0.0",
@@ -18,5 +18,21 @@
   "verified": false,
   "aliases": [
     "go-go-pprof性能分析实战演示"
-  ]
+  ],
+  "verified_at": "2026-06-27T00:05:00",
+  "estimated_time": "60-90分钟",
+  "prerequisites": [
+    "相关基础知识"
+  ],
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "compatibility": {
+    "operating_systems": [
+      "linux",
+      "macos",
+      "windows(wsl)"
+    ]
+  }
 }

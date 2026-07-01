@@ -10,10 +10,27 @@
   ],
   "description": "展示 KServe 模型服务的自动扩缩容配置实践",
   "difficulty": "intermediate",
-  "author": "",
+  "author": "OpenDemo Team",
   "created_at": "2026-01-07T18:18:55.789283",
-  "updated_at": "2026-01-07T18:18:55.789283",
+  "updated_at": "2026-06-27T00:00:00",
   "version": "1.0.0",
   "dependencies": {},
-  "verified": false
+  "verified": true,
+  "verified_at": "2026-06-27T00:00:00",
+  "estimated_time": "60-90分钟",
+  "prerequisites": [
+    "Kubernetes 基础知识",
+    "kubectl 已安装"
+  ],
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "compatibility": {
+    "operating_systems": [
+      "linux",
+      "macos",
+      "windows(wsl)"
+    ]
+  }
 }

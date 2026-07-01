@@ -17,8 +17,17 @@
   "version": "1.0.0",
   "dependencies": {
     "java_version": "8+",
-    "required_tools": ["jps", "jstack", "jmap", "jstat", "jinfo"],
-    "optional_tools": ["arthas", "eclipse-mat"]
+    "required_tools": [
+      "jps",
+      "jstack",
+      "jmap",
+      "jstat",
+      "jinfo"
+    ],
+    "optional_tools": [
+      "arthas",
+      "eclipse-mat"
+    ]
   },
   "verified": true,
   "estimated_time": "4-5小时",
@@ -54,5 +63,13 @@
     "configs/arthas_config.properties",
     "examples/arthas_commands_demo.txt",
     "docs/arthas_user_guide.md"
-  ]
+  ],
+  "verified_at": "2026-06-27T00:05:00",
+  "compatibility": {
+    "operating_systems": [
+      "linux",
+      "macos",
+      "windows(wsl)"
+    ]
+  }
 }

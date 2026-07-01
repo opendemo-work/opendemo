@@ -1,0 +1,49 @@
+{
+  "name": "Prometheus 告警规则演示",
+  "language": "monitoring",
+  "difficulty": "advanced",
+  "description": "深入讲解 Prometheus 告警规则编写、Alertmanager 路由分组、静默抑制和告警模板，构建生产级告警体系。",
+  "keywords": [
+    "prometheus",
+    "alerting",
+    "alertmanager",
+    "rules",
+    "monitoring"
+  ],
+  "author": "OpenDemo Team",
+  "version": "1.0.0",
+  "created_at": "2026-06-27",
+  "updated_at": "2026-06-27T01:30:00",
+  "verified": true,
+  "verified_at": "2026-06-27T01:30:00",
+  "estimated_time": "60-90分钟",
+  "prerequisites": [
+    "Docker",
+    "Docker Compose",
+    "基础监控概念"
+  ],
+  "files": [
+    "README.md",
+    "metadata.json",
+    "docker-compose.yml",
+    "configs/prometheus.yml",
+    "configs/rules/node_rules.yml",
+    "configs/alertmanager.yml",
+    "scripts/start.sh",
+    "scripts/stop.sh",
+    "scripts/check.sh"
+  ],
+  "dependencies": {
+    "software": [
+      "Docker",
+      "Docker Compose"
+    ]
+  },
+  "compatibility": {
+    "operating_systems": [
+      "linux",
+      "macos",
+      "windows(wsl)"
+    ]
+  }
+}

@@ -8,7 +8,7 @@
   ],
   "description": "展示Go语言中常见变量类型的声明与使用方式。",
   "difficulty": "beginner",
-  "author": "",
+  "author": "OpenDemo Team",
   "created_at": "2025-12-11T13:22:58.402121",
   "updated_at": "2025-12-11T13:22:58.402121",
   "version": "1.0.0",
@@ -16,5 +16,21 @@
   "verified": false,
   "aliases": [
     "go-go变量类型演示"
-  ]
+  ],
+  "verified_at": "2026-06-27T00:05:00",
+  "estimated_time": "60-90分钟",
+  "prerequisites": [
+    "相关基础知识"
+  ],
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "compatibility": {
+    "operating_systems": [
+      "linux",
+      "macos",
+      "windows(wsl)"
+    ]
+  }
 }

@@ -1,15 +1,20 @@
 {
   "name": "user-permission-management-demo",
-  "language": "sql/shell/python",
+  "language": "database",
   "keywords": [
-    "user-management", "permission-control", "rbac", "access-control",
-    "database-security", "compliance", "audit"
+    "user-management",
+    "permission-control",
+    "rbac",
+    "access-control",
+    "database-security",
+    "compliance",
+    "audit"
   ],
   "description": "企业级数据库用户权限管理体系，涵盖MySQL、PostgreSQL、MongoDB、Redis的精细化权限控制、RBAC实践和合规性管理完整方案",
   "difficulty": "advanced",
   "author": "OpenDemo Team",
   "created_at": "2026-02-02",
-  "updated_at": "2026-02-02",
+  "updated_at": "2026-06-26T23:55:00",
   "version": "1.0.0",
   "dependencies": {
     "prerequisite_knowledge": [
@@ -68,5 +73,18 @@
     "GDPR",
     "HIPAA",
     "PCI-DSS"
-  ]
+  ],
+  "verified_at": "2026-06-26T23:55:00",
+  "estimated_time": "60-90分钟",
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "compatibility": {
+    "operating_systems": [
+      "linux",
+      "macos",
+      "windows(wsl)"
+    ]
+  }
 }

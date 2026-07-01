@@ -2,13 +2,45 @@
   "name": "promptfoo-evaluation",
   "category": "llm-harness",
   "difficulty": "intermediate",
-  "language": "yaml",
-  "keywords": ["promptfoo", "prompt-evaluation", "assertions", "regression"],
+  "language": "ai-ml",
+  "keywords": [
+    "promptfoo",
+    "prompt-evaluation",
+    "assertions",
+    "regression"
+  ],
   "description": "Promptfoo 自动化评估：Prompt 对比、断言、回归测试",
   "estimated_time": "2-3 hours",
-  "prerequisites": ["llm-inference"],
-  "learning_objectives": ["掌握 Promptfoo 配置", "实现自动化评估", "理解断言设计"],
-  "content_types": ["tutorial", "tool-guide"],
+  "prerequisites": [
+    "llm-inference"
+  ],
+  "learning_objectives": [
+    "掌握 Promptfoo 配置",
+    "实现自动化评估",
+    "理解断言设计"
+  ],
+  "content_types": [
+    "tutorial",
+    "tool-guide"
+  ],
   "quality_standard": "five-star",
-  "created_date": "2026-06-01"
+  "created_date": "2026-06-01",
+  "dependencies": {},
+  "author": "OpenDemo Team",
+  "version": "1.1.0",
+  "created_at": "2025-12-11T17:08:29",
+  "updated_at": "2026-06-27T00:10:00",
+  "verified": true,
+  "verified_at": "2026-06-27T00:10:00",
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "compatibility": {
+    "operating_systems": [
+      "linux",
+      "macos",
+      "windows(wsl)"
+    ]
+  }
 }

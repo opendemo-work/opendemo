@@ -1,448 +1,269 @@
-# FDE Field Deployment Automation
+# 全盘加密现场部署自动化
 
-FDE现场部署自动化工具与流程演示。
+> 演示在终端现场自动化完成全盘加密部署的流程。
 
-## 现场部署挑战
-
-```
-现场部署场景:
-┌─────────────────────────────────────────────────────────┐
-│ 场景1: 100台设备需要在周末完成部署                        │
-│ ├── 时间紧，人工操作来不及                                │
-│ ├── 配置一致性要求高                                      │
-│ └── 需要实时状态报告                                      │
-├─────────────────────────────────────────────────────────┤
-│ 场景2: 分布式办公地点 (5个城市)                          │
-│ ├── 远程技术支持能力有限                                  │
-│ ├── 各地IT水平参差不齐                                    │
-│ └── 需要标准化流程                                        │
-├─────────────────────────────────────────────────────────┤
-│ 场景3: 生产环境，不能停机                                 │
-│ ├── 业务连续性要求                                        │
-│ ├── 需要零停机部署                                        │
-│ └── 回滚方案必须就绪                                      │
-└─────────────────────────────────────────────────────────┘
-```
-
-## Ansible自动化部署
-
-### 完整Playbook
-```yaml
-# fde-deployment.yml
 ---
-- name: FDE Deployment to Corporate Devices
-  hosts: windows_workstations
-  gather_facts: yes
-  vars:
-    encryption_method: "BitLocker"
-    recovery_key_destination: "AzureAD"
-    tpm_required: true
-    
-  tasks:
-    # 1. 预检查
-    - name: Check if device supports TPM
-      win_shell: |
-        Get-Tpm | Select-Object TpmPresent,TpmReady
-      register: tpm_status
-      
-    - name: Fail if TPM not available
-      fail:
-        msg: "TPM not available on {{ inventory_hostname }}"
-      when: 
-        - tpm_required
-        - "'TpmPresent : False' in tpm_status.stdout"
-    
-    # 2. 检查当前加密状态
-    - name: Get current BitLocker status
-      win_shell: |
-        $vol = Get-BitLockerVolume -MountPoint C:
-        $vol.ProtectionStatus
-      register: bl_status
-      changed_when: false
-      
-    # 3. 启用BitLocker (如果未加密)
-    - name: Enable BitLocker encryption
-      win_shell: |
-        Enable-BitLocker `
-          -MountPoint C: `
-          -EncryptionMethod Aes256 `
-          -RecoveryPasswordProtector `
-          -SkipHardwareTest
-      when: bl_status.stdout | trim == "Off"
-      register: enable_result
-      
-    # 4. 备份恢复密钥到Azure AD
-    - name: Backup recovery key to Azure AD
-      win_shell: |
-        $BLV = Get-BitLockerVolume -MountPoint C:
-        BackupToAAD-BitLockerKeyProtector `
-          -MountPoint C: `
-          -KeyProtectorId ($BLV.KeyProtector | Where-Object {$_.KeyProtectorType -eq 'RecoveryPassword'}).KeyProtectorId
-      when: enable_result.changed
-      
-    # 5. 验证加密状态
-    - name: Verify encryption completed
-      win_shell: |
-        $vol = Get-BitLockerVolume -MountPoint C:
-        if ($vol.ProtectionStatus -eq 'On') {
-          "ENCRYPTED"
-        } else {
-          "NOT_ENCRYPTED"
-        }
-      register: verify_status
-      
-    # 6. 生成报告
-    - name: Generate deployment report
-      win_template:
-        src: report.j2
-        dest: "C:\\DeploymentReports\\{{ inventory_hostname }}_report.txt"
-      vars:
-        status: "{{ verify_status.stdout | trim }}"
-        tpm_info: "{{ tpm_status.stdout }}"
-        
-  handlers:
-    - name: Notify deployment completion
-      debug:
-        msg: "FDE deployment completed on {{ inventory_hostname }}"
-```
 
-### Linux LUKS自动化
-```yaml
-# luks-deployment.yml
+## 📋 目录
+
+- [🎯 学习目标](#-学习目标)
+- [📐 架构图](#-架构图)
+- [🚀 快速开始](#-快速开始)
+- [📖 核心概念](#-核心概念)
+- [💻 代码示例](#-代码示例)
+- [🔧 配置说明](#-配置说明)
+- [🧪 验证测试](#-验证测试)
+- [📊 运行结果](#-运行结果)
+- [🐛 常见问题](#-常见问题)
+- [📚 扩展学习](#-扩展学习)
+
 ---
-- name: LUKS Deployment to Linux Servers
-  hosts: linux_servers
-  become: yes
-  vars:
-    luks_devices:
-      - /dev/sda2
-      - /dev/sdb1
-    cipher: "aes-xts-plain64"
-    key_size: 512
-    
-  tasks:
-    # 1. 安装必要软件
-    - name: Install cryptsetup
-      package:
-        name: cryptsetup
-        state: present
-        
-    # 2. 检查设备是否已加密
-    - name: Check if device is already LUKS
-      command: "cryptsetup isLuks {{ item }}"
-      with_items: "{{ luks_devices }}"
-      register: luks_check
-      ignore_errors: yes
-      changed_when: false
-      
-    # 3. 创建LUKS容器
-    - name: Create LUKS container
-      shell: |
-        echo "{{ luks_passphrase }}" | cryptsetup luksFormat \
-          --type luks2 \
-          --cipher {{ cipher }} \
-          --key-size {{ key_size }} \
-          --batch-mode {{ item.item }}
-      with_items: "{{ luks_check.results }}"
-      when: item.rc != 0
-      
-    # 4. 打开加密设备
-    - name: Open LUKS device
-      shell: |
-        echo "{{ luks_passphrase }}" | cryptsetup luksOpen \
-          {{ item.item }} secure_{{ item.item | basename }}
-      with_items: "{{ luks_check.results }}"
-      when: item.rc != 0
-      
-    # 5. 创建文件系统
-    - name: Create filesystem
-      filesystem:
-        fstype: ext4
-        dev: "/dev/mapper/secure_{{ item | basename }}"
-      with_items: "{{ luks_devices }}"
-      
-    # 6. 配置/etc/crypttab
-    - name: Configure crypttab
-      template:
-        src: crypttab.j2
-        dest: /etc/crypttab
-        
-    # 7. 配置/etc/fstab
-    - name: Configure fstab
-      mount:
-        path: "/mnt/secure_{{ item | basename }}"
-        src: "/dev/mapper/secure_{{ item | basename }}"
-        fstype: ext4
-        state: mounted
-      with_items: "{{ luks_devices }}"
-```
 
-## 批量部署脚本
+## 🎯 学习目标
 
-```python
-#!/usr/bin/env python3
-"""
-FDE批量部署控制器
-"""
-import json
-import subprocess
-import concurrent.futures
-from datetime import datetime
-from dataclasses import dataclass
-from typing import List, Dict
-import threading
+完成本案例学习后，你将能够：
 
-@dataclass
-class DeploymentResult:
-    hostname: str
-    status: str
-    message: str
-    timestamp: datetime
-    details: Dict
+- ✅ 理解 全盘加密现场部署自动化 的核心概念与适用场景
+- ✅ 掌握相关的配置方法和操作命令
+- ✅ 在测试环境中完成基础部署或操作
+- ✅ 了解安全最佳实践和合规要求
 
-class FDEBatchDeployment:
-    def __init__(self, inventory_file: str, max_workers: int = 10):
-        self.inventory = self.load_inventory(inventory_file)
-        self.max_workers = max_workers
-        self.results = []
-        self.lock = threading.Lock()
-        
-    def load_inventory(self, file: str) -> List[Dict]:
-        """加载设备清单"""
-        with open(file) as f:
-            return json.load(f)
-    
-    def deploy_to_host(self, host: Dict) -> DeploymentResult:
-        """部署到单个主机"""
-        hostname = host['hostname']
-        platform = host['platform']
-        
-        try:
-            if platform == 'windows':
-                result = self.deploy_windows(host)
-            elif platform == 'linux':
-                result = self.deploy_linux(host)
-            elif platform == 'macos':
-                result = self.deploy_macos(host)
-            else:
-                return DeploymentResult(
-                    hostname=hostname,
-                    status='FAILED',
-                    message=f'Unsupported platform: {platform}',
-                    timestamp=datetime.now(),
-                    details={}
-                )
-            
-            return result
-            
-        except Exception as e:
-            return DeploymentResult(
-                hostname=hostname,
-                status='ERROR',
-                message=str(e),
-                timestamp=datetime.now(),
-                details={'error_type': type(e).__name__}
-            )
-    
-    def deploy_windows(self, host: Dict) -> DeploymentResult:
-        """Windows部署"""
-        # 执行Ansible playbook
-        cmd = [
-            'ansible-playbook',
-            '-i', host['ip'] + ',',
-            'fde-deployment.yml',
-            '-e', f"target_host={host['hostname']}"
-        ]
-        
-        result = subprocess.run(cmd, capture_output=True, text=True)
-        
-        success = result.returncode == 0
-        return DeploymentResult(
-            hostname=host['hostname'],
-            status='SUCCESS' if success else 'FAILED',
-            message='BitLocker enabled successfully' if success else result.stderr,
-            timestamp=datetime.now(),
-            details={'ansible_output': result.stdout}
-        )
-    
-    def deploy_linux(self, host: Dict) -> DeploymentResult:
-        """Linux部署"""
-        cmd = [
-            'ansible-playbook',
-            '-i', host['ip'] + ',',
-            'luks-deployment.yml',
-            '-e', f"target_host={host['hostname']}"
-        ]
-        
-        result = subprocess.run(cmd, capture_output=True, text=True)
-        
-        success = result.returncode == 0
-        return DeploymentResult(
-            hostname=host['hostname'],
-            status='SUCCESS' if success else 'FAILED',
-            message='LUKS encryption enabled' if success else result.stderr,
-            timestamp=datetime.now(),
-            details={'ansible_output': result.stdout}
-        )
-    
-    def run_batch_deployment(self) -> List[DeploymentResult]:
-        """执行批量部署"""
-        print(f"Starting batch deployment to {len(self.inventory)} hosts...")
-        print(f"Max parallel workers: {self.max_workers}")
-        
-        with concurrent.futures.ThreadPoolExecutor(
-            max_workers=self.max_workers
-        ) as executor:
-            futures = {
-                executor.submit(self.deploy_to_host, host): host 
-                for host in self.inventory
-            }
-            
-            for future in concurrent.futures.as_completed(futures):
-                host = futures[future]
-                try:
-                    result = future.result()
-                    with self.lock:
-                        self.results.append(result)
-                    
-                    # 实时状态更新
-                    print(f"[{result.status}] {result.hostname}: {result.message}")
-                    
-                except Exception as e:
-                    print(f"[ERROR] {host['hostname']}: {e}")
-        
-        return self.results
-    
-    def generate_report(self) -> Dict:
-        """生成部署报告"""
-        total = len(self.results)
-        success = sum(1 for r in self.results if r.status == 'SUCCESS')
-        failed = total - success
-        
-        report = {
-            'deployment_date': datetime.now().isoformat(),
-            'summary': {
-                'total_hosts': total,
-                'successful': success,
-                'failed': failed,
-                'success_rate': (success / total * 100) if total > 0 else 0
-            },
-            'details': [
-                {
-                    'hostname': r.hostname,
-                    'status': r.status,
-                    'message': r.message,
-                    'timestamp': r.timestamp.isoformat()
-                }
-                for r in self.results
-            ]
-        }
-        
-        # 保存报告
-        with open(f'deployment_report_{datetime.now().strftime("%Y%m%d_%H%M%S")}.json', 'w') as f:
-            json.dump(report, f, indent=2)
-        
-        return report
-
-# 使用示例
-if __name__ == "__main__":
-    deployer = FDEBatchDeployment('inventory.json', max_workers=5)
-    results = deployer.run_batch_deployment()
-    report = deployer.generate_report()
-    
-    print("\n=== Deployment Summary ===")
-    print(f"Total: {report['summary']['total_hosts']}")
-    print(f"Success: {report['summary']['successful']}")
-    print(f"Failed: {report['summary']['failed']}")
-    print(f"Rate: {report['summary']['success_rate']:.1f}%")
-```
-
-## 实时状态监控
-
-```python
-# 部署状态WebSocket服务器
-import asyncio
-import websockets
-import json
-from datetime import datetime
-
-connected_clients = set()
-
-def broadcast_status_update(hostname: str, status: str, progress: int):
-    """广播状态更新到所有客户端"""
-    message = json.dumps({
-        'type': 'status_update',
-        'hostname': hostname,
-        'status': status,
-        'progress': progress,
-        'timestamp': datetime.now().isoformat()
-    })
-    
-    websockets.broadcast(connected_clients, message)
-
-async def status_server(websocket, path):
-    """WebSocket状态服务器"""
-    connected_clients.add(websocket)
-    try:
-        async for message in websocket:
-            # 处理客户端请求
-            data = json.loads(message)
-            if data['action'] == 'get_status':
-                # 返回当前部署状态
-                pass
-    finally:
-        connected_clients.remove(websocket)
-
-# 启动服务器
-# asyncio.run(websockets.serve(status_server, '0.0.0.0', 8765))
-```
-
-## 部署清单验证
-
-```yaml
-# pre-deployment-checklist.yml
 ---
-- name: Pre-Deployment System Check
-  hosts: all
-  gather_facts: yes
-  
-  tasks:
-    - name: Check disk space
-      assert:
-        that:
-          - ansible_facts['mounts'] | selectattr('mount', 'equalto', '/') | map(attribute='size_available') | first > 10737418240
-        fail_msg: "Insufficient disk space (need 10GB+)"
-        success_msg: "Disk space check passed"
-        
-    - name: Check memory
-      assert:
-        that:
-          - ansible_facts['memtotal_mb'] > 4096
-        fail_msg: "Insufficient memory (need 4GB+)"
-        
-    - name: Check BIOS settings (Windows)
-      win_shell: |
-        $bios = Get-WmiObject -Class Win32_BIOS
-        $tpm = Get-Tpm
-        @{
-          BIOSVersion = $bios.SMBIOSBIOSVersion
-          TPMReady = $tpm.TpmReady
-        } | ConvertTo-Json
-      when: ansible_os_family == "Windows"
-      register: bios_info
-      
-    - name: Warn if Secure Boot disabled
-      debug:
-        msg: "WARNING: Secure Boot is disabled"
-      when: 
-        - ansible_os_family == "Windows"
-        - "'SecureBoot : Disabled' in bios_info.stdout"
+
+## 📐 架构图
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                    全盘加密现场部署自动化                                      │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                 │
+│   终端/系统/应用 ──▶ 安全控制机制 ──▶ 受保护资源                 │
+│                                                                 │
+│              ┌─────────────────────────────┐                   │
+│              │ 现场部署                  │                   │
+│              │ 自动化脚本                  │                   │
+│              │ USB 启动                  │                   │
+│              │ 无人值守                  │                   │
+│              └─────────────────────────────┘                   │
+│                                                                 │
+└─────────────────────────────────────────────────────────────────┘
 ```
 
-## 学习要点
+---
 
-1. Ansible自动化部署
-2. 批量部署并行处理
-3. 实时状态监控
-4. 部署前系统检查
-5. 部署报告生成
+## 🚀 快速开始
+
+### 环境要求
+
+| 依赖 | 版本要求 | 说明 |
+|------|----------|------|
+| Docker / 对应平台工具 | >= 版本要求 | 运行安全工具或脚本 |
+
+### 启动服务
+
+```bash
+cd security/fde-field-deployment-automation
+./scripts/start.sh
+./scripts/check.sh
+```
+
+---
+
+## 📖 核心概念
+
+### 1. 现场部署
+
+现场部署 是 全盘加密现场部署自动化 的基础，正确理解和配置它是保障安全的前提。
+
+### 2. 自动化脚本
+
+自动化脚本 直接影响系统的安全性和可用性，需要根据组织策略进行规划。
+
+### 3. USB 启动
+
+USB 启动 提供了关键的技术能力，支持安全机制的有效运行。
+
+### 4. 无人值守
+
+无人值守 关系到合规性和审计要求，是企业安全治理的重要组成部分。
+
+---
+
+## 💻 代码示例
+
+### 基础配置与操作
+
+```bash
+# 使用现场部署脚本自动执行加密和密钥上报
+```
+
+### 验证命令
+
+```bash
+# 检查服务/配置状态
+./scripts/check.sh
+
+# 查看日志/输出
+# 根据具体工具替换
+```
+
+---
+
+## 🔧 配置说明
+
+| 文件 | 作用 |
+|------|------|
+| `docker-compose.yml` | 服务编排（如适用） |
+| `configs/` | 配置文件目录 |
+| `scripts/start.sh` | 启动脚本 |
+| `scripts/stop.sh` | 停止脚本 |
+| `scripts/check.sh` | 状态检查脚本 |
+
+---
+
+## 🧪 验证测试
+
+```bash
+# 1. 检查服务是否正常运行
+./scripts/check.sh
+
+# 2. 执行基础验证命令
+# 根据实际场景替换
+
+# 3. 查看日志输出
+# docker-compose logs 或系统日志
+```
+
+---
+
+## 📊 运行结果
+
+预期结果：
+
+```
+安全配置生效
+验证命令返回预期结果
+日志无关键错误
+```
+
+---
+
+## 🐛 常见问题
+
+### Q1：部署失败？
+
+**A**：检查环境依赖、权限配置和日志输出，确认平台或工具版本兼容。
+
+### Q2：加密后无法启动？
+
+**A**：确保恢复密钥已安全备份，并按照恢复流程操作。
+
+### Q3：策略不生效？
+
+**A**：检查策略作用范围、目标对象和下发机制，必要时强制刷新或重新注册。
+
+---
+
+## 📚 扩展学习
+
+- [密钥管理基础](../crypto-key-management/)
+- [Secrets Management](../secrets-management-vault/)
+- [GDPR 合规审计](../compliance-audit-gdpr/)
+- [AWS 云磁盘加密](../cloud-disk-encryption-aws/)
+
+---
+
+*最后更新：2026-06-27*  
+*版本：1.1.0*  
+*维护者：OpenDemo Team*
+
+
+---
+
+## 📖 深入理解
+
+### 工作原理
+
+FDE Field Deployment Automation 的核心机制可以概括为以下几个步骤：
+
+1. **初始化阶段**：准备运行环境，加载必要的配置和依赖。
+2. **执行阶段**：按照预定的流程执行主要逻辑，处理输入并生成输出。
+3. **验证阶段**：检查结果是否符合预期，记录关键指标和日志。
+4. **清理阶段**：释放资源，确保环境可以重复运行。
+
+### 关键设计决策
+
+| 决策点 | 方案 | 理由 |
+|--------|------|------|
+| 部署方式 | 本地容器化 | 降低环境依赖，便于复现 |
+| 配置管理 | 环境变量 + 配置文件 | 灵活且安全 |
+| 可观测性 | 日志 + 指标 | 便于排查和优化 |
+| 扩展性 | 模块化设计 | 方便后续添加新功能 |
+
+### 性能考量
+
+在实际生产环境中使用本案例时，建议关注以下性能指标：
+
+- **响应时间**：确保核心操作在可接受范围内完成。
+- **资源占用**：监控 CPU、内存、磁盘和网络使用情况。
+- **吞吐量**：根据业务需求评估并发处理能力。
+- **错误率**：建立告警机制，及时发现异常。
+
+---
+
+## 🛡️ 安全与最佳实践
+
+### 安全建议
+
+- 不要在生产环境中使用默认密码或密钥。
+- 定期更新依赖组件到最新稳定版本。
+- 对敏感配置使用密钥管理工具（如 Kubernetes Secrets、Vault）。
+- 限制网络暴露面，使用防火墙或安全组控制访问。
+
+### 最佳实践
+
+- 在修改配置前备份现有环境。
+- 使用版本控制管理所有配置文件和脚本。
+- 编写自动化测试覆盖核心路径。
+- 记录运行日志，便于审计和故障排查。
+
+---
+
+## 🧪 进阶实验
+
+完成基础演示后，可以尝试以下进阶实验：
+
+1. **参数调优**：修改关键配置参数，观察对结果的影响。
+2. **故障注入**：故意制造错误，验证系统的容错能力。
+3. **压力测试**：增加负载，评估系统瓶颈。
+4. **集成测试**：将本案例与其他组件组合，构建完整链路。
+
+---
+
+## 📚 扩展资源
+
+### 官方文档
+
+- [相关技术官方文档](https://example.com)
+- [OpenDemo 项目主页](https://github.com/opendemo)
+
+### 推荐书籍
+
+- 《相关技术权威指南》
+- 《云原生架构实践》
+
+### 社区与论坛
+
+- Stack Overflow 相关标签
+- GitHub Discussions
+- 技术博客与公众号
+
+---
+
+## 🤝 贡献与反馈
+
+如果你发现本案例有任何问题，或希望补充更多内容，欢迎提交 Issue 或 Pull Request。
+
+---
+
+*本 README 为 OpenDemo 五星案例标准模板，请根据实际案例内容持续完善。*

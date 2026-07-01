@@ -1,0 +1,48 @@
+{
+  "name": "ClickHouse OLAP 分析",
+  "language": "bigdata",
+  "difficulty": "intermediate",
+  "description": "使用 Docker 部署 ClickHouse，创建 MergeTree 表引擎，演示高并发 OLAP 查询和聚合分析。",
+  "keywords": [
+    "clickhouse",
+    "olap",
+    "analytics",
+    "column-store",
+    "bigdata"
+  ],
+  "author": "OpenDemo Team",
+  "version": "1.0.0",
+  "created_at": "2026-06-27",
+  "updated_at": "2026-06-27T02:30:00",
+  "verified": true,
+  "verified_at": "2026-06-27T02:30:00",
+  "estimated_time": "60-90分钟",
+  "prerequisites": [
+    "Docker",
+    "Docker Compose",
+    "大数据基础概念"
+  ],
+  "files": [
+    "README.md",
+    "metadata.json",
+    "docker-compose.yml",
+    "init.sql",
+    "code/query.py",
+    "scripts/start.sh",
+    "scripts/stop.sh",
+    "scripts/check.sh"
+  ],
+  "dependencies": {
+    "software": [
+      "Docker",
+      "Docker Compose"
+    ]
+  },
+  "compatibility": {
+    "operating_systems": [
+      "linux",
+      "macos",
+      "windows(wsl)"
+    ]
+  }
+}

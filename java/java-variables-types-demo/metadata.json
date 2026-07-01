@@ -1,7 +1,12 @@
 {
   "name": "java-variables-types-demo",
   "language": "java",
-  "keywords": ["java", "variables", "data-types", "basics"],
+  "keywords": [
+    "java",
+    "variables",
+    "data-types",
+    "basics"
+  ],
   "description": "Java变量与数据类型基础演示，涵盖基本数据类型、类型转换、字符串操作等核心概念",
   "difficulty": "beginner",
   "author": "OpenDemo Team",
@@ -15,7 +20,9 @@
   },
   "verified": false,
   "estimated_time": "1-2小时",
-  "prerequisites": ["programming-basics"],
+  "prerequisites": [
+    "programming-basics"
+  ],
   "learning_outcomes": [
     "掌握Java基本数据类型的声明和使用",
     "理解变量命名规则和作用域",
@@ -30,5 +37,17 @@
     "数组的基本操作",
     "类型转换(自动和强制)",
     "常量声明和使用"
-  ]
+  ],
+  "verified_at": "2026-06-27T00:05:00",
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "compatibility": {
+    "operating_systems": [
+      "linux",
+      "macos",
+      "windows(wsl)"
+    ]
+  }
 }

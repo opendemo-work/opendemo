@@ -7,10 +7,20 @@
   "last_updated": "2026-02-02",
   "category": "高可用架构",
   "subcategory": "PostgreSQL高可用",
-  "tags": ["postgresql", "high-availability", "replication", "failover", "clustering"],
-  "difficulty": "专家级",
+  "tags": [
+    "postgresql",
+    "high-availability",
+    "replication",
+    "failover",
+    "clustering"
+  ],
+  "difficulty": "intermediate",
   "estimated_time": "480分钟",
-  "prerequisites": ["PostgreSQL基础", "流复制知识", "系统管理经验"],
+  "prerequisites": [
+    "PostgreSQL基础",
+    "流复制知识",
+    "系统管理经验"
+  ],
   "learning_objectives": [
     "掌握PostgreSQL流复制和逻辑复制技术",
     "学会搭建主从复制和集群架构",
@@ -23,5 +33,28 @@
     "clarity": "步骤详细可操作",
     "relevance": "企业级应用场景"
   },
-  "validation_status": "pending"
+  "validation_status": "pending",
+  "language": "database",
+  "description": "PostgreSQL高可用架构完整指南 的实战演示",
+  "keywords": [
+    "database",
+    "postgres",
+    "postgresql"
+  ],
+  "created_at": "2025-12-11T17:08:29",
+  "updated_at": "2026-06-26T23:55:00",
+  "verified": true,
+  "verified_at": "2026-06-26T23:55:00",
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "dependencies": {},
+  "compatibility": {
+    "operating_systems": [
+      "linux",
+      "macos",
+      "windows(wsl)"
+    ]
+  }
 }

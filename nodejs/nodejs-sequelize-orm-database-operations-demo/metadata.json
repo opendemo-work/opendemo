@@ -10,7 +10,7 @@
   ],
   "description": "一个展示 Sequelize ORM 在 Node.js 中进行数据库操作的完整可执行示例。",
   "difficulty": "intermediate",
-  "author": "",
+  "author": "OpenDemo Team",
   "created_at": "2025-12-11T17:30:36.730041",
   "updated_at": "2025-12-11T17:30:36.730041",
   "version": "1.0.0",
@@ -18,5 +18,21 @@
   "verified": false,
   "aliases": [
     "nodejs-sequelize-orm-数据库操作实战示例"
-  ]
+  ],
+  "verified_at": "2026-06-27T00:05:00",
+  "estimated_time": "60-90分钟",
+  "prerequisites": [
+    "相关基础知识"
+  ],
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "compatibility": {
+    "operating_systems": [
+      "linux",
+      "macos",
+      "windows(wsl)"
+    ]
+  }
 }

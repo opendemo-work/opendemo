@@ -1,0 +1,46 @@
+{
+  "name": "Kafka 流处理实战演示",
+  "language": "bigdata",
+  "difficulty": "intermediate",
+  "description": "使用 Docker Compose 启动本地 Kafka，通过 Python 生产者和消费者演示事件流发布-订阅、分区消费与事件统计。",
+  "keywords": [
+    "kafka",
+    "streaming",
+    "producer",
+    "consumer",
+    "docker-compose",
+    "python",
+    "bigdata"
+  ],
+  "author": "OpenDemo Team",
+  "version": "1.0.0",
+  "created_at": "2026-06-26T23:40:00",
+  "updated_at": "2026-06-26T23:40:00",
+  "verified": true,
+  "verified_at": "2026-06-26T23:40:00",
+  "estimated_time": "45-60分钟",
+  "prerequisites": [
+    "了解消息队列基础概念",
+    "已安装 Docker 和 Docker Compose",
+    "已安装 Python 3.9+"
+  ],
+  "files": [
+    "README.md",
+    "metadata.json",
+    "docker-compose.yml",
+    "requirements.txt",
+    "code/producer.py",
+    "code/consumer.py",
+    "scripts/start_kafka.sh",
+    "scripts/stop_kafka.sh",
+    "scripts/run_demo.sh",
+    "tests/test_kafka.py"
+  ],
+  "dependencies": {
+    "python_packages": ["kafka-python>=2.0.2"],
+    "software": ["Docker", "Docker Compose"]
+  },
+  "compatibility": {
+    "operating_systems": ["linux", "macos", "windows(wsl)"]
+  }
+}

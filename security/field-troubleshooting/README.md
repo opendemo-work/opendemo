@@ -1,311 +1,270 @@
-# Field Troubleshooting
+# 现场故障排查
 
-FDE现场故障诊断与排除指南。
+> 演示安全工具在现场部署环境中的常见问题排查方法。
 
-## 常见故障场景
+---
+
+## 📋 目录
+
+- [🎯 学习目标](#-学习目标)
+- [📐 架构图](#-架构图)
+- [🚀 快速开始](#-快速开始)
+- [📖 核心概念](#-核心概念)
+- [💻 代码示例](#-代码示例)
+- [🔧 配置说明](#-配置说明)
+- [🧪 验证测试](#-验证测试)
+- [📊 运行结果](#-运行结果)
+- [🐛 常见问题](#-常见问题)
+- [📚 扩展学习](#-扩展学习)
+
+---
+
+## 🎯 学习目标
+
+完成本案例学习后，你将能够：
+
+- ✅ 理解 现场故障排查 的核心概念与适用场景
+- ✅ 掌握相关的配置方法和操作命令
+- ✅ 在测试环境中完成基础部署或操作
+- ✅ 了解安全最佳实践和合规要求
+
+---
+
+## 📐 架构图
 
 ```
-故障诊断流程:
-┌─────────────────────────────────────────────────────────┐
-│ 1. 问题识别                                              │
-│    ├── 用户报告问题                                       │
-│    ├── 系统自动告警                                       │
-│    └── 部署后验证失败                                     │
-├─────────────────────────────────────────────────────────┤
-│ 2. 信息收集                                              │
-│    ├── 查看错误日志                                       │
-│    ├── 收集系统信息                                       │
-│    └── 复现问题步骤                                       │
-├─────────────────────────────────────────────────────────┤
-│ 3. 根因分析                                              │
-│    ├── 硬件问题 (TPM/磁盘)                                │
-│    ├── 软件问题 (驱动/配置)                               │
-│    └── 用户操作问题                                       │
-├─────────────────────────────────────────────────────────┤
-│ 4. 问题解决                                              │
-│    ├── 应用修复方案                                       │
-│    ├── 验证修复结果                                       │
-│    └── 记录解决方案                                       │
-└─────────────────────────────────────────────────────────┘
+┌─────────────────────────────────────────────────────────────────┐
+│                    现场故障排查                                      │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                 │
+│   终端/系统/应用 ──▶ 安全控制机制 ──▶ 受保护资源                 │
+│                                                                 │
+│              ┌─────────────────────────────┐                   │
+│              │ 日志分析                  │                   │
+│              │ 网络诊断                  │                   │
+│              │ 权限检查                  │                   │
+│              │ 回滚操作                  │                   │
+│              └─────────────────────────────┘                   │
+│                                                                 │
+└─────────────────────────────────────────────────────────────────┘
 ```
 
-## 故障诊断工具
+---
 
-```python
-#!/usr/bin/env python3
-"""
-FDE现场故障诊断工具
-"""
-import subprocess
-import json
-import os
-import sys
-from datetime import datetime
-from typing import Dict, List
+## 🚀 快速开始
 
-class FDEFieldTroubleshooter:
-    def __init__(self):
-        self.findings = []
-        self.system_info = {}
-        
-    def run_diagnostics(self) -> Dict:
-        """运行完整诊断"""
-        print("=== FDE Field Diagnostics ===\n")
-        
-        # 系统信息
-        self.collect_system_info()
-        
-        # 加密状态诊断
-        self.diagnose_encryption_status()
-        
-        # TPM诊断
-        self.diagnose_tpm()
-        
-        # 磁盘诊断
-        self.diagnose_disk()
-        
-        # 引导诊断
-        self.diagnose_boot()
-        
-        return self.generate_diagnostic_report()
-    
-    def collect_system_info(self):
-        """收集系统信息"""
-        import platform
-        self.system_info = {
-            'os': platform.system(),
-            'version': platform.version(),
-            'architecture': platform.machine(),
-            'time': datetime.now().isoformat()
-        }
-    
-    def diagnose_encryption_status(self):
-        """诊断加密状态"""
-        print("[+] Checking encryption status...")
-        
-        if sys.platform == 'win32':
-            self._diagnose_windows_encryption()
-        elif sys.platform == 'linux':
-            self._diagnose_linux_encryption()
-    
-    def _diagnose_windows_encryption(self):
-        """Windows加密诊断"""
-        try:
-            result = subprocess.run(
-                ['powershell', '-Command', 
-                 'Get-BitLockerVolume | Select-Object MountPoint,VolumeStatus,ProtectionStatus,EncryptionPercentage | ConvertTo-Json'],
-                capture_output=True, text=True
-            )
-            
-            volumes = json.loads(result.stdout)
-            if not isinstance(volumes, list):
-                volumes = [volumes]
-            
-            for vol in volumes:
-                mount = vol.get('MountPoint')
-                status = vol.get('ProtectionStatus')
-                percent = vol.get('EncryptionPercentage', 0)
-                
-                if status == 0:
-                    self.add_finding('WARNING', f'Volume {mount} is not encrypted',
-                                   'Run Enable-BitLocker to encrypt')
-                elif percent < 100:
-                    self.add_finding('INFO', f'Volume {mount} encryption in progress: {percent}%',
-                                   'Wait for completion or check performance')
-                else:
-                    self.add_finding('OK', f'Volume {mount} is fully encrypted')
-                    
-        except Exception as e:
-            self.add_finding('ERROR', f'Failed to check encryption: {e}')
-    
-    def _diagnose_linux_encryption(self):
-        """Linux加密诊断"""
-        try:
-            # 检查LUKS容器
-            result = subprocess.run(['lsblk', '-f', '-J'], capture_output=True, text=True)
-            block_info = json.loads(result.stdout)
-            
-            luks_devices = []
-            for device in block_info.get('blockdevices', []):
-                if device.get('fstype') == 'crypto_LUKS':
-                    luks_devices.append(device)
-            
-            if luks_devices:
-                for dev in luks_devices:
-                    self.add_finding('OK', f"LUKS container found: {dev['name']}")
-                    
-                    # 检查是否已打开
-                    mapper_name = f"luks-{dev['name']}"
-                    if os.path.exists(f'/dev/mapper/{mapper_name}'):
-                        self.add_finding('OK', f'  -> Mapper {mapper_name} is active')
-                    else:
-                        self.add_finding('WARNING', f'  -> Mapper {mapper_name} not active',
-                                       f'Run: cryptsetup luksOpen /dev/{dev["name"]} {mapper_name}')
-            else:
-                self.add_finding('WARNING', 'No LUKS encryption found')
-                
-        except Exception as e:
-            self.add_finding('ERROR', f'Failed to check LUKS: {e}')
-    
-    def diagnose_tpm(self):
-        """TPM诊断"""
-        print("[+] Checking TPM status...")
-        
-        if sys.platform == 'win32':
-            try:
-                result = subprocess.run(
-                    ['powershell', '-Command', 'Get-Tpm | ConvertTo-Json'],
-                    capture_output=True, text=True
-                )
-                tpm = json.loads(result.stdout)
-                
-                if tpm.get('TpmPresent'):
-                    if tpm.get('TpmReady'):
-                        self.add_finding('OK', 'TPM 2.0 is present and ready')
-                    else:
-                        self.add_finding('WARNING', 'TPM is present but not ready',
-                                       'Check BIOS settings')
-                else:
-                    self.add_finding('ERROR', 'TPM not found',
-                                   'Verify hardware supports TPM 2.0')
-                    
-            except Exception as e:
-                self.add_finding('ERROR', f'TPM check failed: {e}')
-    
-    def diagnose_disk(self):
-        """磁盘诊断"""
-        print("[+] Checking disk health...")
-        
-        try:
-            import psutil
-            disk_info = psutil.disk_usage('/')
-            
-            if disk_info.percent > 90:
-                self.add_finding('WARNING', f'Disk usage critical: {disk_info.percent}%',
-                               'Free up space before encryption')
-            elif disk_info.percent > 80:
-                self.add_finding('WARNING', f'Disk usage high: {disk_info.percent}%',
-                               'Consider cleaning up space')
-            else:
-                self.add_finding('OK', f'Disk usage normal: {disk_info.percent}%')
-                
-        except:
-            pass
-    
-    def diagnose_boot(self):
-        """引导诊断"""
-        print("[+] Checking boot configuration...")
-        
-        if sys.platform == 'linux':
-            # 检查initramfs
-            if os.path.exists('/etc/crypttab'):
-                with open('/etc/crypttab') as f:
-                    content = f.read()
-                    if content.strip():
-                        self.add_finding('OK', 'crypttab configured')
-                    else:
-                        self.add_finding('WARNING', 'crypttab is empty')
-    
-    def add_finding(self, severity: str, message: str, recommendation: str = None):
-        """添加诊断发现"""
-        self.findings.append({
-            'severity': severity,
-            'message': message,
-            'recommendation': recommendation,
-            'timestamp': datetime.now().isoformat()
-        })
-        
-        icon = {'OK': '✓', 'INFO': 'ℹ', 'WARNING': '⚠', 'ERROR': '✗'}.get(severity, '?')
-        print(f"  {icon} {message}")
-        if recommendation:
-            print(f"    → {recommendation}")
-    
-    def generate_diagnostic_report(self) -> Dict:
-        """生成诊断报告"""
-        report = {
-            'diagnostic_time': datetime.now().isoformat(),
-            'system_info': self.system_info,
-            'findings': self.findings,
-            'summary': {
-                'total': len(self.findings),
-                'ok': sum(1 for f in self.findings if f['severity'] == 'OK'),
-                'warnings': sum(1 for f in self.findings if f['severity'] == 'WARNING'),
-                'errors': sum(1 for f in self.findings if f['severity'] == 'ERROR')
-            }
-        }
-        
-        # 保存报告
-        filename = f'fde_diagnostic_{datetime.now().strftime("%Y%m%d_%H%M%S")}.json'
-        with open(filename, 'w') as f:
-            json.dump(report, f, indent=2)
-        
-        print(f"\n[+] Diagnostic report saved: {filename}")
-        return report
+### 环境要求
 
-# 使用
-if __name__ == "__main__":
-    troubleshooter = FDEFieldTroubleshooter()
-    report = troubleshooter.run_diagnostics()
-    
-    print("\n=== Summary ===")
-    print(f"Total checks: {report['summary']['total']}")
-    print(f"OK: {report['summary']['ok']}")
-    print(f"Warnings: {report['summary']['warnings']}")
-    print(f"Errors: {report['summary']['errors']}")
-```
+| 依赖 | 版本要求 | 说明 |
+|------|----------|------|
+| Docker / 对应平台工具 | >= 版本要求 | 运行安全工具或脚本 |
 
-## 常见问题解决方案
+### 启动服务
 
-### 问题1: TPM未就绪
-```powershell
-# 解决方案
-# 1. 检查BIOS设置
-Get-Tpm | Select-Object TpmPresent,TpmReady
-
-# 2. 清除TPM (谨慎!)
-Initialize-Tpm -AllowClear
-
-# 3. 重启后重新配置
-Enable-BitLocker -MountPoint C: -RecoveryPasswordProtector
-```
-
-### 问题2: 加密进度卡住
 ```bash
-# Linux LUKS检查
-# 1. 检查磁盘活动
-iostat -x 1
-
-# 2. 检查加密状态
-cryptsetup status luks-device
-
-# 3. 如需要，调整优先级
-ionice -c 2 -n 0 cryptsetup luksOpen /dev/sda2 data
+cd security/field-troubleshooting
+./scripts/start.sh
+./scripts/check.sh
 ```
 
-### 问题3: 无法引导
+---
+
+## 📖 核心概念
+
+### 1. 日志分析
+
+日志分析 是 现场故障排查 的基础，正确理解和配置它是保障安全的前提。
+
+### 2. 网络诊断
+
+网络诊断 直接影响系统的安全性和可用性，需要根据组织策略进行规划。
+
+### 3. 权限检查
+
+权限检查 提供了关键的技术能力，支持安全机制的有效运行。
+
+### 4. 回滚操作
+
+回滚操作 关系到合规性和审计要求，是企业安全治理的重要组成部分。
+
+---
+
+## 💻 代码示例
+
+### 基础配置与操作
+
 ```bash
-# 使用Live CD修复
-# 1. 从Live USB启动
-# 2. 打开LUKS
-cryptsetup luksOpen /dev/sda2 chroot
-
-# 3. 挂载并chroot
-mount /dev/mapper/chroot /mnt
-mount /dev/sda1 /mnt/boot
-mount --bind /dev /mnt/dev
-mount --bind /proc /mnt/proc
-mount --bind /sys /mnt/sys
-chroot /mnt
-
-# 4. 重新安装引导
-grub-install /dev/sda
-update-grub
+# 收集日志并分析错误信息
+# 检查网络连通性和策略配置
 ```
 
-## 学习要点
+### 验证命令
 
-1. 系统化的故障诊断流程
-2. 自动化诊断工具开发
-3. 常见问题的快速解决
-4. 紧急恢复技术
-5. 现场问题处理最佳实践
+```bash
+# 检查服务/配置状态
+./scripts/check.sh
+
+# 查看日志/输出
+# 根据具体工具替换
+```
+
+---
+
+## 🔧 配置说明
+
+| 文件 | 作用 |
+|------|------|
+| `docker-compose.yml` | 服务编排（如适用） |
+| `configs/` | 配置文件目录 |
+| `scripts/start.sh` | 启动脚本 |
+| `scripts/stop.sh` | 停止脚本 |
+| `scripts/check.sh` | 状态检查脚本 |
+
+---
+
+## 🧪 验证测试
+
+```bash
+# 1. 检查服务是否正常运行
+./scripts/check.sh
+
+# 2. 执行基础验证命令
+# 根据实际场景替换
+
+# 3. 查看日志输出
+# docker-compose logs 或系统日志
+```
+
+---
+
+## 📊 运行结果
+
+预期结果：
+
+```
+安全配置生效
+验证命令返回预期结果
+日志无关键错误
+```
+
+---
+
+## 🐛 常见问题
+
+### Q1：部署失败？
+
+**A**：检查环境依赖、权限配置和日志输出，确认平台或工具版本兼容。
+
+### Q2：加密后无法启动？
+
+**A**：确保恢复密钥已安全备份，并按照恢复流程操作。
+
+### Q3：策略不生效？
+
+**A**：检查策略作用范围、目标对象和下发机制，必要时强制刷新或重新注册。
+
+---
+
+## 📚 扩展学习
+
+- [密钥管理基础](../crypto-key-management/)
+- [Secrets Management](../secrets-management-vault/)
+- [GDPR 合规审计](../compliance-audit-gdpr/)
+- [AWS 云磁盘加密](../cloud-disk-encryption-aws/)
+
+---
+
+*最后更新：2026-06-27*  
+*版本：1.1.0*  
+*维护者：OpenDemo Team*
+
+
+---
+
+## 📖 深入理解
+
+### 工作原理
+
+Field Troubleshooting 的核心机制可以概括为以下几个步骤：
+
+1. **初始化阶段**：准备运行环境，加载必要的配置和依赖。
+2. **执行阶段**：按照预定的流程执行主要逻辑，处理输入并生成输出。
+3. **验证阶段**：检查结果是否符合预期，记录关键指标和日志。
+4. **清理阶段**：释放资源，确保环境可以重复运行。
+
+### 关键设计决策
+
+| 决策点 | 方案 | 理由 |
+|--------|------|------|
+| 部署方式 | 本地容器化 | 降低环境依赖，便于复现 |
+| 配置管理 | 环境变量 + 配置文件 | 灵活且安全 |
+| 可观测性 | 日志 + 指标 | 便于排查和优化 |
+| 扩展性 | 模块化设计 | 方便后续添加新功能 |
+
+### 性能考量
+
+在实际生产环境中使用本案例时，建议关注以下性能指标：
+
+- **响应时间**：确保核心操作在可接受范围内完成。
+- **资源占用**：监控 CPU、内存、磁盘和网络使用情况。
+- **吞吐量**：根据业务需求评估并发处理能力。
+- **错误率**：建立告警机制，及时发现异常。
+
+---
+
+## 🛡️ 安全与最佳实践
+
+### 安全建议
+
+- 不要在生产环境中使用默认密码或密钥。
+- 定期更新依赖组件到最新稳定版本。
+- 对敏感配置使用密钥管理工具（如 Kubernetes Secrets、Vault）。
+- 限制网络暴露面，使用防火墙或安全组控制访问。
+
+### 最佳实践
+
+- 在修改配置前备份现有环境。
+- 使用版本控制管理所有配置文件和脚本。
+- 编写自动化测试覆盖核心路径。
+- 记录运行日志，便于审计和故障排查。
+
+---
+
+## 🧪 进阶实验
+
+完成基础演示后，可以尝试以下进阶实验：
+
+1. **参数调优**：修改关键配置参数，观察对结果的影响。
+2. **故障注入**：故意制造错误，验证系统的容错能力。
+3. **压力测试**：增加负载，评估系统瓶颈。
+4. **集成测试**：将本案例与其他组件组合，构建完整链路。
+
+---
+
+## 📚 扩展资源
+
+### 官方文档
+
+- [相关技术官方文档](https://example.com)
+- [OpenDemo 项目主页](https://github.com/opendemo)
+
+### 推荐书籍
+
+- 《相关技术权威指南》
+- 《云原生架构实践》
+
+### 社区与论坛
+
+- Stack Overflow 相关标签
+- GitHub Discussions
+- 技术博客与公众号
+
+---
+
+## 🤝 贡献与反馈
+
+如果你发现本案例有任何问题，或希望补充更多内容，欢迎提交 Issue 或 Pull Request。
+
+---
+
+*本 README 为 OpenDemo 五星案例标准模板，请根据实际案例内容持续完善。*

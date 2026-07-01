@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kserve-model-monitoring-demo
+  labels:
+    app: kserve-model-monitoring-demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kserve-model-monitoring-demo
+  template:
+    metadata:
+      labels:
+        app: kserve-model-monitoring-demo
+    spec:
+      containers:
+      - name: demo
+        image: nginx:alpine
+        ports:
+        - containerPort: 80

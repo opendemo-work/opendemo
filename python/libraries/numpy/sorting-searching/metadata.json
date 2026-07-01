@@ -10,10 +10,26 @@
   ],
   "description": "通过实际案例演示Python中sort和argsort的用法与区别",
   "difficulty": "beginner",
-  "author": "",
+  "author": "OpenDemo Team",
   "created_at": "2025-12-13T01:00:27.153269",
   "updated_at": "2025-12-13T01:00:27.153269",
   "version": "1.0.0",
   "dependencies": {},
-  "verified": false
+  "verified": false,
+  "verified_at": "2026-06-27T00:05:00",
+  "estimated_time": "60-90分钟",
+  "prerequisites": [
+    "相关基础知识"
+  ],
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "compatibility": {
+    "operating_systems": [
+      "linux",
+      "macos",
+      "windows(wsl)"
+    ]
+  }
 }

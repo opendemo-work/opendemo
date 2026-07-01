@@ -3,7 +3,7 @@
   "language": "nodejs",
   "category": "programming-language",
   "subcategory": "main",
-  "difficulty": "beginner-to-advanced",
+  "difficulty": "intermediate",
   "keywords": [
     "nodejs",
     "javascript",
@@ -34,8 +34,21 @@
   ],
   "estimated_time": "100-130小时",
   "compatibility": {
-    "nodejs_versions": ["16.x", "18.x", "20.x"],
-    "npm_versions": [">=8.0.0"],
-    "operating_systems": ["windows", "linux", "macos"]
-  }
+    "nodejs_versions": [
+      "16.x",
+      "18.x",
+      "20.x"
+    ],
+    "npm_versions": [
+      ">=8.0.0"
+    ],
+    "operating_systems": [
+      "windows",
+      "linux",
+      "macos"
+    ]
+  },
+  "dependencies": {},
+  "verified": true,
+  "verified_at": "2026-06-27T00:05:00"
 }

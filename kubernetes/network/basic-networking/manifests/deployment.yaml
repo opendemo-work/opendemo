@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: basic-networking
+  labels:
+    app: basic-networking
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: basic-networking
+  template:
+    metadata:
+      labels:
+        app: basic-networking
+    spec:
+      containers:
+      - name: demo
+        image: nginx:alpine
+        ports:
+        - containerPort: 80

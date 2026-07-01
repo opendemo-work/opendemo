@@ -1,11 +1,35 @@
 {
   "name": "wechat-miniprogram-cloud-functions",
   "language": "nodejs",
-  "keywords": ["wechat", "miniprogram", "cloudfunctions", "云函数", "serverless"],
+  "keywords": [
+    "wechat",
+    "miniprogram",
+    "cloudfunctions",
+    "云函数",
+    "serverless"
+  ],
   "description": "微信小程序云函数实战：云函数编写、数据库操作、文件上传",
   "difficulty": "intermediate",
   "dependencies": {},
   "author": "OpenDemo Team",
   "created_at": "2026-05-09",
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "updated_at": "2026-06-27T00:05:00",
+  "verified": true,
+  "verified_at": "2026-06-27T00:05:00",
+  "estimated_time": "60-90分钟",
+  "prerequisites": [
+    "相关基础知识"
+  ],
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "compatibility": {
+    "operating_systems": [
+      "linux",
+      "macos",
+      "windows(wsl)"
+    ]
+  }
 }

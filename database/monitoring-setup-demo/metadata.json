@@ -1,15 +1,20 @@
 {
   "name": "monitoring-setup-demo",
-  "language": "shell/python/javascript",
+  "language": "database",
   "keywords": [
-    "performance-monitoring", "prometheus", "grafana", "alerting",
-    "database-monitoring", "observability", "metrics-collection"
+    "performance-monitoring",
+    "prometheus",
+    "grafana",
+    "alerting",
+    "database-monitoring",
+    "observability",
+    "metrics-collection"
   ],
   "description": "企业级数据库性能监控体系完整方案，涵盖MySQL、PostgreSQL、MongoDB、Redis的全方位监控、告警和可视化展示",
   "difficulty": "expert",
   "author": "OpenDemo Team",
   "created_at": "2026-02-02",
-  "updated_at": "2026-02-02",
+  "updated_at": "2026-06-26T23:55:00",
   "version": "1.0.0",
   "dependencies": {
     "prerequisite_knowledge": [
@@ -18,7 +23,11 @@
       "linux-system-monitoring"
     ],
     "infrastructure_requirements": {
-      "monitoring_stack": ["prometheus", "grafana", "alertmanager"],
+      "monitoring_stack": [
+        "prometheus",
+        "grafana",
+        "alertmanager"
+      ],
       "minimum_resources": "2CPU/4GB RAM for monitoring server",
       "network_access": "数据库端口和exporter端口可访问"
     },
@@ -79,5 +88,18 @@
     "resource_exhaustion",
     "security_violation",
     "business_impact"
-  ]
+  ],
+  "verified_at": "2026-06-26T23:55:00",
+  "estimated_time": "60-90分钟",
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "compatibility": {
+    "operating_systems": [
+      "linux",
+      "macos",
+      "windows(wsl)"
+    ]
+  }
 }

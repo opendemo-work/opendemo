@@ -1,3 +1,5 @@
+<!-- TEMPLATE: 待完善 - 本 README 包含自动生成的模板内容，需要人工精修 -->
+
 # FSDP 完全分片数据并行
 
 > 本案例详解 FSDP (Fully Sharded Data Parallel) 原理，演示 PyTorch 原生大模型训练方案
@@ -167,3 +169,43 @@ torchrun --nproc_per_node=4 train_fsdp.py --mixed_precision
 2. **动态 AllGather**：需要参数时才拉取
 3. **内存通信 trade-off**：用通信换内存
 4. **CPU Offload**：进一步降低 GPU 内存
+
+## 🎯 学习目标
+
+完成本案例学习后，你将能够：
+
+- ✅ 理解本案例涉及的 AI/ML 核心概念
+- ✅ 掌握相关的配置与命令
+- ✅ 能够在本地环境中复现
+
+## 🚀 快速开始
+
+### 运行演示
+
+```bash
+# 安装依赖
+pip install -r requirements.txt
+
+# 运行演示
+python code/main.py
+```
+
+## 📖 核心概念
+
+### 1. 基本概念
+
+本节介绍本案例涉及的 AI/ML 核心概念。
+
+### 2. 适用场景
+
+- 场景 1：学术研究
+- 场景 2：工程实践
+- 场景 3：面试准备
+
+## 💻 代码示例
+
+### 基本用法
+
+```bash
+python code/main.py
+```

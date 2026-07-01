@@ -1,0 +1,15 @@
+$ dig +short example.com A
+93.184.216.34
+
+$ dig +short example.com NS
+a.iana-servers.net.
+b.iana-servers.net.
+
+$ dig +short example.com MX
+(无 MX 记录)
+
+$ dig +short example.com TXT
+"v=spf1 -all"
+
+$ dig +short -x 93.184.216.34
+example.com.

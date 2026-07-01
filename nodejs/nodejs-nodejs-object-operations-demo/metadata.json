@@ -10,7 +10,7 @@
   ],
   "description": "演示如何在Node.js中进行对象的深拷贝、冻结和安全遍历。",
   "difficulty": "intermediate",
-  "author": "",
+  "author": "OpenDemo Team",
   "created_at": "2025-12-11T14:43:21.829578",
   "updated_at": "2025-12-11T14:43:21.829578",
   "version": "1.0.0",
@@ -18,5 +18,21 @@
   "verified": false,
   "aliases": [
     "nodejs-nodejs对象操作实战深拷贝冻结与遍历"
-  ]
+  ],
+  "verified_at": "2026-06-27T00:05:00",
+  "estimated_time": "60-90分钟",
+  "prerequisites": [
+    "相关基础知识"
+  ],
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "compatibility": {
+    "operating_systems": [
+      "linux",
+      "macos",
+      "windows(wsl)"
+    ]
+  }
 }

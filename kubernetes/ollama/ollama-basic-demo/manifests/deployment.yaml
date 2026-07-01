@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ollama-basic-demo
+  labels:
+    app: ollama-basic-demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ollama-basic-demo
+  template:
+    metadata:
+      labels:
+        app: ollama-basic-demo
+    spec:
+      containers:
+      - name: demo
+        image: nginx:alpine
+        ports:
+        - containerPort: 80

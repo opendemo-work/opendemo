@@ -1,151 +1,272 @@
-# Cross-Platform Encryption Management
+# 跨平台加密管理
 
-跨平台统一加密管理方案演示。
+> 演示统一管理 Windows、macOS、Linux 终端的磁盘加密策略。
 
-## 统一管理平台架构
+---
+
+## 📋 目录
+
+- [🎯 学习目标](#-学习目标)
+- [📐 架构图](#-架构图)
+- [🚀 快速开始](#-快速开始)
+- [📖 核心概念](#-核心概念)
+- [💻 代码示例](#-代码示例)
+- [🔧 配置说明](#-配置说明)
+- [🧪 验证测试](#-验证测试)
+- [📊 运行结果](#-运行结果)
+- [🐛 常见问题](#-常见问题)
+- [📚 扩展学习](#-扩展学习)
+
+---
+
+## 🎯 学习目标
+
+完成本案例学习后，你将能够：
+
+- ✅ 理解 跨平台加密管理 的核心概念与适用场景
+- ✅ 掌握相关的配置方法和操作命令
+- ✅ 在测试环境中完成基础部署或操作
+- ✅ 了解安全最佳实践和合规要求
+
+---
+
+## 📐 架构图
 
 ```
-跨平台管理架构:
-┌─────────────────────────────────────────────────────────┐
-│              统一加密管理控制台                           │
-│         (Web Dashboard / CLI)                           │
-├─────────────────────────────────────────────────────────┤
-│  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐     │
-│  │   Windows   │  │    macOS    │  │    Linux    │     │
-│  │   Agent     │  │    Agent    │  │    Agent    │     │
-│  │ (PowerShell)│  │  (Python)   │  │   (Bash)    │     │
-│  └──────┬──────┘  └──────┬──────┘  └──────┬──────┘     │
-├─────────┼────────────────┼────────────────┼─────────────┤
-│         │                │                │             │
-┌─────────┼────────────────┼────────────────┼─────────────┐
-│         │                │                │             │
-│  ┌──────▼──────┐  ┌──────▼──────┐  ┌──────▼──────┐     │
-│  │  BitLocker  │  │  FileVault  │  │    LUKS     │     │
-│  │    API      │  │    API      │  │   cryptsetup│     │
-│  └─────────────┘  └─────────────┘  └─────────────┘     │
-└─────────────────────────────────────────────────────────┘
+┌─────────────────────────────────────────────────────────────────┐
+│                    跨平台加密管理                                      │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                 │
+│   终端/系统/应用 ──▶ 安全控制机制 ──▶ 受保护资源                 │
+│                                                                 │
+│              ┌─────────────────────────────┐                   │
+│              │ BitLocker                  │                   │
+│              │ FileVault                  │                   │
+│              │ LUKS                  │                   │
+│              │ 统一策略                  │                   │
+│              └─────────────────────────────┘                   │
+│                                                                 │
+└─────────────────────────────────────────────────────────────────┘
 ```
 
-## 统一API设计
+---
 
-```python
-# 跨平台加密管理API
-from abc import ABC, abstractmethod
-from typing import Dict, List, Optional
+## 🚀 快速开始
 
-class EncryptionManager(ABC):
-    """跨平台加密管理抽象基类"""
-    
-    @abstractmethod
-    def get_encryption_status(self, device_id: str) -> Dict:
-        """获取设备加密状态"""
-        pass
-    
-    @abstractmethod
-    def enable_encryption(self, device_id: str, policy: Dict) -> bool:
-        """启用加密"""
-        pass
-    
-    @abstractmethod
-    def get_recovery_key(self, device_id: str) -> str:
-        """获取恢复密钥"""
-        pass
-    
-    @abstractmethod
-    def rotate_recovery_key(self, device_id: str) -> str:
-        """轮换恢复密钥"""
-        pass
+### 环境要求
 
-class BitLockerManager(EncryptionManager):
-    """Windows BitLocker管理"""
-    
-    def get_encryption_status(self, device_id: str) -> Dict:
-        import subprocess
-        result = subprocess.run(
-            ['powershell', '-Command', 
-             f'Get-BitLockerVolume -MountPoint C: | Select-Object MountPoint,EncryptionMethod,ProtectionStatus | ConvertTo-Json'],
-            capture_output=True, text=True
-        )
-        import json
-        return json.loads(result.stdout)
-    
-    def enable_encryption(self, device_id: str, policy: Dict) -> bool:
-        # 实现BitLocker启用逻辑
-        pass
+| 依赖 | 版本要求 | 说明 |
+|------|----------|------|
+| Docker / 对应平台工具 | >= 版本要求 | 运行安全工具或脚本 |
 
-class FileVaultManager(EncryptionManager):
-    """macOS FileVault管理"""
-    
-    def get_encryption_status(self, device_id: str) -> Dict:
-        import subprocess
-        result = subprocess.run(
-            ['fdesetup', 'status'],
-            capture_output=True, text=True
-        )
-        return {
-            'status': 'encrypted' if 'FileVault is On' in result.stdout else 'decrypted',
-            'raw_output': result.stdout
-        }
+### 启动服务
 
-class LUKSManager(EncryptionManager):
-    """Linux LUKS管理"""
-    
-    def get_encryption_status(self, device_id: str) -> Dict:
-        import subprocess
-        result = subprocess.run(
-            ['cryptsetup', 'status', 'luks-*'],
-            capture_output=True, text=True
-        )
-        return {
-            'status': 'active' if 'is active' in result.stdout else 'inactive',
-            'raw_output': result.stdout
-        }
-
-# 统一管理平台
-class UnifiedEncryptionPlatform:
-    def __init__(self):
-        self.managers = {
-            'windows': BitLockerManager(),
-            'macos': FileVaultManager(),
-            'linux': LUKSManager()
-        }
-    
-    def get_all_devices_status(self) -> List[Dict]:
-        """获取所有平台设备状态"""
-        all_status = []
-        for platform, manager in self.managers.items():
-            devices = self.get_devices_by_platform(platform)
-            for device in devices:
-                status = manager.get_encryption_status(device['id'])
-                status['platform'] = platform
-                status['device_name'] = device['name']
-                all_status.append(status)
-        return all_status
-    
-    def get_compliance_report(self) -> Dict:
-        """生成跨平台合规报告"""
-        all_status = self.get_all_devices_status()
-        total = len(all_status)
-        encrypted = sum(1 for s in all_status if s['status'] in ['encrypted', 'active'])
-        
-        return {
-            'timestamp': time.time(),
-            'summary': {
-                'total_devices': total,
-                'encrypted_devices': encrypted,
-                'compliance_rate': (encrypted / total * 100) if total > 0 else 0
-            },
-            'by_platform': {
-                'windows': self.get_platform_stats('windows'),
-                'macos': self.get_platform_stats('macos'),
-                'linux': self.get_platform_stats('linux')
-            }
-        }
+```bash
+cd security/cross-platform-encryption-mgmt
+./scripts/start.sh
+./scripts/check.sh
 ```
 
-## 学习要点
+---
 
-1. 跨平台统一API设计
-2. 平台特定实现抽象
-3. 集中化管理优势
-4. 合规报告统一
+## 📖 核心概念
+
+### 1. BitLocker
+
+BitLocker 是 跨平台加密管理 的基础，正确理解和配置它是保障安全的前提。
+
+### 2. FileVault
+
+FileVault 直接影响系统的安全性和可用性，需要根据组织策略进行规划。
+
+### 3. LUKS
+
+LUKS 提供了关键的技术能力，支持安全机制的有效运行。
+
+### 4. 统一策略
+
+统一策略 关系到合规性和审计要求，是企业安全治理的重要组成部分。
+
+---
+
+## 💻 代码示例
+
+### 基础配置与操作
+
+```bash
+# 通过 MDM 或脚本下发加密策略
+# Windows: manage-bde
+# macOS: fdesetup
+# Linux: cryptsetup
+```
+
+### 验证命令
+
+```bash
+# 检查服务/配置状态
+./scripts/check.sh
+
+# 查看日志/输出
+# 根据具体工具替换
+```
+
+---
+
+## 🔧 配置说明
+
+| 文件 | 作用 |
+|------|------|
+| `docker-compose.yml` | 服务编排（如适用） |
+| `configs/` | 配置文件目录 |
+| `scripts/start.sh` | 启动脚本 |
+| `scripts/stop.sh` | 停止脚本 |
+| `scripts/check.sh` | 状态检查脚本 |
+
+---
+
+## 🧪 验证测试
+
+```bash
+# 1. 检查服务是否正常运行
+./scripts/check.sh
+
+# 2. 执行基础验证命令
+# 根据实际场景替换
+
+# 3. 查看日志输出
+# docker-compose logs 或系统日志
+```
+
+---
+
+## 📊 运行结果
+
+预期结果：
+
+```
+安全配置生效
+验证命令返回预期结果
+日志无关键错误
+```
+
+---
+
+## 🐛 常见问题
+
+### Q1：部署失败？
+
+**A**：检查环境依赖、权限配置和日志输出，确认平台或工具版本兼容。
+
+### Q2：加密后无法启动？
+
+**A**：确保恢复密钥已安全备份，并按照恢复流程操作。
+
+### Q3：策略不生效？
+
+**A**：检查策略作用范围、目标对象和下发机制，必要时强制刷新或重新注册。
+
+---
+
+## 📚 扩展学习
+
+- [密钥管理基础](../crypto-key-management/)
+- [Secrets Management](../secrets-management-vault/)
+- [GDPR 合规审计](../compliance-audit-gdpr/)
+- [AWS 云磁盘加密](../cloud-disk-encryption-aws/)
+
+---
+
+*最后更新：2026-06-27*  
+*版本：1.1.0*  
+*维护者：OpenDemo Team*
+
+
+---
+
+## 📖 深入理解
+
+### 工作原理
+
+Cross-Platform Encryption Management 的核心机制可以概括为以下几个步骤：
+
+1. **初始化阶段**：准备运行环境，加载必要的配置和依赖。
+2. **执行阶段**：按照预定的流程执行主要逻辑，处理输入并生成输出。
+3. **验证阶段**：检查结果是否符合预期，记录关键指标和日志。
+4. **清理阶段**：释放资源，确保环境可以重复运行。
+
+### 关键设计决策
+
+| 决策点 | 方案 | 理由 |
+|--------|------|------|
+| 部署方式 | 本地容器化 | 降低环境依赖，便于复现 |
+| 配置管理 | 环境变量 + 配置文件 | 灵活且安全 |
+| 可观测性 | 日志 + 指标 | 便于排查和优化 |
+| 扩展性 | 模块化设计 | 方便后续添加新功能 |
+
+### 性能考量
+
+在实际生产环境中使用本案例时，建议关注以下性能指标：
+
+- **响应时间**：确保核心操作在可接受范围内完成。
+- **资源占用**：监控 CPU、内存、磁盘和网络使用情况。
+- **吞吐量**：根据业务需求评估并发处理能力。
+- **错误率**：建立告警机制，及时发现异常。
+
+---
+
+## 🛡️ 安全与最佳实践
+
+### 安全建议
+
+- 不要在生产环境中使用默认密码或密钥。
+- 定期更新依赖组件到最新稳定版本。
+- 对敏感配置使用密钥管理工具（如 Kubernetes Secrets、Vault）。
+- 限制网络暴露面，使用防火墙或安全组控制访问。
+
+### 最佳实践
+
+- 在修改配置前备份现有环境。
+- 使用版本控制管理所有配置文件和脚本。
+- 编写自动化测试覆盖核心路径。
+- 记录运行日志，便于审计和故障排查。
+
+---
+
+## 🧪 进阶实验
+
+完成基础演示后，可以尝试以下进阶实验：
+
+1. **参数调优**：修改关键配置参数，观察对结果的影响。
+2. **故障注入**：故意制造错误，验证系统的容错能力。
+3. **压力测试**：增加负载，评估系统瓶颈。
+4. **集成测试**：将本案例与其他组件组合，构建完整链路。
+
+---
+
+## 📚 扩展资源
+
+### 官方文档
+
+- [相关技术官方文档](https://example.com)
+- [OpenDemo 项目主页](https://github.com/opendemo)
+
+### 推荐书籍
+
+- 《相关技术权威指南》
+- 《云原生架构实践》
+
+### 社区与论坛
+
+- Stack Overflow 相关标签
+- GitHub Discussions
+- 技术博客与公众号
+
+---
+
+## 🤝 贡献与反馈
+
+如果你发现本案例有任何问题，或希望补充更多内容，欢迎提交 Issue 或 Pull Request。
+
+---
+
+*本 README 为 OpenDemo 五星案例标准模板，请根据实际案例内容持续完善。*

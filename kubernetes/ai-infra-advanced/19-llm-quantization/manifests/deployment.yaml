@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: 19-llm-quantization
+  labels:
+    app: 19-llm-quantization
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: 19-llm-quantization
+  template:
+    metadata:
+      labels:
+        app: 19-llm-quantization
+    spec:
+      containers:
+      - name: demo
+        image: nginx:alpine
+        ports:
+        - containerPort: 80

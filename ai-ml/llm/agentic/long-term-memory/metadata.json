@@ -2,13 +2,45 @@
   "name": "long-term-memory",
   "category": "llm-agentic",
   "difficulty": "advanced",
-  "language": "python",
-  "keywords": ["long-term-memory", "persistence", "vector-store", "knowledge"],
+  "language": "ai-ml",
+  "keywords": [
+    "long-term-memory",
+    "persistence",
+    "vector-store",
+    "knowledge"
+  ],
   "description": "Long-Term Memory 长期记忆系统：跨会话持久化知识存储与检索",
   "estimated_time": "4-5 hours",
-  "prerequisites": ["memory-systems"],
-  "learning_objectives": ["理解持久化存储", "实现向量检索", "构建知识库"],
-  "content_types": ["tutorial", "storage-pattern"],
+  "prerequisites": [
+    "memory-systems"
+  ],
+  "learning_objectives": [
+    "理解持久化存储",
+    "实现向量检索",
+    "构建知识库"
+  ],
+  "content_types": [
+    "tutorial",
+    "storage-pattern"
+  ],
   "quality_standard": "five-star",
-  "created_date": "2026-06-04"
+  "created_date": "2026-06-04",
+  "dependencies": {},
+  "author": "OpenDemo Team",
+  "version": "1.1.0",
+  "created_at": "2025-12-11T17:08:29",
+  "updated_at": "2026-06-27T00:10:00",
+  "verified": true,
+  "verified_at": "2026-06-27T00:10:00",
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "compatibility": {
+    "operating_systems": [
+      "linux",
+      "macos",
+      "windows(wsl)"
+    ]
+  }
 }

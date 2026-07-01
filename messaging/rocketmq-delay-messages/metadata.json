@@ -1,0 +1,45 @@
+{
+  "name": "RocketMQ 延迟消息演示",
+  "language": "messaging",
+  "difficulty": "intermediate",
+  "description": "在 RocketMQ 中发送和消费延迟消息，演示订单超时取消、定时任务触发等典型业务场景。",
+  "keywords": [
+    "rocketmq",
+    "delay-message",
+    "scheduled-message",
+    "messaging"
+  ],
+  "author": "OpenDemo Team",
+  "version": "1.0.0",
+  "created_at": "2026-06-27",
+  "updated_at": "2026-06-27T01:45:00",
+  "verified": true,
+  "verified_at": "2026-06-27T01:45:00",
+  "estimated_time": "60-90分钟",
+  "prerequisites": [
+    "Docker",
+    "Docker Compose",
+    "消息队列基础概念"
+  ],
+  "files": [
+    "README.md",
+    "metadata.json",
+    "docker-compose.yml",
+    "scripts/start.sh",
+    "scripts/stop.sh",
+    "scripts/check.sh"
+  ],
+  "dependencies": {
+    "software": [
+      "Docker",
+      "Docker Compose"
+    ]
+  },
+  "compatibility": {
+    "operating_systems": [
+      "linux",
+      "macos",
+      "windows(wsl)"
+    ]
+  }
+}

@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: coredns-basics
+  labels:
+    app: coredns-basics
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: coredns-basics
+  template:
+    metadata:
+      labels:
+        app: coredns-basics
+    spec:
+      containers:
+      - name: demo
+        image: nginx:alpine
+        ports:
+        - containerPort: 80

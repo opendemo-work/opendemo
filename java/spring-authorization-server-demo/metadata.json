@@ -1,7 +1,12 @@
 {
   "name": "spring-authorization-server-demo",
   "language": "java",
-  "keywords": ["spring-boot", "oauth2", "authorization-server", "security"],
+  "keywords": [
+    "spring-boot",
+    "oauth2",
+    "authorization-server",
+    "security"
+  ],
   "description": "Spring Authorization Server OAuth2 授权服务器演示：Authorization Code、JWKS、令牌管理",
   "difficulty": "advanced",
   "dependencies": {
@@ -10,5 +15,23 @@
   },
   "author": "OpenDemo Team",
   "created_at": "2026-05-09",
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "updated_at": "2026-06-27T00:05:00",
+  "verified": true,
+  "verified_at": "2026-06-27T00:05:00",
+  "estimated_time": "60-90分钟",
+  "prerequisites": [
+    "相关基础知识"
+  ],
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "compatibility": {
+    "operating_systems": [
+      "linux",
+      "macos",
+      "windows(wsl)"
+    ]
+  }
 }

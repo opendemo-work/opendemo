@@ -3,7 +3,7 @@
   "language": "go",
   "category": "programming-language",
   "subcategory": "libraries",
-  "difficulty": "intermediate-to-advanced",
+  "difficulty": "intermediate",
   "keywords": [
     "go-libraries",
     "third-party",
@@ -11,7 +11,7 @@
     "database-drivers",
     "message-queues"
   ],
-  "description": "Go语言常用第三方库的学习和使用指南",
+  "description": "Go第三方库完整指南 的实战演示与配置详解",
   "version": "1.0.0",
   "author": "OpenDemo Team",
   "created_at": "2026-01-30",
@@ -33,7 +33,14 @@
   ],
   "estimated_time": "30-40小时",
   "compatibility": {
-    "go_versions": [">=1.16"],
-    "dependency_management": ["go mod"]
-  }
+    "go_versions": [
+      ">=1.16"
+    ],
+    "dependency_management": [
+      "go mod"
+    ]
+  },
+  "dependencies": {},
+  "verified": true,
+  "verified_at": "2026-06-27T00:05:00"
 }

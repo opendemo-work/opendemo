@@ -1,0 +1,41 @@
+{
+  "name": "Docker 高级网络与多阶段构建",
+  "language": "container",
+  "difficulty": "advanced",
+  "description": "演示 Docker 自定义网络、Compose 多服务编排、Dockerfile 多阶段构建和健康检查。",
+  "keywords": [
+    "docker",
+    "network",
+    "multi-stage-build",
+    "compose",
+    "healthcheck"
+  ],
+  "author": "OpenDemo Team",
+  "version": "1.0.0",
+  "created_at": "2026-06-27",
+  "updated_at": "2026-06-27T02:00:00",
+  "verified": true,
+  "verified_at": "2026-06-27T02:00:00",
+  "estimated_time": "45-90分钟",
+  "prerequisites": [
+    "Linux 基础",
+    "命令行操作"
+  ],
+  "files": [
+    "README.md",
+    "metadata.json",
+    "docker-compose.yml",
+    "app/Dockerfile",
+    "app/main.go",
+    "scripts/demo.sh",
+    "scripts/check.sh"
+  ],
+  "dependencies": {},
+  "compatibility": {
+    "operating_systems": [
+      "linux",
+      "macos",
+      "windows(wsl)"
+    ]
+  }
+}

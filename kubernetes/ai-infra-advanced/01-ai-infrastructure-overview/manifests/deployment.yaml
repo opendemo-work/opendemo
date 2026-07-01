@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: 01-ai-infrastructure-overview
+  labels:
+    app: 01-ai-infrastructure-overview
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: 01-ai-infrastructure-overview
+  template:
+    metadata:
+      labels:
+        app: 01-ai-infrastructure-overview
+    spec:
+      containers:
+      - name: demo
+        image: nginx:alpine
+        ports:
+        - containerPort: 80

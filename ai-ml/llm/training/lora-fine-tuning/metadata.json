@@ -1,34 +1,51 @@
 {
-  "name": "lora-fine-tuning",
-  "category": "llm-training",
+  "name": "LoRA 低秩适配微调",
+  "language": "ai-ml",
   "difficulty": "intermediate",
-  "language": "python",
+  "description": "不依赖 transformers/peft 库，使用 PyTorch 从零实现 LoRA 层，并通过微型模型演示冻结原始参数、只训练低秩增量的参数高效微调流程。",
   "keywords": [
     "lora",
     "low-rank-adaptation",
     "fine-tuning",
     "parameter-efficient",
     "peft",
-    "transformers"
+    "pytorch",
+    "llm-training"
   ],
-  "description": "LoRA 低秩适配微调详解，演示如何在有限资源下高效微调大模型",
-  "estimated_time": "4-6 hours",
+  "author": "OpenDemo Team",
+  "version": "1.1.0",
+  "created_at": "2026-06-01",
+  "updated_at": "2026-06-27T00:10:00",
+  "verified": true,
+  "verified_at": "2026-06-27T00:10:00",
+  "estimated_time": "60-90分钟",
   "prerequisites": [
-    "transformer-scratch",
-    "pytorch-basics",
-    "huggingface-basics"
+    "掌握 PyTorch 基础",
+    "了解神经网络前向传播与反向传播",
+    "理解线性代数中的矩阵乘法与低秩分解"
   ],
-  "learning_objectives": [
-    "理解 LoRA 核心原理和低秩假设",
-    "掌握 LoRA 层实现",
-    "使用 PEFT 库应用 LoRA",
-    "理解 QLoRA 和其他变体"
+  "files": [
+    "README.md",
+    "metadata.json",
+    "requirements.txt",
+    "code/lora_layer.py",
+    "code/train_demo.py",
+    "tests/test_lora.py"
   ],
-  "content_types": [
-    "tutorial",
-    "code-implementation",
-    "training-guide"
-  ],
-  "quality_standard": "five-star",
-  "created_date": "2026-06-01"
+  "dependencies": {
+    "python_packages": [
+      "torch>=2.0.0",
+      "numpy>=1.24.0"
+    ]
+  },
+  "compatibility": {
+    "operating_systems": [
+      "linux",
+      "macos",
+      "windows"
+    ],
+    "python_versions": [
+      ">=3.9"
+    ]
+  }
 }

@@ -1,3 +1,5 @@
+<!-- TEMPLATE: 待完善 - 本 README 包含自动生成的模板内容，需要人工精修 -->
+
 # Linux Namespace Isolation
 
 Linux命名空间隔离机制演示，展示容器技术的核心隔离原理。
@@ -205,4 +207,41 @@ sudo unshare --pid --mount --uts --ipc --net --fork --mount-proc \
         echo \$$ | sudo tee /sys/fs/cgroup/cpu/demo/cgroup.procs
         exec /bin/bash
     "
+```
+
+## 🎯 学习目标
+
+完成本案例学习后，你将能够：
+
+- ✅ 理解本案例涉及的核心概念
+- ✅ 掌握相关的配置与命令
+- ✅ 能够在本地环境中复现
+
+## 🚀 快速开始
+
+### 运行演示
+
+```bash
+./scripts/demo.sh
+```
+
+## 📖 核心概念
+
+### 1. 基本概念
+
+本节介绍本案例涉及的核心概念。
+
+### 2. 适用场景
+
+- 场景 1：学习与实验
+- 场景 2：工程实践
+- 场景 3：面试准备
+
+## 💻 代码示例
+
+### 基本用法
+
+```bash
+# 请根据实际案例替换
+./scripts/demo.sh
 ```

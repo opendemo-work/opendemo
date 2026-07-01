@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pipeline-workflow-orchestration
+  labels:
+    app: pipeline-workflow-orchestration
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pipeline-workflow-orchestration
+  template:
+    metadata:
+      labels:
+        app: pipeline-workflow-orchestration
+    spec:
+      containers:
+      - name: demo
+        image: nginx:alpine
+        ports:
+        - containerPort: 80

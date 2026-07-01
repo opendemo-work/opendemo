@@ -14,7 +14,12 @@
     "理解日志滚动策略和分级存储",
     "掌握Spring Profile与日志配置结合"
   ],
-  "tech_stack": ["Java", "Spring Boot", "Logback", "SLF4J"],
+  "tech_stack": [
+    "Java",
+    "Spring Boot",
+    "Logback",
+    "SLF4J"
+  ],
   "tags": [
     "Logback",
     "SLF4J",
@@ -26,10 +31,35 @@
     "actuator-demo",
     "aop-logging-demo"
   ],
-  "dependencies": ["spring-boot-starter-web"],
+  "dependencies": {
+    "items": [
+      "spring-boot-starter-web"
+    ]
+  },
   "created_date": "2024-01-15",
   "last_updated": "2024-01-15",
   "author": "OpenDemo Team",
   "version": "1.0.0",
-  "status": "complete"
+  "status": "complete",
+  "language": "java",
+  "description": "Logback Demo 的实战演示与配置详解",
+  "keywords": [
+    "java",
+    "logback"
+  ],
+  "created_at": "2025-12-11T17:08:29",
+  "updated_at": "2026-06-27T00:05:00",
+  "verified": true,
+  "verified_at": "2026-06-27T00:05:00",
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "compatibility": {
+    "operating_systems": [
+      "linux",
+      "macos",
+      "windows(wsl)"
+    ]
+  }
 }

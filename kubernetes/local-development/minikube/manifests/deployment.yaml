@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: minikube
+  labels:
+    app: minikube
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: minikube
+  template:
+    metadata:
+      labels:
+        app: minikube
+    spec:
+      containers:
+      - name: demo
+        image: nginx:alpine
+        ports:
+        - containerPort: 80

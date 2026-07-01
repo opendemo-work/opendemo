@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-controller
+  labels:
+    app: nginx-controller
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx-controller
+  template:
+    metadata:
+      labels:
+        app: nginx-controller
+    spec:
+      containers:
+      - name: demo
+        image: nginx:alpine
+        ports:
+        - containerPort: 80

@@ -7,10 +7,20 @@
   "last_updated": "2026-02-02",
   "category": "高可用架构",
   "subcategory": "MongoDB副本集",
-  "tags": ["mongodb", "replica-set", "high-availability", "clustering", "nosql"],
-  "difficulty": "专家级",
+  "tags": [
+    "mongodb",
+    "replica-set",
+    "high-availability",
+    "clustering",
+    "nosql"
+  ],
+  "difficulty": "intermediate",
   "estimated_time": "420分钟",
-  "prerequisites": ["MongoDB基础", "副本集概念", "系统运维技能"],
+  "prerequisites": [
+    "MongoDB基础",
+    "副本集概念",
+    "系统运维技能"
+  ],
   "learning_objectives": [
     "掌握MongoDB副本集的部署和配置",
     "学会副本集成员管理和故障处理",
@@ -23,5 +33,28 @@
     "clarity": "步骤详细可操作",
     "relevance": "企业级应用场景"
   },
-  "validation_status": "pending"
+  "validation_status": "pending",
+  "language": "database",
+  "description": "MongoDB副本集部署完整指南 的实战演示",
+  "keywords": [
+    "database",
+    "mongodb",
+    "mongodb"
+  ],
+  "created_at": "2025-12-11T17:08:29",
+  "updated_at": "2026-06-26T23:55:00",
+  "verified": true,
+  "verified_at": "2026-06-26T23:55:00",
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "dependencies": {},
+  "compatibility": {
+    "operating_systems": [
+      "linux",
+      "macos",
+      "windows(wsl)"
+    ]
+  }
 }

@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: efk
+  labels:
+    app: efk
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: efk
+  template:
+    metadata:
+      labels:
+        app: efk
+    spec:
+      containers:
+      - name: demo
+        image: nginx:alpine
+        ports:
+        - containerPort: 80

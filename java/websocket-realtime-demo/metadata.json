@@ -1,8 +1,43 @@
 {
   "name": "WebSocket Realtime Demo",
   "category": "realtime",
-  "tech_stack": ["Java", "Spring Boot", "Spring WebSocket", "HTML5"],
+  "tech_stack": [
+    "Java",
+    "Spring Boot",
+    "Spring WebSocket",
+    "HTML5"
+  ],
   "description": "Spring WebSocket实时通信演示，包含实时聊天室、消息广播、在线用户管理",
   "difficulty": "intermediate",
-  "dependencies": ["spring-boot-starter-websocket"]
+  "dependencies": {
+    "items": [
+      "spring-boot-starter-websocket"
+    ]
+  },
+  "language": "java",
+  "keywords": [
+    "java",
+    "websocket"
+  ],
+  "author": "OpenDemo Team",
+  "version": "1.1.0",
+  "created_at": "2025-12-11T17:08:29",
+  "updated_at": "2026-06-27T00:05:00",
+  "verified": true,
+  "verified_at": "2026-06-27T00:05:00",
+  "estimated_time": "60-90分钟",
+  "prerequisites": [
+    "相关基础知识"
+  ],
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "compatibility": {
+    "operating_systems": [
+      "linux",
+      "macos",
+      "windows(wsl)"
+    ]
+  }
 }

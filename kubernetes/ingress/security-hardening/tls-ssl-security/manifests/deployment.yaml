@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tls-ssl-security
+  labels:
+    app: tls-ssl-security
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tls-ssl-security
+  template:
+    metadata:
+      labels:
+        app: tls-ssl-security
+    spec:
+      containers:
+      - name: demo
+        image: nginx:alpine
+        ports:
+        - containerPort: 80

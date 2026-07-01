@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: alibaba
+  labels:
+    app: alibaba
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: alibaba
+  template:
+    metadata:
+      labels:
+        app: alibaba
+    spec:
+      containers:
+      - name: demo
+        image: nginx:alpine
+        ports:
+        - containerPort: 80

@@ -18,8 +18,16 @@
   "version": "1.0.0",
   "dependencies": {
     "java_version": "8+",
-    "required_tools": ["jps", "jstack", "jmap", "jstat"],
-    "optional_tools": ["eclipse-mat", "jvisualvm"]
+    "required_tools": [
+      "jps",
+      "jstack",
+      "jmap",
+      "jstat"
+    ],
+    "optional_tools": [
+      "eclipse-mat",
+      "jvisualvm"
+    ]
   },
   "verified": true,
   "estimated_time": "3-4小时",
@@ -55,5 +63,13 @@
     "configs/jvm_monitoring.conf",
     "examples/thread_dump_samples.txt",
     "docs/jvm_trinity_guide.md"
-  ]
+  ],
+  "verified_at": "2026-06-27T00:05:00",
+  "compatibility": {
+    "operating_systems": [
+      "linux",
+      "macos",
+      "windows(wsl)"
+    ]
+  }
 }

@@ -13,13 +13,27 @@
   "difficulty": "expert",
   "author": "OpenDemo Team",
   "created_at": "2026-02-02",
-  "updated_at": "2026-02-02",
+  "updated_at": "2026-06-26T23:50:00",
   "version": "1.0.0",
   "dependencies": {
-    "required_packages": ["procps", "sysstat", "htop"],
-    "optional_packages": ["strace", "lsof", "perf", "valgrind"],
+    "required_packages": [
+      "procps",
+      "sysstat",
+      "htop"
+    ],
+    "optional_packages": [
+      "strace",
+      "lsof",
+      "perf",
+      "valgrind"
+    ],
     "minimum_kernel": "3.10",
-    "supported_distros": ["centos", "rhel", "ubuntu", "debian"]
+    "supported_distros": [
+      "centos",
+      "rhel",
+      "ubuntu",
+      "debian"
+    ]
   },
   "verified": true,
   "estimated_time": "5-6小时",
@@ -55,5 +69,12 @@
     "configs/oom_killer_config.conf",
     "examples/process_state_samples/high_cpu_usage.txt",
     "docs/process_debugging_guide.md"
-  ]
+  ],
+  "verified_at": "2026-06-26T23:50:00",
+  "compatibility": {
+    "operating_systems": [
+      "linux",
+      "macos"
+    ]
+  }
 }

@@ -1,105 +1,264 @@
-# Go Design Patterns
+# Go 设计模式
 
-Go语言设计模式实践，涵盖GoF经典模式和Go惯用模式。
+> 学习 Go 语言中常见的设计模式，包括单例、工厂、策略、观察者等，提升代码可维护性。
 
-## 设计模式分类
+---
+
+## 📋 目录
+
+- [🎯 学习目标](#-学习目标)
+- [📐 架构图](#-架构图)
+- [🚀 快速开始](#-快速开始)
+- [📖 核心概念](#-核心概念)
+- [💻 代码示例](#-代码示例)
+- [🔧 配置说明](#-配置说明)
+- [🧪 验证测试](#-验证测试)
+- [📊 运行结果](#-运行结果)
+- [🐛 常见问题](#-常见问题)
+- [📚 扩展学习](#-扩展学习)
+
+---
+
+## 🎯 学习目标
+
+完成本案例学习后，你将能够：
+
+- ✅ 理解常用设计模式在 Go 中的实现方式
+- ✅ 使用接口实现策略模式和依赖注入
+- ✅ 使用 sync.Once 实现线程安全单例
+- ✅ 理解工厂模式和观察者模式的应用场景
+
+---
+
+## 📐 架构图
 
 ```
-设计模式分类:
-┌─────────────────────────────────────────────────────────┐
-│ 创建型模式 (Creational)                                  │
-│ ├── 单例模式 (Singleton)                                 │
-│ ├── 工厂模式 (Factory)                                   │
-│ ├── 建造者模式 (Builder)                                 │
-│ └── 原型模式 (Prototype)                                 │
-├─────────────────────────────────────────────────────────┤
-│ 结构型模式 (Structural)                                  │
-│ ├── 适配器模式 (Adapter)                                 │
-│ ├── 装饰器模式 (Decorator)                               │
-│ ├── 代理模式 (Proxy)                                     │
-│ └── 外观模式 (Facade)                                    │
-├─────────────────────────────────────────────────────────┤
-│ 行为型模式 (Behavioral)                                  │
-│ ├── 观察者模式 (Observer)                                │
-│ ├── 策略模式 (Strategy)                                  │
-│ └── 模板方法 (Template Method)                           │
-├─────────────────────────────────────────────────────────┤
-│ Go惯用模式 (Idiomatic)                                   │
-│ ├── 函数选项模式 (Functional Options)                    │
-│ └── 中间件模式 (Middleware)                              │
-└─────────────────────────────────────────────────────────┘
+客户端 ──▶ 抽象接口 ──▶ 具体实现
 ```
 
-## 单例模式
+---
+
+## 🚀 快速开始
+
+```bash
+cd go/go-design-patterns
+go test ./...
+```
+
+---
+
+## 📖 核心概念
+
+### 1. 单例模式
+
 ```go
-package singleton
-
-import "sync"
-
-type Singleton struct {
-    data string
-}
+type Singleton struct{}
 
 var instance *Singleton
 var once sync.Once
 
 func GetInstance() *Singleton {
     once.Do(func() {
-        instance = &Singleton{data: "initialized"}
+        instance = &Singleton{}
     })
     return instance
 }
 ```
 
-## 工厂模式
-```go
-package factory
+### 2. 工厂模式
 
-type PaymentMethod interface {
-    Pay(amount float64) error
+```go
+type Animal interface {
+    Speak() string
 }
 
-type PaymentFactory struct{}
-
-func (f *PaymentFactory) CreatePayment(method string) PaymentMethod {
-    switch method {
-    case "creditcard":
-        return &CreditCard{}
-    case "paypal":
-        return &PayPal{}
+func NewAnimal(name string) Animal {
+    switch name {
+    case "dog":
+        return &Dog{}
+    case "cat":
+        return &Cat{}
     default:
         return nil
     }
 }
 ```
 
-## 函数选项模式
+### 3. 策略模式
+
+通过接口定义算法族，运行时选择具体策略。
+
+---
+
+## 🧪 验证测试
+
+```bash
+go test ./...
+```
+
+---
+
+## 📚 扩展学习
+
+- [Go Web 框架 Gin](../go-ginwebdemo-web-framework-intro/)
+- [Go 官方文档](https://go.dev/doc/)
+
+---
+
+*最后更新：2026-06-27*  
+*版本：1.1.0*  
+*维护者：OpenDemo Team*
+
+
+---
+
+## 📖 深入理解
+
+### 核心流程
+
+Go Design Patterns 从启动到完成主要包含以下环节：
+
+1. **环境准备**：配置运行所需的依赖、网络和存储资源。
+2. **主流程执行**：运行案例的核心逻辑并产出结果。
+3. **结果验证**：通过日志、命令输出或测试用例确认正确性。
+4. **资源回收**：停止服务并清理临时数据，保证可重复执行。
+
+### 设计要点
+
+| 方面 | 做法 | 说明 |
+|------|------|------|
+| 部署方式 | 本地容器化 | 减少环境差异，便于复现 |
+| 配置管理 | 配置文件 + 环境变量 | 兼顾可读性与灵活性 |
+| 可观测性 | 日志 + 健康检查 | 方便定位问题 |
+| 扩展方式 | 模块化组织 | 后续可按需增加功能 |
+
+### 需要关注的指标
+
+在生产环境中落地类似方案时，建议留意：
+
+- 关键路径的响应延迟
+- CPU、内存、磁盘和网络资源使用
+- 并发量与吞吐量变化
+- 错误率和异常告警
+
+---
+
+## 🛡️ 安全与最佳实践
+
+### 安全建议
+
+- 生产环境不要使用默认密码、密钥或令牌。
+- 定期将依赖升级到稳定的最新版本。
+- 敏感配置优先使用密钥管理工具或环境变量注入。
+- 通过防火墙、安全组或网络策略限制访问范围。
+
+### 操作建议
+
+- 修改配置前备份现有环境。
+- 将配置文件和脚本纳入版本控制。
+- 为核心路径补充自动化测试。
+- 保留运行日志以便审计和排障。
+
+---
+
+## 🧪 进阶实验
+
+基础流程跑通后，可以尝试：
+
+1. 调整关键参数，观察对结果的影响。
+2. 模拟异常场景，验证容错能力。
+3. 增加负载，分析系统瓶颈。
+4. 与其他组件组合，形成完整链路。
+
+---
+
+## 📚 扩展资源
+
+- 相关技术的官方文档
+- [OpenDemo 项目主页](https://github.com/opendemo)
+- GitHub Discussions 与技术社区
+
+---
+
+## 🤝 贡献与反馈
+
+如发现内容有误或希望补充，欢迎提交 Issue 或 Pull Request。
+
+---
+
+*本 README 由 OpenDemo 自动生成并持续维护，欢迎根据实际案例补充细节。*
+
+
+---
+
+## 🏭 更多 Go 设计模式
+
+### 观察者模式
+
 ```go
-package options
-
-type Server struct {
-    host string
-    port int
+type Subject struct {
+    observers []Observer
 }
 
-type Option func(*Server)
-
-func WithHost(host string) Option {
-    return func(s *Server) { s.host = host }
-}
-
-func NewServer(opts ...Option) *Server {
-    s := &Server{host: "localhost", port: 8080}
-    for _, opt := range opts {
-        opt(s)
+func (s *Subject) Notify() {
+    for _, o := range s.observers {
+        o.Update()
     }
-    return s
 }
 ```
 
-## 学习要点
+### 装饰器模式
 
-1. Go语言设计模式的独特实现
-2. 接口的组合使用
-3. 函数作为一等公民的应用
-4. 并发安全的设计考虑
+通过组合扩展功能，而不是继承。
+
+### 建造者模式
+
+用于构建复杂对象，如 HTTP 请求配置。
+
+
+---
+
+## 🧪 测试设计模式
+
+使用 Go 编写单元测试验证模式实现：
+
+```bash
+go test -v ./...
+```
+
+测试驱动开发（TDD）可以帮助你更好地理解和应用设计模式。
+
+
+---
+
+## 🎯 何时使用设计模式
+
+设计模式不是银弹，过度使用会增加复杂度。适用场景包括：
+
+- 代码重复且难以维护
+- 需要支持未来扩展
+- 团队协作需要统一抽象
+- 测试困难需要解耦
+
+理解模式的意图比记住实现更重要。
+
+
+---
+
+## 📚 Go 设计模式学习资源
+
+- [Go Design Patterns](https://github.com/tmrts/go-patterns)
+- [Refactoring Guru - Design Patterns](https://refactoring.guru/design-patterns/go)
+- [Go 官方博客](https://go.dev/blog/)
+
+持续学习和实践是掌握设计模式的最佳途径。
+
+---
+
+## 🎓 总结
+
+通过本案例，你学习了 Go 中常见的设计模式实现方式。设计模式是经验的总结，但更重要的是理解其背后的设计原则和适用场景。在实际开发中，应该根据具体问题选择合适的模式，避免为了使用模式而使用模式。
+
+祝学习愉快！
+
+*持续实践，不断进步。*

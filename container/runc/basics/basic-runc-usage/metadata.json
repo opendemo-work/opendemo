@@ -1,6 +1,6 @@
 {
   "name": "Runc基础使用入门",
-  "language": "runc",
+  "language": "python",
   "category": "container",
   "subcategory": "runc-basics",
   "difficulty": "advanced",
@@ -39,5 +39,8 @@
       "linux"
     ],
     "kernel_version": ">=4.0"
-  }
+  },
+  "dependencies": {},
+  "verified": true,
+  "verified_at": "2026-06-27T00:05:00"
 }

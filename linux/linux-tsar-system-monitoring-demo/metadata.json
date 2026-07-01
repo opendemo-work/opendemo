@@ -12,12 +12,19 @@
   "difficulty": "advanced",
   "author": "OpenDemo Team",
   "created_at": "2026-02-02",
-  "updated_at": "2026-02-02",
+  "updated_at": "2026-06-26T23:50:00",
   "version": "1.0.0",
   "dependencies": {
-    "required_packages": ["tsar"],
+    "required_packages": [
+      "tsar"
+    ],
     "minimum_kernel": "3.10",
-    "supported_distros": ["centos", "rhel", "ubuntu", "debian"]
+    "supported_distros": [
+      "centos",
+      "rhel",
+      "ubuntu",
+      "debian"
+    ]
   },
   "verified": true,
   "estimated_time": "3-4小时",
@@ -54,5 +61,12 @@
     "examples/tsar_basic_output.txt",
     "docs/tsar_modules_guide.md",
     "docs/performance_troubleshooting.md"
-  ]
+  ],
+  "verified_at": "2026-06-26T23:50:00",
+  "compatibility": {
+    "operating_systems": [
+      "linux",
+      "macos"
+    ]
+  }
 }

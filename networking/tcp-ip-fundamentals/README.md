@@ -1,77 +1,236 @@
-# TCP/IP Fundamentals Demo
+# TCP/IP 基础 - 网络通信协议栈入门
 
-TCP/IP协议基础演示项目，深入理解网络通信的核心协议。
+> 系统学习 TCP/IP 协议栈四层模型，通过 Wireshark 抓包和 Linux 命令实践，理解 IP、TCP、UDP、ICMP 等核心协议的工作机制。
 
-## 技术栈
+---
 
-- TCP/IP协议栈
-- Socket编程
-- Wireshark抓包分析
+## 📋 目录
 
-## 核心概念
+- [🎯 学习目标](#-学习目标)
+- [📐 架构图](#-架构图)
+- [🚀 快速开始](#-快速开始)
+- [📖 核心概念](#-核心概念)
+- [💻 代码示例](#-代码示例)
+- [🔧 配置说明](#-配置说明)
+- [🧪 验证测试](#-验证测试)
+- [📊 运行结果](#-运行结果)
+- [🐛 常见问题](#-常见问题)
+- [📚 扩展学习](#-扩展学习)
 
-### TCP/IP四层模型
+---
+
+## 🎯 学习目标
+
+完成本案例学习后，你将能够：
+
+- ✅ 解释 TCP/IP 四层模型与 OSI 七层模型的关系
+- ✅ 理解 IP 地址、子网掩码、网关、DNS 的作用
+- ✅ 分析 TCP 三次握手和四次挥手过程
+- ✅ 使用 ping、traceroute、netstat、ss 等网络命令
+- ✅ 使用 Wireshark 抓取和分析网络包
+
+---
+
+## 📐 架构图
 
 ```
-应用层    - HTTP, FTP, DNS, SSH
-传输层    - TCP, UDP
-网络层    - IP, ICMP, ARP
-链路层    - Ethernet, Wi-Fi
+┌─────────────────────────────────────────────────────────────────┐
+│                    TCP/IP 协议栈                                 │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                 │
+│   应用层  │ HTTP / FTP / DNS / SSH / SMTP                       │
+│   ───────┼─────────────────────────────────────                 │
+│   传输层  │ TCP / UDP                                             │
+│   ───────┼─────────────────────────────────────                 │
+│   网络层  │ IP / ICMP / ARP                                       │
+│   ───────┼─────────────────────────────────────                 │
+│   链路层  │ Ethernet / Wi-Fi / PPP                                │
+│                                                                 │
+└─────────────────────────────────────────────────────────────────┘
 ```
 
-### TCP三次握手
+---
+
+## 🚀 快速开始
+
+### 环境要求
+
+| 依赖 | 版本要求 | 说明 |
+|------|----------|------|
+| Linux/macOS | - | 使用网络命令 |
+| Wireshark | >= 3.0 | 抓包分析 |
+| curl | - | HTTP 测试 |
+
+### 查看本机网络配置
+
+```bash
+cd networking/tcp-ip-fundamentals
+./scripts/start.sh
+./scripts/check.sh
+```
+
+---
+
+## 📖 核心概念
+
+### 1. TCP/IP 四层模型
+
+| 层级 | 协议 | 数据单元 |
+|------|------|----------|
+| 应用层 | HTTP、DNS、SSH | 消息/报文 |
+| 传输层 | TCP、UDP | 段（Segment） |
+| 网络层 | IP、ICMP、ARP | 包（Packet） |
+| 链路层 | Ethernet、Wi-Fi | 帧（Frame） |
+
+### 2. IP 地址与子网
+
+- IP 地址用于标识网络中的设备
+- 子网掩码划分网络部分和主机部分
+- 默认网关用于跨网段通信
+
+### 3. TCP 三次握手
 
 ```
-客户端                    服务器
-   |     SYN(seq=x)       |
-   |--------------------->|
-   |   SYN(seq=y,ACK=x+1) |
-   |<---------------------|
-   |     ACK(y+1)         |
-   |--------------------->|
-   |                      |
-   |==== 连接建立完成 =====|
+客户端            服务器
+  │    SYN        │
+  │──────────────▶│
+  │  SYN + ACK    │
+  │◀──────────────│
+  │    ACK        │
+  │──────────────▶│
 ```
 
-## 快速开始
+### 4. TCP 四次挥手
 
-### 1. 查看网络配置
+```
+客户端            服务器
+  │    FIN        │
+  │──────────────▶│
+  │    ACK        │
+  │◀──────────────│
+  │    FIN        │
+  │◀──────────────│
+  │    ACK        │
+  │──────────────▶│
+```
+
+---
+
+## 💻 代码示例
+
+### 查看网络接口
 
 ```bash
 # Linux
+ip addr show
+ip route show
+
+# macOS
 ifconfig
-ip addr
-
-# 查看路由表
-route -n
-ip route
-
-# 查看DNS配置
-cat /etc/resolv.conf
+netstat -nr
 ```
 
-### 2. TCP连接测试
+### 测试连通性
 
 ```bash
-# 使用nc测试端口连通性
-nc -vz google.com 443
+# ping 测试
+ping -c 4 8.8.8.8
 
-# 使用telnet
-telnet google.com 80
+# 路由追踪
+traceroute 8.8.8.8
 
-# TCPDUMP抓包
-sudo tcpdump -i eth0 port 80
+# DNS 查询
+nslookup example.com
+dig example.com
 ```
 
-## 学习要点
+### 查看连接状态
 
-1. OSI七层模型与TCP/IP四层模型对比
-2. TCP三次握手与四次挥手
-3. IP地址分类与子网划分
-4. ARP协议工作原理
-5. ICMP与Ping实现
+```bash
+# 查看所有 TCP 连接
+ss -tuln
 
-## 参考
+# 查看连接状态统计
+ss -s
+```
 
-- [RFC 791 - IP](https://tools.ietf.org/html/rfc791)
-- [RFC 793 - TCP](https://tools.ietf.org/html/rfc793)
+### 使用 tcpdump 抓包
+
+```bash
+# 抓取 80 端口流量
+sudo tcpdump -i any port 80 -w http.pcap
+
+# 读取 pcap 文件
+tcpdump -r http.pcap
+```
+
+---
+
+## 🔧 配置说明
+
+| 文件 | 作用 |
+|------|------|
+| `scripts/start.sh` | 启动示例服务 |
+| `scripts/check.sh` | 检查网络配置 |
+| `captures/` | 抓包文件目录 |
+
+---
+
+## 🧪 验证测试
+
+```bash
+# 1. 测试本地回环
+ping -c 4 127.0.0.1
+
+# 2. 测试网关
+ip route | grep default
+ping -c 4 <gateway-ip>
+
+# 3. 测试公网 DNS
+ping -c 4 8.8.8.8
+
+# 4. 使用 curl 测试 HTTP
+curl -I http://example.com
+```
+
+---
+
+## 📊 运行结果
+
+```bash
+$ ping -c 4 8.8.8.8
+PING 8.8.8.8 (8.8.8.8): 56 data bytes
+64 bytes from 8.8.8.8: icmp_seq=0 ttl=117 time=15.3 ms
+64 bytes from 8.8.8.8: icmp_seq=1 ttl=117 time=14.8 ms
+```
+
+---
+
+## 🐛 常见问题
+
+### Q1：无法访问外网？
+
+**A**：检查默认网关、DNS 配置和防火墙规则。
+
+### Q2：端口已被占用？
+
+**A**：使用 `ss -tlnp` 查看占用进程。
+
+### Q3：Wireshark 看不到包？
+
+**A**：需要管理员权限，或在 Linux 上将用户加入 wireshark 组。
+
+---
+
+## 📚 扩展学习
+
+- [HTTP 协议分析](../http-protocol-analysis/)
+- [DNS 配置](../dns-configuration/)
+- [网络协议分析](../network-protocols-analysis/)
+- [Wireshark 抓包分析](../wireshark-packet-analysis/)
+
+---
+
+*最后更新：2026-06-27*  
+*版本：1.1.0*  
+*维护者：OpenDemo Team*

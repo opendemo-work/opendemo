@@ -1,3 +1,5 @@
+<!-- TEMPLATE: 待完善 - 本 README 包含自动生成的模板内容，需要人工精修 -->
+
 # PostgreSQL数据库性能分析与故障排查实战演示
 
 ## 🎯 学习目标
@@ -1025,3 +1027,37 @@ SELECT pg_terminate_backend(pid) FROM pg_stat_activity WHERE backend_type = 'wal
 
 ---
 > **💡 提示**: PostgreSQL性能优化需要结合具体业务场景，建议建立完整的监控体系，定期进行性能评估和优化。
+## 🚀 快速开始
+
+### 启动环境
+
+```bash
+./scripts/start.sh
+```
+
+### 停止环境
+
+```bash
+./scripts/stop.sh
+```
+
+## 📖 核心概念
+
+### 1. 基本概念
+
+本节介绍本案例涉及的数据库核心概念。
+
+### 2. 适用场景
+
+- 场景 1：开发与测试
+- 场景 2：生产环境参考
+- 场景 3：故障排查
+
+## 💻 代码示例
+
+### 基本命令
+
+```bash
+# 请根据实际数据库替换
+docker-compose ps
+```

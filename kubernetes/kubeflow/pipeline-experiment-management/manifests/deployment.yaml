@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pipeline-experiment-management
+  labels:
+    app: pipeline-experiment-management
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pipeline-experiment-management
+  template:
+    metadata:
+      labels:
+        app: pipeline-experiment-management
+    spec:
+      containers:
+      - name: demo
+        image: nginx:alpine
+        ports:
+        - containerPort: 80

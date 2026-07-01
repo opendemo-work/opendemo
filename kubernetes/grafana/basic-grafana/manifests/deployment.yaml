@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: basic-grafana
+  labels:
+    app: basic-grafana
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: basic-grafana
+  template:
+    metadata:
+      labels:
+        app: basic-grafana
+    spec:
+      containers:
+      - name: demo
+        image: nginx:alpine
+        ports:
+        - containerPort: 80

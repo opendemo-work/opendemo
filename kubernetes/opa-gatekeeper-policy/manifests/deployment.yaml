@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: opa-gatekeeper-policy
+  labels:
+    app: opa-gatekeeper-policy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: opa-gatekeeper-policy
+  template:
+    metadata:
+      labels:
+        app: opa-gatekeeper-policy
+    spec:
+      containers:
+      - name: demo
+        image: nginx:alpine
+        ports:
+        - containerPort: 80

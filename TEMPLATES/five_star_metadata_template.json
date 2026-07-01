@@ -1,0 +1,31 @@
+{
+  "name": "案例中文名称",
+  "language": "python",
+  "difficulty": "intermediate",
+  "description": "一句话描述这个案例的核心价值和用途（不少于 20 个字符）",
+  "keywords": [
+    "keyword1",
+    "keyword2",
+    "keyword3"
+  ],
+  "author": "OpenDemo Team",
+  "version": "1.0.0",
+  "created_at": "2026-06-26",
+  "updated_at": "2026-06-26",
+  "verified": true,
+  "verified_at": "2026-06-26",
+  "estimated_time": "30-60分钟",
+  "prerequisites": [
+    "前置知识或环境 1",
+    "前置知识或环境 2"
+  ],
+  "files": [
+    "README.md",
+    "metadata.json",
+    "code/main.py",
+    "tests/test_main.py",
+    "docker-compose.yml"
+  ],
+  "dependencies": {},
+  "compatibility": {}
+}

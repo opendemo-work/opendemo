@@ -1,8 +1,44 @@
 {
   "name": "OpenTelemetry",
   "category": "kubernetes",
-  "tech_stack": ["Kubernetes", "OpenTelemetry", "Observability"],
+  "tech_stack": [
+    "Kubernetes",
+    "OpenTelemetry",
+    "Observability"
+  ],
   "description": "OpenTelemetry可观测性标准：追踪、指标、日志",
   "difficulty": "advanced",
-  "dependencies": ["otel-collector"]
+  "dependencies": {
+    "items": [
+      "otel-collector"
+    ]
+  },
+  "language": "kubernetes",
+  "keywords": [
+    "kubernetes",
+    "k8s",
+    "opentelemetry"
+  ],
+  "author": "OpenDemo Team",
+  "version": "1.1.0",
+  "created_at": "2025-12-11T17:08:29",
+  "updated_at": "2026-06-27T00:00:00",
+  "verified": true,
+  "verified_at": "2026-06-27T00:00:00",
+  "estimated_time": "60-90分钟",
+  "prerequisites": [
+    "Kubernetes 基础知识",
+    "kubectl 已安装"
+  ],
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "compatibility": {
+    "operating_systems": [
+      "linux",
+      "macos",
+      "windows(wsl)"
+    ]
+  }
 }

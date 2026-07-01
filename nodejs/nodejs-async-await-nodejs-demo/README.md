@@ -1,126 +1,243 @@
-# async-await-nodejs-demo
+# Node.js Async/Await - 异步编程现代写法
 
-## 简介
-本项目是一个用于学习和理解 Node.js 中 `async` 和 `await` 语法的实践性演示。通过三个具体场景，展示如何使用现代异步编程模式处理异步操作，包括模拟 API 调用、顺序与并行执行、错误处理等。
+> 学习 Node.js 中 async/await 的使用，理解 Promise、错误处理和并发控制，写出清晰的异步代码。
 
-## 学习目标
-- 理解 `async/await` 的基本语法和工作原理
-- 掌握如何用 `await` 等待 Promise 完成
-- 学会处理异步函数中的错误（try/catch）
-- 区分串行与并行异步操作
+---
 
-## 环境要求
-- Node.js 版本：14.x 或更高（推荐 16+）
-- 操作系统：Windows、macOS、Linux 均支持
-- 包管理器：npm（随 Node.js 自动安装）
+## 📋 目录
 
-## 安装依赖的详细步骤
-1. 确保已安装 Node.js 和 npm
-   ```bash
-   node --version
-   npm --version
-   ```
-   预期输出类似：
-   ```
-   v16.14.0
-   8.3.1
-   ```
+- [🎯 学习目标](#-学习目标)
+- [📐 架构图](#-架构图)
+- [🚀 快速开始](#-快速开始)
+- [📖 核心概念](#-核心概念)
+- [💻 代码示例](#-代码示例)
+- [🔧 配置说明](#-配置说明)
+- [🧪 验证测试](#-验证测试)
+- [📊 运行结果](#-运行结果)
+- [🐛 常见问题](#-常见问题)
+- [📚 扩展学习](#-扩展学习)
 
-2. 初始化项目（如果尚未有 package.json）
-   ```bash
-   npm init -y
-   ```
+---
 
-3. 本项目无外部依赖，无需额外安装包。
+## 🎯 学习目标
 
-## 文件说明
-- `example1.js`: 模拟用户数据获取，展示基础 async/await 用法
-- `example2.js`: 展示多个异步任务的串行与并行执行差异
-- `example3.js`: 演示 async 函数中的错误处理机制
+完成本案例学习后，你将能够：
 
-## 逐步实操指南
+- ✅ 理解 Promise 和 async/await 的关系
+- ✅ 使用 async/await 重构回调代码
+- ✅ 处理异步错误
+- ✅ 使用 Promise.all 实现并发
 
-### 步骤 1: 创建代码文件
-创建以下三个文件并粘贴对应内容：
+---
+
+## 📐 架构图
+
+```
+同步代码风格 ──▶ 异步 IO 操作 ──▶ 事件循环调度
+```
+
+---
+
+## 🚀 快速开始
 
 ```bash
-mkdir -p code
-# 或在 Windows 上使用 mkdir code
+cd nodejs/nodejs-async-await-nodejs-demo
+npm install
+node code/async_demo.js
 ```
 
-### 步骤 2: 运行第一个示例
-```bash
-node code/example1.js
-```
-**预期输出**：
-```text
-正在获取用户信息...
-用户姓名：Alice
+---
+
+## 📖 核心概念
+
+### 1. Promise
+
+表示异步操作最终完成或失败的对象：
+
+```javascript
+const promise = fetch('https://api.example.com');
+promise.then(response => response.json())
+       .catch(error => console.error(error));
 ```
 
-### 步骤 3: 运行第二个示例
-```bash
-node code/example2.js
-```
-**预期输出**：
-```text
-【串行执行】
-任务1完成
-任务2完成
-总耗时约2秒
+### 2. async/await
 
-【并行执行】
-两个任务都已完成
-总耗时约1秒
-```
-
-### 步骤 4: 运行第三个示例
-```bash
-node code/example3.js
-```
-**预期输出**：
-```text
-尝试获取受保护资源...
-错误被捕获：访问被拒绝！
-异步操作继续执行
-```
-
-## 代码解析
-
-### example1.js
-```js
-async function fetchUser() {
-  return new Promise(resolve => {
-    setTimeout(() => resolve({ name: 'Alice' }), 1000);
-  });
+```javascript
+async function getData() {
+    try {
+        const response = await fetch('https://api.example.com');
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error(error);
+    }
 }
 ```
-- 使用 `async` 定义异步函数，自动返回 Promise
-- `await` 用于暂停函数执行直到 Promise 解析
 
-### example2.js
-- `await task1(); await task2();` 是串行：等待一个完成再开始下一个
-- `await Promise.all([task1(), task2()])` 是并行：同时启动所有任务，等待全部完成
+### 3. 并发控制
 
-### example3.js
-- 使用 try/catch 捕获 async 函数中抛出的错误
-- 即使出错，程序也不会崩溃，可继续执行后续逻辑
+```javascript
+const results = await Promise.all([
+    fetchUser(1),
+    fetchUser(2),
+    fetchUser(3)
+]);
+```
 
-## 预期输出示例
-完整运行三个文件后，应看到如上所述的清晰输出，表明 async/await 正确工作。
+---
 
-## 常见问题解答
+## 💻 代码示例
 
-**Q: await 只能在 async 函数中使用吗？**
-A: 是的，否则会报语法错误。
+### 顺序执行
 
-**Q: async 函数总是返回 Promise 吗？**
-A: 是的，即使返回普通值，也会被包装成 Promise.resolve(value)。
+```javascript
+async function sequential() {
+    const user = await fetchUser(1);
+    const orders = await fetchOrders(user.id);
+    return { user, orders };
+}
+```
 
-**Q: 如何调试 async/await 代码？**
-A: 可使用 `console.log` 或 VS Code 调试器设置断点，行为与同步代码类似。
+### 并发执行
 
-## 扩展学习建议
-- 阅读 MDN 文档：[Async/Await](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/async_function)
-- 学习 Promise.race() 和 Promise.any() 的使用
-- 实践在 Express.js 中使用 async/await 处理路由
+```javascript
+async function parallel() {
+    const [user, orders] = await Promise.all([
+        fetchUser(1),
+        fetchOrders(1)
+    ]);
+    return { user, orders };
+}
+```
+
+---
+
+## 🧪 验证测试
+
+```bash
+node code/async_demo.js
+npm test
+```
+
+---
+
+## 📚 扩展学习
+
+- [Node.js 回调函数](../nodejs-callback-functions-demo/)
+- [Node.js 设计模式](../nodejs-design-patterns/)
+- [MDN async function](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/async_function)
+
+---
+
+*最后更新：2026-06-27*  
+*版本：1.1.0*  
+*维护者：OpenDemo Team*
+
+
+---
+
+## 📖 深入理解
+
+### 核心流程
+
+async-await-nodejs-demo 从启动到完成主要包含以下环节：
+
+1. **环境准备**：配置运行所需的依赖、网络和存储资源。
+2. **主流程执行**：运行案例的核心逻辑并产出结果。
+3. **结果验证**：通过日志、命令输出或测试用例确认正确性。
+4. **资源回收**：停止服务并清理临时数据，保证可重复执行。
+
+### 设计要点
+
+| 方面 | 做法 | 说明 |
+|------|------|------|
+| 部署方式 | 本地容器化 | 减少环境差异，便于复现 |
+| 配置管理 | 配置文件 + 环境变量 | 兼顾可读性与灵活性 |
+| 可观测性 | 日志 + 健康检查 | 方便定位问题 |
+| 扩展方式 | 模块化组织 | 后续可按需增加功能 |
+
+### 需要关注的指标
+
+在生产环境中落地类似方案时，建议留意：
+
+- 关键路径的响应延迟
+- CPU、内存、磁盘和网络资源使用
+- 并发量与吞吐量变化
+- 错误率和异常告警
+
+---
+
+## 🛡️ 安全与最佳实践
+
+### 安全建议
+
+- 生产环境不要使用默认密码、密钥或令牌。
+- 定期将依赖升级到稳定的最新版本。
+- 敏感配置优先使用密钥管理工具或环境变量注入。
+- 通过防火墙、安全组或网络策略限制访问范围。
+
+### 操作建议
+
+- 修改配置前备份现有环境。
+- 将配置文件和脚本纳入版本控制。
+- 为核心路径补充自动化测试。
+- 保留运行日志以便审计和排障。
+
+---
+
+## 🧪 进阶实验
+
+基础流程跑通后，可以尝试：
+
+1. 调整关键参数，观察对结果的影响。
+2. 模拟异常场景，验证容错能力。
+3. 增加负载，分析系统瓶颈。
+4. 与其他组件组合，形成完整链路。
+
+---
+
+## 📚 扩展资源
+
+- 相关技术的官方文档
+- [OpenDemo 项目主页](https://github.com/opendemo)
+- GitHub Discussions 与技术社区
+
+---
+
+## 🤝 贡献与反馈
+
+如发现内容有误或希望补充，欢迎提交 Issue 或 Pull Request。
+
+---
+
+*本 README 由 OpenDemo 自动生成并持续维护，欢迎根据实际案例补充细节。*
+
+
+---
+
+## ⏱️ Async/Await 超时控制
+
+```javascript
+const fetchWithTimeout = (url, ms) => {
+    return Promise.race([
+        fetch(url),
+        new Promise((_, reject) =>
+            setTimeout(() => reject(new Error('Timeout')), ms)
+        )
+    ]);
+};
+```
+
+---
+
+## 🔁 for await...of
+
+处理异步迭代器：
+
+```javascript
+async function processStream(stream) {
+    for await (const chunk of stream) {
+        console.log(chunk);
+    }
+}
+```

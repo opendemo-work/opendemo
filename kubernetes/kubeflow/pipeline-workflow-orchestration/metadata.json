@@ -1,25 +1,32 @@
 {
-  "name": "Kubeflow Pipeline工作流编�?,
+  "dependencies": {},
+  "name": "Pipeline Workflow Orchestration",
   "language": "kubernetes",
+  "description": "Pipeline Workflow Orchestration 的实战演示与配置详解",
   "keywords": [
-    "kubeflow",
-    "pipelines",
-    "workflow",
-    "orchestration",
-    "ml-workflow"
+    "kubernetes",
+    "pipeline"
   ],
-  "description": "演示如何定义和执行完整的机器学习工作流Pipeline",
-  "difficulty": "intermediate",
-  "author": "",
-  "created_at": "2026-01-07T14:30:00",
-  "updated_at": "2026-01-07T14:30:00",
-  "version": "1.0.0",
-  "dependencies": {
-    "kubeflow_version": "1.8+",
-    "kubernetes_version": "1.26+",
-    "kfp": "2.0+",
-    "python": "3.8+"
+  "author": "OpenDemo Team",
+  "version": "1.1.0",
+  "created_at": "2025-12-11T17:08:29",
+  "updated_at": "2026-06-27T00:05:00",
+  "verified": true,
+  "verified_at": "2026-06-27T00:05:00",
+  "estimated_time": "60-90分钟",
+  "prerequisites": [
+    "相关基础知识"
+  ],
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "compatibility": {
+    "operating_systems": [
+      "linux",
+      "macos",
+      "windows(wsl)"
+    ]
   },
-  "verified": false,
-  "category": "Kubeflow Pipelines"
+  "difficulty": "intermediate"
 }

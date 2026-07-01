@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: 32-mlops-pipeline
+  labels:
+    app: 32-mlops-pipeline
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: 32-mlops-pipeline
+  template:
+    metadata:
+      labels:
+        app: 32-mlops-pipeline
+    spec:
+      containers:
+      - name: demo
+        image: nginx:alpine
+        ports:
+        - containerPort: 80

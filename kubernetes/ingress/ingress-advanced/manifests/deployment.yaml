@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ingress-advanced
+  labels:
+    app: ingress-advanced
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ingress-advanced
+  template:
+    metadata:
+      labels:
+        app: ingress-advanced
+    spec:
+      containers:
+      - name: demo
+        image: nginx:alpine
+        ports:
+        - containerPort: 80

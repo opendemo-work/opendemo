@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: regflow-basic-demo
+  labels:
+    app: regflow-basic-demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: regflow-basic-demo
+  template:
+    metadata:
+      labels:
+        app: regflow-basic-demo
+    spec:
+      containers:
+      - name: demo
+        image: nginx:alpine
+        ports:
+        - containerPort: 80

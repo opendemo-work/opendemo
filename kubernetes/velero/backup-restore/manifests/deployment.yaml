@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backup-restore
+  labels:
+    app: backup-restore
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backup-restore
+  template:
+    metadata:
+      labels:
+        app: backup-restore
+    spec:
+      containers:
+      - name: demo
+        image: nginx:alpine
+        ports:
+        - containerPort: 80

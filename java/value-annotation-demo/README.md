@@ -1,3 +1,5 @@
+<!-- TEMPLATE: 待完善 - 本 README 包含自动生成的模板内容，需要人工精修 -->
+
 # Value Annotation Demo
 
 > Spring @Value 注解演示项目 - 涵盖字面值注入、配置文件读取、SpEL 表达式、默认值设置
@@ -199,3 +201,32 @@ public void setValue(String value) { ClassName.value = value; }
 
 ---
 > **💡 提示**: `@Value` 适合简单场景的属性注入。当配置属性较多时，推荐使用 `@ConfigurationProperties` 配合 `@EnableConfigurationProperties`，可以获得类型安全、校验支持和 IDE 自动补全等优势。
+
+## 🎯 学习目标
+
+完成本案例学习后，你将能够：
+
+- ✅ 理解本案例涉及的核心概念
+- ✅ 掌握相关的配置与命令
+- ✅ 能够在本地环境中复现
+
+## 📖 核心概念
+
+### 1. 基本概念
+
+本节介绍本案例涉及的核心概念。
+
+### 2. 适用场景
+
+- 场景 1：学习与实验
+- 场景 2：工程实践
+- 场景 3：面试准备
+
+## 💻 代码示例
+
+### 基本用法
+
+```bash
+# 请根据实际案例替换
+./scripts/demo.sh
+```

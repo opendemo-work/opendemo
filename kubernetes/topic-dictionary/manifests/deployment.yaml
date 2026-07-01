@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: topic-dictionary
+  labels:
+    app: topic-dictionary
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: topic-dictionary
+  template:
+    metadata:
+      labels:
+        app: topic-dictionary
+    spec:
+      containers:
+      - name: demo
+        image: nginx:alpine
+        ports:
+        - containerPort: 80

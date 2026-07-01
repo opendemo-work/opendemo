@@ -10,10 +10,26 @@
   ],
   "description": "展示 Go 中 context 包在超时、取消和跨层级传递中的高级用法。",
   "difficulty": "advanced",
-  "author": "",
+  "author": "OpenDemo Team",
   "created_at": "2025-12-13T14:55:46.825819",
   "updated_at": "2025-12-13T14:55:46.825819",
   "version": "1.0.0",
   "dependencies": {},
-  "verified": false
+  "verified": false,
+  "verified_at": "2026-06-27T00:05:00",
+  "estimated_time": "60-90分钟",
+  "prerequisites": [
+    "相关基础知识"
+  ],
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "compatibility": {
+    "operating_systems": [
+      "linux",
+      "macos",
+      "windows(wsl)"
+    ]
+  }
 }

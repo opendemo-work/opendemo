@@ -2,13 +2,46 @@
   "name": "memory-systems",
   "category": "llm-agentic",
   "difficulty": "advanced",
-  "language": "python",
-  "keywords": ["memory", "agent", "episodic", "semantic", "knowledge-graph"],
+  "language": "ai-ml",
+  "keywords": [
+    "memory",
+    "agent",
+    "episodic",
+    "semantic",
+    "knowledge-graph"
+  ],
   "description": "Agent 记忆系统：短期记忆、长期记忆、情景记忆、语义记忆",
   "estimated_time": "4-5 hours",
-  "prerequisites": ["react-agent"],
-  "learning_objectives": ["理解记忆系统架构", "实现各类记忆管理", "掌握记忆检索方法"],
-  "content_types": ["tutorial", "memory-implementation"],
+  "prerequisites": [
+    "react-agent"
+  ],
+  "learning_objectives": [
+    "理解记忆系统架构",
+    "实现各类记忆管理",
+    "掌握记忆检索方法"
+  ],
+  "content_types": [
+    "tutorial",
+    "memory-implementation"
+  ],
   "quality_standard": "five-star",
-  "created_date": "2026-06-01"
+  "created_date": "2026-06-01",
+  "dependencies": {},
+  "author": "OpenDemo Team",
+  "version": "1.1.0",
+  "created_at": "2025-12-11T17:08:29",
+  "updated_at": "2026-06-27T00:10:00",
+  "verified": true,
+  "verified_at": "2026-06-27T00:10:00",
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "compatibility": {
+    "operating_systems": [
+      "linux",
+      "macos",
+      "windows(wsl)"
+    ]
+  }
 }

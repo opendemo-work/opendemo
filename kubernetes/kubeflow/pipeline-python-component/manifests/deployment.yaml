@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pipeline-python-component
+  labels:
+    app: pipeline-python-component
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pipeline-python-component
+  template:
+    metadata:
+      labels:
+        app: pipeline-python-component
+    spec:
+      containers:
+      - name: demo
+        image: nginx:alpine
+        ports:
+        - containerPort: 80

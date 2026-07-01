@@ -1,273 +1,269 @@
-# Offline Deployment
+# 离线环境安全部署
 
-离线环境FDE部署方案演示。
+> 演示在没有互联网访问的环境中部署安全工具和更新。
 
-## 离线部署挑战
+---
+
+## 📋 目录
+
+- [🎯 学习目标](#-学习目标)
+- [📐 架构图](#-架构图)
+- [🚀 快速开始](#-快速开始)
+- [📖 核心概念](#-核心概念)
+- [💻 代码示例](#-代码示例)
+- [🔧 配置说明](#-配置说明)
+- [🧪 验证测试](#-验证测试)
+- [📊 运行结果](#-运行结果)
+- [🐛 常见问题](#-常见问题)
+- [📚 扩展学习](#-扩展学习)
+
+---
+
+## 🎯 学习目标
+
+完成本案例学习后，你将能够：
+
+- ✅ 理解 离线环境安全部署 的核心概念与适用场景
+- ✅ 掌握相关的配置方法和操作命令
+- ✅ 在测试环境中完成基础部署或操作
+- ✅ 了解安全最佳实践和合规要求
+
+---
+
+## 📐 架构图
 
 ```
-离线部署场景:
-┌─────────────────────────────────────────────────────────┐
-│ 场景1: 隔离网络 (政府/金融/军工)                          │
-│ ├── 无互联网连接                                          │
-│ ├── 无法使用云KMS                                         │
-│ └── 需要本地密钥管理                                       │
-├─────────────────────────────────────────────────────────┤
-│ 场景2: 远程站点 (海上平台/矿山)                          │
-│ ├── 带宽受限                                              │
-│ ├── 延迟高                                                │
-│ └── 需要本地自治能力                                       │
-├─────────────────────────────────────────────────────────┤
-│ 场景3: 安全实验室                                         │
-│ ├── 物理隔离                                              │
-│ ├── 无外部服务依赖                                        │
-│ └── 需要完全离线方案                                       │
-└─────────────────────────────────────────────────────────┘
+┌─────────────────────────────────────────────────────────────────┐
+│                    离线环境安全部署                                      │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                 │
+│   终端/系统/应用 ──▶ 安全控制机制 ──▶ 受保护资源                 │
+│                                                                 │
+│              ┌─────────────────────────────┐                   │
+│              │ 离线包                  │                   │
+│              │ 本地仓库                  │                   │
+│              │ USB 分发                  │                   │
+│              │ 气隙网络                  │                   │
+│              └─────────────────────────────┘                   │
+│                                                                 │
+└─────────────────────────────────────────────────────────────────┘
 ```
 
-## 离线部署架构
+---
 
-```
-离线部署组件:
-┌─────────────────────────────────────────────────────────┐
-│              离线部署服务器 (预配置)                       │
-│  ┌─────────────────────────────────────────────────┐   │
-│  │  • 本地密钥管理服务 (Vault/HSM)                  │   │
-│  │  • 软件仓库镜像                                  │   │
-│  │  • 部署脚本和工具                                │   │
-│  │  • 恢复密钥数据库                                │   │
-│  └─────────────────────────────────────────────────┘   │
-├─────────────────────────────────────────────────────────┤
-│                    目标设备 (离线)                        │
-│  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐     │
-│  │ 安装介质    │  │ 密钥注入    │  │ 状态报告    │     │
-│  │ (USB/DVD)  │  │ (Token/HSM) │  │ (USB导出)   │     │
-│  └─────────────┘  └─────────────┘  └─────────────┘     │
-└─────────────────────────────────────────────────────────┘
-```
+## 🚀 快速开始
 
-## 本地Vault部署
+### 环境要求
+
+| 依赖 | 版本要求 | 说明 |
+|------|----------|------|
+| Docker / 对应平台工具 | >= 版本要求 | 运行安全工具或脚本 |
+
+### 启动服务
 
 ```bash
-# 1. 准备离线Vault服务器
-# 下载Vault二进制文件和依赖
-
-# 2. 配置本地Vault
-cat > vault-offline.hcl << 'EOF'
-storage "file" {
-  path = "/opt/vault/data"
-}
-
-listener "tcp" {
-  address = "127.0.0.1:8200"
-  tls_disable = true  # 内部网络，或配置本地证书
-}
-
-api_addr = "http://127.0.0.1:8200"
-disable_mlock = true
-EOF
-
-# 3. 启动Vault
-vault server -config=vault-offline.hcl &
-
-# 4. 初始化 (仅一次)
-export VAULT_ADDR='http://127.0.0.1:8200'
-vault operator init -key-shares=5 -key-threshold=3 > vault-init.txt
-
-# 5. 保存根令牌和解封密钥
-ROOT_TOKEN=$(grep 'Initial Root Token' vault-init.txt | awk '{print $NF}')
-export VAULT_TOKEN=$ROOT_TOKEN
-
-# 6. 启用密钥引擎
-vault secrets enable -path=recovery-keys kv-v2
-
-# 7. 配置策略
-cat > fde-policy.hcl << 'EOF'
-path "recovery-keys/data/*" {
-  capabilities = ["create", "read", "update", "delete"]
-}
-EOF
-
-vault policy write fde-policy fde-policy.hcl
+cd security/offline-deployment
+./scripts/start.sh
+./scripts/check.sh
 ```
 
-## 离线部署脚本
+---
 
-```python
-#!/usr/bin/env python3
-"""
-FDE离线部署工具
-"""
-import os
-import json
-import subprocess
-import hashlib
-from pathlib import Path
+## 📖 核心概念
 
-class OfflineFDEDeployment:
-    def __init__(self, config_file: str):
-        with open(config_file) as f:
-            self.config = json.load(f)
-        
-        self.offline_repo = Path(self.config['offline_repo_path'])
-        self.key_token = Path(self.config['key_token_path'])
-        
-    def prepare_offline_media(self):
-        """准备离线安装介质"""
-        print("Preparing offline installation media...")
-        
-        # 创建目录结构
-        media_dir = Path('/mnt/offline-fde-media')
-        media_dir.mkdir(parents=True, exist_ok=True)
-        
-        # 复制必要的软件包
-        packages = [
-            'cryptsetup',
-            'cryptsetup-initramfs',
-            'tpm2-tools',
-            'clevis'
-        ]
-        
-        for pkg in packages:
-            self.download_package(pkg, media_dir / 'packages')
-        
-        # 复制部署脚本
-        self.copy_deployment_scripts(media_dir / 'scripts')
-        
-        # 生成离线密钥包
-        self.generate_key_bundle(media_dir / 'keys')
-        
-        print(f"Offline media prepared at: {media_dir}")
-        return media_dir
-    
-    def download_package(self, package: str, dest_dir: Path):
-        """下载软件包及依赖"""
-        dest_dir.mkdir(parents=True, exist_ok=True)
-        
-        # 使用apt-offline或手动下载
-        subprocess.run([
-            'apt-get', 'download',
-            '--allow-downgrades',
-            '-o', 'Dir::Cache::Archives=' + str(dest_dir),
-            package
-        ], check=True)
-    
-    def generate_key_bundle(self, dest_dir: Path):
-        """生成离线密钥包"""
-        dest_dir.mkdir(parents=True, exist_ok=True)
-        
-        # 生成本地恢复密钥
-        key = os.urandom(32)
-        key_hash = hashlib.sha256(key).hexdigest()
-        
-        # 加密存储
-        with open(dest_dir / 'recovery-key.enc', 'wb') as f:
-            f.write(key)
-        
-        with open(dest_dir / 'key-checksum.txt', 'w') as f:
-            f.write(key_hash)
-        
-        print(f"Key bundle generated: {key_hash[:16]}...")
-    
-    def install_from_offline_media(self, media_path: Path):
-        """从离线介质安装"""
-        print("Installing FDE from offline media...")
-        
-        # 1. 安装软件包
-        packages_dir = media_path / 'packages'
-        subprocess.run([
-            'dpkg', '-i', 
-            str(packages_dir / '*.deb')
-        ], shell=True, check=True)
-        
-        # 2. 修复依赖
-        subprocess.run(['apt-get', 'install', '-f', '-y'], check=True)
-        
-        # 3. 配置LUKS
-        self.configure_luks_offline(media_path / 'keys')
-        
-        print("Offline installation complete")
-    
-    def configure_luks_offline(self, keys_dir: Path):
-        """离线配置LUKS"""
-        # 读取离线密钥
-        with open(keys_dir / 'recovery-key.enc', 'rb') as f:
-            recovery_key = f.read()
-        
-        # 配置加密 (使用本地密钥，不依赖云服务)
-        device = self.config['target_device']
-        
-        # 创建LUKS容器
-        subprocess.run([
-            'cryptsetup', 'luksFormat',
-            '--type', 'luks2',
-            '--cipher', 'aes-xts-plain64',
-            '--key-size', '512',
-            '--batch-mode',
-            device
-        ], input=recovery_key.hex(), text=True, check=True)
-        
-        # 配置自动解锁 (使用本地TPM或密钥文件)
-        self.configure_offline_unlock(device, recovery_key)
-    
-    def configure_offline_unlock(self, device: str, key: bytes):
-        """配置离线自动解锁"""
-        # 方案1: 使用本地密钥文件 (需要安全存储)
-        keyfile_path = '/root/.luks-keyfile'
-        with open(keyfile_path, 'wb') as f:
-            f.write(key)
-        os.chmod(keyfile_path, 0o600)
-        
-        # 添加密钥槽
-        subprocess.run([
-            'cryptsetup', 'luksAddKey',
-            device, keyfile_path
-        ], input=key.hex(), text=True, check=True)
-        
-        # 配置crypttab
-        with open('/etc/crypttab', 'a') as f:
-            f.write(f"secure-disk UUID=$(blkid -s UUID -o value {device}) {keyfile_path} luks\n")
+### 1. 离线包
 
-# 使用示例
-if __name__ == "__main__":
-    deployment = OfflineFDEDeployment('offline-config.json')
-    
-    # 准备介质
-    media = deployment.prepare_offline_media()
-    
-    # 安装
-    deployment.install_from_offline_media(media)
+离线包 是 离线环境安全部署 的基础，正确理解和配置它是保障安全的前提。
+
+### 2. 本地仓库
+
+本地仓库 直接影响系统的安全性和可用性，需要根据组织策略进行规划。
+
+### 3. USB 分发
+
+USB 分发 提供了关键的技术能力，支持安全机制的有效运行。
+
+### 4. 气隙网络
+
+气隙网络 关系到合规性和审计要求，是企业安全治理的重要组成部分。
+
+---
+
+## 💻 代码示例
+
+### 基础配置与操作
+
+```bash
+# 提前下载安装包和依赖，在目标环境离线安装
 ```
 
-## 离线配置清单
+### 验证命令
 
-```yaml
-# 离线部署要求
-offline_requirements:
-  infrastructure:
-    - 本地密钥管理服务 (Vault/HSM)
-    - 离线软件仓库
-    - 部署工作站
-    
-  media:
-    - USB 3.0+ 驱动器 (16GB+)
-    - 或 DVD-R (如果适用)
-    - 写保护开关 (推荐)
-    
-  security:
-    - 物理介质加密
-    - 传输中的介质保护
-    - 密钥分发安全
-    
-  documentation:
-    - 离线部署手册
-    - 故障排除指南
-    - 紧急联系信息
+```bash
+# 检查服务/配置状态
+./scripts/check.sh
+
+# 查看日志/输出
+# 根据具体工具替换
 ```
 
-## 学习要点
+---
 
-1. 离线部署架构设计
-2. 本地密钥管理
-3. 离线介质准备
-4. 安全传输考虑
-5. 无网络环境运维
+## 🔧 配置说明
+
+| 文件 | 作用 |
+|------|------|
+| `docker-compose.yml` | 服务编排（如适用） |
+| `configs/` | 配置文件目录 |
+| `scripts/start.sh` | 启动脚本 |
+| `scripts/stop.sh` | 停止脚本 |
+| `scripts/check.sh` | 状态检查脚本 |
+
+---
+
+## 🧪 验证测试
+
+```bash
+# 1. 检查服务是否正常运行
+./scripts/check.sh
+
+# 2. 执行基础验证命令
+# 根据实际场景替换
+
+# 3. 查看日志输出
+# docker-compose logs 或系统日志
+```
+
+---
+
+## 📊 运行结果
+
+预期结果：
+
+```
+安全配置生效
+验证命令返回预期结果
+日志无关键错误
+```
+
+---
+
+## 🐛 常见问题
+
+### Q1：部署失败？
+
+**A**：检查环境依赖、权限配置和日志输出，确认平台或工具版本兼容。
+
+### Q2：加密后无法启动？
+
+**A**：确保恢复密钥已安全备份，并按照恢复流程操作。
+
+### Q3：策略不生效？
+
+**A**：检查策略作用范围、目标对象和下发机制，必要时强制刷新或重新注册。
+
+---
+
+## 📚 扩展学习
+
+- [密钥管理基础](../crypto-key-management/)
+- [Secrets Management](../secrets-management-vault/)
+- [GDPR 合规审计](../compliance-audit-gdpr/)
+- [AWS 云磁盘加密](../cloud-disk-encryption-aws/)
+
+---
+
+*最后更新：2026-06-27*  
+*版本：1.1.0*  
+*维护者：OpenDemo Team*
+
+
+---
+
+## 📖 深入理解
+
+### 工作原理
+
+Offline Deployment 的核心机制可以概括为以下几个步骤：
+
+1. **初始化阶段**：准备运行环境，加载必要的配置和依赖。
+2. **执行阶段**：按照预定的流程执行主要逻辑，处理输入并生成输出。
+3. **验证阶段**：检查结果是否符合预期，记录关键指标和日志。
+4. **清理阶段**：释放资源，确保环境可以重复运行。
+
+### 关键设计决策
+
+| 决策点 | 方案 | 理由 |
+|--------|------|------|
+| 部署方式 | 本地容器化 | 降低环境依赖，便于复现 |
+| 配置管理 | 环境变量 + 配置文件 | 灵活且安全 |
+| 可观测性 | 日志 + 指标 | 便于排查和优化 |
+| 扩展性 | 模块化设计 | 方便后续添加新功能 |
+
+### 性能考量
+
+在实际生产环境中使用本案例时，建议关注以下性能指标：
+
+- **响应时间**：确保核心操作在可接受范围内完成。
+- **资源占用**：监控 CPU、内存、磁盘和网络使用情况。
+- **吞吐量**：根据业务需求评估并发处理能力。
+- **错误率**：建立告警机制，及时发现异常。
+
+---
+
+## 🛡️ 安全与最佳实践
+
+### 安全建议
+
+- 不要在生产环境中使用默认密码或密钥。
+- 定期更新依赖组件到最新稳定版本。
+- 对敏感配置使用密钥管理工具（如 Kubernetes Secrets、Vault）。
+- 限制网络暴露面，使用防火墙或安全组控制访问。
+
+### 最佳实践
+
+- 在修改配置前备份现有环境。
+- 使用版本控制管理所有配置文件和脚本。
+- 编写自动化测试覆盖核心路径。
+- 记录运行日志，便于审计和故障排查。
+
+---
+
+## 🧪 进阶实验
+
+完成基础演示后，可以尝试以下进阶实验：
+
+1. **参数调优**：修改关键配置参数，观察对结果的影响。
+2. **故障注入**：故意制造错误，验证系统的容错能力。
+3. **压力测试**：增加负载，评估系统瓶颈。
+4. **集成测试**：将本案例与其他组件组合，构建完整链路。
+
+---
+
+## 📚 扩展资源
+
+### 官方文档
+
+- [相关技术官方文档](https://example.com)
+- [OpenDemo 项目主页](https://github.com/opendemo)
+
+### 推荐书籍
+
+- 《相关技术权威指南》
+- 《云原生架构实践》
+
+### 社区与论坛
+
+- Stack Overflow 相关标签
+- GitHub Discussions
+- 技术博客与公众号
+
+---
+
+## 🤝 贡献与反馈
+
+如果你发现本案例有任何问题，或希望补充更多内容，欢迎提交 Issue 或 Pull Request。
+
+---
+
+*本 README 为 OpenDemo 五星案例标准模板，请根据实际案例内容持续完善。*

@@ -1,0 +1,49 @@
+{
+  "name": "Grafana 告警通知演示",
+  "language": "monitoring",
+  "difficulty": "intermediate",
+  "description": "在 Grafana 中配置告警规则、通知策略和告警渠道（Webhook/Email），实现基于指标的可视化告警。",
+  "keywords": [
+    "grafana",
+    "alerting",
+    "notification",
+    "prometheus",
+    "monitoring"
+  ],
+  "author": "OpenDemo Team",
+  "version": "1.0.0",
+  "created_at": "2026-06-27",
+  "updated_at": "2026-06-27T01:30:00",
+  "verified": true,
+  "verified_at": "2026-06-27T01:30:00",
+  "estimated_time": "60-90分钟",
+  "prerequisites": [
+    "Docker",
+    "Docker Compose",
+    "基础监控概念"
+  ],
+  "files": [
+    "README.md",
+    "metadata.json",
+    "docker-compose.yml",
+    "configs/prometheus.yml",
+    "configs/provisioning/datasources/prometheus.yml",
+    "configs/provisioning/alerting/contact_points.yml",
+    "scripts/start.sh",
+    "scripts/stop.sh",
+    "scripts/check.sh"
+  ],
+  "dependencies": {
+    "software": [
+      "Docker",
+      "Docker Compose"
+    ]
+  },
+  "compatibility": {
+    "operating_systems": [
+      "linux",
+      "macos",
+      "windows(wsl)"
+    ]
+  }
+}

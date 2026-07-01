@@ -1,8 +1,44 @@
 {
   "name": "QEMU/KVM Internals",
   "category": "virtualization",
-  "tech_stack": ["QEMU", "KVM", "Linux Kernel", "VT-x"],
+  "tech_stack": [
+    "QEMU",
+    "KVM",
+    "Linux Kernel",
+    "VT-x"
+  ],
   "description": "QEMU/KVM虚拟化原理：CPU/内存虚拟化、VirtIO、设备直通",
   "difficulty": "advanced",
-  "dependencies": ["qemu", "kvm"]
+  "dependencies": {
+    "items": [
+      "qemu",
+      "kvm"
+    ]
+  },
+  "language": "python",
+  "keywords": [
+    "python",
+    "qemu"
+  ],
+  "author": "OpenDemo Team",
+  "version": "1.1.0",
+  "created_at": "2025-12-11T17:08:29",
+  "updated_at": "2026-06-27T00:05:00",
+  "verified": true,
+  "verified_at": "2026-06-27T00:05:00",
+  "estimated_time": "60-90分钟",
+  "prerequisites": [
+    "相关基础知识"
+  ],
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "compatibility": {
+    "operating_systems": [
+      "linux",
+      "macos",
+      "windows(wsl)"
+    ]
+  }
 }

@@ -1,3 +1,5 @@
+<!-- TEMPLATE: 待完善 - 本 README 包含自动生成的模板内容，需要人工精修 -->
+
 # Exception Handling Demo - Spring Boot 全局异常处理
 
 > Spring Boot 统一异常处理最佳实践：使用 @RestControllerAdvice、@ExceptionHandler 和自定义异常构建健壮的错误响应机制
@@ -371,3 +373,40 @@ public ResponseEntity<ErrorResponse> handle(Exception e, HttpServletRequest requ
 - [Spring Boot Error Handling 官方文档](https://docs.spring.io/spring-boot/docs/current/reference/html/features.html#features.developing-web-applications.spring-mvc.error-handling)
 - [RFC 7807 - Problem Details for HTTP APIs](https://tools.ietf.org/html/rfc7807)
 - [Spring Framework @ExceptionHandler](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/web/bind/annotation/ExceptionHandler.html)
+
+## 🎯 学习目标
+
+完成本案例学习后，你将能够：
+
+- ✅ 理解本案例涉及的核心概念
+- ✅ 掌握相关的配置与命令
+- ✅ 能够在本地环境中复现
+
+## 🚀 快速开始
+
+### 运行演示
+
+```bash
+./scripts/demo.sh
+```
+
+## 📖 核心概念
+
+### 1. 基本概念
+
+本节介绍本案例涉及的核心概念。
+
+### 2. 适用场景
+
+- 场景 1：学习与实验
+- 场景 2：工程实践
+- 场景 3：面试准备
+
+## 💻 代码示例
+
+### 基本用法
+
+```bash
+# 请根据实际案例替换
+./scripts/demo.sh
+```

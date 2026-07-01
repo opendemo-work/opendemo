@@ -1,8 +1,45 @@
 {
   "name": "FinOps Cost Optimization",
   "category": "kubernetes",
-  "tech_stack": ["Kubernetes", "FinOps", "Cost Optimization", "Kubecost"],
+  "tech_stack": [
+    "Kubernetes",
+    "FinOps",
+    "Cost Optimization",
+    "Kubecost"
+  ],
   "description": "Kubernetes成本优化：FinOps实践、资源优化、成本监控",
   "difficulty": "intermediate",
-  "dependencies": ["helm"]
+  "dependencies": {
+    "items": [
+      "helm"
+    ]
+  },
+  "language": "kubernetes",
+  "keywords": [
+    "kubernetes",
+    "k8s",
+    "finops"
+  ],
+  "author": "OpenDemo Team",
+  "version": "1.1.0",
+  "created_at": "2025-12-11T17:08:29",
+  "updated_at": "2026-06-27T00:00:00",
+  "verified": true,
+  "verified_at": "2026-06-27T00:00:00",
+  "estimated_time": "60-90分钟",
+  "prerequisites": [
+    "Kubernetes 基础知识",
+    "kubectl 已安装"
+  ],
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "compatibility": {
+    "operating_systems": [
+      "linux",
+      "macos",
+      "windows(wsl)"
+    ]
+  }
 }

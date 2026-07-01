@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: prometheus-monitoring
+  labels:
+    app: prometheus-monitoring
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: prometheus-monitoring
+  template:
+    metadata:
+      labels:
+        app: prometheus-monitoring
+    spec:
+      containers:
+      - name: demo
+        image: nginx:alpine
+        ports:
+        - containerPort: 80

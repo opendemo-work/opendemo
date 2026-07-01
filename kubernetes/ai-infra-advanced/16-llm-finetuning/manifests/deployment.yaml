@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: 16-llm-finetuning
+  labels:
+    app: 16-llm-finetuning
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: 16-llm-finetuning
+  template:
+    metadata:
+      labels:
+        app: 16-llm-finetuning
+    spec:
+      containers:
+      - name: demo
+        image: nginx:alpine
+        ports:
+        - containerPort: 80

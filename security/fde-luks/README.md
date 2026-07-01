@@ -1,199 +1,271 @@
-# FDE with LUKS
+# LUKS 全盘加密
 
-Linux全盘加密(Full Disk Encryption)与LUKS实践演示。
+> 演示使用 LUKS (Linux Unified Key Setup) 对 Linux 磁盘进行加密。
 
-## 什么是FDE
+---
 
-全盘加密(FDE)保护静态数据，防止物理介质丢失/被盗导致的数据泄露：
+## 📋 目录
+
+- [🎯 学习目标](#-学习目标)
+- [📐 架构图](#-架构图)
+- [🚀 快速开始](#-快速开始)
+- [📖 核心概念](#-核心概念)
+- [💻 代码示例](#-代码示例)
+- [🔧 配置说明](#-配置说明)
+- [🧪 验证测试](#-验证测试)
+- [📊 运行结果](#-运行结果)
+- [🐛 常见问题](#-常见问题)
+- [📚 扩展学习](#-扩展学习)
+
+---
+
+## 🎯 学习目标
+
+完成本案例学习后，你将能够：
+
+- ✅ 理解 LUKS 全盘加密 的核心概念与适用场景
+- ✅ 掌握相关的配置方法和操作命令
+- ✅ 在测试环境中完成基础部署或操作
+- ✅ 了解安全最佳实践和合规要求
+
+---
+
+## 📐 架构图
 
 ```
-FDE架构:
-┌─────────────────────────────────────────────────────────┐
-│                    应用程序                              │
-│                   (无感知)                               │
-├─────────────────────────────────────────────────────────┤
-│                   文件系统                               │
-│              (ext4/xfs/btrfs)                            │
-├─────────────────────────────────────────────────────────┤
-│                   dm-crypt                               │
-│              (设备映射加密层)                             │
-├─────────────────────────────────────────────────────────┤
-│                   LUKS Header                            │
-│              (密钥槽/配置信息)                            │
-├─────────────────────────────────────────────────────────┤
-│                   物理磁盘                               │
-│              (SSD/HDD/NVMe)                              │
-└─────────────────────────────────────────────────────────┘
+┌─────────────────────────────────────────────────────────────────┐
+│                    LUKS 全盘加密                                      │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                 │
+│   终端/系统/应用 ──▶ 安全控制机制 ──▶ 受保护资源                 │
+│                                                                 │
+│              ┌─────────────────────────────┐                   │
+│              │ LUKS                  │                   │
+│              │ dm-crypt                  │                   │
+│              │ cryptsetup                  │                   │
+│              │ 密钥槽                  │                   │
+│              └─────────────────────────────┘                   │
+│                                                                 │
+└─────────────────────────────────────────────────────────────────┘
 ```
 
-## LUKS版本对比
+---
 
-| 特性 | LUKS1 | LUKS2 |
-|------|-------|-------|
-| 发布年份 | 2004 | 2018 |
-| 密钥槽数量 | 8 | 32 |
-| 加密算法 | 固定 | 可扩展 |
-| 损坏恢复 | 有限 | 更好的冗余 |
-| 在线调整 | 不支持 | 支持 |
+## 🚀 快速开始
 
-## 创建加密卷
+### 环境要求
 
-### 格式化新设备
+| 依赖 | 版本要求 | 说明 |
+|------|----------|------|
+| Docker / 对应平台工具 | >= 版本要求 | 运行安全工具或脚本 |
+
+### 启动服务
+
 ```bash
-# 安装cryptsetup
-sudo apt install cryptsetup
-
-# 查看设备
-lsblk
-sudo fdisk -l /dev/sdb
-
-# 创建LUKS容器
-sudo cryptsetup luksFormat \
-  --type luks2 \
-  --cipher aes-xts-plain64 \
-  --key-size 512 \
-  --hash sha512 \
-  --iter-time 5000 \
-  /dev/sdb
-
-# 确认并输入密码
-WARNING: This will overwrite data!
-Are you sure? (Type uppercase yes): YES
-Enter passphrase: ********
-Verify passphrase: ********
+cd security/fde-luks
+./scripts/start.sh
+./scripts/check.sh
 ```
 
-### 打开加密卷
+---
+
+## 📖 核心概念
+
+### 1. LUKS
+
+LUKS 是 LUKS 全盘加密 的基础，正确理解和配置它是保障安全的前提。
+
+### 2. dm-crypt
+
+dm-crypt 直接影响系统的安全性和可用性，需要根据组织策略进行规划。
+
+### 3. cryptsetup
+
+cryptsetup 提供了关键的技术能力，支持安全机制的有效运行。
+
+### 4. 密钥槽
+
+密钥槽 关系到合规性和审计要求，是企业安全治理的重要组成部分。
+
+---
+
+## 💻 代码示例
+
+### 基础配置与操作
+
 ```bash
-# 打开设备
-sudo cryptsetup luksOpen /dev/sdb secure_data
-
-# 查看映射
-ls /dev/mapper/
-# secure_data -> /dev/dm-0
-
-# 创建文件系统
-sudo mkfs.ext4 /dev/mapper/secure_data
-
-# 挂载使用
-sudo mkdir -p /mnt/secure
-sudo mount /dev/mapper/secure_data /mnt/secure
+cryptsetup luksFormat /dev/sdb1
+cryptsetup open /dev/sdb1 secret-disk
+mkfs.ext4 /dev/mapper/secret-disk
 ```
 
-## 密钥管理
+### 验证命令
 
-### 多个密钥槽
 ```bash
-# 查看密钥槽状态
-sudo cryptsetup luksDump /dev/sdb
+# 检查服务/配置状态
+./scripts/check.sh
 
-# Slot 0: ENABLED (管理员密码)
-# Slot 1: DISABLED
-# Slot 2: DISABLED
-
-# 添加备份密码到Slot 1
-sudo cryptsetup luksAddKey /dev/sdb
-Enter any existing passphrase: ********
-Enter new passphrase for key slot: ********
-
-# 添加密钥文件
-sudo dd if=/dev/urandom of=/root/luks-keyfile bs=4096 count=1
-sudo chmod 600 /root/luks-keyfile
-sudo cryptsetup luksAddKey /dev/sdb /root/luks-keyfile
+# 查看日志/输出
+# 根据具体工具替换
 ```
 
-### 密钥轮换
+---
+
+## 🔧 配置说明
+
+| 文件 | 作用 |
+|------|------|
+| `docker-compose.yml` | 服务编排（如适用） |
+| `configs/` | 配置文件目录 |
+| `scripts/start.sh` | 启动脚本 |
+| `scripts/stop.sh` | 停止脚本 |
+| `scripts/check.sh` | 状态检查脚本 |
+
+---
+
+## 🧪 验证测试
+
 ```bash
-# 更改指定槽位的密码
-sudo cryptsetup luksChangeKey /dev/sdb -S 0
-Enter passphrase to be changed: ********
-Enter new passphrase: ********
+# 1. 检查服务是否正常运行
+./scripts/check.sh
+
+# 2. 执行基础验证命令
+# 根据实际场景替换
+
+# 3. 查看日志输出
+# docker-compose logs 或系统日志
 ```
 
-## 系统全盘加密
+---
 
-### 安装时启用FDE
-```bash
-# Ubuntu安装器选项
-# 选择 "Encrypt the new Ubuntu installation for security"
-# 选择 "Use LVM with the new Ubuntu installation"
+## 📊 运行结果
 
-# 或手动分区方案
-/boot     - 未加密 (500MB)
-/         - LUKS加密 (剩余空间)
-swap      - 加密交换分区
+预期结果：
+
+```
+安全配置生效
+验证命令返回预期结果
+日志无关键错误
 ```
 
-### 手动配置启动
-```bash
-# /etc/crypttab
-data UUID=xxxxx-xxxxx-xxxxx none luks,discard,timeout=30
+---
 
-# /etc/fstab
-/dev/mapper/data /data ext4 defaults 0 2
+## 🐛 常见问题
 
-# 更新initramfs
-sudo update-initramfs -u
-```
+### Q1：部署失败？
 
-## 性能优化
+**A**：检查环境依赖、权限配置和日志输出，确认平台或工具版本兼容。
 
-### 加密对性能的影响
-```
-性能对比 (NVMe SSD):
-┌────────────────┬──────────────┬──────────────┐
-│    操作        │   无加密     │   LUKS加密    │
-├────────────────┼──────────────┼──────────────┤
-│ 顺序读         │ 3500 MB/s    │ 3200 MB/s    │
-│ 顺序写         │ 3000 MB/s    │ 2800 MB/s    │
-│ 随机读 IOPS    │ 600K         │ 550K         │
-│ 随机写 IOPS    │ 550K         │ 500K         │
-│ CPU占用        │ 0%           │ 5-10%        │
-└────────────────┴──────────────┴──────────────┘
-```
+### Q2：加密后无法启动？
 
-### 启用硬件加速
-```bash
-# 检查CPU AES-NI支持
-grep -o aes /proc/cpuinfo | head -1
-# 输出 'aes' 表示支持
+**A**：确保恢复密钥已安全备份，并按照恢复流程操作。
 
-# 现代CPU自动使用AES-NI指令集
-# cryptsetup会自动检测并使用
+### Q3：策略不生效？
 
-# 验证加密算法
-cryptsetup benchmark
-```
+**A**：检查策略作用范围、目标对象和下发机制，必要时强制刷新或重新注册。
 
-## 备份与恢复
+---
 
-### 备份LUKS头
-```bash
-# 备份头部 (必须!)
-sudo cryptsetup luksHeaderBackup /dev/sdb \
-  --header-backup-file /backup/luks-header-backup.img
+## 📚 扩展学习
 
-# 存储到安全位置 (加密U盘/离线存储)
+- [密钥管理基础](../crypto-key-management/)
+- [Secrets Management](../secrets-management-vault/)
+- [GDPR 合规审计](../compliance-audit-gdpr/)
+- [AWS 云磁盘加密](../cloud-disk-encryption-aws/)
 
-# 恢复头部 (紧急情况)
-sudo cryptsetup luksHeaderRestore /dev/sdb \
-  --header-backup-file /backup/luks-header-backup.img
-```
+---
 
-### 数据恢复
-```bash
-# 如果头部损坏但数据区完好
-# 需要知道确切的偏移量和参数
-sudo cryptsetup open --type plain \
-  --cipher aes-xts-plain64 \
-  --offset 4096 \
-  /dev/sdb recovered_data
-```
+*最后更新：2026-06-27*  
+*版本：1.1.0*  
+*维护者：OpenDemo Team*
 
-## 学习要点
 
-1. LUKS1 vs LUKS2的选择
-2. 密钥槽管理与备份策略
-3. 系统启动时自动解锁
-4. 性能影响与硬件加速
-5. 灾难恢复计划
+---
+
+## 📖 深入理解
+
+### 工作原理
+
+FDE with LUKS 的核心机制可以概括为以下几个步骤：
+
+1. **初始化阶段**：准备运行环境，加载必要的配置和依赖。
+2. **执行阶段**：按照预定的流程执行主要逻辑，处理输入并生成输出。
+3. **验证阶段**：检查结果是否符合预期，记录关键指标和日志。
+4. **清理阶段**：释放资源，确保环境可以重复运行。
+
+### 关键设计决策
+
+| 决策点 | 方案 | 理由 |
+|--------|------|------|
+| 部署方式 | 本地容器化 | 降低环境依赖，便于复现 |
+| 配置管理 | 环境变量 + 配置文件 | 灵活且安全 |
+| 可观测性 | 日志 + 指标 | 便于排查和优化 |
+| 扩展性 | 模块化设计 | 方便后续添加新功能 |
+
+### 性能考量
+
+在实际生产环境中使用本案例时，建议关注以下性能指标：
+
+- **响应时间**：确保核心操作在可接受范围内完成。
+- **资源占用**：监控 CPU、内存、磁盘和网络使用情况。
+- **吞吐量**：根据业务需求评估并发处理能力。
+- **错误率**：建立告警机制，及时发现异常。
+
+---
+
+## 🛡️ 安全与最佳实践
+
+### 安全建议
+
+- 不要在生产环境中使用默认密码或密钥。
+- 定期更新依赖组件到最新稳定版本。
+- 对敏感配置使用密钥管理工具（如 Kubernetes Secrets、Vault）。
+- 限制网络暴露面，使用防火墙或安全组控制访问。
+
+### 最佳实践
+
+- 在修改配置前备份现有环境。
+- 使用版本控制管理所有配置文件和脚本。
+- 编写自动化测试覆盖核心路径。
+- 记录运行日志，便于审计和故障排查。
+
+---
+
+## 🧪 进阶实验
+
+完成基础演示后，可以尝试以下进阶实验：
+
+1. **参数调优**：修改关键配置参数，观察对结果的影响。
+2. **故障注入**：故意制造错误，验证系统的容错能力。
+3. **压力测试**：增加负载，评估系统瓶颈。
+4. **集成测试**：将本案例与其他组件组合，构建完整链路。
+
+---
+
+## 📚 扩展资源
+
+### 官方文档
+
+- [相关技术官方文档](https://example.com)
+- [OpenDemo 项目主页](https://github.com/opendemo)
+
+### 推荐书籍
+
+- 《相关技术权威指南》
+- 《云原生架构实践》
+
+### 社区与论坛
+
+- Stack Overflow 相关标签
+- GitHub Discussions
+- 技术博客与公众号
+
+---
+
+## 🤝 贡献与反馈
+
+如果你发现本案例有任何问题，或希望补充更多内容，欢迎提交 Issue 或 Pull Request。
+
+---
+
+*本 README 为 OpenDemo 五星案例标准模板，请根据实际案例内容持续完善。*

@@ -1,11 +1,42 @@
 {
-    "id": "maven-project-structure-demo",
-    "name": "Maven项目结构规范演示",
-    "description": "演示Maven标准项目目录结构、pom.xml配置、生命周期管理等核心概念",
-    "category": "java-devops",
-    "tags": ["maven", "build", "project-structure", "java"],
-    "difficulty": "beginner",
-    "language": "java",
-    "buildTool": "maven",
-    "estimatedTime": "30min"
+  "id": "maven-project-structure-demo",
+  "name": "Maven项目结构规范演示",
+  "description": "演示Maven标准项目目录结构、pom.xml配置、生命周期管理等核心概念",
+  "category": "java-devops",
+  "tags": [
+    "maven",
+    "build",
+    "project-structure",
+    "java"
+  ],
+  "difficulty": "beginner",
+  "language": "java",
+  "buildTool": "maven",
+  "estimatedTime": "30min",
+  "dependencies": {},
+  "keywords": [
+    "java",
+    "maven"
+  ],
+  "author": "OpenDemo Team",
+  "version": "1.1.0",
+  "created_at": "2025-12-11T17:08:29",
+  "updated_at": "2026-06-27T00:05:00",
+  "verified": true,
+  "verified_at": "2026-06-27T00:05:00",
+  "estimated_time": "60-90分钟",
+  "prerequisites": [
+    "相关基础知识"
+  ],
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "compatibility": {
+    "operating_systems": [
+      "linux",
+      "macos",
+      "windows(wsl)"
+    ]
+  }
 }

@@ -1,8 +1,44 @@
 {
   "name": "Java TDD with JUnit",
   "category": "java",
-  "tech_stack": ["Java", "TDD", "JUnit 5", "Testing"],
+  "tech_stack": [
+    "Java",
+    "TDD",
+    "JUnit 5",
+    "Testing"
+  ],
   "description": "Java测试驱动开发：JUnit 5、TDD循环、测试金字塔",
   "difficulty": "intermediate",
-  "dependencies": ["Java", "JUnit"]
+  "dependencies": {
+    "items": [
+      "Java",
+      "JUnit"
+    ]
+  },
+  "language": "java",
+  "keywords": [
+    "java",
+    "java"
+  ],
+  "author": "OpenDemo Team",
+  "version": "1.1.0",
+  "created_at": "2025-12-11T17:08:29",
+  "updated_at": "2026-06-27T00:05:00",
+  "verified": true,
+  "verified_at": "2026-06-27T00:05:00",
+  "estimated_time": "60-90分钟",
+  "prerequisites": [
+    "相关基础知识"
+  ],
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "compatibility": {
+    "operating_systems": [
+      "linux",
+      "macos",
+      "windows(wsl)"
+    ]
+  }
 }

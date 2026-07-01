@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: notebook-custom-image
+  labels:
+    app: notebook-custom-image
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: notebook-custom-image
+  template:
+    metadata:
+      labels:
+        app: notebook-custom-image
+    spec:
+      containers:
+      - name: demo
+        image: nginx:alpine
+        ports:
+        - containerPort: 80

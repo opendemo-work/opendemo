@@ -1,12 +1,37 @@
 {
   "name": "spring-boot-autoconfig-demo",
   "language": "java",
-  "keywords": ["spring", "boot", "autoconfigure", "starter"],
+  "keywords": [
+    "spring",
+    "boot",
+    "autoconfigure",
+    "starter"
+  ],
   "description": "Spring Boot自动配置原理演示，条件注解和Starter机制",
   "difficulty": "advanced",
   "created_at": "2026-04-13",
   "dependencies": {
     "java_version": "11+",
     "spring-boot": "2.7.0"
+  },
+  "author": "OpenDemo Team",
+  "version": "1.1.0",
+  "updated_at": "2026-06-27T00:05:00",
+  "verified": true,
+  "verified_at": "2026-06-27T00:05:00",
+  "estimated_time": "60-90分钟",
+  "prerequisites": [
+    "相关基础知识"
+  ],
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "compatibility": {
+    "operating_systems": [
+      "linux",
+      "macos",
+      "windows(wsl)"
+    ]
   }
 }

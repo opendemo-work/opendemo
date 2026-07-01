@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: namespace-mapping
+  labels:
+    app: namespace-mapping
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: namespace-mapping
+  template:
+    metadata:
+      labels:
+        app: namespace-mapping
+    spec:
+      containers:
+      - name: demo
+        image: nginx:alpine
+        ports:
+        - containerPort: 80

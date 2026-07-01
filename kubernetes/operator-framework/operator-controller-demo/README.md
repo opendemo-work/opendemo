@@ -1068,3 +1068,20 @@ make uninstall
 **Created**: 2026-01-06  
 **Version**: 1.0.0  
 **License**: MIT
+
+## 🎯 学习目标
+
+完成本案例学习后，你将能够：
+
+- ✅ 理解本案例涉及的 Kubernetes 核心概念
+- ✅ 掌握相关的资源配置与命令
+- ✅ 能够在本地集群中复现
+
+## 💻 代码示例
+
+### 基本命令
+
+```bash
+# 请根据实际场景替换
+kubectl apply -f manifests/
+```

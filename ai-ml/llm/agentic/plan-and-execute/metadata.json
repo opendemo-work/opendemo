@@ -2,13 +2,46 @@
   "name": "plan-and-execute",
   "category": "llm-agentic",
   "difficulty": "advanced",
-  "language": "python",
-  "keywords": ["plan-and-execute", "agent", "planning", "execution", "reAct"],
+  "language": "ai-ml",
+  "keywords": [
+    "plan-and-execute",
+    "agent",
+    "planning",
+    "execution",
+    "reAct"
+  ],
   "description": "Plan-and-Execute 模式：先规划后执行的智能体",
   "estimated_time": "3-4 hours",
-  "prerequisites": ["react-agent"],
-  "learning_objectives": ["理解 Plan-and-Execute 原理", "实现规划器", "掌握执行器设计"],
-  "content_types": ["tutorial", "agent-pattern"],
+  "prerequisites": [
+    "react-agent"
+  ],
+  "learning_objectives": [
+    "理解 Plan-and-Execute 原理",
+    "实现规划器",
+    "掌握执行器设计"
+  ],
+  "content_types": [
+    "tutorial",
+    "agent-pattern"
+  ],
   "quality_standard": "five-star",
-  "created_date": "2026-06-01"
+  "created_date": "2026-06-01",
+  "dependencies": {},
+  "author": "OpenDemo Team",
+  "version": "1.1.0",
+  "created_at": "2025-12-11T17:08:29",
+  "updated_at": "2026-06-27T00:10:00",
+  "verified": true,
+  "verified_at": "2026-06-27T00:10:00",
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "compatibility": {
+    "operating_systems": [
+      "linux",
+      "macos",
+      "windows(wsl)"
+    ]
+  }
 }

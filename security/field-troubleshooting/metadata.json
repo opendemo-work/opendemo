@@ -1,8 +1,43 @@
 {
   "name": "Field Troubleshooting",
   "category": "security",
-  "tech_stack": ["FDE", "Troubleshooting", "Python", "Diagnostics"],
+  "tech_stack": [
+    "FDE",
+    "Troubleshooting",
+    "Python",
+    "Diagnostics"
+  ],
   "description": "FDE现场故障诊断：诊断工具、常见问题、紧急修复",
   "difficulty": "advanced",
-  "dependencies": ["Python"]
+  "dependencies": {
+    "items": [
+      "Python"
+    ]
+  },
+  "language": "python",
+  "keywords": [
+    "python",
+    "field"
+  ],
+  "author": "OpenDemo Team",
+  "version": "1.1.0",
+  "created_at": "2025-12-11T17:08:29",
+  "updated_at": "2026-06-27T00:05:00",
+  "verified": true,
+  "verified_at": "2026-06-27T00:05:00",
+  "estimated_time": "60-90分钟",
+  "prerequisites": [
+    "相关基础知识"
+  ],
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "compatibility": {
+    "operating_systems": [
+      "linux",
+      "macos",
+      "windows(wsl)"
+    ]
+  }
 }

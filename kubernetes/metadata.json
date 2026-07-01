@@ -3,7 +3,7 @@
   "language": "kubernetes",
   "category": "container-orchestration",
   "subcategory": "main",
-  "difficulty": "beginner-to-expert",
+  "difficulty": "intermediate",
   "keywords": [
     "kubernetes",
     "container-orchestration",
@@ -35,8 +35,22 @@
   ],
   "estimated_time": "200-250小时",
   "compatibility": {
-    "kubernetes_versions": [">=1.20"],
-    "cloud_providers": ["aws", "azure", "gcp", "alibaba-cloud"],
-    "tools": ["kubectl", "helm", "kustomize"]
-  }
+    "kubernetes_versions": [
+      ">=1.20"
+    ],
+    "cloud_providers": [
+      "aws",
+      "azure",
+      "gcp",
+      "alibaba-cloud"
+    ],
+    "tools": [
+      "kubectl",
+      "helm",
+      "kustomize"
+    ]
+  },
+  "dependencies": {},
+  "verified": true,
+  "verified_at": "2026-06-27T00:05:00"
 }

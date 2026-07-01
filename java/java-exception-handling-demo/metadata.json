@@ -1,7 +1,13 @@
 {
   "name": "java-exception-handling-demo",
   "language": "java",
-  "keywords": ["java", "exception", "error-handling", "try-catch", "custom-exception"],
+  "keywords": [
+    "java",
+    "exception",
+    "error-handling",
+    "try-catch",
+    "custom-exception"
+  ],
   "description": "Java异常处理机制完整演示，涵盖异常体系、try-catch-finally、自定义异常、异常链等核心异常处理技术",
   "difficulty": "intermediate",
   "author": "OpenDemo Team",
@@ -15,7 +21,11 @@
   },
   "verified": false,
   "estimated_time": "3-4小时",
-  "prerequisites": ["java-variables-types-demo", "java-control-flow-demo", "java-classes-objects-demo"],
+  "prerequisites": [
+    "java-variables-types-demo",
+    "java-control-flow-demo",
+    "java-classes-objects-demo"
+  ],
   "learning_outcomes": [
     "理解Java异常体系结构和分类",
     "掌握try-catch-finally语句的正确使用",
@@ -35,5 +45,17 @@
     "异常处理最佳实践",
     "银行业务异常处理场景",
     "数据处理异常链示例"
-  ]
+  ],
+  "verified_at": "2026-06-27T00:05:00",
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "compatibility": {
+    "operating_systems": [
+      "linux",
+      "macos",
+      "windows(wsl)"
+    ]
+  }
 }

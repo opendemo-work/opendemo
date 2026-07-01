@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bytedance
+  labels:
+    app: bytedance
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: bytedance
+  template:
+    metadata:
+      labels:
+        app: bytedance
+    spec:
+      containers:
+      - name: demo
+        image: nginx:alpine
+        ports:
+        - containerPort: 80

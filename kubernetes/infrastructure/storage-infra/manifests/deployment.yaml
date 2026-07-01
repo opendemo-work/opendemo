@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: storage-infra
+  labels:
+    app: storage-infra
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: storage-infra
+  template:
+    metadata:
+      labels:
+        app: storage-infra
+    spec:
+      containers:
+      - name: demo
+        image: nginx:alpine
+        ports:
+        - containerPort: 80

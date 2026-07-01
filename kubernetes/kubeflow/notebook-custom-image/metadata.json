@@ -4,7 +4,13 @@
   "category": "kubernetes",
   "subcategory": "kubeflow",
   "component": "notebooks",
-  "tags": ["kubeflow", "notebook", "docker", "custom-image", "jupyter"],
+  "tags": [
+    "kubeflow",
+    "notebook",
+    "docker",
+    "custom-image",
+    "jupyter"
+  ],
   "difficulty": "intermediate",
   "prerequisites": [
     "Kubernetes cluster with Kubeflow installed",
@@ -20,7 +26,29 @@
     "Understand image best practices for Kubeflow"
   ],
   "estimated_time": "45 minutes",
-  "verified": false,
+  "verified": true,
   "version": "1.0.0",
-  "last_updated": "2024-01-01"
+  "last_updated": "2024-01-01",
+  "language": "kubernetes",
+  "keywords": [
+    "kubernetes",
+    "k8s",
+    "notebook"
+  ],
+  "author": "OpenDemo Team",
+  "created_at": "2025-12-11T17:08:29",
+  "updated_at": "2026-06-27T00:00:00",
+  "verified_at": "2026-06-27T00:00:00",
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "dependencies": {},
+  "compatibility": {
+    "operating_systems": [
+      "linux",
+      "macos",
+      "windows(wsl)"
+    ]
+  }
 }

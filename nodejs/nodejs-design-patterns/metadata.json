@@ -1,8 +1,42 @@
 {
   "name": "Node.js Design Patterns",
   "category": "nodejs",
-  "tech_stack": ["Node.js", "Design Patterns", "JavaScript"],
+  "tech_stack": [
+    "Node.js",
+    "Design Patterns",
+    "JavaScript"
+  ],
   "description": "Node.js设计模式：模块、观察者、工厂、中间件、异步模式",
   "difficulty": "advanced",
-  "dependencies": ["Node.js"]
+  "dependencies": {
+    "items": [
+      "Node.js"
+    ]
+  },
+  "language": "nodejs",
+  "keywords": [
+    "nodejs",
+    "nodejs"
+  ],
+  "author": "OpenDemo Team",
+  "version": "1.1.0",
+  "created_at": "2025-12-11T17:08:29",
+  "updated_at": "2026-06-27T00:05:00",
+  "verified": true,
+  "verified_at": "2026-06-27T00:05:00",
+  "estimated_time": "60-90分钟",
+  "prerequisites": [
+    "相关基础知识"
+  ],
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "compatibility": {
+    "operating_systems": [
+      "linux",
+      "macos",
+      "windows(wsl)"
+    ]
+  }
 }

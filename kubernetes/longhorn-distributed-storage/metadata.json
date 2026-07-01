@@ -1,8 +1,45 @@
 {
   "name": "Longhorn Distributed Storage",
   "category": "kubernetes",
-  "tech_stack": ["Kubernetes", "Longhorn", "Storage", "Distributed"],
+  "tech_stack": [
+    "Kubernetes",
+    "Longhorn",
+    "Storage",
+    "Distributed"
+  ],
   "description": "Longhorn分布式存储：轻量级块存储、备份恢复、灾难恢复",
   "difficulty": "intermediate",
-  "dependencies": ["helm"]
+  "dependencies": {
+    "items": [
+      "helm"
+    ]
+  },
+  "language": "kubernetes",
+  "keywords": [
+    "kubernetes",
+    "k8s",
+    "longhorn"
+  ],
+  "author": "OpenDemo Team",
+  "version": "1.1.0",
+  "created_at": "2025-12-11T17:08:29",
+  "updated_at": "2026-06-27T00:00:00",
+  "verified": true,
+  "verified_at": "2026-06-27T00:00:00",
+  "estimated_time": "60-90分钟",
+  "prerequisites": [
+    "Kubernetes 基础知识",
+    "kubectl 已安装"
+  ],
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "compatibility": {
+    "operating_systems": [
+      "linux",
+      "macos",
+      "windows(wsl)"
+    ]
+  }
 }

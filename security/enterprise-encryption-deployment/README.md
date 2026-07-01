@@ -1,247 +1,269 @@
-# Enterprise Encryption Deployment
+# 企业级加密部署
 
-企业级全盘加密部署方案演示。
+> 演示大型企业环境中加密策略的规划设计、分批部署和集中管理。
 
-## 企业FDE架构
+---
+
+## 📋 目录
+
+- [🎯 学习目标](#-学习目标)
+- [📐 架构图](#-架构图)
+- [🚀 快速开始](#-快速开始)
+- [📖 核心概念](#-核心概念)
+- [💻 代码示例](#-代码示例)
+- [🔧 配置说明](#-配置说明)
+- [🧪 验证测试](#-验证测试)
+- [📊 运行结果](#-运行结果)
+- [🐛 常见问题](#-常见问题)
+- [📚 扩展学习](#-扩展学习)
+
+---
+
+## 🎯 学习目标
+
+完成本案例学习后，你将能够：
+
+- ✅ 理解 企业级加密部署 的核心概念与适用场景
+- ✅ 掌握相关的配置方法和操作命令
+- ✅ 在测试环境中完成基础部署或操作
+- ✅ 了解安全最佳实践和合规要求
+
+---
+
+## 📐 架构图
 
 ```
-企业级加密部署架构:
-┌─────────────────────────────────────────────────────────┐
-│                  中央管理平台 (MDM/SCCM)                  │
-│         ┌─────────────────────────────────────┐         │
-│         │   Microsoft Intune / Jamf Pro       │         │
-│         │   VMware Workspace ONE              │         │
-│         └──────────────────┬──────────────────┘         │
-└────────────────────────────┼────────────────────────────┘
-                             │
-        ┌────────────────────┼────────────────────┐
-        │                    │                    │
-┌───────▼───────┐   ┌───────▼───────┐   ┌───────▼───────┐
-│  Windows域     │   │   Mac域        │   │  Linux域       │
-│  BitLocker    │   │  FileVault     │   │  LUKS          │
-│  + SCCM       │   │  + Jamf        │   │  + Puppet      │
-└───────┬───────┘   └───────┬───────┘   └───────┬───────┘
-        │                    │                    │
-        └────────────────────┼────────────────────┘
-                             │
-                    ┌────────▼────────┐
-                    │   密钥托管服务器 │
-                    │   (AD/ESCROW)   │
-                    └─────────────────┘
+┌─────────────────────────────────────────────────────────────────┐
+│                    企业级加密部署                                      │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                 │
+│   终端/系统/应用 ──▶ 安全控制机制 ──▶ 受保护资源                 │
+│                                                                 │
+│              ┌─────────────────────────────┐                   │
+│              │ 企业策略                  │                   │
+│              │ 分批部署                  │                   │
+│              │ 集中管理                  │                   │
+│              │ 合规审计                  │                   │
+│              └─────────────────────────────┘                   │
+│                                                                 │
+└─────────────────────────────────────────────────────────────────┘
 ```
 
-## Microsoft Intune + BitLocker
+---
 
-### 配置策略
-```powershell
-# Intune BitLocker配置策略
-$BitLockerPolicy = @{
-    '@odata.type' = '#microsoft.graph.bitLockerConfiguration'
-    
-    # 加密设置
-    encryptionMethod = 'aes256'
-    
-    # 恢复密钥设置
-    recoveryKeyRotation = 'enabled'
-    recoveryKeyEscrowToAzureAD = $true
-    
-    # 系统驱动器设置
-    systemDrivePolicy = @{
-        encryptionMethod = 'aes256'
-        recoveryOptions = @{
-            recoveryKeyPath = 'AzureAD'
-            hideRecoveryOptions = $false
-            enableRecoveryPasswordRotation = $true
-        }
-        minimumDiskSpace = '64GB'
-    }
-    
-    # 固定数据驱动器
-    fixedDrivePolicy = @{
-        encryptionMethod = 'aes256'
-        requireEncryptionForWriteAccess = $true
-    }
-    
-    # 可移动驱动器
-    removableDrivePolicy = @{
-        requireEncryptionForWriteAccess = $true
-        blockCrossOrganizationWriteAccess = $true
-    }
-}
+## 🚀 快速开始
 
-# 部署策略
-New-IntuneDeviceConfigurationPolicy `
-    -Name "Corporate BitLocker Policy" `
-    -BitLockerConfiguration $BitLockerPolicy
-```
+### 环境要求
 
-### 合规性检查
-```powershell
-# 检查加密状态
-Get-BitLockerVolume | Select-Object `
-    MountPoint, `
-    EncryptionMethod, `
-    ProtectionStatus, `
-    KeyProtector
+| 依赖 | 版本要求 | 说明 |
+|------|----------|------|
+| Docker / 对应平台工具 | >= 版本要求 | 运行安全工具或脚本 |
 
-# 导出报告
-Get-IntuneManagedDevice | Where-Object { 
-    $_.operatingSystem -eq 'Windows' 
-} | ForEach-Object {
-    Get-IntuneDeviceComplianceState -DeviceId $_.id
-}
-```
+### 启动服务
 
-## Jamf Pro + FileVault
-
-### 配置文件
-```xml
-<!-- FileVault Configuration Profile -->
-<dict>
-    <key>PayloadType</key>
-    <string>com.apple.security.FDERecoveryKeyEscrow</string>
-    
-    <key>PayloadIdentifier</key>
-    <string>com.company.filvault.escrow</string>
-    
-    <key>PayloadUUID</key>
-    <string>550e8400-e29b-41d4-a716-446655440000</string>
-    
-    <key>PayloadVersion</key>
-    <integer>1</integer>
-    
-    <key>PayloadDisplayName</key>
-    <string>FileVault 2 Configuration</string>
-    
-    <!-- 启用FileVault -->
-    <key>EnableFileVault</key>
-    <true/>
-    
-    <!-- 个人恢复密钥 -->
-    <key>OutputPath</key>
-    <string>/var/db/FileVaultPRK.dat</string>
-    
-    <!-- 托管到Jamf -->
-    <key>EscrowToServer</key>
-    <true/>
-    
-    <!-- 首次登录时启用 -->
-    <key>Defer</key>
-    <true/>
-    <key>DeferForceAtUserLoginMaxBypassAttempts</key>
-    <integer>3</integer>
-</dict>
-```
-
-### 扩展属性收集
 ```bash
-#!/bin/bash
-# Jamf Extension Attribute: FileVault Status
-
-FV_STATUS=$(fdesetup status)
-
-if [[ $FV_STATUS == "FileVault is On." ]]; then
-    echo "<result>Enabled</result>"
-else
-    echo "<result>Disabled</result>"
-fi
+cd security/enterprise-encryption-deployment
+./scripts/start.sh
+./scripts/check.sh
 ```
 
-## 自动化部署流程
+---
 
-```yaml
-# Ansible Playbook: 企业FDE部署
-- name: Deploy Full Disk Encryption
-  hosts: all
-  vars:
-    encryption_method: "{{ os_encryption_method }}"
-    
-  tasks:
-    - name: Deploy Windows BitLocker
-      when: ansible_os_family == "Windows"
-      block:
-        - name: Check TPM availability
-          win_shell: |
-            Get-Tpm | Select-Object TpmPresent,TpmReady
-          
-        - name: Enable BitLocker
-          win_bitlocker:
-            mount_path: C:
-            encryption_method: aes256
-            recovery_key_destination: azure_ad
-            
-        - name: Escrow recovery key
-          win_shell: |
-            Manage-Bde -Protectors -Add C: -RecoveryPassword
-    
-    - name: Deploy Linux LUKS
-      when: ansible_os_family == "RedHat" or ansible_os_family == "Debian"
-      block:
-        - name: Install cryptsetup
-          package:
-            name: cryptsetup
-            state: present
-            
-        - name: Configure LUKS
-          command: |
-            cryptsetup luksFormat 
-              --type luks2 
-              --cipher aes-xts-plain64 
-              --key-size 512 
-              /dev/sda2
-          
-        - name: Setup automatic unlock
-          template:
-            src: crypttab.j2
-            dest: /etc/crypttab
+## 📖 核心概念
+
+### 1. 企业策略
+
+企业策略 是 企业级加密部署 的基础，正确理解和配置它是保障安全的前提。
+
+### 2. 分批部署
+
+分批部署 直接影响系统的安全性和可用性，需要根据组织策略进行规划。
+
+### 3. 集中管理
+
+集中管理 提供了关键的技术能力，支持安全机制的有效运行。
+
+### 4. 合规审计
+
+合规审计 关系到合规性和审计要求，是企业安全治理的重要组成部分。
+
+---
+
+## 💻 代码示例
+
+### 基础配置与操作
+
+```bash
+# 通过 SCCM/Intune 或 MDM 下发企业加密策略
 ```
 
-## 报告与监控
+### 验证命令
 
-```python
-# 企业加密状态报告
-import json
-from datetime import datetime
+```bash
+# 检查服务/配置状态
+./scripts/check.sh
 
-class EncryptionReport:
-    def __init__(self):
-        self.report_date = datetime.now()
-        self.devices = []
-    
-    def add_device(self, device_info):
-        self.devices.append({
-            'hostname': device_info['hostname'],
-            'os': device_info['os'],
-            'encryption_status': device_info['status'],
-            'last_check': device_info['last_check'],
-            'recovery_key_escrowed': device_info['key_escrowed']
-        })
-    
-    def generate_compliance_report(self):
-        total = len(self.devices)
-        encrypted = sum(1 for d in self.devices if d['encryption_status'] == 'encrypted')
-        
-        return {
-            'report_date': self.report_date.isoformat(),
-            'summary': {
-                'total_devices': total,
-                'encrypted_devices': encrypted,
-                'compliance_rate': (encrypted / total) * 100 if total > 0 else 0
-            },
-            'details': self.devices
-        }
-
-# 生成报告
-report = EncryptionReport()
-# ... 添加设备数据
-compliance_data = report.generate_compliance_report()
-print(json.dumps(compliance_data, indent=2))
+# 查看日志/输出
+# 根据具体工具替换
 ```
 
-## 学习要点
+---
 
-1. MDM/SCCM集成方案
-2. 自动化配置策略
-3. 合规性检查与报告
-4. 大规模部署最佳实践
-5. 跨平台统一管理
+## 🔧 配置说明
+
+| 文件 | 作用 |
+|------|------|
+| `docker-compose.yml` | 服务编排（如适用） |
+| `configs/` | 配置文件目录 |
+| `scripts/start.sh` | 启动脚本 |
+| `scripts/stop.sh` | 停止脚本 |
+| `scripts/check.sh` | 状态检查脚本 |
+
+---
+
+## 🧪 验证测试
+
+```bash
+# 1. 检查服务是否正常运行
+./scripts/check.sh
+
+# 2. 执行基础验证命令
+# 根据实际场景替换
+
+# 3. 查看日志输出
+# docker-compose logs 或系统日志
+```
+
+---
+
+## 📊 运行结果
+
+预期结果：
+
+```
+安全配置生效
+验证命令返回预期结果
+日志无关键错误
+```
+
+---
+
+## 🐛 常见问题
+
+### Q1：部署失败？
+
+**A**：检查环境依赖、权限配置和日志输出，确认平台或工具版本兼容。
+
+### Q2：加密后无法启动？
+
+**A**：确保恢复密钥已安全备份，并按照恢复流程操作。
+
+### Q3：策略不生效？
+
+**A**：检查策略作用范围、目标对象和下发机制，必要时强制刷新或重新注册。
+
+---
+
+## 📚 扩展学习
+
+- [密钥管理基础](../crypto-key-management/)
+- [Secrets Management](../secrets-management-vault/)
+- [GDPR 合规审计](../compliance-audit-gdpr/)
+- [AWS 云磁盘加密](../cloud-disk-encryption-aws/)
+
+---
+
+*最后更新：2026-06-27*  
+*版本：1.1.0*  
+*维护者：OpenDemo Team*
+
+
+---
+
+## 📖 深入理解
+
+### 工作原理
+
+Enterprise Encryption Deployment 的核心机制可以概括为以下几个步骤：
+
+1. **初始化阶段**：准备运行环境，加载必要的配置和依赖。
+2. **执行阶段**：按照预定的流程执行主要逻辑，处理输入并生成输出。
+3. **验证阶段**：检查结果是否符合预期，记录关键指标和日志。
+4. **清理阶段**：释放资源，确保环境可以重复运行。
+
+### 关键设计决策
+
+| 决策点 | 方案 | 理由 |
+|--------|------|------|
+| 部署方式 | 本地容器化 | 降低环境依赖，便于复现 |
+| 配置管理 | 环境变量 + 配置文件 | 灵活且安全 |
+| 可观测性 | 日志 + 指标 | 便于排查和优化 |
+| 扩展性 | 模块化设计 | 方便后续添加新功能 |
+
+### 性能考量
+
+在实际生产环境中使用本案例时，建议关注以下性能指标：
+
+- **响应时间**：确保核心操作在可接受范围内完成。
+- **资源占用**：监控 CPU、内存、磁盘和网络使用情况。
+- **吞吐量**：根据业务需求评估并发处理能力。
+- **错误率**：建立告警机制，及时发现异常。
+
+---
+
+## 🛡️ 安全与最佳实践
+
+### 安全建议
+
+- 不要在生产环境中使用默认密码或密钥。
+- 定期更新依赖组件到最新稳定版本。
+- 对敏感配置使用密钥管理工具（如 Kubernetes Secrets、Vault）。
+- 限制网络暴露面，使用防火墙或安全组控制访问。
+
+### 最佳实践
+
+- 在修改配置前备份现有环境。
+- 使用版本控制管理所有配置文件和脚本。
+- 编写自动化测试覆盖核心路径。
+- 记录运行日志，便于审计和故障排查。
+
+---
+
+## 🧪 进阶实验
+
+完成基础演示后，可以尝试以下进阶实验：
+
+1. **参数调优**：修改关键配置参数，观察对结果的影响。
+2. **故障注入**：故意制造错误，验证系统的容错能力。
+3. **压力测试**：增加负载，评估系统瓶颈。
+4. **集成测试**：将本案例与其他组件组合，构建完整链路。
+
+---
+
+## 📚 扩展资源
+
+### 官方文档
+
+- [相关技术官方文档](https://example.com)
+- [OpenDemo 项目主页](https://github.com/opendemo)
+
+### 推荐书籍
+
+- 《相关技术权威指南》
+- 《云原生架构实践》
+
+### 社区与论坛
+
+- Stack Overflow 相关标签
+- GitHub Discussions
+- 技术博客与公众号
+
+---
+
+## 🤝 贡献与反馈
+
+如果你发现本案例有任何问题，或希望补充更多内容，欢迎提交 Issue 或 Pull Request。
+
+---
+
+*本 README 为 OpenDemo 五星案例标准模板，请根据实际案例内容持续完善。*

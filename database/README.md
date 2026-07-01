@@ -1,3 +1,5 @@
+<!-- TEMPLATE: 待完善 - 本 README 包含自动生成的模板内容，需要人工精修 -->
+
 # 🗄️ 企业级数据库技术栈完整指南
 
 > 企业级数据库全生命周期管理体系，涵盖关系型(MySQL/PostgreSQL)和NoSQL(MongoDB/Redis)数据库，从基础运维到高可用架构，包含37个案例：MySQL、PostgreSQL、MongoDB、Redis、性能优化、高可用
@@ -337,3 +339,31 @@ redis-cli ping
 ### 与容器化部署的关联
 - [Docker数据库部署](../container/docker/database-deployment/) - 容器化数据库方案
 - [Kubernetes数据库运维](../kubernetes/database/) - Kubernetes环境下的数据库管理
+## 🎯 学习目标
+
+完成本案例学习后，你将能够：
+
+- ✅ 理解本案例涉及的核心概念
+- ✅ 掌握相关的配置与命令
+- ✅ 能够在本地环境中复现
+
+## 📖 核心概念
+
+### 1. 基本概念
+
+本节介绍本案例涉及的核心概念。
+
+### 2. 适用场景
+
+- 场景 1：学习与实验
+- 场景 2：工程实践
+- 场景 3：面试准备
+
+## 💻 代码示例
+
+### 基本用法
+
+```bash
+# 请根据实际案例替换
+./scripts/demo.sh
+```

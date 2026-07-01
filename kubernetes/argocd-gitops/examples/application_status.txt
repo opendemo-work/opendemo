@@ -1,0 +1,13 @@
+$ kubectl get application guestbook -n argocd
+NAME        SYNC STATUS   HEALTH STATUS
+guestbook   Synced        Healthy
+
+$ kubectl get all -n guestbook
+NAME                            READY   STATUS    RESTARTS   AGE
+pod/guestbook-ui-7d4d9c5b-abc12   1/1     Running   0          2m
+
+NAME                   TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)   AGE
+service/guestbook-ui   ClusterIP   10.96.123.45    <none>        80/TCP    2m
+
+NAME                           READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/guestbook-ui   1/1     1            1           2m

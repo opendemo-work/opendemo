@@ -10,10 +10,26 @@
   ],
   "description": "一个使用Go实现Prometheus指标采集的完整可执行示例",
   "difficulty": "advanced",
-  "author": "",
+  "author": "OpenDemo Team",
   "created_at": "2025-12-11T14:16:33.700525",
   "updated_at": "2025-12-11T14:16:33.700525",
   "version": "1.0.0",
   "dependencies": {},
-  "verified": false
+  "verified": false,
+  "verified_at": "2026-06-27T00:05:00",
+  "estimated_time": "60-90分钟",
+  "prerequisites": [
+    "相关基础知识"
+  ],
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "compatibility": {
+    "operating_systems": [
+      "linux",
+      "macos",
+      "windows(wsl)"
+    ]
+  }
 }

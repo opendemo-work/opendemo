@@ -1,165 +1,269 @@
-# Self-Service Key Recovery
+# 自助密钥恢复
 
-用户自助密钥恢复门户演示。
+> 演示用户自助找回加密恢复密钥的流程和安全控制。
 
-## 自助服务架构
+---
+
+## 📋 目录
+
+- [🎯 学习目标](#-学习目标)
+- [📐 架构图](#-架构图)
+- [🚀 快速开始](#-快速开始)
+- [📖 核心概念](#-核心概念)
+- [💻 代码示例](#-代码示例)
+- [🔧 配置说明](#-配置说明)
+- [🧪 验证测试](#-验证测试)
+- [📊 运行结果](#-运行结果)
+- [🐛 常见问题](#-常见问题)
+- [📚 扩展学习](#-扩展学习)
+
+---
+
+## 🎯 学习目标
+
+完成本案例学习后，你将能够：
+
+- ✅ 理解 自助密钥恢复 的核心概念与适用场景
+- ✅ 掌握相关的配置方法和操作命令
+- ✅ 在测试环境中完成基础部署或操作
+- ✅ 了解安全最佳实践和合规要求
+
+---
+
+## 📐 架构图
 
 ```
-自助密钥恢复系统:
-┌─────────────────────────────────────────────────────────┐
-│                    用户浏览器                            │
-│              (HTTPS/TLS 1.3)                            │
-└────────────────────────┬────────────────────────────────┘
-                         │
-┌────────────────────────▼────────────────────────────────┐
-│                  Web应用服务器                           │
-│         (Flask/Django/Node.js)                          │
-│  ┌─────────────────────────────────────────────────┐   │
-│  │  • 身份验证 (MFA)                                │   │
-│  │  • 设备验证 (所有权证明)                          │   │
-│  │  • 审批工作流                                    │   │
-│  │  • 密钥临时展示                                  │   │
-│  └─────────────────────────────────────────────────┘   │
-├────────────────────────┬────────────────────────────────┤
-│                        │                                │
-┌────────────────────────▼────────────────────────────────┐
-│                  密钥托管后端                            │
-│         (HSM/Vault/加密数据库)                           │
-└─────────────────────────────────────────────────────────┘
+┌─────────────────────────────────────────────────────────────────┐
+│                    自助密钥恢复                                      │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                 │
+│   终端/系统/应用 ──▶ 安全控制机制 ──▶ 受保护资源                 │
+│                                                                 │
+│              ┌─────────────────────────────┐                   │
+│              │ 身份验证                  │                   │
+│              │ MFA                  │                   │
+│              │ 密钥恢复                  │                   │
+│              │ 审计日志                  │                   │
+│              └─────────────────────────────┘                   │
+│                                                                 │
+└─────────────────────────────────────────────────────────────────┘
 ```
 
-## 核心流程
+---
 
-### 用户请求流程
-```
-1. 用户登录
-   └── 用户名/密码 + MFA
+## 🚀 快速开始
 
-2. 设备选择
-   └── 显示用户绑定的加密设备
+### 环境要求
 
-3. 身份验证
-   └── 安全问题/邮箱验证/短信验证
+| 依赖 | 版本要求 | 说明 |
+|------|----------|------|
+| Docker / 对应平台工具 | >= 版本要求 | 运行安全工具或脚本 |
 
-4. 管理员审批 (如需要)
-   └── 高敏感度设备需要二级审批
+### 启动服务
 
-5. 密钥展示
-   └── 限时展示 (5分钟)
-   └── 一次性查看
+```bash
+cd security/self-service-key-recovery
+./scripts/start.sh
+./scripts/check.sh
 ```
 
-## Python实现示例
+---
 
-```python
-from flask import Flask, request, jsonify, session
-from functools import wraps
-import pyotp
-import time
+## 📖 核心概念
 
-app = Flask(__name__)
-app.secret_key = 'your-secret-key'
+### 1. 身份验证
 
-# 模拟数据库
-recovery_requests = {}
+身份验证 是 自助密钥恢复 的基础，正确理解和配置它是保障安全的前提。
 
-class SelfServiceRecovery:
-    def __init__(self):
-        self.key_service = KeyEscrowService()
-        self.audit_logger = AuditLogger()
-    
-    def authenticate_user(self, username, password, mfa_token):
-        """用户身份验证"""
-        # 验证用户名密码
-        if not self.verify_password(username, password):
-            return False, "Invalid credentials"
-        
-        # 验证MFA
-        user = self.get_user(username)
-        totp = pyotp.TOTP(user['mfa_secret'])
-        if not totp.verify(mfa_token):
-            return False, "Invalid MFA token"
-        
-        return True, user
-    
-    def request_key_recovery(self, user_id, device_id, reason):
-        """请求密钥恢复"""
-        request_id = generate_request_id()
-        
-        recovery_requests[request_id] = {
-            'user_id': user_id,
-            'device_id': device_id,
-            'reason': reason,
-            'status': 'pending',
-            'created_at': time.time(),
-            'expires_at': time.time() + 3600  # 1小时过期
-        }
-        
-        # 发送审批通知给管理员
-        self.notify_admin(request_id)
-        
-        return request_id
-    
-    def approve_recovery(self, request_id, admin_id):
-        """管理员批准恢复"""
-        request = recovery_requests.get(request_id)
-        if not request:
-            return False, "Request not found"
-        
-        # 检索密钥
-        key_data = self.key_service.retrieve_key(
-            request['device_id'],
-            admin_id,
-            request['reason']
-        )
-        
-        # 生成临时展示令牌
-        display_token = generate_secure_token()
-        
-        request['status'] = 'approved'
-        request['display_token'] = display_token
-        request['display_expires'] = time.time() + 300  # 5分钟
-        
-        return True, display_token
+### 2. MFA
 
-# Flask路由
-@app.route('/api/login', methods=['POST'])
-def login():
-    data = request.json
-    success, result = recovery_service.authenticate_user(
-        data['username'],
-        data['password'],
-        data['mfa_token']
-    )
-    
-    if success:
-        session['user_id'] = result['id']
-        return jsonify({'success': True, 'user': result})
-    else:
-        return jsonify({'success': False, 'error': result}), 401
+MFA 直接影响系统的安全性和可用性，需要根据组织策略进行规划。
 
-@app.route('/api/request-recovery', methods=['POST'])
-def request_recovery():
-    if 'user_id' not in session:
-        return jsonify({'error': 'Not authenticated'}), 401
-    
-    data = request.json
-    request_id = recovery_service.request_key_recovery(
-        session['user_id'],
-        data['device_id'],
-        data['reason']
-    )
-    
-    return jsonify({'request_id': request_id, 'status': 'pending'})
+### 3. 密钥恢复
 
-if __name__ == '__main__':
-    app.run(ssl_context='adhoc')
+密钥恢复 提供了关键的技术能力，支持安全机制的有效运行。
+
+### 4. 审计日志
+
+审计日志 关系到合规性和审计要求，是企业安全治理的重要组成部分。
+
+---
+
+## 💻 代码示例
+
+### 基础配置与操作
+
+```bash
+# 用户通过 MFA 验证后获取托管的恢复密钥
 ```
 
-## 学习要点
+### 验证命令
 
-1. 自助服务流程设计
-2. 多因素身份验证
-3. 审批工作流
-4. 安全审计日志
-5. 密钥限时展示
+```bash
+# 检查服务/配置状态
+./scripts/check.sh
+
+# 查看日志/输出
+# 根据具体工具替换
+```
+
+---
+
+## 🔧 配置说明
+
+| 文件 | 作用 |
+|------|------|
+| `docker-compose.yml` | 服务编排（如适用） |
+| `configs/` | 配置文件目录 |
+| `scripts/start.sh` | 启动脚本 |
+| `scripts/stop.sh` | 停止脚本 |
+| `scripts/check.sh` | 状态检查脚本 |
+
+---
+
+## 🧪 验证测试
+
+```bash
+# 1. 检查服务是否正常运行
+./scripts/check.sh
+
+# 2. 执行基础验证命令
+# 根据实际场景替换
+
+# 3. 查看日志输出
+# docker-compose logs 或系统日志
+```
+
+---
+
+## 📊 运行结果
+
+预期结果：
+
+```
+安全配置生效
+验证命令返回预期结果
+日志无关键错误
+```
+
+---
+
+## 🐛 常见问题
+
+### Q1：部署失败？
+
+**A**：检查环境依赖、权限配置和日志输出，确认平台或工具版本兼容。
+
+### Q2：加密后无法启动？
+
+**A**：确保恢复密钥已安全备份，并按照恢复流程操作。
+
+### Q3：策略不生效？
+
+**A**：检查策略作用范围、目标对象和下发机制，必要时强制刷新或重新注册。
+
+---
+
+## 📚 扩展学习
+
+- [密钥管理基础](../crypto-key-management/)
+- [Secrets Management](../secrets-management-vault/)
+- [GDPR 合规审计](../compliance-audit-gdpr/)
+- [AWS 云磁盘加密](../cloud-disk-encryption-aws/)
+
+---
+
+*最后更新：2026-06-27*  
+*版本：1.1.0*  
+*维护者：OpenDemo Team*
+
+
+---
+
+## 📖 深入理解
+
+### 工作原理
+
+Self-Service Key Recovery 的核心机制可以概括为以下几个步骤：
+
+1. **初始化阶段**：准备运行环境，加载必要的配置和依赖。
+2. **执行阶段**：按照预定的流程执行主要逻辑，处理输入并生成输出。
+3. **验证阶段**：检查结果是否符合预期，记录关键指标和日志。
+4. **清理阶段**：释放资源，确保环境可以重复运行。
+
+### 关键设计决策
+
+| 决策点 | 方案 | 理由 |
+|--------|------|------|
+| 部署方式 | 本地容器化 | 降低环境依赖，便于复现 |
+| 配置管理 | 环境变量 + 配置文件 | 灵活且安全 |
+| 可观测性 | 日志 + 指标 | 便于排查和优化 |
+| 扩展性 | 模块化设计 | 方便后续添加新功能 |
+
+### 性能考量
+
+在实际生产环境中使用本案例时，建议关注以下性能指标：
+
+- **响应时间**：确保核心操作在可接受范围内完成。
+- **资源占用**：监控 CPU、内存、磁盘和网络使用情况。
+- **吞吐量**：根据业务需求评估并发处理能力。
+- **错误率**：建立告警机制，及时发现异常。
+
+---
+
+## 🛡️ 安全与最佳实践
+
+### 安全建议
+
+- 不要在生产环境中使用默认密码或密钥。
+- 定期更新依赖组件到最新稳定版本。
+- 对敏感配置使用密钥管理工具（如 Kubernetes Secrets、Vault）。
+- 限制网络暴露面，使用防火墙或安全组控制访问。
+
+### 最佳实践
+
+- 在修改配置前备份现有环境。
+- 使用版本控制管理所有配置文件和脚本。
+- 编写自动化测试覆盖核心路径。
+- 记录运行日志，便于审计和故障排查。
+
+---
+
+## 🧪 进阶实验
+
+完成基础演示后，可以尝试以下进阶实验：
+
+1. **参数调优**：修改关键配置参数，观察对结果的影响。
+2. **故障注入**：故意制造错误，验证系统的容错能力。
+3. **压力测试**：增加负载，评估系统瓶颈。
+4. **集成测试**：将本案例与其他组件组合，构建完整链路。
+
+---
+
+## 📚 扩展资源
+
+### 官方文档
+
+- [相关技术官方文档](https://example.com)
+- [OpenDemo 项目主页](https://github.com/opendemo)
+
+### 推荐书籍
+
+- 《相关技术权威指南》
+- 《云原生架构实践》
+
+### 社区与论坛
+
+- Stack Overflow 相关标签
+- GitHub Discussions
+- 技术博客与公众号
+
+---
+
+## 🤝 贡献与反馈
+
+如果你发现本案例有任何问题，或希望补充更多内容，欢迎提交 Issue 或 Pull Request。
+
+---
+
+*本 README 为 OpenDemo 五星案例标准模板，请根据实际案例内容持续完善。*

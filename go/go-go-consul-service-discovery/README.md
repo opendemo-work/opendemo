@@ -1,130 +1,248 @@
-# Go Consul 服务注册与发现演示
+# Go 服务注册与发现 - Consul
 
-## 简介
-本项目演示如何使用 Go 语言结合 HashiCorp Consul 实现微服务架构中的服务注册与发现。包含服务注册、健康检查和服务发现三个核心功能，适用于构建高可用的分布式系统。
+> 使用 Go 语言和 Consul 实现微服务的服务注册、发现和健康检查。
 
-## 学习目标
-- 理解服务注册与发现的基本原理
-- 掌握 Go 客户端与 Consul 交互的方法
-- 实践健康检查机制的实现
-- 学会在实际项目中集成服务发现
+---
 
-## 环境要求
-- Go 1.20 或更高版本
-- Consul 1.15.2（可通过 Docker 运行）
-- 操作系统：Windows / Linux / macOS
+## 📋 目录
 
-## 安装依赖
+- [🎯 学习目标](#-学习目标)
+- [📐 架构图](#-架构图)
+- [🚀 快速开始](#-快速开始)
+- [📖 核心概念](#-核心概念)
+- [💻 代码示例](#-代码示例)
+- [🔧 配置说明](#-配置说明)
+- [🧪 验证测试](#-验证测试)
+- [📊 运行结果](#-运行结果)
+- [🐛 常见问题](#-常见问题)
+- [📚 扩展学习](#-扩展学习)
+
+---
+
+## 🎯 学习目标
+
+完成本案例学习后，你将能够：
+
+- ✅ 理解服务注册与发现的作用
+- ✅ 使用 Consul 作为服务注册中心
+- ✅ 使用 Go 客户端注册和发现服务
+- ✅ 配置健康检查
+
+---
+
+## 📐 架构图
+
+```
+Service A ──▶ Consul Server ◀── Service B
+                │
+                ▼
+           健康检查 / KV 存储
+```
+
+---
+
+## 🚀 快速开始
+
 ```bash
-# 1. 安装 Go 依赖
-go mod init consul-demo
-go get github.com/hashicorp/consul/api@v1.15.2
-
-# 2. 启动本地 Consul 开发服务器（需安装 Docker）
-docker run -d --name consul-dev -p 8500:8500 -p 8600:8600/udp consul:1.15.2 agent -dev -client=0.0.0.0 -ui
+cd go/go-go-consul-service-discovery
+./scripts/start.sh
+./scripts/check.sh
 ```
 
-## 文件说明
-- `main.go`：主服务程序，注册自身并定期发送健康检查
-- `discovery.go`：服务发现客户端，查询并调用已注册的服务
-- `go.mod`：Go 模块依赖声明文件
+---
 
-## 逐步实操指南
+## 📖 核心概念
 
-### 步骤 1：启动 Consul
-```bash
-docker run -d --name consul-dev -p 8500:8500 -p 8600:8600/udp consul:1.15.2 agent -dev -client=0.0.0.0 -ui
-```
-**预期输出**：返回容器ID，访问 http://localhost:8500 可看到 Consul Web UI
+### 1. 服务注册
 
-### 步骤 2：初始化项目并运行服务注册
-```bash
-go mod init consul-demo
-go run main.go
-```
-**预期输出**：
-```
-服务 'demo-service' 已成功注册到 Consul
-正在发送健康检查... (按 Ctrl+C 停止)
-```
+启动时向 Consul 注册服务信息（IP、端口、健康检查）。
 
-### 步骤 3：运行服务发现
-在另一个终端窗口执行：
-```bash
-go run discovery.go
-```
-**预期输出**：
-```
-发现服务实例: demo-service @ 127.0.0.1:8080, 状态: passing
-```
+### 2. 服务发现
 
-## 代码解析
+通过 Consul API 或 DNS 查询可用服务实例。
 
-### main.go 关键代码段
+### 3. 健康检查
+
+Consul 定期检查服务健康状态，剔除不健康实例。
+
+---
+
+## 💻 代码示例
+
+### 注册服务
+
 ```go
-// 创建 Consul 客户端配置
+import "github.com/hashicorp/consul/api"
+
 config := api.DefaultConfig()
-config.Address = "127.0.0.1:8500"
+client, _ := api.NewClient(config)
 
-// 注册服务到 Consul
-registration := &api.AgentServiceRegistration{
-    ID:      "demo-service-1",
-    Name:    "demo-service",
-    Address: "127.0.0.1",
+agent := client.Agent()
+agent.ServiceRegister(&api.AgentServiceRegistration{
+    ID:      "user-service-1",
+    Name:    "user-service",
     Port:    8080,
+    Tags:    []string{"v1"},
     Check: &api.AgentServiceCheck{
-        HTTP:     "http://127.0.0.1:8080/health", // 健康检查端点
-        Interval: "5s",                         // 每5秒检查一次
-        Timeout:  "3s",
+        HTTP:     "http://localhost:8080/health",
+        Interval: "10s",
     },
-}
+})
 ```
-> 解释：定义服务元数据和健康检查策略，Consul 将根据此配置监控服务状态。
 
-### discovery.go 关键代码段
+### 发现服务
+
 ```go
-// 查询健康的服务实例
-serviceEntries, _, err := client.Health().Service("demo-service", "", true, nil)
-if err != nil {
-    log.Fatalf("服务发现失败: %v", err)
-}
-
-for _, entry := range serviceEntries {
-    fmt.Printf("发现服务实例: %s @ %s:%d, 状态: %s\n",
-        entry.Service.Service,
-        entry.Node.Address,
-        entry.Service.Port,
-        entry.Checks.AggregatedStatus())
+services, _, _ := client.Health().Service("user-service", "", true, nil)
+for _, svc := range services {
+    fmt.Println(svc.Service.Address, svc.Service.Port)
 }
 ```
-> 解释：通过 Health().Service() 获取处于健康状态的服务实例列表，实现安全的服务调用路由。
 
-## 预期输出示例
-### main.go 输出
-```
-服务 'demo-service' 已成功注册到 Consul
-正在发送健康检查... (按 Ctrl+C 停止)
-```
+---
 
-### discovery.go 输出
-```
-发现服务实例: demo-service @ 127.0.0.1:8080, 状态: passing
+## 🧪 验证测试
+
+```bash
+curl http://localhost:8500/v1/catalog/services
+go test ./...
 ```
 
-## 常见问题解答
+---
 
-**Q: 运行时报错无法连接到 Consul？**
-A: 确保 Consul 容器已启动：`docker ps | grep consul`，若无输出则重新执行启动命令。
+## 📚 扩展学习
 
-**Q: 服务在 Consul UI 中显示为 critical？**
-A: 检查健康检查端点是否可达。本示例未实现 HTTP 服务，仅用于演示注册逻辑。生产环境应提供真实 `/health` 接口。
+- [Go Web 框架 Gin](../go-ginwebdemo-web-framework-intro/)
+- [Go Channels](../go-go-channels-demo/)
+- [Consul 官方文档](https://developer.hashicorp.com/consul/docs)
 
-**Q: 如何在不同机器上部署？**
-A: 修改 `config.Address` 为 Consul 服务器的实际 IP，并确保网络互通。
+---
 
-## 扩展学习建议
-- 集成 gRPC 实现真实服务通信
-- 使用 TLS 加密 Consul 客户端通信
-- 实现服务注销的优雅关闭（defer deregister）
-- 结合 Kubernetes 实现自动服务编排
-- 探索 Consul 的 KV 存储用于配置管理
+*最后更新：2026-06-27*  
+*版本：1.1.0*  
+*维护者：OpenDemo Team*
+
+
+---
+
+## 📖 深入理解
+
+### 核心流程
+
+Go Consul 服务注册与发现演示 从启动到完成主要包含以下环节：
+
+1. **环境准备**：配置运行所需的依赖、网络和存储资源。
+2. **主流程执行**：运行案例的核心逻辑并产出结果。
+3. **结果验证**：通过日志、命令输出或测试用例确认正确性。
+4. **资源回收**：停止服务并清理临时数据，保证可重复执行。
+
+### 设计要点
+
+| 方面 | 做法 | 说明 |
+|------|------|------|
+| 部署方式 | 本地容器化 | 减少环境差异，便于复现 |
+| 配置管理 | 配置文件 + 环境变量 | 兼顾可读性与灵活性 |
+| 可观测性 | 日志 + 健康检查 | 方便定位问题 |
+| 扩展方式 | 模块化组织 | 后续可按需增加功能 |
+
+### 需要关注的指标
+
+在生产环境中落地类似方案时，建议留意：
+
+- 关键路径的响应延迟
+- CPU、内存、磁盘和网络资源使用
+- 并发量与吞吐量变化
+- 错误率和异常告警
+
+---
+
+## 🛡️ 安全与最佳实践
+
+### 安全建议
+
+- 生产环境不要使用默认密码、密钥或令牌。
+- 定期将依赖升级到稳定的最新版本。
+- 敏感配置优先使用密钥管理工具或环境变量注入。
+- 通过防火墙、安全组或网络策略限制访问范围。
+
+### 操作建议
+
+- 修改配置前备份现有环境。
+- 将配置文件和脚本纳入版本控制。
+- 为核心路径补充自动化测试。
+- 保留运行日志以便审计和排障。
+
+---
+
+## 🧪 进阶实验
+
+基础流程跑通后，可以尝试：
+
+1. 调整关键参数，观察对结果的影响。
+2. 模拟异常场景，验证容错能力。
+3. 增加负载，分析系统瓶颈。
+4. 与其他组件组合，形成完整链路。
+
+---
+
+## 📚 扩展资源
+
+- 相关技术的官方文档
+- [OpenDemo 项目主页](https://github.com/opendemo)
+- GitHub Discussions 与技术社区
+
+---
+
+## 🤝 贡献与反馈
+
+如发现内容有误或希望补充，欢迎提交 Issue 或 Pull Request。
+
+---
+
+*本 README 由 OpenDemo 自动生成并持续维护，欢迎根据实际案例补充细节。*
+
+
+---
+
+## 🏥 健康检查类型
+
+Consul 支持多种健康检查：
+
+| 类型 | 说明 |
+|------|------|
+| HTTP | 检查 HTTP 端点 |
+| TCP | 检查 TCP 端口 |
+| Script | 执行脚本检查 |
+| TTL | 服务主动上报 |
+| gRPC | gRPC 健康检查 |
+
+---
+
+## 🔄 服务发现模式
+
+- **客户端发现**：客户端直接查询 Consul 选择实例
+- **服务端发现**：通过 API Gateway 或 Load Balancer 代理
+
+
+---
+
+## 🛡️ Consul 安全
+
+生产环境应启用 ACL 和 TLS：
+
+```hcl
+acl {
+  enabled = true
+  default_policy = "deny"
+}
+
+tls {
+  defaults {
+    ca_file = "consul-ca.pem"
+    cert_file = "consul.pem"
+    key_file = "consul-key.pem"
+    verify_incoming = true
+    verify_outgoing = true
+  }
+}
+```

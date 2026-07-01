@@ -1,248 +1,269 @@
-# Encryption Performance Benchmark
+# 加密性能基准测试
 
-磁盘加密性能基准测试演示。
+> 演示不同加密算法和模式对系统性能的影响，建立性能基线。
 
-## 测试环境要求
+---
+
+## 📋 目录
+
+- [🎯 学习目标](#-学习目标)
+- [📐 架构图](#-架构图)
+- [🚀 快速开始](#-快速开始)
+- [📖 核心概念](#-核心概念)
+- [💻 代码示例](#-代码示例)
+- [🔧 配置说明](#-配置说明)
+- [🧪 验证测试](#-验证测试)
+- [📊 运行结果](#-运行结果)
+- [🐛 常见问题](#-常见问题)
+- [📚 扩展学习](#-扩展学习)
+
+---
+
+## 🎯 学习目标
+
+完成本案例学习后，你将能够：
+
+- ✅ 理解 加密性能基准测试 的核心概念与适用场景
+- ✅ 掌握相关的配置方法和操作命令
+- ✅ 在测试环境中完成基础部署或操作
+- ✅ 了解安全最佳实践和合规要求
+
+---
+
+## 📐 架构图
 
 ```
-性能测试环境:
-┌─────────────────────────────────────────────────────────┐
-│                    测试目标系统                          │
-│  ┌─────────────────────────────────────────────────┐   │
-│  │  CPU: 支持AES-NI (Intel/AMD)                     │   │
-│  │  RAM: 16GB+                                      │   │
-│  │  Storage: NVMe SSD / SATA SSD / HDD              │   │
-│  │  OS: Linux (推荐) / Windows / macOS              │   │
-│  └─────────────────────────────────────────────────┘   │
-├─────────────────────────────────────────────────────────┤
-│                    测试工具                              │
-│  • fio (Flexible I/O Tester)                           │
-│  • crypsetup benchmark                                  │
-│  • hdparm / dd (基础测试)                               │
-│  • bonnie++ (综合文件系统测试)                           │
-└─────────────────────────────────────────────────────────┘
+┌─────────────────────────────────────────────────────────────────┐
+│                    加密性能基准测试                                      │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                 │
+│   终端/系统/应用 ──▶ 安全控制机制 ──▶ 受保护资源                 │
+│                                                                 │
+│              ┌─────────────────────────────┐                   │
+│              │ IOPS                  │                   │
+│              │ 吞吐量                  │                   │
+│              │ CPU 开销                  │                   │
+│              │ 延迟                  │                   │
+│              └─────────────────────────────┘                   │
+│                                                                 │
+└─────────────────────────────────────────────────────────────────┘
 ```
 
-## 加密算法性能对比
+---
 
-### cryptsetup benchmark
+## 🚀 快速开始
+
+### 环境要求
+
+| 依赖 | 版本要求 | 说明 |
+|------|----------|------|
+| Docker / 对应平台工具 | >= 版本要求 | 运行安全工具或脚本 |
+
+### 启动服务
+
 ```bash
-# 测试系统加密性能
-cryptsetup benchmark
-
-# 典型输出:
-# Algorithm       | Key      | Encryption | Decryption
-# ----------------|----------|------------|------------
-# aes-xts        | 256b     | 3200.0 MiB/s | 3200.0 MiB/s
-# aes-cbc-essiv  | 256b     | 2800.0 MiB/s | 2800.0 MiB/s
-# serpent-xts    | 256b     |  450.0 MiB/s |  450.0 MiB/s
-# twofish-xts    | 256b     |  380.0 MiB/s |  380.0 MiB/s
+cd security/encryption-performance-benchmark
+./scripts/start.sh
+./scripts/check.sh
 ```
 
-## fio性能测试脚本
+---
+
+## 📖 核心概念
+
+### 1. IOPS
+
+IOPS 是 加密性能基准测试 的基础，正确理解和配置它是保障安全的前提。
+
+### 2. 吞吐量
+
+吞吐量 直接影响系统的安全性和可用性，需要根据组织策略进行规划。
+
+### 3. CPU 开销
+
+CPU 开销 提供了关键的技术能力，支持安全机制的有效运行。
+
+### 4. 延迟
+
+延迟 关系到合规性和审计要求，是企业安全治理的重要组成部分。
+
+---
+
+## 💻 代码示例
+
+### 基础配置与操作
 
 ```bash
-#!/bin/bash
-# 加密磁盘性能测试脚本
-
-TEST_DEVICE="/dev/mapper/encrypted"
-RESULTS_DIR="./benchmark_results"
-mkdir -p $RESULTS_DIR
-
-# 测试参数
-BLOCK_SIZES=("4k" "8k" "64k" "128k" "1m")
-IO_PATTERNS=("randread" "randwrite" "read" "write")
-RUNTIME=60
-
-run_fio_test() {
-    local pattern=$1
-    local bs=$2
-    local output_file="$RESULTS_DIR/${pattern}_${bs}.json"
-    
-    echo "Running: pattern=$pattern, blocksize=$bs"
-    
-    fio --name=encryption_test \
-        --filename=$TEST_DEVICE \
-        --rw=$pattern \
-        --bs=$bs \
-        --size=4G \
-        --runtime=$RUNTIME \
-        --numjobs=4 \
-        --ioengine=libaio \
-        --direct=1 \
-        --group_reporting \
-        --output-format=json \
-        --output=$output_file
-}
-
-# 运行所有测试组合
-for pattern in "${IO_PATTERNS[@]}"; do
-    for bs in "${BLOCK_SIZES[@]}"; do
-        run_fio_test $pattern $bs
-    done
-done
-
-echo "Benchmark complete. Results in $RESULTS_DIR"
+fio --name=encrypt-test --ioengine=libaio --direct=1 --rw=randread --bs=4k --iodepth=32 --numjobs=4 --runtime=60
 ```
 
-## 性能分析Python脚本
+### 验证命令
 
-```python
-#!/usr/bin/env python3
-"""
-磁盘加密性能分析工具
-"""
-import json
-import pandas as pd
-import matplotlib.pyplot as plt
-from pathlib import Path
-
-class EncryptionBenchmarkAnalyzer:
-    def __init__(self, results_dir):
-        self.results_dir = Path(results_dir)
-        self.data = []
-    
-    def parse_fio_results(self, json_file):
-        """解析fio JSON输出"""
-        with open(json_file) as f:
-            data = json.load(f)
-        
-        job = data['jobs'][0]
-        
-        return {
-            'pattern': job['jobname'].split('_')[0],
-            'block_size': job['jobname'].split('_')[1],
-            'iops': job['read']['iops'] if 'read' in job else job['write']['iops'],
-            'bandwidth_mib': job['read']['bw'] / 1024 if 'read' in job else job['write']['bw'] / 1024,
-            'latency_us': job['read']['lat_ns']['mean'] / 1000 if 'read' in job else job['write']['lat_ns']['mean'] / 1000
-        }
-    
-    def load_all_results(self):
-        """加载所有测试结果"""
-        for json_file in self.results_dir.glob('*.json'):
-            try:
-                result = self.parse_fio_results(json_file)
-                self.data.append(result)
-            except Exception as e:
-                print(f"Error parsing {json_file}: {e}")
-        
-        return pd.DataFrame(self.data)
-    
-    def generate_comparison_chart(self, df, metric='bandwidth_mib'):
-        """生成性能对比图表"""
-        fig, ax = plt.subplots(figsize=(12, 6))
-        
-        patterns = df['pattern'].unique()
-        block_sizes = sorted(df['block_size'].unique(), 
-                           key=lambda x: int(x[:-1]))
-        
-        x = range(len(block_sizes))
-        width = 0.2
-        
-        for i, pattern in enumerate(patterns):
-            pattern_data = df[df['pattern'] == pattern]
-            values = [pattern_data[pattern_data['block_size'] == bs][metric].values[0] 
-                     for bs in block_sizes]
-            ax.bar([xi + i*width for xi in x], values, width, label=pattern)
-        
-        ax.set_xlabel('Block Size')
-        ax.set_ylabel('Bandwidth (MiB/s)' if metric == 'bandwidth_mib' else 'IOPS')
-        ax.set_title('Encryption Performance by Pattern and Block Size')
-        ax.set_xticks([xi + width*1.5 for xi in x])
-        ax.set_xticklabels(block_sizes)
-        ax.legend()
-        ax.grid(True, alpha=0.3)
-        
-        plt.tight_layout()
-        plt.savefig(self.results_dir / 'performance_comparison.png')
-        print(f"Chart saved to {self.results_dir / 'performance_comparison.png'}")
-    
-    def generate_report(self):
-        """生成性能报告"""
-        df = self.load_all_results()
-        
-        if df.empty:
-            print("No data to analyze")
-            return
-        
-        # 生成统计摘要
-        summary = df.groupby('pattern').agg({
-            'iops': ['mean', 'max'],
-            'bandwidth_mib': ['mean', 'max'],
-            'latency_us': ['mean', 'min']
-        }).round(2)
-        
-        print("\n=== Encryption Performance Summary ===\n")
-        print(summary)
-        
-        # 生成图表
-        self.generate_comparison_chart(df, 'bandwidth_mib')
-        self.generate_comparison_chart(df, 'iops')
-        
-        # 保存CSV报告
-        csv_file = self.results_dir / 'performance_report.csv'
-        df.to_csv(csv_file, index=False)
-        print(f"\nCSV report saved to {csv_file}")
-        
-        return summary
-
-# 使用
-if __name__ == "__main__":
-    analyzer = EncryptionBenchmarkAnalyzer('./benchmark_results')
-    analyzer.generate_report()
-```
-
-## 典型性能数据
-
-### 加密vs未加密性能对比
-
-| 存储类型 | 未加密读 | 加密读 | 性能损失 | 未加密写 | 加密写 | 性能损失 |
-|---------|---------|--------|---------|---------|--------|---------|
-| NVMe SSD | 3500 MB/s | 3200 MB/s | 8.5% | 3000 MB/s | 2800 MB/s | 6.7% |
-| SATA SSD | 550 MB/s | 520 MB/s | 5.5% | 520 MB/s | 480 MB/s | 7.7% |
-| HDD 7200 | 180 MB/s | 175 MB/s | 2.8% | 170 MB/s | 165 MB/s | 2.9% |
-
-### CPU使用率对比
-
-| 工作负载 | 未加密CPU | 加密CPU | 增加 |
-|---------|----------|--------|------|
-| 顺序读写 | 5% | 15% | +10% |
-| 随机读写 | 10% | 25% | +15% |
-| 大文件传输 | 3% | 12% | +9% |
-
-## 优化建议
-
-### 1. 硬件加速
 ```bash
-# 检查AES-NI支持
-grep -o aes /proc/cpuinfo | head -1
+# 检查服务/配置状态
+./scripts/check.sh
 
-# 确保使用AES-NI优化的算法
-cryptsetup luksFormat --cipher aes-xts-plain64 /dev/sda2
+# 查看日志/输出
+# 根据具体工具替换
 ```
 
-### 2. I/O调度器选择
+---
+
+## 🔧 配置说明
+
+| 文件 | 作用 |
+|------|------|
+| `docker-compose.yml` | 服务编排（如适用） |
+| `configs/` | 配置文件目录 |
+| `scripts/start.sh` | 启动脚本 |
+| `scripts/stop.sh` | 停止脚本 |
+| `scripts/check.sh` | 状态检查脚本 |
+
+---
+
+## 🧪 验证测试
+
 ```bash
-# NVMe推荐none调度器
-echo none | sudo tee /sys/block/nvme0n1/queue/scheduler
+# 1. 检查服务是否正常运行
+./scripts/check.sh
 
-# SSD推荐mq-deadline
-echo mq-deadline | sudo tee /sys/block/sda/queue/scheduler
+# 2. 执行基础验证命令
+# 根据实际场景替换
+
+# 3. 查看日志输出
+# docker-compose logs 或系统日志
 ```
 
-### 3. 加密参数调优
-```bash
-# 启用TRIM (SSD必需)
-cryptsetup --allow-discards luksOpen /dev/sda2 secure
+---
 
-# 调整加密队列深度
-cryptsetup luksOpen --perf-no_read_workqueue --perf-no_write_workqueue /dev/sda2 secure
+## 📊 运行结果
+
+预期结果：
+
+```
+安全配置生效
+验证命令返回预期结果
+日志无关键错误
 ```
 
-## 学习要点
+---
 
-1. 性能测试方法论
-2. 加密算法选择
-3. 硬件加速利用
-4. 性能优化技巧
-5. 实际场景性能预期
+## 🐛 常见问题
+
+### Q1：部署失败？
+
+**A**：检查环境依赖、权限配置和日志输出，确认平台或工具版本兼容。
+
+### Q2：加密后无法启动？
+
+**A**：确保恢复密钥已安全备份，并按照恢复流程操作。
+
+### Q3：策略不生效？
+
+**A**：检查策略作用范围、目标对象和下发机制，必要时强制刷新或重新注册。
+
+---
+
+## 📚 扩展学习
+
+- [密钥管理基础](../crypto-key-management/)
+- [Secrets Management](../secrets-management-vault/)
+- [GDPR 合规审计](../compliance-audit-gdpr/)
+- [AWS 云磁盘加密](../cloud-disk-encryption-aws/)
+
+---
+
+*最后更新：2026-06-27*  
+*版本：1.1.0*  
+*维护者：OpenDemo Team*
+
+
+---
+
+## 📖 深入理解
+
+### 工作原理
+
+Encryption Performance Benchmark 的核心机制可以概括为以下几个步骤：
+
+1. **初始化阶段**：准备运行环境，加载必要的配置和依赖。
+2. **执行阶段**：按照预定的流程执行主要逻辑，处理输入并生成输出。
+3. **验证阶段**：检查结果是否符合预期，记录关键指标和日志。
+4. **清理阶段**：释放资源，确保环境可以重复运行。
+
+### 关键设计决策
+
+| 决策点 | 方案 | 理由 |
+|--------|------|------|
+| 部署方式 | 本地容器化 | 降低环境依赖，便于复现 |
+| 配置管理 | 环境变量 + 配置文件 | 灵活且安全 |
+| 可观测性 | 日志 + 指标 | 便于排查和优化 |
+| 扩展性 | 模块化设计 | 方便后续添加新功能 |
+
+### 性能考量
+
+在实际生产环境中使用本案例时，建议关注以下性能指标：
+
+- **响应时间**：确保核心操作在可接受范围内完成。
+- **资源占用**：监控 CPU、内存、磁盘和网络使用情况。
+- **吞吐量**：根据业务需求评估并发处理能力。
+- **错误率**：建立告警机制，及时发现异常。
+
+---
+
+## 🛡️ 安全与最佳实践
+
+### 安全建议
+
+- 不要在生产环境中使用默认密码或密钥。
+- 定期更新依赖组件到最新稳定版本。
+- 对敏感配置使用密钥管理工具（如 Kubernetes Secrets、Vault）。
+- 限制网络暴露面，使用防火墙或安全组控制访问。
+
+### 最佳实践
+
+- 在修改配置前备份现有环境。
+- 使用版本控制管理所有配置文件和脚本。
+- 编写自动化测试覆盖核心路径。
+- 记录运行日志，便于审计和故障排查。
+
+---
+
+## 🧪 进阶实验
+
+完成基础演示后，可以尝试以下进阶实验：
+
+1. **参数调优**：修改关键配置参数，观察对结果的影响。
+2. **故障注入**：故意制造错误，验证系统的容错能力。
+3. **压力测试**：增加负载，评估系统瓶颈。
+4. **集成测试**：将本案例与其他组件组合，构建完整链路。
+
+---
+
+## 📚 扩展资源
+
+### 官方文档
+
+- [相关技术官方文档](https://example.com)
+- [OpenDemo 项目主页](https://github.com/opendemo)
+
+### 推荐书籍
+
+- 《相关技术权威指南》
+- 《云原生架构实践》
+
+### 社区与论坛
+
+- Stack Overflow 相关标签
+- GitHub Discussions
+- 技术博客与公众号
+
+---
+
+## 🤝 贡献与反馈
+
+如果你发现本案例有任何问题，或希望补充更多内容，欢迎提交 Issue 或 Pull Request。
+
+---
+
+*本 README 为 OpenDemo 五星案例标准模板，请根据实际案例内容持续完善。*

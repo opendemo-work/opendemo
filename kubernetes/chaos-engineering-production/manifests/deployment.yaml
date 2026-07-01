@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: chaos-engineering-production
+  labels:
+    app: chaos-engineering-production
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: chaos-engineering-production
+  template:
+    metadata:
+      labels:
+        app: chaos-engineering-production
+    spec:
+      containers:
+      - name: demo
+        image: nginx:alpine
+        ports:
+        - containerPort: 80

@@ -2,13 +2,46 @@
   "name": "knowledge-distillation",
   "category": "llm-optimization",
   "difficulty": "advanced",
-  "language": "python",
-  "keywords": ["distillation", "knowledge-distillation", "teacher-student", "compression"],
-  "description": "知识蒸馏：从大模型提取知识到小模型",
+  "language": "ai-ml",
+  "keywords": [
+    "distillation",
+    "knowledge-distillation",
+    "teacher-student",
+    "compression"
+  ],
+  "description": "knowledge-distillation 的实战演示与配置详解",
   "estimated_time": "4-5 hours",
-  "prerequisites": ["transformer-scratch", "lora-fine-tuning"],
-  "learning_objectives": ["理解知识蒸馏原理", "实现蒸馏损失函数", "掌握 MiniMax 蒸馏"],
-  "content_types": ["tutorial", "optimization-technique"],
+  "prerequisites": [
+    "transformer-scratch",
+    "lora-fine-tuning"
+  ],
+  "learning_objectives": [
+    "理解知识蒸馏原理",
+    "实现蒸馏损失函数",
+    "掌握 MiniMax 蒸馏"
+  ],
+  "content_types": [
+    "tutorial",
+    "optimization-technique"
+  ],
   "quality_standard": "five-star",
-  "created_date": "2026-06-01"
+  "created_date": "2026-06-01",
+  "dependencies": {},
+  "author": "OpenDemo Team",
+  "version": "1.1.0",
+  "created_at": "2025-12-11T17:08:29",
+  "updated_at": "2026-06-27T00:10:00",
+  "verified": true,
+  "verified_at": "2026-06-27T00:10:00",
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "compatibility": {
+    "operating_systems": [
+      "linux",
+      "macos",
+      "windows(wsl)"
+    ]
+  }
 }

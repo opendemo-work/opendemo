@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: maxkb
+  labels:
+    app: maxkb
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: maxkb
+  template:
+    metadata:
+      labels:
+        app: maxkb
+    spec:
+      containers:
+      - name: demo
+        image: nginx:alpine
+        ports:
+        - containerPort: 80

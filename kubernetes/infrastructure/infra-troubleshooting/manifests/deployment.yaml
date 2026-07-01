@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: infra-troubleshooting
+  labels:
+    app: infra-troubleshooting
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: infra-troubleshooting
+  template:
+    metadata:
+      labels:
+        app: infra-troubleshooting
+    spec:
+      containers:
+      - name: demo
+        image: nginx:alpine
+        ports:
+        - containerPort: 80

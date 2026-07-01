@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backup-disaster
+  labels:
+    app: backup-disaster
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backup-disaster
+  template:
+    metadata:
+      labels:
+        app: backup-disaster
+    spec:
+      containers:
+      - name: demo
+        image: nginx:alpine
+        ports:
+        - containerPort: 80

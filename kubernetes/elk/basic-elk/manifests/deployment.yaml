@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: basic-elk
+  labels:
+    app: basic-elk
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: basic-elk
+  template:
+    metadata:
+      labels:
+        app: basic-elk
+    spec:
+      containers:
+      - name: demo
+        image: nginx:alpine
+        ports:
+        - containerPort: 80

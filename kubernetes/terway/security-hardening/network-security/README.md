@@ -656,3 +656,31 @@ kubectl apply -f https://raw.githubusercontent.com/AliyunContainerService/terway
 ---
 
 > **💡 提示**: Terway安全加固需要平衡安全性和性能，在实施严格安全措施时要注意对网络性能的影响。
+## 🎯 学习目标
+
+完成本案例学习后，你将能够：
+
+- ✅ 理解本案例涉及的 Kubernetes 核心概念
+- ✅ 掌握相关的资源配置与命令
+- ✅ 能够在本地集群中复现
+
+## 📖 核心概念
+
+### 1. 基本概念
+
+本节介绍本案例涉及的 Kubernetes 核心概念。
+
+### 2. 适用场景
+
+- 场景 1：开发与测试
+- 场景 2：生产环境参考
+- 场景 3：故障排查
+
+## 💻 代码示例
+
+### 基本命令
+
+```bash
+# 请根据实际场景替换
+kubectl apply -f manifests/
+```

@@ -1,8 +1,42 @@
 {
   "name": "Go TDD Test-Driven Development",
   "category": "go",
-  "tech_stack": ["Go", "TDD", "Testing"],
+  "tech_stack": [
+    "Go",
+    "TDD",
+    "Testing"
+  ],
   "description": "Go测试驱动开发：TDD循环、测试先行、重构优化",
   "difficulty": "intermediate",
-  "dependencies": ["Go"]
+  "dependencies": {
+    "items": [
+      "Go"
+    ]
+  },
+  "language": "go",
+  "keywords": [
+    "go",
+    "go"
+  ],
+  "author": "OpenDemo Team",
+  "version": "1.1.0",
+  "created_at": "2025-12-11T17:08:29",
+  "updated_at": "2026-06-27T00:05:00",
+  "verified": true,
+  "verified_at": "2026-06-27T00:05:00",
+  "estimated_time": "60-90分钟",
+  "prerequisites": [
+    "相关基础知识"
+  ],
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "compatibility": {
+    "operating_systems": [
+      "linux",
+      "macos",
+      "windows(wsl)"
+    ]
+  }
 }

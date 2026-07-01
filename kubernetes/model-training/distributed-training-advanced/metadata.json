@@ -17,16 +17,35 @@
   ],
   "version": "1.0.0",
   "created_at": "2026-01-30",
-  "updated_at": "2026-01-30",
+  "updated_at": "2026-06-27T00:00:00",
   "difficulty": "intermediate",
   "estimated_time": "15-20 hours",
   "compatibility": {
-    "kubernetes": ["v1.23.x", "v1.24.x", "v1.25.x", "v1.26.x", "v1.27.x", "v1.28.x", "v1.29.x"],
-    "gpu": ["nvidia-a100", "nvidia-h100", "nvidia-l4"],
-    "cuda": ["11.7", "11.8", "12.0", "12.1"]
+    "kubernetes": [
+      "v1.23.x",
+      "v1.24.x",
+      "v1.25.x",
+      "v1.26.x",
+      "v1.27.x",
+      "v1.28.x",
+      "v1.29.x"
+    ],
+    "gpu": [
+      "nvidia-a100",
+      "nvidia-h100",
+      "nvidia-l4"
+    ],
+    "cuda": [
+      "11.7",
+      "11.8",
+      "12.0",
+      "12.1"
+    ]
   },
   "author": "opendemo",
-  "maintainers": ["opendemo"],
+  "maintainers": [
+    "opendemo"
+  ],
   "license": "MIT",
   "status": "active",
   "tags": [
@@ -54,22 +73,38 @@
     {
       "name": "parallel-strategies",
       "title": "并行策略实现",
-      "files": ["data_parallel.py", "model_parallel.py", "pipeline_parallel.py"]
+      "files": [
+        "data_parallel.py",
+        "model_parallel.py",
+        "pipeline_parallel.py"
+      ]
     },
     {
       "name": "framework-integration",
       "title": "框架集成",
-      "files": ["ddp_training.py", "fsdp_training.py", "deepspeed_training.py"]
+      "files": [
+        "ddp_training.py",
+        "fsdp_training.py",
+        "deepspeed_training.py"
+      ]
     },
     {
       "name": "optimization-techniques",
       "title": "优化技术",
-      "files": ["gradient_compression.py", "mixed_precision.py", "communication_optimization.py"]
+      "files": [
+        "gradient_compression.py",
+        "mixed_precision.py",
+        "communication_optimization.py"
+      ]
     },
     {
       "name": "monitoring-debugging",
       "title": "监控调试",
-      "files": ["training_monitor.py", "profiler_tools.py", "health_checker.py"]
+      "files": [
+        "training_monitor.py",
+        "profiler_tools.py",
+        "health_checker.py"
+      ]
     }
   ],
   "hardware_requirements": {
@@ -87,5 +122,12 @@
       "memory_gb": 128,
       "storage_gb": 1000
     }
-  }
+  },
+  "verified": true,
+  "verified_at": "2026-06-27T00:00:00",
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "dependencies": {}
 }

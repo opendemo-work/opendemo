@@ -1,107 +1,244 @@
-# NodeJS回调函数实战演示
+# Node.js 回调函数 - 异步编程基础
 
-## 简介
-本项目是一个面向初学者的Node.js回调函数学习Demo，包含多个可运行示例，帮助理解异步操作中的回调机制。
+> 学习 Node.js 回调函数模式，理解错误优先回调、回调地狱和如何过渡到 Promise/async-await。
 
-## 学习目标
-- 理解什么是回调函数及其在Node.js中的重要性
-- 掌握基本的异步文件操作回调处理
-- 学会避免回调地狱（Callback Hell）的基础技巧
-- 实践错误优先回调（Error-first Callback）模式
+---
 
-## 环境要求
-- 操作系统：Windows / Linux / macOS（任意）
-- Node.js 版本：v14.x 或更高版本（推荐 LTS 版本）
-- 包管理器：npm（随Node.js自动安装）
+## 📋 目录
 
-## 安装依赖的详细步骤
-本项目仅使用Node.js内置模块，无需额外安装依赖。
+- [🎯 学习目标](#-学习目标)
+- [📐 架构图](#-架构图)
+- [🚀 快速开始](#-快速开始)
+- [📖 核心概念](#-核心概念)
+- [💻 代码示例](#-代码示例)
+- [🔧 配置说明](#-配置说明)
+- [🧪 验证测试](#-验证测试)
+- [📊 运行结果](#-运行结果)
+- [🐛 常见问题](#-常见问题)
+- [📚 扩展学习](#-扩展学习)
 
-1. 确保已安装Node.js：
-   ```bash
-   node -v
-   ```
-   预期输出：`v14.x.x` 或更高版本
+---
 
-2. 克隆或创建项目目录并放入代码文件。
+## 🎯 学习目标
 
-## 文件说明
-- `callback-basics.js`：基础回调示例，模拟异步任务
-- `file-read-callback.js`：使用fs.readFile演示文件读取回调
-- `nested-callbacks.js`：展示嵌套回调及潜在问题
+完成本案例学习后，你将能够：
 
-## 逐步实操指南
+- ✅ 理解 Node.js 回调模式
+- ✅ 使用错误优先约定
+- ✅ 识别和避免回调地狱
+- ✅ 将回调转换为 Promise
 
-### 步骤1：创建项目结构
+---
+
+## 📐 架构图
+
+```
+发起异步操作 ──▶ 注册回调函数 ──▶ 事件循环 ──▶ 回调执行
+```
+
+---
+
+## 🚀 快速开始
+
 ```bash
-mkdir nodejs-callback-demo
-cd nodejs-callback-demo
+cd nodejs/nodejs-callback-functions-demo
+npm install
+node code/callback_demo.js
 ```
 
-### 步骤2：创建并运行第一个示例
-创建文件：
+---
+
+## 📖 核心概念
+
+### 1. 错误优先回调
+
+```javascript
+fs.readFile('file.txt', (err, data) => {
+    if (err) {
+        console.error(err);
+        return;
+    }
+    console.log(data);
+});
+```
+
+### 2. 回调地狱
+
+嵌套过深的回调难以维护：
+
+```javascript
+getData((err, data) => {
+    if (err) return;
+    processData(data, (err, result) => {
+        if (err) return;
+        saveResult(result, (err) => {
+            if (err) return;
+            console.log('done');
+        });
+    });
+});
+```
+
+### 3. 转换为 Promise
+
+```javascript
+const util = require('util');
+const readFilePromise = util.promisify(fs.readFile);
+
+async function main() {
+    const data = await readFilePromise('file.txt');
+    console.log(data);
+}
+```
+
+---
+
+## 🧪 验证测试
+
 ```bash
-node callback-basics.js
-```
-预期输出：
-```
-开始执行异步任务...
-任务完成！结果是：Hello from callback!
+node code/callback_demo.js
+npm test
 ```
 
-### 步骤3：运行文件读取示例
-确保当前目录下有一个名为 `sample.txt` 的文件，内容为 "Hello, World!"。
-如果没有，请先创建：
-```bash
-echo "Hello, World!" > sample.txt
+---
+
+## 📚 扩展学习
+
+- [Node.js Async/Await](../nodejs-async-await-nodejs-demo/)
+- [Node.js 设计模式](../nodejs-design-patterns/)
+- [Node.js 官方文档](https://nodejs.org/en/docs/)
+
+---
+
+*最后更新：2026-06-27*  
+*版本：1.1.0*  
+*维护者：OpenDemo Team*
+
+
+---
+
+## 📖 深入理解
+
+### 核心流程
+
+NodeJS回调函数实战演示 从启动到完成主要包含以下环节：
+
+1. **环境准备**：配置运行所需的依赖、网络和存储资源。
+2. **主流程执行**：运行案例的核心逻辑并产出结果。
+3. **结果验证**：通过日志、命令输出或测试用例确认正确性。
+4. **资源回收**：停止服务并清理临时数据，保证可重复执行。
+
+### 设计要点
+
+| 方面 | 做法 | 说明 |
+|------|------|------|
+| 部署方式 | 本地容器化 | 减少环境差异，便于复现 |
+| 配置管理 | 配置文件 + 环境变量 | 兼顾可读性与灵活性 |
+| 可观测性 | 日志 + 健康检查 | 方便定位问题 |
+| 扩展方式 | 模块化组织 | 后续可按需增加功能 |
+
+### 需要关注的指标
+
+在生产环境中落地类似方案时，建议留意：
+
+- 关键路径的响应延迟
+- CPU、内存、磁盘和网络资源使用
+- 并发量与吞吐量变化
+- 错误率和异常告警
+
+---
+
+## 🛡️ 安全与最佳实践
+
+### 安全建议
+
+- 生产环境不要使用默认密码、密钥或令牌。
+- 定期将依赖升级到稳定的最新版本。
+- 敏感配置优先使用密钥管理工具或环境变量注入。
+- 通过防火墙、安全组或网络策略限制访问范围。
+
+### 操作建议
+
+- 修改配置前备份现有环境。
+- 将配置文件和脚本纳入版本控制。
+- 为核心路径补充自动化测试。
+- 保留运行日志以便审计和排障。
+
+---
+
+## 🧪 进阶实验
+
+基础流程跑通后，可以尝试：
+
+1. 调整关键参数，观察对结果的影响。
+2. 模拟异常场景，验证容错能力。
+3. 增加负载，分析系统瓶颈。
+4. 与其他组件组合，形成完整链路。
+
+---
+
+## 📚 扩展资源
+
+- 相关技术的官方文档
+- [OpenDemo 项目主页](https://github.com/opendemo)
+- GitHub Discussions 与技术社区
+
+---
+
+## 🤝 贡献与反馈
+
+如发现内容有误或希望补充，欢迎提交 Issue 或 Pull Request。
+
+---
+
+*本 README 由 OpenDemo 自动生成并持续维护，欢迎根据实际案例补充细节。*
+
+
+---
+
+## 🔄 Promise.allSettled
+
+等待所有 Promise 完成，无论成功或失败：
+
+```javascript
+const results = await Promise.allSettled([
+    fetchUser(1),
+    fetchUser(2)
+]);
+
+results.forEach(result => {
+    if (result.status === 'fulfilled') {
+        console.log(result.value);
+    } else {
+        console.error(result.reason);
+    }
+});
 ```
-然后运行：
-```bash
-node file-read-callback.js
-```
-预期输出：
-```
-文件内容读取成功：Hello, World!
-```
 
-### 步骤4：运行嵌套回调示例
-```bash
-node nested-callbacks.js
-```
-预期输出：
-```
-第一步完成：准备数据
-第二步完成：处理数据
-最终结果：DATA_PROCESSED
+---
+
+## 🚦 Promise.race
+
+```javascript
+const fastest = await Promise.race([
+    fetchFromPrimary(),
+    fetchFromBackup()
+]);
 ```
 
-## 代码解析
 
-### callback-basics.js
-演示了如何定义和调用一个简单的异步回调函数，使用 `setTimeout` 模拟延迟操作。
+---
 
-### file-read-callback.js
-使用Node.js内置 `fs` 模块的 `readFile` 方法，展示典型的错误优先回调模式：第一个参数是错误对象，第二个是数据。
+## 🧪 回调测试
 
-### nested-callbacks.js
-展示了多个异步操作依次执行时的嵌套回调结构，虽然功能正确，但代码可读性差，为后续学习Promise做铺垫。
+使用 Mocha 或 Jest 测试回调函数：
 
-## 预期输出示例
-所有脚本应无语法错误地运行，并输出相应的成功消息。若文件不存在，`file-read-callback.js` 将输出错误信息。
-
-## 常见问题解答
-
-**Q: 运行时报错 `Cannot find module 'fs'`？**
-A: `fs` 是Node.js内置模块，此错误通常意味着你正在浏览器中运行代码。请使用 `node filename.js` 命令在Node.js环境中运行。
-
-**Q: 什么是‘回调地狱’？**
-A: 当多个异步操作层层嵌套时，代码缩进严重，难以阅读和维护，称为回调地狱。建议后续学习Promise和async/await来解决。
-
-**Q: 回调函数的第一个参数为什么通常是error？**
-A: 这是Node.js的约定——“错误优先回调”，便于统一处理异步错误。
-
-## 扩展学习建议
-- 学习 Promise 对象以改善异步代码结构
-- 掌握 async/await 语法糖，写出更清晰的异步代码
-- 阅读 Node.js 官方文档中关于错误处理和流的部分
-- 尝试将本示例中的嵌套回调改写为Promise版本
+```javascript
+it('should read file', (done) => {
+    readFile('test.txt', (err, data) => {
+        expect(err).to.be.null;
+        expect(data).to.equal('hello');
+        done();
+    });
+});
+```

@@ -1,21 +1,47 @@
 {
-  "name": "Higress 服务网格演示",
-  "description": "基于 Istio 的云原生 API 网关服务网格功能演示",
-  "category": "traffic",
-  "tags": ["higress", "service-mesh", "api-gateway", "istio", "microservices"],
-  "difficulty": "advanced",
-  "estimated_time": "4-6 hours",
-  "prerequisites": ["kubernetes-basics", "docker-compose"],
-  "learning_objectives": [
-    "掌握 Higress 服务网格的核心概念",
-    "学会配置流量路由和负载均衡",
-    "理解服务安全和认证机制",
-    "熟悉监控和链路追踪配置",
-    "实践灰度发布和蓝绿部署"
+  "name": "Higress 服务网格集成",
+  "language": "traffic",
+  "difficulty": "expert",
+  "description": "演示 Higress 与 Istio 服务网格的集成，实现东西向流量治理、可观测性和安全策略。",
+  "keywords": [
+    "higress",
+    "service-mesh",
+    "istio",
+    "traffic-governance",
+    "observability"
   ],
-  "technologies": ["Higress", "Istio", "Kubernetes", "Docker"],
-  "created_at": "2026-02-05",
-  "updated_at": "2026-02-05",
-  "status": "planned",
-  "version": "1.0.0"
+  "author": "OpenDemo Team",
+  "version": "1.0.0",
+  "created_at": "2026-06-27",
+  "updated_at": "2026-06-27T02:15:00",
+  "verified": true,
+  "verified_at": "2026-06-27T02:15:00",
+  "estimated_time": "45-75分钟",
+  "prerequisites": [
+    "Docker",
+    "Docker Compose",
+    "HTTP 基础"
+  ],
+  "files": [
+    "README.md",
+    "metadata.json",
+    "docker-compose.yml",
+    "configs/higress.yml",
+    "scripts/start.sh",
+    "scripts/stop.sh",
+    "scripts/check.sh"
+  ],
+  "dependencies": {
+    "software": [
+      "Docker",
+      "Docker Compose"
+    ]
+  },
+  "compatibility": {
+    "operating_systems": [
+      "linux",
+      "macos",
+      "windows(wsl)"
+    ]
+  }
 }

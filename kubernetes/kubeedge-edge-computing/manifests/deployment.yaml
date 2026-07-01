@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kubeedge-edge-computing
+  labels:
+    app: kubeedge-edge-computing
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kubeedge-edge-computing
+  template:
+    metadata:
+      labels:
+        app: kubeedge-edge-computing
+    spec:
+      containers:
+      - name: demo
+        image: nginx:alpine
+        ports:
+        - containerPort: 80

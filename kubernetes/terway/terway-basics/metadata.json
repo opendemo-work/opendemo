@@ -15,7 +15,7 @@
   "version": "1.0.0",
   "author": "OpenDemo Team",
   "created_at": "2026-01-30",
-  "updated_at": "2026-01-30",
+  "updated_at": "2026-06-27T00:00:00",
   "files": [
     "README.md",
     "terway-daemonset.yaml",
@@ -40,5 +40,8 @@
     "kubernetes": ">=1.20",
     "cloud_provider": "alibaba-cloud",
     "cni_version": ">=0.3.1"
-  }
+  },
+  "verified": true,
+  "verified_at": "2026-06-27T00:00:00",
+  "dependencies": {}
 }

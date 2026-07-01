@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: service-ingress-integration-demo
+  labels:
+    app: service-ingress-integration-demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: service-ingress-integration-demo
+  template:
+    metadata:
+      labels:
+        app: service-ingress-integration-demo
+    spec:
+      containers:
+      - name: demo
+        image: nginx:alpine
+        ports:
+        - containerPort: 80

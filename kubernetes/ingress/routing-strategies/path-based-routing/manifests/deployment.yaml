@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: path-based-routing
+  labels:
+    app: path-based-routing
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: path-based-routing
+  template:
+    metadata:
+      labels:
+        app: path-based-routing
+    spec:
+      containers:
+      - name: demo
+        image: nginx:alpine
+        ports:
+        - containerPort: 80

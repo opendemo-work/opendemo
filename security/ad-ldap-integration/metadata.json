@@ -1,8 +1,46 @@
 {
   "name": "AD/LDAP Integration",
   "category": "security",
-  "tech_stack": ["FDE", "Active Directory", "LDAP", "BitLocker", "GPO"],
+  "tech_stack": [
+    "FDE",
+    "Active Directory",
+    "LDAP",
+    "BitLocker",
+    "GPO"
+  ],
   "description": "FDE与AD集成：密钥存储、组策略、LDAP查询、企业部署",
   "difficulty": "advanced",
-  "dependencies": ["PowerShell", "Python", "ldap3"]
+  "dependencies": {
+    "items": [
+      "PowerShell",
+      "Python",
+      "ldap3"
+    ]
+  },
+  "language": "python",
+  "keywords": [
+    "python",
+    "ad"
+  ],
+  "author": "OpenDemo Team",
+  "version": "1.1.0",
+  "created_at": "2025-12-11T17:08:29",
+  "updated_at": "2026-06-27T00:05:00",
+  "verified": true,
+  "verified_at": "2026-06-27T00:05:00",
+  "estimated_time": "60-90分钟",
+  "prerequisites": [
+    "相关基础知识"
+  ],
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "compatibility": {
+    "operating_systems": [
+      "linux",
+      "macos",
+      "windows(wsl)"
+    ]
+  }
 }

@@ -7,10 +7,22 @@
   "last_updated": "2026-02-03",
   "category": "云原生数据库",
   "subcategory": "云数据库服务",
-  "tags": ["cloud-database", "aws-rds", "azure-database", "gcp-cloudsql", "serverless", "managed-service"],
-  "difficulty": "高级",
+  "tags": [
+    "cloud-database",
+    "aws-rds",
+    "azure-database",
+    "gcp-cloudsql",
+    "serverless",
+    "managed-service"
+  ],
+  "difficulty": "intermediate",
   "estimated_time": "240分钟",
-  "prerequisites": ["云计算基础", "数据库基础", "云服务商账号", "基础网络知识"],
+  "prerequisites": [
+    "云计算基础",
+    "数据库基础",
+    "云服务商账号",
+    "基础网络知识"
+  ],
   "learning_objectives": [
     "掌握主流云数据库服务的特点和使用方法",
     "学会云数据库的部署、配置和管理技能",
@@ -23,5 +35,28 @@
     "clarity": "步骤详细可操作",
     "relevance": "企业级应用场景"
   },
-  "validation_status": "pending"
+  "validation_status": "pending",
+  "language": "database",
+  "description": "云数据库服务使用完整指南 的实战演示与配置详解",
+  "keywords": [
+    "database",
+    "elasticsearch",
+    "cloud"
+  ],
+  "created_at": "2025-12-11T17:08:29",
+  "updated_at": "2026-06-26T23:55:00",
+  "verified": true,
+  "verified_at": "2026-06-26T23:55:00",
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "dependencies": {},
+  "compatibility": {
+    "operating_systems": [
+      "linux",
+      "macos",
+      "windows(wsl)"
+    ]
+  }
 }

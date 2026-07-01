@@ -1,8 +1,43 @@
 {
   "name": "Async Demo",
   "category": "concurrency",
-  "tech_stack": ["Java", "Spring Boot", "Spring Async", "CompletableFuture"],
+  "tech_stack": [
+    "Java",
+    "Spring Boot",
+    "Spring Async",
+    "CompletableFuture"
+  ],
   "description": "Spring Boot异步处理演示，包含@Async注解、线程池配置、CompletableFuture",
   "difficulty": "intermediate",
-  "dependencies": ["spring-boot-starter-web"]
+  "dependencies": {
+    "items": [
+      "spring-boot-starter-web"
+    ]
+  },
+  "language": "java",
+  "keywords": [
+    "java",
+    "async"
+  ],
+  "author": "OpenDemo Team",
+  "version": "1.1.0",
+  "created_at": "2025-12-11T17:08:29",
+  "updated_at": "2026-06-27T00:05:00",
+  "verified": true,
+  "verified_at": "2026-06-27T00:05:00",
+  "estimated_time": "60-90分钟",
+  "prerequisites": [
+    "相关基础知识"
+  ],
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "compatibility": {
+    "operating_systems": [
+      "linux",
+      "macos",
+      "windows(wsl)"
+    ]
+  }
 }

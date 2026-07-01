@@ -17,8 +17,16 @@
   "version": "1.0.0",
   "dependencies": {
     "python_version": "3.7+",
-    "required_packages": ["psutil", "cProfile"],
-    "optional_packages": ["memory-profiler", "objgraph", "py-spy", "guppy3"]
+    "required_packages": [
+      "psutil",
+      "cProfile"
+    ],
+    "optional_packages": [
+      "memory-profiler",
+      "objgraph",
+      "py-spy",
+      "guppy3"
+    ]
   },
   "verified": true,
   "estimated_time": "4-5小时",
@@ -54,5 +62,13 @@
     "configs/profiling_config.py",
     "analysis_results/profile_outputs/cpu_profile.txt",
     "docs/python_profiling_guide.md"
-  ]
+  ],
+  "verified_at": "2026-06-27T00:05:00",
+  "compatibility": {
+    "operating_systems": [
+      "linux",
+      "macos",
+      "windows(wsl)"
+    ]
+  }
 }

@@ -7,10 +7,20 @@
   "last_updated": "2026-02-02",
   "category": "高可用架构",
   "subcategory": "负载均衡",
-  "tags": ["load-balancing", "high-availability", "proxy", "connection-pooling", "performance"],
-  "difficulty": "高级",
+  "tags": [
+    "load-balancing",
+    "high-availability",
+    "proxy",
+    "connection-pooling",
+    "performance"
+  ],
+  "difficulty": "intermediate",
   "estimated_time": "240分钟",
-  "prerequisites": ["数据库基础", "网络基础", "高可用架构概念"],
+  "prerequisites": [
+    "数据库基础",
+    "网络基础",
+    "高可用架构概念"
+  ],
   "learning_objectives": [
     "掌握数据库负载均衡的核心原理和实现方式",
     "学会配置主流数据库代理和负载均衡器",
@@ -23,5 +33,28 @@
     "clarity": "步骤详细可操作",
     "relevance": "企业级应用场景"
   },
-  "validation_status": "pending"
+  "validation_status": "pending",
+  "language": "database",
+  "description": "数据库负载均衡配置完整指南 的实战演示与配置详解",
+  "keywords": [
+    "database",
+    "mysql",
+    "load"
+  ],
+  "created_at": "2025-12-11T17:08:29",
+  "updated_at": "2026-06-26T23:55:00",
+  "verified": true,
+  "verified_at": "2026-06-26T23:55:00",
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "dependencies": {},
+  "compatibility": {
+    "operating_systems": [
+      "linux",
+      "macos",
+      "windows(wsl)"
+    ]
+  }
 }

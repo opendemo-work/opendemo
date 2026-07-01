@@ -1,8 +1,44 @@
 {
   "name": "Recovery Key Escrow",
   "category": "security",
-  "tech_stack": ["FDE", "Key Escrow", "Azure AD", "Encryption"],
+  "tech_stack": [
+    "FDE",
+    "Key Escrow",
+    "Azure AD",
+    "Encryption"
+  ],
   "description": "恢复密钥托管：加密存储、访问控制、审计日志、合规交付",
   "difficulty": "advanced",
-  "dependencies": ["Python", "Azure AD"]
+  "dependencies": {
+    "items": [
+      "Python",
+      "Azure AD"
+    ]
+  },
+  "language": "python",
+  "keywords": [
+    "python",
+    "recovery"
+  ],
+  "author": "OpenDemo Team",
+  "version": "1.1.0",
+  "created_at": "2025-12-11T17:08:29",
+  "updated_at": "2026-06-27T00:05:00",
+  "verified": true,
+  "verified_at": "2026-06-27T00:05:00",
+  "estimated_time": "60-90分钟",
+  "prerequisites": [
+    "相关基础知识"
+  ],
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "compatibility": {
+    "operating_systems": [
+      "linux",
+      "macos",
+      "windows(wsl)"
+    ]
+  }
 }

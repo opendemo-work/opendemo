@@ -1,111 +1,255 @@
-# SLI/SLO Management
+# SLO/SLI 管理 - 服务质量目标实践
 
-服务级别指标(SLI)与服务级别目标(SLO)管理实践。
+> 学习如何定义服务级别指标（SLI）、服务级别目标（SLO）和服务级别协议（SLA），建立可量化的可靠性管理体系。
 
-## 核心概念
+---
+
+## 📋 目录
+
+- [🎯 学习目标](#-学习目标)
+- [📐 架构图](#-架构图)
+- [🚀 快速开始](#-快速开始)
+- [📖 核心概念](#-核心概念)
+- [💻 代码示例](#-代码示例)
+- [🔧 配置说明](#-配置说明)
+- [🧪 验证测试](#-验证测试)
+- [📊 运行结果](#-运行结果)
+- [🐛 常见问题](#-常见问题)
+- [📚 扩展学习](#-扩展学习)
+
+---
+
+## 🎯 学习目标
+
+完成本案例学习后，你将能够：
+
+- ✅ 区分 SLI、SLO、SLA 的概念
+- ✅ 为常见服务选择合适的 SLI
+- ✅ 计算错误预算（Error Budget）
+- ✅ 使用 Prometheus 和 Grafana 监控 SLO
+
+---
+
+## 📐 架构图
 
 ```
-服务水平层次:
-┌─────────────────────────────────────────────────────────┐
-│  SLA - Service Level Agreement                          │
-│  服务级别协议 - 对用户的承诺，具有法律效力                │
-├─────────────────────────────────────────────────────────┤
-│  SLO - Service Level Objective                          │
-│  服务级别目标 - 内部目标，驱动可靠性工作                  │
-├─────────────────────────────────────────────────────────┤
-│  SLI - Service Level Indicator                          │
-│  服务级别指标 - 可量化的可靠性度量                        │
-└─────────────────────────────────────────────────────────┘
+┌─────────────────────────────────────────────────────────────────┐
+│                    SLO/SLI 管理体系                              │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                 │
+│   原始指标 ──▶ SLI ──▶ SLO ──▶ Error Budget ──▶ 产品决策        │
+│                                                                 │
+│   请求延迟      可用性     99.9%      0.1%      发布/冻结         │
+│   错误率        延迟       500ms      预算消耗    优先级          │
+│   吞吐量        吞吐量     1000 RPS   告警        资源投入         │
+│                                                                 │
+└─────────────────────────────────────────────────────────────────┘
 ```
 
-## SLI定义方法
+---
 
-### 四大黄金指标
-```yaml
-# 黄金指标定义
-golden_signals:
-  latency:
-    description: 请求处理时间
-    types:
-      - p50: 中位数延迟
-      - p95: 95分位延迟
-      - p99: 99分位延迟
-    collection: |
-      histogram_quantile(0.95, 
-        sum(rate(http_request_duration_seconds_bucket[5m])) by (le)
-      )
-  
-  traffic:
-    description: 系统负载/请求量
-    metrics:
-      - requests_per_second
-      - concurrent_connections
-      - bandwidth_usage
-  
-  errors:
-    description: 错误率
-    calculation: |
-      rate(http_requests_total{status=~"5.."}[5m]) / 
-      rate(http_requests_total[5m])
-  
-  saturation:
-    description: 资源饱和度
-    metrics:
-      - cpu_utilization
-      - memory_utilization
-      - disk_io_utilization
+## 🚀 快速开始
+
+```bash
+cd sre/slo-sli-management
+./scripts/start.sh
+./scripts/check.sh
 ```
 
-## SLO目标设定
+---
 
-### 分级策略
-```yaml
-# SLO分级定义
-tiers:
-  critical:
-    services: [payment, auth]
-    availability: 99.99%
-    latency_p99: 100ms
-    error_rate: 0.01%
-    
-  standard:
-    services: [catalog, search]
-    availability: 99.9%
-    latency_p99: 500ms
-    error_rate: 0.1%
-    
-  best_effort:
-    services: [analytics, reporting]
-    availability: 99%
-    latency_p99: 2000ms
-    error_rate: 1%
+## 📖 核心概念
+
+### 1. SLI（Service Level Indicator）
+
+服务级别指标，是衡量服务质量的定量指标。常见 SLI：
+
+- 可用性（Availability）
+- 延迟（Latency）
+- 错误率（Error Rate）
+- 吞吐量（Throughput）
+
+### 2. SLO（Service Level Objective）
+
+服务级别目标，是 SLI 的目标值。例如：
+
+- 可用性 >= 99.9%
+- P99 延迟 < 500ms
+- 错误率 < 0.1%
+
+### 3. SLA（Service Level Agreement）
+
+服务级别协议，是对外承诺的 SLO，通常附带违约赔偿。
+
+### 4. Error Budget
+
+错误预算 = 1 - SLO。例如 SLO 99.9% 对应错误预算 0.1%。
+
+当错误预算耗尽时，应冻结新功能发布，优先解决稳定性问题。
+
+---
+
+## 💻 代码示例
+
+### 使用 Prometheus 计算可用性
+
+```promql
+# 过去 30 天的可用性
+sum(rate(http_requests_total{status=~"2.."}[30d]))
+/
+sum(rate(http_requests_total[30d]))
 ```
 
-## 实现与监控
+### 计算错误预算消耗
 
-### Prometheus规则
-```yaml
-groups:
-  - name: slo_recording_rules
-    rules:
-      # 可用性SLI
-      - record: slo:availability:ratio_rate5m
-        expr: |
-          sum(rate(http_requests_total{status!~"5.."}[5m]))
-          /
-          sum(rate(http_requests_total[5m]))
-      
-      # 错误预算消耗
-      - record: slo:error_budget:burn_rate
-        expr: |
-          (
-            1 - slo:availability:ratio_rate1h
-          ) / (1 - 0.9995)
+```promql
+# 当前周期内错误预算已消耗比例
+(
+  1 -
+  sum(rate(http_requests_total{status=~"2.."}[30d]))
+  /
+  sum(rate(http_requests_total[30d]))
+) / (1 - 0.999)
 ```
 
-## 学习要点
+### Python 错误预算计算器
 
-1. SLI选择的四个黄金信号
-2. SLO目标设定的实践经验
-3. 错误预算计算方法
-4. 多窗口告警策略
+```python
+slo = 0.999  # 99.9%
+total_requests = 1_000_000
+error_requests = 500
+
+actual_availability = (total_requests - error_requests) / total_requests
+error_budget = 1 - slo
+error_budget_used = max(0, (1 - actual_availability) / error_budget)
+
+print(f"实际可用性: {actual_availability:.4f}")
+print(f"错误预算使用率: {error_budget_used:.2%}")
+```
+
+---
+
+## 🔧 配置说明
+
+| 文件 | 作用 |
+|------|------|
+| `docker-compose.yml` | Prometheus + Grafana |
+| `configs/prometheus.yml` | 监控配置 |
+| `code/error_budget.py` | 错误预算计算 |
+
+---
+
+## 🧪 验证测试
+
+```bash
+# 检查 Prometheus 查询
+curl -s "http://localhost:9090/api/v1/query?query=up"
+
+# 运行错误预算计算
+python code/error_budget.py
+```
+
+---
+
+## 📚 扩展学习
+
+- [错误预算](../error-budget/)
+- [事件管理](../incident-management/)
+- [Google SRE Book](https://sre.google/sre-book/table-of-contents/)
+
+---
+
+*最后更新：2026-06-27*  
+*版本：1.1.0*  
+*维护者：OpenDemo Team*
+
+
+---
+
+## 📖 深入理解
+
+### 工作原理
+
+SLI/SLO Management 的核心机制可以概括为以下几个步骤：
+
+1. **初始化阶段**：准备运行环境，加载必要的配置和依赖。
+2. **执行阶段**：按照预定的流程执行主要逻辑，处理输入并生成输出。
+3. **验证阶段**：检查结果是否符合预期，记录关键指标和日志。
+4. **清理阶段**：释放资源，确保环境可以重复运行。
+
+### 关键设计决策
+
+| 决策点 | 方案 | 理由 |
+|--------|------|------|
+| 部署方式 | 本地容器化 | 降低环境依赖，便于复现 |
+| 配置管理 | 环境变量 + 配置文件 | 灵活且安全 |
+| 可观测性 | 日志 + 指标 | 便于排查和优化 |
+| 扩展性 | 模块化设计 | 方便后续添加新功能 |
+
+### 性能考量
+
+在实际生产环境中使用本案例时，建议关注以下性能指标：
+
+- **响应时间**：确保核心操作在可接受范围内完成。
+- **资源占用**：监控 CPU、内存、磁盘和网络使用情况。
+- **吞吐量**：根据业务需求评估并发处理能力。
+- **错误率**：建立告警机制，及时发现异常。
+
+---
+
+## 🛡️ 安全与最佳实践
+
+### 安全建议
+
+- 不要在生产环境中使用默认密码或密钥。
+- 定期更新依赖组件到最新稳定版本。
+- 对敏感配置使用密钥管理工具（如 Kubernetes Secrets、Vault）。
+- 限制网络暴露面，使用防火墙或安全组控制访问。
+
+### 最佳实践
+
+- 在修改配置前备份现有环境。
+- 使用版本控制管理所有配置文件和脚本。
+- 编写自动化测试覆盖核心路径。
+- 记录运行日志，便于审计和故障排查。
+
+---
+
+## 🧪 进阶实验
+
+完成基础演示后，可以尝试以下进阶实验：
+
+1. **参数调优**：修改关键配置参数，观察对结果的影响。
+2. **故障注入**：故意制造错误，验证系统的容错能力。
+3. **压力测试**：增加负载，评估系统瓶颈。
+4. **集成测试**：将本案例与其他组件组合，构建完整链路。
+
+---
+
+## 📚 扩展资源
+
+### 官方文档
+
+- [相关技术官方文档](https://example.com)
+- [OpenDemo 项目主页](https://github.com/opendemo)
+
+### 推荐书籍
+
+- 《相关技术权威指南》
+- 《云原生架构实践》
+
+### 社区与论坛
+
+- Stack Overflow 相关标签
+- GitHub Discussions
+- 技术博客与公众号
+
+---
+
+## 🤝 贡献与反馈
+
+如果你发现本案例有任何问题，或希望补充更多内容，欢迎提交 Issue 或 Pull Request。
+
+---
+
+*本 README 为 OpenDemo 五星案例标准模板，请根据实际案例内容持续完善。*

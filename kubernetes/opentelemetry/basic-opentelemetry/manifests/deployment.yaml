@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: basic-opentelemetry
+  labels:
+    app: basic-opentelemetry
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: basic-opentelemetry
+  template:
+    metadata:
+      labels:
+        app: basic-opentelemetry
+    spec:
+      containers:
+      - name: demo
+        image: nginx:alpine
+        ports:
+        - containerPort: 80

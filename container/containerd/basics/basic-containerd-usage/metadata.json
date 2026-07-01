@@ -1,6 +1,6 @@
 {
   "name": "Containerd基础使用入门",
-  "language": "containerd",
+  "language": "python",
   "category": "container",
   "subcategory": "containerd-basics",
   "difficulty": "intermediate",
@@ -39,5 +39,8 @@
       "linux"
     ],
     "kubernetes_compatible": true
-  }
+  },
+  "dependencies": {},
+  "verified": true,
+  "verified_at": "2026-06-27T00:05:00"
 }

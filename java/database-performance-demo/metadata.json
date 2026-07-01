@@ -57,5 +57,13 @@
     "src/main/java/com/example/demo/controller/PerformanceController.java",
     "src/main/resources/application.yml",
     "src/test/java/com/example/demo/DatabasePerformanceApplicationTest.java"
-  ]
+  ],
+  "verified_at": "2026-06-27T00:05:00",
+  "compatibility": {
+    "operating_systems": [
+      "linux",
+      "macos",
+      "windows(wsl)"
+    ]
+  }
 }

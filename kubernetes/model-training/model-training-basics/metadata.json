@@ -17,16 +17,36 @@
   ],
   "version": "1.0.0",
   "created_at": "2026-01-30",
-  "updated_at": "2026-01-30",
+  "updated_at": "2026-06-27T00:00:00",
   "difficulty": "beginner",
   "estimated_time": "8-12 hours",
   "compatibility": {
-    "kubernetes": ["v1.23.x", "v1.24.x", "v1.25.x", "v1.26.x", "v1.27.x", "v1.28.x", "v1.29.x"],
-    "gpu": ["nvidia-a100", "nvidia-h100", "nvidia-l4", "nvidia-v100"],
-    "cuda": ["11.7", "11.8", "12.0", "12.1"]
+    "kubernetes": [
+      "v1.23.x",
+      "v1.24.x",
+      "v1.25.x",
+      "v1.26.x",
+      "v1.27.x",
+      "v1.28.x",
+      "v1.29.x"
+    ],
+    "gpu": [
+      "nvidia-a100",
+      "nvidia-h100",
+      "nvidia-l4",
+      "nvidia-v100"
+    ],
+    "cuda": [
+      "11.7",
+      "11.8",
+      "12.0",
+      "12.1"
+    ]
   },
   "author": "opendemo",
-  "maintainers": ["opendemo"],
+  "maintainers": [
+    "opendemo"
+  ],
   "license": "MIT",
   "status": "active",
   "tags": [
@@ -54,17 +74,36 @@
     {
       "name": "environment-setup",
       "title": "环境搭建",
-      "files": ["namespace.yaml", "nvidia-device-plugin.yaml", "storage.yaml"]
+      "files": [
+        "namespace.yaml",
+        "nvidia-device-plugin.yaml",
+        "storage.yaml"
+      ]
     },
     {
       "name": "training-scripts",
       "title": "训练脚本",
-      "files": ["train.py", "preprocess_data.py", "monitor_training.py"]
+      "files": [
+        "train.py",
+        "preprocess_data.py",
+        "monitor_training.py"
+      ]
     },
     {
       "name": "configuration",
       "title": "配置文件",
-      "files": ["Dockerfile.training-base", "requirements.txt", "training-job.yaml"]
+      "files": [
+        "Dockerfile.training-base",
+        "requirements.txt",
+        "training-job.yaml"
+      ]
     }
-  ]
+  ],
+  "verified": true,
+  "verified_at": "2026-06-27T00:00:00",
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "dependencies": {}
 }

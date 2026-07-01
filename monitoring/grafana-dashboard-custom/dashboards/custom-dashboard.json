@@ -1,0 +1,19 @@
+{
+  "dashboard": {
+    "title": "Custom Node Dashboard",
+    "panels": [
+      {
+        "title": "CPU Usage",
+        "type": "timeseries",
+        "targets": [
+          {
+            "expr": "100 - (avg by(instance) (irate(node_cpu_seconds_total{mode=\"idle\"}[5m])) * 100)",
+            "legendFormat": "{{instance}}"
+          }
+        ],
+        "gridPos": {"h": 8, "w": 12, "x": 0, "y": 0}
+      }
+    ],
+    "schemaVersion": 36
+  }
+}

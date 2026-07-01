@@ -1,8 +1,18 @@
 {
   "name": "basic-containerd-troubleshooting",
   "title": "Containerd故障排查与应急处理实战",
-  "language": "containerd",
-  "keywords": ["containerd", "troubleshooting", "container", "故障排查", "应急处理", "cri", "crictl", "ctr", "containerd-daemon"],
+  "language": "python",
+  "keywords": [
+    "containerd",
+    "troubleshooting",
+    "container",
+    "故障排查",
+    "应急处理",
+    "cri",
+    "crictl",
+    "ctr",
+    "containerd-daemon"
+  ],
   "description": "全面的Containerd故障排查指南，包含Containerd守护进程故障、容器启动失败、镜像拉取失败、容器网络问题、存储驱动问题等常见故障的排查方法和解决方案。",
   "difficulty": "intermediate",
   "author": "Containerd专家团队",
@@ -12,7 +22,39 @@
   "verified": true,
   "category": "故障排查",
   "library": "troubleshooting",
-  "tags": ["故障排查", "Containerd", "CRI", "容器", "应急处理", "containerd-daemon"],
-  "requires": ["containerd", "crictl", "ctr", "systemctl", "journalctl", "netstat", "df", "free"],
-  "estimated_time": "60分钟"
+  "tags": [
+    "故障排查",
+    "Containerd",
+    "CRI",
+    "容器",
+    "应急处理",
+    "containerd-daemon"
+  ],
+  "requires": [
+    "containerd",
+    "crictl",
+    "ctr",
+    "systemctl",
+    "journalctl",
+    "netstat",
+    "df",
+    "free"
+  ],
+  "estimated_time": "60分钟",
+  "dependencies": {},
+  "verified_at": "2026-06-27T00:05:00",
+  "prerequisites": [
+    "相关基础知识"
+  ],
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "compatibility": {
+    "operating_systems": [
+      "linux",
+      "macos",
+      "windows(wsl)"
+    ]
+  }
 }

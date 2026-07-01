@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pod-connectivity-diagnosis
+  labels:
+    app: pod-connectivity-diagnosis
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pod-connectivity-diagnosis
+  template:
+    metadata:
+      labels:
+        app: pod-connectivity-diagnosis
+    spec:
+      containers:
+      - name: demo
+        image: nginx:alpine
+        ports:
+        - containerPort: 80

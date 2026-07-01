@@ -2,13 +2,45 @@
   "name": "prompt-patterns",
   "category": "llm-application",
   "difficulty": "intermediate",
-  "language": "python",
-  "keywords": ["prompt-patterns", "prompt-engineering", "templates", "few-shot"],
+  "language": "ai-ml",
+  "keywords": [
+    "prompt-patterns",
+    "prompt-engineering",
+    "templates",
+    "few-shot"
+  ],
   "description": "高级 Prompt 模式：模板系统、验证链、角色扮演",
   "estimated_time": "2-3 hours",
-  "prerequisites": ["prompt-engineering-basics"],
-  "learning_objectives": ["掌握 Prompt 模板系统", "理解验证链模式", "提升 Prompt 效果"],
-  "content_types": ["tutorial", "patterns"],
+  "prerequisites": [
+    "prompt-engineering-basics"
+  ],
+  "learning_objectives": [
+    "掌握 Prompt 模板系统",
+    "理解验证链模式",
+    "提升 Prompt 效果"
+  ],
+  "content_types": [
+    "tutorial",
+    "patterns"
+  ],
   "quality_standard": "five-star",
-  "created_date": "2026-06-01"
+  "created_date": "2026-06-01",
+  "dependencies": {},
+  "author": "OpenDemo Team",
+  "version": "1.1.0",
+  "created_at": "2025-12-11T17:08:29",
+  "updated_at": "2026-06-27T00:10:00",
+  "verified": true,
+  "verified_at": "2026-06-27T00:10:00",
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "compatibility": {
+    "operating_systems": [
+      "linux",
+      "macos",
+      "windows(wsl)"
+    ]
+  }
 }

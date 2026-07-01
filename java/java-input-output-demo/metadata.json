@@ -1,7 +1,14 @@
 {
   "name": "java-input-output-demo",
   "language": "java",
-  "keywords": ["java", "io", "nio", "file", "serialization", "streams"],
+  "keywords": [
+    "java",
+    "io",
+    "nio",
+    "file",
+    "serialization",
+    "streams"
+  ],
   "description": "Java输入输出操作完整演示，涵盖文件读写、缓冲流、NIO、对象序列化等核心IO功能",
   "difficulty": "intermediate",
   "author": "OpenDemo Team",
@@ -15,7 +22,10 @@
   },
   "verified": false,
   "estimated_time": "2-3小时",
-  "prerequisites": ["java-variables-types-demo", "java-control-flow-demo"],
+  "prerequisites": [
+    "java-variables-types-demo",
+    "java-control-flow-demo"
+  ],
   "learning_outcomes": [
     "掌握Java IO流的基本概念和分类",
     "熟练使用文件读写和缓冲流操作",
@@ -30,5 +40,17 @@
     "NIO Channel和Buffer操作",
     "对象序列化(Serializable)",
     "InputStreamReader/OutputStreamWriter编码转换"
-  ]
+  ],
+  "verified_at": "2026-06-27T00:05:00",
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "compatibility": {
+    "operating_systems": [
+      "linux",
+      "macos",
+      "windows(wsl)"
+    ]
+  }
 }

@@ -1,0 +1,57 @@
+version: '3.8'
+
+services:
+  mysql-master:
+    image: mysql:8.0
+    container_name: mysql-master
+    hostname: mysql-master
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpass
+      MYSQL_DATABASE: demo
+      MYSQL_USER: demo
+      MYSQL_PASSWORD: demopass
+    ports:
+      - "3306:3306"
+    volumes:
+      - master-data:/var/lib/mysql
+      - ./configs/master.cnf:/etc/mysql/conf.d/master.cnf:ro
+    networks:
+      - mysql-ha
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-prootpass"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  mysql-slave:
+    image: mysql:8.0
+    container_name: mysql-slave
+    hostname: mysql-slave
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpass
+      MYSQL_DATABASE: demo
+      MYSQL_USER: demo
+      MYSQL_PASSWORD: demopass
+    ports:
+      - "3307:3306"
+    volumes:
+      - slave-data:/var/lib/mysql
+      - ./configs/slave.cnf:/etc/mysql/conf.d/slave.cnf:ro
+    networks:
+      - mysql-ha
+    depends_on:
+      mysql-master:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-prootpass"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  master-data:
+  slave-data:
+
+networks:
+  mysql-ha:
+    driver: bridge

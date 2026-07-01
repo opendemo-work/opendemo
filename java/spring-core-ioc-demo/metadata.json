@@ -34,5 +34,18 @@
     "理解依赖注入的原理和实现",
     "了解Bean的生命周期管理",
     "掌握Spring注解的使用"
-  ]
+  ],
+  "verified": true,
+  "verified_at": "2026-06-27T00:05:00",
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "compatibility": {
+    "operating_systems": [
+      "linux",
+      "macos",
+      "windows(wsl)"
+    ]
+  }
 }

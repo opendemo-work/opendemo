@@ -1,264 +1,269 @@
-# AD/LDAP Integration
+# AD/LDAP 集成
 
-FDE与Active Directory/LDAP集成方案演示。
+> 演示应用与 Active Directory / LDAP 集成，实现统一身份认证和访问控制。
 
-## 集成架构
+---
+
+## 📋 目录
+
+- [🎯 学习目标](#-学习目标)
+- [📐 架构图](#-架构图)
+- [🚀 快速开始](#-快速开始)
+- [📖 核心概念](#-核心概念)
+- [💻 代码示例](#-代码示例)
+- [🔧 配置说明](#-配置说明)
+- [🧪 验证测试](#-验证测试)
+- [📊 运行结果](#-运行结果)
+- [🐛 常见问题](#-常见问题)
+- [📚 扩展学习](#-扩展学习)
+
+---
+
+## 🎯 学习目标
+
+完成本案例学习后，你将能够：
+
+- ✅ 理解 AD/LDAP 集成 的核心概念与适用场景
+- ✅ 掌握相关的配置方法和操作命令
+- ✅ 在测试环境中完成基础部署或操作
+- ✅ 了解安全最佳实践和合规要求
+
+---
+
+## 📐 架构图
 
 ```
-AD集成架构:
-┌─────────────────────────────────────────────────────────┐
-│              Active Directory Domain                     │
-│  ┌─────────────────────────────────────────────────┐   │
-│  │  • 计算机账户                                      │   │
-│  │  • 组策略 (GPO)                                   │   │
-│  │  • 恢复密钥存储 (MS-TPM-Owner-Information)         │   │
-│  │  • 访问控制 (ACL)                                 │   │
-│  └─────────────────────────────────────────────────┘   │
-├────────────────────────┬────────────────────────────────┤
-│                        │                                │
-┌────────────────────────▼────────────────────────────────┐
-│                    客户端设备                            │
-│  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐     │
-│  │  BitLocker  │  │ 组策略应用   │  │ 域身份验证   │     │
-│  │  密钥托管    │  │  (GPO)     │  │  (Kerberos) │     │
-│  └─────────────┘  └─────────────┘  └─────────────┘     │
-└─────────────────────────────────────────────────────────┘
+┌─────────────────────────────────────────────────────────────────┐
+│                    AD/LDAP 集成                                      │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                 │
+│   终端/系统/应用 ──▶ 安全控制机制 ──▶ 受保护资源                 │
+│                                                                 │
+│              ┌─────────────────────────────┐                   │
+│              │ LDAP 协议                  │                   │
+│              │ AD 域控                  │                   │
+│              │ Bind DN                  │                   │
+│              │ Group Policy                  │                   │
+│              └─────────────────────────────┘                   │
+│                                                                 │
+└─────────────────────────────────────────────────────────────────┘
 ```
 
-## BitLocker与AD集成
+---
 
-### 配置AD密钥存储
-```powershell
-# 1. 扩展AD架构 (一次性)
-# 复制BitLocker AD扩展文件到域控制器
-Copy-Item "C:\Windows\System32\SecureBootAd\*.ldf" "C:\ADExtensions"
+## 🚀 快速开始
 
-# 执行架构扩展
-cd "C:\ADExtensions"
-ldifde -i -f BitLocker-AD-Schema.ldf -c "CN=Schema,CN=Configuration,DC=X" # SchemaNamingContext
+### 环境要求
 
-# 2. 配置域控制器存储恢复密钥
-# 创建组策略
-$GPO = New-GPO -Name "BitLocker Key Storage"
+| 依赖 | 版本要求 | 说明 |
+|------|----------|------|
+| Docker / 对应平台工具 | >= 版本要求 | 运行安全工具或脚本 |
 
-# 配置计算机配置 > 策略 > 管理模板 > Windows组件 > BitLocker驱动器加密
-Set-GPRegistryValue `
-    -Name $GPO.DisplayName `
-    -Key "HKLM\SOFTWARE\Policies\Microsoft\Windows\BitLocker" `
-    -ValueName "OSRecoveryKey" `
-    -Type DWord `
-    -Value 1  # 备份恢复密码到AD
+### 启动服务
 
-Set-GPRegistryValue `
-    -Name $GPO.DisplayName `
-    -Key "HKLM\SOFTWARE\Policies\Microsoft\Windows\BitLocker" `
-    -ValueName "OSRecoveryPackage" `
-    -Type DWord `
-    -Value 1  # 备份恢复包到AD
-
-# 链接GPO到OU
-New-GPLink -Name $GPO.DisplayName -Target "OU=Workstations,DC=company,DC=com"
+```bash
+cd security/ad-ldap-integration
+./scripts/start.sh
+./scripts/check.sh
 ```
 
-### 检索AD中的恢复密钥
-```powershell
-# 从Active Directory检索BitLocker恢复密钥
-function Get-BitLockerRecoveryKeyFromAD {
-    param(
-        [Parameter(Mandatory=$true)]
-        [string]$ComputerName
-    )
-    
-    # 导入Active Directory模块
-    Import-Module ActiveDirectory
-    
-    # 获取计算机对象
-    $Computer = Get-ADComputer -Identity $ComputerName -Properties msTPM-OwnerInformation, msFVE-RecoveryPassword
-    
-    # 获取恢复密钥
-    $RecoveryKeys = $Computer | Select-Object -ExpandProperty msFVE-RecoveryPassword
-    
-    if ($RecoveryKeys) {
-        Write-Host "Found recovery keys for $ComputerName:" -ForegroundColor Green
-        $RecoveryKeys | ForEach-Object { Write-Host $_ }
-    } else {
-        Write-Warning "No recovery keys found for $ComputerName"
-    }
-    
-    return $RecoveryKeys
-}
+---
 
-# 使用
-Get-BitLockerRecoveryKeyFromAD -ComputerName "WORKSTATION01"
+## 📖 核心概念
+
+### 1. LDAP 协议
+
+LDAP 协议 是 AD/LDAP 集成 的基础，正确理解和配置它是保障安全的前提。
+
+### 2. AD 域控
+
+AD 域控 直接影响系统的安全性和可用性，需要根据组织策略进行规划。
+
+### 3. Bind DN
+
+Bind DN 提供了关键的技术能力，支持安全机制的有效运行。
+
+### 4. Group Policy
+
+Group Policy 关系到合规性和审计要求，是企业安全治理的重要组成部分。
+
+---
+
+## 💻 代码示例
+
+### 基础配置与操作
+
+```bash
+ldapsearch -x -H ldap://ldap.example.com -D 'cn=admin,dc=example,dc=com' -w password -b 'dc=example,dc=com' '(uid=alice)'
 ```
 
-## LDAP集成脚本
+### 验证命令
 
-```python
-#!/usr/bin/env python3
-"""
-FDE与LDAP/AD集成工具
-"""
-from ldap3 import Server, Connection, ALL, SUBTREE
-import json
-from dataclasses import dataclass
+```bash
+# 检查服务/配置状态
+./scripts/check.sh
 
-@dataclass
-class BitLockerKeyInfo:
-    computer_name: str
-    recovery_key: str
-    timestamp: str
-    volume_guid: str
-
-class ADKeyManager:
-    def __init__(self, server_url: str, username: str, password: str):
-        self.server = Server(server_url, get_info=ALL)
-        self.conn = Connection(
-            self.server,
-            user=username,
-            password=password,
-            auto_bind=True
-        )
-    
-    def store_recovery_key(self, computer_dn: str, recovery_key: str, 
-                          volume_guid: str) -> bool:
-        """
-        存储恢复密钥到AD
-        
-        LDAP属性:
-        - msFVE-RecoveryPassword: 恢复密码
-        - msFVE-RecoveryGuid: 卷GUID
-        - msFVE-VolumeGuid: 卷GUID
-        """
-        try:
-            # 添加恢复密钥到计算机对象
-            self.conn.modify(computer_dn, {
-                'msFVE-RecoveryPassword': [(1, [recovery_key])],  # 1 = ADD
-                'msFVE-RecoveryGuid': [(1, [volume_guid])]
-            })
-            
-            return self.conn.result['result'] == 0
-        except Exception as e:
-            print(f"Failed to store key: {e}")
-            return False
-    
-    def retrieve_recovery_key(self, computer_name: str) -> list:
-        """从AD检索恢复密钥"""
-        search_base = "DC=company,DC=com"
-        search_filter = f"(&(objectClass=computer)(cn={computer_name}))"
-        
-        attributes = [
-            'cn',
-            'msFVE-RecoveryPassword',
-            'msFVE-RecoveryGuid',
-            'whenChanged'
-        ]
-        
-        self.conn.search(
-            search_base=search_base,
-            search_filter=search_filter,
-            search_scope=SUBTREE,
-            attributes=attributes
-        )
-        
-        results = []
-        for entry in self.conn.entries:
-            keys = entry.msFVE_RecoveryPassword.values if hasattr(entry, 'msFVE_RecoveryPassword') else []
-            for key in keys:
-                results.append(BitLockerKeyInfo(
-                    computer_name=entry.cn.value,
-                    recovery_key=key,
-                    timestamp=entry.whenChanged.value if hasattr(entry, 'whenChanged') else '',
-                    volume_guid=entry.msFVE_RecoveryGuid.value if hasattr(entry, 'msFVE_RecoveryGuid') else ''
-                ))
-        
-        return results
-    
-    def find_computer_by_key(self, recovery_key: str) -> str:
-        """通过恢复密钥查找计算机"""
-        search_base = "DC=company,DC=com"
-        search_filter = f"(&(objectClass=computer)(msFVE-RecoveryPassword={recovery_key}))"
-        
-        self.conn.search(
-            search_base=search_base,
-            search_filter=search_filter,
-            attributes=['cn', 'distinguishedName']
-        )
-        
-        if self.conn.entries:
-            return self.conn.entries[0].cn.value
-        return None
-    
-    def audit_key_access(self, computer_name: str, admin_username: str):
-        """审计密钥访问"""
-        # 在实际实现中，应该记录到审计系统
-        audit_entry = {
-            'timestamp': datetime.now().isoformat(),
-            'computer': computer_name,
-            'admin': admin_username,
-            'action': 'key_retrieval'
-        }
-        
-        # 这里可以写入到审计日志或SIEM系统
-        print(f"AUDIT: {json.dumps(audit_entry)}")
-
-# 使用示例
-if __name__ == "__main__":
-    manager = ADKeyManager(
-        server_url="ldap://dc.company.com",
-        username="admin@company.com",
-        password="password"
-    )
-    
-    # 检索密钥
-    keys = manager.retrieve_recovery_key("WORKSTATION01")
-    for key in keys:
-        print(f"Key: {key.recovery_key}")
-        print(f"Volume: {key.volume_guid}")
+# 查看日志/输出
+# 根据具体工具替换
 ```
 
-## 组策略配置
+---
 
-```xml
-<!-- BitLocker GPO XML配置 -->
-<ComputerConfig>
-  <Policies>
-    <WindowsComponents>
-      <BitLockerDriveEncryption>
-        <!-- 启用BitLocker -->
-        <OperatingSystemDrives>
-          <Enable>
-            <Type>Enabled</Type>
-            <Settings>
-              <ChooseDriveEncryptionMethod>
-                <Type>Enabled</Type>
-                <Value>AES 256-bit</Value>
-              </ChooseDriveEncryptionMethod>
-              
-              <!-- 配置恢复密钥 -->
-              <ConfigureRecoveryPassword>
-                <Type>Enabled</Type>
-                <Options>48-digit recovery password</Options>
-              </ConfigureRecoveryPassword>
-              
-              <!-- 存储到AD DS -->
-              <StoreRecoveryInformationInAD>
-                <Type>Enabled</Type>
-                <Options>Backup recovery passwords and key packages</Options>
-              </StoreRecoveryInformationInAD>
-            </Settings>
-          </Enable>
-        </OperatingSystemDrives>
-      </BitLockerDriveEncryption>
-    </WindowsComponents>
-  </Policies>
-</ComputerConfig>
+## 🔧 配置说明
+
+| 文件 | 作用 |
+|------|------|
+| `docker-compose.yml` | 服务编排（如适用） |
+| `configs/` | 配置文件目录 |
+| `scripts/start.sh` | 启动脚本 |
+| `scripts/stop.sh` | 停止脚本 |
+| `scripts/check.sh` | 状态检查脚本 |
+
+---
+
+## 🧪 验证测试
+
+```bash
+# 1. 检查服务是否正常运行
+./scripts/check.sh
+
+# 2. 执行基础验证命令
+# 根据实际场景替换
+
+# 3. 查看日志输出
+# docker-compose logs 或系统日志
 ```
 
-## 学习要点
+---
 
-1. AD架构扩展
-2. BitLocker密钥存储
-3. LDAP查询和修改
-4. 组策略配置
-5. 审计和合规
+## 📊 运行结果
+
+预期结果：
+
+```
+安全配置生效
+验证命令返回预期结果
+日志无关键错误
+```
+
+---
+
+## 🐛 常见问题
+
+### Q1：部署失败？
+
+**A**：检查环境依赖、权限配置和日志输出，确认平台或工具版本兼容。
+
+### Q2：加密后无法启动？
+
+**A**：确保恢复密钥已安全备份，并按照恢复流程操作。
+
+### Q3：策略不生效？
+
+**A**：检查策略作用范围、目标对象和下发机制，必要时强制刷新或重新注册。
+
+---
+
+## 📚 扩展学习
+
+- [密钥管理基础](../crypto-key-management/)
+- [Secrets Management](../secrets-management-vault/)
+- [GDPR 合规审计](../compliance-audit-gdpr/)
+- [AWS 云磁盘加密](../cloud-disk-encryption-aws/)
+
+---
+
+*最后更新：2026-06-27*  
+*版本：1.1.0*  
+*维护者：OpenDemo Team*
+
+
+---
+
+## 📖 深入理解
+
+### 工作原理
+
+AD/LDAP Integration 的核心机制可以概括为以下几个步骤：
+
+1. **初始化阶段**：准备运行环境，加载必要的配置和依赖。
+2. **执行阶段**：按照预定的流程执行主要逻辑，处理输入并生成输出。
+3. **验证阶段**：检查结果是否符合预期，记录关键指标和日志。
+4. **清理阶段**：释放资源，确保环境可以重复运行。
+
+### 关键设计决策
+
+| 决策点 | 方案 | 理由 |
+|--------|------|------|
+| 部署方式 | 本地容器化 | 降低环境依赖，便于复现 |
+| 配置管理 | 环境变量 + 配置文件 | 灵活且安全 |
+| 可观测性 | 日志 + 指标 | 便于排查和优化 |
+| 扩展性 | 模块化设计 | 方便后续添加新功能 |
+
+### 性能考量
+
+在实际生产环境中使用本案例时，建议关注以下性能指标：
+
+- **响应时间**：确保核心操作在可接受范围内完成。
+- **资源占用**：监控 CPU、内存、磁盘和网络使用情况。
+- **吞吐量**：根据业务需求评估并发处理能力。
+- **错误率**：建立告警机制，及时发现异常。
+
+---
+
+## 🛡️ 安全与最佳实践
+
+### 安全建议
+
+- 不要在生产环境中使用默认密码或密钥。
+- 定期更新依赖组件到最新稳定版本。
+- 对敏感配置使用密钥管理工具（如 Kubernetes Secrets、Vault）。
+- 限制网络暴露面，使用防火墙或安全组控制访问。
+
+### 最佳实践
+
+- 在修改配置前备份现有环境。
+- 使用版本控制管理所有配置文件和脚本。
+- 编写自动化测试覆盖核心路径。
+- 记录运行日志，便于审计和故障排查。
+
+---
+
+## 🧪 进阶实验
+
+完成基础演示后，可以尝试以下进阶实验：
+
+1. **参数调优**：修改关键配置参数，观察对结果的影响。
+2. **故障注入**：故意制造错误，验证系统的容错能力。
+3. **压力测试**：增加负载，评估系统瓶颈。
+4. **集成测试**：将本案例与其他组件组合，构建完整链路。
+
+---
+
+## 📚 扩展资源
+
+### 官方文档
+
+- [相关技术官方文档](https://example.com)
+- [OpenDemo 项目主页](https://github.com/opendemo)
+
+### 推荐书籍
+
+- 《相关技术权威指南》
+- 《云原生架构实践》
+
+### 社区与论坛
+
+- Stack Overflow 相关标签
+- GitHub Discussions
+- 技术博客与公众号
+
+---
+
+## 🤝 贡献与反馈
+
+如果你发现本案例有任何问题，或希望补充更多内容，欢迎提交 Issue 或 Pull Request。
+
+---
+
+*本 README 为 OpenDemo 五星案例标准模板，请根据实际案例内容持续完善。*

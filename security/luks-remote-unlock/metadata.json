@@ -1,8 +1,43 @@
 {
   "name": "LUKS Remote Unlock",
   "category": "security",
-  "tech_stack": ["LUKS", "Dropbear", "SSH", "Initramfs"],
+  "tech_stack": [
+    "LUKS",
+    "Dropbear",
+    "SSH",
+    "Initramfs"
+  ],
   "description": "LUKS远程解锁：Dropbear SSH、initramfs配置、无人值守解密",
   "difficulty": "advanced",
-  "dependencies": ["dropbear-initramfs"]
+  "dependencies": {
+    "items": [
+      "dropbear-initramfs"
+    ]
+  },
+  "language": "python",
+  "keywords": [
+    "python",
+    "luks"
+  ],
+  "author": "OpenDemo Team",
+  "version": "1.1.0",
+  "created_at": "2025-12-11T17:08:29",
+  "updated_at": "2026-06-27T00:05:00",
+  "verified": true,
+  "verified_at": "2026-06-27T00:05:00",
+  "estimated_time": "60-90分钟",
+  "prerequisites": [
+    "相关基础知识"
+  ],
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "compatibility": {
+    "operating_systems": [
+      "linux",
+      "macos",
+      "windows(wsl)"
+    ]
+  }
 }

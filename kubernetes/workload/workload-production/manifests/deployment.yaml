@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: workload-production
+  labels:
+    app: workload-production
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: workload-production
+  template:
+    metadata:
+      labels:
+        app: workload-production
+    spec:
+      containers:
+      - name: demo
+        image: nginx:alpine
+        ports:
+        - containerPort: 80

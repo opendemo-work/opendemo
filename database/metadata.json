@@ -2,12 +2,20 @@
   "name": "database-tech-stack",
   "language": "database",
   "keywords": [
-    "mysql", "postgresql", "mongodb", "redis", "database-administration", 
-    "performance-tuning", "troubleshooting", "high-availability", 
-    "cloud-native", "security-compliance", "monitoring-alerting"
+    "mysql",
+    "postgresql",
+    "mongodb",
+    "redis",
+    "database-administration",
+    "performance-tuning",
+    "troubleshooting",
+    "high-availability",
+    "cloud-native",
+    "security-compliance",
+    "monitoring-alerting"
   ],
   "description": "企业级数据库技术栈完整学习体系，涵盖关系型数据库(MySQL/PostgreSQL)和NoSQL数据库(MongoDB/Redis)的全生命周期管理，从基础运维到高可用架构，满足生产环境各种诉求的高质量案例集合",
-  "difficulty": "beginner-to-expert",
+  "difficulty": "intermediate",
   "author": "OpenDemo Team",
   "created_at": "2026-02-02",
   "updated_at": "2026-02-02",
@@ -18,19 +26,35 @@
     "mongodb_version": "4.4+",
     "redis_version": "6.0+",
     "required_tools": [
-      "mysql-client", "postgresql-client", "mongo-shell", "redis-cli",
-      "docker", "kubectl", "helm"
+      "mysql-client",
+      "postgresql-client",
+      "mongo-shell",
+      "redis-cli",
+      "docker",
+      "kubectl",
+      "helm"
     ],
     "optional_tools": [
-      "percona-toolkit", "pgbadger", "mycli", "pgcli", "mongosh",
-      "prometheus", "grafana", "elasticsearch", "kibana"
+      "percona-toolkit",
+      "pgbadger",
+      "mycli",
+      "pgcli",
+      "mongosh",
+      "prometheus",
+      "grafana",
+      "elasticsearch",
+      "kibana"
     ]
   },
   "verified": true,
   "estimated_completion_time": "12周",
   "prerequisites": [
-    "database-basics", "sql-fundamentals", "nosql-fundamentals",
-    "linux-administration", "container-technologies", "kubernetes-basics"
+    "database-basics",
+    "sql-fundamentals",
+    "nosql-fundamentals",
+    "linux-administration",
+    "container-technologies",
+    "kubernetes-basics"
   ],
   "learning_paths": [
     {
@@ -38,9 +62,14 @@
       "cases": 8,
       "duration": "2周",
       "topics": [
-        "installation-configuration", "user-permission-management", 
-        "backup-recovery", "monitoring-setup", "security-hardening",
-        "disaster-recovery", "upgrade-migration", "capacity-planning"
+        "installation-configuration",
+        "user-permission-management",
+        "backup-recovery",
+        "monitoring-setup",
+        "security-hardening",
+        "disaster-recovery",
+        "upgrade-migration",
+        "capacity-planning"
       ]
     },
     {
@@ -48,8 +77,12 @@
       "cases": 6,
       "duration": "2周",
       "topics": [
-        "query-optimization", "index-design", "configuration-tuning", 
-        "partitioning", "caching-strategy", "connection-pool"
+        "query-optimization",
+        "index-design",
+        "configuration-tuning",
+        "partitioning",
+        "caching-strategy",
+        "connection-pool"
       ]
     },
     {
@@ -57,7 +90,9 @@
       "cases": 4,
       "duration": "1周",
       "topics": [
-        "slow-query-analysis", "lock-contention", "replication-lag", 
+        "slow-query-analysis",
+        "lock-contention",
+        "replication-lag",
         "performance-bottleneck"
       ]
     },
@@ -66,9 +101,14 @@
       "cases": 8,
       "duration": "2周",
       "topics": [
-        "master-slave-replication", "read-write-splitting", "cluster-deployment",
-        "failover-switching", "load-balancing", "data-synchronization",
-        "consistency-guarantee", "disaster-recovery-solutions"
+        "master-slave-replication",
+        "read-write-splitting",
+        "cluster-deployment",
+        "failover-switching",
+        "load-balancing",
+        "data-synchronization",
+        "consistency-guarantee",
+        "disaster-recovery-solutions"
       ]
     },
     {
@@ -76,8 +116,12 @@
       "cases": 6,
       "duration": "2周",
       "topics": [
-        "containerized-deployment", "kubernetes-operations", "cloud-databases",
-        "auto-scaling", "multi-region-deployment", "serverless-database"
+        "containerized-deployment",
+        "kubernetes-operations",
+        "cloud-databases",
+        "auto-scaling",
+        "multi-region-deployment",
+        "serverless-database"
       ]
     },
     {
@@ -85,7 +129,10 @@
       "cases": 4,
       "duration": "1周",
       "topics": [
-        "data-encryption", "access-control", "audit-logging", "compliance-certification"
+        "data-encryption",
+        "access-control",
+        "audit-logging",
+        "compliance-certification"
       ]
     },
     {
@@ -93,8 +140,12 @@
       "cases": 6,
       "duration": "2周",
       "topics": [
-        "performance-monitoring", "automated-alerting", "health-checks",
-        "log-analysis", "visualization", "intelligent-warning"
+        "performance-monitoring",
+        "automated-alerting",
+        "health-checks",
+        "log-analysis",
+        "visualization",
+        "intelligent-warning"
       ]
     }
   ],
@@ -115,6 +166,23 @@
     "mttr_requirement": "<= 5 minutes",
     "backup_strategy": "3-2-1 principle",
     "monitoring_coverage": ">= 95%",
-    "security_standards": ["ISO 27001", "SOC 2", "GDPR"]
+    "security_standards": [
+      "ISO 27001",
+      "SOC 2",
+      "GDPR"
+    ]
+  },
+  "verified_at": "2026-06-27T00:05:00",
+  "estimated_time": "60-90分钟",
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "compatibility": {
+    "operating_systems": [
+      "linux",
+      "macos",
+      "windows(wsl)"
+    ]
   }
 }

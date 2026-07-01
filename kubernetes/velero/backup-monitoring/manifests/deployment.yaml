@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backup-monitoring
+  labels:
+    app: backup-monitoring
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backup-monitoring
+  template:
+    metadata:
+      labels:
+        app: backup-monitoring
+    spec:
+      containers:
+      - name: demo
+        image: nginx:alpine
+        ports:
+        - containerPort: 80

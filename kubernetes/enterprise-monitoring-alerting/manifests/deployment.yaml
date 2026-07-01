@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: enterprise-monitoring-alerting
+  labels:
+    app: enterprise-monitoring-alerting
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: enterprise-monitoring-alerting
+  template:
+    metadata:
+      labels:
+        app: enterprise-monitoring-alerting
+    spec:
+      containers:
+      - name: demo
+        image: nginx:alpine
+        ports:
+        - containerPort: 80

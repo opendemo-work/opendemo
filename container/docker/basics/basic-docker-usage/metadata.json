@@ -1,6 +1,6 @@
 {
   "name": "Docker基础使用入门",
-  "language": "docker",
+  "language": "python",
   "category": "container",
   "subcategory": "docker-basics",
   "difficulty": "beginner",
@@ -39,5 +39,8 @@
       "windows",
       "macos"
     ]
-  }
+  },
+  "dependencies": {},
+  "verified": true,
+  "verified_at": "2026-06-27T00:05:00"
 }

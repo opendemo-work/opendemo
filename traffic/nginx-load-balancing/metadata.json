@@ -1,21 +1,50 @@
 {
   "name": "NGINX 负载均衡演示",
-  "description": "使用 NGINX 实现高性能 HTTP/TCP 负载均衡的完整解决方案演示",
-  "category": "traffic",
-  "tags": ["nginx", "load-balancing", "high-availability", "reverse-proxy", "performance"],
+  "language": "traffic",
   "difficulty": "intermediate",
-  "estimated_time": "3-5 hours",
-  "prerequisites": ["http-protocols", "networking-fundamentals"],
-  "learning_objectives": [
-    "掌握 NGINX 负载均衡的核心配置",
-    "理解不同负载均衡算法的特点和适用场景",
-    "学会健康检查和故障转移配置",
-    "实现会话保持和粘性负载",
-    "优化负载均衡器性能和可靠性"
+  "description": "使用 NGINX 实现多种负载均衡算法（轮询、加权、IP哈希、最少连接），对比不同策略的适用场景。",
+  "keywords": [
+    "nginx",
+    "load-balancing",
+    "round-robin",
+    "ip-hash",
+    "least-connections"
   ],
-  "technologies": ["NGINX", "Docker", "HTTP", "TCP/IP"],
-  "created_at": "2026-02-05",
-  "updated_at": "2026-02-05",
-  "status": "planned",
-  "version": "1.0.0"
+  "author": "OpenDemo Team",
+  "version": "1.0.0",
+  "created_at": "2026-06-27",
+  "updated_at": "2026-06-27T02:15:00",
+  "verified": true,
+  "verified_at": "2026-06-27T02:15:00",
+  "estimated_time": "45-75分钟",
+  "prerequisites": [
+    "Docker",
+    "Docker Compose",
+    "HTTP 基础"
+  ],
+  "files": [
+    "README.md",
+    "metadata.json",
+    "docker-compose.yml",
+    "configs/nginx.conf",
+    "html/app1.html",
+    "html/app2.html",
+    "html/app3.html",
+    "scripts/start.sh",
+    "scripts/stop.sh",
+    "scripts/check.sh"
+  ],
+  "dependencies": {
+    "software": [
+      "Docker",
+      "Docker Compose"
+    ]
+  },
+  "compatibility": {
+    "operating_systems": [
+      "linux",
+      "macos",
+      "windows(wsl)"
+    ]
+  }
 }

@@ -6,9 +6,9 @@
     "string manipulation",
     "Go基础"
   ],
-  "description": "演示Go中常用字符串操作的实用示例",
+  "description": "Go字符串处理实战演示 的实战演示与配置详解",
   "difficulty": "beginner",
-  "author": "",
+  "author": "OpenDemo Team",
   "created_at": "2025-12-11T16:08:04.878190",
   "updated_at": "2025-12-11T16:08:04.878190",
   "version": "1.0.0",
@@ -16,5 +16,21 @@
   "verified": false,
   "aliases": [
     "go-go字符串处理实战演示"
-  ]
+  ],
+  "verified_at": "2026-06-27T00:05:00",
+  "estimated_time": "60-90分钟",
+  "prerequisites": [
+    "相关基础知识"
+  ],
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "compatibility": {
+    "operating_systems": [
+      "linux",
+      "macos",
+      "windows(wsl)"
+    ]
+  }
 }

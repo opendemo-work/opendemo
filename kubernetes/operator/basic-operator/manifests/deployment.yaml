@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: basic-operator
+  labels:
+    app: basic-operator
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: basic-operator
+  template:
+    metadata:
+      labels:
+        app: basic-operator
+    spec:
+      containers:
+      - name: demo
+        image: nginx:alpine
+        ports:
+        - containerPort: 80

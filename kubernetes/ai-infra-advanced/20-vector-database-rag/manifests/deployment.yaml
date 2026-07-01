@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: 20-vector-database-rag
+  labels:
+    app: 20-vector-database-rag
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: 20-vector-database-rag
+  template:
+    metadata:
+      labels:
+        app: 20-vector-database-rag
+    spec:
+      containers:
+      - name: demo
+        image: nginx:alpine
+        ports:
+        - containerPort: 80

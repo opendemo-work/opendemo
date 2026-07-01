@@ -2,13 +2,46 @@
   "name": "llm-e2e-testing",
   "category": "llm-harness",
   "difficulty": "advanced",
-  "language": "python",
-  "keywords": ["testing", "e2e", "end-to-end", "conversation", "quality-gate"],
+  "language": "ai-ml",
+  "keywords": [
+    "testing",
+    "e2e",
+    "end-to-end",
+    "conversation",
+    "quality-gate"
+  ],
   "description": "LLM 端到端测试：用户场景模拟、对话流程、质量门禁的全链路验证",
   "estimated_time": "4-5 hours",
-  "prerequisites": ["llm-integration-testing"],
-  "learning_objectives": ["掌握 E2E 测试方法", "模拟用户场景", "设置质量门禁"],
-  "content_types": ["tutorial", "testing-guide"],
+  "prerequisites": [
+    "llm-integration-testing"
+  ],
+  "learning_objectives": [
+    "掌握 E2E 测试方法",
+    "模拟用户场景",
+    "设置质量门禁"
+  ],
+  "content_types": [
+    "tutorial",
+    "testing-guide"
+  ],
   "quality_standard": "five-star",
-  "created_date": "2026-06-04"
+  "created_date": "2026-06-04",
+  "dependencies": {},
+  "author": "OpenDemo Team",
+  "version": "1.1.0",
+  "created_at": "2025-12-11T17:08:29",
+  "updated_at": "2026-06-27T00:10:00",
+  "verified": true,
+  "verified_at": "2026-06-27T00:10:00",
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "compatibility": {
+    "operating_systems": [
+      "linux",
+      "macos",
+      "windows(wsl)"
+    ]
+  }
 }

@@ -1,161 +1,277 @@
-# Nginx Web服务器演示
+# NGINX Web 服务器演示 - 静态资源托管
 
-## 🎯 概述
+> 使用 NGINX 作为静态 Web 服务器，演示静态资源托管、目录索引、Gzip 压缩、访问日志配置和缓存策略。
 
-本演示展示了Nginx作为高性能Web服务器的核心功能，包括静态文件服务、反向代理、负载均衡、SSL终止和缓存优化等高级特性。
+---
 
-## 🏗️ 技术架构
+## 📋 目录
 
-### 核心组件
-- **主要技术**: Nginx 1.20+
-- **适用场景**: Web服务、反向代理、负载均衡、静态资源服务
-- **难度等级**: 🟡 中级
+- [🎯 学习目标](#-学习目标)
+- [📐 架构图](#-架构图)
+- [🚀 快速开始](#-快速开始)
+- [📖 核心概念](#-核心概念)
+- [💻 代码示例](#-代码示例)
+- [🔧 配置说明](#-配置说明)
+- [🧪 验证测试](#-验证测试)
+- [📊 运行结果](#-运行结果)
+- [🐛 常见问题](#-常见问题)
+- [📚 扩展学习](#-扩展学习)
 
-### 技术栈
-```yaml
-components:
-  - nginx: "1.20"
-  - alpine: "3.15"
-  - docker: "20.10+"
-  - letsencrypt: "latest"
+---
 
-features:
-  - static file serving
-  - reverse proxy
-  - load balancing
-  - ssl termination
-  - http caching
-  - gzip compression
+## 🎯 学习目标
+
+完成本案例学习后，你将能够：
+
+- ✅ 使用 NGINX 托管静态网站
+- ✅ 配置 Gzip 压缩减少传输体积
+- ✅ 配置访问日志和错误日志
+- ✅ 理解 location 匹配规则和优先级
+- ✅ 为静态资源配置浏览器缓存
+
+---
+
+## 📐 架构图
+
 ```
-
-## 🚀 快速开始
-
-### 环境准备
-```bash
-# 克隆项目并进入目录
-cd infrastructure/nginx-web-server
-
-# 启动演示环境
-docker-compose up -d
-
-# 验证服务状态
-curl -I http://localhost:8080
-```
-
-## 🔧 核心功能
-
-### 1. 高性能静态文件服务
-```nginx
-server {
-    listen 80;
-    server_name example.com;
-    
-    # 静态文件根目录
-    root /var/www/html;
-    index index.html index.htm;
-    
-    # 静态文件优化
-    location ~* \.(jpg|jpeg|png|gif|ico|css|js)$ {
-        expires 1y;
-        add_header Cache-Control "public, immutable";
-        access_log off;
-    }
-    
-    # Gzip压缩
-    gzip on;
-    gzip_vary on;
-    gzip_min_length 1024;
-    gzip_types text/plain text/css application/json application/javascript text/xml application/xml;
-}
-```
-
-### 2. 反向代理配置
-```nginx
-upstream backend {
-    server app1:3000 weight=3;
-    server app2:3000 weight=2;
-    server app3:3000 backup;
-}
-
-server {
-    listen 80;
-    server_name api.example.com;
-    
-    location /api/ {
-        proxy_pass http://backend;
-        proxy_set_header Host $host;
-        proxy_set_header X-Real-IP $remote_addr;
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        proxy_set_header X-Forwarded-Proto $scheme;
-        
-        # 超时设置
-        proxy_connect_timeout 30s;
-        proxy_send_timeout 30s;
-        proxy_read_timeout 30s;
-    }
-}
-```
-
-### 3. SSL/TLS配置
-```nginx
-server {
-    listen 443 ssl http2;
-    server_name secure.example.com;
-    
-    ssl_certificate /etc/nginx/ssl/fullchain.pem;
-    ssl_certificate_key /etc/nginx/ssl/privkey.pem;
-    
-    # SSL安全配置
-    ssl_protocols TLSv1.2 TLSv1.3;
-    ssl_ciphers ECDHE-RSA-AES256-GCM-SHA512:DHE-RSA-AES256-GCM-SHA512;
-    ssl_prefer_server_ciphers off;
-    ssl_session_cache shared:SSL:10m;
-    ssl_session_timeout 10m;
-    
-    # HSTS
-    add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" always;
-}
-```
-
-## 📊 性能优化
-
-### 缓存配置
-```nginx
-# HTTP缓存
-proxy_cache_path /var/cache/nginx levels=1:2 keys_zone=my_cache:10m max_size=10g 
-                 inactive=60m use_temp_path=off;
-
-server {
-    location /api/data/ {
-        proxy_cache my_cache;
-        proxy_cache_valid 200 302 10m;
-        proxy_cache_valid 404 1m;
-        proxy_cache_use_stale error timeout updating http_500 http_502 http_503 http_504;
-        proxy_cache_lock on;
-    }
-}
-```
-
-## 🧪 测试验证
-
-### 性能测试脚本
-```bash
-#!/bin/bash
-# 测试Nginx性能
-
-echo "Testing Nginx Performance..."
-
-# 基准测试
-ab -n 1000 -c 10 http://localhost:8080/
-
-# 静态文件测试
-ab -n 1000 -c 50 http://localhost:8080/static/image.jpg
-
-# API代理测试
-ab -n 500 -c 20 http://localhost:8080/api/users
-
-echo "Performance tests completed!"
+┌─────────────────────────────────────────────────────────────────┐
+│                    NGINX Web 服务器架构                          │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                 │
+│   浏览器 ──▶ NGINX :80 ──▶ 静态文件目录                          │
+│                                /usr/share/nginx/html            │
+│                                                                 │
+│              ┌─────────────────────────────┐                   │
+│              │ index.html / style.css      │                   │
+│              │ app.js / images/            │                   │
+│              │ 404.html / favicon.ico      │                   │
+│              └─────────────────────────────┘                   │
+│                                                                 │
+└─────────────────────────────────────────────────────────────────┘
 ```
 
 ---
-*最后更新: 2026年2月3日*
+
+## 🚀 快速开始
+
+### 环境要求
+
+| 依赖 | 版本要求 | 说明 |
+|------|----------|------|
+| Docker | >= 20.10 | 运行 NGINX 容器 |
+| Docker Compose | >= 1.29 | 编排服务 |
+
+### 启动服务
+
+```bash
+cd traffic/nginx-web-server
+./scripts/start.sh
+sleep 3
+./scripts/check.sh
+```
+
+### 访问网站
+
+```bash
+curl -s http://localhost/
+```
+
+浏览器访问 http://localhost 可查看静态页面。
+
+---
+
+## 📖 核心概念
+
+### 1. root 与 alias
+
+- **root**：将 URL 路径附加到根目录后查找文件
+- **alias**：将 location 匹配部分替换为指定路径
+
+```nginx
+location /static/ {
+    root /var/www;          # 实际路径 /var/www/static/file.css
+}
+
+location /static/ {
+    alias /var/www/static/; # 实际路径 /var/www/static/file.css
+}
+```
+
+### 2. location 匹配规则
+
+| 修饰符 | 含义 |
+|--------|------|
+| `=` | 精确匹配 |
+| `^~` | 前缀匹配，匹配到后不再检查正则 |
+| `~` | 区分大小写的正则匹配 |
+| `~*` | 不区分大小写的正则匹配 |
+| 无 | 普通前缀匹配 |
+
+### 3. Gzip 压缩
+
+减少文本类资源的传输体积：
+
+```nginx
+gzip on;
+gzip_vary on;
+gzip_min_length 1024;
+gzip_types text/plain text/css application/json application/javascript text/xml;
+```
+
+### 4. 浏览器缓存
+
+通过 `expires` 和 `Cache-Control` 控制静态资源缓存：
+
+```nginx
+location ~* \\.(css|js|png|jpg|jpeg|gif|ico|svg|woff|woff2)$ {
+    expires 30d;
+    add_header Cache-Control "public, immutable";
+}
+```
+
+---
+
+## 💻 代码示例
+
+### 完整 NGINX 配置
+
+```nginx
+# configs/nginx.conf
+server {
+    listen 80;
+    server_name localhost;
+    root /usr/share/nginx/html;
+    index index.html;
+
+    # 默认字符编码
+    charset utf-8;
+
+    # Gzip 压缩
+    gzip on;
+    gzip_vary on;
+    gzip_min_length 1024;
+    gzip_types
+        text/plain
+        text/css
+        application/json
+        application/javascript
+        text/xml
+        application/xml;
+
+    # 日志
+    access_log /var/log/nginx/access.log;
+    error_log /var/log/nginx/error.log;
+
+    # 静态资源缓存
+    location ~* \\.(css|js|png|jpg|jpeg|gif|ico|svg|woff|woff2|ttf|eot)$ {
+        expires 30d;
+        add_header Cache-Control "public, immutable";
+        access_log off;
+    }
+
+    # 首页
+    location = / {
+        try_files $uri $uri/ /index.html;
+    }
+
+    # 404 页面
+    error_page 404 /404.html;
+
+    # 禁止访问隐藏文件
+    location ~ /\\. {
+        deny all;
+    }
+}
+```
+
+### 示例 HTML
+
+```html
+<!-- html/index.html -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>OpenDemo NGINX Web Server</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Hello from NGINX!</h1>
+    <p>这是一个由 NGINX 托管的静态网站示例。</p>
+</body>
+</html>
+```
+
+---
+
+## 🔧 配置说明
+
+| 文件 | 作用 |
+|------|------|
+| `configs/nginx.conf` | NGINX 主配置 |
+| `html/index.html` | 网站首页 |
+| `html/style.css` | 样式文件 |
+| `docker-compose.yml` | 服务编排 |
+
+---
+
+## 🧪 验证测试
+
+```bash
+# 访问首页
+curl -s http://localhost/
+
+# 检查 Gzip 压缩是否生效
+curl -s -H "Accept-Encoding: gzip" -I http://localhost/style.css
+
+# 检查缓存头
+curl -s -I http://localhost/style.css
+
+# 查看访问日志
+docker exec nginx-web-server tail -n 20 /var/log/nginx/access.log
+```
+
+---
+
+## 📊 运行结果
+
+```bash
+$ curl -s http://localhost/
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>OpenDemo NGINX Web Server</title>
+    ...
+</html>
+```
+
+---
+
+## 🐛 常见问题
+
+### Q1：静态文件 404？
+
+**A**：检查 `root` 路径和 `location` 匹配是否正确，确认文件已挂载到容器内。
+
+### Q2：Gzip 没有生效？
+
+**A**：确认请求头包含 `Accept-Encoding: gzip`，且文件大小超过 `gzip_min_length`。
+
+### Q3：中文显示乱码？
+
+**A**：在 NGINX 配置中添加 `charset utf-8;`。
+
+---
+
+## 📚 扩展学习
+
+- [NGINX 反向代理](../nginx-reverse-proxy/)
+- [NGINX 负载均衡](../nginx-load-balancing/)
+- [NGINX 官方文档](https://nginx.org/en/docs/beginners_guide.html)
+
+---
+
+*最后更新：2026-06-27*  
+*版本：1.1.0*  
+*维护者：OpenDemo Team*

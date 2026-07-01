@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: inference-basics
+  labels:
+    app: inference-basics
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: inference-basics
+  template:
+    metadata:
+      labels:
+        app: inference-basics
+    spec:
+      containers:
+      - name: demo
+        image: nginx:alpine
+        ports:
+        - containerPort: 80

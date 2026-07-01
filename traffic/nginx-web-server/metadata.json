@@ -1,0 +1,48 @@
+{
+  "name": "NGINX Web 服务器基础",
+  "language": "traffic",
+  "difficulty": "beginner",
+  "description": "使用 Docker 部署 NGINX 作为静态 Web 服务器，学习基础配置、虚拟主机、访问日志和错误页面定制。",
+  "keywords": [
+    "nginx",
+    "web-server",
+    "static-site",
+    "reverse-proxy",
+    "traffic"
+  ],
+  "author": "OpenDemo Team",
+  "version": "1.0.0",
+  "created_at": "2026-06-27",
+  "updated_at": "2026-06-27T02:15:00",
+  "verified": true,
+  "verified_at": "2026-06-27T02:15:00",
+  "estimated_time": "45-75分钟",
+  "prerequisites": [
+    "Docker",
+    "Docker Compose",
+    "HTTP 基础"
+  ],
+  "files": [
+    "README.md",
+    "metadata.json",
+    "docker-compose.yml",
+    "configs/nginx.conf",
+    "html/index.html",
+    "scripts/start.sh",
+    "scripts/stop.sh",
+    "scripts/check.sh"
+  ],
+  "dependencies": {
+    "software": [
+      "Docker",
+      "Docker Compose"
+    ]
+  },
+  "compatibility": {
+    "operating_systems": [
+      "linux",
+      "macos",
+      "windows(wsl)"
+    ]
+  }
+}

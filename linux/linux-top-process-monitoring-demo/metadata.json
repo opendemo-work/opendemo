@@ -12,12 +12,20 @@
   "difficulty": "intermediate",
   "author": "OpenDemo Team",
   "created_at": "2026-02-02",
-  "updated_at": "2026-02-02",
+  "updated_at": "2026-06-26T23:50:00",
   "version": "1.0.0",
   "dependencies": {
-    "required_packages": ["procps"],
+    "required_packages": [
+      "procps"
+    ],
     "minimum_kernel": "2.6",
-    "supported_distros": ["ubuntu", "centos", "rhel", "debian", "fedora"]
+    "supported_distros": [
+      "ubuntu",
+      "centos",
+      "rhel",
+      "debian",
+      "fedora"
+    ]
   },
   "verified": true,
   "estimated_time": "2-3小时",
@@ -52,5 +60,12 @@
     "examples/top_basic_output.txt",
     "docs/top_fields_explained.md",
     "docs/interactive_commands.md"
-  ]
+  ],
+  "verified_at": "2026-06-26T23:50:00",
+  "compatibility": {
+    "operating_systems": [
+      "linux",
+      "macos"
+    ]
+  }
 }

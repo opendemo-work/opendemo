@@ -1,8 +1,45 @@
 {
   "name": "Self-Service Key Recovery",
   "category": "security",
-  "tech_stack": ["FDE", "Self-Service", "Python", "Flask", "MFA"],
+  "tech_stack": [
+    "FDE",
+    "Self-Service",
+    "Python",
+    "Flask",
+    "MFA"
+  ],
   "description": "自助密钥恢复门户：用户自助、审批流程、安全展示",
   "difficulty": "intermediate",
-  "dependencies": ["Python", "Flask"]
+  "dependencies": {
+    "items": [
+      "Python",
+      "Flask"
+    ]
+  },
+  "language": "python",
+  "keywords": [
+    "python",
+    "self"
+  ],
+  "author": "OpenDemo Team",
+  "version": "1.1.0",
+  "created_at": "2025-12-11T17:08:29",
+  "updated_at": "2026-06-27T00:05:00",
+  "verified": true,
+  "verified_at": "2026-06-27T00:05:00",
+  "estimated_time": "60-90分钟",
+  "prerequisites": [
+    "相关基础知识"
+  ],
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "compatibility": {
+    "operating_systems": [
+      "linux",
+      "macos",
+      "windows(wsl)"
+    ]
+  }
 }

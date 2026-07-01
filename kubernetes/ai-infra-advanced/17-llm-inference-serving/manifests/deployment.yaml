@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: 17-llm-inference-serving
+  labels:
+    app: 17-llm-inference-serving
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: 17-llm-inference-serving
+  template:
+    metadata:
+      labels:
+        app: 17-llm-inference-serving
+    spec:
+      containers:
+      - name: demo
+        image: nginx:alpine
+        ports:
+        - containerPort: 80

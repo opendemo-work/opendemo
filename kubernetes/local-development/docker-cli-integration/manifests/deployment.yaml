@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: docker-cli-integration
+  labels:
+    app: docker-cli-integration
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: docker-cli-integration
+  template:
+    metadata:
+      labels:
+        app: docker-cli-integration
+    spec:
+      containers:
+      - name: demo
+        image: nginx:alpine
+        ports:
+        - containerPort: 80

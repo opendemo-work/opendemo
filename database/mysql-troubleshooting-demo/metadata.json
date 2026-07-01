@@ -14,12 +14,18 @@
   "difficulty": "advanced",
   "author": "OpenDemo Team",
   "created_at": "2026-02-02",
-  "updated_at": "2026-02-02",
+  "updated_at": "2026-06-26T23:55:00",
   "version": "1.0.0",
   "dependencies": {
     "mysql_version": "5.7+",
-    "required_tools": ["mysql-client", "percona-toolkit"],
-    "optional_tools": ["mycli", "sysbench"]
+    "required_tools": [
+      "mysql-client",
+      "percona-toolkit"
+    ],
+    "optional_tools": [
+      "mycli",
+      "sysbench"
+    ]
   },
   "verified": true,
   "estimated_time": "5-6小时",
@@ -54,5 +60,13 @@
     "configs/mysql_performance.cnf",
     "examples/slow_query_logs/sample.log",
     "docs/mysql_performance_tuning.md"
-  ]
+  ],
+  "verified_at": "2026-06-26T23:55:00",
+  "compatibility": {
+    "operating_systems": [
+      "linux",
+      "macos",
+      "windows(wsl)"
+    ]
+  }
 }

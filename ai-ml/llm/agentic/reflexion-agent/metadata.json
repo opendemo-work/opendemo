@@ -2,13 +2,45 @@
   "name": "reflexion-agent",
   "category": "llm-agentic",
   "difficulty": "advanced",
-  "language": "python",
-  "keywords": ["reflexion", "self-reflection", "agent", "improvement"],
+  "language": "ai-ml",
+  "keywords": [
+    "reflexion",
+    "self-reflection",
+    "agent",
+    "improvement"
+  ],
   "description": "Reflexion 自我反思 Agent：通过反思机制持续优化决策质量",
   "estimated_time": "4-5 hours",
-  "prerequisites": ["react-agent"],
-  "learning_objectives": ["理解自我反思机制", "实现轨迹评估", "构建自适应 Agent"],
-  "content_types": ["tutorial", "architecture"],
+  "prerequisites": [
+    "react-agent"
+  ],
+  "learning_objectives": [
+    "理解自我反思机制",
+    "实现轨迹评估",
+    "构建自适应 Agent"
+  ],
+  "content_types": [
+    "tutorial",
+    "architecture"
+  ],
   "quality_standard": "five-star",
-  "created_date": "2026-06-04"
+  "created_date": "2026-06-04",
+  "dependencies": {},
+  "author": "OpenDemo Team",
+  "version": "1.1.0",
+  "created_at": "2025-12-11T17:08:29",
+  "updated_at": "2026-06-27T00:10:00",
+  "verified": true,
+  "verified_at": "2026-06-27T00:10:00",
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "compatibility": {
+    "operating_systems": [
+      "linux",
+      "macos",
+      "windows(wsl)"
+    ]
+  }
 }

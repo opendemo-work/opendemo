@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: csi-plugin-basics
+  labels:
+    app: csi-plugin-basics
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: csi-plugin-basics
+  template:
+    metadata:
+      labels:
+        app: csi-plugin-basics
+    spec:
+      containers:
+      - name: demo
+        image: nginx:alpine
+        ports:
+        - containerPort: 80

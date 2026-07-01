@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: registry-harbor
+  labels:
+    app: registry-harbor
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: registry-harbor
+  template:
+    metadata:
+      labels:
+        app: registry-harbor
+    spec:
+      containers:
+      - name: demo
+        image: nginx:alpine
+        ports:
+        - containerPort: 80

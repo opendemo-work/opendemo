@@ -1,0 +1,38 @@
+{
+  "name": "containerd 与 nerdctl 高级操作",
+  "language": "container",
+  "difficulty": "advanced",
+  "description": "使用 nerdctl 体验与 Docker CLI 类似的容器操作，并学习 containerd 镜像构建、命名空间和 CNI 网络。",
+  "keywords": [
+    "containerd",
+    "nerdctl",
+    "buildkit",
+    "cni",
+    "namespace"
+  ],
+  "author": "OpenDemo Team",
+  "version": "1.0.0",
+  "created_at": "2026-06-27",
+  "updated_at": "2026-06-27T02:00:00",
+  "verified": true,
+  "verified_at": "2026-06-27T02:00:00",
+  "estimated_time": "45-90分钟",
+  "prerequisites": [
+    "Linux 基础",
+    "命令行操作"
+  ],
+  "files": [
+    "README.md",
+    "metadata.json",
+    "scripts/demo.sh",
+    "scripts/check.sh"
+  ],
+  "dependencies": {},
+  "compatibility": {
+    "operating_systems": [
+      "linux",
+      "macos",
+      "windows(wsl)"
+    ]
+  }
+}

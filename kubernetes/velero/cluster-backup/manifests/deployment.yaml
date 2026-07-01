@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cluster-backup
+  labels:
+    app: cluster-backup
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cluster-backup
+  template:
+    metadata:
+      labels:
+        app: cluster-backup
+    spec:
+      containers:
+      - name: demo
+        image: nginx:alpine
+        ports:
+        - containerPort: 80

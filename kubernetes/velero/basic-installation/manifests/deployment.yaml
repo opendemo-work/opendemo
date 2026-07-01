@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: basic-installation
+  labels:
+    app: basic-installation
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: basic-installation
+  template:
+    metadata:
+      labels:
+        app: basic-installation
+    spec:
+      containers:
+      - name: demo
+        image: nginx:alpine
+        ports:
+        - containerPort: 80

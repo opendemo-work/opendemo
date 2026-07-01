@@ -1,323 +1,224 @@
-# Apache Kafka Demo
+# Apache Kafka with Java - 生产者与消费者实战
 
-Apache Kafka消息流处理演示项目，演示Spring Kafka的Producer和Consumer使用。
+> 使用 Java 客户端连接 Apache Kafka，演示消息生产、消费、分区策略和消费者组 rebalance。
 
-## 技术栈
+---
 
-- Spring Boot 2.7
-- Spring Kafka
-- Apache Kafka
+## 📋 目录
 
-## 项目结构
+- [🎯 学习目标](#-学习目标)
+- [📐 架构图](#-架构图)
+- [🚀 快速开始](#-快速开始)
+- [📖 核心概念](#-核心概念)
+- [💻 代码示例](#-代码示例)
+- [🔧 配置说明](#-配置说明)
+- [🧪 验证测试](#-验证测试)
+- [📊 运行结果](#-运行结果)
+- [🐛 常见问题](#-常见问题)
+- [📚 扩展学习](#-扩展学习)
 
-```
-apache-kafka-demo/
-├── src/main/java/com/example/demo/
-│   ├── KafkaDemoApplication.java          # 应用入口
-│   ├── config/
-│   │   └── KafkaConfig.java               # Kafka配置
-│   ├── controller/
-│   │   └── KafkaController.java           # REST控制器
-│   ├── consumer/
-│   │   └── KafkaMessageConsumer.java      # 消息消费者
-│   ├── model/
-│   │   └── KafkaMessage.java              # 消息实体
-│   └── producer/
-│       └── KafkaMessageProducer.java      # 消息生产者
-├── src/main/resources/
-│   └── application.yml                    # 应用配置
-├── pom.xml
-└── README.md
-```
+---
 
-## 核心概念
+## 🎯 学习目标
 
-### Kafka架构
+完成本案例学习后，你将能够：
+
+- ✅ 使用 Java 编写 Kafka Producer 和 Consumer
+- ✅ 理解 Topic、Partition、Offset 和消费者组
+- ✅ 配置 acks、retries、batch.size 等生产者参数
+- ✅ 处理消费者 rebalance 和提交偏移量
+
+---
+
+## 📐 架构图
 
 ```
-┌─────────────┐     ┌─────────────┐     ┌─────────────┐
-│  Producer   │────▶│    Topic    │────▶│  Consumer   │
-└─────────────┘     │  (Partition)│     └─────────────┘
-                    └─────────────┘
-                           │
-                    ┌──────┴──────┐
-                    │   Broker    │
-                    └─────────────┘
+Producer ──▶ Kafka Broker ──▶ Consumer Group
+                │
+                ├─▶ Partition 0
+                ├─▶ Partition 1
+                └─▶ Partition 2
 ```
 
-- **Producer**: 消息生产者
-- **Consumer**: 消息消费者
-- **Topic**: 消息主题
-- **Partition**: 分区，实现并行处理
-- **Broker**: Kafka服务器节点
-- **Consumer Group**: 消费者组，组内消费不重复
+---
 
-### Spring Kafka核心注解
+## 🚀 快速开始
 
-#### @EnableKafka
-启用Kafka功能。
+### 环境要求
 
-```java
-@Configuration
-@EnableKafka
-public class KafkaConfig { ... }
-```
+| 依赖 | 版本要求 |
+|------|----------|
+| JDK | >= 17 |
+| Maven | >= 3.8 |
+| Kafka | >= 3.0 |
 
-#### @KafkaListener
-标注消息监听方法。
-
-```java
-@KafkaListener(topics = "demo-topic", groupId = "demo-group")
-public void consume(String message) { ... }
-```
-
-## 快速开始
-
-### 1. 启动Kafka
-
-使用Docker Compose启动Kafka：
-
-```yaml
-version: '3'
-services:
-  zookeeper:
-    image: confluentinc/cp-zookeeper:7.0.1
-    environment:
-      ZOOKEEPER_CLIENT_PORT: 2181
-
-  kafka:
-    image: confluentinc/cp-kafka:7.0.1
-    ports:
-      - "9092:9092"
-    environment:
-      KAFKA_BROKER_ID: 1
-      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
-      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://localhost:9092
-      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
-```
+### 启动
 
 ```bash
-docker-compose up -d
-```
-
-### 2. 启动应用
-
-```bash
+cd java/apache-kafka-demo
+./scripts/start.sh
 mvn spring-boot:run
 ```
 
-### 3. 发送消息
+---
+
+## 📖 核心概念
+
+### 1. Producer
+
+发送消息到 Kafka Topic：
+
+```java
+Properties props = new Properties();
+props.put("bootstrap.servers", "localhost:9092");
+props.put("key.serializer", "org.apache.kafka.common.serialization.StringSerializer");
+props.put("value.serializer", "org.apache.kafka.common.serialization.StringSerializer");
+
+Producer<String, String> producer = new KafkaProducer<>(props);
+producer.send(new ProducerRecord<>("orders", "order-1", "{\"amount\":100}"));
+producer.close();
+```
+
+### 2. Consumer
+
+从 Topic 订阅消息：
+
+```java
+Properties props = new Properties();
+props.put("bootstrap.servers", "localhost:9092");
+props.put("group.id", "order-consumer-group");
+props.put("key.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
+props.put("value.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
+
+Consumer<String, String> consumer = new KafkaConsumer<>(props);
+consumer.subscribe(Arrays.asList("orders"));
+
+while (true) {
+    ConsumerRecords<String, String> records = consumer.poll(Duration.ofMillis(100));
+    for (ConsumerRecord<String, String> record : records) {
+        System.out.printf("offset = %d, key = %s, value = %s%n",
+            record.offset(), record.key(), record.value());
+    }
+}
+```
+
+### 3. 分区策略
+
+- RoundRobinAssignor
+- RangeAssignor
+- StickyAssignor
+
+---
+
+## 🔧 配置说明
+
+| 文件 | 作用 |
+|------|------|
+| `pom.xml` | Kafka 客户端依赖 |
+| `src/main/java/.../producer/` | 生产者代码 |
+| `src/main/java/.../consumer/` | 消费者代码 |
+
+---
+
+## 🧪 验证测试
 
 ```bash
-# 发送简单消息
-curl -X POST "http://localhost:8080/api/kafka/send?topic=demo-topic&message=HelloKafka"
+# 启动 Kafka 后运行测试
+mvn test
 
-# 发送JSON消息
-curl -X POST http://localhost:8080/api/kafka/send/json \
-  -H "Content-Type: application/json" \
-  -d '{"message":"Hello Kafka","topic":"demo-topic"}'
-
-# 批量发送
-curl -X POST "http://localhost:8080/api/kafka/send/batch?topic=demo-topic&count=5"
-
-# 发送带Key的消息（保证分区顺序）
-curl -X POST "http://localhost:8080/api/kafka/send/keyed?topic=order-topic&key=user-1&message=Order1"
-
-# 快速测试
-curl http://localhost:8080/api/kafka/test/demo-topic
+# 使用 Kafka 命令行工具查看消息
+kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic orders --from-beginning
 ```
 
-### 4. 查看消费日志
+---
 
-应用控制台会显示消费者接收到的消息：
+## 📚 扩展学习
 
-```
-[Consumer-1] 收到消息: HelloKafka
-[Consumer-2] 收到消息: HelloKafka, partition=0, offset=0, key=xxx
-```
+- [Spring Cloud Gateway](../spring-cloud-gateway-demo/)
+- [Java 并发编程](../concurrent-programming-demo/)
+- [Kafka 官方文档](https://kafka.apache.org/documentation/)
 
-## 配置详解
+---
 
-### Producer配置
+*最后更新：2026-06-27*  
+*版本：1.1.0*  
+*维护者：OpenDemo Team*
 
-```java
-@Bean
-public ProducerFactory<String, String> producerFactory() {
-    Map<String, Object> configProps = new HashMap<>();
-    configProps.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
-    configProps.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
-    configProps.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
-    // 可靠性配置
-    configProps.put(ProducerConfig.ACKS_CONFIG, "all");  // 所有副本确认
-    configProps.put(ProducerConfig.RETRIES_CONFIG, 3);   // 重试次数
-    configProps.put(ProducerConfig.ENABLE_IDEMPOTENCE_CONFIG, true);  // 幂等性
-    return new DefaultKafkaProducerFactory<>(configProps);
-}
-```
 
-### Consumer配置
+---
 
-```java
-@Bean
-public ConsumerFactory<String, String> consumerFactory() {
-    Map<String, Object> props = new HashMap<>();
-    props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
-    props.put(ConsumerConfig.GROUP_ID_CONFIG, "demo-group");
-    props.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest");
-    props.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
-    props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
-    return new DefaultKafkaConsumerFactory<>(props);
-}
-```
+## 📖 深入理解
 
-### Topic定义
+### 核心流程
 
-```java
-@Bean
-public NewTopic demoTopic() {
-    return new NewTopic("demo-topic", 3, (short) 1);
-    // 参数：topic名称, 分区数, 副本数
-}
-```
+Apache Kafka Demo 从启动到完成主要包含以下环节：
 
-## 消费模式
+1. **环境准备**：配置运行所需的依赖、网络和存储资源。
+2. **主流程执行**：运行案例的核心逻辑并产出结果。
+3. **结果验证**：通过日志、命令输出或测试用例确认正确性。
+4. **资源回收**：停止服务并清理临时数据，保证可重复执行。
 
-### 1. 基础消费
+### 设计要点
 
-```java
-@KafkaListener(topics = "demo-topic", groupId = "demo-group")
-public void consume(String message) {
-    System.out.println("收到消息: " + message);
-}
-```
+| 方面 | 做法 | 说明 |
+|------|------|------|
+| 部署方式 | 本地容器化 | 减少环境差异，便于复现 |
+| 配置管理 | 配置文件 + 环境变量 | 兼顾可读性与灵活性 |
+| 可观测性 | 日志 + 健康检查 | 方便定位问题 |
+| 扩展方式 | 模块化组织 | 后续可按需增加功能 |
 
-### 2. 带元数据消费
+### 需要关注的指标
 
-```java
-@KafkaListener(topics = "demo-topic", groupId = "demo-group")
-public void consume(
-        @Payload String message,
-        @Header(KafkaHeaders.RECEIVED_PARTITION_ID) int partition,
-        @Header(KafkaHeaders.OFFSET) long offset) {
-    System.out.println("消息: " + message + ", 分区: " + partition + ", 偏移量: " + offset);
-}
-```
+在生产环境中落地类似方案时，建议留意：
 
-### 3. 多Topic监听
+- 关键路径的响应延迟
+- CPU、内存、磁盘和网络资源使用
+- 并发量与吞吐量变化
+- 错误率和异常告警
 
-```java
-@KafkaListener(topics = {"topic1", "topic2"}, groupId = "group")
-public void consumeMultiple(String message) { ... }
-```
+---
 
-## 消息发送方式
+## 🛡️ 安全与最佳实践
 
-### 1. 异步发送
+### 安全建议
 
-```java
-ListenableFuture<SendResult<String, String>> future = 
-    kafkaTemplate.send(topic, key, message);
+- 生产环境不要使用默认密码、密钥或令牌。
+- 定期将依赖升级到稳定的最新版本。
+- 敏感配置优先使用密钥管理工具或环境变量注入。
+- 通过防火墙、安全组或网络策略限制访问范围。
 
-future.addCallback(
-    result -> System.out.println("发送成功"),
-    ex -> System.err.println("发送失败: " + ex.getMessage())
-);
-```
+### 操作建议
 
-### 2. 同步发送
+- 修改配置前备份现有环境。
+- 将配置文件和脚本纳入版本控制。
+- 为核心路径补充自动化测试。
+- 保留运行日志以便审计和排障。
 
-```java
-SendResult<String, String> result = 
-    kafkaTemplate.send(topic, message).get();
-```
+---
 
-### 3. 带Key发送（保证分区顺序）
+## 🧪 进阶实验
 
-```java
-// 相同Key的消息会发送到同一个分区
-kafkaTemplate.send("order-topic", "user-1", "order-data");
-kafkaTemplate.send("order-topic", "user-1", "order-data-2");
-```
+基础流程跑通后，可以尝试：
 
-## 消费者组
+1. 调整关键参数，观察对结果的影响。
+2. 模拟异常场景，验证容错能力。
+3. 增加负载，分析系统瓶颈。
+4. 与其他组件组合，形成完整链路。
 
-### 组内消费（不重复消费）
+---
 
-```
-Topic: demo-topic (3 partitions)
+## 📚 扩展资源
 
-Consumer Group: group-A
-├─ Consumer-1 → Partition 0
-├─ Consumer-2 → Partition 1
-└─ Consumer-3 → Partition 2
-```
+- 相关技术的官方文档
+- [OpenDemo 项目主页](https://github.com/opendemo)
+- GitHub Discussions 与技术社区
 
-### 广播消费（多个组）
+---
 
-```
-Topic: demo-topic
-├─ Consumer Group A (所有消息)
-└─ Consumer Group B (所有消息)
-```
+## 🤝 贡献与反馈
 
-## Kafka命令行工具
+如发现内容有误或希望补充，欢迎提交 Issue 或 Pull Request。
 
-```bash
-# 查看Topic列表
-kafka-topics.sh --bootstrap-server localhost:9092 --list
+---
 
-# 创建Topic
-kafka-topics.sh --bootstrap-server localhost:9092 --create --topic my-topic --partitions 3 --replication-factor 1
-
-# 查看Topic详情
-kafka-topics.sh --bootstrap-server localhost:9092 --describe --topic my-topic
-
-# 发送消息
-kafka-console-producer.sh --bootstrap-server localhost:9092 --topic demo-topic
-
-# 消费消息
-kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic demo-topic --from-beginning
-
-# 查看消费者组
-kafka-consumer-groups.sh --bootstrap-server localhost:9092 --list
-
-# 查看消费进度
-kafka-consumer-groups.sh --bootstrap-server localhost:9092 --describe --group demo-group
-```
-
-## 生产环境建议
-
-### 1. 分区数设置
-- 根据并发需求设置分区数
-- 分区数决定最大消费者数
-
-### 2. 消费者配置
-```properties
-# 自动提交偏移量
-spring.kafka.consumer.enable-auto-commit=true
-spring.kafka.consumer.auto-commit-interval=5000
-
-# 批量消费
-spring.kafka.listener.type=batch
-spring.kafka.consumer.max-poll-records=500
-```
-
-### 3. 幂等性保障
-- 生产者启用幂等性: `enable.idempotence=true`
-- 消费者处理幂等（业务层去重）
-
-### 4. 异常处理
-```java
-@KafkaListener(topics = "demo-topic", errorHandler = "myErrorHandler")
-public void consume(String message) { ... }
-```
-
-## 学习要点
-
-1. Kafka核心概念和架构设计
-2. Producer的发送模式和可靠性保障
-3. Consumer的消费模式和偏移量管理
-4. 消费者组的负载均衡机制
-5. 分区策略和顺序保证
-6. 消息可靠性（ACK、重试、幂等性）
-7. Spring Kafka的抽象和封装
+*本 README 由 OpenDemo 自动生成并持续维护，欢迎根据实际案例补充细节。*

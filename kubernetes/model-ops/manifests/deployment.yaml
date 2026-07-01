@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: model-ops
+  labels:
+    app: model-ops
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: model-ops
+  template:
+    metadata:
+      labels:
+        app: model-ops
+    spec:
+      containers:
+      - name: demo
+        image: nginx:alpine
+        ports:
+        - containerPort: 80

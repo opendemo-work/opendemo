@@ -1,7 +1,14 @@
 {
   "name": "java-arrays-collections-demo",
   "language": "java",
-  "keywords": ["java", "arrays", "collections", "list", "set", "map"],
+  "keywords": [
+    "java",
+    "arrays",
+    "collections",
+    "list",
+    "set",
+    "map"
+  ],
   "description": "Java数组与集合操作完整演示，涵盖一维数组、多维数组、List、Set、Map等核心数据结构的使用方法和最佳实践",
   "difficulty": "intermediate",
   "author": "OpenDemo Team",
@@ -15,7 +22,11 @@
   },
   "verified": false,
   "estimated_time": "3-4小时",
-  "prerequisites": ["java-variables-types-demo", "java-control-flow-demo", "java-classes-objects-demo"],
+  "prerequisites": [
+    "java-variables-types-demo",
+    "java-control-flow-demo",
+    "java-classes-objects-demo"
+  ],
   "learning_outcomes": [
     "掌握数组的声明、初始化和基本操作",
     "理解多维数组的使用方法和内存布局",
@@ -35,5 +46,17 @@
     "泛型集合和通配符的使用",
     "实际业务场景的数据处理",
     "性能对比和选择建议"
-  ]
+  ],
+  "verified_at": "2026-06-27T00:05:00",
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "compatibility": {
+    "operating_systems": [
+      "linux",
+      "macos",
+      "windows(wsl)"
+    ]
+  }
 }

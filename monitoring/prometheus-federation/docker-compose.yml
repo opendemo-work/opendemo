@@ -1,0 +1,43 @@
+version: '3.8'
+services:
+  prometheus-global:
+    image: prom/prometheus:v2.47.0
+    container_name: prometheus-global
+    volumes:
+      - ./configs/prometheus-global.yml:/etc/prometheus/prometheus.yml:ro
+      - prometheus-global-data:/prometheus
+    ports:
+      - "9090:9090"
+    networks:
+      - monitoring
+
+  prometheus-dc1:
+    image: prom/prometheus:v2.47.0
+    container_name: prometheus-dc1
+    volumes:
+      - ./configs/prometheus-dc1.yml:/etc/prometheus/prometheus.yml:ro
+      - prometheus-dc1-data:/prometheus
+    ports:
+      - "9091:9090"
+    networks:
+      - monitoring
+
+  prometheus-dc2:
+    image: prom/prometheus:v2.47.0
+    container_name: prometheus-dc2
+    volumes:
+      - ./configs/prometheus-dc2.yml:/etc/prometheus/prometheus.yml:ro
+      - prometheus-dc2-data:/prometheus
+    ports:
+      - "9092:9090"
+    networks:
+      - monitoring
+
+volumes:
+  prometheus-global-data:
+  prometheus-dc1-data:
+  prometheus-dc2-data:
+
+networks:
+  monitoring:
+    driver: bridge

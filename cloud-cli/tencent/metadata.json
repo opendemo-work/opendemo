@@ -1,8 +1,51 @@
 {
   "name": "腾讯云CLI命令速查表",
   "category": "cloud-cli",
-  "tech_stack": ["腾讯云", "Tencent Cloud CLI", "cvm", "cos", "vpc", "clb", "cdb", "redis", "mongo", "TKE", "SCF", "CAM"],
+  "tech_stack": [
+    "腾讯云",
+    "Tencent Cloud CLI",
+    "cvm",
+    "cos",
+    "vpc",
+    "clb",
+    "cdb",
+    "redis",
+    "mongo",
+    "TKE",
+    "SCF",
+    "CAM"
+  ],
   "description": "腾讯云CLI完整命令参考，覆盖CVM/COS/VPC/CLB/CDB/Redis/TKE/SCF等全产品线CLI",
   "difficulty": "intermediate",
-  "dependencies": ["tccli"]
+  "dependencies": {
+    "items": [
+      "tccli"
+    ]
+  },
+  "language": "python",
+  "keywords": [
+    "python",
+    "tencent"
+  ],
+  "author": "OpenDemo Team",
+  "version": "1.1.0",
+  "created_at": "2025-12-11T17:08:29",
+  "updated_at": "2026-06-27T00:05:00",
+  "verified": true,
+  "verified_at": "2026-06-27T00:05:00",
+  "estimated_time": "60-90分钟",
+  "prerequisites": [
+    "相关基础知识"
+  ],
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "compatibility": {
+    "operating_systems": [
+      "linux",
+      "macos",
+      "windows(wsl)"
+    ]
+  }
 }

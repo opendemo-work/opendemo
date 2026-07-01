@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: service-mesh-microservices
+  labels:
+    app: service-mesh-microservices
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: service-mesh-microservices
+  template:
+    metadata:
+      labels:
+        app: service-mesh-microservices
+    spec:
+      containers:
+      - name: demo
+        image: nginx:alpine
+        ports:
+        - containerPort: 80

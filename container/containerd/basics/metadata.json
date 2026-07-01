@@ -1,0 +1,37 @@
+{
+  "name": "containerd 基础使用",
+  "language": "container",
+  "difficulty": "intermediate",
+  "description": "使用 ctr 命令与 containerd 交互，学习镜像拉取、容器创建、启动、停止和删除等基础操作。",
+  "keywords": [
+    "containerd",
+    "ctr",
+    "container-runtime",
+    "oci"
+  ],
+  "author": "OpenDemo Team",
+  "version": "1.0.0",
+  "created_at": "2026-06-27",
+  "updated_at": "2026-06-27T02:00:00",
+  "verified": true,
+  "verified_at": "2026-06-27T02:00:00",
+  "estimated_time": "45-90分钟",
+  "prerequisites": [
+    "Linux 基础",
+    "命令行操作"
+  ],
+  "files": [
+    "README.md",
+    "metadata.json",
+    "scripts/demo.sh",
+    "scripts/check.sh"
+  ],
+  "dependencies": {},
+  "compatibility": {
+    "operating_systems": [
+      "linux",
+      "macos",
+      "windows(wsl)"
+    ]
+  }
+}

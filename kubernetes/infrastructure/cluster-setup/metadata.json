@@ -15,7 +15,7 @@
   "version": "1.0.0",
   "author": "OpenDemo Team",
   "created_at": "2026-01-30",
-  "updated_at": "2026-01-30",
+  "updated_at": "2026-06-27T00:00:00",
   "files": [
     "README.md",
     "kubeadm-config.yaml",
@@ -48,5 +48,8 @@
       "docker",
       "cri-o"
     ]
-  }
+  },
+  "verified": true,
+  "verified_at": "2026-06-27T00:00:00",
+  "dependencies": {}
 }

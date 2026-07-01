@@ -10,7 +10,7 @@
     "network-namespaces",
     "system-administration"
   ],
-  "difficulty": "中级",
+  "difficulty": "intermediate",
   "estimated_time": "2小时",
   "prerequisites": [
     "基础Linux命令知识",
@@ -32,5 +32,28 @@
     "linux-ifconfig-network-config-demo",
     "linux-netstat-network-monitoring-demo",
     "linux-nc-network-connections-demo"
-  ]
+  ],
+  "language": "linux",
+  "keywords": [
+    "linux",
+    "command-line",
+    "iproute2"
+  ],
+  "author": "OpenDemo Team",
+  "version": "1.1.0",
+  "created_at": "2025-12-11T17:08:29",
+  "updated_at": "2026-06-26T23:50:00",
+  "verified": true,
+  "verified_at": "2026-06-26T23:50:00",
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "dependencies": {},
+  "compatibility": {
+    "operating_systems": [
+      "linux",
+      "macos"
+    ]
+  }
 }

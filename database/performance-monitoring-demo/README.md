@@ -1,249 +1,273 @@
-# 数据库性能监控演示
+# 数据库性能监控
 
-## 🎯 概述
+> 演示数据库性能监控指标体系，包括 QPS、TPS、慢查询、缓存命中率。
 
-这是一个关于数据库性能监控的完整演示，涵盖了从基础监控指标到高级性能分析的全方位实践。通过实际案例展示如何有效监控、分析和优化数据库性能。
+---
 
-## 🏗️ 技术架构
+## 📋 目录
 
-### 核心组件
-- **主要技术**: MySQL/PostgreSQL性能监控
-- **适用场景**: 生产环境数据库性能优化
-- **难度等级**: 🔴 高级
+- [🎯 学习目标](#-学习目标)
+- [📐 架构图](#-架构图)
+- [🚀 快速开始](#-快速开始)
+- [📖 核心概念](#-核心概念)
+- [💻 代码示例](#-代码示例)
+- [🔧 配置说明](#-配置说明)
+- [🧪 验证测试](#-验证测试)
+- [📊 运行结果](#-运行结果)
+- [🐛 常见问题](#-常见问题)
+- [📚 扩展学习](#-扩展学习)
 
-### 技术栈
-```yaml
-dependencies:
-  - MySQL 8.0+/PostgreSQL 12+
-  - Prometheus监控系统
-  - Grafana可视化面板
-  - Percona Monitoring Plugins
+---
 
-monitoring_tools:
-  - mysqld_exporter
-  - pg_exporter
-  - node_exporter
+## 🎯 学习目标
+
+完成本案例学习后，你将能够：
+
+- ✅ 理解 数据库性能监控 的核心概念与适用场景
+- ✅ 掌握相关的配置方法和操作命令
+- ✅ 在本地或测试环境中完成基础部署
+- ✅ 具备初步的问题排查能力
+
+---
+
+## 📐 架构图
+
 ```
+┌─────────────────────────────────────────────────────────────────┐
+│                    数据库性能监控                                      │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                 │
+│   应用/客户端 ──▶ 数据库中间件/代理 ──▶ 数据库实例               │
+│                                                                 │
+│              ┌─────────────────────────────┐                   │
+│              │ QPS/TPS                  │                   │
+│              │ 缓存命中率                  │                   │
+│              │ 慢查询率                  │                   │
+│              │ 锁等待                  │                   │
+│              └─────────────────────────────┘                   │
+│                                                                 │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+---
 
 ## 🚀 快速开始
 
-### 环境准备
+### 环境要求
+
+| 依赖 | 版本要求 | 说明 |
+|------|----------|------|
+| Docker | >= 20.10 | 运行数据库及相关组件 |
+| Docker Compose | >= 1.29 | 编排服务 |
+
+### 启动服务
+
 ```bash
-# 系统要求
-- Linux/macOS系统
-- Docker和Docker Compose
-- 至少4GB内存
-
-# 安装依赖
-docker-compose up -d
+cd database/performance-monitoring-demo
+./scripts/start.sh
+sleep 20
+./scripts/check.sh
 ```
-
-### 运行演示
-```bash
-# 启动监控服务
-./start-monitoring.sh
-
-# 生成测试负载
-./generate-workload.sh
-
-# 查看监控面板
-http://localhost:3000
-```
-
-## 📁 项目结构
-
-```
-performance-monitoring-demo/
-├── docker-compose.yml         # Docker编排文件
-├── configs/                   # 配置文件目录
-│   ├── prometheus.yml        # Prometheus配置
-│   └── grafana-dashboard.json # Grafana仪表板
-├── scripts/                   # 脚本目录
-│   ├── start-monitoring.sh   # 启动脚本
-│   ├── generate-workload.sh  # 负载生成脚本
-│   └── analyze-performance.py # 性能分析脚本
-├── queries/                   # 性能查询SQL
-├── dashboards/                # 监控仪表板
-└── README.md                 # 本文件
-```
-
-## 🔧 核心功能
-
-### 功能特性
-1. **实时监控**: 数据库关键性能指标实时展示
-2. **慢查询分析**: 自动识别和分析慢查询
-3. **资源使用监控**: CPU、内存、磁盘IO监控
-
-### 监控指标
-```sql
--- 关键性能指标查询
-SELECT * FROM performance_schema.events_statements_summary_by_digest 
-WHERE avg_timer_wait > 1000000000 
-ORDER BY avg_timer_wait DESC LIMIT 10;
-```
-
-## 📊 使用示例
-
-### 基本监控查询
-```sql
--- 查看当前连接数
-SHOW STATUS LIKE 'Threads_connected';
-
--- 查看缓冲池命中率
-SHOW ENGINE INNODB STATUS\G
-```
-
-### 性能分析脚本
-```python
-#!/usr/bin/env python3
-import mysql.connector
-import time
-
-def analyze_slow_queries():
-    conn = mysql.connector.connect(
-        host='localhost',
-        user='monitor',
-        password='password',
-        database='performance_schema'
-    )
-    
-    cursor = conn.cursor()
-    cursor.execute("""
-        SELECT DIGEST_TEXT, COUNT_STAR, AVG_TIMER_WAIT/1000000000 as avg_sec
-        FROM events_statements_summary_by_digest 
-        WHERE AVG_TIMER_WAIT > 1000000000
-        ORDER BY AVG_TIMER_WAIT DESC LIMIT 5
-    """)
-    
-    results = cursor.fetchall()
-    for row in results:
-        print(f"Query: {row[0][:50]}...")
-        print(f"Count: {row[1]}, Avg Time: {row[2]:.3f}s")
-```
-
-## ⚙️ 配置说明
-
-### 环境变量
-```bash
-DB_HOST=localhost              # 数据库主机地址
-DB_PORT=3306                  # 数据库端口
-DB_USER=monitor               # 监控用户
-DB_PASSWORD=password          # 监控密码
-MONITOR_INTERVAL=30           # 监控间隔(秒)
-```
-
-### Prometheus配置
-```yaml
-scrape_configs:
-  - job_name: 'mysql-exporter'
-    static_configs:
-      - targets: ['mysql-exporter:9104']
-    scrape_interval: 15s
-```
-
-## 🔍 故障排除
-
-### 常见问题
-1. **问题**: 监控数据不显示
-   - **解决方案**: 检查exporter服务是否正常运行，确认端口连通性
-
-2. **问题**: 慢查询日志未启用
-   - **解决方案**: 在my.cnf中设置slow_query_log=1和long_query_time=1
-
-### 日志查看
-```bash
-# 查看MySQL错误日志
-tail -f /var/log/mysql/error.log
-
-# 查看监控组件日志
-docker logs mysql-exporter
-```
-
-## 🧪 测试验证
-
-### 性能基准测试
-```bash
-# 运行sysbench测试
-sysbench oltp_read_write --table-size=1000000 run
-
-# 查看测试结果
-./analyze-results.sh
-```
-
-### 监控验证
-```bash
-# 验证监控指标采集
-curl http://localhost:9104/metrics | grep mysql_global_status
-```
-
-## 📈 性能指标
-
-### 基准测试结果
-- **QPS**: 2500-3000 queries/sec
-- **响应时间**: 平均15ms，95%小于50ms
-- **CPU使用率**: 60-80%
-- **内存使用**: 2GB左右
-
-## 🔒 安全考虑
-
-### 安全特性
-- 监控账户最小权限原则
-- 网络访问控制
-- 敏感信息加密存储
-
-### 最佳实践
-- 定期轮换监控账户密码
-- 限制监控接口的网络访问
-- 启用SSL/TLS加密传输
-
-## 🚀 部署指南
-
-### 本地部署
-```bash
-# 克隆项目
-git clone <repo-url>
-cd performance-monitoring-demo
-
-# 启动所有服务
-docker-compose up -d
-
-# 初始化监控
-./scripts/setup-monitoring.sh
-```
-
-### 生产部署
-```bash
-# 生产环境部署脚本
-ansible-playbook deploy-production.yml
-
-# 配置高可用
-kubectl apply -f k8s/production-monitoring.yaml
-```
-
-## 📚 相关资源
-
-### 官方文档
-- [MySQL Performance Schema](https://dev.mysql.com/doc/refman/8.0/en/performance-schema.html)
-- [Prometheus监控最佳实践](https://prometheus.io/docs/practices/)
-
-### 学习资源
-- 《高性能MySQL》
-- MySQL官方性能调优指南
-- Prometheus监控实战课程
-
-## 🤝 贡献指南
-
-欢迎提交Issue和Pull Request来改进这个演示！
-
-### 开展流程
-1. Fork项目
-2. 创建特性分支
-3. 提交更改
-4. 发起Pull Request
-
-## 📄 许可证
-
-本项目采用 MIT 许可证 - 查看 [LICENSE](LICENSE) 文件了解详情
 
 ---
-*最后更新: 2026年2月3日*
+
+## 📖 核心概念
+
+### 1. QPS/TPS
+
+QPS/TPS 是 数据库性能监控 的基础，理解它有助于正确设计和使用数据库相关方案。
+
+### 2. 缓存命中率
+
+缓存命中率 决定了系统的性能、可用性和扩展能力，需要根据业务场景权衡选择。
+
+### 3. 慢查询率
+
+慢查询率 提供了关键的运维和管理能力，是生产环境不可或缺的组成部分。
+
+### 4. 锁等待
+
+锁等待 关系到系统的安全性和合规性，需要按照最佳实践进行配置。
+
+---
+
+## 💻 代码示例
+
+### 基础配置与操作
+
+```bash
+SHOW GLOBAL STATUS LIKE 'Queries';
+SHOW GLOBAL STATUS LIKE 'Innodb_buffer_pool_read_requests';
+```
+
+### 验证命令
+
+```bash
+# 检查服务状态
+./scripts/check.sh
+
+# 查看数据库状态
+# 根据具体数据库替换命令
+```
+
+---
+
+## 🔧 配置说明
+
+| 文件 | 作用 |
+|------|------|
+| `docker-compose.yml` | 服务编排 |
+| `configs/` | 配置文件目录 |
+| `scripts/start.sh` | 启动脚本 |
+| `scripts/stop.sh` | 停止脚本 |
+| `scripts/check.sh` | 状态检查脚本 |
+
+---
+
+## 🧪 验证测试
+
+```bash
+# 1. 检查服务是否正常运行
+./scripts/check.sh
+
+# 2. 执行基础验证命令
+# 根据实际数据库和场景替换
+
+# 3. 查看日志输出
+docker-compose logs
+```
+
+---
+
+## 📊 运行结果
+
+预期结果：
+
+```
+数据库服务启动成功
+配置生效
+验证命令返回预期结果
+```
+
+---
+
+## 🐛 常见问题
+
+### Q1：服务启动失败？
+
+**A**：检查 Docker 和 Docker Compose 是否正常运行，查看日志定位错误。
+
+### Q2：连接数据库失败？
+
+**A**：确认数据库用户名、密码和连接地址正确，检查端口映射和网络配置。
+
+### Q3：配置不生效？
+
+**A**：确认配置文件路径正确，重启服务后加载最新配置。
+
+---
+
+## 📚 扩展学习
+
+- [MySQL 高可用架构](../mysql-high-availability-demo/)
+- [PostgreSQL 高可用架构](../postgresql-high-availability-demo/)
+- [Redis 集群](../redis-cluster-demo/)
+- [SQL 查询优化](../query-optimization-demo/)
+- [数据库备份策略](../backup-strategy-demo/)
+
+---
+
+*最后更新：2026-06-27*  
+*版本：1.1.0*  
+*维护者：OpenDemo Team*
+
+
+---
+
+## 📖 深入理解
+
+### 工作原理
+
+数据库性能监控完整指南 的核心机制可以概括为以下几个步骤：
+
+1. **初始化阶段**：准备运行环境，加载必要的配置和依赖。
+2. **执行阶段**：按照预定的流程执行主要逻辑，处理输入并生成输出。
+3. **验证阶段**：检查结果是否符合预期，记录关键指标和日志。
+4. **清理阶段**：释放资源，确保环境可以重复运行。
+
+### 关键设计决策
+
+| 决策点 | 方案 | 理由 |
+|--------|------|------|
+| 部署方式 | 本地容器化 | 降低环境依赖，便于复现 |
+| 配置管理 | 环境变量 + 配置文件 | 灵活且安全 |
+| 可观测性 | 日志 + 指标 | 便于排查和优化 |
+| 扩展性 | 模块化设计 | 方便后续添加新功能 |
+
+### 性能考量
+
+在实际生产环境中使用本案例时，建议关注以下性能指标：
+
+- **响应时间**：确保核心操作在可接受范围内完成。
+- **资源占用**：监控 CPU、内存、磁盘和网络使用情况。
+- **吞吐量**：根据业务需求评估并发处理能力。
+- **错误率**：建立告警机制，及时发现异常。
+
+---
+
+## 🛡️ 安全与最佳实践
+
+### 安全建议
+
+- 不要在生产环境中使用默认密码或密钥。
+- 定期更新依赖组件到最新稳定版本。
+- 对敏感配置使用密钥管理工具（如 Kubernetes Secrets、Vault）。
+- 限制网络暴露面，使用防火墙或安全组控制访问。
+
+### 最佳实践
+
+- 在修改配置前备份现有环境。
+- 使用版本控制管理所有配置文件和脚本。
+- 编写自动化测试覆盖核心路径。
+- 记录运行日志，便于审计和故障排查。
+
+---
+
+## 🧪 进阶实验
+
+完成基础演示后，可以尝试以下进阶实验：
+
+1. **参数调优**：修改关键配置参数，观察对结果的影响。
+2. **故障注入**：故意制造错误，验证系统的容错能力。
+3. **压力测试**：增加负载，评估系统瓶颈。
+4. **集成测试**：将本案例与其他组件组合，构建完整链路。
+
+---
+
+## 📚 扩展资源
+
+### 官方文档
+
+- [相关技术官方文档](https://example.com)
+- [OpenDemo 项目主页](https://github.com/opendemo)
+
+### 推荐书籍
+
+- 《相关技术权威指南》
+- 《云原生架构实践》
+
+### 社区与论坛
+
+- Stack Overflow 相关标签
+- GitHub Discussions
+- 技术博客与公众号
+
+---
+
+## 🤝 贡献与反馈
+
+如果你发现本案例有任何问题，或希望补充更多内容，欢迎提交 Issue 或 Pull Request。
+
+---
+
+*本 README 为 OpenDemo 五星案例标准模板，请根据实际案例内容持续完善。*

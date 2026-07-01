@@ -4,7 +4,13 @@
   "category": "kubernetes",
   "subcategory": "kubeflow",
   "component": "pipelines",
-  "tags": ["kubeflow", "pipelines", "experiments", "ml-tracking", "comparison"],
+  "tags": [
+    "kubeflow",
+    "pipelines",
+    "experiments",
+    "ml-tracking",
+    "comparison"
+  ],
   "difficulty": "beginner",
   "prerequisites": [
     "Kubernetes cluster with Kubeflow Pipelines installed",
@@ -20,7 +26,29 @@
     "Organize ML workflows with experiments"
   ],
   "estimated_time": "30 minutes",
-  "verified": false,
+  "verified": true,
   "version": "1.0.0",
-  "last_updated": "2024-01-01"
+  "last_updated": "2024-01-01",
+  "language": "kubernetes",
+  "keywords": [
+    "kubernetes",
+    "k8s",
+    "pipeline"
+  ],
+  "author": "OpenDemo Team",
+  "created_at": "2025-12-11T17:08:29",
+  "updated_at": "2026-06-27T00:00:00",
+  "verified_at": "2026-06-27T00:00:00",
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "dependencies": {},
+  "compatibility": {
+    "operating_systems": [
+      "linux",
+      "macos",
+      "windows(wsl)"
+    ]
+  }
 }

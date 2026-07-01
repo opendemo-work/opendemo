@@ -1,228 +1,223 @@
-# HTTP Protocol Analysis
+# HTTP 协议分析 - 请求响应与状态码
 
-HTTP协议深度分析，展示HTTP/1.1、HTTP/2、HTTP/3的演进和差异。
+> 通过 curl、浏览器开发者工具和 Wireshark 深入分析 HTTP/1.1 请求响应格式、常见状态码、Header 和缓存机制。
 
-## HTTP演进历程
+---
+
+## 📋 目录
+
+- [🎯 学习目标](#-学习目标)
+- [📐 架构图](#-架构图)
+- [🚀 快速开始](#-快速开始)
+- [📖 核心概念](#-核心概念)
+- [💻 代码示例](#-代码示例)
+- [🔧 配置说明](#-配置说明)
+- [🧪 验证测试](#-验证测试)
+- [📊 运行结果](#-运行结果)
+- [🐛 常见问题](#-常见问题)
+- [📚 扩展学习](#-扩展学习)
+
+---
+
+## 🎯 学习目标
+
+完成本案例学习后，你将能够：
+
+- ✅ 解释 HTTP 请求和响应的基本结构
+- ✅ 理解常见状态码的含义
+- ✅ 使用 curl 构造和发送 HTTP 请求
+- ✅ 分析请求头、响应头和缓存控制
+
+---
+
+## 📐 架构图
 
 ```
-HTTP发展时间线:
-1991  HTTP/0.9    单行协议
-1996  HTTP/1.0     headers引入
-1997  HTTP/1.1    持久连接、管道化
-2015  HTTP/2      多路复用、二进制分帧
-2022  HTTP/3      基于QUIC，无队头阻塞
+客户端 ──▶ HTTP Request ──▶ 服务器
+                              │
+                              ▼
+客户端 ◀── HTTP Response ◀── 服务器
 ```
 
-## HTTP/1.1 特性
+---
 
-### 持久连接
-```
-HTTP/1.0:              HTTP/1.1:
-┌───┐  Req  ┌───┐      ┌───┐  Req  ┌───┐
-│ C │◄─────►│ S │      │ C │◄─────►│ S │
-└───┘  Resp └───┘      └───┘  Resp └───┘
-   ╲  Req  ╱              ╲  Req2 ╱
-    ╲◄────►/               ╲◄────►/  (复用连接)
-     └──┘                     └──┘
-   每次请求新连接              Keep-Alive
-```
+## 🚀 快速开始
 
-### 管道化限制
-```
-队头阻塞 (Head-of-Line Blocking):
-请求1 ───────────────────────────────▶ 响应1 (慢)
-请求2 ───────▶ 响应2 (快，但必须等1完成)
-请求3 ───────▶ 响应3 (快，但必须等1完成)
-```
-
-## HTTP/2 核心特性
-
-### 二进制分帧层
-```
-HTTP/1.1 (文本):           HTTP/2 (二进制帧):
-GET / HTTP/1.1            ┌────────┬────────┬───────┐
-Host: example.com         │Length  │Type    │Flags  │
-                          │(24 bit)│(8 bit) │(8 bit)│
-                          ├────────┼────────┼───────┤
-                          │R       │Stream Identifier(31 bit)│
-                          │(1 bit) │                           │
-                          ├────────┴────────┴───────┤
-                          │      Payload (...)
-                          └─────────────────────────┘
-```
-
-### 多路复用
-```
-HTTP/2 多路复用:
-Stream 1: ──[HEADERS]─[DATA]─────────────────────▶
-Stream 3: ────────[HEADERS]─[DATA]─[DATA]────────▶
-Stream 5: ───────────────[HEADERS]─[DATA]────────▶
-Stream 7: ───────────────────[HEADERS]─[DATA]────▶
-                  ↓
-           单个TCP连接
-           (无队头阻塞)
-```
-
-### 首部压缩 (HPACK)
-```
-静态表:                    动态表:
-Index  Header              Index  Header
-  1    :authority             62   :method: GET
-  2    :method: GET           63   :scheme: https
-  3    :method: POST          64   :path: /
-  4    :path: /
-  ...                        (由连接上下文构建)
-
-编码前: 500+ bytes
-编码后: ~50 bytes (使用索引)
-```
-
-### 服务器推送
-```
-客户端请求:                服务器推送:
-GET /index.html            PUSH_PROMISE /style.css
-      │                          │
-      ▼                          ▼
-<index.html>              <style.css> (缓存)
-      │                          │
-      └──────────────────────────┘
-              减少往返次数
-```
-
-## HTTP/3 与 QUIC
-
-### QUIC协议栈
-```
-传统:                      QUIC:
-┌────────────┐            ┌────────────┐
-│   HTTP/2   │            │   HTTP/3   │
-├────────────┤            ├────────────┤
-│    TLS     │            │   QUIC     │ ← 加密+传输
-├────────────┤            ├────────────┤
-│    TCP     │            │    UDP     │
-├────────────┤            ├────────────┤
-│    IP      │            │    IP      │
-└────────────┘            └────────────┘
-```
-
-### 无队头阻塞
-```
-TCP丢包影响所有流:          QUIC流独立:
-Stream 1 ───X──▶ (丢包)     Stream 1 ───X──▶ (仅影响1)
-Stream 2 ──────▶ (阻塞!)    Stream 2 ──────▶ (正常)
-Stream 3 ──────▶ (阻塞!)    Stream 3 ──────▶ (正常)
-
-TCP: 单队列                QUIC: 多队列
-```
-
-## 性能对比
-
-### 加载时间对比
-```
-场景: 100个小资源 + 10个大资源
-
-HTTP/1.1:                    HTTP/2:
-[==========] Resource 1      [==] R1  [==] R11 [==] R21
-[==========] Resource 2      [==] R2  [==] R12 [==] R22
-[==========] Resource 3      [==] R3  [==] R13 [==] R23
-    ...                        (并发交错)
-[==========] Resource 10
-(6连接并行，队头阻塞)
-
-HTTP/3 (QUIC):
-[==] R1  [==] R11 [==] R21  [==] R31
-[==] R2  [==] R12 [==] R22  [==] R32
-    (更快连接建立，无队头阻塞)
-```
-
-### 关键指标
-| 特性 | HTTP/1.1 | HTTP/2 | HTTP/3 |
-|------|----------|--------|--------|
-| 并发 | 6-8连接 | 单连接多流 | 单连接多流 |
-| 头部压缩 | 无 | HPACK | QPACK |
-| 队头阻塞 | TCP层 | TCP层 | 无 |
-| 连接建立 | 2-3 RTT | 2-3 RTT | 0-1 RTT |
-| 安全性 | 可选 | 强制TLS | 强制TLS |
-
-## 实践操作
-
-### 检查HTTP版本
 ```bash
-# 使用curl
-curl -I --http2 https://example.com
-curl -I --http3 https://example.com
-
-# 使用Chrome DevTools
-# Network面板 - Protocol列显示h2, h3
-
-# 使用npx http2-test
-npx http2-test https://example.com
+cd networking/http-protocol-analysis
+./scripts/start.sh
+./scripts/check.sh
 ```
 
-### 启用HTTP/2 (Nginx)
-```nginx
-server {
-    listen 443 ssl http2;
-    server_name example.com;
-    
-    ssl_certificate /path/to/cert.pem;
-    ssl_certificate_key /path/to/key.pem;
-    
-    # HTTP/2推送示例
-    location = / {
-        http2_push /style.css;
-        http2_push /script.js;
-    }
-}
+---
+
+## 📖 核心概念
+
+### 1. HTTP 请求结构
+
+```
+GET /index.html HTTP/1.1
+Host: example.com
+User-Agent: curl/8.0
+Accept: text/html
+
+（请求体，GET 通常为空）
 ```
 
-### 启用HTTP/3 (Nginx + quiche)
-```nginx
-server {
-    listen 443 quic reuseport;
-    listen 443 ssl;
-    
-    ssl_certificate /path/to/cert.pem;
-    ssl_certificate_key /path/to/key.pem;
-    
-    # 启用0-RTT
-    ssl_early_data on;
-    
-    # 告知客户端支持HTTP/3
-    add_header Alt-Svc 'h3=":443"; ma=86400';
-}
+### 2. HTTP 响应结构
+
+```
+HTTP/1.1 200 OK
+Content-Type: text/html
+Content-Length: 1234
+
+<html>...</html>
 ```
 
-## Wireshark分析
+### 3. 常见状态码
 
-### 过滤HTTP/2帧
-```
-# 过滤HTTP/2流量
-http2
+| 状态码 | 含义 |
+|--------|------|
+| 200 | OK |
+| 301/302 | 重定向 |
+| 400 | Bad Request |
+| 401 | Unauthorized |
+| 403 | Forbidden |
+| 404 | Not Found |
+| 500 | Internal Server Error |
+| 502 | Bad Gateway |
+| 503 | Service Unavailable |
 
-# 过滤特定流
-http2.streamid == 1
+### 4. 缓存控制
 
-# 过滤特定帧类型
-http2.type == 0  # DATA帧
-http2.type == 1  # HEADERS帧
-http2.type == 2  # PRIORITY帧
-```
-
-### 分析QUIC
-```
-# 解密QUIC (需要密钥)
-# 设置SSLKEYLOGFILE环境变量
-export SSLKEYLOGFILE=/tmp/ssl-keys.log
-
-# Wireshark中配置
-# Preferences → Protocols → TLS → (Pre)-Master-Secret log filename
+```http
+Cache-Control: no-cache
+Cache-Control: max-age=3600
+ETag: "abc123"
+If-None-Match: "abc123"
 ```
 
-## 学习要点
+---
 
-1. HTTP版本演进和设计动机
-2. 二进制分帧和多路复用原理
-3. HPACK/QPACK压缩算法
-4. QUIC协议优势
-5. 实际部署和调优
+## 💻 代码示例
+
+### curl 常用命令
+
+```bash
+# GET 请求
+curl -i http://localhost:8080/
+
+# POST 请求
+curl -X POST http://localhost:8080/api/users \
+  -H "Content-Type: application/json" \
+  -d '{"name":"Alice"}'
+
+# 查看详细通信过程
+curl -v http://localhost:8080/
+
+# 只显示响应头
+curl -I http://localhost:8080/
+```
+
+### 启动测试服务器
+
+```bash
+python3 -m http.server 8080
+```
+
+---
+
+## 🧪 验证测试
+
+```bash
+# 测试不同状态码
+curl -s -o /dev/null -w "%{http_code}\n" http://localhost:8080/
+curl -s -o /dev/null -w "%{http_code}\n" http://localhost:8080/notfound
+```
+
+---
+
+## 📚 扩展学习
+
+- [HTTP 协议深入](../http-protocol-deep-dive/)
+- [TCP/IP 基础](../tcp-ip-fundamentals/)
+- [MDN HTTP 文档](https://developer.mozilla.org/zh-CN/docs/Web/HTTP)
+
+---
+
+*最后更新：2026-06-27*  
+*版本：1.1.0*  
+*维护者：OpenDemo Team*
+
+---
+
+## 🔍 HTTP/2 与 HTTP/3 简介
+
+### HTTP/2
+
+HTTP/2 引入二进制分帧、多路复用、头部压缩（HPACK）和服务器推送：
+
+```
+┌────────────────────────────────────────┐
+│            HTTP/2 连接                  │
+│  ┌─────┐ ┌─────┐ ┌─────┐              │
+│  │流 1 │ │流 3 │ │流 5 │   多路复用    │
+│  └─────┘ └─────┘ └─────┘              │
+└────────────────────────────────────────┘
+```
+
+### HTTP/3
+
+HTTP/3 基于 QUIC 协议，使用 UDP 传输，解决了 TCP 队头阻塞问题。
+
+---
+
+## 🛡️ HTTP 安全头
+
+生产环境建议配置以下安全头：
+
+| Header | 作用 |
+|--------|------|
+| `Strict-Transport-Security` | 强制 HTTPS |
+| `Content-Security-Policy` | 防止 XSS |
+| `X-Frame-Options` | 防止点击劫持 |
+| `X-Content-Type-Options` | 防止 MIME 嗅探 |
+| `Referrer-Policy` | 控制 Referrer 信息 |
+
+---
+
+## 🧪 扩展实验
+
+- [ ] 使用 Wireshark 抓取 HTTP 包并分析三次握手
+- [ ] 测试 301 和 302 重定向差异
+- [ ] 验证 Cache-Control 的缓存行为
+- [ ] 对比 HTTP/1.1 和 HTTP/2 的请求性能
+
+---
+
+## 📝 Cookie 与会话管理
+
+HTTP 是无状态协议，Cookie 用于维持客户端状态：
+
+```http
+Set-Cookie: session_id=abc123; HttpOnly; Secure; SameSite=Strict; Max-Age=3600
+```
+
+重要属性：
+
+- `HttpOnly`：禁止 JavaScript 访问，防止 XSS 窃取
+- `Secure`：仅通过 HTTPS 传输
+- `SameSite`：控制跨站请求时是否发送 Cookie
+- `Max-Age/Expires`：设置 Cookie 有效期
+
+---
+
+## 🔧 常用工具推荐
+
+| 工具 | 用途 |
+|------|------|
+| curl | 命令行 HTTP 客户端 |
+| Postman | API 测试与调试 |
+| httpie | 更友好的命令行 HTTP 工具 |
+| Wireshark | 网络抓包分析 |
+| Browser DevTools | 浏览器内置调试工具 |

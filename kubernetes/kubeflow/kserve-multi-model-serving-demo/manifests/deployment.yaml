@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kserve-multi-model-serving-demo
+  labels:
+    app: kserve-multi-model-serving-demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kserve-multi-model-serving-demo
+  template:
+    metadata:
+      labels:
+        app: kserve-multi-model-serving-demo
+    spec:
+      containers:
+      - name: demo
+        image: nginx:alpine
+        ports:
+        - containerPort: 80

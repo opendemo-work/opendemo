@@ -18,7 +18,11 @@
   "version": "1.0.0",
   "dependencies": {
     "java_version": "11+",
-    "required_tools": ["jdk", "jvisualvm", "jconsole"]
+    "required_tools": [
+      "jdk",
+      "jvisualvm",
+      "jconsole"
+    ]
   },
   "verified": true,
   "estimated_time": "3-4小时",
@@ -53,5 +57,13 @@
     "src/main/java/com/opendemo/java/profiling/PerformanceBenchmark.java",
     "src/main/java/com/opendemo/java/profiling/HotspotDemo.java",
     "src/test/java/com/opendemo/java/profiling/ProfilingDemoTest.java"
-  ]
+  ],
+  "verified_at": "2026-06-27T00:05:00",
+  "compatibility": {
+    "operating_systems": [
+      "linux",
+      "macos",
+      "windows(wsl)"
+    ]
+  }
 }

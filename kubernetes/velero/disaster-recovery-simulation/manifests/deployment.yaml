@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: disaster-recovery-simulation
+  labels:
+    app: disaster-recovery-simulation
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: disaster-recovery-simulation
+  template:
+    metadata:
+      labels:
+        app: disaster-recovery-simulation
+    spec:
+      containers:
+      - name: demo
+        image: nginx:alpine
+        ports:
+        - containerPort: 80

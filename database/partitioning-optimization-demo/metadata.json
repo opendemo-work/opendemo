@@ -7,10 +7,23 @@
   "last_updated": "2026-02-02",
   "category": "性能优化",
   "subcategory": "分区优化",
-  "tags": ["database", "partitioning", "optimization", "sharding", "performance", "mysql", "postgresql", "mongodb"],
-  "difficulty": "专家级",
+  "tags": [
+    "database",
+    "partitioning",
+    "optimization",
+    "sharding",
+    "performance",
+    "mysql",
+    "postgresql",
+    "mongodb"
+  ],
+  "difficulty": "intermediate",
   "estimated_time": "390分钟",
-  "prerequisites": ["数据库基础", "索引优化经验", "大数据处理知识"],
+  "prerequisites": [
+    "数据库基础",
+    "索引优化经验",
+    "大数据处理知识"
+  ],
   "learning_objectives": [
     "掌握分区策略的设计原则",
     "学会不同类型分区的实现方法",
@@ -23,5 +36,28 @@
     "clarity": "步骤详细可操作",
     "relevance": "企业级应用场景"
   },
-  "validation_status": "pending"
+  "validation_status": "pending",
+  "language": "database",
+  "description": "数据库分区优化完整指南 的实战演示与配置详解",
+  "keywords": [
+    "database",
+    "mysql",
+    "partitioning"
+  ],
+  "created_at": "2025-12-11T17:08:29",
+  "updated_at": "2026-06-26T23:55:00",
+  "verified": true,
+  "verified_at": "2026-06-26T23:55:00",
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "dependencies": {},
+  "compatibility": {
+    "operating_systems": [
+      "linux",
+      "macos",
+      "windows(wsl)"
+    ]
+  }
 }

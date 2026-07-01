@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pod-basics
+  labels:
+    app: pod-basics
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pod-basics
+  template:
+    metadata:
+      labels:
+        app: pod-basics
+    spec:
+      containers:
+      - name: demo
+        image: nginx:alpine
+        ports:
+        - containerPort: 80

@@ -1,8 +1,48 @@
 {
   "name": "火山引擎CLI命令速查表",
   "category": "cloud-cli",
-  "tech_stack": ["火山引擎", "Volcengine CLI", "ecs", "tos", "vpc", "clb", "redis", "mysql", "vke"],
+  "tech_stack": [
+    "火山引擎",
+    "Volcengine CLI",
+    "ecs",
+    "tos",
+    "vpc",
+    "clb",
+    "redis",
+    "mysql",
+    "vke"
+  ],
   "description": "火山引擎CLI完整命令参考，覆盖ECS/TOS/VPC/CLB/Redis/MySQL/VKE等全产品线CLI",
   "difficulty": "intermediate",
-  "dependencies": ["volc"]
+  "dependencies": {
+    "items": [
+      "volc"
+    ]
+  },
+  "language": "python",
+  "keywords": [
+    "python",
+    "volcengine"
+  ],
+  "author": "OpenDemo Team",
+  "version": "1.1.0",
+  "created_at": "2025-12-11T17:08:29",
+  "updated_at": "2026-06-27T00:05:00",
+  "verified": true,
+  "verified_at": "2026-06-27T00:05:00",
+  "estimated_time": "60-90分钟",
+  "prerequisites": [
+    "相关基础知识"
+  ],
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "compatibility": {
+    "operating_systems": [
+      "linux",
+      "macos",
+      "windows(wsl)"
+    ]
+  }
 }

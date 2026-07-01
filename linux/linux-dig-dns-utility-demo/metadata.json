@@ -1,36 +1,48 @@
 {
   "name": "Linux dig DNS查询工具详解演示",
-  "description": "通过实际示例展示Linux dig命令的各种用法，包括域名解析、DNS记录查询、反向解析等DNS操作。",
-  "tags": [
+  "language": "linux",
+  "difficulty": "intermediate",
+  "description": "通过可运行的 Shell 脚本和真实 dig 命令示例，掌握 Linux dig 工具的域名解析、DNS 记录查询、反向解析与安全审计方法。",
+  "keywords": [
     "linux",
-    "network",
     "dns",
     "dig",
     "domain-resolution",
     "dns-records",
-    "dns-troubleshooting"
+    "dns-troubleshooting",
+    "shell"
   ],
-  "difficulty": "中级",
-  "estimated_time": "2小时",
+  "author": "OpenDemo Team",
+  "version": "1.1.0",
+  "created_at": "2025-12-11T17:08:29",
+  "updated_at": "2026-06-26T23:50:00",
+  "verified": true,
+  "verified_at": "2026-06-26T23:50:00",
+  "estimated_time": "60-90分钟",
   "prerequisites": [
-    "基础Linux命令知识",
-    "DNS基础知识",
-    "网络基础知识"
+    "基础 Linux 命令知识",
+    "DNS 基础知识",
+    "网络基础知识",
+    "已安装 dig 命令（dnsutils/bind-utils）"
   ],
-  "learning_objectives": [
-    "掌握dig命令的基本语法和常用选项",
-    "学会使用dig进行域名解析",
-    "理解DNS记录类型和解析结果",
-    "掌握DNS故障排查的高级方法"
+  "files": [
+    "README.md",
+    "metadata.json",
+    "scripts/dns_query_demo.sh",
+    "scripts/dns_security_check.sh",
+    "scripts/dns_batch_query.sh",
+    "examples/dig_basic_output.txt",
+    "docs/dns_record_types.md"
   ],
-  "technical_requirements": [
-    "Linux系统",
-    "dnsutils工具包",
-    "网络连接"
-  ],
-  "related_demos": [
-    "linux-nslookup-dns-lookup-demo",
-    "linux-host-command-demo",
-    "linux-whois-domain-info-demo"
-  ]
+  "dependencies": {
+    "system": [
+      "dig"
+    ]
+  },
+  "compatibility": {
+    "operating_systems": [
+      "linux",
+      "macos"
+    ]
+  }
 }

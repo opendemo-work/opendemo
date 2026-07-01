@@ -17,8 +17,14 @@
   "version": "1.0.0",
   "dependencies": {
     "go_version": "1.16+",
-    "required_tools": ["pprof", "go-torch"],
-    "optional_tools": ["delve", "graphviz"]
+    "required_tools": [
+      "pprof",
+      "go-torch"
+    ],
+    "optional_tools": [
+      "delve",
+      "graphviz"
+    ]
   },
   "verified": true,
   "estimated_time": "4-5小时",
@@ -54,5 +60,13 @@
     "configs/pprof_config.go",
     "examples/pprof_output_samples/cpu_profile.txt",
     "docs/go_pprof_guide.md"
-  ]
+  ],
+  "verified_at": "2026-06-27T00:05:00",
+  "compatibility": {
+    "operating_systems": [
+      "linux",
+      "macos",
+      "windows(wsl)"
+    ]
+  }
 }

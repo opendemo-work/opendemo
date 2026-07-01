@@ -1,0 +1,49 @@
+{
+  "name": "NGINX 反向代理演示",
+  "language": "traffic",
+  "difficulty": "intermediate",
+  "description": "使用 NGINX 作为反向代理，将外部请求转发到后端应用服务，学习负载均衡、健康检查和路径路由。",
+  "keywords": [
+    "nginx",
+    "reverse-proxy",
+    "load-balancing",
+    "upstream",
+    "traffic"
+  ],
+  "author": "OpenDemo Team",
+  "version": "1.0.0",
+  "created_at": "2026-06-27",
+  "updated_at": "2026-06-27T02:15:00",
+  "verified": true,
+  "verified_at": "2026-06-27T02:15:00",
+  "estimated_time": "45-75分钟",
+  "prerequisites": [
+    "Docker",
+    "Docker Compose",
+    "HTTP 基础"
+  ],
+  "files": [
+    "README.md",
+    "metadata.json",
+    "docker-compose.yml",
+    "configs/nginx.conf",
+    "html/app1.html",
+    "html/app2.html",
+    "scripts/start.sh",
+    "scripts/stop.sh",
+    "scripts/check.sh"
+  ],
+  "dependencies": {
+    "software": [
+      "Docker",
+      "Docker Compose"
+    ]
+  },
+  "compatibility": {
+    "operating_systems": [
+      "linux",
+      "macos",
+      "windows(wsl)"
+    ]
+  }
+}

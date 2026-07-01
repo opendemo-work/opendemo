@@ -1,8 +1,44 @@
 {
   "name": "Chaos Engineering",
   "category": "sre",
-  "tech_stack": ["SRE", "Chaos Mesh", "Litmus", "Resilience"],
+  "tech_stack": [
+    "SRE",
+    "Chaos Mesh",
+    "Litmus",
+    "Resilience"
+  ],
   "description": "混沌工程实践：故障注入、韧性测试、游戏日演练",
   "difficulty": "advanced",
-  "dependencies": ["kubernetes", "chaos-mesh"]
+  "dependencies": {
+    "items": [
+      "kubernetes",
+      "chaos-mesh"
+    ]
+  },
+  "language": "python",
+  "keywords": [
+    "python",
+    "chaos"
+  ],
+  "author": "OpenDemo Team",
+  "version": "1.1.0",
+  "created_at": "2025-12-11T17:08:29",
+  "updated_at": "2026-06-27T00:05:00",
+  "verified": true,
+  "verified_at": "2026-06-27T00:05:00",
+  "estimated_time": "60-90分钟",
+  "prerequisites": [
+    "相关基础知识"
+  ],
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "compatibility": {
+    "operating_systems": [
+      "linux",
+      "macos",
+      "windows(wsl)"
+    ]
+  }
 }

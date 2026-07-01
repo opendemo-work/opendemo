@@ -1,0 +1,28 @@
+global:
+  smtp_smarthost: 'localhost:587'
+  smtp_from: 'alertmanager@opendemo.local'
+
+route:
+  receiver: 'default'
+  group_by: ['alertname', 'severity']
+  group_wait: 10s
+  group_interval: 10s
+  repeat_interval: 1h
+  routes:
+    - match:
+        severity: critical
+      receiver: 'critical'
+    - match:
+        severity: warning
+      receiver: 'warning'
+
+receivers:
+- name: 'default'
+  webhook_configs:
+  - url: 'http://localhost:5001/webhook'
+- name: 'critical'
+  webhook_configs:
+  - url: 'http://localhost:5001/critical'
+- name: 'warning'
+  webhook_configs:
+  - url: 'http://localhost:5001/warning'

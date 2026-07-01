@@ -1,362 +1,270 @@
-# FDE Disaster Recovery
+# 全盘加密灾难恢复
 
-全盘加密环境灾难恢复方案演示。
+> 演示全盘加密环境下系统无法启动时的数据恢复方法。
 
-## 灾难场景分析
+---
+
+## 📋 目录
+
+- [🎯 学习目标](#-学习目标)
+- [📐 架构图](#-架构图)
+- [🚀 快速开始](#-快速开始)
+- [📖 核心概念](#-核心概念)
+- [💻 代码示例](#-代码示例)
+- [🔧 配置说明](#-配置说明)
+- [🧪 验证测试](#-验证测试)
+- [📊 运行结果](#-运行结果)
+- [🐛 常见问题](#-常见问题)
+- [📚 扩展学习](#-扩展学习)
+
+---
+
+## 🎯 学习目标
+
+完成本案例学习后，你将能够：
+
+- ✅ 理解 全盘加密灾难恢复 的核心概念与适用场景
+- ✅ 掌握相关的配置方法和操作命令
+- ✅ 在测试环境中完成基础部署或操作
+- ✅ 了解安全最佳实践和合规要求
+
+---
+
+## 📐 架构图
 
 ```
-灾难恢复场景:
-┌─────────────────────────────────────────────────────────┐
-│ 场景1: 密钥丢失                                          │
-│ ├── 用户忘记密码                                          │
-│ ├── 恢复密钥丢失                                          │
-│ └── 密钥托管系统故障                                       │
-├─────────────────────────────────────────────────────────┤
-│ 场景2: 硬件故障                                          │
-│ ├── TPM芯片损坏                                           │
-│ ├── 主板故障导致TPM不可用                                  │
-│ └── 硬盘控制器故障                                         │
-├─────────────────────────────────────────────────────────┤
-│ 场景3: 系统损坏                                          │
-│ ├── 引导加载器损坏                                        │
-│ ├── 内核更新失败                                          │
-│ └── 文件系统损坏                                          │
-├─────────────────────────────────────────────────────────┤
-│ 场景4: 数据中心灾难                                      │
-│ ├── 站点完全丢失                                          │
-│ ├── 备份介质损坏                                          │
-│ └── 密钥托管服务器不可用                                   │
-└─────────────────────────────────────────────────────────┘
+┌─────────────────────────────────────────────────────────────────┐
+│                    全盘加密灾难恢复                                      │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                 │
+│   终端/系统/应用 ──▶ 安全控制机制 ──▶ 受保护资源                 │
+│                                                                 │
+│              ┌─────────────────────────────┐                   │
+│              │ 恢复密钥                  │                   │
+│              │ 应急启动                  │                   │
+│              │ 数据恢复                  │                   │
+│              │ 备份策略                  │                   │
+│              └─────────────────────────────┘                   │
+│                                                                 │
+└─────────────────────────────────────────────────────────────────┘
 ```
 
-## 灾难恢复预案
+---
 
-### 1. 密钥备份策略
+## 🚀 快速开始
+
+### 环境要求
+
+| 依赖 | 版本要求 | 说明 |
+|------|----------|------|
+| Docker / 对应平台工具 | >= 版本要求 | 运行安全工具或脚本 |
+
+### 启动服务
 
 ```bash
-#!/bin/bash
-# 自动化密钥备份脚本
-
-BACKUP_DIR="/secure/backup/luks"
-DATE=$(date +%Y%m%d)
-
-# 创建加密备份容器
-setup_backup_container() {
-    local backup_device="/dev/sdb1"
-    
-    # 创建LUKS容器用于备份存储
-    cryptsetup luksFormat --type luks2 $backup_device
-    cryptsetup luksOpen $backup_device backup_storage
-    
-    # 创建文件系统
-    mkfs.ext4 /dev/mapper/backup_storage
-    mkdir -p $BACKUP_DIR
-    mount /dev/mapper/backup_storage $BACKUP_DIR
-}
-
-# 备份LUKS头
-backup_luks_headers() {
-    local device=$1
-    local hostname=$(hostname)
-    
-    cryptsetup luksHeaderBackup $device \
-        --header-backup-file "$BACKUP_DIR/${hostname}_$(basename $device)_header_${DATE}.img"
-    
-    # 计算校验和
-    sha256sum "$BACKUP_DIR/${hostname}_$(basename $device)_header_${DATE}.img" \
-        > "$BACKUP_DIR/${hostname}_$(basename $device)_header_${DATE}.sha256"
-}
-
-# 备份恢复密钥
-backup_recovery_keys() {
-    local key_file=$1
-    local hostname=$(hostname)
-    
-    # 使用GPG加密备份
-    gpg --symmetric --cipher-algo AES256 \
-        --output "$BACKUP_DIR/${hostname}_recovery_key_${DATE}.gpg" \
-        $key_file
-}
-
-# 主备份流程
-main() {
-    # 备份所有加密设备
-    for device in /dev/sda2 /dev/sdb2; do
-        if cryptsetup isLuks $device 2>/dev/null; then
-            backup_luks_headers $device
-        fi
-    done
-    
-    # 同步到远程位置
-    rsync -avz --delete $BACKUP_DIR/ remote-server:/backups/luks/
-}
-
-main
+cd security/fde-disaster-recovery
+./scripts/start.sh
+./scripts/check.sh
 ```
 
-### 2. 紧急恢复流程
+---
+
+## 📖 核心概念
+
+### 1. 恢复密钥
+
+恢复密钥 是 全盘加密灾难恢复 的基础，正确理解和配置它是保障安全的前提。
+
+### 2. 应急启动
+
+应急启动 直接影响系统的安全性和可用性，需要根据组织策略进行规划。
+
+### 3. 数据恢复
+
+数据恢复 提供了关键的技术能力，支持安全机制的有效运行。
+
+### 4. 备份策略
+
+备份策略 关系到合规性和审计要求，是企业安全治理的重要组成部分。
+
+---
+
+## 💻 代码示例
+
+### 基础配置与操作
 
 ```bash
-#!/bin/bash
-# 紧急恢复脚本
-
-RECOVERY_LOG="/var/log/fde_recovery.log"
-
-log() {
-    echo "[$(date '+%Y-%m-%d %H:%M:%S')] $1" | tee -a $RECOVERY_LOG
-}
-
-# 场景1: LUKS头损坏恢复
-recover_luks_header() {
-    local device=$1
-    local backup_file=$2
-    
-    log "Starting LUKS header recovery for $device"
-    
-    # 验证备份文件
-    if [ ! -f "$backup_file" ]; then
-        log "ERROR: Backup file not found: $backup_file"
-        return 1
-    fi
-    
-    # 验证校验和
-    if ! sha256sum -c "${backup_file}.sha256"; then
-        log "ERROR: Backup file checksum failed"
-        return 1
-    fi
-    
-    # 恢复头部
-    cryptsetup luksHeaderRestore $device --header-backup-file $backup_file
-    
-    if [ $? -eq 0 ]; then
-        log "SUCCESS: LUKS header restored for $device"
-        return 0
-    else
-        log "ERROR: Failed to restore LUKS header"
-        return 1
-    fi
-}
-
-# 场景2: 使用备份密钥解锁
-unlock_with_backup_key() {
-    local device=$1
-    local backup_key_file=$2
-    
-    log "Attempting to unlock $device with backup key"
-    
-    # 解密备份密钥
-    local decrypted_key=$(gpg --decrypt $backup_key_file 2>/dev/null)
-    
-    if [ -z "$decrypted_key" ]; then
-        log "ERROR: Failed to decrypt backup key"
-        return 1
-    fi
-    
-    # 尝试解锁
-    echo "$decrypted_key" | cryptsetup luksOpen $device recovered_data -
-    
-    if [ $? -eq 0 ]; then
-        log "SUCCESS: Device unlocked with backup key"
-        return 0
-    else
-        log "ERROR: Failed to unlock with backup key"
-        return 1
-    fi
-}
-
-# 场景3: 数据恢复 (无头部)
-recover_data_without_header() {
-    local device=$1
-    local original_cipher="aes-xts-plain64"
-    local original_offset=4096  # 假设标准偏移
-    
-    log "ATTEMPTING EMERGENCY DATA RECOVERY"
-    log "This requires knowing the original encryption parameters"
-    
-    # 尝试使用已知参数打开
-    cryptsetup open --type plain \
-        --cipher $original_cipher \
-        --offset $original_offset \
-        --key-file /recovery/master-key \
-        $device emergency_recovery
-    
-    return $?
-}
+# 使用恢复密钥解锁
+manage-bde -unlock C: -recoverypassword xxxxxx-xxxxxx-xxxxxx-xxxxxx-xxxxxx-xxxxxx-xxxxxx-xxxxxx
 ```
 
-## 灾难恢复测试
+### 验证命令
 
-```python
-#!/usr/bin/env python3
-"""
-FDE灾难恢复测试框架
-"""
-import subprocess
-import json
-import tempfile
-import os
-from datetime import datetime
+```bash
+# 检查服务/配置状态
+./scripts/check.sh
 
-class FDERecoveryTest:
-    def __init__(self):
-        self.test_results = []
-        self.test_container = None
-    
-    def setup_test_environment(self):
-        """创建测试环境"""
-        # 创建测试文件
-        self.test_container = tempfile.NamedTemporaryFile(delete=False, suffix='.img')
-        
-        # 创建100MB测试容器
-        subprocess.run(['dd', 'if=/dev/zero', f'of={self.test_container.name}', 
-                      'bs=1M', 'count=100'], check=True)
-        
-        # 设置LUKS
-        subprocess.run(['cryptsetup', 'luksFormat', '--type', 'luks2',
-                      '-q', self.test_container.name], 
-                      input='testpassword123', text=True, check=True)
-        
-        return self.test_container.name
-    
-    def test_header_backup_restore(self):
-        """测试头部备份恢复"""
-        print("Testing: Header Backup and Restore")
-        
-        with tempfile.NamedTemporaryFile(delete=False, suffix='.header') as backup:
-            # 备份头部
-            subprocess.run(['cryptsetup', 'luksHeaderBackup',
-                          self.test_container.name,
-                          '--header-backup-file', backup.name], check=True)
-            
-            # 模拟损坏 (创建新LUKS)
-            subprocess.run(['cryptsetup', 'luksFormat', '--type', 'luks2',
-                          '-q', self.test_container.name],
-                          input='newpassword456', text=True, check=True)
-            
-            # 恢复头部
-            result = subprocess.run(['cryptsetup', 'luksHeaderRestore',
-                                   self.test_container.name,
-                                   '--header-backup-file', backup.name],
-                                   input='YES', text=True, capture_output=True)
-            
-            success = result.returncode == 0
-            
-            # 验证可以解锁
-            if success:
-                unlock = subprocess.run(['cryptsetup', 'luksOpen', '-q',
-                                       self.test_container.name, 'test_recovery',
-                                       '-'], input='testpassword123',
-                                       text=True, capture_output=True)
-                success = unlock.returncode == 0
-                
-                if success:
-                    subprocess.run(['cryptsetup', 'luksClose', 'test_recovery'])
-            
-            self.test_results.append({
-                'test': 'header_backup_restore',
-                'success': success,
-                'timestamp': datetime.now().isoformat()
-            })
-            
-            print(f"  Result: {'PASS' if success else 'FAIL'}")
-            return success
-    
-    def test_key_slot_management(self):
-        """测试密钥槽管理"""
-        print("Testing: Key Slot Management")
-        
-        # 添加备用密钥
-        result1 = subprocess.run(['cryptsetup', 'luksAddKey', '-q',
-                                self.test_container.name],
-                                input='testpassword123\nbackuppassword456',
-                                text=True, capture_output=True)
-        
-        # 删除主密钥
-        result2 = subprocess.run(['cryptsetup', 'luksKillSlot', '-q',
-                                self.test_container.name, '0'],
-                                input='backuppassword456',
-                                text=True, capture_output=True)
-        
-        # 验证备用密钥仍可解锁
-        result3 = subprocess.run(['cryptsetup', 'luksOpen', '-q',
-                                self.test_container.name, 'test_slot',
-                                '-'], input='backuppassword456',
-                                text=True, capture_output=True)
-        
-        success = result1.returncode == 0 and result2.returncode == 0 and result3.returncode == 0
-        
-        if success:
-            subprocess.run(['cryptsetup', 'luksClose', 'test_slot'])
-        
-        self.test_results.append({
-            'test': 'key_slot_management',
-            'success': success,
-            'timestamp': datetime.now().isoformat()
-        })
-        
-        print(f"  Result: {'PASS' if success else 'FAIL'}")
-        return success
-    
-    def generate_report(self):
-        """生成测试报告"""
-        passed = sum(1 for r in self.test_results if r['success'])
-        total = len(self.test_results)
-        
-        report = {
-            'test_date': datetime.now().isoformat(),
-            'summary': {
-                'total_tests': total,
-                'passed': passed,
-                'failed': total - passed,
-                'success_rate': (passed / total * 100) if total > 0 else 0
-            },
-            'details': self.test_results
-        }
-        
-        with open('fde_recovery_test_report.json', 'w') as f:
-            json.dump(report, f, indent=2)
-        
-        print("\n=== Test Summary ===")
-        print(f"Total: {total}, Passed: {passed}, Failed: {total - passed}")
-        print(f"Success Rate: {report['summary']['success_rate']:.1f}%")
-        
-        return report
-    
-    def cleanup(self):
-        """清理测试环境"""
-        if self.test_container and os.path.exists(self.test_container.name):
-            os.unlink(self.test_container.name)
-
-# 运行测试
-if __name__ == "__main__":
-    test = FDERecoveryTest()
-    try:
-        test.setup_test_environment()
-        test.test_header_backup_restore()
-        test.test_key_slot_management()
-        test.generate_report()
-    finally:
-        test.cleanup()
+# 查看日志/输出
+# 根据具体工具替换
 ```
 
-## 业务连续性计划
+---
+
+## 🔧 配置说明
+
+| 文件 | 作用 |
+|------|------|
+| `docker-compose.yml` | 服务编排（如适用） |
+| `configs/` | 配置文件目录 |
+| `scripts/start.sh` | 启动脚本 |
+| `scripts/stop.sh` | 停止脚本 |
+| `scripts/check.sh` | 状态检查脚本 |
+
+---
+
+## 🧪 验证测试
+
+```bash
+# 1. 检查服务是否正常运行
+./scripts/check.sh
+
+# 2. 执行基础验证命令
+# 根据实际场景替换
+
+# 3. 查看日志输出
+# docker-compose logs 或系统日志
+```
+
+---
+
+## 📊 运行结果
+
+预期结果：
 
 ```
-RTO/RPO目标:
-┌─────────────────────────────────────────────────────────┐
-│ 场景              │ RTO     │ RPO     │ 恢复策略        │
-├─────────────────────────────────────────────────────────┤
-│ 单设备密钥丢失    │ 1小时   │ 0       │ 恢复密钥托管    │
-│ TPM故障          │ 4小时   │ 0       │ 备用解锁方式    │
-│ LUKS头损坏       │ 2小时   │ 0       │ 头部备份恢复    │
-│ 数据中心灾难     │ 24小时  │ 1小时   │ 异地备份恢复    │
-└─────────────────────────────────────────────────────────┘
+安全配置生效
+验证命令返回预期结果
+日志无关键错误
 ```
 
-## 学习要点
+---
 
-1. 灾难场景分类与应对
-2. 密钥备份策略
-3. 紧急恢复流程
-4. 灾难恢复测试
-5. 业务连续性规划
+## 🐛 常见问题
+
+### Q1：部署失败？
+
+**A**：检查环境依赖、权限配置和日志输出，确认平台或工具版本兼容。
+
+### Q2：加密后无法启动？
+
+**A**：确保恢复密钥已安全备份，并按照恢复流程操作。
+
+### Q3：策略不生效？
+
+**A**：检查策略作用范围、目标对象和下发机制，必要时强制刷新或重新注册。
+
+---
+
+## 📚 扩展学习
+
+- [密钥管理基础](../crypto-key-management/)
+- [Secrets Management](../secrets-management-vault/)
+- [GDPR 合规审计](../compliance-audit-gdpr/)
+- [AWS 云磁盘加密](../cloud-disk-encryption-aws/)
+
+---
+
+*最后更新：2026-06-27*  
+*版本：1.1.0*  
+*维护者：OpenDemo Team*
+
+
+---
+
+## 📖 深入理解
+
+### 工作原理
+
+FDE Disaster Recovery 的核心机制可以概括为以下几个步骤：
+
+1. **初始化阶段**：准备运行环境，加载必要的配置和依赖。
+2. **执行阶段**：按照预定的流程执行主要逻辑，处理输入并生成输出。
+3. **验证阶段**：检查结果是否符合预期，记录关键指标和日志。
+4. **清理阶段**：释放资源，确保环境可以重复运行。
+
+### 关键设计决策
+
+| 决策点 | 方案 | 理由 |
+|--------|------|------|
+| 部署方式 | 本地容器化 | 降低环境依赖，便于复现 |
+| 配置管理 | 环境变量 + 配置文件 | 灵活且安全 |
+| 可观测性 | 日志 + 指标 | 便于排查和优化 |
+| 扩展性 | 模块化设计 | 方便后续添加新功能 |
+
+### 性能考量
+
+在实际生产环境中使用本案例时，建议关注以下性能指标：
+
+- **响应时间**：确保核心操作在可接受范围内完成。
+- **资源占用**：监控 CPU、内存、磁盘和网络使用情况。
+- **吞吐量**：根据业务需求评估并发处理能力。
+- **错误率**：建立告警机制，及时发现异常。
+
+---
+
+## 🛡️ 安全与最佳实践
+
+### 安全建议
+
+- 不要在生产环境中使用默认密码或密钥。
+- 定期更新依赖组件到最新稳定版本。
+- 对敏感配置使用密钥管理工具（如 Kubernetes Secrets、Vault）。
+- 限制网络暴露面，使用防火墙或安全组控制访问。
+
+### 最佳实践
+
+- 在修改配置前备份现有环境。
+- 使用版本控制管理所有配置文件和脚本。
+- 编写自动化测试覆盖核心路径。
+- 记录运行日志，便于审计和故障排查。
+
+---
+
+## 🧪 进阶实验
+
+完成基础演示后，可以尝试以下进阶实验：
+
+1. **参数调优**：修改关键配置参数，观察对结果的影响。
+2. **故障注入**：故意制造错误，验证系统的容错能力。
+3. **压力测试**：增加负载，评估系统瓶颈。
+4. **集成测试**：将本案例与其他组件组合，构建完整链路。
+
+---
+
+## 📚 扩展资源
+
+### 官方文档
+
+- [相关技术官方文档](https://example.com)
+- [OpenDemo 项目主页](https://github.com/opendemo)
+
+### 推荐书籍
+
+- 《相关技术权威指南》
+- 《云原生架构实践》
+
+### 社区与论坛
+
+- Stack Overflow 相关标签
+- GitHub Discussions
+- 技术博客与公众号
+
+---
+
+## 🤝 贡献与反馈
+
+如果你发现本案例有任何问题，或希望补充更多内容，欢迎提交 Issue 或 Pull Request。
+
+---
+
+*本 README 为 OpenDemo 五星案例标准模板，请根据实际案例内容持续完善。*

@@ -3,17 +3,45 @@
   "library": "numpy",
   "language": "python",
   "title": "数组创建",
-  "keywords": ["array", "create", "数组", "创建", "zeros", "ones", "arange", "linspace"],
+  "keywords": [
+    "array",
+    "create",
+    "数组",
+    "创建",
+    "zeros",
+    "ones",
+    "arange",
+    "linspace"
+  ],
   "description": "演示 numpy 数组的多种创建方法，包括从列表创建、使用 zeros/ones、arange/linspace 等",
   "difficulty": "beginner",
   "category": "基础数组操作",
-  "related_features": ["array-indexing", "array-attributes"],
-  "prerequisites": ["python-basics"],
+  "related_features": [
+    "array-indexing",
+    "array-attributes"
+  ],
+  "prerequisites": [
+    "python-basics"
+  ],
   "created_at": "2025-12-12T00:00:00",
   "updated_at": "2025-12-12T00:00:00",
   "version": "1.0.0",
   "dependencies": {
     "numpy": ">=1.20.0"
   },
-  "verified": false
+  "verified": false,
+  "author": "OpenDemo Team",
+  "verified_at": "2026-06-27T00:05:00",
+  "estimated_time": "60-90分钟",
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "compatibility": {
+    "operating_systems": [
+      "linux",
+      "macos",
+      "windows(wsl)"
+    ]
+  }
 }

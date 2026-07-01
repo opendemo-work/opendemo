@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: terway-basics
+  labels:
+    app: terway-basics
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: terway-basics
+  template:
+    metadata:
+      labels:
+        app: terway-basics
+    spec:
+      containers:
+      - name: demo
+        image: nginx:alpine
+        ports:
+        - containerPort: 80

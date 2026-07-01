@@ -3,7 +3,7 @@
   "name": "微积分基础",
   "category": "ai-ml",
   "subcategory": "数学基础",
-  "difficulty": "中级",
+  "difficulty": "intermediate",
   "estimated_time": "2小时",
   "prerequisites": [
     "基础数学知识",
@@ -31,5 +31,27 @@
   "last_updated": "2024-01-15",
   "author": "OpenDemo Team",
   "version": "1.0.0",
-  "status": "complete"
+  "status": "complete",
+  "dependencies": {},
+  "language": "ai-ml",
+  "description": "微积分基础 的 AI/ML 实战演示与配置详解",
+  "keywords": [
+    "ai-ml",
+    "calculus"
+  ],
+  "created_at": "2025-12-11T17:08:29",
+  "updated_at": "2026-06-27T00:10:00",
+  "verified": true,
+  "verified_at": "2026-06-27T00:10:00",
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "compatibility": {
+    "operating_systems": [
+      "linux",
+      "macos",
+      "windows(wsl)"
+    ]
+  }
 }

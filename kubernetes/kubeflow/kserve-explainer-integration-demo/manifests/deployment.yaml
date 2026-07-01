@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kserve-explainer-integration-demo
+  labels:
+    app: kserve-explainer-integration-demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kserve-explainer-integration-demo
+  template:
+    metadata:
+      labels:
+        app: kserve-explainer-integration-demo
+    spec:
+      containers:
+      - name: demo
+        image: nginx:alpine
+        ports:
+        - containerPort: 80

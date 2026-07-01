@@ -1,15 +1,47 @@
 {
   "name": "Exception Handling Demo",
   "category": "web",
-  "tech_stack": ["Java", "Spring Boot"],
+  "tech_stack": [
+    "Java",
+    "Spring Boot"
+  ],
   "description": "Spring Boot 全局异常处理演示 - @RestControllerAdvice、@ExceptionHandler、自定义异常、统一错误响应格式",
   "difficulty": "beginner",
-  "dependencies": ["spring-boot-starter-web"],
-  "keywords": ["exception", "RestControllerAdvice", "ExceptionHandler", "error-handling", "custom-exception"],
-  "files": {
-    "controller": ["UserController.java"],
-    "exception": ["BusinessException.java", "ResourceNotFoundException.java"],
-    "handler": ["GlobalExceptionHandler.java"],
-    "model": ["ErrorResponse.java"]
+  "dependencies": {
+    "items": [
+      "spring-boot-starter-web"
+    ]
+  },
+  "keywords": [
+    "exception",
+    "RestControllerAdvice",
+    "ExceptionHandler",
+    "error-handling",
+    "custom-exception"
+  ],
+  "files": [
+    "controller/UserController.java",
+    "exception/BusinessException.java",
+    "exception/ResourceNotFoundException.java",
+    "handler/GlobalExceptionHandler.java",
+    "model/ErrorResponse.java"
+  ],
+  "language": "java",
+  "author": "OpenDemo Team",
+  "version": "1.1.0",
+  "created_at": "2025-12-11T17:08:29",
+  "updated_at": "2026-06-27T00:05:00",
+  "verified": true,
+  "verified_at": "2026-06-27T00:05:00",
+  "estimated_time": "60-90分钟",
+  "prerequisites": [
+    "相关基础知识"
+  ],
+  "compatibility": {
+    "operating_systems": [
+      "linux",
+      "macos",
+      "windows(wsl)"
+    ]
   }
 }

@@ -1,0 +1,51 @@
+{
+  "name": "数据仓库分层设计",
+  "language": "bigdata",
+  "difficulty": "advanced",
+  "description": "演示数据仓库 ODS/DWD/DWS/ADS 四层建模方法，使用 SQL 脚本实现从原始数据到指标层的逐层加工。",
+  "keywords": [
+    "data-warehouse",
+    "dwd",
+    "dws",
+    "ads",
+    "ods",
+    "layered-design"
+  ],
+  "author": "OpenDemo Team",
+  "version": "1.0.0",
+  "created_at": "2026-06-27",
+  "updated_at": "2026-06-27T02:30:00",
+  "verified": true,
+  "verified_at": "2026-06-27T02:30:00",
+  "estimated_time": "60-90分钟",
+  "prerequisites": [
+    "Docker",
+    "Docker Compose",
+    "大数据基础概念"
+  ],
+  "files": [
+    "README.md",
+    "metadata.json",
+    "docker-compose.yml",
+    "sql/01_ods.sql",
+    "sql/02_dwd.sql",
+    "sql/03_dws.sql",
+    "sql/04_ads.sql",
+    "scripts/start.sh",
+    "scripts/stop.sh",
+    "scripts/check.sh"
+  ],
+  "dependencies": {
+    "software": [
+      "Docker",
+      "Docker Compose"
+    ]
+  },
+  "compatibility": {
+    "operating_systems": [
+      "linux",
+      "macos",
+      "windows(wsl)"
+    ]
+  }
+}

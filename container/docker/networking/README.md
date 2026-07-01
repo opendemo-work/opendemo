@@ -1,0 +1,170 @@
+# Docker 高级网络 - 容器网络模式与自定义网络
+
+> 深入理解 Docker 网络模型，演示 bridge、host、none 网络模式，以及自定义 bridge 网络和容器间通信。
+
+---
+
+## 📋 目录
+
+- [🎯 学习目标](#-学习目标)
+- [📐 架构图](#-架构图)
+- [🚀 快速开始](#-快速开始)
+- [📖 核心概念](#-核心概念)
+- [💻 代码示例](#-代码示例)
+- [🔧 配置说明](#-配置说明)
+- [🧪 验证测试](#-验证测试)
+- [📊 运行结果](#-运行结果)
+- [🐛 常见问题](#-常见问题)
+- [📚 扩展学习](#-扩展学习)
+
+---
+
+## 🎯 学习目标
+
+完成本案例学习后，你将能够：
+
+- ✅ 理解 Docker 的 bridge、host、none 网络模式
+- ✅ 创建自定义 bridge 网络
+- ✅ 实现容器间通过容器名通信
+- ✅ 理解端口映射与容器 IP 的关系
+
+---
+
+## 📐 架构图
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                    Docker Bridge 网络架构                        │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                 │
+│   ┌─────────────────────────────────────────────────────┐      │
+│   │                 docker0 / br-xxx                    │      │
+│   │              172.17.0.1 / 172.20.0.1                │      │
+│   └────────┬──────────────────────┬─────────────────────┘      │
+│            │                      │                            │
+│            ▼                      ▼                            │
+│      ┌──────────┐          ┌──────────┐                       │
+│      │ Container│          │ Container│                       │
+│      │  web     │◀────────▶│  db      │                       │
+│      │172.20.0.2│          │172.20.0.3│                       │
+│      └──────────┘          └──────────┘                       │
+│                                                                 │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+---
+
+## 🚀 快速开始
+
+```bash
+cd container/docker/networking
+./scripts/start.sh
+./scripts/check.sh
+```
+
+---
+
+## 📖 核心概念
+
+### 1. Bridge 模式（默认）
+
+Docker 创建一个虚拟网桥 `docker0`，每个容器获得一个私有 IP，通过 NAT 访问外部网络。
+
+### 2. Host 模式
+
+容器共享宿主机的网络命名空间，直接使用宿主机网络栈，性能最好但隔离性差。
+
+### 3. None 模式
+
+容器没有网络接口，适用于完全隔离的场景。
+
+### 4. 自定义网络
+
+```bash
+docker network create my-network --driver bridge --subnet 172.20.0.0/16
+```
+
+同一自定义网络中的容器可以通过容器名互相解析。
+
+---
+
+## 💻 代码示例
+
+### 创建自定义网络并运行容器
+
+```bash
+# 创建自定义网络
+docker network create opendemo-net --driver bridge
+
+# 运行 Web 容器
+docker run -d --name web --network opendemo-net nginx:alpine
+
+# 运行 DB 容器
+docker run -d --name db --network opendemo-net -e MYSQL_ROOT_PASSWORD=123456 mysql:8.0
+
+# 在 web 容器中通过容器名访问 db
+docker exec -it web ping db
+```
+
+### Docker Compose 网络
+
+```yaml
+version: '3.8'
+services:
+  web:
+    image: nginx:alpine
+    networks:
+      - opendemo-net
+  api:
+    image: python:3.11-alpine
+    networks:
+      - opendemo-net
+
+networks:
+  opendemo-net:
+    driver: bridge
+```
+
+---
+
+## 🧪 验证测试
+
+```bash
+# 查看网络列表
+docker network ls
+
+# 查看自定义网络详情
+docker network inspect opendemo-net
+
+# 测试容器间连通性
+docker exec web ping -c 3 db
+```
+
+---
+
+## 📚 扩展学习
+
+- [Docker 基础入门](../basics/)
+- [Docker 数据卷](../volume/)
+- [Docker 网络官方文档](https://docs.docker.com/network/)
+
+---
+
+*最后更新：2026-06-27*  
+*版本：1.1.0*  
+*维护者：OpenDemo Team*
+
+
+---
+
+## 🌐 Docker 网络模式对比
+
+| 模式 | 隔离性 | 适用场景 |
+|------|--------|----------|
+| bridge | 中 | 默认模式，大多数应用 |
+| host | 低 | 高性能网络应用 |
+| none | 高 | 完全隔离场景 |
+| overlay | 高 | 跨主机容器通信（Swarm） |
+| macvlan | 低 | 需要独立 MAC/IP 的场景 |
+
+自定义 bridge 网络支持 DNS 解析，是生产环境推荐的多容器通信方式。

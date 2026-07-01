@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: csi-plugin-advanced
+  labels:
+    app: csi-plugin-advanced
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: csi-plugin-advanced
+  template:
+    metadata:
+      labels:
+        app: csi-plugin-advanced
+    spec:
+      containers:
+      - name: demo
+        image: nginx:alpine
+        ports:
+        - containerPort: 80

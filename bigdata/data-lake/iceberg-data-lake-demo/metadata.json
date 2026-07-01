@@ -1,0 +1,47 @@
+{
+  "name": "Iceberg 数据湖演示",
+  "language": "bigdata",
+  "difficulty": "expert",
+  "description": "使用 Apache Iceberg + Spark 构建数据湖，演示时间旅行、分区演进和增量读取等现代数据湖特性。",
+  "keywords": [
+    "iceberg",
+    "data-lake",
+    "spark",
+    "time-travel",
+    "partition-evolution"
+  ],
+  "author": "OpenDemo Team",
+  "version": "1.0.0",
+  "created_at": "2026-06-27",
+  "updated_at": "2026-06-27T02:30:00",
+  "verified": true,
+  "verified_at": "2026-06-27T02:30:00",
+  "estimated_time": "60-90分钟",
+  "prerequisites": [
+    "Docker",
+    "Docker Compose",
+    "大数据基础概念"
+  ],
+  "files": [
+    "README.md",
+    "metadata.json",
+    "docker-compose.yml",
+    "notebooks/iceberg_demo.py",
+    "scripts/start.sh",
+    "scripts/stop.sh",
+    "scripts/check.sh"
+  ],
+  "dependencies": {
+    "software": [
+      "Docker",
+      "Docker Compose"
+    ]
+  },
+  "compatibility": {
+    "operating_systems": [
+      "linux",
+      "macos",
+      "windows(wsl)"
+    ]
+  }
+}

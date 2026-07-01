@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: service-connectivity
+  labels:
+    app: service-connectivity
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: service-connectivity
+  template:
+    metadata:
+      labels:
+        app: service-connectivity
+    spec:
+      containers:
+      - name: demo
+        image: nginx:alpine
+        ports:
+        - containerPort: 80

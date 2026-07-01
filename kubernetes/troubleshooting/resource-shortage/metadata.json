@@ -1,18 +1,32 @@
 {
-  "name": "resource-shortage",
-  "title": "Kubernetes资源不足问题排查实战",
+  "dependencies": {},
+  "name": "Resource Shortage",
   "language": "kubernetes",
-  "keywords": ["kubernetes", "resource", "shortage", "cpu", "memory", "disk", "troubleshooting"],
-  "description": "全面的Kubernetes资源不足问题排查指南，包含CPU、内存、磁盘等资源不足情况的排查方法和解决方案�?,
-  "difficulty": "intermediate",
-  "author": "Kubernetes专家团队",
-  "created_at": "2026-01-20T00:00:00Z",
-  "updated_at": "2026-01-20T00:00:00Z",
-  "version": "1.0.0",
+  "description": "Resource Shortage 的实战演示与配置详解",
+  "keywords": [
+    "kubernetes",
+    "resource"
+  ],
+  "author": "OpenDemo Team",
+  "version": "1.1.0",
+  "created_at": "2025-12-11T17:08:29",
+  "updated_at": "2026-06-27T00:05:00",
   "verified": true,
-  "category": "故障排查",
-  "library": "troubleshooting",
-  "tags": ["故障排查", "资源不足", "CPU", "内存", "磁盘"],
-  "requires": ["kubectl"],
-  "estimated_time": "45分钟"
+  "verified_at": "2026-06-27T00:05:00",
+  "estimated_time": "60-90分钟",
+  "prerequisites": [
+    "相关基础知识"
+  ],
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "compatibility": {
+    "operating_systems": [
+      "linux",
+      "macos",
+      "windows(wsl)"
+    ]
+  },
+  "difficulty": "intermediate"
 }

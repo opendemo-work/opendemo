@@ -1,0 +1,22 @@
+version: '3.8'
+services:
+  spark-iceberg:
+    image: tabulario/spark-iceberg:latest
+    container_name: spark-iceberg
+    environment:
+      - SPARK_HOME=/opt/spark
+    ports:
+      - "8888:8888"
+      - "8080:8080"
+    volumes:
+      - ./notebooks:/home/iceberg/notebooks
+      - iceberg-data:/data
+    networks:
+      - lake
+
+volumes:
+  iceberg-data:
+
+networks:
+  lake:
+    driver: bridge

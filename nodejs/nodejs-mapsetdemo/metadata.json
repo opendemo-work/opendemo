@@ -10,10 +10,26 @@
   ],
   "description": "一个展示JavaScript中Map和Set数据结构用法的Node.js示例项目",
   "difficulty": "beginner",
-  "author": "",
+  "author": "OpenDemo Team",
   "created_at": "2025-12-11T13:57:10.567595",
   "updated_at": "2025-12-11T13:57:10.567595",
   "version": "1.0.0",
   "dependencies": {},
-  "verified": false
+  "verified": false,
+  "verified_at": "2026-06-27T00:05:00",
+  "estimated_time": "60-90分钟",
+  "prerequisites": [
+    "相关基础知识"
+  ],
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "compatibility": {
+    "operating_systems": [
+      "linux",
+      "macos",
+      "windows(wsl)"
+    ]
+  }
 }

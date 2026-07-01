@@ -3,7 +3,7 @@
   "language": "go",
   "category": "programming-language",
   "subcategory": "main",
-  "difficulty": "beginner-to-advanced",
+  "difficulty": "intermediate",
   "keywords": [
     "go",
     "golang",
@@ -34,8 +34,23 @@
   ],
   "estimated_time": "120-150小时",
   "compatibility": {
-    "go_versions": ["1.19", "1.20", "1.21"],
-    "operating_systems": ["windows", "linux", "macos"],
-    "build_tools": ["go mod", "gofmt", "golint"]
-  }
+    "go_versions": [
+      "1.19",
+      "1.20",
+      "1.21"
+    ],
+    "operating_systems": [
+      "windows",
+      "linux",
+      "macos"
+    ],
+    "build_tools": [
+      "go mod",
+      "gofmt",
+      "golint"
+    ]
+  },
+  "dependencies": {},
+  "verified": true,
+  "verified_at": "2026-06-27T00:05:00"
 }

@@ -1,8 +1,44 @@
 {
   "name": "Mockito Mocking Demo",
   "category": "testing",
-  "tech_stack": ["Java", "Spring Boot", "JUnit5", "Mockito"],
+  "tech_stack": [
+    "Java",
+    "Spring Boot",
+    "JUnit5",
+    "Mockito"
+  ],
   "description": "Mockito Mock测试演示，包含基础Mock、参数匹配器、参数捕获器、调用验证和Spy",
   "difficulty": "intermediate",
-  "dependencies": ["mockito-core", "mockito-junit-jupiter"]
+  "dependencies": {
+    "items": [
+      "mockito-core",
+      "mockito-junit-jupiter"
+    ]
+  },
+  "language": "java",
+  "keywords": [
+    "java",
+    "mockito"
+  ],
+  "author": "OpenDemo Team",
+  "version": "1.1.0",
+  "created_at": "2025-12-11T17:08:29",
+  "updated_at": "2026-06-27T00:05:00",
+  "verified": true,
+  "verified_at": "2026-06-27T00:05:00",
+  "estimated_time": "60-90分钟",
+  "prerequisites": [
+    "相关基础知识"
+  ],
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "compatibility": {
+    "operating_systems": [
+      "linux",
+      "macos",
+      "windows(wsl)"
+    ]
+  }
 }

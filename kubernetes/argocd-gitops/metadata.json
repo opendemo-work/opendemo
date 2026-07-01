@@ -1,8 +1,48 @@
 {
-  "name": "ArgoCD GitOps",
-  "category": "kubernetes",
-  "tech_stack": ["Kubernetes", "ArgoCD", "GitOps", "Kustomize", "Helm"],
-  "description": "ArgoCD GitOps实践：声明式CD、多集群管理、应用生命周期",
+  "name": "ArgoCD GitOps 实践演示",
+  "language": "kubernetes",
   "difficulty": "advanced",
-  "dependencies": ["kubectl", "argocd"]
+  "description": "在本地 Kubernetes 集群中部署 ArgoCD，通过 Application CRD 将 Git 仓库应用自动同步到集群，体验声明式持续交付。",
+  "keywords": [
+    "kubernetes",
+    "argocd",
+    "gitops",
+    "continuous-delivery",
+    "kustomize",
+    "helm"
+  ],
+  "author": "OpenDemo Team",
+  "version": "1.1.0",
+  "created_at": "2025-12-11T17:08:29",
+  "updated_at": "2026-06-27T00:00:00",
+  "verified": true,
+  "verified_at": "2026-06-27T00:00:00",
+  "estimated_time": "60-90分钟",
+  "prerequisites": [
+    "已安装 kubectl 并连接本地 Kubernetes 集群",
+    "了解 Kubernetes 基础资源（Deployment、Service、Namespace）",
+    "了解 Git 基础操作"
+  ],
+  "files": [
+    "README.md",
+    "metadata.json",
+    "manifests/guestbook-application.yaml",
+    "scripts/install_argocd.sh",
+    "scripts/check_status.sh",
+    "scripts/uninstall.sh",
+    "examples/application_status.txt"
+  ],
+  "dependencies": {
+    "software": [
+      "kubectl",
+      "Kubernetes cluster (kind/minikube/Docker Desktop)"
+    ]
+  },
+  "compatibility": {
+    "operating_systems": [
+      "linux",
+      "macos",
+      "windows(wsl)"
+    ]
+  }
 }

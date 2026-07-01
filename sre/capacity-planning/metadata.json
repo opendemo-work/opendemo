@@ -1,8 +1,44 @@
 {
   "name": "Capacity Planning",
   "category": "sre",
-  "tech_stack": ["SRE", "Forecasting", "HPA", "Kubernetes"],
+  "tech_stack": [
+    "SRE",
+    "Forecasting",
+    "HPA",
+    "Kubernetes"
+  ],
   "description": "容量规划预测：趋势分析、自动扩缩容、成本优化",
   "difficulty": "advanced",
-  "dependencies": ["prometheus", "kubernetes"]
+  "dependencies": {
+    "items": [
+      "prometheus",
+      "kubernetes"
+    ]
+  },
+  "language": "python",
+  "keywords": [
+    "python",
+    "capacity"
+  ],
+  "author": "OpenDemo Team",
+  "version": "1.1.0",
+  "created_at": "2025-12-11T17:08:29",
+  "updated_at": "2026-06-27T00:05:00",
+  "verified": true,
+  "verified_at": "2026-06-27T00:05:00",
+  "estimated_time": "60-90分钟",
+  "prerequisites": [
+    "相关基础知识"
+  ],
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "compatibility": {
+    "operating_systems": [
+      "linux",
+      "macos",
+      "windows(wsl)"
+    ]
+  }
 }

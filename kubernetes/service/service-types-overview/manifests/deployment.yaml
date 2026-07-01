@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: service-types-overview
+  labels:
+    app: service-types-overview
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: service-types-overview
+  template:
+    metadata:
+      labels:
+        app: service-types-overview
+    spec:
+      containers:
+      - name: demo
+        image: nginx:alpine
+        ports:
+        - containerPort: 80

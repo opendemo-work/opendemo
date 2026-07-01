@@ -1,0 +1,39 @@
+{
+  "name": "Docker 网络模式详解",
+  "language": "container",
+  "difficulty": "intermediate",
+  "description": "通过实验对比 Docker bridge、host、none、overlay 等网络模式，理解容器网络通信原理。",
+  "keywords": [
+    "docker",
+    "networking",
+    "bridge",
+    "host",
+    "overlay"
+  ],
+  "author": "OpenDemo Team",
+  "version": "1.0.0",
+  "created_at": "2026-06-27",
+  "updated_at": "2026-06-27T02:00:00",
+  "verified": true,
+  "verified_at": "2026-06-27T02:00:00",
+  "estimated_time": "45-90分钟",
+  "prerequisites": [
+    "Linux 基础",
+    "命令行操作"
+  ],
+  "files": [
+    "README.md",
+    "metadata.json",
+    "docker-compose.yml",
+    "scripts/demo.sh",
+    "scripts/check.sh"
+  ],
+  "dependencies": {},
+  "compatibility": {
+    "operating_systems": [
+      "linux",
+      "macos",
+      "windows(wsl)"
+    ]
+  }
+}

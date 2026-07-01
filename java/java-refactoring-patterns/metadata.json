@@ -1,8 +1,42 @@
 {
   "name": "Java Refactoring Patterns",
   "category": "java",
-  "tech_stack": ["Java", "Refactoring", "Clean Code"],
+  "tech_stack": [
+    "Java",
+    "Refactoring",
+    "Clean Code"
+  ],
   "description": "Java代码重构：重构手法、代码坏味道、最佳实践",
   "difficulty": "advanced",
-  "dependencies": ["Java"]
+  "dependencies": {
+    "items": [
+      "Java"
+    ]
+  },
+  "language": "java",
+  "keywords": [
+    "java",
+    "java"
+  ],
+  "author": "OpenDemo Team",
+  "version": "1.1.0",
+  "created_at": "2025-12-11T17:08:29",
+  "updated_at": "2026-06-27T00:05:00",
+  "verified": true,
+  "verified_at": "2026-06-27T00:05:00",
+  "estimated_time": "60-90分钟",
+  "prerequisites": [
+    "相关基础知识"
+  ],
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "compatibility": {
+    "operating_systems": [
+      "linux",
+      "macos",
+      "windows(wsl)"
+    ]
+  }
 }

@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: data-orchestration-caching-demo
+  labels:
+    app: data-orchestration-caching-demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: data-orchestration-caching-demo
+  template:
+    metadata:
+      labels:
+        app: data-orchestration-caching-demo
+    spec:
+      containers:
+      - name: demo
+        image: nginx:alpine
+        ports:
+        - containerPort: 80

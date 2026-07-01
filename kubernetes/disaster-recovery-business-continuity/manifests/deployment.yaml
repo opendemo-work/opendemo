@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: disaster-recovery-business-continuity
+  labels:
+    app: disaster-recovery-business-continuity
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: disaster-recovery-business-continuity
+  template:
+    metadata:
+      labels:
+        app: disaster-recovery-business-continuity
+    spec:
+      containers:
+      - name: demo
+        image: nginx:alpine
+        ports:
+        - containerPort: 80

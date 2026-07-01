@@ -303,3 +303,15 @@ SGLang 使用 RadixAttention 优化多轮对话缓存。...
 ---
 
 *最后更新：2026-06-16*
+
+## 🚀 快速开始
+
+### 运行演示
+
+```bash
+# 安装依赖
+pip install -r requirements.txt
+
+# 运行演示
+python code/main.py
+```

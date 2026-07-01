@@ -1,11 +1,36 @@
 {
   "name": "wechat-miniprogram-login",
   "language": "nodejs",
-  "keywords": ["wechat", "miniprogram", "login", "jwt", "auth", "登录鉴权"],
+  "keywords": [
+    "wechat",
+    "miniprogram",
+    "login",
+    "jwt",
+    "auth",
+    "登录鉴权"
+  ],
   "description": "微信小程序登录实战：微信授权登录、JWT Token 鉴权、状态管理",
   "difficulty": "intermediate",
   "dependencies": {},
   "author": "OpenDemo Team",
   "created_at": "2026-05-09",
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "updated_at": "2026-06-27T00:05:00",
+  "verified": true,
+  "verified_at": "2026-06-27T00:05:00",
+  "estimated_time": "60-90分钟",
+  "prerequisites": [
+    "相关基础知识"
+  ],
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "compatibility": {
+    "operating_systems": [
+      "linux",
+      "macos",
+      "windows(wsl)"
+    ]
+  }
 }

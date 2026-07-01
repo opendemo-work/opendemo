@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: topic-deployment
+  labels:
+    app: topic-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: topic-deployment
+  template:
+    metadata:
+      labels:
+        app: topic-deployment
+    spec:
+      containers:
+      - name: demo
+        image: nginx:alpine
+        ports:
+        - containerPort: 80

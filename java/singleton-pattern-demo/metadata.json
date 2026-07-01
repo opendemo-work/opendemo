@@ -1,17 +1,50 @@
 {
-    "case_id": "singleton-pattern-demo",
-    "name": "单例模式演示",
-    "category": "java",
-    "subcategory": "设计模式",
-    "pattern_type": "创建型",
-    "difficulty": "初级",
-    "tags": ["singleton", "单例", "设计模式", "GoF", "线程安全"],
-    "description": "展示五种常见的单例模式实现方式：饿汉式、懒汉式、双重检查锁定、枚举式和静态内部类式",
-    "implementations": [
-        "EagerSingleton",
-        "LazySingleton",
-        "ThreadSafeSingleton",
-        "EnumSingleton",
-        "InnerClassSingleton"
+  "case_id": "singleton-pattern-demo",
+  "name": "单例模式演示",
+  "category": "java",
+  "subcategory": "设计模式",
+  "pattern_type": "创建型",
+  "difficulty": "intermediate",
+  "tags": [
+    "singleton",
+    "单例",
+    "设计模式",
+    "GoF",
+    "线程安全"
+  ],
+  "description": "展示五种常见的单例模式实现方式：饿汉式、懒汉式、双重检查锁定、枚举式和静态内部类式",
+  "implementations": [
+    "EagerSingleton",
+    "LazySingleton",
+    "ThreadSafeSingleton",
+    "EnumSingleton",
+    "InnerClassSingleton"
+  ],
+  "dependencies": {},
+  "language": "java",
+  "keywords": [
+    "java",
+    "singleton"
+  ],
+  "author": "OpenDemo Team",
+  "version": "1.1.0",
+  "created_at": "2025-12-11T17:08:29",
+  "updated_at": "2026-06-27T00:05:00",
+  "verified": true,
+  "verified_at": "2026-06-27T00:05:00",
+  "estimated_time": "60-90分钟",
+  "prerequisites": [
+    "相关基础知识"
+  ],
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "compatibility": {
+    "operating_systems": [
+      "linux",
+      "macos",
+      "windows(wsl)"
     ]
+  }
 }

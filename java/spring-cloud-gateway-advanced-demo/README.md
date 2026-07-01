@@ -1,3 +1,5 @@
+<!-- TEMPLATE: 待完善 - 本 README 包含自动生成的模板内容，需要人工精修 -->
+
 # Spring Cloud Gateway Advanced Demo
 
 Spring Cloud Gateway高级特性演示项目，包含限流、熔断、鉴权、灰度发布等企业级功能。
@@ -246,3 +248,40 @@ curl -X POST http://localhost:8080/actuator/gateway/refresh
 
 - [Spring Cloud Gateway文档](https://docs.spring.io/spring-cloud-gateway/docs/current/reference/html/)
 - [Resilience4j文档](https://resilience4j.readme.io/)
+
+## 🎯 学习目标
+
+完成本案例学习后，你将能够：
+
+- ✅ 理解本案例涉及的核心概念
+- ✅ 掌握相关的配置与命令
+- ✅ 能够在本地环境中复现
+
+## 🚀 快速开始
+
+### 运行演示
+
+```bash
+./scripts/demo.sh
+```
+
+## 📖 核心概念
+
+### 1. 基本概念
+
+本节介绍本案例涉及的核心概念。
+
+### 2. 适用场景
+
+- 场景 1：学习与实验
+- 场景 2：工程实践
+- 场景 3：面试准备
+
+## 💻 代码示例
+
+### 基本用法
+
+```bash
+# 请根据实际案例替换
+./scripts/demo.sh
+```

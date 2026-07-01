@@ -8,7 +8,7 @@
   ],
   "description": "展示Node.js中同步、异步及Promise链中的错误处理最佳实践",
   "difficulty": "intermediate",
-  "author": "",
+  "author": "OpenDemo Team",
   "created_at": "2025-12-11T13:55:07.496385",
   "updated_at": "2025-12-11T13:55:07.496385",
   "version": "1.0.0",
@@ -17,5 +17,21 @@
   "aliases": [
     "nodejs-nodejs错误处理实战演示",
     "nodejs-nodejs-demo-8"
-  ]
+  ],
+  "verified_at": "2026-06-27T00:05:00",
+  "estimated_time": "60-90分钟",
+  "prerequisites": [
+    "相关基础知识"
+  ],
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "compatibility": {
+    "operating_systems": [
+      "linux",
+      "macos",
+      "windows(wsl)"
+    ]
+  }
 }

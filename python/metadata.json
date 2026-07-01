@@ -3,7 +3,7 @@
   "language": "python",
   "category": "programming-language",
   "subcategory": "main",
-  "difficulty": "beginner-to-advanced",
+  "difficulty": "intermediate",
   "keywords": [
     "python",
     "programming",
@@ -34,8 +34,22 @@
   ],
   "estimated_time": "150-200小时",
   "compatibility": {
-    "python_versions": ["3.8", "3.9", "3.10", "3.11"],
-    "operating_systems": ["windows", "linux", "macos"],
-    "dependencies": ["numpy>=1.21.0"]
-  }
+    "python_versions": [
+      "3.8",
+      "3.9",
+      "3.10",
+      "3.11"
+    ],
+    "operating_systems": [
+      "windows",
+      "linux",
+      "macos"
+    ],
+    "dependencies": [
+      "numpy>=1.21.0"
+    ]
+  },
+  "dependencies": {},
+  "verified": true,
+  "verified_at": "2026-06-27T00:05:00"
 }

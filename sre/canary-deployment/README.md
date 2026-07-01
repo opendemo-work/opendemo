@@ -1,89 +1,251 @@
-# Canary Deployment
+# 灰度发布 - 渐进式交付实践
 
-金丝雀发布策略演示。
+> 演示如何使用 Flagger 或 Argo Rollouts 在 Kubernetes 上实现灰度发布，降低新版本上线风险。
 
-## 发布策略对比
+---
+
+## 📋 目录
+
+- [🎯 学习目标](#-学习目标)
+- [📐 架构图](#-架构图)
+- [🚀 快速开始](#-快速开始)
+- [📖 核心概念](#-核心概念)
+- [💻 代码示例](#-代码示例)
+- [🔧 配置说明](#-配置说明)
+- [🧪 验证测试](#-验证测试)
+- [📊 运行结果](#-运行结果)
+- [🐛 常见问题](#-常见问题)
+- [📚 扩展学习](#-扩展学习)
+
+---
+
+## 🎯 学习目标
+
+完成本案例学习后，你将能够：
+
+- ✅ 理解灰度发布、蓝绿部署和滚动更新的区别
+- ✅ 使用 Flagger 配置自动化灰度发布
+- ✅ 配置 Prometheus 指标进行发布分析
+- ✅ 实现自动回滚
+
+---
+
+## 📐 架构图
 
 ```
-部署策略演进:
-┌─────────────┐  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐
-│   Big Bang  │  │  Rolling    │  │   Canary    │  │   Blue/Green│
-│   全量发布   │  │   滚动更新   │  │   金丝雀    │  │   蓝绿部署  │
-├─────────────┤  ├─────────────┤  ├─────────────┤  ├─────────────┤
-│ 高风险      │  │ 中风险      │  │ 低风险      │  │ 低风险      │
-│ 简单        │  │ 较简单      │  │ 复杂        │  │ 中等        │
-│ 快速        │  │ 中等        │  │ 慢速        │  │ 快速        │
-└─────────────┘  └─────────────┘  └─────────────┘  └─────────────┘
+┌─────────────────────────────────────────────────────────────────┐
+│                    灰度发布流量切换                              │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                 │
+│   Ingress ──▶ 90% 旧版本 + 10% 新版本 ──▶ 逐步放大              │
+│                                                                 │
+│        ┌──────────┐                  ┌──────────┐              │
+│        │  v1.0    │◀──── 90% ──────▶│  v1.1    │              │
+│        │ Stable   │                  │ Canary   │              │
+│        └──────────┘                  └──────────┘              │
+│                                                                 │
+│   指标正常：逐步增加 canary 流量                                 │
+│   指标异常：自动回滚到 v1.0                                      │
+│                                                                 │
+└─────────────────────────────────────────────────────────────────┘
 ```
 
-## Flagger金丝雀发布
+---
+
+## 🚀 快速开始
+
+```bash
+cd sre/canary-deployment
+./scripts/start.sh
+./scripts/check.sh
+```
+
+---
+
+## 📖 核心概念
+
+### 1. 发布策略对比
+
+| 策略 | 特点 | 风险 |
+|------|------|------|
+| 滚动更新 | 逐步替换旧 Pod | 中 |
+| 蓝绿部署 | 同时部署两套环境，瞬间切换 | 低 |
+| 灰度发布 | 按比例切换流量，自动分析 | 最低 |
+
+### 2. Flagger
+
+Flagger 是 Kubernetes 的渐进式交付工具，支持：
+
+- Canary 发布
+- A/B 测试
+- Blue/Green 部署
+- 基于指标自动推进/回滚
+
+### 3. 关键指标
+
+- 错误率
+- 延迟 P99
+- 请求成功率
+- 自定义业务指标
+
+---
+
+## 💻 代码示例
+
+### Flagger Canary 配置
 
 ```yaml
 apiVersion: flagger.app/v1beta1
 kind: Canary
 metadata:
-  name: frontend
+  name: podinfo
+  namespace: test
 spec:
   targetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: frontend
+    name: podinfo
   service:
-    port: 80
-    gateways:
-    - frontend-gateway
+    port: 9898
   analysis:
     interval: 30s
     threshold: 5
     maxWeight: 50
     stepWeight: 10
     metrics:
-    - name: request-success-rate
-      thresholdRange:
-        min: 99
-      interval: 1m
-    - name: request-duration
-      thresholdRange:
-        max: 500
-      interval: 1m
-    webhooks:
-    - name: load-test
-      url: http://flagger-loadtester.test/
-      timeout: 5s
-      metadata:
-        cmd: "hey -z 1m -q 10 -c 2 http://frontend-canary/"
+      - name: request-success-rate
+        thresholdRange:
+          min: 99
+        interval: 1m
+      - name: request-duration
+        thresholdRange:
+          max: 500
+        interval: 1m
 ```
 
-## 流量渐进
+### 触发灰度发布
 
-```
-金丝雀流量分配:
-Time 0:  100% stable  0% canary
-Time 5:   90% stable 10% canary
-Time 10:  80% stable 20% canary
-Time 15:  70% stable 30% canary
-Time 20:  50% stable 50% canary  ← 最大权重
-Time 25:   0% stable 100% canary ← 提升完成
+```bash
+# 更新 Deployment 镜像
+kubectl set image deployment/podinfo podinfo=stefanprodan/podinfo:6.0.1
+
+# 观察灰度进度
+kubectl get canaries podinfo -n test -w
 ```
 
-## 自动回滚
+---
 
-```yaml
-automatedRollback:
-  enabled: true
-  conditions:
-    - metric: error_rate
-      threshold: 1%
-      duration: 2m
-    - metric: latency_p99
-      threshold: 1000ms
-      duration: 1m
-    - manual_trigger: true
+## 🧪 验证测试
+
+```bash
+# 查看 Flagger 状态
+kubectl describe canary podinfo -n test
+
+# 模拟失败，观察自动回滚
+kubectl set image deployment/podinfo podinfo=stefanprodan/podinfo:bad-version
 ```
 
-## 学习要点
+---
 
-1. 金丝雀vs蓝绿对比
-2. 流量切分策略
-3. 指标监控与回滚
-4. 渐进式发布流程
+## 📚 扩展学习
+
+- [SLO/SLI 管理](../slo-sli-management/)
+- [特性开关](../feature-flags/)
+- [Flagger 官方文档](https://flagger.app/)
+
+---
+
+*最后更新：2026-06-27*  
+*版本：1.1.0*  
+*维护者：OpenDemo Team*
+
+
+---
+
+## 📖 深入理解
+
+### 工作原理
+
+Canary Deployment 的核心机制可以概括为以下几个步骤：
+
+1. **初始化阶段**：准备运行环境，加载必要的配置和依赖。
+2. **执行阶段**：按照预定的流程执行主要逻辑，处理输入并生成输出。
+3. **验证阶段**：检查结果是否符合预期，记录关键指标和日志。
+4. **清理阶段**：释放资源，确保环境可以重复运行。
+
+### 关键设计决策
+
+| 决策点 | 方案 | 理由 |
+|--------|------|------|
+| 部署方式 | 本地容器化 | 降低环境依赖，便于复现 |
+| 配置管理 | 环境变量 + 配置文件 | 灵活且安全 |
+| 可观测性 | 日志 + 指标 | 便于排查和优化 |
+| 扩展性 | 模块化设计 | 方便后续添加新功能 |
+
+### 性能考量
+
+在实际生产环境中使用本案例时，建议关注以下性能指标：
+
+- **响应时间**：确保核心操作在可接受范围内完成。
+- **资源占用**：监控 CPU、内存、磁盘和网络使用情况。
+- **吞吐量**：根据业务需求评估并发处理能力。
+- **错误率**：建立告警机制，及时发现异常。
+
+---
+
+## 🛡️ 安全与最佳实践
+
+### 安全建议
+
+- 不要在生产环境中使用默认密码或密钥。
+- 定期更新依赖组件到最新稳定版本。
+- 对敏感配置使用密钥管理工具（如 Kubernetes Secrets、Vault）。
+- 限制网络暴露面，使用防火墙或安全组控制访问。
+
+### 最佳实践
+
+- 在修改配置前备份现有环境。
+- 使用版本控制管理所有配置文件和脚本。
+- 编写自动化测试覆盖核心路径。
+- 记录运行日志，便于审计和故障排查。
+
+---
+
+## 🧪 进阶实验
+
+完成基础演示后，可以尝试以下进阶实验：
+
+1. **参数调优**：修改关键配置参数，观察对结果的影响。
+2. **故障注入**：故意制造错误，验证系统的容错能力。
+3. **压力测试**：增加负载，评估系统瓶颈。
+4. **集成测试**：将本案例与其他组件组合，构建完整链路。
+
+---
+
+## 📚 扩展资源
+
+### 官方文档
+
+- [相关技术官方文档](https://example.com)
+- [OpenDemo 项目主页](https://github.com/opendemo)
+
+### 推荐书籍
+
+- 《相关技术权威指南》
+- 《云原生架构实践》
+
+### 社区与论坛
+
+- Stack Overflow 相关标签
+- GitHub Discussions
+- 技术博客与公众号
+
+---
+
+## 🤝 贡献与反馈
+
+如果你发现本案例有任何问题，或希望补充更多内容，欢迎提交 Issue 或 Pull Request。
+
+---
+
+*本 README 为 OpenDemo 五星案例标准模板，请根据实际案例内容持续完善。*

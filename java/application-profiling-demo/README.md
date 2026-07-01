@@ -1,3 +1,5 @@
+<!-- TEMPLATE: 待完善 - 本 README 包含自动生成的模板内容，需要人工精修 -->
+
 # 应用性能分析演示
 
 ## 🎯 学习目标
@@ -349,3 +351,32 @@ jconsole
 - [async-profiler](https://github.com/async-profiler/async-profiler)
 - [相关Demo: jvm-memory-management-demo](../jvm-memory-management-demo/)
 - [相关Demo: garbage-collection-tuning-demo](../garbage-collection-tuning-demo/)
+
+## 🚀 快速开始
+
+### 运行演示
+
+```bash
+./scripts/demo.sh
+```
+
+## 📖 核心概念
+
+### 1. 基本概念
+
+本节介绍本案例涉及的核心概念。
+
+### 2. 适用场景
+
+- 场景 1：学习与实验
+- 场景 2：工程实践
+- 场景 3：面试准备
+
+## 💻 代码示例
+
+### 基本用法
+
+```bash
+# 请根据实际案例替换
+./scripts/demo.sh
+```

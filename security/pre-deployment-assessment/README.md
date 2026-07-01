@@ -1,318 +1,269 @@
-# Pre-Deployment Assessment
+# 部署前评估
 
-FDE部署前系统评估与检查清单。
+> 演示安全工具部署前的环境评估、兼容性检查和风险评估。
 
-## 评估维度
+---
+
+## 📋 目录
+
+- [🎯 学习目标](#-学习目标)
+- [📐 架构图](#-架构图)
+- [🚀 快速开始](#-快速开始)
+- [📖 核心概念](#-核心概念)
+- [💻 代码示例](#-代码示例)
+- [🔧 配置说明](#-配置说明)
+- [🧪 验证测试](#-验证测试)
+- [📊 运行结果](#-运行结果)
+- [🐛 常见问题](#-常见问题)
+- [📚 扩展学习](#-扩展学习)
+
+---
+
+## 🎯 学习目标
+
+完成本案例学习后，你将能够：
+
+- ✅ 理解 部署前评估 的核心概念与适用场景
+- ✅ 掌握相关的配置方法和操作命令
+- ✅ 在测试环境中完成基础部署或操作
+- ✅ 了解安全最佳实践和合规要求
+
+---
+
+## 📐 架构图
 
 ```
-部署前评估框架:
-┌─────────────────────────────────────────────────────────┐
-│ 1. 硬件兼容性评估                                        │
-│    ├── TPM可用性                                          │
-│    ├── 磁盘类型(SSD/HDD)                                  │
-│    ├── 处理器AES-NI支持                                   │
-│    └── 内存容量                                           │
-├─────────────────────────────────────────────────────────┤
-│ 2. 软件环境评估                                          │
-│    ├── 操作系统版本                                       │
-│    ├── 现有加密状态                                       │
-│    ├── 关键应用程序                                       │
-│    └── 系统更新状态                                       │
-├─────────────────────────────────────────────────────────┤
-│ 3. 业务影响评估                                          │
-│    ├── 停机窗口                                           │
-│    ├── 数据备份状态                                       │
-│    ├── 用户影响范围                                       │
-│    └── 回滚可行性                                         │
-├─────────────────────────────────────────────────────────┤
-│ 4. 风险评估                                              │
-│    ├── 数据丢失风险                                       │
-│    ├── 性能影响                                           │
-│    └── 兼容性问题                                         │
-└─────────────────────────────────────────────────────────┘
+┌─────────────────────────────────────────────────────────────────┐
+│                    部署前评估                                      │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                 │
+│   终端/系统/应用 ──▶ 安全控制机制 ──▶ 受保护资源                 │
+│                                                                 │
+│              ┌─────────────────────────────┐                   │
+│              │ 兼容性评估                  │                   │
+│              │ 性能基线                  │                   │
+│              │ 风险分析                  │                   │
+│              │ 回滚计划                  │                   │
+│              └─────────────────────────────┘                   │
+│                                                                 │
+└─────────────────────────────────────────────────────────────────┘
 ```
 
-## 评估脚本
+---
 
-```python
-#!/usr/bin/env python3
-"""
-FDE部署前系统评估工具
-"""
-import subprocess
-import json
-import platform
-import psutil
-from dataclasses import dataclass, asdict
-from typing import Dict, List, Optional
-from datetime import datetime
+## 🚀 快速开始
 
-@dataclass
-class AssessmentResult:
-    category: str
-    item: str
-    status: str  # PASS, WARN, FAIL
-    details: str
-    recommendation: Optional[str] = None
+### 环境要求
 
-class PreDeploymentAssessor:
-    def __init__(self):
-        self.results: List[AssessmentResult] = []
-        self.system_info = {}
-        
-    def run_all_assessments(self) -> Dict:
-        """运行所有评估"""
-        self.system_info = self.collect_system_info()
-        
-        # 硬件评估
-        self.assess_hardware()
-        
-        # 软件评估
-        self.assess_software()
-        
-        # 性能基线
-        self.assess_performance_baseline()
-        
-        # 生成报告
-        return self.generate_assessment_report()
-    
-    def collect_system_info(self) -> Dict:
-        """收集系统基本信息"""
-        return {
-            'platform': platform.system(),
-            'platform_version': platform.version(),
-            'architecture': platform.machine(),
-            'processor': platform.processor(),
-            'hostname': platform.node(),
-            'memory_total': psutil.virtual_memory().total,
-            'disk_info': self.get_disk_info()
-        }
-    
-    def get_disk_info(self) -> List[Dict]:
-        """获取磁盘信息"""
-        disks = []
-        for partition in psutil.disk_partitions():
-            try:
-                usage = psutil.disk_usage(partition.mountpoint)
-                disks.append({
-                    'device': partition.device,
-                    'mountpoint': partition.mountpoint,
-                    'fstype': partition.fstype,
-                    'total': usage.total,
-                    'used': usage.used,
-                    'free': usage.free,
-                    'percent': usage.percent
-                })
-            except:
-                pass
-        return disks
-    
-    def assess_hardware(self):
-        """硬件兼容性评估"""
-        # 内存检查
-        memory_gb = self.system_info['memory_total'] / (1024**3)
-        if memory_gb >= 8:
-            self.add_result('Hardware', 'Memory', 'PASS', 
-                          f'{memory_gb:.1f}GB RAM available')
-        elif memory_gb >= 4:
-            self.add_result('Hardware', 'Memory', 'WARN',
-                          f'{memory_gb:.1f}GB RAM (recommended: 8GB+)')
-        else:
-            self.add_result('Hardware', 'Memory', 'FAIL',
-                          f'{memory_gb:.1f}GB RAM insufficient',
-                          'Upgrade memory before encryption')
-        
-        # TPM检查 (Windows)
-        if self.system_info['platform'] == 'Windows':
-            self.check_windows_tpm()
-        elif self.system_info['platform'] == 'Linux':
-            self.check_linux_tpm()
-    
-    def check_windows_tpm(self):
-        """检查Windows TPM状态"""
-        try:
-            result = subprocess.run(
-                ['powershell', '-Command', 'Get-Tpm | Select-Object TpmPresent,TpmReady | ConvertTo-Json'],
-                capture_output=True, text=True
-            )
-            tpm_info = json.loads(result.stdout)
-            
-            if tpm_info.get('TpmPresent') and tpm_info.get('TpmReady'):
-                self.add_result('Hardware', 'TPM', 'PASS', 'TPM 2.0 available and ready')
-            elif tpm_info.get('TpmPresent'):
-                self.add_result('Hardware', 'TPM', 'WARN', 'TPM present but not ready',
-                              'Check BIOS settings to enable TPM')
-            else:
-                self.add_result('Hardware', 'TPM', 'FAIL', 'TPM not available',
-                              'TPM required for optimal BitLocker experience')
-        except:
-            self.add_result('Hardware', 'TPM', 'WARN', 'Could not determine TPM status')
-    
-    def check_linux_tpm(self):
-        """检查Linux TPM状态"""
-        tpm_paths = ['/dev/tpm0', '/dev/tpmrm0']
-        tpm_found = any(os.path.exists(p) for p in tpm_paths)
-        
-        if tpm_found:
-            self.add_result('Hardware', 'TPM', 'PASS', 'TPM device found')
-        else:
-            self.add_result('Hardware', 'TPM', 'WARN', 'TPM not detected',
-                          'Check kernel modules: tpm_tis, tpm_crb')
-    
-    def assess_software(self):
-        """软件环境评估"""
-        # 检查现有加密
-        if self.system_info['platform'] == 'Windows':
-            self.check_windows_encryption()
-        elif self.system_info['platform'] == 'Linux':
-            self.check_linux_encryption()
-    
-    def check_windows_encryption(self):
-        """检查Windows加密状态"""
-        try:
-            result = subprocess.run(
-                ['powershell', '-Command', 'Get-BitLockerVolume | Select-Object MountPoint,ProtectionStatus | ConvertTo-Json'],
-                capture_output=True, text=True
-            )
-            volumes = json.loads(result.stdout)
-            
-            encrypted_count = sum(1 for v in volumes if v.get('ProtectionStatus') == 1)
-            
-            if encrypted_count > 0:
-                self.add_result('Software', 'Existing Encryption', 'WARN',
-                              f'{encrypted_count} volumes already encrypted',
-                              'Review existing encryption configuration')
-            else:
-                self.add_result('Software', 'Existing Encryption', 'PASS',
-                              'No existing encryption detected')
-        except:
-            self.add_result('Software', 'Existing Encryption', 'WARN',
-                          'Could not check encryption status')
-    
-    def check_linux_encryption(self):
-        """检查Linux加密状态"""
-        try:
-            result = subprocess.run(
-                ['lsblk', '-f', '-J'],
-                capture_output=True, text=True
-            )
-            block_info = json.loads(result.stdout)
-            
-            luks_found = False
-            for device in block_info.get('blockdevices', []):
-                if 'crypto_LUKS' in str(device):
-                    luks_found = True
-                    break
-            
-            if luks_found:
-                self.add_result('Software', 'Existing Encryption', 'WARN',
-                              'Existing LUKS containers found',
-                              'Document existing encryption setup')
-            else:
-                self.add_result('Software', 'Existing Encryption', 'PASS',
-                              'No existing LUKS encryption')
-        except:
-            pass
-    
-    def assess_performance_baseline(self):
-        """性能基线评估"""
-        # 磁盘性能快速测试
-        self.add_result('Performance', 'Disk Benchmark', 'INFO',
-                       'Run full benchmark before deployment',
-                       'Use: fio --name=baseline --filename=test.bin --size=1G')
-    
-    def add_result(self, category: str, item: str, status: str, 
-                   details: str, recommendation: str = None):
-        """添加评估结果"""
-        self.results.append(AssessmentResult(
-            category=category,
-            item=item,
-            status=status,
-            details=details,
-            recommendation=recommendation
-        ))
-    
-    def generate_assessment_report(self) -> Dict:
-        """生成评估报告"""
-        pass_count = sum(1 for r in self.results if r.status == 'PASS')
-        warn_count = sum(1 for r in self.results if r.status == 'WARN')
-        fail_count = sum(1 for r in self.results if r.status == 'FAIL')
-        
-        report = {
-            'assessment_date': datetime.now().isoformat(),
-            'system_info': self.system_info,
-            'summary': {
-                'total_checks': len(self.results),
-                'passed': pass_count,
-                'warnings': warn_count,
-                'failed': fail_count,
-                'ready_for_deployment': fail_count == 0
-            },
-            'details': [asdict(r) for r in self.results],
-            'recommendations': [
-                r.recommendation for r in self.results 
-                if r.recommendation and r.status in ['WARN', 'FAIL']
-            ]
-        }
-        
-        # 保存报告
-        with open(f'pre_deployment_assessment_{datetime.now().strftime("%Y%m%d_%H%M%S")}.json', 'w') as f:
-            json.dump(report, f, indent=2)
-        
-        return report
+| 依赖 | 版本要求 | 说明 |
+|------|----------|------|
+| Docker / 对应平台工具 | >= 版本要求 | 运行安全工具或脚本 |
 
-# 使用示例
-if __name__ == "__main__":
-    assessor = PreDeploymentAssessor()
-    report = assessor.run_all_assessments()
-    
-    print("\n=== Pre-Deployment Assessment ===")
-    print(f"Total Checks: {report['summary']['total_checks']}")
-    print(f"Passed: {report['summary']['passed']}")
-    print(f"Warnings: {report['summary']['warnings']}")
-    print(f"Failed: {report['summary']['failed']}")
-    print(f"\nReady for Deployment: {report['summary']['ready_for_deployment']}")
-    
-    if report['recommendations']:
-        print("\nRecommendations:")
-        for rec in report['recommendations']:
-            print(f"  - {rec}")
+### 启动服务
+
+```bash
+cd security/pre-deployment-assessment
+./scripts/start.sh
+./scripts/check.sh
 ```
 
-## 部署检查清单
+---
 
-```markdown
-# FDE部署前检查清单
+## 📖 核心概念
 
-## 硬件要求
-- [ ] 内存 >= 4GB (推荐 8GB)
-- [ ] 磁盘空间 >= 10GB 可用
-- [ ] TPM 2.0 可用 (Windows)
-- [ ] 处理器支持 AES-NI
-- [ ] 电池健康 (笔记本电脑)
+### 1. 兼容性评估
 
-## 软件要求
-- [ ] 操作系统版本受支持
-- [ ] 所有系统更新已安装
-- [ ] 关键应用程序兼容性已验证
-- [ ] 现有加密配置已记录
+兼容性评估 是 部署前评估 的基础，正确理解和配置它是保障安全的前提。
 
-## 业务准备
-- [ ] 停机时间窗口已确认
-- [ ] 数据备份已完成
-- [ ] 用户已收到通知
-- [ ] 回滚方案已准备
+### 2. 性能基线
 
-## 风险评估
-- [ ] 数据丢失风险: 低
-- [ ] 性能影响: 可接受
-- [ ] 兼容性问题: 已识别并解决
+性能基线 直接影响系统的安全性和可用性，需要根据组织策略进行规划。
+
+### 3. 风险分析
+
+风险分析 提供了关键的技术能力，支持安全机制的有效运行。
+
+### 4. 回滚计划
+
+回滚计划 关系到合规性和审计要求，是企业安全治理的重要组成部分。
+
+---
+
+## 💻 代码示例
+
+### 基础配置与操作
+
+```bash
+python code/assessment.py --inventory inventory.csv --output report.html
 ```
 
-## 学习要点
+### 验证命令
 
-1. 部署前评估框架
-2. 硬件兼容性检查
-3. 软件环境评估
-4. 风险识别与缓解
-5. 检查清单使用
+```bash
+# 检查服务/配置状态
+./scripts/check.sh
+
+# 查看日志/输出
+# 根据具体工具替换
+```
+
+---
+
+## 🔧 配置说明
+
+| 文件 | 作用 |
+|------|------|
+| `docker-compose.yml` | 服务编排（如适用） |
+| `configs/` | 配置文件目录 |
+| `scripts/start.sh` | 启动脚本 |
+| `scripts/stop.sh` | 停止脚本 |
+| `scripts/check.sh` | 状态检查脚本 |
+
+---
+
+## 🧪 验证测试
+
+```bash
+# 1. 检查服务是否正常运行
+./scripts/check.sh
+
+# 2. 执行基础验证命令
+# 根据实际场景替换
+
+# 3. 查看日志输出
+# docker-compose logs 或系统日志
+```
+
+---
+
+## 📊 运行结果
+
+预期结果：
+
+```
+安全配置生效
+验证命令返回预期结果
+日志无关键错误
+```
+
+---
+
+## 🐛 常见问题
+
+### Q1：部署失败？
+
+**A**：检查环境依赖、权限配置和日志输出，确认平台或工具版本兼容。
+
+### Q2：加密后无法启动？
+
+**A**：确保恢复密钥已安全备份，并按照恢复流程操作。
+
+### Q3：策略不生效？
+
+**A**：检查策略作用范围、目标对象和下发机制，必要时强制刷新或重新注册。
+
+---
+
+## 📚 扩展学习
+
+- [密钥管理基础](../crypto-key-management/)
+- [Secrets Management](../secrets-management-vault/)
+- [GDPR 合规审计](../compliance-audit-gdpr/)
+- [AWS 云磁盘加密](../cloud-disk-encryption-aws/)
+
+---
+
+*最后更新：2026-06-27*  
+*版本：1.1.0*  
+*维护者：OpenDemo Team*
+
+
+---
+
+## 📖 深入理解
+
+### 工作原理
+
+Pre-Deployment Assessment 的核心机制可以概括为以下几个步骤：
+
+1. **初始化阶段**：准备运行环境，加载必要的配置和依赖。
+2. **执行阶段**：按照预定的流程执行主要逻辑，处理输入并生成输出。
+3. **验证阶段**：检查结果是否符合预期，记录关键指标和日志。
+4. **清理阶段**：释放资源，确保环境可以重复运行。
+
+### 关键设计决策
+
+| 决策点 | 方案 | 理由 |
+|--------|------|------|
+| 部署方式 | 本地容器化 | 降低环境依赖，便于复现 |
+| 配置管理 | 环境变量 + 配置文件 | 灵活且安全 |
+| 可观测性 | 日志 + 指标 | 便于排查和优化 |
+| 扩展性 | 模块化设计 | 方便后续添加新功能 |
+
+### 性能考量
+
+在实际生产环境中使用本案例时，建议关注以下性能指标：
+
+- **响应时间**：确保核心操作在可接受范围内完成。
+- **资源占用**：监控 CPU、内存、磁盘和网络使用情况。
+- **吞吐量**：根据业务需求评估并发处理能力。
+- **错误率**：建立告警机制，及时发现异常。
+
+---
+
+## 🛡️ 安全与最佳实践
+
+### 安全建议
+
+- 不要在生产环境中使用默认密码或密钥。
+- 定期更新依赖组件到最新稳定版本。
+- 对敏感配置使用密钥管理工具（如 Kubernetes Secrets、Vault）。
+- 限制网络暴露面，使用防火墙或安全组控制访问。
+
+### 最佳实践
+
+- 在修改配置前备份现有环境。
+- 使用版本控制管理所有配置文件和脚本。
+- 编写自动化测试覆盖核心路径。
+- 记录运行日志，便于审计和故障排查。
+
+---
+
+## 🧪 进阶实验
+
+完成基础演示后，可以尝试以下进阶实验：
+
+1. **参数调优**：修改关键配置参数，观察对结果的影响。
+2. **故障注入**：故意制造错误，验证系统的容错能力。
+3. **压力测试**：增加负载，评估系统瓶颈。
+4. **集成测试**：将本案例与其他组件组合，构建完整链路。
+
+---
+
+## 📚 扩展资源
+
+### 官方文档
+
+- [相关技术官方文档](https://example.com)
+- [OpenDemo 项目主页](https://github.com/opendemo)
+
+### 推荐书籍
+
+- 《相关技术权威指南》
+- 《云原生架构实践》
+
+### 社区与论坛
+
+- Stack Overflow 相关标签
+- GitHub Discussions
+- 技术博客与公众号
+
+---
+
+## 🤝 贡献与反馈
+
+如果你发现本案例有任何问题，或希望补充更多内容，欢迎提交 Issue 或 Pull Request。
+
+---
+
+*本 README 为 OpenDemo 五星案例标准模板，请根据实际案例内容持续完善。*

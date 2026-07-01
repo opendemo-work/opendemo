@@ -1,0 +1,40 @@
+{
+  "name": "大数据技术栈完整指南",
+  "language": "bigdata",
+  "difficulty": "intermediate",
+  "description": "从消息队列到实时计算、从数据仓库到数据湖的完整大数据学习路径。",
+  "keywords": [
+    "bigdata",
+    "kafka",
+    "spark",
+    "flink",
+    "clickhouse",
+    "data-warehouse",
+    "data-lake",
+    "etl"
+  ],
+  "author": "OpenDemo Team",
+  "version": "1.0.0",
+  "created_at": "2026-06-26",
+  "updated_at": "2026-06-26",
+  "verified": true,
+  "verified_at": "2026-06-26",
+  "estimated_time": "40-60小时",
+  "prerequisites": [
+    "掌握一门编程语言（Python/Java/Scala）",
+    "了解 SQL 基础",
+    "了解 Linux 命令行"
+  ],
+  "files": [
+    "README.md",
+    "metadata.json"
+  ],
+  "dependencies": {},
+  "compatibility": {
+    "operating_systems": [
+      "linux",
+      "macos",
+      "windows(wsl)"
+    ]
+  }
+}

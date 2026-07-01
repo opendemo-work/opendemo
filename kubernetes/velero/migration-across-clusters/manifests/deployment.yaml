@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: migration-across-clusters
+  labels:
+    app: migration-across-clusters
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: migration-across-clusters
+  template:
+    metadata:
+      labels:
+        app: migration-across-clusters
+    spec:
+      containers:
+      - name: demo
+        image: nginx:alpine
+        ports:
+        - containerPort: 80

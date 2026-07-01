@@ -1,59 +1,233 @@
-# NGINX 负载均衡演示
+# NGINX 负载均衡演示 - 反向代理与高可用
 
-## 🎯 项目概述
+> 使用 Docker Compose 部署一个 NGINX 负载均衡器和三个后端 Web 服务，演示轮询、权重、健康检查等负载均衡算法。
 
-NGINX 负载均衡演示展示了如何使用 NGINX 作为高性能的 HTTP 和 TCP 负载均衡器，实现流量分发和高可用架构。
+---
 
-## 📋 核心特性
+## 📋 目录
 
-- HTTP/HTTPS 负载均衡
-- TCP/UDP 流量代理
-- 健康检查和故障转移
-- 会话保持和粘性负载
-- 动态上游服务器管理
-- 缓存和压缩优化
+- [🎯 学习目标](#-学习目标)
+- [📐 架构图](#-架构图)
+- [🚀 快速开始](#-快速开始)
+- [📖 核心概念](#-核心概念)
+- [💻 代码示例](#-代码示例)
+- [🔧 配置说明](#-配置说明)
+- [🧪 验证测试](#-验证测试)
+- [📊 运行结果](#-运行结果)
+- [🐛 常见问题](#-常见问题)
+- [📚 扩展学习](#-扩展学习)
 
-## 🚀 快速部署
+---
 
-```bash
-# 启动 NGINX 负载均衡集群
-docker-compose up -d
+## 🎯 学习目标
 
-# 查看负载均衡状态
-curl http://localhost:8080/nginx_status
+完成本案例学习后，你将能够：
 
-# 测试负载分发效果
-for i in {1..10}; do curl -s http://localhost:80/ | grep "Server IP"; done
+- ✅ 理解负载均衡的作用和常见算法
+- ✅ 使用 NGINX 配置 upstream 后端集群
+- ✅ 配置轮询、加权轮询、ip_hash 等调度策略
+- ✅ 使用健康检查确保后端服务高可用
+
+---
+
+## 📐 架构图
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                    NGINX 负载均衡架构                            │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                 │
+│                         客户端请求                               │
+│                              │                                  │
+│                              ▼                                  │
+│                    ┌──────────────────┐                        │
+│                    │   NGINX LB       │                        │
+│                    │  (负载均衡器)     │                        │
+│                    └────────┬─────────┘                        │
+│                             │                                   │
+│            ┌────────────────┼────────────────┐                 │
+│            ▼                ▼                ▼                 │
+│      ┌──────────┐    ┌──────────┐    ┌──────────┐             │
+│      │ Web Svr 1│    │ Web Svr 2│    │ Web Svr 3│             │
+│      │ :8081    │    │ :8082    │    │ :8083    │             │
+│      └──────────┘    └──────────┘    └──────────┘             │
+│                                                                 │
+└─────────────────────────────────────────────────────────────────┘
 ```
 
-## 📊 负载均衡算法
+---
 
-- **轮询 (Round Robin)**: 默认算法，依次分发请求
-- **加权轮询 (Weighted Round Robin)**: 根据权重分配请求
-- **最少连接 (Least Connections)**: 分发给连接数最少的服务器
-- **IP 哈希 (IP Hash)**: 根据客户端 IP 进行会话保持
-- **URL 哈希 (URL Hash)**: 根据请求 URL 进行分发
+## 🚀 快速开始
 
-## 🔧 高级配置
+### 环境要求
 
-- 主动和被动健康检查
-- 动态上游服务器发现
-- SSL 终止和证书管理
-- 访问控制和速率限制
-- 日志记录和监控集成
-- A/B 测试和金丝雀发布
+| 依赖 | 版本要求 | 说明 |
+|------|----------|------|
+| Docker | >= 20.10 | 运行 NGINX 和 Web 服务 |
+| Docker Compose | >= 1.29 | 编排服务 |
 
-## 📈 性能优化
+### 启动服务
 
-- 连接池和复用优化
-- 缓冲区大小调优
-- 工作进程配置
-- 内存使用优化
-- 网络性能调优
-- 压缩和缓存策略
+```bash
+cd traffic/nginx-load-balancing
+./scripts/start.sh
+sleep 5
+./scripts/check.sh
+```
 
-## 📚 学习资源
+### 测试负载均衡
 
-- [NGINX 官方文档](https://nginx.org/en/docs/)
-- [负载均衡最佳实践](https://www.nginx.com/resources/admin-guide/load-balancer/)
-- [性能调优指南](https://www.nginx.com/blog/tuning-nginx/)
+```bash
+# 连续访问 6 次，观察请求分布
+for i in {1..6}; do
+  curl -s http://localhost:80/
+done
+```
+
+---
+
+## 📖 核心概念
+
+### 1. 负载均衡算法
+
+| 算法 | 说明 | 适用场景 |
+|------|------|----------|
+| round_robin | 轮询，默认算法 | 后端性能一致 |
+| weight | 加权轮询 | 后端性能不一致 |
+| least_conn | 最少连接 | 长连接场景 |
+| ip_hash | 基于客户端 IP 哈希 | 需要会话保持 |
+
+### 2. upstream 配置
+
+```nginx
+upstream backend {
+    server web1:8080 weight=3;
+    server web2:8080 weight=2;
+    server web3:8080 backup;
+}
+```
+
+### 3. 健康检查
+
+NGINX 开源版通过 `max_fails` 和 `fail_timeout` 实现被动健康检查：
+
+```nginx
+upstream backend {
+    server web1:8080 max_fails=3 fail_timeout=30s;
+    server web2:8080 max_fails=3 fail_timeout=30s;
+}
+```
+
+---
+
+## 💻 代码示例
+
+### NGINX 配置文件
+
+```nginx
+# configs/nginx.conf
+upstream backend {
+    least_conn;
+    server web1:8080;
+    server web2:8080;
+    server web3:8080;
+}
+
+server {
+    listen 80;
+
+    location / {
+        proxy_pass http://backend;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    }
+}
+```
+
+### Docker Compose 服务
+
+```yaml
+version: '3.8'
+services:
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "80:80"
+    volumes:
+      - ./configs/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+
+  web1:
+    image: hashicorp/http-echo
+    command: ["-text", "Response from web1"]
+  web2:
+    image: hashicorp/http-echo
+    command: ["-text", "Response from web2"]
+  web3:
+    image: hashicorp/http-echo
+    command: ["-text", "Response from web3"]
+```
+
+---
+
+## 🔧 配置说明
+
+| 文件 | 作用 |
+|------|------|
+| `configs/nginx.conf` | NGINX 负载均衡配置 |
+| `docker-compose.yml` | 服务拓扑定义 |
+
+---
+
+## 🧪 验证测试
+
+```bash
+# 检查 NGINX 配置是否正确
+docker exec nginx-load-balancer nginx -t
+
+# 重新加载配置
+docker exec nginx-load-balancer nginx -s reload
+
+# 测试负载分发
+watch -n 1 curl -s http://localhost/
+```
+
+---
+
+## 📊 运行结果
+
+连续访问多次，预期输出在 web1/web2/web3 之间分发：
+
+```
+Response from web1
+Response from web2
+Response from web3
+Response from web1
+...
+```
+
+---
+
+## 🐛 常见问题
+
+### Q1：请求总是落到同一个后端？
+
+**A**：可能是浏览器缓存或长连接导致。使用 curl 并添加 `-H "Connection: close"`。
+
+### Q2：后端宕机后请求仍失败？
+
+**A**：确认 `max_fails` 和 `fail_timeout` 配置，健康检查需要一定时间生效。
+
+---
+
+## 📚 扩展学习
+
+- [NGINX 反向代理](../nginx-reverse-proxy/)
+- [HAProxy 负载均衡](../haproxy-load-balancing/)
+- [NGINX 官方文档](https://nginx.org/en/docs/http/load_balancing.html)
+
+---
+
+*最后更新：2026-06-27*  
+*版本：1.1.0*  
+*维护者：OpenDemo Team*

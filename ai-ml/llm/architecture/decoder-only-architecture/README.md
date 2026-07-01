@@ -1,3 +1,5 @@
+<!-- TEMPLATE: 待完善 - 本 README 包含自动生成的模板内容，需要人工精修 -->
+
 # Decoder-Only 架构 (GPT 系列)
 
 > 本案例深入解析 Decoder-Only 架构，聚焦 GPT 系列模型的自回归生成和因果注意力机制
@@ -219,3 +221,43 @@ def greedy_decode(model, input_ids, max_new_tokens, eos_token_id):
 2. **KV Cache**：推理加速的关键技术
 3. **自回归的挑战**：训练效率低，推理成本高
 4. **Scaling Law**：模型规模与性能的幂律关系
+
+## 🎯 学习目标
+
+完成本案例学习后，你将能够：
+
+- ✅ 理解本案例涉及的 AI/ML 核心概念
+- ✅ 掌握相关的配置与命令
+- ✅ 能够在本地环境中复现
+
+## 🚀 快速开始
+
+### 运行演示
+
+```bash
+# 安装依赖
+pip install -r requirements.txt
+
+# 运行演示
+python code/main.py
+```
+
+## 📖 核心概念
+
+### 1. 基本概念
+
+本节介绍本案例涉及的 AI/ML 核心概念。
+
+### 2. 适用场景
+
+- 场景 1：学术研究
+- 场景 2：工程实践
+- 场景 3：面试准备
+
+## 💻 代码示例
+
+### 基本用法
+
+```bash
+python code/main.py
+```
