@@ -1,40 +1,46 @@
-<!-- TEMPLATE: 待完善 - 本 README 包含自动生成的模板内容，需要人工精修 -->
+# 🐳 Container 容器技术栈
 
-# 📦 Container技术栈完整指南
-
-> 容器技术从基础到企业级应用的完整学习体系，包含9个核心案例
-
-## 🚀 快速入门
-
-想要快速上手容器技术？查看我们的 [Container CLI 命令行速查表](./cli/container-cli.md) 获取Docker、Containerd、runc等核心工具！
-
-## 📋 技术栈概述
-
-容器技术是现代软件交付和部署的核心基础设施。本技术栈涵盖主流容器运行时和技术，从基础使用到高级特性，帮助企业构建现代化的容器化应用平台。
-
-### 🔧 核心技能覆盖
-
-- **Docker**: 应用容器化、镜像管理、容器编排基础
-- **Containerd**: 容器运行时、镜像管理、容器生命周期
-- **Runc**: OCI运行时规范、容器启动、资源隔离
-
-### 🎯 适用人群
-
-- 容器技术初学者
-- DevOps工程师
-- 云平台架构师
-- SRE团队成员
-- 容器平台管理员
+> 容器化技术从入门到精通，涵盖 Docker、containerd、runc 等主流容器运行时，以及镜像构建、网络、存储和故障排查。
 
 ---
 
-## 📚 学习路径
+## 📚 技术栈概览
 
-### 基础入门系列 (3个案例)
-掌握各容器技术的基本使用和核心概念。
+容器技术是现代云原生应用的基础。本技术栈提供从 Docker 基础到 OCI 运行时的完整学习路径，包含 14 个实战案例，覆盖以下主题：
 
-### 高级特性系列 (6个案例)
-深入了解容器技术的高级功能和企业级应用。
+- Docker 基础与镜像构建
+- Docker 网络与数据卷
+- Docker 高级特性与故障排查
+- containerd 基础与高级用法
+- nerdctl 与 ctr 实践
+- runc 与 OCI 规范
+- 容器安全与资源限制
+
+---
+
+## 🎯 学习目标
+
+完成本技术栈学习后，你将能够：
+
+- ✅ 使用 Docker 构建、运行和管理容器
+- ✅ 配置容器网络和持久化存储
+- ✅ 使用 containerd 和 nerdctl 管理容器
+- ✅ 理解 runc 和 OCI 运行时规范
+- ✅ 排查常见容器问题
+
+---
+
+## 📂 案例目录
+
+| 案例 | 主题 |
+|------|------|
+| [Docker 基础入门](./docker/basics/) | 镜像/容器/卷 |
+| [Docker 高级网络](./docker/networking/) | 网络模式 |
+| [Docker 数据卷](./docker/volume/) | 持久化存储 |
+| [containerd 基础](./containerd/basics/) | nerdctl 使用 |
+| [runc 基础](./runc/basics/) | OCI 运行时 |
+
+... 共 14 个案例，详见各子目录。
 
 ---
 
@@ -46,229 +52,20 @@
 > - 注意检查依赖版本、端口占用和目标资源配置。
 > - 生产环境执行前请经过变更评审和备份确认。
 ```bash
-# 查看所有容器案例
-opendemo search container
-
-# 获取Docker基础案例
-opendemo get container docker basics/basic-docker-usage
-
-# 获取Containerd高级案例
-opendemo get container containerd advanced/containerd-security-isolation
+cd container/docker/basics
+./scripts/start.sh
+./scripts/check.sh
 ```
 
 ---
 
-## 📊 案例统计
+## 🔗 相关技术栈
 
-| 技术 | 基础案例 | 高级案例 | 总计 |
-|------|----------|----------|------|
-| Docker | 1 | 2 | 3 |
-| Containerd | 1 | 2 | 3 |
-| Runc | 1 | 2 | 3 |
-| **总计** | **3** | **6** | **9** |
+- [Kubernetes](./../kubernetes/) - 容器编排
+- [Traffic](./../traffic/) - 容器入口流量
+- [SRE](./../sre/) - 容器化运维
 
 ---
 
-## 📚 详细目录
-
-### Docker技术 (3个案例)
-<details>
-<summary>点击查看完整列表</summary>
-
-#### 基础入门
-- `basic-docker-usage` - Docker基础使用入门
-  - 镜像拉取与管理
-  - 容器创建与运行
-  - 数据卷挂载
-  - 网络配置
-  - 环境变量设置
-
-#### 高级特性
-- `docker-image-layer-analysis` - Docker镜像分层分析
-  - 镜像分层原理
-  - 镜像大小优化
-  - 多阶段构建
-  - 镜像安全扫描
-- `docker-security-best-practices` - Docker安全最佳实践
-  - 用户权限管理
-  - 网络安全配置
-  - 镜像安全检查
-  - 运行时安全监控
-
-</details>
-
-### Containerd技术 (3个案例)
-<details>
-<summary>点击查看完整列表</summary>
-
-#### 基础入门
-- `basic-containerd-usage` - Containerd基础使用入门
-  - OCI标准兼容
-  - 镜像管理
-  - 容器生命周期管理
-  - 命名空间隔离
-  - 快照管理
-
-#### 高级特性
-- `containerd-image-management` - Containerd镜像管理进阶
-  - 镜像传输优化
-  - 镜像缓存策略
-  - 镜像验证机制
-  - 镜像分发加速
-- `containerd-security-isolation` - Containerd安全隔离机制
-  - 命名空间安全
-  - AppArmor/SELinux集成
-  - 资源限制控制
-  - 安全审计日志
-
-</details>
-
-### Runc技术 (3个案例)
-<details>
-<summary>点击查看完整列表</summary>
-
-#### 基础入门
-- `basic-runc-usage` - Runc基础使用入门
-  - OCI运行时规范
-  - Bundle创建与配置
-  - config.json详解
-  - 容器启动流程
-  - 资源限制配置
-
-#### 高级特性
-- `runc-bundle-configuration` - Runc Bundle配置详解
-  - 配置文件结构
-  - 挂载点配置
-  - 设备访问控制
-  - Linux命名空间配置
-  - Seccomp配置
-- `runc-resource-limitation` - Runc资源限制与监控
-  - CPU/Memory限制
-  - IO限制配置
-  - 资源监控指标
-  - 性能调优技巧
-
-</details>
-
----
-
-## 🛠️ 环境准备
-
-🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
-> ⚠️ 生产安全提示：
-> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
-> - 注意检查依赖版本、端口占用和目标资源配置。
-> - 生产环境执行前请经过变更评审和备份确认。
-```bash
-# Docker环境
-docker --version
-docker info
-
-# Containerd环境
-ctr --version
-containerd --version
-
-# Runc环境
-runc --version
-
-# 验证安装
-docker run hello-world
-ctr image pull docker.io/library/hello-world:latest
-```
-
----
-
-## 📖 学习建议
-
-1. **循序渐进**: 按照Docker→Containerd→Runc的顺序学习
-2. **动手实践**: 每个技术都要亲手操作和验证
-3. **理解原理**: 深入理解容器技术的底层实现机制
-4. **关注安全**: 容器安全是生产环境的重要考量
-5. **性能优化**: 学习容器资源管理和性能调优
-
----
-
-## 🤝 贡献指南
-
-欢迎提交新的容器技术案例或改进现有案例：
-- 遵循容器技术最佳实践
-- 提供可复现的操作步骤
-- 确保案例的安全性和实用性
-- 遵循统一的文档格式
-
----
-
-> **💡 提示**: 容器技术是云原生应用的基础，掌握多种容器运行时技术有助于构建更灵活、更安全的应用平台。
-## 🎯 学习目标
-
-完成本案例学习后，你将能够：
-
-- ✅ 理解本案例涉及的核心概念
-- ✅ 掌握相关的配置与命令
-- ✅ 能够在本地环境中复现
-
-## 📖 核心概念
-
-### 1. 基本概念
-
-本节介绍本案例涉及的核心概念。
-
-### 2. 适用场景
-
-- 场景 1：学习与实验
-- 场景 2：工程实践
-- 场景 3：面试准备
-
-## 💻 代码示例
-
-### 基本用法
-
-🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
-> ⚠️ 生产安全提示：
-> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
-> - 注意检查依赖版本、端口占用和目标资源配置。
-> - 生产环境执行前请经过变更评审和备份确认。
-```bash
-# 请根据实际案例替换
-./scripts/demo.sh
-```
-
-
----
-
-## 📚 扩展阅读
-
-### 相关概念
-
-- 概念 1：补充说明
-- 概念 2：补充说明
-- 概念 3：补充说明
-
-### 常见问题
-
-#### Q1：本案例适用于哪些场景？
-
-**A**：本案例适用于学习、实验和工程参考。
-
-#### Q2：如何验证运行结果？
-
-**A**：按照 README 中的命令执行，并观察输出是否符合预期。
-
-#### Q3：遇到问题时如何排查？
-
-**A**：检查环境依赖是否正确安装，查看命令输出和日志信息。
-
-### 推荐资源
-
-- [OpenDemo 官方文档](https://github.com/opendemo)
-- [相关技术官方文档](https://example.com)
-
-### 进阶主题
-
-- [ ] 进阶主题 1
-- [ ] 进阶主题 2
-- [ ] 进阶主题 3
-
----
-
-*本 README 为自动生成模板，请根据实际案例内容补充完善。*
+*最后更新：2026-07-01*  
+*维护者：OpenDemo Team*
