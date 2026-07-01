@@ -41,6 +41,11 @@
 
 ### 2. 部署 Vibe Coding
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 1. 配置密钥
 kubectl create secret generic vibe-coding-secrets \
@@ -61,6 +66,7 @@ kubectl get svc -n vibe-coding-system
 
 ### 3. 访问 Vibe Coding
 
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # 获取服务地址
 VIBE_CODING_SERVICE_IP=$(kubectl get svc vibe-coding-service -n vibe-coding-system -o jsonpath='{.status.loadBalancer.ingress[0].ip}')
@@ -142,6 +148,11 @@ MIT License
 
 ### 运行演示
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 ./scripts/demo.sh
 ```
@@ -162,6 +173,11 @@ MIT License
 
 ### 基本用法
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 请根据实际案例替换
 ./scripts/demo.sh

@@ -31,18 +31,25 @@
 **排查步骤**：
 
 1. 验证CNI插件是否支持NetworkPolicy：
+   🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
    ```bash
    # 检查CNI插件类型
    kubectl get pods -n kube-system | grep -E "calico|cilium|weave|flannel"
    ```
 
 2. 查看命名空间中的网络策略：
+   🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
    ```bash
    kubectl get networkpolicy -n <namespace>
    kubectl describe networkpolicy <policy-name> -n <namespace>
    ```
 
 3. 测试Pod间通信：
+   🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+   > ⚠️ 生产安全提示：
+   > - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+   > - 注意检查依赖版本、端口占用和目标资源配置。
+   > - 生产环境执行前请经过变更评审和备份确认。
    ```bash
    kubectl run -it --rm test-pod --image=busybox:1.35 -- /bin/sh
    nc -zv <target-pod-ip> <target-port>
@@ -50,6 +57,7 @@
    ```
 
 4. 检查Pod标签是否与网络策略匹配：
+   🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
    ```bash
    kubectl get pod <pod-name> -n <namespace> --show-labels
    ```
@@ -98,16 +106,27 @@ spec:
 **排查步骤**：
 
 1. 检查网络策略语法：
+   🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+   > ⚠️ 生产安全提示：
+   > - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+   > - 注意检查依赖版本、端口占用和目标资源配置。
+   > - 生产环境执行前请经过变更评审和备份确认。
    ```bash
    kubectl apply -f <network-policy-file.yaml> --dry-run=client
    ```
 
 2. 查看网络策略详细配置：
+   🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
    ```bash
    kubectl get networkpolicy <policy-name> -n <namespace> -o yaml
    ```
 
 3. 测试不同方向的通信：
+   🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+   > ⚠️ 生产安全提示：
+   > - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+   > - 注意检查依赖版本、端口占用和目标资源配置。
+   > - 生产环境执行前请经过变更评审和备份确认。
    ```bash
    # 测试Ingress
    kubectl run -it --rm ingress-test --image=busybox:1.35 -- /bin/sh
@@ -154,22 +173,30 @@ spec:
 **排查步骤**：
 
 1. 查看目标命名空间的网络策略：
+   🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
    ```bash
    kubectl get networkpolicy -n <target-namespace>
    ```
 
 2. 检查命名空间选择器配置：
+   🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
    ```bash
    kubectl describe networkpolicy <policy-name> -n <target-namespace> | grep -A 10 from
    ```
 
 3. 测试跨命名空间通信：
+   🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+   > ⚠️ 生产安全提示：
+   > - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+   > - 注意检查依赖版本、端口占用和目标资源配置。
+   > - 生产环境执行前请经过变更评审和备份确认。
    ```bash
    kubectl run -it --rm cross-ns-test --image=busybox:1.35 -- /bin/sh
    curl -v http://<service-name>.<target-namespace>.svc.cluster.local:<port>
    ```
 
 4. 检查命名空间标签：
+   🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
    ```bash
    kubectl get namespace --show-labels
    ```
@@ -209,22 +236,30 @@ spec:
 **排查步骤**：
 
 1. 查看Ingress策略配置：
+   🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
    ```bash
    kubectl get networkpolicy <policy-name> -n <namespace> -o yaml | grep -A 20 ingress
    ```
 
 2. 检查端口配置：
+   🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
    ```bash
    kubectl get pod <pod-name> -n <namespace> -o yaml | grep -A 10 containerPort
    ```
 
 3. 测试Ingress规则：
+   🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+   > ⚠️ 生产安全提示：
+   > - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+   > - 注意检查依赖版本、端口占用和目标资源配置。
+   > - 生产环境执行前请经过变更评审和备份确认。
    ```bash
    kubectl run -it --rm ingress-test --image=busybox:1.35 -- /bin/sh
    nc -zv <pod-ip> <port>
    ```
 
 4. 检查策略类型是否包含Ingress：
+   🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
    ```bash
    kubectl get networkpolicy <policy-name> -n <namespace> -o yaml | grep policyTypes
    ```
@@ -264,16 +299,23 @@ spec:
 **排查步骤**：
 
 1. 查看Egress策略配置：
+   🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
    ```bash
    kubectl get networkpolicy <policy-name> -n <namespace> -o yaml | grep -A 20 egress
    ```
 
 2. 检查策略类型是否包含Egress：
+   🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
    ```bash
    kubectl get networkpolicy <policy-name> -n <namespace> -o yaml | grep policyTypes
    ```
 
 3. 测试Egress规则：
+   🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+   > ⚠️ 生产安全提示：
+   > - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+   > - 注意检查依赖版本、端口占用和目标资源配置。
+   > - 生产环境执行前请经过变更评审和备份确认。
    ```bash
    kubectl exec -it <pod-name> -n <namespace> -- /bin/sh
    ping -c 3 google.com
@@ -282,6 +324,7 @@ spec:
    ```
 
 4. 检查DNS访问权限：
+   🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
    ```bash
    # 确保允许访问DNS服务器
    kubectl get networkpolicy <policy-name> -n <namespace> -o yaml | grep -A 10 "53"
@@ -333,21 +376,25 @@ spec:
 **排查步骤**：
 
 1. 检查Pod标签：
+   🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
    ```bash
    kubectl get pods -n <namespace> --show-labels
    ```
 
 2. 检查网络策略的podSelector：
+   🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
    ```bash
    kubectl get networkpolicy <policy-name> -n <namespace> -o yaml | grep -A 5 podSelector
    ```
 
 3. 验证标签选择器匹配：
+   🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
    ```bash
    kubectl get pods -n <namespace> -l <key>=<value>
    ```
 
 4. 检查from/to规则中的标签选择器：
+   🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
    ```bash
    kubectl get networkpolicy <policy-name> -n <namespace> -o yaml | grep -A 10 from
    ```
@@ -386,11 +433,13 @@ spec:
 **排查步骤**：
 
 1. 查看命名空间中的所有网络策略：
+   🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
    ```bash
    kubectl get networkpolicy -n <namespace>
    ```
 
 2. 分析每个策略的覆盖范围：
+   🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
    ```bash
    for policy in $(kubectl get networkpolicy -n <namespace> -o name); do
      echo "=== $policy ==="
@@ -399,6 +448,7 @@ spec:
    ```
 
 3. 测试不同Pod组合的通信：
+   🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
    ```bash
    # 测试不同标签组合的Pod通信
    ```
@@ -463,6 +513,7 @@ spec:
 
 ### 4.1 网络策略诊断命令
 
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # 查看命名空间中的网络策略
 kubectl get networkpolicy -n <namespace>
@@ -489,6 +540,11 @@ kubectl exec -it <calico-node-pod> -n kube-system -- calicoctl get networkpolicy
 
 ### 4.2 网络策略分析脚本
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 #!/bin/bash
 # 网络策略分析脚本
@@ -528,6 +584,11 @@ done
 
 ### 4.3 网络测试Pod部署
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 部署网络测试Pod
 kubectl apply -f - <<EOF
@@ -731,12 +792,22 @@ spec:
 
 ### 部署资源
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 ./scripts/apply.sh
 ```
 
 ### 检查状态
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 ./scripts/check.sh
 ```
@@ -757,6 +828,11 @@ spec:
 
 ### 基本命令
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 请根据实际场景替换
 kubectl apply -f manifests/

@@ -68,6 +68,11 @@
 
 ### 启动 ClickHouse
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 1. 进入案例目录
 cd bigdata/clickhouse/clickhouse-olap-analytics
@@ -84,6 +89,11 @@ sleep 5
 
 ### 执行查询
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 使用 HTTP 接口执行 SQL
 curl -s http://localhost:8123 -d "SELECT event_type, COUNT(*) AS cnt, SUM(amount) AS total FROM demo.events GROUP BY event_type ORDER BY total DESC"
@@ -199,6 +209,11 @@ print(resp.text)
 
 ## 🧪 验证测试
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 1. 检查服务是否可访问
 curl -s http://localhost:8123/ping
@@ -241,6 +256,7 @@ view            1       0.00
 
 **A**：ClickHouse 首次启动需要初始化，请等待 10-20 秒。查看日志：
 
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 docker logs clickhouse-server
 ```

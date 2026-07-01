@@ -20,12 +20,22 @@
 - 至少2GB可用内存
 
 ### 构建项目
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 cd java/jvm-memory-management-demo
 mvn clean compile
 ```
 
 ### 运行测试
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 mvn test
 ```
@@ -240,6 +250,11 @@ try {
 | jcmd | 诊断命令 | `jcmd <pid> GC.heap_info` |
 
 **自动堆转储配置：**
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 -XX:+HeapDumpOnOutOfMemoryError
 -XX:HeapDumpPath=/path/to/dumps/
@@ -248,16 +263,31 @@ try {
 ## 🚀 运行指南
 
 ### 运行MemoryDemo（主入口）
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 mvn exec:java -Dexec.mainClass="com.opendemo.java.jvm.memory.MemoryDemo"
 ```
 
 ### 运行HeapDemo
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 mvn exec:java -Dexec.mainClass="com.opendemo.java.jvm.memory.HeapDemo"
 ```
 
 ### 运行StackDemo
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 使用默认栈大小
 mvn exec:java -Dexec.mainClass="com.opendemo.java.jvm.memory.StackDemo"
@@ -268,6 +298,11 @@ mvn exec:java -Dexec.mainClass="com.opendemo.java.jvm.memory.StackDemo" \
 ```
 
 ### 运行MemoryPoolDemo
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 使用G1垃圾收集器查看不同的内存池
 mvn exec:java -Dexec.mainClass="com.opendemo.java.jvm.memory.MemoryPoolDemo" \
@@ -276,11 +311,21 @@ mvn exec:java -Dexec.mainClass="com.opendemo.java.jvm.memory.MemoryPoolDemo" \
 ```
 
 ### 运行ObjectSizeDemo
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 mvn exec:java -Dexec.mainClass="com.opendemo.java.jvm.memory.ObjectSizeDemo"
 ```
 
 ### 运行MemoryLeakDemo
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 mvn exec:java -Dexec.mainClass="com.opendemo.java.jvm.memory.MemoryLeakDemo"
 ```
@@ -339,6 +384,11 @@ mvn exec:java -Dexec.mainClass="com.opendemo.java.jvm.memory.MemoryLeakDemo"
 
 ### 运行演示
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 ./scripts/demo.sh
 ```
@@ -359,6 +409,11 @@ mvn exec:java -Dexec.mainClass="com.opendemo.java.jvm.memory.MemoryLeakDemo"
 
 ### 基本用法
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 请根据实际案例替换
 ./scripts/demo.sh

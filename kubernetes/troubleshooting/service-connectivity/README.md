@@ -26,12 +26,18 @@
 **排查步骤**：
 
 1. 检查CoreDNS运行状态：
+   🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
    ```bash
    kubectl get pods -n kube-system | grep coredns
    kubectl logs <coredns-pod-name> -n kube-system
    ```
 
 2. 在Pod内部测试DNS解析：
+   🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+   > ⚠️ 生产安全提示：
+   > - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+   > - 注意检查依赖版本、端口占用和目标资源配置。
+   > - 生产环境执行前请经过变更评审和备份确认。
    ```bash
    kubectl run -it --rm dns-test --image=busybox:1.35 -- /bin/sh
    nslookup <service-name>.<namespace>.svc.cluster.local
@@ -39,11 +45,13 @@
    ```
 
 3. 检查服务是否存在：
+   🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
    ```bash
    kubectl get svc -n <namespace>
    ```
 
 4. 检查DNS配置：
+   🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
    ```bash
    kubectl get configmap coredns -n kube-system -o yaml
    ```
@@ -88,16 +96,23 @@ data:
 **排查步骤**：
 
 1. 检查服务端口配置：
+   🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
    ```bash
    kubectl get svc <service-name> -n <namespace> -o yaml
    ```
 
 2. 检查后端Pod端口配置：
+   🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
    ```bash
    kubectl get pod <pod-name> -n <namespace> -o yaml | grep -A 10 containerPort
    ```
 
 3. 测试端口连通性：
+   🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+   > ⚠️ 生产安全提示：
+   > - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+   > - 注意检查依赖版本、端口占用和目标资源配置。
+   > - 生产环境执行前请经过变更评审和备份确认。
    ```bash
    kubectl run -it --rm port-test --image=busybox:1.35 -- /bin/sh
    telnet <service-ip> <service-port>
@@ -105,6 +120,7 @@ data:
    ```
 
 4. 检查服务端点：
+   🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
    ```bash
    kubectl get endpoints <service-name> -n <namespace>
    ```
@@ -135,17 +151,20 @@ spec:
 **排查步骤**：
 
 1. 检查服务选择器：
+   🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
    ```bash
    kubectl get svc <service-name> -n <namespace> -o yaml | grep -A 5 selector
    ```
 
 2. 检查Pod标签：
+   🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
    ```bash
    kubectl get pods -n <namespace> --show-labels
    kubectl describe pod <pod-name> -n <namespace> | grep Labels
    ```
 
 3. 验证选择器匹配：
+   🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
    ```bash
    kubectl get pods -n <namespace> -l <key>=<value>
    ```
@@ -177,17 +196,24 @@ spec:
 **排查步骤**：
 
 1. 检查服务ClusterIP配置：
+   🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
    ```bash
    kubectl get svc <service-name> -n <namespace>
    ```
 
 2. 在同一命名空间的Pod中测试访问：
+   🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+   > ⚠️ 生产安全提示：
+   > - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+   > - 注意检查依赖版本、端口占用和目标资源配置。
+   > - 生产环境执行前请经过变更评审和备份确认。
    ```bash
    kubectl run -it --rm clusterip-test --image=busybox:1.35 -- /bin/sh
    curl http://<cluster-ip>:<port>
    ```
 
 3. 检查网络策略：
+   🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
    ```bash
    kubectl get networkpolicies -n <namespace>
    ```
@@ -199,16 +225,27 @@ spec:
 **排查步骤**：
 
 1. 检查NodePort配置：
+   🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
    ```bash
    kubectl get svc <service-name> -n <namespace>
    ```
 
 2. 检查节点端口是否已打开：
+   🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+   > ⚠️ 生产安全提示：
+   > - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+   > - 注意检查依赖版本、端口占用和目标资源配置。
+   > - 生产环境执行前请经过变更评审和备份确认。
    ```bash
    kubectl describe node <node-name> | grep Allocated
    ```
 
 3. 测试节点端口访问：
+   🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+   > ⚠️ 生产安全提示：
+   > - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+   > - 注意检查依赖版本、端口占用和目标资源配置。
+   > - 生产环境执行前请经过变更评审和备份确认。
    ```bash
    curl http://<node-ip>:<node-port>
    ```
@@ -220,6 +257,7 @@ spec:
 **排查步骤**：
 
 1. 检查LoadBalancer状态：
+   🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
    ```bash
    kubectl get svc <service-name> -n <namespace>
    kubectl describe svc <service-name> -n <namespace>
@@ -257,17 +295,24 @@ spec:
 **排查步骤**：
 
 1. 检查网络策略配置：
+   🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
    ```bash
    kubectl get networkpolicies -n <namespace>
    kubectl describe networkpolicy <networkpolicy-name> -n <namespace>
    ```
 
 2. 检查Pod标签是否与网络策略匹配：
+   🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
    ```bash
    kubectl get pods -n <namespace> --show-labels
    ```
 
 3. 测试网络策略是否阻止通信：
+   🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+   > ⚠️ 生产安全提示：
+   > - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+   > - 注意检查依赖版本、端口占用和目标资源配置。
+   > - 生产环境执行前请经过变更评审和备份确认。
    ```bash
    kubectl run -it --rm network-test --image=busybox:1.35 -- /bin/sh
    curl http://<service-ip>:<port>
@@ -305,17 +350,24 @@ spec:
 **排查步骤**：
 
 1. 检查目标命名空间的服务是否存在：
+   🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
    ```bash
    kubectl get svc -n <target-namespace>
    ```
 
 2. 使用完整服务域名测试访问：
+   🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+   > ⚠️ 生产安全提示：
+   > - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+   > - 注意检查依赖版本、端口占用和目标资源配置。
+   > - 生产环境执行前请经过变更评审和备份确认。
    ```bash
    kubectl run -it --rm cross-namespace-test --image=busybox:1.35 -- /bin/sh
    curl http://<service-name>.<target-namespace>.svc.cluster.local:<port>
    ```
 
 3. 检查目标命名空间的网络策略：
+   🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
    ```bash
    kubectl get networkpolicies -n <target-namespace>
    ```
@@ -352,16 +404,19 @@ spec:
 **排查步骤**：
 
 1. 检查kube-proxy运行状态：
+   🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
    ```bash
    kubectl get pods -n kube-system | grep kube-proxy
    ```
 
 2. 查看kube-proxy日志：
+   🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
    ```bash
    kubectl logs <kube-proxy-pod-name> -n kube-system
    ```
 
 3. 检查kube-proxy模式：
+   🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
    ```bash
    kubectl get configmap kube-proxy -n kube-system -o yaml
    ```
@@ -426,6 +481,11 @@ data:
 
 ### 4.1 网络测试工具部署
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 部署网络测试Pod
 kubectl apply -f - <<EOF
@@ -448,6 +508,7 @@ EOF
 
 ### 4.2 常用测试命令
 
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # 进入测试Pod
 kubectl exec -it network-tools -- /bin/bash
@@ -472,6 +533,7 @@ curl -v http://<service-name>.<target-namespace>.svc.cluster.local:<port>
 
 ### 4.3 服务诊断脚本
 
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 #!/bin/bash
 # 服务诊断脚本
@@ -608,12 +670,22 @@ spec:
 
 ### 部署资源
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 ./scripts/apply.sh
 ```
 
 ### 检查状态
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 ./scripts/check.sh
 ```
@@ -634,6 +706,11 @@ spec:
 
 ### 基本命令
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 请根据实际场景替换
 kubectl apply -f manifests/

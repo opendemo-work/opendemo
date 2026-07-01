@@ -28,6 +28,11 @@
 
 ### 1. 环境准备
 
+🔴 高风险：可能造成数据丢失、服务中断、权限提升或不可逆破坏。
+> ⚠️ 生产安全提示：
+> - 会删除/格式化/停止关键资源，生产环境慎用。
+> - 执行前请确认目标范围，建议在隔离测试环境验证。
+> - 涉及数据操作前请备份，涉及服务操作前请通知相关人员。
 ```bash
 # 检查系统要求
 uname -a
@@ -62,6 +67,11 @@ sudo sysctl --system
 
 ### 2. 安装容器运行时
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 安装containerd
 cat <<EOF | sudo tee /etc/yum.repos.d/kubernetes.repo
@@ -83,6 +93,11 @@ sudo systemctl start containerd
 
 ### 3. 安装kubeadm工具
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 sudo yum install -y kubelet kubeadm kubectl --disableexcludes=kubernetes
 sudo systemctl enable --now kubelet
@@ -96,6 +111,11 @@ sudo systemctl enable --now kubelet
 
 #### 1.1 初始化Master节点
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 初始化集群
 sudo kubeadm init \
@@ -114,6 +134,11 @@ kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documen
 
 #### 1.2 Worker节点加入
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 在Worker节点上执行（由kubeadm init输出提供）
 sudo kubeadm join 192.168.1.100:6443 \
@@ -139,6 +164,11 @@ Worker Nodes:
 
 #### 2.2 负载均衡器配置
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 安装HAProxy
 sudo yum install -y haproxy
@@ -182,6 +212,11 @@ sudo systemctl start haproxy
 
 #### 2.3 Master节点初始化
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 第一个Master节点
 sudo kubeadm init \
@@ -219,6 +254,11 @@ spec:
 
 #### 3.2 Cilium网络插件
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 安装Cilium CLI
 curl -L --remote-name-all https://github.com/cilium/cilium-cli/releases/latest/download/cilium-linux-amd64.tar.gz{,.sha256sum}
@@ -293,6 +333,11 @@ spec:
 
 #### 5.1 Prometheus监控栈
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 添加监控命名空间
 kubectl create namespace monitoring
@@ -391,6 +436,7 @@ spec:
 
 ### 1. 集群健康检查
 
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # 检查节点状态
 kubectl get nodes
@@ -408,6 +454,11 @@ kubectl get pods -l run=nginx-test
 
 ### 2. 网络连通性测试
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 部署测试Pod
 kubectl run debug-pod --image=busybox --rm -it -- sh
@@ -421,6 +472,11 @@ ping <other-pod-ip>
 
 ### 3. 存储功能验证
 
+🔴 高风险：可能造成数据丢失、服务中断、权限提升或不可逆破坏。
+> ⚠️ 生产安全提示：
+> - 会删除/格式化/停止关键资源，生产环境慎用。
+> - 执行前请确认目标范围，建议在隔离测试环境验证。
+> - 涉及数据操作前请备份，涉及服务操作前请通知相关人员。
 ```bash
 # 创建测试PVC
 kubectl apply -f test-pvc.yaml
@@ -441,6 +497,7 @@ kubectl exec -it test-pod -- ls /data/
 
 ### 1. 集群状态监控
 
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # 查看集群组件状态
 kubectl get componentstatuses
@@ -454,6 +511,7 @@ kubectl get events --sort-by='.lastTimestamp'
 
 ### 2. 日志收集
 
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # 查看系统组件日志
 kubectl logs -n kube-system <component-pod>
@@ -480,6 +538,11 @@ kubectl cluster-info dump > cluster-dump.log
 - 资源不足
 
 **解决步骤**:
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 1. 检查节点详细状态
 kubectl describe node <node-name>
@@ -500,6 +563,7 @@ openssl x509 -in /var/lib/kubelet/pki/kubelet.crt -text
 **问题现象**: Pod长时间处于Pending状态
 
 **解决步骤**:
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # 1. 检查Pod事件
 kubectl describe pod <pod-name>
@@ -516,6 +580,11 @@ kubectl get nodes -o jsonpath='{.items[*].spec.taints}'
 **问题现象**: Pod间无法通信或DNS解析失败
 
 **解决步骤**:
+🔴 高风险：可能造成数据丢失、服务中断、权限提升或不可逆破坏。
+> ⚠️ 生产安全提示：
+> - 会删除/格式化/停止关键资源，生产环境慎用。
+> - 执行前请确认目标范围，建议在隔离测试环境验证。
+> - 涉及数据操作前请备份，涉及服务操作前请通知相关人员。
 ```bash
 # 1. 检查网络插件Pod状态
 kubectl get pods -n kube-system | grep <network-plugin>
@@ -568,6 +637,11 @@ kubectl apply -f <network-plugin.yaml>
 
 ## 📋 清理资源
 
+🔴 高风险：可能造成数据丢失、服务中断、权限提升或不可逆破坏。
+> ⚠️ 生产安全提示：
+> - 会删除/格式化/停止关键资源，生产环境慎用。
+> - 执行前请确认目标范围，建议在隔离测试环境验证。
+> - 涉及数据操作前请备份，涉及服务操作前请通知相关人员。
 ```bash
 # 重置节点
 sudo kubeadm reset -f
@@ -609,6 +683,11 @@ sudo rm -rf /var/lib/etcd
 
 ### 基本命令
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 请根据实际场景替换
 kubectl apply -f manifests/

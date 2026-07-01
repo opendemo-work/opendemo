@@ -82,6 +82,7 @@ Notebook CRD
 
 Check that GPU nodes and device plugin are ready:
 
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # List nodes with GPU labels
 kubectl get nodes -l accelerator=nvidia-gpu
@@ -97,6 +98,11 @@ kubectl describe nodes | grep -A 5 "nvidia.com/gpu"
 
 Apply the notebook manifest with GPU request:
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 kubectl apply -f manifests/notebook-gpu.yaml
 
@@ -114,6 +120,11 @@ kubectl wait --for=condition=Ready \
 
 Get access to your GPU-enabled notebook:
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # Port-forward to notebook service
 kubectl port-forward -n kubeflow-user-example-com \
@@ -190,6 +201,7 @@ print(f"GPU utilized: {torch.cuda.memory_allocated() / 1e9:.2f} GB")
 
 Monitor GPU utilization during training:
 
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # Watch GPU usage in real-time
 kubectl exec -it -n kubeflow-user-example-com \
@@ -227,6 +239,7 @@ See `manifests/notebook-gpu-memory-limit.yaml` for memory-constrained configurat
 
 ### Verify GPU Allocation
 
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # Check pod has GPU assigned
 kubectl describe pod -n kubeflow-user-example-com \
@@ -269,6 +282,7 @@ print(f"Speedup: {cpu_time/gpu_time:.2f}x")
 
 ### Check GPU Memory Usage
 
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # From host
 kubectl exec -n kubeflow-user-example-com \
@@ -302,6 +316,7 @@ After completing this demo, you should observe:
 **Problem**: Notebook pod cannot be scheduled
 
 **Solution**:
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # Check pod events
 kubectl describe pod -n kubeflow-user-example-com -l notebook-name=gpu-notebook
@@ -369,6 +384,11 @@ print(torch.cuda.memory_summary())
 **Problem**: GPU contention between notebooks
 
 **Solution**:
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # Set resource quotas per namespace
 kubectl apply -f - <<EOF
@@ -469,6 +489,11 @@ data:
 
 To remove the GPU notebook:
 
+🔴 高风险：可能造成数据丢失、服务中断、权限提升或不可逆破坏。
+> ⚠️ 生产安全提示：
+> - 会删除/格式化/停止关键资源，生产环境慎用。
+> - 执行前请确认目标范围，建议在隔离测试环境验证。
+> - 涉及数据操作前请备份，涉及服务操作前请通知相关人员。
 ```bash
 # Delete notebook
 kubectl delete notebook gpu-notebook -n kubeflow-user-example-com
@@ -515,12 +540,22 @@ GPU allocation in Kubeflow enables data scientists to leverage powerful hardware
 
 ### 部署资源
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 ./scripts/apply.sh
 ```
 
 ### 检查状态
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 ./scripts/check.sh
 ```
@@ -541,6 +576,11 @@ GPU allocation in Kubeflow enables data scientists to leverage powerful hardware
 
 ### 基本命令
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 请根据实际场景替换
 kubectl apply -f manifests/

@@ -29,6 +29,11 @@
 
 ### 1. 环境准备
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 检查集群状态
 kubectl cluster-info
@@ -43,6 +48,11 @@ kubectl get ingressclasses
 
 ### 2. 部署Ingress Controller
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 使用Helm部署NGINX Ingress Controller（生产推荐）
 helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
@@ -63,6 +73,11 @@ helm install ingress-nginx ingress-nginx/ingress-nginx \
 
 ### 3. 部署测试应用
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 部署生产级应用
 kubectl apply -f production-apps.yaml -n ingress-prod
@@ -629,6 +644,7 @@ spec:
 **问题现象**: 404 Not Found 或路由未按预期工作
 
 **诊断步骤**:
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # 1. 检查Ingress状态
 kubectl get ingress -n ingress-prod
@@ -892,6 +908,11 @@ data:
 
 ## 📋 清理资源
 
+🔴 高风险：可能造成数据丢失、服务中断、权限提升或不可逆破坏。
+> ⚠️ 生产安全提示：
+> - 会删除/格式化/停止关键资源，生产环境慎用。
+> - 执行前请确认目标范围，建议在隔离测试环境验证。
+> - 涉及数据操作前请备份，涉及服务操作前请通知相关人员。
 ```bash
 # 删除生产环境命名空间
 kubectl delete namespace ingress-prod
@@ -933,6 +954,11 @@ kubectl delete deploy --all -n ingress-prod
 
 ### 基本命令
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 请根据实际场景替换
 kubectl apply -f manifests/

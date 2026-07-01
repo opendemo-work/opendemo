@@ -19,6 +19,11 @@
 - Knative Serving v1.9+ 已安装
 
 ## 安装依赖步骤
+🔴 高风险：可能造成数据丢失、服务中断、权限提升或不可逆破坏。
+> ⚠️ 生产安全提示：
+> - 会删除/格式化/停止关键资源，生产环境慎用。
+> - 执行前请确认目标范围，建议在隔离测试环境验证。
+> - 涉及数据操作前请备份，涉及服务操作前请通知相关人员。
 ```bash
 # 1. 安装 Istio
 curl -L https://istio.io/downloadIstio | sh -
@@ -41,30 +46,47 @@ kubectl apply -f https://github.com/kserve/kserve/releases/download/v0.10.0/kser
 ## 逐步实操指南
 
 ### 步骤1: 创建命名空间
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 kubectl create namespace kserve-test
 ```
 **预期输出:** `namespace/kserve-test created`
 
 ### 步骤2: 部署基于并发数的扩缩容服务
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 kubectl apply -f autoscale-concurrency.yaml
 ```
 **预期输出:** `inferenceservice.serving.kserve.io/concurrency-model created`
 
 ### 步骤3: 验证服务状态
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 kubectl get inferenceservice concurrency-model -n kserve-test
 ```
 **预期输出:** STATUS 应为 `Ready`
 
 ### 步骤4: 部署基于CPU的扩缩容服务
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 kubectl apply -f autoscale-cpu.yaml
 ```
 **预期 output:** `inferenceservice.serving.kserve.io/cpu-model created`
 
 ### 步骤5: 查看扩缩容配置
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 kubectl get inferenceservice -n kserve-test -o yaml
 ```
@@ -83,6 +105,11 @@ kubectl get inferenceservice -n kserve-test -o yaml
 - 资源限制设置确保HPA有据可依
 
 ## 预期输出示例
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 NAME               URL                                           READY   PREV   LATEST   AGE
 concurrency-model  http://concurrency-model.kserve-test.example.com  True    1      1        2m
@@ -117,12 +144,22 @@ A: KServe 支持0副本，但需要启用 `enable-scale-to-zero` 特性门控。
 
 ### 部署资源
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 ./scripts/apply.sh
 ```
 
 ### 检查状态
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 ./scripts/check.sh
 ```
@@ -143,6 +180,11 @@ A: KServe 支持0副本，但需要启用 `enable-scale-to-zero` 特性门控。
 
 ### 基本命令
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 请根据实际场景替换
 kubectl apply -f manifests/

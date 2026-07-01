@@ -53,6 +53,11 @@
 
 ## 🚀 快速开始
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 cd sre/feature-flags
 ./scripts/start.sh
@@ -85,6 +90,11 @@ Unleash 是衡量实践效果的重要维度，需要持续监控和优化。
 
 ### 基础操作
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # Unleash 创建特性开关
 curl -X POST http://localhost:4242/api/admin/features   -H 'Authorization: *:*.admin-token'   -H 'Content-Type: application/json'   -d '{"name":"new-feature","description":"New feature flag","enabled":false,"strategies":[{"name":"default","parameters":{}}]}'
@@ -105,6 +115,11 @@ curl -X POST http://localhost:4242/api/admin/features   -H 'Authorization: *:*.a
 
 ## 🧪 验证测试
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 1. 检查环境状态
 ./scripts/check.sh

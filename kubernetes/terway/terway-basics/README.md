@@ -28,6 +28,11 @@
 
 ### 1. 环境准备
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 检查集群环境
 kubectl cluster-info
@@ -42,6 +47,11 @@ aliyun sts GetCallerIdentity
 
 ### 2. Terway插件部署
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 下载Terway部署文件
 wget https://github.com/AliyunContainerService/terway/releases/download/v1.3.0/terway.yaml
@@ -290,6 +300,7 @@ spec:
 
 ### 1. Terway部署验证
 
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # 1. 检查Terway Pod状态
 kubectl get pods -n kube-system | grep terway
@@ -308,6 +319,11 @@ nslookup kubernetes.default
 
 ### 2. 网络策略测试
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 1. 部署测试应用
 kubectl apply -f test-apps.yaml -n terway-demo
@@ -324,6 +340,11 @@ aliyun ecs DescribeSecurityGroupAttribute --SecurityGroupId sg-xxxxxx
 
 ### 3. 性能监控配置
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 1. 部署监控组件
 kubectl apply -f terway-monitoring.yaml
@@ -421,6 +442,7 @@ data:
 - IP地址冲突
 
 **解决步骤**:
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # 1. 检查Terway状态
 kubectl get pods -n kube-system | grep terway
@@ -441,6 +463,11 @@ kubectl exec -it <pod-name> -- ip addr show
 **问题现象**: 新Pod无法分配IP地址，处于ContainerCreating状态
 
 **解决步骤**:
+🔴 高风险：可能造成数据丢失、服务中断、权限提升或不可逆破坏。
+> ⚠️ 生产安全提示：
+> - 会删除/格式化/停止关键资源，生产环境慎用。
+> - 执行前请确认目标范围，建议在隔离测试环境验证。
+> - 涉及数据操作前请备份，涉及服务操作前请通知相关人员。
 ```bash
 # 1. 检查IP使用情况
 kubectl get ippool -n kube-system
@@ -457,6 +484,11 @@ kubectl delete pod --all -n <namespace>
 **问题现象**: 网络延迟高、吞吐量低
 
 **解决步骤**:
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 1. 性能基准测试
 kubectl run perf-test --image=network-multitool --rm -it -- sh
@@ -509,6 +541,11 @@ kubectl patch configmap terway-config -n kube-system -p '{"data":{"mtu":"1500"}}
 
 ## 📋 清理资源
 
+🔴 高风险：可能造成数据丢失、服务中断、权限提升或不可逆破坏。
+> ⚠️ 生产安全提示：
+> - 会删除/格式化/停止关键资源，生产环境慎用。
+> - 执行前请确认目标范围，建议在隔离测试环境验证。
+> - 涉及数据操作前请备份，涉及服务操作前请通知相关人员。
 ```bash
 # 删除测试应用
 kubectl delete namespace terway-demo
@@ -551,6 +588,11 @@ kubectl delete servicemonitor terway-monitor -n monitoring
 
 ### 基本命令
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 请根据实际场景替换
 kubectl apply -f manifests/

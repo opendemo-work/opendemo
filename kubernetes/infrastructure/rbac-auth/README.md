@@ -28,6 +28,11 @@
 
 ### 1. 环境准备
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 检查RBAC是否启用
 kubectl api-versions | grep rbac
@@ -41,6 +46,11 @@ kubectl auth can-i get pods --all-namespaces
 
 ### 2. 基础RBAC配置
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 创建测试用户证书
 openssl genrsa -out user.key 2048
@@ -115,6 +125,11 @@ roleRef:
 
 #### 2.1 证书认证用户
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 创建用户私钥
 openssl genrsa -out developer.key 2048
@@ -300,6 +315,7 @@ rules:
 
 #### 5.2 审计日志分析
 
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # 查看审计日志
 kubectl logs -n kube-system <audit-pod> -f
@@ -317,6 +333,11 @@ awk '/"verb":"(create|update|delete)"/ {print $0}' /var/log/kubernetes/audit.log
 
 ### 1. RBAC权限测试
 
+🔴 高风险：可能造成数据丢失、服务中断、权限提升或不可逆破坏。
+> ⚠️ 生产安全提示：
+> - 会删除/格式化/停止关键资源，生产环境慎用。
+> - 执行前请确认目标范围，建议在隔离测试环境验证。
+> - 涉及数据操作前请备份，涉及服务操作前请通知相关人员。
 ```bash
 # 1. 创建测试用户和角色
 kubectl apply -f rbac-test.yaml
@@ -332,6 +353,7 @@ kubectl delete pod test-pod --as=test-user -n rbac-demo
 
 ### 2. 权限审查脚本
 
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 #!/bin/bash
 # rbac-audit.sh
@@ -362,6 +384,7 @@ done
 
 ### 3. 安全扫描工具
 
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # 使用kubeaudit检查RBAC配置
 kubeaudit all -n rbac-demo
@@ -402,6 +425,7 @@ data:
 
 ### 2. 权限使用统计
 
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # 统计各用户操作频率
 kubectl get events --field-selector reason=Forbidden -o json | \
@@ -423,6 +447,7 @@ kubectl get rolebindings --all-namespaces -o json | \
 **问题现象**: Forbidden错误或权限被拒绝
 
 **解决步骤**:
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # 1. 检查用户权限
 kubectl auth can-i <verb> <resource> --as=<user> -n <namespace>
@@ -442,6 +467,7 @@ kubectl config view --raw -o jsonpath='{.users[?(@.name=="<user>")].user.client-
 **问题现象**: Pod无法访问API Server
 
 **解决步骤**:
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # 1. 检查SA Token
 kubectl get secret $(kubectl get sa <sa-name> -n <namespace> -o jsonpath='{.secrets[0].name}') -n <namespace> -o jsonpath='{.data.token}' | base64 -d
@@ -458,6 +484,11 @@ kubectl describe pod <pod-name> -n <namespace>
 **问题现象**: 权限配置难以维护和理解
 
 **解决步骤**:
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 1. 使用工具可视化权限关系
 kubectl tree rolebinding -n <namespace>
@@ -509,6 +540,11 @@ kubectl tree rolebinding -n <namespace>
 
 ## 📋 清理资源
 
+🔴 高风险：可能造成数据丢失、服务中断、权限提升或不可逆破坏。
+> ⚠️ 生产安全提示：
+> - 会删除/格式化/停止关键资源，生产环境慎用。
+> - 执行前请确认目标范围，建议在隔离测试环境验证。
+> - 涉及数据操作前请备份，涉及服务操作前请通知相关人员。
 ```bash
 # 删除测试资源
 kubectl delete namespace rbac-demo
@@ -551,6 +587,11 @@ kubectl delete roles,clusterroles --all
 
 ### 基本命令
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 请根据实际场景替换
 kubectl apply -f manifests/

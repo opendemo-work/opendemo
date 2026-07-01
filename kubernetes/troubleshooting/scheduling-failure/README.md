@@ -30,22 +30,30 @@
 **排查步骤**：
 
 1. 查看Pod事件：
+   🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
    ```bash
    kubectl describe pod <pod-name> -n <namespace>
    ```
 
 2. 查看节点资源使用情况：
+   🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+   > ⚠️ 生产安全提示：
+   > - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+   > - 注意检查依赖版本、端口占用和目标资源配置。
+   > - 生产环境执行前请经过变更评审和备份确认。
    ```bash
    kubectl top node
    kubectl describe node <node-name> | grep -A 15 Allocated
    ```
 
 3. 查看Pod资源请求：
+   🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
    ```bash
    kubectl get pod <pod-name> -n <namespace> -o yaml | grep -A 10 resources
    ```
 
 4. 检查是否有足够的空闲资源：
+   🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
    ```bash
    kubectl get nodes -o json | jq -r '.items[] | "Node: " + .metadata.name + " CPU: " + (.status.allocatable.cpu | tonumber | tostring) + " Memory: " + (.status.allocatable.memory)'
    ```
@@ -81,17 +89,28 @@ spec:
 **排查步骤**：
 
 1. 查看Pod亲和性配置：
+   🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
    ```bash
    kubectl get pod <pod-name> -n <namespace> -o yaml | grep -A 30 affinity
    ```
 
 2. 查看节点标签：
+   🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+   > ⚠️ 生产安全提示：
+   > - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+   > - 注意检查依赖版本、端口占用和目标资源配置。
+   > - 生产环境执行前请经过变更评审和备份确认。
    ```bash
    kubectl get node --show-labels
    kubectl describe node <node-name> | grep -A 10 Labels
    ```
 
 3. 检查节点亲和性规则是否匹配：
+   🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+   > ⚠️ 生产安全提示：
+   > - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+   > - 注意检查依赖版本、端口占用和目标资源配置。
+   > - 生产环境执行前请经过变更评审和备份确认。
    ```bash
    # 检查节点是否有匹配的标签
    kubectl get node -l <key>=<value>
@@ -133,16 +152,23 @@ spec:
 **排查步骤**：
 
 1. 查看节点污点：
+   🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+   > ⚠️ 生产安全提示：
+   > - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+   > - 注意检查依赖版本、端口占用和目标资源配置。
+   > - 生产环境执行前请经过变更评审和备份确认。
    ```bash
    kubectl describe node <node-name> | grep -A 5 Taints
    ```
 
 2. 查看Pod容忍度配置：
+   🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
    ```bash
    kubectl get pod <pod-name> -n <namespace> -o yaml | grep -A 15 tolerations
    ```
 
 3. 检查是否有匹配的容忍度：
+   🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
    ```bash
    # 比较节点污点和Pod容忍度
    ```
@@ -179,16 +205,19 @@ spec:
 **排查步骤**：
 
 1. 查看Pod亲和性配置：
+   🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
    ```bash
    kubectl get pod <pod-name> -n <namespace> -o yaml | grep -A 30 affinity
    ```
 
 2. 查看集群中现有Pod的标签：
+   🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
    ```bash
    kubectl get pods -n <namespace> --show-labels
    ```
 
 3. 检查Pod亲和性规则是否有匹配的Pod：
+   🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
    ```bash
    kubectl get pods -n <namespace> -l <key>=<value>
    ```
@@ -230,16 +259,27 @@ spec:
 **排查步骤**：
 
 1. 查看Pod节点选择器：
+   🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
    ```bash
    kubectl get pod <pod-name> -n <namespace> -o yaml | grep -A 5 nodeSelector
    ```
 
 2. 查看节点标签：
+   🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+   > ⚠️ 生产安全提示：
+   > - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+   > - 注意检查依赖版本、端口占用和目标资源配置。
+   > - 生产环境执行前请经过变更评审和备份确认。
    ```bash
    kubectl get node --show-labels
    ```
 
 3. 检查是否有匹配的节点：
+   🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+   > ⚠️ 生产安全提示：
+   > - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+   > - 注意检查依赖版本、端口占用和目标资源配置。
+   > - 生产环境执行前请经过变更评审和备份确认。
    ```bash
    kubectl get node -l <key>=<value>
    ```
@@ -274,16 +314,19 @@ spec:
 **排查步骤**：
 
 1. 查看调度器日志：
+   🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
    ```bash
    kubectl logs <kube-scheduler-pod> -n kube-system
    ```
 
 2. 查看调度器配置：
+   🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
    ```bash
    kubectl get configmap kube-scheduler -n kube-system -o yaml
    ```
 
 3. 检查调度器健康状态：
+   🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
    ```bash
    kubectl get pods -n kube-system | grep kube-scheduler
    ```
@@ -345,16 +388,19 @@ profiles:
 **排查步骤**：
 
 1. 查看Pod拓扑约束配置：
+   🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
    ```bash
    kubectl get pod <pod-name> -n <namespace> -o yaml | grep -A 20 topologySpreadConstraints
    ```
 
 2. 查看集群中现有Pod的分布情况：
+   🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
    ```bash
    kubectl get pods -n <namespace> -o wide
    ```
 
 3. 检查拓扑约束是否过于严格：
+   🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
    ```bash
    # 分析当前Pod分布是否符合拓扑约束
    ```
@@ -390,6 +436,11 @@ spec:
 
 ### 4.1 调度诊断命令
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 查看Pod详细事件
 kubectl describe pod <pod-name> -n <namespace>
@@ -418,6 +469,11 @@ kubectl logs -l component=kube-scheduler -n kube-system
 
 ### 4.2 调度分析脚本
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 #!/bin/bash
 # 调度分析脚本
@@ -452,6 +508,7 @@ kubectl get nodes -o json | jq -r '.items[] | "Node: " + .metadata.name + " Tain
 
 ### 4.3 调度器性能分析
 
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # 查看调度器性能指标
 kubectl get --raw /metrics | grep scheduler_
@@ -629,12 +686,22 @@ spec:
 
 ### 部署资源
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 ./scripts/apply.sh
 ```
 
 ### 检查状态
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 ./scripts/check.sh
 ```
@@ -655,6 +722,11 @@ spec:
 
 ### 基本命令
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 请根据实际场景替换
 kubectl apply -f manifests/

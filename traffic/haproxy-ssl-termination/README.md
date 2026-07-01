@@ -64,6 +64,11 @@
 
 ### 启动服务
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 cd traffic/haproxy-ssl-termination
 ./scripts/start.sh
@@ -73,6 +78,7 @@ sleep 5
 
 ### 生成证书
 
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # 生成自签名证书（如尚未生成）
 openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
@@ -87,6 +93,7 @@ cat certs/server.crt certs/server.key > certs/server.pem
 
 ### 测试 HTTPS 访问
 
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # 使用 -k 跳过自签名证书验证
 curl -k https://localhost/
@@ -110,6 +117,7 @@ openssl s_client -connect localhost:443 -servername localhost </dev/null
 
 HAProxy 要求将证书和私钥合并为 PEM 文件：
 
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 cat server.crt server.key > server.pem
 ```
@@ -188,6 +196,11 @@ services:
 
 ## 🧪 验证测试
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 检查 HAProxy 配置
 docker exec haproxy-ssl-termination haproxy -c -f /usr/local/etc/haproxy/haproxy.cfg
@@ -206,6 +219,7 @@ curl -k -I https://localhost/ | grep -i strict-transport-security
 
 ## 📊 运行结果
 
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 $ curl -k https://localhost/
 Hello from backend web1 (via HTTPS)

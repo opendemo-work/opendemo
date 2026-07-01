@@ -29,6 +29,11 @@
 
 ### 1. 环境准备
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 检查Kubernetes集群状态
 kubectl cluster-info
@@ -43,6 +48,11 @@ helm version
 
 ### 2. 生产级部署配置
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 添加Helm仓库
 helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
@@ -77,6 +87,7 @@ helm install ingress-nginx ingress-nginx/ingress-nginx \
 
 ### 3. 验证部署
 
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # 检查控制器状态
 kubectl get pods -n ingress-system -l app.kubernetes.io/name=ingress-nginx
@@ -505,6 +516,7 @@ spec:
 
 ### 1. 常见问题诊断
 
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # 1. 检查控制器状态
 kubectl get pods -n ingress-system -l app.kubernetes.io/name=ingress-nginx
@@ -595,6 +607,11 @@ data:
 
 ## 📋 清理资源
 
+🔴 高风险：可能造成数据丢失、服务中断、权限提升或不可逆破坏。
+> ⚠️ 生产安全提示：
+> - 会删除/格式化/停止关键资源，生产环境慎用。
+> - 执行前请确认目标范围，建议在隔离测试环境验证。
+> - 涉及数据操作前请备份，涉及服务操作前请通知相关人员。
 ```bash
 # 删除Ingress Controller
 helm uninstall ingress-nginx -n ingress-system
@@ -622,12 +639,22 @@ kubectl delete clusterrolebinding nginx-ingress-clusterrole-nisa-binding
 
 ### 部署资源
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 ./scripts/apply.sh
 ```
 
 ### 检查状态
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 ./scripts/check.sh
 ```
@@ -648,6 +675,11 @@ kubectl delete clusterrolebinding nginx-ingress-clusterrole-nisa-binding
 
 ### 基本命令
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 请根据实际场景替换
 kubectl apply -f manifests/

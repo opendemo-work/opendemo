@@ -28,6 +28,11 @@
 
 ### 1. 环境准备
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 检查Kubernetes集群状态
 kubectl cluster-info
@@ -42,6 +47,11 @@ kubectl get namespaces
 
 ### 2. 基础Pod部署
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 部署简单的Nginx Pod
 kubectl apply -f simple-pod.yaml -n pod-demo
@@ -158,6 +168,7 @@ spec:
 
 #### 3.1 Pod状态详解
 
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # 查看Pod状态
 kubectl get pods -n pod-demo -o wide
@@ -410,6 +421,11 @@ spec:
 
 ### 1. Pod部署和验证
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 1. 创建基础Pod
 kubectl apply -f simple-pod.yaml -n pod-demo
@@ -432,6 +448,11 @@ kubectl port-forward nginx-pod 8080:80 -n pod-demo
 
 ### 2. 多容器Pod测试
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 1. 部署多容器Pod
 kubectl apply -f multi-container-pod.yaml -n pod-demo
@@ -450,6 +471,11 @@ kubectl exec -it multi-container-pod -n pod-demo -c log-collector -- cat /shared
 
 ### 3. 健康检查验证
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 1. 部署带健康检查的Pod
 kubectl apply -f health-check-pod.yaml -n pod-demo
@@ -470,6 +496,7 @@ kubectl get pods liveness-probe-pod -n pod-demo --watch
 
 ### 1. Pod监控命令
 
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # 查看资源使用情况
 kubectl top pods -n pod-demo
@@ -486,6 +513,7 @@ kubectl get pod nginx-pod -n pod-demo -o json
 
 ### 2. 日志管理
 
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # 查看Pod日志
 kubectl logs nginx-pod -n pod-demo
@@ -518,6 +546,7 @@ kubectl logs multi-container-pod -n pod-demo -c app-container
 - 存储卷绑定失败
 
 **解决步骤**:
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # 1. 检查Pod事件
 kubectl describe pod <pod-name> -n <namespace>
@@ -543,6 +572,7 @@ kubectl logs -n kube-system <scheduler-pod>
 - 存活探针过于敏感
 
 **解决步骤**:
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # 1. 查看Pod重启原因
 kubectl describe pod <pod-name> -n <namespace> | grep -A 20 "Last State"
@@ -562,6 +592,7 @@ kubectl top pod <pod-name> -n <namespace>
 **问题现象**: Pod状态显示ContainerCreating或CrashLoopBackOff
 
 **解决步骤**:
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # 1. 检查详细错误信息
 kubectl describe pod <pod-name> -n <namespace>
@@ -616,6 +647,11 @@ kubectl get secrets -n <namespace>
 
 ## 📋 清理资源
 
+🔴 高风险：可能造成数据丢失、服务中断、权限提升或不可逆破坏。
+> ⚠️ 生产安全提示：
+> - 会删除/格式化/停止关键资源，生产环境慎用。
+> - 执行前请确认目标范围，建议在隔离测试环境验证。
+> - 涉及数据操作前请备份，涉及服务操作前请通知相关人员。
 ```bash
 # 删除所有测试Pod
 kubectl delete pods --all -n pod-demo
@@ -654,6 +690,11 @@ kubectl delete namespace pod-demo
 
 ### 基本命令
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 请根据实际场景替换
 kubectl apply -f manifests/

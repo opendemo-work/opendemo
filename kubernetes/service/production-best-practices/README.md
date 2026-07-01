@@ -28,6 +28,11 @@
 
 ### 1. 生产环境准备
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 创建生产命名空间
 kubectl create namespace production-services
@@ -41,6 +46,11 @@ kubectl apply -f production-resource-quota.yaml -n production-services
 
 ### 2. 部署生产级应用
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 部署高可用应用
 kubectl apply -f production-deployment.yaml -n production-services
@@ -511,6 +521,11 @@ metadata:
 
 ### 2. 配置管理策略
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 使用ConfigMap管理配置
 kubectl create configmap service-config \
@@ -527,6 +542,7 @@ kubectl create secret generic service-secrets \
 
 ### 3. 自动化运维脚本
 
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 #!/bin/bash
 # service-health-check.sh
@@ -593,6 +609,7 @@ spec:
 
 ### 2. 性能指标收集
 
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # 收集关键性能指标
 kubectl top services -n production-services
@@ -612,6 +629,11 @@ kubectl exec -it <pod-name> -n production-services -- \
 
 ### 1. Service不可访问排查
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 检查Service配置
 kubectl describe service <service-name> -n production-services
@@ -632,6 +654,7 @@ kubectl run debug-pod --image=busybox --rm -it -n production-services -- \
 
 ### 2. 性能问题排查
 
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # 检查资源使用情况
 kubectl top pods -n production-services -l app=<app-label>
@@ -664,6 +687,11 @@ kubectl describe nodes | grep -A 5 "Allocated resources"
 
 ## 📋 清理资源
 
+🔴 高风险：可能造成数据丢失、服务中断、权限提升或不可逆破坏。
+> ⚠️ 生产安全提示：
+> - 会删除/格式化/停止关键资源，生产环境慎用。
+> - 执行前请确认目标范围，建议在隔离测试环境验证。
+> - 涉及数据操作前请备份，涉及服务操作前请通知相关人员。
 ```bash
 # 删除生产测试资源
 kubectl delete namespace production-services
@@ -702,6 +730,11 @@ kubectl delete secret --all -n production-services
 
 ### 基本命令
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 请根据实际场景替换
 kubectl apply -f manifests/

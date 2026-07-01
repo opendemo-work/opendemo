@@ -50,6 +50,11 @@
 
 ## 🚀 快速开始
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 cd database/backup-strategy-demo
 ./scripts/start.sh
@@ -94,6 +99,7 @@ expire_logs_days = 7
 
 ### 全量备份
 
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # 逻辑备份
 mysqldump -uroot -prootpass --all-databases --single-transaction > full-backup.sql
@@ -104,6 +110,11 @@ xtrabackup --backup --target-dir=/backup/full
 
 ### 增量备份（基于 binlog）
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 刷新 binlog
 mysql -uroot -prootpass -e "FLUSH LOGS"
@@ -114,6 +125,7 @@ cp /var/lib/mysql/mysql-bin.000002 /backup/binlog/
 
 ### 时间点恢复
 
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # 1. 恢复全量备份
 mysql -uroot -prootpass < full-backup.sql
@@ -126,6 +138,11 @@ mysqlbinlog --stop-datetime="2026-06-27 12:00:00" mysql-bin.000002 | mysql -uroo
 
 ## 🧪 验证测试
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 检查 binlog 是否启用
 mysql -uroot -prootpass -e "SHOW VARIABLES LIKE 'log_bin'"

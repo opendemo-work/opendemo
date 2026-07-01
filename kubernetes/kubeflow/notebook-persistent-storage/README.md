@@ -55,6 +55,7 @@ Before starting this demo, ensure you have:
 
 ### Step 1: Check Available Storage Classes
 
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # List available storage classes
 kubectl get storageclass
@@ -67,6 +68,11 @@ kubectl get storageclass -o jsonpath='{.items[?(@.metadata.annotations.storagecl
 
 Apply the notebook manifest that includes PVC configuration:
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 kubectl apply -f manifests/notebook-with-pvc.yaml
 
@@ -79,6 +85,7 @@ kubectl get pvc -n kubeflow-user-example-com
 
 ### Step 3: Verify PVC is Bound
 
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # Check PVC details
 kubectl describe pvc notebook-workspace -n kubeflow-user-example-com
@@ -91,6 +98,11 @@ kubectl describe pvc notebook-workspace -n kubeflow-user-example-com
 
 Once the notebook is ready, access it and verify the persistent volume:
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # Port-forward to notebook
 kubectl port-forward -n kubeflow-user-example-com \
@@ -126,6 +138,11 @@ print("Data saved to persistent storage")
 
 Delete and recreate the notebook to test persistence:
 
+🔴 高风险：可能造成数据丢失、服务中断、权限提升或不可逆破坏。
+> ⚠️ 生产安全提示：
+> - 会删除/格式化/停止关键资源，生产环境慎用。
+> - 执行前请确认目标范围，建议在隔离测试环境验证。
+> - 涉及数据操作前请备份，涉及服务操作前请通知相关人员。
 ```bash
 # Delete the notebook
 kubectl delete notebook persistent-storage-notebook -n kubeflow-user-example-com
@@ -168,6 +185,7 @@ See `manifests/shared-pvc.yaml` for multi-notebook shared storage.
 
 ### Verify PVC is Created
 
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # Check PVC status
 kubectl get pvc -n kubeflow-user-example-com
@@ -179,6 +197,7 @@ kubectl get pvc -n kubeflow-user-example-com
 
 ### Check Storage Usage
 
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # Exec into notebook pod
 kubectl exec -it -n kubeflow-user-example-com \
@@ -190,6 +209,7 @@ kubectl exec -it -n kubeflow-user-example-com \
 
 ### Test Write and Read
 
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # Write test file
 kubectl exec -n kubeflow-user-example-com \
@@ -227,6 +247,11 @@ After completing this demo, you should observe:
 **Problem**: PVC remains in Pending state
 
 **Solution**:
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # Check PVC events
 kubectl describe pvc notebook-workspace -n kubeflow-user-example-com
@@ -247,6 +272,11 @@ kubectl describe pv <pv-name>
 **Problem**: Cannot write to persistent volume
 
 **Solution**:
+🔴 高风险：可能造成数据丢失、服务中断、权限提升或不可逆破坏。
+> ⚠️ 生产安全提示：
+> - 会删除/格式化/停止关键资源，生产环境慎用。
+> - 执行前请确认目标范围，建议在隔离测试环境验证。
+> - 涉及数据操作前请备份，涉及服务操作前请通知相关人员。
 ```bash
 # Check volume permissions
 kubectl exec -n kubeflow-user-example-com \
@@ -268,6 +298,11 @@ initContainers:
 **Problem**: PVC stuck in Terminating state
 
 **Solution**:
+🔴 高风险：可能造成数据丢失、服务中断、权限提升或不可逆破坏。
+> ⚠️ 生产安全提示：
+> - 会删除/格式化/停止关键资源，生产环境慎用。
+> - 执行前请确认目标范围，建议在隔离测试环境验证。
+> - 涉及数据操作前请备份，涉及服务操作前请通知相关人员。
 ```bash
 # Check what's using the PVC
 kubectl get pods -n kubeflow-user-example-com -o json | \
@@ -285,6 +320,11 @@ kubectl patch pvc notebook-workspace -n kubeflow-user-example-com -p '{"metadata
 **Problem**: Out of disk space on persistent volume
 
 **Solution**:
+🔴 高风险：可能造成数据丢失、服务中断、权限提升或不可逆破坏。
+> ⚠️ 生产安全提示：
+> - 会删除/格式化/停止关键资源，生产环境慎用。
+> - 执行前请确认目标范围，建议在隔离测试环境验证。
+> - 涉及数据操作前请备份，涉及服务操作前请通知相关人员。
 ```bash
 # Check usage
 kubectl exec -n kubeflow-user-example-com <pod-name> -- du -sh /home/jovyan/work/*
@@ -344,6 +384,11 @@ spec:
 
 ### Backup and Restore
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # Backup notebook data
 kubectl exec -n kubeflow-user-example-com <pod-name> -- \
@@ -381,6 +426,11 @@ kubectl exec -n kubeflow-user-example-com <new-pod-name> -- \
 
 To remove the notebook and storage:
 
+🔴 高风险：可能造成数据丢失、服务中断、权限提升或不可逆破坏。
+> ⚠️ 生产安全提示：
+> - 会删除/格式化/停止关键资源，生产环境慎用。
+> - 执行前请确认目标范围，建议在隔离测试环境验证。
+> - 涉及数据操作前请备份，涉及服务操作前请通知相关人员。
 ```bash
 # Delete notebook (PVC will remain)
 kubectl delete notebook persistent-storage-notebook -n kubeflow-user-example-com
@@ -428,12 +478,22 @@ Persistent storage is crucial for production Kubeflow deployments, ensuring that
 
 ### 部署资源
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 ./scripts/apply.sh
 ```
 
 ### 检查状态
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 ./scripts/check.sh
 ```
@@ -454,6 +514,11 @@ Persistent storage is crucial for production Kubeflow deployments, ensuring that
 
 ### 基本命令
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 请根据实际场景替换
 kubectl apply -f manifests/

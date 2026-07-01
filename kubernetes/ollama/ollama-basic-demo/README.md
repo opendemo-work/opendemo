@@ -24,6 +24,11 @@ Ollama架构主要包括以下几个核心组件：
 
 ### 安装 Ollama
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 在 Kubernetes 集群中部署 Ollama
 kubectl apply -f ollama-deployment.yaml
@@ -31,6 +36,7 @@ kubectl apply -f ollama-deployment.yaml
 
 ### 使用示例
 
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # 检查 Ollama 服务状态
 kubectl get pods -n ollama-system
@@ -195,6 +201,7 @@ Ollama支持多种流行的开源模型：
 
 ### 模型拉取示例
 
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # 拉取模型到 Ollama 服务
 ollama pull llama3
@@ -212,12 +219,22 @@ ollama run llama3
 
 ### 获取模型列表
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 curl http://<ollama-service-ip>:11434/api/tags
 ```
 
 ### 生成文本
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 curl -X POST http://<ollama-service-ip>:11434/api/generate \
   -H "Content-Type: application/json" \
@@ -230,6 +247,11 @@ curl -X POST http://<ollama-service-ip>:11434/api/generate \
 
 ### 创建模型
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 curl -X POST http://<ollama-service-ip>:11434/api/create \
   -H "Content-Type: application/json" \
@@ -261,6 +283,7 @@ curl -X POST http://<ollama-service-ip>:11434/api/create \
 
 检查日志以确定问题：
 
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 kubectl logs -n ollama-system deployment/ollama
 ```
@@ -269,6 +292,7 @@ kubectl logs -n ollama-system deployment/ollama
 
 确认有足够的磁盘空间和内存：
 
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 kubectl describe pod -n ollama-system -l app=ollama
 ```
@@ -277,6 +301,7 @@ kubectl describe pod -n ollama-system -l app=ollama
 
 检查资源限制和网络连接：
 
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 kubectl top pod -n ollama-system -l app=ollama
 ```
@@ -299,12 +324,22 @@ kubectl top pod -n ollama-system -l app=ollama
 
 ### 部署资源
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 ./scripts/apply.sh
 ```
 
 ### 检查状态
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 ./scripts/check.sh
 ```
@@ -325,6 +360,11 @@ kubectl top pod -n ollama-system -l app=ollama
 
 ### 基本命令
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 请根据实际场景替换
 kubectl apply -f manifests/

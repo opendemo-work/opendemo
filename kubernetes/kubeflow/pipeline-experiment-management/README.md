@@ -89,6 +89,11 @@ Kubeflow Pipelines
 
 Install the required Python package:
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 pip install kfp>=2.0.0
 ```
@@ -106,6 +111,11 @@ python code/experiment_manager.py --action connect
 
 Create a new experiment to organize your pipeline runs:
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # Using the experiment manager script
 python code/experiment_manager.py --action create \
@@ -130,6 +140,11 @@ print(f"Created experiment: {experiment.id}")
 
 Run the same pipeline multiple times with different configurations:
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # Run 1: Learning rate 0.01
 python code/experiment_manager.py --action run \
@@ -157,6 +172,11 @@ python code/experiment_manager.py --action run \
 
 View all runs within an experiment:
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 python code/experiment_manager.py --action list-runs \
   --experiment-name "ml-model-optimization"
@@ -166,6 +186,11 @@ python code/experiment_manager.py --action list-runs \
 
 Compare metrics across different runs:
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # Generate comparison report
 python code/experiment_manager.py --action compare \
@@ -176,6 +201,11 @@ python code/experiment_manager.py --action compare \
 
 Get detailed information about a specific run:
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 python code/experiment_manager.py --action get-run \
   --run-id <run-id>
@@ -185,6 +215,7 @@ python code/experiment_manager.py --action get-run \
 
 View experiments and runs in the Kubeflow UI:
 
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # Get Dashboard URL
 kubectl get svc centraldashboard -n kubeflow
@@ -206,6 +237,11 @@ See `code/simple_training_pipeline.py` for a sample pipeline to use with experim
 
 ### Verify Experiment Created
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # List all experiments
 python code/experiment_manager.py --action list-experiments
@@ -217,6 +253,11 @@ python code/experiment_manager.py --action get-experiment \
 
 ### Verify Runs are Tracked
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # Check run status
 python code/experiment_manager.py --action list-runs \
@@ -272,6 +313,7 @@ After completing this demo, you should observe:
 **Problem**: Error when creating experiment
 
 **Solution**:
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # Check Kubeflow Pipelines is running
 kubectl get pods -n kubeflow | grep ml-pipeline
@@ -323,6 +365,11 @@ def train_model(accuracy: dsl.Output[dsl.Metrics]):
 **Problem**: Cannot access experiments in Dashboard
 
 **Solution**:
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # Port-forward to Dashboard
 kubectl port-forward -n kubeflow svc/centraldashboard 8080:80
@@ -445,6 +492,11 @@ def archive_experiment(experiment_name):
 
 To remove experiments and runs:
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # Delete specific runs
 python code/experiment_manager.py --action delete-run --run-id <run-id>
@@ -495,12 +547,22 @@ Experiment management is crucial for systematic ML model development, enabling d
 
 ### 部署资源
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 ./scripts/apply.sh
 ```
 
 ### 检查状态
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 ./scripts/check.sh
 ```
@@ -521,6 +583,11 @@ Experiment management is crucial for systematic ML model development, enabling d
 
 ### 基本命令
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 请根据实际场景替换
 kubectl apply -f manifests/

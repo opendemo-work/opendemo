@@ -26,6 +26,11 @@ Kubernetes故障排查实战演示，涵盖常见问题诊断与解决方案。
 ## Pod故障排查
 
 ### Pod状态诊断
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 查看Pod状态
 kubectl get pod <pod-name> -o yaml | grep -A 10 status
@@ -48,6 +53,7 @@ OOMKilled:  # 内存溢出
 ```
 
 ### 网络排查
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # 测试DNS解析
 kubectl run -it --rm debug --image=busybox --restart=Never -- nslookup kubernetes.default
@@ -61,6 +67,11 @@ kubectl debug -it <pod-name> --image=nicolaka/netshoot --target=<container>
 
 ## 节点故障排查
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 查看节点状态
 kubectl get nodes -o wide
@@ -80,6 +91,7 @@ crictl logs <container-id>
 
 ## 控制平面故障
 
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # 检查API Server
 kubectl get --raw /healthz
@@ -96,6 +108,11 @@ kubectl get pods -n kube-system -l component=kube-scheduler
 
 ## 常用诊断工具
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # k9s - 交互式管理工具
 k9s
@@ -130,12 +147,22 @@ kubectl debug node/<node-name> -it --image=mcr.microsoft.com/dotnet/runtime-deps
 
 ### 部署资源
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 ./scripts/apply.sh
 ```
 
 ### 检查状态
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 ./scripts/check.sh
 ```
@@ -156,6 +183,11 @@ kubectl debug node/<node-name> -it --image=mcr.microsoft.com/dotnet/runtime-deps
 
 ### 基本命令
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 请根据实际场景替换
 kubectl apply -f manifests/

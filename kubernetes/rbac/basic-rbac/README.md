@@ -17,12 +17,18 @@
 
 ### 1. 部署 RBAC 配置
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 kubectl apply -f rbac.yaml
 ```
 
 ### 2. 验证资源创建
 
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 kubectl get serviceaccount demo-sa
 kubectl get role demo-role
@@ -35,6 +41,11 @@ kubectl get clusterrolebinding demo-clusterrolebinding
 
 使用 ServiceAccount 运行一个测试 Pod，验证其权限：
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 kubectl run test-pod --image=bitnami/kubectl:latest --serviceaccount=demo-sa --restart=Never -- sleep 3600
 ```
@@ -43,6 +54,7 @@ kubectl run test-pod --image=bitnami/kubectl:latest --serviceaccount=demo-sa --r
 
 #### 4.1 验证允许的操作
 
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # 验证可以查看 pods
 kubectl exec -it test-pod -- kubectl get pods
@@ -62,6 +74,11 @@ kubectl exec -it test-pod -- kubectl get namespaces
 
 #### 4.2 验证禁止的操作
 
+🔴 高风险：可能造成数据丢失、服务中断、权限提升或不可逆破坏。
+> ⚠️ 生产安全提示：
+> - 会删除/格式化/停止关键资源，生产环境慎用。
+> - 执行前请确认目标范围，建议在隔离测试环境验证。
+> - 涉及数据操作前请备份，涉及服务操作前请通知相关人员。
 ```bash
 # 验证不能创建 pods（应该失败）
 kubectl exec -it test-pod -- kubectl run test-pod-2 --image=nginx:latest 2>&1 | grep -i forbidden
@@ -72,12 +89,22 @@ kubectl exec -it test-pod -- kubectl delete service kubernetes 2>&1 | grep -i fo
 
 ### 5. 清理测试资源
 
+🔴 高风险：可能造成数据丢失、服务中断、权限提升或不可逆破坏。
+> ⚠️ 生产安全提示：
+> - 会删除/格式化/停止关键资源，生产环境慎用。
+> - 执行前请确认目标范围，建议在隔离测试环境验证。
+> - 涉及数据操作前请备份，涉及服务操作前请通知相关人员。
 ```bash
 kubectl delete pod test-pod
 ```
 
 ## 清理资源
 
+🔴 高风险：可能造成数据丢失、服务中断、权限提升或不可逆破坏。
+> ⚠️ 生产安全提示：
+> - 会删除/格式化/停止关键资源，生产环境慎用。
+> - 执行前请确认目标范围，建议在隔离测试环境验证。
+> - 涉及数据操作前请备份，涉及服务操作前请通知相关人员。
 ```bash
 kubectl delete -f rbac.yaml
 ```
@@ -132,12 +159,22 @@ rules:
 
 ### 部署资源
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 ./scripts/apply.sh
 ```
 
 ### 检查状态
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 ./scripts/check.sh
 ```
@@ -158,6 +195,11 @@ rules:
 
 ### 基本命令
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 请根据实际场景替换
 kubectl apply -f manifests/

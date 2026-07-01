@@ -28,6 +28,11 @@
 
 ### 1. 环境准备
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 创建专用命名空间
 kubectl create namespace pv-pvc-advanced
@@ -42,6 +47,11 @@ kubectl get storageclass -o jsonpath='{range .items[*]}{.metadata.name}: {.allow
 
 ### 2. 准备测试环境
 
+🔴 高风险：可能造成数据丢失、服务中断、权限提升或不可逆破坏。
+> ⚠️ 生产安全提示：
+> - 会删除/格式化/停止关键资源，生产环境慎用。
+> - 执行前请确认目标范围，建议在隔离测试环境验证。
+> - 涉及数据操作前请备份，涉及服务操作前请通知相关人员。
 ```bash
 # 创建测试目录
 mkdir -p /tmp/k8s-advanced-pv/{fast,slow,encrypted}
@@ -506,6 +516,11 @@ data:
 
 ### 1. 高级特性部署
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 1. 部署高级PV配置
 kubectl apply -f advanced-pv-configs.yaml
@@ -522,6 +537,11 @@ kubectl apply -f rwop-test-pod.yaml
 
 ### 2. 容量扩展测试
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 1. 创建可扩展PVC
 kubectl apply -f expandable-pvc.yaml
@@ -539,6 +559,11 @@ kubectl exec -it test-pod -n pv-pvc-advanced -- df -h | grep /data
 
 ### 3. 存储迁移演练
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 1. 准备源数据
 kubectl apply -f source-pvc.yaml
@@ -594,6 +619,7 @@ data:
 
 ### 2. 性能监控配置
 
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # 存储性能监控脚本
 cat > storage-performance-monitor.sh << 'EOF'
@@ -633,6 +659,7 @@ EOF
 **问题**: PVC扩容操作失败或无响应
 
 **解决方案**:
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # 1. 检查StorageClass是否支持扩展
 kubectl get storageclass <sc-name> -o jsonpath='{.allowVolumeExpansion}'
@@ -652,6 +679,7 @@ kubectl describe pvc <pvc-name> -n <namespace>
 **问题**: Pod启动失败，报错不支持ReadWriteOncePod访问模式
 
 **解决方案**:
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # 1. 检查Kubernetes版本
 kubectl version | grep Server
@@ -668,6 +696,7 @@ kubectl get csidrivers
 **问题**: 迁移后的数据与源数据不一致
 
 **解决方案**:
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # 1. 使用校验和验证数据完整性
 kubectl exec -it source-pod -n <namespace> -- find /data -type f -exec md5sum {} \; > source-md5.txt
@@ -720,6 +749,11 @@ diff source-md5.txt dest-md5.txt
 
 ## 📋 清理资源
 
+🔴 高风险：可能造成数据丢失、服务中断、权限提升或不可逆破坏。
+> ⚠️ 生产安全提示：
+> - 会删除/格式化/停止关键资源，生产环境慎用。
+> - 执行前请确认目标范围，建议在隔离测试环境验证。
+> - 涉及数据操作前请备份，涉及服务操作前请通知相关人员。
 ```bash
 # 删除测试Pod
 kubectl delete pod --all -n pv-pvc-advanced
@@ -767,6 +801,11 @@ rm -rf /tmp/k8s-advanced-pv/
 
 ### 基本命令
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 请根据实际场景替换
 kubectl apply -f manifests/

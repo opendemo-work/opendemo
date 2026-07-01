@@ -64,6 +64,11 @@
 
 ### 启动 containerd
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 cd container/containerd/basics
 ./scripts/start.sh
@@ -89,6 +94,11 @@ Docker 在内部也使用 containerd 来运行容器。
 
 nerdctl 是 Docker CLI 的兼容实现，使用 containerd 作为后端：
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 nerdctl run -d -p 8080:80 nginx:alpine
 ```
@@ -97,6 +107,7 @@ nerdctl run -d -p 8080:80 nginx:alpine
 
 ctr 是 containerd 自带的低级客户端，用于调试和管理：
 
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 ctr images ls
 ctr containers ls
@@ -109,6 +120,7 @@ ctr tasks ls
 
 ### 使用 nerdctl 运行容器
 
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # 拉取镜像
 nerdctl pull nginx:alpine
@@ -129,6 +141,7 @@ nerdctl rm nginx-ctr
 
 ### 使用 ctr 查看内部对象
 
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # 列出镜像
 ctr -n default images ls
@@ -144,6 +157,7 @@ ctr -n default tasks ls
 
 ## 🧪 验证测试
 
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # 测试服务访问
 curl -s http://localhost:8080

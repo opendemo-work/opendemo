@@ -30,28 +30,37 @@
 **排查步骤**：
 
 1. 查看Pod资源使用情况：
+   🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
    ```bash
    kubectl top pod <pod-name> -n <namespace>
    ```
 
 2. 查看Pod资源限制配置：
+   🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
    ```bash
    kubectl get pod <pod-name> -n <namespace> -o yaml | grep -A 15 resources
    ```
 
 3. 查看节点CPU使用情况：
+   🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+   > ⚠️ 生产安全提示：
+   > - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+   > - 注意检查依赖版本、端口占用和目标资源配置。
+   > - 生产环境执行前请经过变更评审和备份确认。
    ```bash
    kubectl top node
    kubectl describe node <node-name> | grep -A 10 Allocated
    ```
 
 4. 查看节点上运行的Pod及其CPU使用情况：
+   🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
    ```bash
    kubectl get pods -n <namespace> -o wide | grep <node-name>
    kubectl top pod -n <namespace> | grep <node-name>
    ```
 
 5. 检查是否有CPU密集型应用：
+   🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
    ```bash
    kubectl top pod -n <namespace> --sort-by=cpu
    ```
@@ -88,22 +97,34 @@ spec:
 **排查步骤**：
 
 1. 查看Pod资源使用情况：
+   🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
    ```bash
    kubectl top pod <pod-name> -n <namespace>
    ```
 
 2. 查看Pod事件，确认OOMKilled原因：
+   🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
    ```bash
    kubectl describe pod <pod-name> -n <namespace> | grep -A 10 Events
    ```
 
 3. 查看节点内存使用情况：
+   🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+   > ⚠️ 生产安全提示：
+   > - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+   > - 注意检查依赖版本、端口占用和目标资源配置。
+   > - 生产环境执行前请经过变更评审和备份确认。
    ```bash
    kubectl top node
    kubectl describe node <node-name> | grep -A 10 Allocated
    ```
 
 4. 检查应用内存泄漏：
+   🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+   > ⚠️ 生产安全提示：
+   > - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+   > - 注意检查依赖版本、端口占用和目标资源配置。
+   > - 生产环境执行前请经过变更评审和备份确认。
    ```bash
    kubectl exec -it <pod-name> -n <namespace> -- ps aux
    ```
@@ -140,24 +161,36 @@ spec:
 **排查步骤**：
 
 1. 检查节点磁盘使用情况：
+   🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+   > ⚠️ 生产安全提示：
+   > - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+   > - 注意检查依赖版本、端口占用和目标资源配置。
+   > - 生产环境执行前请经过变更评审和备份确认。
    ```bash
    kubectl describe node <node-name> | grep -A 5 Conditions
    kubectl describe node <node-name> | grep -A 10 Capacity
    ```
 
 2. 登录节点检查磁盘空间：
+   🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+   > ⚠️ 生产安全提示：
+   > - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+   > - 注意检查依赖版本、端口占用和目标资源配置。
+   > - 生产环境执行前请经过变更评审和备份确认。
    ```bash
    ssh <node-ip>
    df -h
    ```
 
 3. 检查持久化卷使用情况：
+   🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
    ```bash
    kubectl get pv
    kubectl get pvc -n <namespace>
    ```
 
 4. 检查容器日志使用情况：
+   🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
    ```bash
    kubectl logs --tail=100 <pod-name> -n <namespace> > /dev/null
    ```
@@ -193,22 +226,38 @@ spec:
 **排查步骤**：
 
 1. 查看节点状态和条件：
+   🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+   > ⚠️ 生产安全提示：
+   > - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+   > - 注意检查依赖版本、端口占用和目标资源配置。
+   > - 生产环境执行前请经过变更评审和备份确认。
    ```bash
    kubectl get node <node-name> -o yaml | grep -A 20 conditions
    ```
 
 2. 查看节点资源使用情况：
+   🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+   > ⚠️ 生产安全提示：
+   > - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+   > - 注意检查依赖版本、端口占用和目标资源配置。
+   > - 生产环境执行前请经过变更评审和备份确认。
    ```bash
    kubectl top node <node-name>
    kubectl describe node <node-name> | grep -A 20 Allocated
    ```
 
 3. 检查节点上的Pod：
+   🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
    ```bash
    kubectl get pods -A -o wide | grep <node-name>
    ```
 
 4. 登录节点检查系统资源：
+   🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+   > ⚠️ 生产安全提示：
+   > - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+   > - 注意检查依赖版本、端口占用和目标资源配置。
+   > - 生产环境执行前请经过变更评审和备份确认。
    ```bash
    ssh <node-ip>
    top
@@ -218,6 +267,11 @@ spec:
 
 **解决方案示例**：
 
+🔴 高风险：可能造成数据丢失、服务中断、权限提升或不可逆破坏。
+> ⚠️ 生产安全提示：
+> - 会删除/格式化/停止关键资源，生产环境慎用。
+> - 执行前请确认目标范围，建议在隔离测试环境验证。
+> - 涉及数据操作前请备份，涉及服务操作前请通知相关人员。
 ```bash
 # 驱逐节点上的非关键Pod
 kubectl drain <node-name> --ignore-daemonsets --delete-emptydir-data
@@ -240,17 +294,20 @@ kubectl uncordon <node-name>
 **排查步骤**：
 
 1. 查看命名空间资源配额：
+   🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
    ```bash
    kubectl get resourcequota -n <namespace>
    kubectl describe resourcequota <quota-name> -n <namespace>
    ```
 
 2. 查看命名空间资源使用情况：
+   🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
    ```bash
    kubectl describe namespace <namespace>
    ```
 
 3. 检查Pod资源请求是否超过配额：
+   🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
    ```bash
    kubectl get pod <pod-name> -n <namespace> -o yaml | grep -A 15 resources
    ```
@@ -283,17 +340,24 @@ spec:
 **排查步骤**：
 
 1. 查看节点资源分布：
+   🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+   > ⚠️ 生产安全提示：
+   > - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+   > - 注意检查依赖版本、端口占用和目标资源配置。
+   > - 生产环境执行前请经过变更评审和备份确认。
    ```bash
    kubectl top node
    kubectl describe node | grep -A 10 Allocated | head -40
    ```
 
 2. 检查调度器事件：
+   🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
    ```bash
    kubectl get events -n <namespace> | grep FailedScheduling
    ```
 
 3. 查看Pod调度约束：
+   🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
    ```bash
    kubectl get pod <pending-pod> -n <namespace> -o yaml | grep -A 20 nodeSelector
    kubectl get pod <pending-pod> -n <namespace> -o yaml | grep -A 20 affinity
@@ -301,6 +365,7 @@ spec:
 
 **解决方案示例**：
 
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # 均衡节点资源分布
 kubectl drain <overloaded-node> --ignore-daemonsets --delete-emptydir-data
@@ -333,6 +398,11 @@ spec:
 
 ### 4.1 资源监控命令
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 查看所有节点资源使用情况
 kubectl top node
@@ -358,6 +428,11 @@ kubectl describe namespace <namespace>
 
 ### 4.2 资源清理命令
 
+🔴 高风险：可能造成数据丢失、服务中断、权限提升或不可逆破坏。
+> ⚠️ 生产安全提示：
+> - 会删除/格式化/停止关键资源，生产环境慎用。
+> - 执行前请确认目标范围，建议在隔离测试环境验证。
+> - 涉及数据操作前请备份，涉及服务操作前请通知相关人员。
 ```bash
 # 清理终止状态的Pod
 kubectl delete pods --field-selector=status.phase==Failed -n <namespace>
@@ -373,6 +448,11 @@ kubectl delete secret --field-selector=metadata.name!=default-token* -n <namespa
 
 ### 4.3 资源分析脚本
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 #!/bin/bash
 # 资源分析脚本
@@ -527,12 +607,22 @@ spec:
 
 ### 部署资源
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 ./scripts/apply.sh
 ```
 
 ### 检查状态
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 ./scripts/check.sh
 ```
@@ -553,6 +643,11 @@ spec:
 
 ### 基本命令
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 请根据实际场景替换
 kubectl apply -f manifests/

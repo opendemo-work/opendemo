@@ -27,6 +27,11 @@
 
 ### 1. 环境准备
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 检查集群中的存储类
 kubectl get storageclass
@@ -41,6 +46,11 @@ kubectl create namespace storageclass-demo
 
 ### 2. 安装必要组件
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 检查CSI驱动（以local-path-provisioner为例）
 kubectl get pods -n kube-system | grep provisioner
@@ -324,6 +334,11 @@ spec:
 
 ### 1. StorageClass部署和验证
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 1. 创建StorageClass
 kubectl apply -f storageclass-configs.yaml
@@ -341,6 +356,11 @@ kubectl get storageclass -o jsonpath='{range .items[?(@.metadata.annotations.sto
 
 ### 2. 动态供应测试
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 1. 创建动态PVC
 kubectl apply -f dynamic-pvc.yaml
@@ -360,6 +380,11 @@ kubectl exec -it dynamic-storage-pod -n storageclass-demo -- df -h
 
 ### 3. 存储扩容测试
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 1. 检查当前PVC大小
 kubectl get pvc dynamic-pvc-with-expansion -n storageclass-demo -o jsonpath='{.status.capacity.storage}'
@@ -380,6 +405,7 @@ kubectl exec -it dynamic-storage-pod -n storageclass-demo -- df -h | grep /usr/s
 
 ### 1. StorageClass状态检查
 
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # 查看所有StorageClass
 kubectl get storageclass -o wide
@@ -396,6 +422,7 @@ kubectl get pods -n kube-system | grep provisioner
 
 ### 2. 动态供应监控
 
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # 监控PV创建事件
 kubectl get events --field-selector involvedObject.kind=PersistentVolume --sort-by=.metadata.creationTimestamp
@@ -409,6 +436,7 @@ kubectl logs -n kube-system -l app=local-path-provisioner -f
 
 ### 3. 存储使用情况检查
 
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # 查看各命名空间存储使用情况
 kubectl get pvc --all-namespaces
@@ -435,6 +463,7 @@ kubectl get pvc --all-namespaces --field-selector=status.phase!=Bound
 - 参数配置不当
 
 **解决步骤**:
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # 1. 检查PVC状态和事件
 kubectl describe pvc <pvc-name> -n <namespace>
@@ -454,6 +483,7 @@ kubectl logs -n kube-system <provisioner-pod-name>
 **问题现象**: PVC创建时供应器无法创建PV
 
 **解决步骤**:
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # 1. 检查供应器配置
 kubectl get storageclass <sc-name> -o yaml
@@ -473,6 +503,7 @@ kubectl logs -n kube-system <provisioner-pod-name> --tail=100
 **问题现象**: PVC扩容操作失败或无响应
 
 **解决步骤**:
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # 1. 检查StorageClass是否支持扩容
 kubectl get storageclass <sc-name> -o jsonpath='{.allowVolumeExpansion}'
@@ -527,6 +558,11 @@ kubectl exec -it <pod-name> -n <namespace> -- df -h
 
 ## 📋 清理资源
 
+🔴 高风险：可能造成数据丢失、服务中断、权限提升或不可逆破坏。
+> ⚠️ 生产安全提示：
+> - 会删除/格式化/停止关键资源，生产环境慎用。
+> - 执行前请确认目标范围，建议在隔离测试环境验证。
+> - 涉及数据操作前请备份，涉及服务操作前请通知相关人员。
 ```bash
 # 删除测试Pod
 kubectl delete pod dynamic-storage-pod -n storageclass-demo
@@ -571,6 +607,11 @@ kubectl delete namespace storageclass-demo
 
 ### 基本命令
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 请根据实际场景替换
 kubectl apply -f manifests/

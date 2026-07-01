@@ -23,6 +23,11 @@ graph LR
 ## 🚀 部署指南
 
 ### 独立部署Grafana
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 添加Grafana Helm仓库
 helm repo add grafana https://grafana.github.io/helm-charts
@@ -37,6 +42,7 @@ helm install grafana grafana/grafana \
 ```
 
 ### 配置数据源
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # 获取Grafana密码
 kubectl get secret --namespace monitoring grafana -o jsonpath="{.data.admin-password}" | base64 --decode ; echo
@@ -80,6 +86,7 @@ providers:
 ## 🔧 核心功能演示
 
 ### 功能1: 创建监控仪表板
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # 创建示例仪表板配置
 cat > dashboard-example.yaml << EOF
@@ -115,6 +122,7 @@ curl -X POST \
 ```
 
 ### 功能2: 配置告警通知
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # 创建告警渠道配置
 cat > alert-channel.json << EOF
@@ -152,6 +160,7 @@ rate(container_network_receive_bytes_total[5m])
 ```
 
 ### 日志查看
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # 查看Grafana日志
 kubectl logs -n monitoring deploy/grafana
@@ -172,6 +181,11 @@ kubectl logs -n monitoring deploy/grafana -c grafana-plugin
    - **解决方案**: 优化查询语句，调整时间范围
 
 ### 健康检查
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 检查Grafana健康状态
 kubectl exec -n monitoring deploy/grafana -- wget -qO- http://localhost:3000/api/health
@@ -183,6 +197,11 @@ curl -s http://admin:admin123@localhost:3000/api/datasources | jq '.[].name'
 ## 🧪 测试验证
 
 ### 功能测试脚本
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 #!/bin/bash
 # test-grafana.sh
@@ -207,6 +226,7 @@ fi
 ```
 
 ### 性能测试
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # 测试并发访问
 ab -n 1000 -c 10 http://admin:admin123@localhost:3000/
@@ -252,6 +272,11 @@ env:
 ## 🚀 升级维护
 
 ### 版本升级
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 检查可用版本
 helm search repo grafana/grafana
@@ -264,6 +289,7 @@ helm upgrade grafana grafana/grafana \
 ```
 
 ### 备份恢复
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # 备份仪表板
 kubectl exec -n monitoring deploy/grafana -- find /var/lib/grafana/dashboards -name "*.json" -exec cp {} /tmp/ \;
@@ -311,12 +337,22 @@ kubectl get secret -n monitoring grafana -o yaml > grafana-secret-backup.yaml
 
 ### 部署资源
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 ./scripts/apply.sh
 ```
 
 ### 检查状态
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 ./scripts/check.sh
 ```
@@ -337,6 +373,11 @@ kubectl get secret -n monitoring grafana -o yaml > grafana-secret-backup.yaml
 
 ### 基本命令
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 请根据实际场景替换
 kubectl apply -f manifests/

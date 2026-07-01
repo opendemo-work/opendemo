@@ -53,6 +53,11 @@
 
 ## 🚀 快速开始
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 cd monitoring/kibana-visualization
 ./scripts/start.sh
@@ -93,6 +98,11 @@ Kibana 7.12+ 引入的可视化编辑器，支持拖拽式创建图表。
 
 ### 使用 Aggregation API 查询
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 按状态码统计请求数
 curl -s -X POST "localhost:9200/nginx-logs-*/_search" -H 'Content-Type: application/json' -d'
@@ -121,6 +131,7 @@ curl -s -X POST "localhost:9200/nginx-logs-*/_search" -H 'Content-Type: applicat
 
 ## 🧪 验证测试
 
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # 检查 Kibana 状态
 curl -s http://localhost:5601/api/status

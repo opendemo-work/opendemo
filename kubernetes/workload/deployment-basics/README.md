@@ -28,6 +28,11 @@
 
 ### 1. 环境准备
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 检查Kubernetes集群状态
 kubectl cluster-info
@@ -42,6 +47,11 @@ kubectl api-resources | grep deployment
 
 ### 2. 基础Deployment部署
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 部署简单的Nginx应用
 kubectl apply -f nginx-deployment.yaml -n deployment-demo
@@ -249,6 +259,11 @@ spec:
 
 #### 4.1 查看部署历史
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 查看Deployment修订历史
 kubectl rollout history deployment/nginx-deployment -n deployment-demo
@@ -262,6 +277,11 @@ kubectl rollout status deployment/nginx-deployment -n deployment-demo
 
 #### 4.2 执行回滚操作
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 回滚到上一个版本
 kubectl rollout undo deployment/nginx-deployment -n deployment-demo
@@ -280,6 +300,11 @@ kubectl rollout resume deployment/nginx-deployment -n deployment-demo
 
 #### 5.1 手动扩缩容
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 扩展副本数
 kubectl scale deployment nginx-deployment -n deployment-demo --replicas=5
@@ -404,6 +429,11 @@ spec:
 
 ### 1. Deployment部署和验证
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 1. 创建Deployment
 kubectl apply -f nginx-deployment.yaml -n deployment-demo
@@ -424,6 +454,11 @@ kubectl port-forward deployment/nginx-deployment 8080:80 -n deployment-demo
 
 ### 2. 滚动更新演练
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 1. 查看当前部署状态
 kubectl get deployment nginx-deployment -n deployment-demo
@@ -443,6 +478,11 @@ kubectl get pods -n deployment-demo -o jsonpath='{.items[*].spec.containers[*].i
 
 ### 3. 回滚操作练习
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 1. 查看可用的修订版本
 kubectl rollout history deployment/nginx-deployment -n deployment-demo
@@ -459,6 +499,11 @@ kubectl describe deployment/nginx-deployment -n deployment-demo
 
 ### 4. 自动扩缩容测试
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 1. 创建HPA
 kubectl apply -f hpa-config.yaml -n deployment-demo
@@ -481,6 +526,7 @@ kubectl get deployment nginx-deployment -n deployment-demo
 
 ### 1. Deployment状态检查
 
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # 查看Deployment详细信息
 kubectl describe deployment nginx-deployment -n deployment-demo
@@ -497,6 +543,7 @@ kubectl get deployment nginx-deployment -n deployment-demo --watch
 
 ### 2. 性能监控命令
 
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # 查看Pod资源使用情况
 kubectl top pods -n deployment-demo
@@ -523,6 +570,11 @@ kubectl describe nodes | grep -A 5 "Allocated resources"
 - 节点资源不足
 
 **解决步骤**:
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 1. 检查Deployment状态
 kubectl describe deployment <deployment-name> -n <namespace>
@@ -543,6 +595,11 @@ kubectl rollout restart deployment <deployment-name> -n <namespace>
 **问题现象**: 滚动更新过程中出现错误，新旧版本共存
 
 **解决步骤**:
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 1. 暂停更新过程
 kubectl rollout pause deployment <deployment-name> -n <namespace>
@@ -562,6 +619,7 @@ kubectl rollout undo deployment <deployment-name> -n <namespace>
 **问题现象**: HPA配置后副本数没有按预期变化
 
 **解决步骤**:
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # 1. 检查HPA状态
 kubectl describe hpa <hpa-name> -n <namespace>
@@ -616,6 +674,11 @@ kubectl get hpa <hpa-name> -n <namespace> -o yaml
 
 ## 📋 清理资源
 
+🔴 高风险：可能造成数据丢失、服务中断、权限提升或不可逆破坏。
+> ⚠️ 生产安全提示：
+> - 会删除/格式化/停止关键资源，生产环境慎用。
+> - 执行前请确认目标范围，建议在隔离测试环境验证。
+> - 涉及数据操作前请备份，涉及服务操作前请通知相关人员。
 ```bash
 # 删除HPA
 kubectl delete hpa nginx-hpa -n deployment-demo
@@ -657,6 +720,11 @@ kubectl delete namespace deployment-demo
 
 ### 基本命令
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 请根据实际场景替换
 kubectl apply -f manifests/

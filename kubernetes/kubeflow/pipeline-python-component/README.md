@@ -20,6 +20,11 @@
 
 安装Kubeflow Pipelines SDK：
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 pip install kfp==2.0.0
 ```
@@ -93,6 +98,7 @@ def simple_math_pipeline(a: float = 5.0, b: float = 3.0):
 
 编译Pipeline为YAML格式：
 
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 cd code
 python -c "
@@ -170,6 +176,7 @@ print(f"Status: {run_detail.run.status}")
 
 点击组件可以查看详细日志：
 
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # 或使用kubectl查看Pod日志
 kubectl logs -n kubeflow <pod-name>
@@ -246,6 +253,7 @@ def conditional_pipeline(threshold: float = 0.5):
 
 查看特定组件的日志：
 
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # 获取Pipeline运行的Pod
 kubectl get pods -n kubeflow -l pipeline/runid=<RUN_ID>
@@ -361,12 +369,22 @@ client.pipelines.delete_pipeline(pipeline_id='<PIPELINE_ID>')
 
 ### 部署资源
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 ./scripts/apply.sh
 ```
 
 ### 检查状态
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 ./scripts/check.sh
 ```
@@ -387,6 +405,11 @@ client.pipelines.delete_pipeline(pipeline_id='<PIPELINE_ID>')
 
 ### 基本命令
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 请根据实际场景替换
 kubectl apply -f manifests/

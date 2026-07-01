@@ -28,6 +28,11 @@
 
 ### 1. 环境准备
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 检查集群DNS状态
 kubectl cluster-info
@@ -43,6 +48,7 @@ nslookup kubernetes.default
 
 ### 2. CoreDNS基础配置
 
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # 查看当前CoreDNS配置
 kubectl get configmap coredns -n kube-system -o yaml
@@ -406,6 +412,7 @@ data:
 
 ### 1. CoreDNS部署验证
 
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # 1. 检查CoreDNS Pod状态
 kubectl get pods -n kube-system -l k8s-app=kube-dns
@@ -425,6 +432,11 @@ nslookup 10-244-1-10.coredns-demo.pod.cluster.local
 
 ### 2. 性能测试
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 1. 部署DNS性能测试工具
 kubectl apply -f dnsperf.yaml
@@ -439,6 +451,7 @@ kubectl port-forward -n monitoring svc/prometheus 9090:9090
 
 ### 3. 故障排查
 
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # 1. 查看CoreDNS日志
 kubectl logs -n kube-system -l k8s-app=kube-dns
@@ -459,6 +472,11 @@ kubectl exec -it <pod-name> -n coredns-demo -- nslookup google.com
 
 ### 1. 关键性能指标
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # DNS查询成功率
 rate(coredns_dns_responses_total{rcode="NOERROR"}[5m]) / rate(coredns_dns_responses_total[5m])
@@ -511,6 +529,7 @@ data:
 - Service Account权限问题
 
 **解决步骤**:
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # 1. 检查CoreDNS状态
 kubectl get pods -n kube-system -l k8s-app=kube-dns
@@ -532,6 +551,11 @@ nslookup kubernetes.default
 **问题现象**: DNS查询响应时间过长
 
 **解决步骤**:
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 1. 检查CoreDNS资源使用
 kubectl top pods -n kube-system -l k8s-app=kube-dns
@@ -551,6 +575,11 @@ kubectl patch configmap coredns -n kube-system -p '{"data":{"Corefile":"forward 
 **问题现象**: CoreDNS Pod内存使用持续增长
 
 **解决步骤**:
+🔴 高风险：可能造成数据丢失、服务中断、权限提升或不可逆破坏。
+> ⚠️ 生产安全提示：
+> - 会删除/格式化/停止关键资源，生产环境慎用。
+> - 执行前请确认目标范围，建议在隔离测试环境验证。
+> - 涉及数据操作前请备份，涉及服务操作前请通知相关人员。
 ```bash
 # 1. 监控内存使用
 kubectl top pods -n kube-system -l k8s-app=kube-dns
@@ -605,6 +634,11 @@ kubectl patch deployment coredns -n kube-system -p '{"spec":{"template":{"spec":
 
 ## 📋 清理资源
 
+🔴 高风险：可能造成数据丢失、服务中断、权限提升或不可逆破坏。
+> ⚠️ 生产安全提示：
+> - 会删除/格式化/停止关键资源，生产环境慎用。
+> - 执行前请确认目标范围，建议在隔离测试环境验证。
+> - 涉及数据操作前请备份，涉及服务操作前请通知相关人员。
 ```bash
 # 删除测试资源
 kubectl delete namespace coredns-demo
@@ -647,6 +681,11 @@ kubectl scale deployment coredns -n kube-system --replicas=2
 
 ### 基本命令
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 请根据实际场景替换
 kubectl apply -f manifests/

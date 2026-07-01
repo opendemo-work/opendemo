@@ -103,6 +103,11 @@ private String id;
 
 使用Docker启动：
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 docker run -d --name elasticsearch \
   -p 9200:9200 \
@@ -113,24 +118,40 @@ docker run -d --name elasticsearch \
 
 验证启动：
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 curl http://localhost:9200
 ```
 
 ### 2. 启动应用
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 mvn spring-boot:run
 ```
 
 ### 3. 初始化数据
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 curl -X POST http://localhost:8080/api/products/init
 ```
 
 ### 4. 搜索测试
 
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # 关键词搜索
 curl "http://localhost:8080/api/products/search?keyword=手机"
@@ -198,6 +219,11 @@ List<Product> findByNameAndMaxPrice(String name, Double maxPrice);
 
 ### 索引操作
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 创建索引
 curl -X PUT http://localhost:9200/my-index
@@ -211,6 +237,11 @@ curl -X DELETE http://localhost:9200/my-index
 
 ### 文档操作
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 添加文档
 curl -X POST http://localhost:9200/products/_doc/1 \
@@ -298,6 +329,7 @@ curl -X DELETE http://localhost:9200/products/_doc/1
 
 ### IK分词器
 
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # 安装IK分词器（需要在Elasticsearch中安装）
 bin/elasticsearch-plugin install https://github.com/medcl/elasticsearch-analysis-ik/releases/download/v7.17.0/elasticsearch-analysis-ik-7.17.0.zip
@@ -310,6 +342,11 @@ bin/elasticsearch-plugin install https://github.com/medcl/elasticsearch-analysis
 
 ### 测试分词
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 curl -X POST "http://localhost:9200/_analyze" \
   -H "Content-Type: application/json" \
@@ -378,6 +415,11 @@ cluster.initial_master_nodes: ["node-1", "node-2", "node-3"]
 
 ### 运行演示
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 ./scripts/demo.sh
 ```
@@ -398,6 +440,11 @@ cluster.initial_master_nodes: ["node-1", "node-2", "node-3"]
 
 ### 基本用法
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 请根据实际案例替换
 ./scripts/demo.sh

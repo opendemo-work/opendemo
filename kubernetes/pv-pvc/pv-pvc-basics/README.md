@@ -27,6 +27,11 @@
 
 ### 1. 环境准备
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 检查Kubernetes集群状态
 kubectl cluster-info
@@ -41,6 +46,11 @@ kubectl api-resources | grep -E "(persistentvolume|persistentvolumeclaim|storage
 
 ### 2. 创建测试目录（本地测试环境）
 
+🔴 高风险：可能造成数据丢失、服务中断、权限提升或不可逆破坏。
+> ⚠️ 生产安全提示：
+> - 会删除/格式化/停止关键资源，生产环境慎用。
+> - 执行前请确认目标范围，建议在隔离测试环境验证。
+> - 涉及数据操作前请备份，涉及服务操作前请通知相关人员。
 ```bash
 # 在各节点上创建测试目录
 mkdir -p /tmp/k8s-pv-demo/{pv1,pv2,pv3}
@@ -335,6 +345,11 @@ spec:
 
 ### 1. 部署和验证
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 1. 创建PV资源
 kubectl apply -f pv-configs.yaml
@@ -361,6 +376,11 @@ kubectl exec -it pv-pvc-test-pod -n pv-pvc-demo -c writer -- df -h
 
 ### 2. 数据持久化测试
 
+🔴 高风险：可能造成数据丢失、服务中断、权限提升或不可逆破坏。
+> ⚠️ 生产安全提示：
+> - 会删除/格式化/停止关键资源，生产环境慎用。
+> - 执行前请确认目标范围，建议在隔离测试环境验证。
+> - 涉及数据操作前请备份，涉及服务操作前请通知相关人员。
 ```bash
 # 1. 向存储中写入数据
 kubectl exec -it pv-pvc-test-pod -n pv-pvc-demo -c writer -- sh -c "echo 'Hello PV/PVC!' > /data/hello.txt"
@@ -380,6 +400,11 @@ kubectl exec -it pv-pvc-test-pod -n pv-pvc-demo -c reader -- cat /data/hello.txt
 
 ### 3. PV/PVC生命周期管理
 
+🔴 高风险：可能造成数据丢失、服务中断、权限提升或不可逆破坏。
+> ⚠️ 生产安全提示：
+> - 会删除/格式化/停止关键资源，生产环境慎用。
+> - 执行前请确认目标范围，建议在隔离测试环境验证。
+> - 涉及数据操作前请备份，涉及服务操作前请通知相关人员。
 ```bash
 # 1. 查看当前状态
 kubectl get pv,pvc -n pv-pvc-demo
@@ -403,6 +428,7 @@ rm -rf /tmp/k8s-pv-demo/*
 
 ### 1. 状态检查命令
 
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # 查看所有PV状态
 kubectl get pv -o wide
@@ -425,6 +451,7 @@ kubectl get events -n pv-pvc-demo --sort-by=.metadata.creationTimestamp
 
 ### 2. 常用验证脚本
 
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 #!/bin/bash
 # pv-pvc-status-check.sh
@@ -455,6 +482,7 @@ kubectl get pv -o jsonpath='{range .items[*]}{.metadata.name}{" -> "}{.spec.clai
 - PV资源不足
 
 **解决步骤**:
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # 1. 检查PVC详细信息
 kubectl describe pvc <pvc-name> -n <namespace>
@@ -478,6 +506,11 @@ kubectl get pv -o jsonpath='{range .items[*]}{.metadata.name}{" "}{.spec.capacit
 - SELinux/AppArmor限制
 
 **解决步骤**:
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 1. 检查Pod事件
 kubectl describe pod <pod-name> -n <namespace>
@@ -498,6 +531,11 @@ journalctl -u kubelet | grep -i mount
 **问题现象**: 应用报错磁盘空间不足
 
 **解决步骤**:
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 1. 检查实际使用情况
 kubectl exec -it <pod-name> -n <namespace> -- df -h
@@ -549,6 +587,11 @@ kubectl patch pvc <pvc-name> -n <namespace> -p '{"spec":{"resources":{"requests"
 
 ## 📋 清理资源
 
+🔴 高风险：可能造成数据丢失、服务中断、权限提升或不可逆破坏。
+> ⚠️ 生产安全提示：
+> - 会删除/格式化/停止关键资源，生产环境慎用。
+> - 执行前请确认目标范围，建议在隔离测试环境验证。
+> - 涉及数据操作前请备份，涉及服务操作前请通知相关人员。
 ```bash
 # 删除测试Pod
 kubectl delete pod pv-pvc-test-pod -n pv-pvc-demo
@@ -593,6 +636,11 @@ rm -rf /tmp/k8s-pv-demo/
 
 ### 基本命令
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 请根据实际场景替换
 kubectl apply -f manifests/

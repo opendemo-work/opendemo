@@ -14,6 +14,7 @@ KVM安装与配置完整演示指南。
 
 ### 1. 检查CPU虚拟化支持
 
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # Intel CPU
 egrep -c '(vmx)' /proc/cpuinfo
@@ -27,6 +28,11 @@ lsmod | grep kvm
 
 ### 2. 安装KVM (Ubuntu)
 
+🔴 高风险：可能造成数据丢失、服务中断、权限提升或不可逆破坏。
+> ⚠️ 生产安全提示：
+> - 会删除/格式化/停止关键资源，生产环境慎用。
+> - 执行前请确认目标范围，建议在隔离测试环境验证。
+> - 涉及数据操作前请备份，涉及服务操作前请通知相关人员。
 ```bash
 sudo apt update
 sudo apt install -y qemu-kvm libvirt-daemon-system libvirt-clients bridge-utils virt-manager
@@ -41,6 +47,11 @@ sudo usermod -aG libvirt $USER
 
 ### 3. 安装KVM (CentOS)
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 sudo yum install -y qemu-kvm libvirt libvirt-python libguestfs-tools virt-install
 
@@ -50,6 +61,7 @@ sudo systemctl enable libvirtd
 
 ### 4. 验证安装
 
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 virsh list --all
 virt-host-validate
@@ -59,6 +71,11 @@ virt-host-validate
 
 ### 创建网桥
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 编辑网络配置
 sudo nano /etc/netplan/01-netcfg.yaml
@@ -74,6 +91,7 @@ network:
 
 ## 创建虚拟机
 
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # 使用virt-install
 virt-install \
@@ -91,6 +109,11 @@ virt-install \
 
 ## 常用命令
 
+🔴 高风险：可能造成数据丢失、服务中断、权限提升或不可逆破坏。
+> ⚠️ 生产安全提示：
+> - 会删除/格式化/停止关键资源，生产环境慎用。
+> - 执行前请确认目标范围，建议在隔离测试环境验证。
+> - 涉及数据操作前请备份，涉及服务操作前请通知相关人员。
 ```bash
 # 列出虚拟机
 virsh list --all
@@ -120,6 +143,11 @@ virsh undefine ubuntu-vm --remove-all-storage
 
 ### 运行演示
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 ./scripts/demo.sh
 ```
@@ -140,6 +168,11 @@ virsh undefine ubuntu-vm --remove-all-storage
 
 ### 基本用法
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 请根据实际案例替换
 ./scripts/demo.sh

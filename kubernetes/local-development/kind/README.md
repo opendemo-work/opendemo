@@ -24,6 +24,7 @@ kind (Kubernetes in Docker) 是一个使用Docker容器作为节点运行本地K
 
 ### 1. 系统要求检查
 
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # 检查macOS版本
 sw_vers
@@ -42,6 +43,11 @@ docker info | grep "Total Memory"
 
 ### 2. 必要工具安装
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 安装Homebrew（如果没有）
 if ! command -v brew &> /dev/null; then
@@ -70,6 +76,7 @@ echo "Docker已启动"
 
 ### 3. Docker资源配置
 
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # 检查当前Docker资源配置
 docker info | grep -E "(CPUs|Memory)"
@@ -86,6 +93,11 @@ docker info | grep -E "(CPUs|Memory)"
 
 ### 1. 安装kind
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 使用Homebrew安装kind
 brew install kind
@@ -104,6 +116,11 @@ kind --help
 
 ### 2. 基础集群创建
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 创建默认集群
 kind create cluster
@@ -122,6 +139,11 @@ kubectl cluster-info --context kind-dev-cluster
 
 ### 1. 多节点集群配置
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 创建多节点集群配置文件
 cat <<EOF > kind-multi-node.yaml
@@ -142,6 +164,7 @@ kubectl get nodes
 
 ### 2. Ingress控制器配置
 
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # 创建支持Ingress的集群配置
 cat <<EOF > kind-ingress.yaml
@@ -175,6 +198,7 @@ docker port ingress-cluster-control-plane 443
 
 ### 3. 完整生产级配置
 
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # 创建生产级集群配置
 cat <<EOF > kind-production.yaml
@@ -233,6 +257,7 @@ kind create cluster --config kind-production.yaml --name prod-cluster
 
 ### 1. 集群基本信息
 
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # 列出所有集群
 kind get clusters
@@ -252,6 +277,11 @@ kubectl get pods -n kube-system --context kind-prod-cluster
 
 ### 2. 上下文管理
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 查看所有kubectl上下文
 kubectl config get-contexts
@@ -268,6 +298,11 @@ kubectl config current-context
 
 ### 3. 集群验证测试
 
+🔴 高风险：可能造成数据丢失、服务中断、权限提升或不可逆破坏。
+> ⚠️ 生产安全提示：
+> - 会删除/格式化/停止关键资源，生产环境慎用。
+> - 执行前请确认目标范围，建议在隔离测试环境验证。
+> - 涉及数据操作前请备份，涉及服务操作前请通知相关人员。
 ```bash
 # 部署测试应用
 kubectl create deployment nginx-test --image=nginx:latest
@@ -291,6 +326,11 @@ kubectl delete service nginx-test
 
 ### 1. Ingress Controller安装
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 为支持Ingress的集群安装nginx-ingress
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/kind/deploy.yaml
@@ -307,6 +347,11 @@ kubectl get pods -n ingress-nginx
 
 ### 2. Metrics Server安装
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 下载Metrics Server配置
 curl -LO https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml
@@ -326,6 +371,11 @@ kubectl top nodes
 
 ### 3. Dashboard安装
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 安装Kubernetes Dashboard
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.7.0/aio/deploy/recommended.yaml
@@ -364,6 +414,11 @@ kubectl proxy
 
 ### 1. 应用部署示例
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 创建示例应用
 cat <<EOF > sample-app.yaml
@@ -421,6 +476,11 @@ kubectl get services
 
 ### 2. Ingress配置示例
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 创建Ingress资源
 cat <<EOF > sample-ingress.yaml
@@ -453,6 +513,11 @@ curl -H "Host: sample.local" http://localhost
 
 ### 3. 持久化存储示例
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 创建持久卷和持久卷声明
 cat <<EOF > storage-example.yaml
@@ -519,6 +584,7 @@ kubectl exec -it deployment/storage-test -- cat /data/test.txt
 
 ### 1. 集群控制
 
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # 启动已存在的集群
 docker start kind-prod-cluster-control-plane
@@ -535,6 +601,11 @@ docker ps -a | grep kind
 
 ### 2. 镜像管理
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 将本地镜像加载到集群
 kind load docker-image nginx:latest --name prod-cluster
@@ -548,6 +619,11 @@ docker exec kind-prod-cluster-control-plane crictl images
 
 ### 3. 日志和调试
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 查看控制平面日志
 docker logs kind-prod-cluster-control-plane
@@ -566,6 +642,7 @@ kubectl logs <pod-name>
 
 ### 1. 资源监控
 
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # 查看节点资源使用
 kubectl top nodes
@@ -582,6 +659,7 @@ kubectl describe pod <pod-name>
 
 ### 2. 性能调优
 
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # 调整Docker资源限制
 # Docker Desktop → Preferences → Resources
@@ -611,6 +689,11 @@ kind create cluster --config optimized-kind.yaml --name optimized
 
 ### 3. 网络性能监控
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 测试Pod间网络延迟
 kubectl run debug-pod --image=busybox -- sleep 3600
@@ -627,6 +710,11 @@ kubectl get networkpolicies --all-namespaces
 
 ### 1. 资源清理
 
+🔴 高风险：可能造成数据丢失、服务中断、权限提升或不可逆破坏。
+> ⚠️ 生产安全提示：
+> - 会删除/格式化/停止关键资源，生产环境慎用。
+> - 执行前请确认目标范围，建议在隔离测试环境验证。
+> - 涉及数据操作前请备份，涉及服务操作前请通知相关人员。
 ```bash
 # 删除所有应用资源
 kubectl delete deployments,services,ingresses --all
@@ -640,6 +728,7 @@ kubectl delete configmaps,secrets --all
 
 ### 2. 集群删除
 
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # 删除特定集群
 kind delete cluster --name prod-cluster
@@ -654,6 +743,11 @@ docker ps | grep kind
 
 ### 3. 磁盘清理
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 清理未使用的Docker镜像
 docker image prune -a
@@ -672,6 +766,11 @@ docker system df
 
 ### 1. 集群创建失败
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 问题：端口已被占用
 # 解决：检查端口使用情况
@@ -690,6 +789,7 @@ lsof -i :443
 
 ### 2. 网络连接问题
 
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # 问题：无法访问服务
 # 解决：检查端口映射
@@ -706,6 +806,11 @@ kubectl get pods -n kube-system | grep coredns
 
 ### 3. 性能相关问题
 
+🔴 高风险：可能造成数据丢失、服务中断、权限提升或不可逆破坏。
+> ⚠️ 生产安全提示：
+> - 会删除/格式化/停止关键资源，生产环境慎用。
+> - 执行前请确认目标范围，建议在隔离测试环境验证。
+> - 涉及数据操作前请备份，涉及服务操作前请通知相关人员。
 ```bash
 # 问题：Pod调度缓慢
 # 解决：检查资源请求和限制
@@ -722,6 +827,11 @@ docker system prune -a
 
 ### 4. 调试命令
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 深入调试集群问题
 # 进入控制平面容器
@@ -741,6 +851,11 @@ cat /etc/kubernetes/kubeconfig
 
 ### 1. 集群管理最佳实践
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 1. 使用有意义的集群命名
 kind create cluster --name development
@@ -757,6 +872,11 @@ kind create cluster --name staging
 
 ### 2. 应用部署最佳实践
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 1. 使用命名空间隔离
 kubectl create namespace dev
@@ -774,6 +894,11 @@ kubectl create namespace prod
 
 ### 3. 安全配置
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 1. 启用RBAC
 # kind默认启用RBAC
@@ -820,12 +945,22 @@ kind create cluster --name new-cluster
 
 ### 部署资源
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 ./scripts/apply.sh
 ```
 
 ### 检查状态
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 ./scripts/check.sh
 ```
@@ -846,6 +981,11 @@ kind create cluster --name new-cluster
 
 ### 基本命令
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 请根据实际场景替换
 kubectl apply -f manifests/

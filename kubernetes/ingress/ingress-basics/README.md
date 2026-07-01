@@ -27,6 +27,11 @@
 
 ### 1. 环境准备
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 检查Kubernetes集群状态
 kubectl cluster-info
@@ -41,6 +46,11 @@ kubectl get ingressclasses
 
 ### 2. 部署测试应用
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 部署示例应用
 kubectl apply -f sample-apps.yaml -n ingress-demo
@@ -80,6 +90,11 @@ Ingress是Kubernetes中管理外部访问集群服务的API对象，主要功能
 
 #### 2.1 NGINX Ingress Controller安装
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 方法1：使用Helm安装（推荐）
 helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
@@ -100,6 +115,7 @@ kubectl get svc -n ingress-nginx
 
 #### 2.2 控制器配置验证
 
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # 检查IngressClass
 kubectl get ingressclasses
@@ -286,6 +302,11 @@ spec:
 
 #### 4.2 部署和验证
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 部署应用
 kubectl apply -f sample-apps.yaml -n ingress-demo
@@ -303,6 +324,7 @@ kubectl get ingress -n ingress-demo
 
 #### 5.1 获取Ingress地址
 
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # 获取LoadBalancer IP
 INGRESS_IP=$(kubectl get svc ingress-nginx-controller -n ingress-nginx -o jsonpath='{.status.loadBalancer.ingress[0].ip}')
@@ -314,6 +336,11 @@ NODE_IP=$(kubectl get nodes -o jsonpath='{.items[0].status.addresses[?(@.type=="
 
 #### 5.2 路径路由测试
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 测试路径路由
 curl http://$INGRESS_IP/app1
@@ -325,6 +352,11 @@ curl http://$INGRESS_IP/nonexistent-path
 
 #### 5.3 主机路由测试
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 添加hosts记录（本地测试）
 echo "$INGRESS_IP app1.example.com" | sudo tee -a /etc/hosts
@@ -414,6 +446,7 @@ spec:
 
 ### 1. 查看Ingress日志
 
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # 查看控制器日志
 kubectl logs -n ingress-nginx -l app.kubernetes.io/name=ingress-nginx
@@ -427,6 +460,11 @@ kubectl logs -n ingress-nginx -l app.kubernetes.io/name=ingress-nginx -f
 
 ### 2. 监控指标
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 查看控制器指标端点
 kubectl port-forward -n ingress-nginx svc/ingress-nginx-controller 10254:10254
@@ -437,6 +475,7 @@ kubectl port-forward -n ingress-nginx svc/ingress-nginx-controller 10254:10254
 
 ### 3. 常用监控命令
 
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # 查看Ingress状态
 kubectl describe ingress <ingress-name> -n ingress-demo
@@ -457,6 +496,7 @@ kubectl get endpoints -n ingress-demo
 **问题现象**: 404 Not Found或连接超时
 
 **排查步骤**:
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # 1. 检查Ingress状态
 kubectl describe ingress <ingress-name> -n ingress-demo
@@ -504,6 +544,11 @@ spec:
 **问题现象**: 基于主机名的路由不工作
 
 **解决方案**:
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 1. 检查DNS配置
 nslookup app.example.com
@@ -554,6 +599,11 @@ curl -H "Host: app.example.com" http://<ingress-ip>
 
 ## 📋 清理资源
 
+🔴 高风险：可能造成数据丢失、服务中断、权限提升或不可逆破坏。
+> ⚠️ 生产安全提示：
+> - 会删除/格式化/停止关键资源，生产环境慎用。
+> - 执行前请确认目标范围，建议在隔离测试环境验证。
+> - 涉及数据操作前请备份，涉及服务操作前请通知相关人员。
 ```bash
 # 删除所有示例资源
 kubectl delete namespace ingress-demo
@@ -594,6 +644,11 @@ kubectl delete deploy --all -n ingress-demo
 
 ### 基本命令
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 请根据实际场景替换
 kubectl apply -f manifests/

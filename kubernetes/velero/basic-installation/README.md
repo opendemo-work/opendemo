@@ -56,6 +56,11 @@
 
 MinIO是一个轻量级、S3兼容的对象存储服务，非常适合用于本地测试环境。
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 创建velero命名空间
 kubectl create namespace velero
@@ -78,6 +83,7 @@ pod/minio-xxxx condition met
 
 ### 步骤2: 验证MinIO服务
 
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # 检查MinIO Pod状态
 kubectl get pods -n velero -l app=minio
@@ -100,6 +106,11 @@ minio   ClusterIP   10.96.123.456   <none>        9000/TCP   30s
 如果您还没有安装Velero CLI工具，请按照以下步骤安装：
 
 **Linux/macOS**:
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 下载Velero CLI
 wget https://github.com/vmware-tanzu/velero/releases/download/v1.12.3/velero-v1.12.3-linux-amd64.tar.gz
@@ -113,6 +124,7 @@ velero version --client-only
 ```
 
 **Windows** (使用Chocolatey):
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```powershell
 choco install velero
 ```
@@ -123,6 +135,7 @@ choco install velero
 
 创建凭证文件用于Velero访问MinIO：
 
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # 创建凭证文件
 cat > code/credentials-velero << EOF
@@ -134,6 +147,11 @@ EOF
 
 ### 步骤5: 使用Helm安装Velero
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 添加Velero Helm仓库
 helm repo add vmware-tanzu https://vmware-tanzu.github.io/helm-charts
@@ -163,6 +181,7 @@ helm install velero vmware-tanzu/velero \
 
 ### 步骤6: 验证Velero安装
 
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # 检查Velero Pod状态
 kubectl get pods -n velero
@@ -204,6 +223,7 @@ default   aws        velero          Available   10s              ReadWrite     
 
 ### 步骤7: 创建测试备份验证安装
 
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # 创建一个简单的测试备份（备份velero命名空间自身）
 velero backup create test-backup --include-namespaces velero
@@ -223,6 +243,11 @@ test-backup   Completed   0        0          2026-01-11 23:45:00 +0800 CST   29
 
 ### 步骤8: 清理测试备份
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 删除测试备份
 velero backup delete test-backup --confirm
@@ -332,6 +357,11 @@ initContainers:
 ### Q4: 如何卸载Velero？
 
 **A**: 执行以下命令：
+🔴 高风险：可能造成数据丢失、服务中断、权限提升或不可逆破坏。
+> ⚠️ 生产安全提示：
+> - 会删除/格式化/停止关键资源，生产环境慎用。
+> - 执行前请确认目标范围，建议在隔离测试环境验证。
+> - 涉及数据操作前请备份，涉及服务操作前请通知相关人员。
 ```bash
 helm uninstall velero -n velero
 kubectl delete namespace velero
@@ -392,12 +422,22 @@ volumes:
 
 ### 部署资源
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 ./scripts/apply.sh
 ```
 
 ### 检查状态
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 ./scripts/check.sh
 ```
@@ -418,6 +458,11 @@ volumes:
 
 ### 基本命令
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 请根据实际场景替换
 kubectl apply -f manifests/

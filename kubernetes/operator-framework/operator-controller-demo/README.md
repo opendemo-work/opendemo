@@ -48,6 +48,11 @@
 
 **环境准备**：
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 安装Go
 # 从 https://golang.org/dl/ 下载安装
@@ -70,6 +75,7 @@ kubebuilder version
 **目标**：使用Kubebuilder创建项目脚手架
 
 **执行命令**：
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # 创建项目目录
 mkdir appdeployment-operator
@@ -201,6 +207,11 @@ func (r *AppDeploymentReconciler) Reconcile(ctx context.Context, req ctrl.Reques
 
 ### 步骤4：生成CRD和部署配置
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 生成CRD manifests
 make manifests
@@ -217,6 +228,11 @@ kubectl get crd appdeployments.demo.demo.opendemo.io
 
 ### 步骤5：本地运行Operator
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 方式1：本地运行（开发调试）
 make run
@@ -242,6 +258,11 @@ spec:
 ```
 
 应用资源并观察：
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 创建资源
 kubectl apply -f config/samples/demo_v1_appdeployment.yaml
@@ -394,12 +415,22 @@ var _ = Describe("AppDeployment Controller", func() {
 ```
 
 运行测试：
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 make test
 ```
 
 ### 集成测试
 
+🔴 高风险：可能造成数据丢失、服务中断、权限提升或不可逆破坏。
+> ⚠️ 生产安全提示：
+> - 会删除/格式化/停止关键资源，生产环境慎用。
+> - 执行前请确认目标范围，建议在隔离测试环境验证。
+> - 涉及数据操作前请备份，涉及服务操作前请通知相关人员。
 ```bash
 # 创建测试资源
 kubectl apply -f config/samples/demo_v1_appdeployment.yaml
@@ -433,12 +464,22 @@ kubectl get deployment test-app
 
 ### 1. 添加Webhook验证
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 kubebuilder create webhook --group demo --version v1 --kind AppDeployment --defaulting --programmatic-validation
 ```
 
 ### 2. 实现多版本API
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 kubebuilder create api --group demo --version v2 --kind AppDeployment
 ```
@@ -487,6 +528,7 @@ mgr, err := ctrl.NewManager(ctrl.GetConfigOrDie(), ctrl.Options{
 | **资源删除卡住** | Finalizer未清理 | 检查`handleDeletion`逻辑 |
 
 **查看日志**：
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # 本地运行时直接显示
 make run
@@ -499,6 +541,11 @@ kubectl logs -n appdeployment-operator-system deployment/appdeployment-operator-
 
 ## 🧹 清理资源
 
+🔴 高风险：可能造成数据丢失、服务中断、权限提升或不可逆破坏。
+> ⚠️ 生产安全提示：
+> - 会删除/格式化/停止关键资源，生产环境慎用。
+> - 执行前请确认目标范围，建议在隔离测试环境验证。
+> - 涉及数据操作前请备份，涉及服务操作前请通知相关人员。
 ```bash
 # 删除示例资源
 kubectl delete -f config/samples/demo_v1_appdeployment.yaml
@@ -583,6 +630,11 @@ make uninstall
 
 **环境准备**：
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 安装Go
 # 从 https://golang.org/dl/ 下载安装
@@ -605,6 +657,7 @@ kubebuilder version
 **目标**：使用Kubebuilder创建项目脚手架
 
 **执行命令**：
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # 创建项目目录
 mkdir appdeployment-operator
@@ -736,6 +789,11 @@ func (r *AppDeploymentReconciler) Reconcile(ctx context.Context, req ctrl.Reques
 
 ### 步骤4：生成CRD和部署配置
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 生成CRD manifests
 make manifests
@@ -752,6 +810,11 @@ kubectl get crd appdeployments.demo.demo.opendemo.io
 
 ### 步骤5：本地运行Operator
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 方式1：本地运行（开发调试）
 make run
@@ -777,6 +840,11 @@ spec:
 ```
 
 应用资源并观察：
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 创建资源
 kubectl apply -f config/samples/demo_v1_appdeployment.yaml
@@ -929,12 +997,22 @@ var _ = Describe("AppDeployment Controller", func() {
 ```
 
 运行测试：
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 make test
 ```
 
 ### 集成测试
 
+🔴 高风险：可能造成数据丢失、服务中断、权限提升或不可逆破坏。
+> ⚠️ 生产安全提示：
+> - 会删除/格式化/停止关键资源，生产环境慎用。
+> - 执行前请确认目标范围，建议在隔离测试环境验证。
+> - 涉及数据操作前请备份，涉及服务操作前请通知相关人员。
 ```bash
 # 创建测试资源
 kubectl apply -f config/samples/demo_v1_appdeployment.yaml
@@ -968,12 +1046,22 @@ kubectl get deployment test-app
 
 ### 1. 添加Webhook验证
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 kubebuilder create webhook --group demo --version v1 --kind AppDeployment --defaulting --programmatic-validation
 ```
 
 ### 2. 实现多版本API
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 kubebuilder create api --group demo --version v2 --kind AppDeployment
 ```
@@ -1022,6 +1110,7 @@ mgr, err := ctrl.NewManager(ctrl.GetConfigOrDie(), ctrl.Options{
 | **资源删除卡住** | Finalizer未清理 | 检查`handleDeletion`逻辑 |
 
 **查看日志**：
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # 本地运行时直接显示
 make run
@@ -1034,6 +1123,11 @@ kubectl logs -n appdeployment-operator-system deployment/appdeployment-operator-
 
 ## 🧹 清理资源
 
+🔴 高风险：可能造成数据丢失、服务中断、权限提升或不可逆破坏。
+> ⚠️ 生产安全提示：
+> - 会删除/格式化/停止关键资源，生产环境慎用。
+> - 执行前请确认目标范围，建议在隔离测试环境验证。
+> - 涉及数据操作前请备份，涉及服务操作前请通知相关人员。
 ```bash
 # 删除示例资源
 kubectl delete -f config/samples/demo_v1_appdeployment.yaml
@@ -1081,6 +1175,11 @@ make uninstall
 
 ### 基本命令
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 请根据实际场景替换
 kubectl apply -f manifests/

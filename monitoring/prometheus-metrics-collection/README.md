@@ -72,6 +72,11 @@
 
 ### 部署步骤
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 1. 进入案例目录
 cd monitoring/prometheus-metrics-collection
@@ -119,6 +124,7 @@ exporters:
 ## 🚀 快速开始
 
 ### 环境部署
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # 进入监控目录
 cd monitoring/prometheus-metrics-collection
@@ -338,6 +344,7 @@ receivers:
 ## 🧪 测试验证
 
 ### 监控测试脚本
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 #!/bin/bash
 # test-monitoring.sh

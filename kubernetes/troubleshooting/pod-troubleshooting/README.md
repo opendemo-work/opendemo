@@ -25,23 +25,31 @@
 **排查步骤**：
 
 1. 查看Pod基本信息：
+   🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
    ```bash
    kubectl describe pod <pod-name> -n <namespace>
    ```
 
 2. 查看容器日志：
+   🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
    ```bash
    kubectl logs <pod-name> -n <namespace>
    kubectl logs <pod-name> -n <namespace> --previous  # 查看上一次崩溃的日志
    ```
 
 3. 检查容器健康探针：
+   🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
    ```bash
    kubectl get pod <pod-name> -n <namespace> -o yaml | grep -A 20 readinessProbe
    kubectl get pod <pod-name> -n <namespace> -o yaml | grep -A 20 livenessProbe
    ```
 
 4. 进入容器检查（如果能启动足够长时间）：
+   🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+   > ⚠️ 生产安全提示：
+   > - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+   > - 注意检查依赖版本、端口占用和目标资源配置。
+   > - 生产环境执行前请经过变更评审和备份确认。
    ```bash
    kubectl exec -it <pod-name> -n <namespace> -- /bin/sh
    ```
@@ -81,22 +89,30 @@ spec:
 **排查步骤**：
 
 1. 查看Pod事件：
+   🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
    ```bash
    kubectl describe pod <pod-name> -n <namespace>
    ```
 
 2. 验证镜像名称和标签：
+   🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
    ```bash
    docker pull <image-name>:<tag>  # 本地验证镜像是否存在
    ```
 
 3. 检查镜像仓库认证：
+   🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
    ```bash
    kubectl get secret -n <namespace>  # 查看是否有镜像拉取密钥
    kubectl get pod <pod-name> -n <namespace> -o yaml | grep -A 10 imagePullSecrets
    ```
 
 4. 检查网络连接：
+   🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+   > ⚠️ 生产安全提示：
+   > - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+   > - 注意检查依赖版本、端口占用和目标资源配置。
+   > - 生产环境执行前请经过变更评审和备份确认。
    ```bash
    kubectl exec -it <healthy-pod> -n <namespace> -- ping -c 3 docker.io
    ```
@@ -126,21 +142,25 @@ spec:
 **排查步骤**：
 
 1. 查看详细错误信息：
+   🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
    ```bash
    kubectl describe pod <pod-name> -n <namespace>
    ```
 
 2. 检查容器配置：
+   🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
    ```bash
    kubectl get pod <pod-name> -n <namespace> -o yaml
    ```
 
 3. 检查权限问题：
+   🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
    ```bash
    kubectl get pod <pod-name> -n <namespace> -o yaml | grep -A 5 securityContext
    ```
 
 4. 检查挂载卷配置：
+   🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
    ```bash
    kubectl get pod <pod-name> -n <namespace> -o yaml | grep -A 10 volumeMounts
    ```
@@ -175,17 +195,24 @@ spec:
 **排查步骤**：
 
 1. 查看Pod事件和资源使用情况：
+   🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
    ```bash
    kubectl describe pod <pod-name> -n <namespace>
    kubectl top pod <pod-name> -n <namespace>
    ```
 
 2. 检查资源限制配置：
+   🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
    ```bash
    kubectl get pod <pod-name> -n <namespace> -o yaml | grep -A 10 resources
    ```
 
 3. 分析应用内存使用：
+   🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+   > ⚠️ 生产安全提示：
+   > - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+   > - 注意检查依赖版本、端口占用和目标资源配置。
+   > - 生产环境执行前请经过变更评审和备份确认。
    ```bash
    kubectl exec -it <pod-name> -n <namespace> -- ps aux
    ```
@@ -220,17 +247,24 @@ spec:
 **排查步骤**：
 
 1. 查看调度事件：
+   🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
    ```bash
    kubectl describe pod <pod-name> -n <namespace>
    ```
 
 2. 检查节点资源：
+   🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+   > ⚠️ 生产安全提示：
+   > - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+   > - 注意检查依赖版本、端口占用和目标资源配置。
+   > - 生产环境执行前请经过变更评审和备份确认。
    ```bash
    kubectl top nodes
    kubectl describe node <node-name>
    ```
 
 3. 检查Pod调度约束：
+   🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
    ```bash
    kubectl get pod <pod-name> -n <namespace> -o yaml | grep -A 10 nodeSelector
    kubectl get pod <pod-name> -n <namespace> -o yaml | grep -A 10 affinity
@@ -266,22 +300,26 @@ spec:
 **排查步骤**：
 
 1. 查看详细事件：
+   🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
    ```bash
    kubectl describe pod <pod-name> -n <namespace>
    ```
 
 2. 检查网络插件：
+   🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
    ```bash
    kubectl get pods -n kube-system | grep -E "calico|flannel|cilium"
    ```
 
 3. 检查存储配置：
+   🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
    ```bash
    kubectl get pv
    kubectl get pvc -n <namespace>
    ```
 
 4. 检查CNI配置：
+   🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
    ```bash
    kubectl get configmap -n kube-system | grep cni
    ```
@@ -313,6 +351,7 @@ spec:
 
 ### 4.1 常用kubectl命令
 
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # 查看所有命名空间的Pod状态
 kubectl get pods --all-namespaces
@@ -333,11 +372,17 @@ watch kubectl get pods -n <namespace>
 ### 4.2 高级排查工具
 
 - **kubelet日志**：
+  🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+  > ⚠️ 生产安全提示：
+  > - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+  > - 注意检查依赖版本、端口占用和目标资源配置。
+  > - 生产环境执行前请经过变更评审和备份确认。
   ```bash
   journalctl -u kubelet -f  # 在节点上查看kubelet日志
   ```
 
 - **crictl**：
+  🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
   ```bash
   crictl ps  # 查看容器状态
   crictl logs <container-id>  # 查看容器日志
@@ -438,12 +483,22 @@ spec:
 
 ### 部署资源
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 ./scripts/apply.sh
 ```
 
 ### 检查状态
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 ./scripts/check.sh
 ```
@@ -464,6 +519,11 @@ spec:
 
 ### 基本命令
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 请根据实际场景替换
 kubectl apply -f manifests/

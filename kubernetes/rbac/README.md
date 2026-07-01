@@ -22,6 +22,7 @@ graph TD
 ## 🚀 部署指南
 
 ### 前置条件
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # 系统要求
 - Kubernetes 1.20+
@@ -33,6 +34,11 @@ kubectl api-versions | grep rbac
 ```
 
 ### 基础RBAC配置
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 创建命名空间
 kubectl create namespace demo-rbac
@@ -88,6 +94,11 @@ metadata:
 ## 🔧 核心功能演示
 
 ### 功能1: 创建只读用户
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 创建只读Role
 kubectl create role reader --verb=get,list,watch --resource=pods,services -n demo-rbac
@@ -100,6 +111,11 @@ kubectl auth can-i get pods --as=john -n demo-rbac
 ```
 
 ### 功能2: 创建管理员权限
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 创建ClusterRole
 kubectl create clusterrole admin-role --verb="*" --resource="*"
@@ -114,6 +130,7 @@ kubectl auth can-i "*" "*" --as=system:serviceaccount:demo-rbac:demo-sa
 ## 📊 监控与日志
 
 ### 权限审计
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # 查看RBAC相关事件
 kubectl get events --field-selector involvedObject.kind=Role,involvedObject.kind=RoleBinding
@@ -123,6 +140,11 @@ kubectl logs -n kube-system -l component=kube-apiserver | grep RBAC
 ```
 
 ### 权限验证工具
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 检查用户权限
 kubectl auth can-i list pods --namespace=demo-rbac --as=jane
@@ -143,6 +165,7 @@ kubectl auth can-i --list --as=jane
    - **解决方案**: 检查对应的RoleBinding和ClusterRoleBinding
 
 ### 调试命令
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # 查看所有Roles
 kubectl get roles --all-namespaces
@@ -157,6 +180,7 @@ kubectl get pods --as=system:serviceaccount:demo-rbac:demo-sa -n demo-rbac
 ## 🧪 测试验证
 
 ### 权限测试脚本
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 #!/bin/bash
 # test-rbac.sh
@@ -181,6 +205,11 @@ fi
 ```
 
 ### 自动化测试
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 运行完整测试套件
 ./test-suite.sh
@@ -208,6 +237,11 @@ rules:
 ```
 
 ### 命名规范
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 推荐的命名约定
 roles/
@@ -219,6 +253,7 @@ roles/
 ## 🚀 升级维护
 
 ### 权限审计脚本
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 #!/bin/bash
 # audit-rbac.sh
@@ -233,6 +268,11 @@ kubectl get rolebindings --all-namespaces -o json | jq '.items[] | select(.subje
 ```
 
 ### 定期维护
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 定期清理未使用的RBAC资源
 ./cleanup-unused-rbac.sh
@@ -280,12 +320,22 @@ kubectl get rolebindings --all-namespaces -o json | jq '.items[] | select(.subje
 
 ### 部署资源
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 ./scripts/apply.sh
 ```
 
 ### 检查状态
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 ./scripts/check.sh
 ```
@@ -306,6 +356,11 @@ kubectl get rolebindings --all-namespaces -o json | jq '.items[] | select(.subje
 
 ### 基本命令
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 请根据实际场景替换
 kubectl apply -f manifests/

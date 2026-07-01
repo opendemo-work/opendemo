@@ -59,6 +59,11 @@
 
 ### 创建加密 EBS 卷
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 cd security/cloud-disk-encryption-aws
 ./scripts/start.sh
@@ -81,6 +86,11 @@ AWS 使用信封加密：
 
 可以为区域配置默认 EBS 加密，所有新创建的卷自动加密：
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 aws ec2 enable-ebs-encryption-by-default
 ```
@@ -89,6 +99,7 @@ aws ec2 enable-ebs-encryption-by-default
 
 KMS 支持自动 annual key rotation：
 
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 aws kms enable-key-rotation --key-id alias/my-key
 ```
@@ -99,6 +110,7 @@ aws kms enable-key-rotation --key-id alias/my-key
 
 ### 创建 KMS Key
 
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 aws kms create-key --description "EBS encryption key"
 
@@ -109,6 +121,7 @@ aws kms create-alias \
 
 ### 创建加密 EBS 卷
 
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 aws ec2 create-volume \
   --volume-type gp3 \
@@ -137,6 +150,7 @@ resource "aws_ebs_volume" "encrypted" {
 
 ## 🧪 验证测试
 
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # 检查卷是否加密
 aws ec2 describe-volumes --volume-ids vol-xxx

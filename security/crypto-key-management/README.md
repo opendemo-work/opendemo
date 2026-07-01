@@ -65,6 +65,11 @@
 
 ### 启动 Vault
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 cd security/crypto-key-management
 ./scripts/start.sh
@@ -74,6 +79,11 @@ sleep 5
 
 ### 初始化 Vault（Dev 模式已自动解封）
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 export VAULT_ADDR='http://127.0.0.1:8200'
 export VAULT_TOKEN='root'
@@ -124,6 +134,11 @@ Vault 可以按需签发临时数据库账号、云 IAM 凭据等，并自动到
 
 ### 启用 KV 引擎并写入凭据
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 启用 KV v2 引擎
 vault secrets enable -version=2 kv
@@ -143,6 +158,7 @@ vault kv metadata get kv/myapp/database
 
 ### 配置访问策略
 
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # 创建策略文件
 cat > myapp-policy.hcl <<EOF
@@ -160,6 +176,11 @@ vault token create -policy=myapp
 
 ### 使用策略 Token 读取凭据
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 export VAULT_TOKEN="<generated-token>"
 vault kv get kv/myapp/database
@@ -197,6 +218,7 @@ listener "tcp" {
 
 ## 🧪 验证测试
 
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # 检查 Vault 状态
 vault status
@@ -213,6 +235,7 @@ curl -H "X-Vault-Token: $VAULT_TOKEN" \
 
 ## 📊 运行结果
 
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 $ vault kv get kv/myapp/database
 ====== Metadata ======

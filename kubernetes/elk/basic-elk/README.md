@@ -18,12 +18,18 @@ ELK 是 Elasticsearch、Logstash 和 Kibana 的组合，用于 Kubernetes 集群
 
 ### 1. 部署 Elasticsearch
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 kubectl apply -f elasticsearch.yaml
 ```
 
 ### 2. 验证 Elasticsearch 部署
 
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # 检查 Elasticsearch Pod 状态
 kubectl get pods -n elk -l app=elasticsearch
@@ -34,12 +40,18 @@ kubectl wait --for=condition=ready pod -l app=elasticsearch -n elk --timeout=300
 
 ### 3. 部署 Logstash
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 kubectl apply -f logstash.yaml
 ```
 
 ### 4. 验证 Logstash 部署
 
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # 检查 Logstash Pod 状态
 kubectl get pods -n elk -l app=logstash
@@ -47,12 +59,18 @@ kubectl get pods -n elk -l app=logstash
 
 ### 5. 部署 Kibana
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 kubectl apply -f kibana.yaml
 ```
 
 ### 6. 验证 Kibana 部署
 
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # 检查 Kibana Pod 状态
 kubectl get pods -n elk -l app=kibana
@@ -65,6 +83,11 @@ kubectl wait --for=condition=ready pod -l app=kibana -n elk --timeout=300s
 
 #### 7.1 使用 NodePort 访问
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 获取 Node IP（根据你的 Kubernetes 环境调整）
 NODE_IP=$(kubectl get nodes -o jsonpath="{.items[0].status.addresses[0].address}")
@@ -75,6 +98,11 @@ echo "http://$NODE_IP:30062"
 
 #### 7.2 使用 Port Forward 访问
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 kubectl port-forward svc/kibana 5601:5601 -n elk
 ```
@@ -99,6 +127,11 @@ kubectl port-forward svc/kibana 5601:5601 -n elk
 
 #### 2.1 使用 HTTP 发送日志
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 端口转发 Logstash HTTP 端口
 kubectl port-forward svc/logstash 5043:5043 -n elk
@@ -109,6 +142,7 @@ curl -X POST -H "Content-Type: application/json" -d '{"message": "This is a test
 
 #### 2.2 使用 TCP 发送日志
 
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # 端口转发 Logstash TCP 端口
 kubectl port-forward svc/logstash 5000:5000 -n elk
@@ -152,6 +186,11 @@ message: "test"
 
 ## 清理资源
 
+🔴 高风险：可能造成数据丢失、服务中断、权限提升或不可逆破坏。
+> ⚠️ 生产安全提示：
+> - 会删除/格式化/停止关键资源，生产环境慎用。
+> - 执行前请确认目标范围，建议在隔离测试环境验证。
+> - 涉及数据操作前请备份，涉及服务操作前请通知相关人员。
 ```bash
 kubectl delete -f kibana.yaml
 kubectl delete -f logstash.yaml
@@ -196,12 +235,22 @@ kubectl delete -f elasticsearch.yaml
 
 ### 部署资源
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 ./scripts/apply.sh
 ```
 
 ### 检查状态
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 ./scripts/check.sh
 ```
@@ -222,6 +271,11 @@ kubectl delete -f elasticsearch.yaml
 
 ### 基本命令
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 请根据实际场景替换
 kubectl apply -f manifests/

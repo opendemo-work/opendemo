@@ -22,11 +22,21 @@
 ### 1. 安装 minikube 和 kubectl
 
 #### macOS (使用 Homebrew)
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 brew install minikube kubectl
 ```
 
 #### Linux (使用官方二进制)
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 下载 kubectl
 curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
@@ -39,11 +49,17 @@ sudo install minikube-linux-amd64 /usr/local/bin/minikube
 ```
 
 #### Windows (使用 Chocolatey)
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```powershell
 choco install minikube kubectl
 ```
 
 ### 2. 启动本地 Kubernetes 集群
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 minikube start
 ```
@@ -65,6 +81,7 @@ minikube start
 ## 逐步实操指南
 
 ### 步骤1：验证环境
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 kubectl version --short
 helm version
@@ -73,6 +90,11 @@ helm version
 **预期输出**：显示客户端版本信息，无错误。
 
 ### 步骤2：创建一个简单的 Helm Chart
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 helm create chart-example
 ```
@@ -83,6 +105,11 @@ helm create chart-example
 编辑 `chart-example/values.yaml`，将 `replicaCount` 改为 1，并确保 `image.repository` 为 `nginx`。
 
 ### 步骤4：部署应用
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 helm install my-nginx ./chart-example
 ```
@@ -98,6 +125,7 @@ TEST SUITE: None
 ```
 
 ### 步骤5：查看部署状态
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 helm list
 kubectl get pods
@@ -105,17 +133,32 @@ kubectl get pods
 
 ### 步骤6：升级 Release
 修改 `chart-example/values.yaml` 中的 `service.type` 为 `NodePort`，然后执行：
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 helm upgrade my-nginx ./chart-example
 ```
 
 ### 步骤7：查看历史与回滚
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 helm history my-nginx
 helm rollback my-nginx 1
 ```
 
 ### 步骤8：卸载 Release
+🔴 高风险：可能造成数据丢失、服务中断、权限提升或不可逆破坏。
+> ⚠️ 生产安全提示：
+> - 会删除/格式化/停止关键资源，生产环境慎用。
+> - 执行前请确认目标范围，建议在隔离测试环境验证。
+> - 涉及数据操作前请备份，涉及服务操作前请通知相关人员。
 ```bash
 helm uninstall my-nginx
 ```
@@ -140,6 +183,7 @@ service:
 这些值可在 `templates/` 中被Go模板引擎引用，实现动态渲染。
 
 ## 预期输出示例
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 $ helm list
 NAME       NAMESPACE  REVISION   STATUS     CHART             APP VERSION
@@ -174,12 +218,22 @@ A: `helm repo add stable https://charts.helm.sh/stable`（注意：stable 已归
 
 ### 部署资源
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 ./scripts/apply.sh
 ```
 
 ### 检查状态
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 ./scripts/check.sh
 ```
@@ -200,6 +254,11 @@ A: `helm repo add stable https://charts.helm.sh/stable`（注意：stable 已归
 
 ### 基本命令
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 请根据实际场景替换
 kubectl apply -f manifests/

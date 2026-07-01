@@ -85,12 +85,22 @@ public String myService() { ... }
 
 ### 1. 启动应用
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 mvn spring-boot:run
 ```
 
 ### 2. 测试接口
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 正常服务
 curl http://localhost:8080/api/normal
@@ -110,6 +120,11 @@ curl http://localhost:8080/api/batch-test
 
 ### 3. 监控端点
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # Hystrix Stream (用于Hystrix Dashboard)
 curl http://localhost:8080/actuator/hystrix.stream
@@ -124,6 +139,7 @@ curl http://localhost:8080/actuator/health
 
 连续调用慢服务接口：
 
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 for i in {1..10}; do curl http://localhost:8080/api/slow; echo; done
 ```
@@ -136,6 +152,7 @@ for i in {1..10}; do curl http://localhost:8080/api/slow; echo; done
 
 连续调用异常服务接口：
 
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 for i in {1..10}; do curl http://localhost:8080/api/error; echo; done
 ```
@@ -147,6 +164,7 @@ for i in {1..10}; do curl http://localhost:8080/api/error; echo; done
 
 ### 3. 不稳定服务测试
 
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 for i in {1..20}; do curl http://localhost:8080/api/unstable; echo; done
 ```
@@ -181,6 +199,11 @@ public String fallbackMethod(Throwable throwable) {
 
 ### 启动Dashboard
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 添加依赖后启动
 docker run -d -p 7979:7979 --name hystrix-dashboard \
@@ -247,6 +270,11 @@ public String getUser(@CacheKey Long id) { ... }
 
 ### 运行演示
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 ./scripts/demo.sh
 ```
@@ -267,6 +295,11 @@ public String getUser(@CacheKey Long id) { ... }
 
 ### 基本用法
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 请根据实际案例替换
 ./scripts/demo.sh

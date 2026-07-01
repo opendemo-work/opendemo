@@ -19,6 +19,11 @@
 
 ## 安装依赖步骤
 1. 安装kubectl：
+   🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+   > ⚠️ 生产安全提示：
+   > - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+   > - 注意检查依赖版本、端口占用和目标资源配置。
+   > - 生产环境执行前请经过变更评审和备份确认。
    ```bash
    # Linux/macOS
    curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
@@ -29,6 +34,11 @@
    Windows用户请参考官方文档下载kubectl.exe
 
 2. （可选）安装minikube：
+   🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+   > ⚠️ 生产安全提示：
+   > - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+   > - 注意检查依赖版本、端口占用和目标资源配置。
+   > - 生产环境执行前请经过变更评审和备份确认。
    ```bash
    # Linux/macOS
    curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
@@ -36,6 +46,11 @@
    ```
 
 3. 启动集群（若使用minikube）：
+   🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+   > ⚠️ 生产安全提示：
+   > - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+   > - 注意检查依赖版本、端口占用和目标资源配置。
+   > - 生产环境执行前请经过变更评审和备份确认。
    ```bash
    minikube start
    ```
@@ -48,6 +63,11 @@
 ## 逐步实操指南
 
 ### 步骤1: 应用部署
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 kubectl apply -f service-definition.yaml
 kubectl apply -f web-server.yaml
@@ -60,12 +80,18 @@ deployment.apps/web-server created
 ```
 
 ### 步骤2: 等待Pod就绪
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 kubectl get pods -l app=web-server -w
 ```
 等待状态变为`Running`后按Ctrl+C退出。
 
 ### 步骤3: 创建诊断Pod
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 kubectl apply -f diagnose-pod.yaml
 ```
@@ -76,6 +102,11 @@ pod/diagnose-pod created
 ```
 
 ### 步骤4: 测试服务连通性
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 kubectl exec -it diagnose-pod -- curl http://web-service:8080
 ```
@@ -87,6 +118,11 @@ Hello, Kubernetes! This is web-server pod.
 
 ### 步骤5: 模拟并诊断DNS问题（可选）
 尝试错误的服务名：
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 kubectl exec -it diagnose-pod -- nslookup wrong-service
 ```
@@ -104,6 +140,7 @@ kubectl exec -it diagnose-pod -- nslookup wrong-service
 使用busybox镜像创建一个包含网络调试工具的Pod。它位于与web-server相同的命名空间，可用于测试服务通信和DNS解析。
 
 ## 预期输出示例
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 $ kubectl exec -it diagnose-pod -- curl http://web-service:8080
 Hello, Kubernetes! This is web-server pod.
@@ -137,12 +174,22 @@ A: 将Service类型改为NodePort或LoadBalancer，或使用Ingress控制器。
 
 ### 部署资源
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 ./scripts/apply.sh
 ```
 
 ### 检查状态
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 ./scripts/check.sh
 ```
@@ -163,6 +210,11 @@ A: 将Service类型改为NodePort或LoadBalancer，或使用Ingress控制器。
 
 ### 基本命令
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 请根据实际场景替换
 kubectl apply -f manifests/

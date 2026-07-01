@@ -30,17 +30,20 @@
 **排查步骤**：
 
 1. 查看PVC事件：
+   🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
    ```bash
    kubectl describe pvc <pvc-name> -n <namespace>
    ```
 
 2. 查看存储类配置：
+   🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
    ```bash
    kubectl get storageclass
    kubectl describe storageclass <storageclass-name>
    ```
 
 3. 查看是否有可用的PV：
+   🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
    ```bash
    kubectl get pv
    kubectl describe pv <pv-name>
@@ -79,22 +82,30 @@ spec:
 **排查步骤**：
 
 1. 查看Pod事件：
+   🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
    ```bash
    kubectl describe pod <pod-name> -n <namespace>
    ```
 
 2. 查看PV和PVC状态：
+   🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
    ```bash
    kubectl get pv <pv-name>
    kubectl get pvc <pvc-name> -n <namespace>
    ```
 
 3. 查看PV配置：
+   🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
    ```bash
    kubectl get pv <pv-name> -o yaml
    ```
 
 4. 登录节点检查挂载情况：
+   🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+   > ⚠️ 生产安全提示：
+   > - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+   > - 注意检查依赖版本、端口占用和目标资源配置。
+   > - 生产环境执行前请经过变更评审和备份确认。
    ```bash
    ssh <node-ip>
    mount | grep <pv-name>
@@ -129,17 +140,20 @@ spec:
 **排查步骤**：
 
 1. 查看存储类配置：
+   🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
    ```bash
    kubectl get storageclass <storageclass-name> -o yaml
    ```
 
 2. 检查存储类控制器运行状态：
+   🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
    ```bash
    kubectl get pods -n kube-system | grep <provisioner-name>
    kubectl logs <provisioner-pod-name> -n kube-system
    ```
 
 3. 检查存储类参数配置：
+   🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
    ```bash
    kubectl describe storageclass <storageclass-name>
    ```
@@ -171,21 +185,25 @@ volumeBindingMode: Immediate
 **排查步骤**：
 
 1. 检查存储类是否支持扩容：
+   🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
    ```bash
    kubectl get storageclass <storageclass-name> -o jsonpath='{.allowVolumeExpansion}'
    ```
 
 2. 查看PVC扩容事件：
+   🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
    ```bash
    kubectl describe pvc <pvc-name> -n <namespace>
    ```
 
 3. 检查PV类型是否支持扩容：
+   🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
    ```bash
    kubectl get pv <pv-name> -o yaml | grep -A 5 spec
    ```
 
 4. 检查Pod是否需要重启：
+   🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
    ```bash
    kubectl get pod <pod-name> -n <namespace>
    ```
@@ -216,6 +234,7 @@ volumeBindingMode: Immediate
 **排查步骤**：
 
 1. 查看可用的PV和容量：
+   🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
    ```bash
    kubectl get pv
    ```
@@ -226,6 +245,7 @@ volumeBindingMode: Immediate
    - 对于NFS，登录NFS服务器检查共享目录空间
 
 3. 检查PVC资源请求大小：
+   🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
    ```bash
    kubectl get pvc <pvc-name> -n <namespace> -o yaml | grep -A 5 resources
    ```
@@ -257,11 +277,13 @@ spec:
 **排查步骤**：
 
 1. 查看PVC访问模式：
+   🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
    ```bash
    kubectl get pvc <pvc-name> -n <namespace> -o yaml | grep -A 5 accessModes
    ```
 
 2. 查看PV访问模式：
+   🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
    ```bash
    kubectl get pv <pv-name> -o yaml | grep -A 5 accessModes
    ```
@@ -298,21 +320,29 @@ spec:
 **排查步骤**：
 
 1. 检查存储插件运行状态：
+   🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
    ```bash
    kubectl get pods -n kube-system | grep <plugin-name>
    ```
 
 2. 查看存储插件日志：
+   🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
    ```bash
    kubectl logs <plugin-pod-name> -n kube-system
    ```
 
 3. 检查存储插件配置：
+   🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
    ```bash
    kubectl get daemonset <plugin-daemonset> -n kube-system -o yaml
    ```
 
 4. 检查节点上的存储插件状态：
+   🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+   > ⚠️ 生产安全提示：
+   > - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+   > - 注意检查依赖版本、端口占用和目标资源配置。
+   > - 生产环境执行前请经过变更评审和备份确认。
    ```bash
    ssh <node-ip>
    docker ps | grep <plugin-name>
@@ -358,6 +388,11 @@ spec:
 
 ### 4.1 存储诊断命令
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 查看PVC状态
 kubectl get pvc -n <namespace>
@@ -383,6 +418,7 @@ ssh <node-ip> mount | grep kubelet
 
 ### 4.2 存储分析脚本
 
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 #!/bin/bash
 # 存储分析脚本
@@ -412,6 +448,11 @@ kubectl get pvc -n $NAMESPACE -o json | jq -r '.items[] | "PVC: " + .metadata.na
 
 ### 4.3 存储性能测试
 
+🔴 高风险：可能造成数据丢失、服务中断、权限提升或不可逆破坏。
+> ⚠️ 生产安全提示：
+> - 会删除/格式化/停止关键资源，生产环境慎用。
+> - 执行前请确认目标范围，建议在隔离测试环境验证。
+> - 涉及数据操作前请备份，涉及服务操作前请通知相关人员。
 ```bash
 # 在Pod中测试存储性能
 kubectl exec -it <pod-name> -n <namespace> -- /bin/bash
@@ -575,12 +616,22 @@ spec:
 
 ### 部署资源
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 ./scripts/apply.sh
 ```
 
 ### 检查状态
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 ./scripts/check.sh
 ```
@@ -601,6 +652,11 @@ spec:
 
 ### 基本命令
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 请根据实际场景替换
 kubectl apply -f manifests/

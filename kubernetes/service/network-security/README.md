@@ -28,6 +28,11 @@
 
 ### 1. 环境准备
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 创建安全测试命名空间
 kubectl create namespace service-security
@@ -41,6 +46,7 @@ kubectl apply -f security-test-apps.yaml -n service-security
 
 ### 2. 验证初始状态
 
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # 检查Pod状态
 kubectl get pods -n service-security
@@ -613,6 +619,11 @@ spec:
 
 ### 1. 网络策略有效性测试
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 测试网络策略是否生效
 kubectl run test-pod --image=busybox --rm -it -n service-security -- sh
@@ -626,6 +637,7 @@ wget -qO- http://allowed-service:80 && echo "Access granted as expected"
 
 ### 2. TLS证书验证
 
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # 验证TLS配置
 openssl s_client -connect secure-service.service-security.svc:443 -servername secure.example.com
@@ -636,6 +648,11 @@ echo | openssl s_client -connect secure-service:443 2>/dev/null | openssl x509 -
 
 ### 3. RBAC权限验证
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 测试服务账户权限
 kubectl auth can-i get services --as=system:serviceaccount:service-security:frontend-sa
@@ -684,6 +701,11 @@ spec:
 **问题**: 证书过期或配置错误
 
 **解决方案**:
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 自动化证书轮换
 kubectl create secret tls auto-renew-cert \
@@ -734,6 +756,11 @@ rules:
 
 ## 📋 清理资源
 
+🔴 高风险：可能造成数据丢失、服务中断、权限提升或不可逆破坏。
+> ⚠️ 生产安全提示：
+> - 会删除/格式化/停止关键资源，生产环境慎用。
+> - 执行前请确认目标范围，建议在隔离测试环境验证。
+> - 涉及数据操作前请备份，涉及服务操作前请通知相关人员。
 ```bash
 # 删除安全测试环境
 kubectl delete namespace service-security
@@ -772,6 +799,11 @@ kubectl delete serviceaccount --all -n service-security
 
 ### 基本命令
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 请根据实际场景替换
 kubectl apply -f manifests/

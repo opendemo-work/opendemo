@@ -24,6 +24,7 @@ graph TD
 ## 🚀 部署指南
 
 ### 前置条件
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # 系统要求
 - Kubernetes 1.20+
@@ -36,6 +37,11 @@ helm repo update
 ```
 
 ### 标准部署
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 创建监控命名空间
 kubectl create namespace monitoring
@@ -107,6 +113,11 @@ spec:
 ## 🔧 核心功能演示
 
 ### 功能1: 指标收集配置
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 创建应用监控配置
 kubectl apply -f app-service-monitor.yaml
@@ -117,6 +128,11 @@ kubectl port-forward -n monitoring svc/prometheus-operated 9090:9090
 ```
 
 ### 功能2: 告警规则测试
+🔴 高风险：可能造成数据丢失、服务中断、权限提升或不可逆破坏。
+> ⚠️ 生产安全提示：
+> - 会删除/格式化/停止关键资源，生产环境慎用。
+> - 执行前请确认目标范围，建议在隔离测试环境验证。
+> - 涉及数据操作前请备份，涉及服务操作前请通知相关人员。
 ```bash
 # 应用告警规则
 kubectl apply -f alert-rules.yaml
@@ -144,6 +160,7 @@ kube_pod_container_status_restarts_total
 ```
 
 ### 日志查看
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # 查看Prometheus日志
 kubectl logs -n monitoring sts/prometheus-prometheus-kube-prometheus-prometheus -c prometheus
@@ -164,6 +181,11 @@ kubectl logs -n monitoring deploy/prometheus-grafana
    - **解决方案**: 确认StorageClass存在且配置正确
 
 ### 健康检查
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 检查Prometheus状态
 kubectl exec -n monitoring sts/prometheus-prometheus-kube-prometheus-prometheus \
@@ -177,6 +199,11 @@ kubectl exec -n monitoring sts/prometheus-prometheus-kube-prometheus-prometheus 
 ## 🧪 测试验证
 
 ### 监控测试脚本
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 #!/bin/bash
 # test-prometheus.sh
@@ -204,6 +231,11 @@ fi
 ```
 
 ### 性能基准测试
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 测试查询性能
 kubectl exec -n monitoring sts/prometheus-prometheus-kube-prometheus-prometheus \
@@ -250,6 +282,11 @@ networkPolicy:
 ## 🚀 升级维护
 
 ### 版本升级
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 检查新版本
 helm search repo prometheus-community/kube-prometheus-stack
@@ -262,6 +299,7 @@ helm upgrade prometheus prometheus-community/kube-prometheus-stack \
 ```
 
 ### 数据备份
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # 备份Prometheus数据
 kubectl exec -n monitoring sts/prometheus-prometheus-kube-prometheus-prometheus \
@@ -310,12 +348,22 @@ kubectl get -n monitoring -o yaml prometheus,prometheusrule,servicemonitor > bac
 
 ### 部署资源
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 ./scripts/apply.sh
 ```
 
 ### 检查状态
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 ./scripts/check.sh
 ```
@@ -336,6 +384,11 @@ kubectl get -n monitoring -o yaml prometheus,prometheusrule,servicemonitor > bac
 
 ### 基本命令
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 请根据实际场景替换
 kubectl apply -f manifests/

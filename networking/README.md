@@ -20,6 +20,7 @@
 
 ## 快速开始
 
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # 进入案例目录
 cd networking/tcp-ip-fundamentals

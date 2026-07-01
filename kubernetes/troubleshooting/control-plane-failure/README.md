@@ -33,11 +33,17 @@
 **排查步骤**：
 
 1. 检查API Server Pod状态：
+   🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
    ```bash
    kubectl get pods -n kube-system | grep kube-apiserver
    ```
 
 2. 查看API Server日志：
+   🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+   > ⚠️ 生产安全提示：
+   > - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+   > - 注意检查依赖版本、端口占用和目标资源配置。
+   > - 生产环境执行前请经过变更评审和备份确认。
    ```bash
    # 如果API Server是Pod部署
    kubectl logs <kube-apiserver-pod-name> -n kube-system
@@ -47,6 +53,11 @@
    ```
 
 3. 检查API Server端口是否可访问：
+   🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+   > ⚠️ 生产安全提示：
+   > - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+   > - 注意检查依赖版本、端口占用和目标资源配置。
+   > - 生产环境执行前请经过变更评审和备份确认。
    ```bash
    # 从控制平面节点本地测试
    curl -k https://localhost:6443/healthz
@@ -56,6 +67,11 @@
    ```
 
 4. 检查API Server配置：
+   🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+   > ⚠️ 生产安全提示：
+   > - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+   > - 注意检查依赖版本、端口占用和目标资源配置。
+   > - 生产环境执行前请经过变更评审和备份确认。
    ```bash
    # 如果是Pod部署，查看Pod配置
    kubectl get pod <kube-apiserver-pod-name> -n kube-system -o yaml
@@ -65,6 +81,11 @@
    ```
 
 5. 检查证书状态：
+   🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+   > ⚠️ 生产安全提示：
+   > - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+   > - 注意检查依赖版本、端口占用和目标资源配置。
+   > - 生产环境执行前请经过变更评审和备份确认。
    ```bash
    # 查看API Server证书过期时间
    ssh <control-plane-node> openssl x509 -in /etc/kubernetes/pki/apiserver.crt -text -noout | grep -A 3 Validity
@@ -91,11 +112,17 @@ kubectl rollout restart deployment kube-apiserver -n kube-system
 **排查步骤**：
 
 1. 检查etcd Pod状态：
+   🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
    ```bash
    kubectl get pods -n kube-system | grep etcd
    ```
 
 2. 查看etcd日志：
+   🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+   > ⚠️ 生产安全提示：
+   > - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+   > - 注意检查依赖版本、端口占用和目标资源配置。
+   > - 生产环境执行前请经过变更评审和备份确认。
    ```bash
    # 如果etcd是Pod部署
    kubectl logs <etcd-pod-name> -n kube-system
@@ -105,6 +132,7 @@ kubectl rollout restart deployment kube-apiserver -n kube-system
    ```
 
 3. 检查etcd集群健康状态：
+   🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
    ```bash
    # 使用etcdctl检查集群健康
    ETCDCTL_API=3 etcdctl --endpoints=https://<etcd-ip>:2379 --cacert=/etc/kubernetes/pki/etcd/ca.crt --cert=/etc/kubernetes/pki/etcd/server.crt --key=/etc/kubernetes/pki/etcd/server.key endpoint health
@@ -114,12 +142,18 @@ kubectl rollout restart deployment kube-apiserver -n kube-system
    ```
 
 4. 检查etcd数据目录：
+   🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+   > ⚠️ 生产安全提示：
+   > - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+   > - 注意检查依赖版本、端口占用和目标资源配置。
+   > - 生产环境执行前请经过变更评审和备份确认。
    ```bash
    ssh <control-plane-node> df -h /var/lib/etcd
    ssh <control-plane-node> ls -la /var/lib/etcd
    ```
 
 5. 检查etcd端口是否可访问：
+   🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
    ```bash
    # 测试etcd客户端端口
    nc -zv <etcd-ip> 2379
@@ -129,6 +163,7 @@ kubectl rollout restart deployment kube-apiserver -n kube-system
 
 **解决方案示例**：
 
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # 修复etcd数据损坏问题（从备份恢复）
 ETCDCTL_API=3 etcdctl --endpoints=https://<etcd-ip>:2379 \
@@ -153,11 +188,17 @@ ETCDCTL_API=3 etcdctl --endpoints=https://<etcd-ip>:2379 \
 **排查步骤**：
 
 1. 检查Controller Manager Pod状态：
+   🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
    ```bash
    kubectl get pods -n kube-system | grep kube-controller-manager
    ```
 
 2. 查看Controller Manager日志：
+   🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+   > ⚠️ 生产安全提示：
+   > - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+   > - 注意检查依赖版本、端口占用和目标资源配置。
+   > - 生产环境执行前请经过变更评审和备份确认。
    ```bash
    # 如果是Pod部署
    kubectl logs <kube-controller-manager-pod-name> -n kube-system
@@ -167,6 +208,11 @@ ETCDCTL_API=3 etcdctl --endpoints=https://<etcd-ip>:2379 \
    ```
 
 3. 检查Controller Manager配置：
+   🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+   > ⚠️ 生产安全提示：
+   > - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+   > - 注意检查依赖版本、端口占用和目标资源配置。
+   > - 生产环境执行前请经过变更评审和备份确认。
    ```bash
    # 如果是Pod部署
    kubectl get pod <kube-controller-manager-pod-name> -n kube-system -o yaml
@@ -176,6 +222,7 @@ ETCDCTL_API=3 etcdctl --endpoints=https://<etcd-ip>:2379 \
    ```
 
 4. 检查Controller Manager是否能连接到API Server：
+   🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
    ```bash
    # 查看Controller Manager是否注册到API Server
    kubectl get endpoints kube-controller-manager -n kube-system
@@ -261,11 +308,17 @@ spec:
 **排查步骤**：
 
 1. 检查Scheduler Pod状态：
+   🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
    ```bash
    kubectl get pods -n kube-system | grep kube-scheduler
    ```
 
 2. 查看Scheduler日志：
+   🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+   > ⚠️ 生产安全提示：
+   > - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+   > - 注意检查依赖版本、端口占用和目标资源配置。
+   > - 生产环境执行前请经过变更评审和备份确认。
    ```bash
    # 如果是Pod部署
    kubectl logs <kube-scheduler-pod-name> -n kube-system
@@ -275,6 +328,11 @@ spec:
    ```
 
 3. 检查Scheduler配置：
+   🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+   > ⚠️ 生产安全提示：
+   > - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+   > - 注意检查依赖版本、端口占用和目标资源配置。
+   > - 生产环境执行前请经过变更评审和备份确认。
    ```bash
    # 如果是Pod部署
    kubectl get pod <kube-scheduler-pod-name> -n kube-system -o yaml
@@ -284,12 +342,14 @@ spec:
    ```
 
 4. 检查Scheduler是否能连接到API Server：
+   🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
    ```bash
    # 查看Scheduler是否注册到API Server
    kubectl get endpoints kube-scheduler -n kube-system
    ```
 
 5. 检查Pending状态的Pod并查看调度事件：
+   🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
    ```bash
    kubectl describe pod <pending-pod-name> -n <namespace>
    ```
@@ -347,6 +407,11 @@ spec:
 **排查步骤**：
 
 1. 检查组件间网络连接：
+   🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+   > ⚠️ 生产安全提示：
+   > - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+   > - 注意检查依赖版本、端口占用和目标资源配置。
+   > - 生产环境执行前请经过变更评审和备份确认。
    ```bash
    # 从控制平面节点测试etcd连接
    curl -k https://localhost:2379/health
@@ -356,6 +421,11 @@ spec:
    ```
 
 2. 检查组件证书是否匹配：
+   🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+   > ⚠️ 生产安全提示：
+   > - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+   > - 注意检查依赖版本、端口占用和目标资源配置。
+   > - 生产环境执行前请经过变更评审和备份确认。
    ```bash
    # 检查API Server和etcd证书是否兼容
    ssh <control-plane-node> openssl x509 -in /etc/kubernetes/pki/apiserver-etcd-client.crt -text -noout
@@ -363,6 +433,11 @@ spec:
    ```
 
 3. 检查防火墙规则：
+   🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+   > ⚠️ 生产安全提示：
+   > - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+   > - 注意检查依赖版本、端口占用和目标资源配置。
+   > - 生产环境执行前请经过变更评审和备份确认。
    ```bash
    # 检查控制平面节点防火墙规则
    ssh <control-plane-node> iptables -L -n
@@ -370,12 +445,18 @@ spec:
    ```
 
 4. 检查网络插件状态：
+   🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
    ```bash
    kubectl get pods -n kube-system | grep -E "calico|flannel|cilium|weave"
    ```
 
 **解决方案示例**：
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 修复控制平面组件间通信问题（开放必要端口）
 # 在控制平面节点执行
@@ -398,11 +479,13 @@ ufw allow 10252/tcp # Controller Manager
 **排查步骤**：
 
 1. 检查控制平面节点状态：
+   🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
    ```bash
    kubectl get nodes -l node-role.kubernetes.io/control-plane
    ```
 
 2. 检查etcd集群状态：
+   🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
    ```bash
    ETCDCTL_API=3 etcdctl --endpoints=https://<etcd-ip1>:2379,https://<etcd-ip2>:2379,https://<etcd-ip3>:2379 \
      --cacert=/etc/kubernetes/pki/etcd/ca.crt \
@@ -412,6 +495,7 @@ ufw allow 10252/tcp # Controller Manager
    ```
 
 3. 检查组件领导者选举状态：
+   🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
    ```bash
    # 检查Controller Manager领导者
    kubectl get leases kube-controller-manager -n kube-system -o yaml
@@ -421,12 +505,18 @@ ufw allow 10252/tcp # Controller Manager
    ```
 
 4. 检查控制平面组件部署模式：
+   🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
    ```bash
    kubectl get deployments -n kube-system | grep -E "apiserver|controller-manager|scheduler"
    ```
 
 **解决方案示例**：
 
+🔴 高风险：可能造成数据丢失、服务中断、权限提升或不可逆破坏。
+> ⚠️ 生产安全提示：
+> - 会删除/格式化/停止关键资源，生产环境慎用。
+> - 执行前请确认目标范围，建议在隔离测试环境验证。
+> - 涉及数据操作前请备份，涉及服务操作前请通知相关人员。
 ```bash
 # 修复etcd集群脑裂问题（重新配置etcd集群）
 # 在所有etcd节点停止etcd服务
@@ -465,6 +555,7 @@ ETCDCTL_API=3 etcdctl --name etcd1 \
 **排查步骤**：
 
 1. 检查集群证书状态：
+   🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
    ```bash
    # 查看所有证书的过期时间
    kubeadm certs check-expiration
@@ -477,17 +568,24 @@ ETCDCTL_API=3 etcdctl --name etcd1 \
    ```
 
 2. 查看组件日志中的证书错误：
+   🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
    ```bash
    kubectl logs <component-pod-name> -n kube-system | grep -i cert
    ```
 
 3. 检查kubeconfig文件中的证书：
+   🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
    ```bash
    openssl x509 -in <(kubectl config view --raw -o jsonpath='{.clusters[0].cluster.certificate-authority-data}' | base64 -d) -text -noout | grep -A 3 Validity
    ```
 
 **解决方案示例**：
 
+🔴 高风险：可能造成数据丢失、服务中断、权限提升或不可逆破坏。
+> ⚠️ 生产安全提示：
+> - 会删除/格式化/停止关键资源，生产环境慎用。
+> - 执行前请确认目标范围，建议在隔离测试环境验证。
+> - 涉及数据操作前请备份，涉及服务操作前请通知相关人员。
 ```bash
 # 重新生成所有证书
 kubeadm certs renew all
@@ -509,6 +607,7 @@ cp /etc/kubernetes/admin.conf $HOME/.kube/config
 
 ### 4.1 控制平面诊断命令
 
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # 检查控制平面组件状态
 kubectl get pods -n kube-system | grep -E "apiserver|etcd|controller-manager|scheduler"
@@ -540,6 +639,7 @@ kubectl get leases -n kube-system
 
 ### 4.2 控制平面分析脚本
 
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 #!/bin/bash
 # 控制平面分析脚本
@@ -579,6 +679,7 @@ kubectl logs -l component=kube-scheduler -n kube-system --tail=20 | grep -i erro
 
 ### 4.3 应急恢复工具
 
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # 备份etcd数据
 ETCDCTL_API=3 etcdctl --endpoints=https://<etcd-ip>:2379 \
@@ -606,6 +707,11 @@ kubeadm upgrade diff
 
 ### 5.1 模拟API Server证书过期
 
+🔴 高风险：可能造成数据丢失、服务中断、权限提升或不可逆破坏。
+> ⚠️ 生产安全提示：
+> - 会删除/格式化/停止关键资源，生产环境慎用。
+> - 执行前请确认目标范围，建议在隔离测试环境验证。
+> - 涉及数据操作前请备份，涉及服务操作前请通知相关人员。
 ```bash
 # 注意：这会破坏集群，请在测试环境执行
 # 修改API Server证书的过期时间（使用openssl）
@@ -625,6 +731,11 @@ kubectl get pods
 
 ### 5.2 模拟etcd故障
 
+🔴 高风险：可能造成数据丢失、服务中断、权限提升或不可逆破坏。
+> ⚠️ 生产安全提示：
+> - 会删除/格式化/停止关键资源，生产环境慎用。
+> - 执行前请确认目标范围，建议在隔离测试环境验证。
+> - 涉及数据操作前请备份，涉及服务操作前请通知相关人员。
 ```bash
 # 注意：这会破坏集群，请在测试环境执行
 # 停止etcd服务
@@ -714,12 +825,22 @@ kubectl get pods
 
 ### 部署资源
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 ./scripts/apply.sh
 ```
 
 ### 检查状态
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 ./scripts/check.sh
 ```
@@ -740,6 +861,11 @@ kubectl get pods
 
 ### 基本命令
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 请根据实际场景替换
 kubectl apply -f manifests/

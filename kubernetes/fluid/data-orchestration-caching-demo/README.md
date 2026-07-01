@@ -23,6 +23,11 @@
    - 安装后运行 `docker --version` 验证
 
 2. **安装 kubectl**
+   🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+   > ⚠️ 生产安全提示：
+   > - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+   > - 注意检查依赖版本、端口占用和目标资源配置。
+   > - 生产环境执行前请经过变更评审和备份确认。
    ```bash
    curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/$(uname | tr '[:upper:]' '[:lower:]')/amd64/kubectl"
    chmod +x kubectl
@@ -30,12 +35,22 @@
    ```
 
 3. **安装 Minikube**
+   🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+   > ⚠️ 生产安全提示：
+   > - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+   > - 注意检查依赖版本、端口占用和目标资源配置。
+   > - 生产环境执行前请经过变更评审和备份确认。
    ```bash
    curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
    sudo install minikube-linux-amd64 /usr/local/bin/minikube
    ```
 
 4. **启动本地 Kubernetes 集群**
+   🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+   > ⚠️ 生产安全提示：
+   > - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+   > - 注意检查依赖版本、端口占用和目标资源配置。
+   > - 生产环境执行前请经过变更评审和备份确认。
    ```bash
    minikube start
    ```
@@ -49,6 +64,11 @@
 
 ### 步骤 1：创建 ConfigMap
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 kubectl create configmap app-config --from-literal=app_env=development --from-literal=cache_ttl=60
 ```
@@ -60,6 +80,11 @@ configmap/app-config created
 
 ### 步骤 2：应用 Pod 配置
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 kubectl apply -f demo-pod.yaml
 ```
@@ -71,6 +96,7 @@ pod/data-orchestration-pod created
 
 ### 步骤 3：查看 Pod 状态
 
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 kubectl get pod data-orchestration-pod
 ```
@@ -83,12 +109,14 @@ data-orchestration-pod        2/2     Running   0          30s
 
 ### 步骤 4：进入 writer 容器写入缓存数据
 
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 kubectl exec -it data-orchestration-pod -c writer -- sh -c "echo 'cached data' > /cache/data.txt"
 ```
 
 ### 步骤 5：从 reader 容器读取缓存数据
 
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 kubectl exec -it data-orchestration-pod -c reader -- cat /cache/data.txt
 ```
@@ -100,6 +128,7 @@ cached data
 
 ### 步骤 6：查看环境变量（来自 ConfigMap）
 
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 kubectl exec -it data-orchestration-pod -c writer -- printenv | grep APP_
 ```
@@ -123,11 +152,13 @@ CACHE_TTL=60
 
 ## 预期输出示例
 
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 $ kubectl exec -it data-orchestration-pod -c reader -- cat /cache/data.txt
 cached data
 ```
 
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 $ kubectl exec -it data-orchestration-pod -c writer -- printenv | grep APP_
 APP_ENV=development
@@ -163,12 +194,22 @@ A: 不可以。EmptyDir 仅限同一 Pod 内容器共享。
 
 ### 部署资源
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 ./scripts/apply.sh
 ```
 
 ### 检查状态
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 ./scripts/check.sh
 ```
@@ -189,6 +230,11 @@ A: 不可以。EmptyDir 仅限同一 Pod 内容器共享。
 
 ### 基本命令
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 请根据实际场景替换
 kubectl apply -f manifests/

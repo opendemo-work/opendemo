@@ -85,6 +85,7 @@ Before starting this demo, ensure you have:
 
 Create a requirements file with your needed packages:
 
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # View the requirements file
 cat code/requirements.txt
@@ -99,6 +100,11 @@ cat code/requirements.txt
 
 Build the Docker image locally:
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # Navigate to the code directory
 cd code/
@@ -114,6 +120,11 @@ docker images | grep my-kubeflow-notebook
 
 Test the image before deploying to Kubeflow:
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # Run the container locally
 docker run --rm -p 8888:8888 \
@@ -127,6 +138,11 @@ docker run --rm -p 8888:8888 \
 
 Tag and push the image to your registry:
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # For Docker Hub
 docker tag my-kubeflow-notebook:v1.0 yourusername/my-kubeflow-notebook:v1.0
@@ -147,6 +163,11 @@ docker push your-account.dkr.ecr.us-west-2.amazonaws.com/my-kubeflow-notebook:v1
 
 If your registry requires authentication:
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # Create a docker-registry secret
 kubectl create secret docker-registry regcred \
@@ -164,6 +185,11 @@ kubectl get secret regcred -n kubeflow-user-example-com
 
 Deploy a notebook server using your custom image:
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # Apply the notebook manifest
 kubectl apply -f manifests/notebook-custom-image.yaml
@@ -182,6 +208,7 @@ kubectl wait --for=condition=Ready \
 
 Access your notebook through the Kubeflow Dashboard:
 
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # Get the notebook URL
 kubectl get notebook custom-image-notebook \
@@ -229,6 +256,7 @@ See `manifests/notebook-custom-image.yaml` for the Notebook CRD configuration.
 
 ### Verify Image Built Successfully
 
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # Check image exists locally
 docker images my-kubeflow-notebook:v1.0
@@ -242,6 +270,7 @@ docker images my-kubeflow-notebook:v1.0 --format "{{.Size}}"
 
 ### Verify Image in Registry
 
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # For Docker Hub
 docker pull yourusername/my-kubeflow-notebook:v1.0
@@ -255,6 +284,7 @@ aws ecr describe-images --repository-name my-kubeflow-notebook
 
 ### Test Notebook Functionality
 
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # Check notebook pod is running
 kubectl get pods -n kubeflow-user-example-com -l notebook-name=custom-image-notebook
@@ -299,6 +329,11 @@ After completing this demo, you should observe:
 **Problem**: Docker build fails with package installation errors
 
 **Solution**:
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # Use build cache to identify failing layer
 docker build --progress=plain -t my-kubeflow-notebook:v1.0 .
@@ -333,6 +368,11 @@ RUN apt-get update && apt-get install -y package \
 **Problem**: Cannot push image to registry
 
 **Solution**:
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # Re-authenticate
 docker login your-registry.com
@@ -349,6 +389,7 @@ curl -v https://your-registry.com/v2/
 **Problem**: Notebook pod stuck in ImagePullBackOff
 
 **Solution**:
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # Check pod events
 kubectl describe pod -n kubeflow-user-example-com -l notebook-name=custom-image-notebook
@@ -365,6 +406,11 @@ kubectl run test --image=your-registry.com/image:tag --image-pull-policy=Always 
 **Problem**: Custom packages not available in Jupyter
 
 **Solution**:
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # Exec into pod and check
 kubectl exec -it pod-name -n kubeflow-user-example-com -- pip list
@@ -454,6 +500,11 @@ RUN apt-get update && apt-get install -y \
 
 To remove the custom notebook:
 
+🔴 高风险：可能造成数据丢失、服务中断、权限提升或不可逆破坏。
+> ⚠️ 生产安全提示：
+> - 会删除/格式化/停止关键资源，生产环境慎用。
+> - 执行前请确认目标范围，建议在隔离测试环境验证。
+> - 涉及数据操作前请备份，涉及服务操作前请通知相关人员。
 ```bash
 # Delete the notebook
 kubectl delete notebook custom-image-notebook -n kubeflow-user-example-com
@@ -504,12 +555,22 @@ Custom images enable you to create reproducible, team-specific ML development en
 
 ### 部署资源
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 ./scripts/apply.sh
 ```
 
 ### 检查状态
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 ./scripts/check.sh
 ```
@@ -530,6 +591,11 @@ Custom images enable you to create reproducible, team-specific ML development en
 
 ### 基本命令
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 请根据实际场景替换
 kubectl apply -f manifests/

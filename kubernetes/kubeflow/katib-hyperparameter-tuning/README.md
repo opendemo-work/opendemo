@@ -35,18 +35,29 @@ Katib Experiment CRD定义，包含：
 
 ### 1. 创建命名空间
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 kubectl create namespace kubeflow
 ```
 
 ### 2. 应用Experiment配置
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 kubectl apply -f manifests/experiment.yaml
 ```
 
 ### 3. 查看实验状态
 
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 kubectl get experiment -n kubeflow
 ```
@@ -61,6 +72,7 @@ random-search-example   Created  Running   30s
 
 查看正在运行的试验：
 
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 kubectl get trials -n kubeflow
 ```
@@ -71,6 +83,7 @@ kubectl get trials -n kubeflow
 
 查看实验详情：
 
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 kubectl describe experiment random-search-example -n kubeflow
 ```
@@ -85,18 +98,21 @@ kubectl describe experiment random-search-example -n kubeflow
 
 列出所有试验：
 
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 kubectl get trials -n kubeflow -l experiment=random-search-example
 ```
 
 查看特定试验详情：
 
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 kubectl describe trial <trial-name> -n kubeflow
 ```
 
 ### 3. 获取最优超参数
 
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 kubectl get experiment random-search-example -n kubeflow -o yaml | grep -A 10 "currentOptimalTrial"
 ```
@@ -154,6 +170,7 @@ parameters:
 
 ### 查看实验进度
 
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # 实时监控实验状态
 watch kubectl get experiment random-search-example -n kubeflow
@@ -164,6 +181,7 @@ kubectl get trials -n kubeflow -l experiment=random-search-example --sort-by=.st
 
 ### 查看试验日志
 
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # 获取试验对应的Pod
 kubectl get pods -n kubeflow -l trial=<trial-name>
@@ -191,6 +209,7 @@ Katib会自动收集并记录：
 2. 验证资源配额
 3. 查看Katib controller日志
 
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 kubectl logs -n kubeflow -l app=katib-controller
 ```
@@ -205,6 +224,7 @@ kubectl logs -n kubeflow -l app=katib-controller
 3. 验证训练脚本正确性
 4. 检查资源限制
 
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 kubectl describe trial <trial-name> -n kubeflow
 ```
@@ -222,6 +242,11 @@ kubectl describe trial <trial-name> -n kubeflow
 
 ### 删除实验
 
+🔴 高风险：可能造成数据丢失、服务中断、权限提升或不可逆破坏。
+> ⚠️ 生产安全提示：
+> - 会删除/格式化/停止关键资源，生产环境慎用。
+> - 执行前请确认目标范围，建议在隔离测试环境验证。
+> - 涉及数据操作前请备份，涉及服务操作前请通知相关人员。
 ```bash
 kubectl delete experiment random-search-example -n kubeflow
 ```
@@ -232,6 +257,11 @@ kubectl delete experiment random-search-example -n kubeflow
 
 如果需要单独删除某个试验：
 
+🔴 高风险：可能造成数据丢失、服务中断、权限提升或不可逆破坏。
+> ⚠️ 生产安全提示：
+> - 会删除/格式化/停止关键资源，生产环境慎用。
+> - 执行前请确认目标范围，建议在隔离测试环境验证。
+> - 涉及数据操作前请备份，涉及服务操作前请通知相关人员。
 ```bash
 kubectl delete trial <trial-name> -n kubeflow
 ```
@@ -296,12 +326,22 @@ kubectl delete trial <trial-name> -n kubeflow
 
 ### 部署资源
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 ./scripts/apply.sh
 ```
 
 ### 检查状态
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 ./scripts/check.sh
 ```
@@ -322,6 +362,11 @@ kubectl delete trial <trial-name> -n kubeflow
 
 ### 基本命令
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 请根据实际场景替换
 kubectl apply -f manifests/

@@ -64,6 +64,11 @@ Before starting this demo, ensure you have:
 
 Create separate profiles (namespaces) for different users:
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # Create profile for data scientist
 kubectl apply -f manifests/profile-data-scientist.yaml
@@ -79,6 +84,11 @@ kubectl get profiles
 
 Apply custom roles with specific permissions:
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # Apply kubeflow user role
 kubectl apply -f manifests/kubeflow-user-role.yaml
@@ -94,6 +104,11 @@ kubectl get clusterroles | grep kubeflow
 
 Bind roles to users in their respective namespaces:
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # Create role bindings
 kubectl apply -f manifests/role-bindings.yaml
@@ -107,6 +122,11 @@ kubectl get rolebindings -n kubeflow-user-ml-engineer
 
 Set up service accounts for application access:
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # Create service accounts
 kubectl apply -f manifests/service-accounts.yaml
@@ -119,6 +139,11 @@ kubectl get serviceaccounts -n kubeflow-user-data-scientist
 
 Verify that RBAC is working correctly:
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # Test as data scientist user
 kubectl auth can-i create notebooks --as=user-data-scientist@example.com -n kubeflow-user-data-scientist
@@ -137,6 +162,11 @@ kubectl auth can-i '*' '*' --as=kubeflow-admin@example.com -n kubeflow
 
 Configure Dashboard to use the RBAC settings:
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # Update Dashboard configuration
 kubectl apply -f manifests/dashboard-rbac-config.yaml
@@ -160,6 +190,11 @@ See `manifests/role-bindings.yaml` for user-to-role mappings.
 
 ### Test User Isolation
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # Create a notebook in user-data-scientist namespace
 kubectl apply -f - <<EOF
@@ -182,6 +217,11 @@ kubectl get notebooks -n kubeflow-user-ml-engineer --as=user-data-scientist@exam
 
 ### Verify Permission Boundaries
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # Test create permissions
 kubectl auth can-i create notebooks --as=user-data-scientist@example.com -n kubeflow-user-data-scientist
@@ -195,6 +235,7 @@ kubectl auth can-i get nodes --as=user-data-scientist@example.com
 
 ### Check Dashboard Access Logs
 
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # Monitor Dashboard authentication
 kubectl logs -n kubeflow deployment/centraldashboard -f | grep -i "auth\|rbac"
@@ -229,6 +270,11 @@ After completing this demo, you should observe:
 **Problem**: Profile created but namespace doesn't exist
 
 **Solution**:
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # Check profile status
 kubectl describe profile kubeflow-user-data-scientist
@@ -245,6 +291,7 @@ kubectl create namespace kubeflow-user-data-scientist
 **Problem**: User gets permission denied even with correct role
 
 **Solution**:
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # Verify role binding
 kubectl get rolebinding -n kubeflow-user-data-scientist
@@ -261,6 +308,7 @@ kubectl auth can-i list notebooks --as=user@example.com -n kubeflow-user-data-sc
 **Problem**: User logs in but doesn't see their namespace
 
 **Solution**:
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # Check Dashboard configuration
 kubectl get configmap centraldashboard-config -n kubeflow -o yaml
@@ -277,6 +325,11 @@ kubectl logs -n kubeflow deployment/centraldashboard | grep -i "error\|failed"
 **Problem**: Service account cannot authenticate
 
 **Solution**:
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # Verify service account exists
 kubectl get serviceaccount -n kubeflow-user-data-scientist
@@ -389,6 +442,11 @@ spec:
 
 To remove the RBAC configuration:
 
+🔴 高风险：可能造成数据丢失、服务中断、权限提升或不可逆破坏。
+> ⚠️ 生产安全提示：
+> - 会删除/格式化/停止关键资源，生产环境慎用。
+> - 执行前请确认目标范围，建议在隔离测试环境验证。
+> - 涉及数据操作前请备份，涉及服务操作前请通知相关人员。
 ```bash
 # Delete role bindings
 kubectl delete -f manifests/role-bindings.yaml
@@ -442,12 +500,22 @@ RBAC is essential for production Kubeflow deployments to ensure security and res
 
 ### 部署资源
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 ./scripts/apply.sh
 ```
 
 ### 检查状态
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 ./scripts/check.sh
 ```
@@ -468,6 +536,11 @@ RBAC is essential for production Kubeflow deployments to ensure security and res
 
 ### 基本命令
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 请根据实际场景替换
 kubectl apply -f manifests/

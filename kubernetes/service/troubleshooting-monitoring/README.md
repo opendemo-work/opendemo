@@ -27,6 +27,11 @@
 
 ### 1. 环境准备
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 创建故障排查测试环境
 kubectl create namespace service-troubleshooting
@@ -41,6 +46,11 @@ kubectl get pods,services,endpoints -n service-troubleshooting
 
 ### 2. 基础诊断工具准备
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 安装诊断工具
 kubectl apply -f diagnostic-tools.yaml -n service-troubleshooting
@@ -83,6 +93,7 @@ graph TD
 
 **排查步骤**:
 
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # 1. 检查Service基本信息
 kubectl get service <service-name> -n <namespace> -o wide
@@ -139,6 +150,7 @@ spec:
 
 **排查步骤**:
 
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # 1. 测试DNS解析
 kubectl run dns-test --image=busybox --rm -it -n service-troubleshooting -- \
@@ -161,6 +173,7 @@ kubectl run dns-debug --image=busybox --rm -it -n service-troubleshooting -- \
 
 **排查步骤**:
 
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # 1. 检查网络策略
 kubectl get networkpolicies -n service-troubleshooting
@@ -181,6 +194,7 @@ kubectl run network-test --image=nicolaka/netshoot --rm -it -n service-troublesh
 
 #### 3.1 网络层面诊断
 
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # 使用netshoot工具进行深度网络分析
 apiVersion: apps/v1
@@ -210,6 +224,7 @@ spec:
 
 **网络诊断命令**:
 
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # 捕获网络流量
 tcpdump -i any -nn host <service-ip> and port <service-port>
@@ -226,6 +241,7 @@ ip route get <service-ip>
 
 #### 3.2 性能瓶颈分析
 
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # 监控关键性能指标
 kubectl top pods -n service-troubleshooting
@@ -439,6 +455,11 @@ spec:
 
 ### 2. 故障模拟和测试
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 #!/bin/bash
 # fault-injection-test.sh
@@ -536,6 +557,11 @@ Service selector标签与Pod标签不匹配，导致Endpoints为空
 
 ## 📋 清理资源
 
+🔴 高风险：可能造成数据丢失、服务中断、权限提升或不可逆破坏。
+> ⚠️ 生产安全提示：
+> - 会删除/格式化/停止关键资源，生产环境慎用。
+> - 执行前请确认目标范围，建议在隔离测试环境验证。
+> - 涉及数据操作前请备份，涉及服务操作前请通知相关人员。
 ```bash
 # 删除故障排查环境
 kubectl delete namespace service-troubleshooting
@@ -573,6 +599,11 @@ kubectl delete networkpolicy --all -n service-troubleshooting
 
 ### 基本命令
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 请根据实际场景替换
 kubectl apply -f manifests/

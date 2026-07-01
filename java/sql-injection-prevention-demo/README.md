@@ -236,6 +236,11 @@ SELECT * FROM users WHERE username = 'alice\' OR \'1\'=\'1'
 
 ### 1. 正常查询
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 安全查询
 curl "http://localhost:8082/api/users/search/safe?username=alice"
@@ -246,6 +251,7 @@ curl "http://localhost:8082/api/users/search/vulnerable?username=alice"
 
 ### 2. SQL 注入攻击演示
 
+🟢 低风险：只读查询或无害信息展示，不会修改系统状态。
 ```bash
 # 联合查询注入（仅在不安全接口中生效）
 curl "http://localhost:8082/api/users/search/vulnerable?username=' UNION SELECT 1,'hacked','pwd','hacked@evil.com','ADMIN',TRUE --"
@@ -256,6 +262,11 @@ curl "http://localhost:8082/api/users/search/compare?username=' OR '1'='1"
 
 ### 3. 认证绕过演示
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 不安全的认证（可能被绕过）
 curl -X POST "http://localhost:8082/api/users/auth/vulnerable?username=admin'--&password=anything"
@@ -338,6 +349,11 @@ src/
 
 ## 构建与运行
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 mvn clean package
 java -jar target/sql-injection-prevention-demo-1.0.0.jar
@@ -359,6 +375,11 @@ java -jar target/sql-injection-prevention-demo-1.0.0.jar
 
 ### 运行演示
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 ./scripts/demo.sh
 ```
@@ -379,6 +400,11 @@ java -jar target/sql-injection-prevention-demo-1.0.0.jar
 
 ### 基本用法
 
+🟡 中风险：会修改系统状态、安装软件或启动/停止服务，但影响范围相对可控。
+> ⚠️ 生产安全提示：
+> - 会修改本地环境或启动服务，建议在测试/开发环境先验证。
+> - 注意检查依赖版本、端口占用和目标资源配置。
+> - 生产环境执行前请经过变更评审和备份确认。
 ```bash
 # 请根据实际案例替换
 ./scripts/demo.sh
